@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+﻿import React, { Component } from 'react';
 import Event from './event-item';
 import Pagination from "react-paginating";
 import { Link } from 'react-router-dom'
@@ -8,7 +8,7 @@ const pageCount = 3;
 
 
 
-export default class EventList extends Component {
+export default class EventsForProfile extends Component {
     constructor() {
         super();
         this.state = {
@@ -17,10 +17,18 @@ export default class EventList extends Component {
     }
 
     handlePageChange = (page, e) => {
-        this.props.callback(window.location.search.replace(/(page=)[0-9]+/gm, 'page=' + page));
         this.setState({
             currentPage: page
         });
+        console.log(page);
+       
+        if(this.props.notification_events != null){
+            console.log(this.props.notification_events);
+        this.props.callback(this.props.notification_events,page);
+       }else{
+        this.props.callback(page);
+        console.log(this.props.notification_events);
+       }
     };
 
 
@@ -28,21 +36,16 @@ export default class EventList extends Component {
         return arr.map((item) => {
 
             return (
-                <Event 
-                    key={item.id+item.isBlocked} 
-                    item={item} 
-                    current_user={this.props.current_user}
-                   
-                />
+                <Event key={item.id} item={item} current_user={this.props.current_user} />
             );
         });
     }
- 
+
     render() {
         const { data_list } = this.props;
         const items = this.renderItems(data_list);
         const { page, totalPages } = this.props;
-        console.log(data_list);
+        
         return <>
             <div className="row">
                 {items}
@@ -68,27 +71,25 @@ export default class EventList extends Component {
 
                             <div>
                                 {hasPreviousPage && (
-                                    <Link className="btn btn-primary"
-                                        to={window.location.search.replace(/(page=)[0-9]+/gm, 'page=' + 1)}
+                                    <button className="btn btn-primary"
                                         {...getPageItemProps({
                                             pageValue: 1,
                                             onPageChange: this.handlePageChange
                                         })}
                                     >
                                         first
-                              </Link>)}
+                              </button>)}
 
                                 {hasPreviousPage && (
-                                    <Link className="btn btn-primary"
-                                        to={window.location.search.replace(/(page=)[0-9]+/gm, 'page=' + (page - 1))}
-
+                                    <button className="btn btn-primary"
+                                       
                                         {...getPageItemProps({
                                             pageValue: previousPage,
                                             onPageChange: this.handlePageChange
                                         })}
                                     >
                                         {"<"}
-                                    </Link>
+                                    </button>
                                 )}
 
                                 {pages.map(page => {
@@ -98,9 +99,8 @@ export default class EventList extends Component {
                                     }
                                     if (totalPages != 1) {
                                         return (
-                                            <Link className="btn btn-primary"
-                                                to={window.location.search.replace(/(page=)[0-9]+/gm, 'page=' + page)}
-
+                                            <button className="btn btn-primary"
+                                               
                                                 {...getPageItemProps({
                                                     pageValue: page,
                                                     key: page,
@@ -109,49 +109,37 @@ export default class EventList extends Component {
                                                 })}
                                             >
                                                 {page}
-                                            </Link>
+                                            </button>
                                         );
                                     } else {
 
                                         return (
-                                            <Link
-                                                to={window.location.search.replace(/(page=)[0-9]+/gm, 'page=' + page)}
-
-                                                {...getPageItemProps({
-                                                    pageValue: page,
-                                                    key: page,
-                                                    style: activePage,
-                                                    onPageChange: this.handlePageChange
-                                                })}
-                                            >
-                                            </Link>
+                                    <></>
                                         );
                                     }
                                 })}
 
                                 {hasNextPage && (
-                                    <Link className="btn btn-primary"
-                                        to={window.location.search.replace(/(page=)[0-9]+/gm, 'page=' + (page + 1))}
-
+                                    <button className="btn btn-primary"
+                                        
                                         {...getPageItemProps({
                                             pageValue: nextPage,
                                             onPageChange: this.handlePageChange
                                         })}
                                     >
                                         {">"}
-                                    </Link>
+                                    </button>
                                 )}
                                 {hasNextPage && (
-                                    <Link className="btn btn-primary"
-                                        to={window.location.search.replace(/(page=)[0-9]+/gm, 'page=' + this.props.totalPages)}
-
+                                    <button className="btn btn-primary"
+                                        
                                         {...getPageItemProps({
                                             pageValue: this.props.totalPages,
                                             onPageChange: this.handlePageChange
                                         })}
                                     >
                                         last
-                                </Link>)}
+                                </button>)}
                             </div>
                         )}
                 </Pagination>
