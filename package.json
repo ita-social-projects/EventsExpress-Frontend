@@ -76,8 +76,8 @@
         "rimraf": "2.6.2"
     },
     "scripts": {
-        "start": "rimraf ./build && react-scripts start",
-        "build": "react-scripts build && jshint ClientApp/src",
+        "start": "export PORT=8080 && rimraf ./build && react-scripts start",
+        "build": "react-scripts build && jshint src",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject"
     },
@@ -92,5 +92,6 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    }
+    },
+    "proxy": "https://eventsexpress-test.azurewebsites.net/"
 }
