@@ -28,7 +28,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy files'
   inputs:
-    sourceFolder: '$(directory)/build' 
+    sourceFolder: '$(Pipeline.Workspace)/build' 
     Contents: '**/*'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     cleanTargetFolder: true
