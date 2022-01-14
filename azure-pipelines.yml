@@ -25,6 +25,27 @@ steps:
     npm run build
   displayName: 'npm install and build'
   
+- task: CopyFiles@2
+  displayName: 'Copy files'
+  inputs:
+    sourceFolder: '$(directory)/build' 
+    Contents: '**/*'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    cleanTargetFolder: true
+ 
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    includeRootFolder: false
+    archiveType: zip
+    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+    replaceExistingArchive: true
+ 
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Build Artifacts'
+  inputs: 
+    pathtoPublish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
 
 - task: AzureRmWebAppDeployment@4
   condition: ne(variables['Build.Reason'], 'PullRequest')
@@ -34,5 +55,5 @@ steps:
     azureSubscription: 'Visual Studio Professional Subscription (osavchuk2)(0bbbf432-fe2e-4ecb-9bdd-457595fea396)'
     appType: 'webAppLinux'
     WebAppName: 'eventsexpress-ui-dev'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(System.ArtifactsDirectory)/$(Build.BuildId).zip'
     RuntimeStack: 'NODE|14-lts'
