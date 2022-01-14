@@ -52,7 +52,7 @@ steps:
   displayName: 'Deploy'
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'Visual Studio Professional Subscription (osavchuk2)(0bbbf432-fe2e-4ecb-9bdd-457595fea396)'
+    azureSubscription: 'Visual Studio Professional Subscription (osavchuk2)(1)(0bbbf432-fe2e-4ecb-9bdd-457595fea396)'
     appType: 'webAppLinux'
     WebAppName: 'eventsexpress-ui-dev'
     packageForLinux: '$(System.ArtifactsDirectory)/$(Build.BuildId).zip'
