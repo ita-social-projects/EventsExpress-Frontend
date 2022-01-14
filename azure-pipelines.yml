@@ -47,13 +47,10 @@ steps:
   inputs: 
     pathtoPublish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
 
-- task: AzureRmWebAppDeployment@4
-  condition: ne(variables['Build.Reason'], 'PullRequest')
-  displayName: 'Deploy'
+- task: AzureWebApp@1
   inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Visual Studio Professional Subscription (osavchuk2)(1)(0bbbf432-fe2e-4ecb-9bdd-457595fea396)'
+    azureSubscription: 'Visual Studio Professional Subscription (osavchuk2)(0bbbf432-fe2e-4ecb-9bdd-457595fea396)'
     appType: 'webAppLinux'
-    WebAppName: 'eventsexpress-ui-dev'
-    packageForLinux: '$(System.ArtifactsDirectory)/$(Build.BuildId).zip'
-    RuntimeStack: 'NODE|14-lts'
+    appName: 'eventsexpress-ui-dev'
+    package: '$(System.ArtifactsDirectory)/$(Build.BuildId).zip'
+    runtimeStack: 'NODE|14-lts'
