@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventForm from '../components/event/event-form';
+import EventForm from '../components/event/EventForm/Event-form';
 import { connect } from 'react-redux';
 import { getFormValues, reset } from 'redux-form';
 import edit_event_from_parent, {

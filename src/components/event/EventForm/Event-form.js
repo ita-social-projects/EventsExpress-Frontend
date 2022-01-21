@@ -3,9 +3,9 @@ import { reduxForm, Field, change } from "redux-form";
 import moment from "moment";
 import "react-widgets/dist/css/react-widgets.css";
 import momentLocaliser from "react-widgets-moment";
-import DropZoneField from "../helpers/DropZoneField";
-import PhotoService from "../../services/PhotoService";
-import periodicity from "../../constants/PeriodicityConstants";
+import DropZoneField from "../../helpers/DropZoneField";
+import PhotoService from "../../../services/PhotoService";
+import periodicity from "../../../constants/PeriodicityConstants";
 import {
   renderDatePicker,
   renderCheckbox,
@@ -14,13 +14,13 @@ import {
   renderTextArea,
   renderMultiselect,
   parseEuDate,
-} from "../helpers/form-helpers";
-import { enumLocationType } from "../../constants/EventLocationType";
+} from "../../helpers/form-helpers";
+import { enumLocationType } from "../../../constants/EventLocationType";
 import "./event-form.css";
-import asyncValidatePhoto from "../../containers/async-validate-photo";
-import ErrorMessages from '../shared/errorMessage';
-import Location from "../location";
-import eventStatusEnum from "../../constants/eventStatusEnum";
+import asyncValidatePhoto from "../../../containers/async-validate-photo";
+import ErrorMessages from '../../shared/errorMessage';
+import Location from "../../location";
+import eventStatusEnum from "../../../constants/eventStatusEnum";
 momentLocaliser(moment);
 
 const photoService = new PhotoService();

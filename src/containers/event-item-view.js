@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import EventItemView from '../components/event/event-item-view';
+import EventItemView from '../components/event/EventItemView/Event-item-view';
 import eventStatusEnum from '../constants/eventStatusEnum';
 import SpinnerWrapper from './spinner';
 import get_event, {

@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
-import { promoteToOwner, approveUser } from '../../actions/event/event-item-view-action';
+import { promoteToOwner, approveUser } from '../../../actions/event/event-item-view-action';
 
 const DeniedUsersActions = (props) => {
     const { user, isMyEvent } = props;

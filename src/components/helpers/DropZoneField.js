@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import DropZone from "react-dropzone";
 import ImagePreview from "./ImagePreview";
 import Placeholder from "./Placeholder";
-import ImageResizer from '../event/image-resizer';
+import ImageResizer from '../event/ImageResizer/Image-resizer';
 import Button from "@material-ui/core/Button";
 import renderFieldError from './form-helpers/render-field-error';
 

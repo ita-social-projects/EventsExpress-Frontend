@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reset_events, updateEventsFilters } from '../../actions/event/event-list-action';
-import RenderList from './RenderList'
-import EventCard from './event-item';
-import { change_event_status } from '../../actions/event/event-item-view-action';
-import eventStatusEnum from '../../constants/eventStatusEnum';
+import { reset_events, updateEventsFilters } from '../../../actions/event/event-list-action';
+import RenderList from '../RenderList/RenderList';
+import EventCard from '../EventItem/Event-item';
+import { change_event_status } from '../../../actions/event/event-item-view-action';
+import eventStatusEnum from '../../../constants/eventStatusEnum';
 import { withRouter } from "react-router";
 import { parse as queryStringParse } from 'query-string';
-import filterHelper from '../helpers/filterHelper';
+import filterHelper from '../../helpers/filterHelper';
 
 class EventList extends Component {
     componentDidMount() {

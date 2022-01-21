@@ -1,7 +1,7 @@
 ﻿
 import { makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
-import './event-item.css';
+import '../EventItem/event-item.css';
 
 export const useStyle = makeStyles(theme => ({
     card: {

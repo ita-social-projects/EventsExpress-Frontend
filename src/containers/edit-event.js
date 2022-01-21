@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import EventForm from '../components/event/event-form';
+import EventForm from '../components/event/EventForm/Event-form';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { getFormValues, SubmissionError } from 'redux-form';

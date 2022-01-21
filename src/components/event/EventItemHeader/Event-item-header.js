@@ -1,14 +1,14 @@
 ﻿import React, { Component } from 'react';
 import { Button, Menu, MenuItem } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { useStyle } from './CardStyle';
-import CustomAvatar from '../avatar/custom-avatar';
+import { useStyle } from '../CardStyle/CardStyle';
+import CustomAvatar from '../../avatar/custom-avatar';
 import Badge from '@material-ui/core/Badge';
 import Moment from 'react-moment';
 import Tooltip from '@material-ui/core/Tooltip';
 import CardHeader from '@material-ui/core/CardHeader';
 import IconButton from '@material-ui/core/IconButton';
-import { getAttitudeClassName } from './attitude';
+import { getAttitudeClassName } from '../attitude/attitude';
 import './event-item-header.css';
 
 

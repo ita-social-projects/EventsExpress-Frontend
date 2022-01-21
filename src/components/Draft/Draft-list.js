@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DraftEventCard from './DraftEventCard';
-import RenderList from '../event/RenderList'
+import RenderList from '../event/RenderList/RenderList'
 import { change_event_status } from '../../actions/event/event-item-view-action';
 import eventStatusEnum from '../../constants/eventStatusEnum';
 import { createBrowserHistory } from 'history';

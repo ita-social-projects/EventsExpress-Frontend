@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import PagePagination from '../shared/pagePagination';
+import PagePagination from '../../shared/pagePagination';
 
 class RenderList extends Component {
     renderItems = arr =>

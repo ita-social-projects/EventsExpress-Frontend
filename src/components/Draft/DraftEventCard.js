@@ -13,7 +13,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Badge from '@material-ui/core/Badge';
 import CustomAvatar from '../avatar/custom-avatar';
 import './event-item.css';
-import { useStyle } from '../event/CardStyle'
+import { useStyle } from '../event/CardStyle/CardStyle'
 import IconButton from "@material-ui/core/IconButton";
 import SimpleModalWithDetails from '../helpers/simple-modal-with-details';
 import PhotoService from "../../services/PhotoService";

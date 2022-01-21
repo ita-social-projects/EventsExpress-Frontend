@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import Comment from '../comment/comment';
+import Comment from '../../comment/comment';
 import { Link } from 'react-router-dom'
-import RatingWrapper from '../../containers/rating';
+import RatingWrapper from '../../../containers/rating';
 import Moment from 'react-moment';
 import moment from 'moment';
 import 'moment-timezone';
-import '../layout/colorlib.css';
+import '../../layout/colorlib.css';
 import './event-item-view.css';
-import EventVisitors from './event-visitors';
-import EventLeaveModal from './event-leave-modal';
-import InventoryList from '../inventory/InventoryList';
-import DisplayLocation from './map/display-location';
-import userStatusEnum from '../../constants/userStatusEnum';
-import eventStatusEnum from '../../constants/eventStatusEnum';
-import SimpleModalWithDetails from '../helpers/simple-modal-with-details';
-import { eventDefaultImage } from "../../constants/eventDefaultImage";
-import PhotoService from "../../services/PhotoService";
+import EventVisitors from '../EventVisitors/Event-visitors';
+import EventLeaveModal from '../EventLeaveModal/Event-leave-modal';
+import InventoryList from '../../inventory/InventoryList';
+import DisplayLocation from '../map/display-location';
+import userStatusEnum from '../../../constants/userStatusEnum';
+import eventStatusEnum from '../../../constants/eventStatusEnum';
+import SimpleModalWithDetails from '../../helpers/simple-modal-with-details';
+import { eventDefaultImage } from "../../../constants/eventDefaultImage";
+import PhotoService from "../../../services/PhotoService";
 
 const photoService = new PhotoService();
 

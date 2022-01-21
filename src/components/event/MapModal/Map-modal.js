@@ -4,10 +4,10 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { LocationMapWithCircle } from '../helpers/form-helpers/location';
+import { LocationMapWithCircle } from '../../helpers/form-helpers/location';
 import { Field } from 'redux-form';
-import './slider.css';
-import DisplayMap from '../event/map/display-map';
+import '../slider.css';
+import DisplayMap from '../map/display-map';
 
 class MapModal extends Component {
     constructor(props) {

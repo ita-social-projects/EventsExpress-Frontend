@@ -1,9 +1,9 @@
 ﻿import React from 'react';
-import SimpleModal from './simple-modal';
+import SimpleModal from '../SimpleModal/Simple-modal';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from "@material-ui/core/IconButton";
 import { connect } from 'react-redux';
-import { deleteFromOwners } from '../../actions/event/event-item-view-action';
+import { deleteFromOwners } from '../../../actions/event/event-item-view-action';
 
 const OwnersActions = (props) => {
     const { user, isMyEvent } = props;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFormValues, reset } from 'redux-form';
-import EventFilter from '../components/event/event-filter';
+import EventFilter from '../components/event/EventFilter/Event-filter';
 import get_categories from '../actions/category/category-list-action';
 import filterHelper from '../components/helpers/filterHelper';
 import { withRouter } from "react-router";
