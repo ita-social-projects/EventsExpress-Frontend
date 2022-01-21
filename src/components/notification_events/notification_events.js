@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { eventsForNotification } from '../../actions/events/events-for-notification-action';
-import EventList from '../event/events-for-profile';
+import EventList from '../event/EventsForProfile/Events-for-profile';
 import SpinnerWrapper from '../../containers/spinner';
 
 class NotificationEvents extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventsForProfile from '../event/events-for-profile';
+import EventsForProfile from '../event/EventsForProfile/Events-for-profile';
 import 'moment-timezone';
 import './User-profile.css';
 

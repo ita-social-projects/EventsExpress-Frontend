@@ -1,10 +1,10 @@
 ﻿import React from 'react';
-import SimpleModal from './simple-modal';
+import SimpleModal from '../SimpleModal/Simple-modal';
 import Button from "@material-ui/core/Button";
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from "@material-ui/core/IconButton";
 import { connect } from 'react-redux';
-import { promoteToOwner, approveUser } from '../../actions/event/event-item-view-action';
+import { promoteToOwner, approveUser } from '../../../actions/event/event-item-view-action';
 
 const ApprovedUsersActions = (props) => {
     const { user, isMyEvent, isMyPrivateEvent } = props;

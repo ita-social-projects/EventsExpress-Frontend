@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getFormValues } from 'redux-form';
 import { connect } from 'react-redux';
 import { parse as queryStringParse } from 'query-string';
-import EventList from '../components/event/event-list';
+import EventList from '../components/event/EventList/Event-list';
 import SpinnerWrapper from './spinner';
 import { get_events } from '../actions/event/event-list-action';
 import filterHelper from '../components/helpers/filterHelper';

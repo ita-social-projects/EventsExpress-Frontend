@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
-import Event from './event-item';
-import PagePagination from '../shared/pagePagination';
-import LocalSpinnerWrapper from '../../containers/local-spinner';
+import Event from '../EventItem/Event-item';
+import PagePagination from '../../shared/pagePagination';
+import LocalSpinnerWrapper from '../../../containers/local-spinner';
 
 export default class EventsForProfile extends Component {
     constructor() {

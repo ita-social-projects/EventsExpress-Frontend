@@ -1,9 +1,9 @@
 ﻿import React, { Component } from 'react';
 import '../home/home.css';
 
-import AdminEventListWrapper from '../../containers/events-for-admin';
+import AdminEventListWrapper from '../../../containers/events-for-admin';
 import { connect } from 'react-redux';
-import EventFilterWrapper from '../../containers/event-filter';
+import EventFilterWrapper from '../../../containers/event-filter';
 
 class EventsForAdmin extends Component {
 

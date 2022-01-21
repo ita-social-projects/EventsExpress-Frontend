@@ -1,8 +1,8 @@
 import React from 'react';
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from '@material-ui/core/Tooltip';
-import eventStatusEnum from '../../constants/eventStatusEnum';
-import SimpleModalWithDetails from '../helpers/simple-modal-with-details';
+import eventStatusEnum from '../../../constants/eventStatusEnum';
+import SimpleModalWithDetails from '../../helpers/simple-modal-with-details';
 
 export default function EventActiveStatus(props) {
     switch (props.eventStatus) {

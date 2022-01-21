@@ -7,12 +7,12 @@ import {
   renderTextField,
   renderMultiselect,
   parseEuDate
-} from "../helpers/form-helpers";
-import filterHelper from "../helpers/filterHelper";
-import MapModal from "./map-modal";
+} from "../../helpers/form-helpers";
+import filterHelper from "../../helpers/filterHelper";
+import MapModal from "../MapModal/Map-modal";
 import "./event-filter.css";
-import DisplayMap from "../event/map/display-map";
-import eventStatusEnum from "../../constants/eventStatusEnum";
+import DisplayMap from "../map/display-map";
+import eventStatusEnum from "../../../constants/eventStatusEnum";
 
 class EventFilter extends Component {
   constructor(props) {

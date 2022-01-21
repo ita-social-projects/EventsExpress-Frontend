@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
-import EventForm from '../components/event/event-form';
+import EventForm from '../components/event/EventForm/Event-form';
 import SimpleModalWithDetails from '../components/helpers/simple-modal-with-details';
 import eventStatusEnum from '../constants/eventStatusEnum';
 import { connect } from 'react-redux';

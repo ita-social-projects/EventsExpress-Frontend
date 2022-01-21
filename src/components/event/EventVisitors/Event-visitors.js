@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import ParticipantGroup from './participant-group';
-import OwnersActions from './owners-action';
-import ApprovedUsersActions from './approved-users-action';
-import PendingUsersActions from './pending-users-action';
-import DeniedUsersActions from './denied-users-action';
+import ParticipantGroup from '../ParticipantGroup/Participant-group';
+import OwnersActions from '../OwnersAction/Owners-action';
+import ApprovedUsersActions from '../ApprovedUsersAction/Approved-users-action';
+import PendingUsersActions from '../PendingUsersAction/Pending-users-action';
+import DeniedUsersActions from '../DeniedUsersAction/Denied-users-action';
 
 class EventVisitors extends Component {
 

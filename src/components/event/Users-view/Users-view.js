@@ -1,11 +1,11 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getAttitudeClassName } from './attitude';
-import CustomAvatar from '../avatar/custom-avatar';
+import { getAttitudeClassName } from '../attitude/attitude';
+import CustomAvatar from '../../avatar/custom-avatar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 import './users-view.css';
-import { getAge } from '../helpers/get-age-string';
+import { getAge } from '../../helpers/get-age-string';
 
 export default class UserView extends Component{
 
