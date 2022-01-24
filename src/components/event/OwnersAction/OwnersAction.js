@@ -19,7 +19,11 @@ export default function OwnersActions({
       <div>
         <SimpleModal
           action={handlerDeleteFromOwners}
-          data={constants.MESSAGE_ACCEPT_DELETE(user.username)}
+          data={
+            constants.MESSAGE_ACCEPT_DELETE_FIRST +
+            ` ${user.username} ` +
+            constants.MESSAGE_ACCEPT_DELETE_LAST
+          }
           button={
             <Tooltip title={constants.TITLE_DELETE_BUTTON}>
               <IconButton aria-label="delete">
