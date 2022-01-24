@@ -7,7 +7,7 @@ import constants from "../../../constants/ApprovedUsersAction";
 
 const ApprovedUsersActions = ({ user, isMyEvent, isMyPrivateEvent, eventId, promoteToOwner, approveUser}) => {
 	
-	({WANNA_APPROVE, TO_OWNER, DELETE_FROM_EVENT}) = constants;
+	const {WANNA_APPROVE, TO_OWNER, DELETE_FROM_EVENT} = constants;
 
 	return (
         <>
