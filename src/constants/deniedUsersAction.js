@@ -1,4 +1,4 @@
-constants = {
+const constants = {
     ADD_TO_EVENT: 'Add to event'
 }
 
