@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import RenderList from '../RenderList/RenderList';
 import EventCard from '../EventItem/Event-item';
 import { parse as queryStringParse } from 'query-string';
@@ -15,7 +15,7 @@ const EventList = ({totalPages, history, current_user, onBlock, onUnBlock, ...pr
 			history.push(history.location.pathname + `?page=1`)
 	}, [totalPages, history.location.search])
 
-	handlePageChange = page => {
+	const handlePageChange = page => {
         const queryStringToObject = queryStringParse(history.location.search);
 		history.location.search == ""
 		? 
@@ -27,7 +27,7 @@ const EventList = ({totalPages, history, current_user, onBlock, onUnBlock, ...pr
 			
     };
 	
-	renderSingleItem = item => (
+	const renderSingleItem = item => (
         <EventCard
             key={item.id + item.Active}
             item={item}

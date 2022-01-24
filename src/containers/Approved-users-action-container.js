@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { approveUser, promoteToOwner } from "../actions/event/event-item-view-action";
-import ApprovedUsersActions from "../components/event/ApprovedUsersAction/Approved-users-action";
+import ApprovedUsersActions from "../components/event/ApprovedUsersAction/ApprovedUsersActions";
 
 const ApprovedUsersActionsContainer = props => <ApprovedUsersActions props={props} />
 

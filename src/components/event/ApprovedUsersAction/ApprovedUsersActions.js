@@ -3,11 +3,11 @@ import SimpleModal from '../SimpleModal/Simple-modal';
 import Button from "@material-ui/core/Button";
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from "@material-ui/core/IconButton";
-import constants from "../../../constants/ApprovedUsersAction";
+import { APPROVED_USERS_ACTION } from "../../../constants/ApprovedUsersAction";
 
 const ApprovedUsersActions = ({ user, isMyEvent, isMyPrivateEvent, eventId, promoteToOwner, approveUser}) => {
 	
-	const {WANNA_APPROVE, TO_OWNER, DELETE_FROM_EVENT} = constants;
+	const {WANNA_APPROVE, TO_OWNER, DELETE_FROM_EVENT} = APPROVED_USERS_ACTION;
 
 	return (
         <>

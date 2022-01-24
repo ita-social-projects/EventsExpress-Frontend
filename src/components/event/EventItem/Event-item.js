@@ -63,10 +63,10 @@ export default class EventCard extends Component {
             eventStatus,
             categories,
             countVisitor,
-            owners,
+            organizers: owners,
             members,
         } = this.props.item;
-        
+        console.log(this.props.item);
         const INT32_MAX_VALUE = null;
         const categoriesNotDisplayed = categories.length - 2;
         const restCategories = " ... " + categoriesNotDisplayed + " more";
