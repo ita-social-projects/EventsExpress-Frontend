@@ -5,13 +5,21 @@ const { LIKE, DISLIKE } = USER_VIEW_LABELS;
 export const userViewAttitude = (attitude) => {
   switch (attitude) {
     case 0: {
-      return [LIKE, 'up', 'attitude-like'];
+      return {
+        likeDislike: LIKE,
+        upDown: 'up',
+        attitudeLikeDislike: 'attitude-like',
+      };
     }
     case 1: {
-      return [DISLIKE, 'down', 'attitude-dislike'];
+      return {
+        likeDislike: DISLIKE,
+        upDown: 'down',
+        attitudeLikeDislike: 'attitude-dislike',
+      };
     }
     default: {
-      return [false, '', ''];
+      return { likeDislike: false, upDown: '', attitudeLikeDislike: '' };
     }
   }
 };

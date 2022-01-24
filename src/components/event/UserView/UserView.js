@@ -14,15 +14,15 @@ const UsersView = ({ user, children }) => {
   const [attitudeArr, setAttitudeArr] = useState([]);
 
   useEffect(() => {
-    return setAttitudeArr(userViewAttitude(attitude));
+    setAttitudeArr(userViewAttitude(attitude));
   }, [attitude]);
 
   return (
     <div>
-      <div className={'border-bottom ' + attitudeArr[2]}>
+      <div className={`border-bottom ${attitudeArr}`}>
         <div className="d-flex align-items-center w-100">
           <div className="flex-grow-1">
-            <Link to={'/user/' + user.id} className="btn-custom">
+            <Link to={`/user/${user.id}`} className="btn-custom">
               <div className="d-flex align-items-center">
                 <CustomAvatar
                   size="little"
@@ -31,17 +31,17 @@ const UsersView = ({ user, children }) => {
                 />
                 <div>
                   <h5>{user.username}</h5>
-                  {`${AGE}: ` + getAge(user.birthday)}
+                  {`${AGE}: ${getAge(user.birthday)}`}
                 </div>
-                {attitudeArr[0] && (
+                {attitudeArr.likeDislike && (
                   <Tooltip
-                    title={`${YOU} ${attitudeArr[0]} ${THIS_USER}`}
+                    title={`${YOU} ${attitudeArr.likeDislike} ${THIS_USER}`}
                     placement="bottom"
                     TransitionComponent={Zoom}
                   >
                     <div className="retraet">
                       <i
-                        className={`far fa-thumbs-${attitudeArr[1]} cancel-text`}
+                        className={`far fa-thumbs-${attitudeArr.upDown} cancel-text`}
                       />
                     </div>
                   </Tooltip>
