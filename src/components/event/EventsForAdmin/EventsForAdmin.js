@@ -1,27 +1,18 @@
-﻿import React, { Component } from 'react';
-import '../home/home.css';
+﻿import React, { Component } from "react";
+import EventFilterWrapper from "../../../containers/event-filter";
+import AdminEventListWrapper from "../../../containers/events-for-admin";
 
-import AdminEventListWrapper from '../../../containers/events-for-admin';
-import { connect } from 'react-redux';
-import EventFilterWrapper from '../../../containers/event-filter';
+export default class EventsForAdmin extends Component {
+  render() {
+    const { location } = this.props;
 
-class EventsForAdmin extends Component {
-
-    render() {
-      
-
-        return (<>
-            <EventFilterWrapper/>
-            <div className="events-container">
-                <AdminEventListWrapper params={this.props.location.search} />       
-            </div>
-            
-        </>);
-    }
+    return (
+      <>
+        <EventFilterWrapper />
+        <div className="events-container">
+          <AdminEventListWrapper params={location.search} />
+        </div>
+      </>
+    );
+  }
 }
-
-const mapStateToProps = state => {
-    return { id: state.user.id };
-};
-
-export default connect(mapStateToProps)(EventsForAdmin);
