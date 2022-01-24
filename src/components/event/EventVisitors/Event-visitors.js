@@ -1,61 +1,45 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ParticipantGroup from '../ParticipantGroup/Participant-group';
 import OwnersActions from '../OwnersAction/Owners-action';
 import ApprovedUsersActionsContainer from '../../../containers/Approved-users-action-container';
 import PendingUsersActions from '../PendingUsersAction/Pending-users-action';
 import DeniedUsersActions from '../DeniedUsersAction/Denied-users-action';
 
-class EventVisitors extends Component {
+const EventVisitors = ({isMyPrivateEvent, visitors, admins, isMyEvent}) => {
+        
+	const createParticipantGroup = (disabled, users, label, Component, isPrivate = false) => {
+		return (
+			<ParticipantGroup 
+			    disabled={disabled}
+				users={users}
+				label={label}
+				renderUserActions={(user) => (
+					<Component
+						user={user}
+						isMyEvent={isMyEvent}
+						isMyPrivateEvent={isPrivate && 
+							isMyPrivateEvent } 
+					/>)}
+				/>
+		)
+	}
+	
+	return (
+         <>
+			{createParticipantGroup(false, admins, "Admin", OwnersActions)}
 
-    render() {
-        const { isMyPrivateEvent, visitors, admins, isMyEvent } = this.props;
-
-        return (
-            <div>
-                <ParticipantGroup
-                    disabled={false}
-                    users={admins}
-                    label="Admin"
-                    renderUserActions={(user) => (<OwnersActions
-                                                        user={user}
-                                                        isMyEvent={isMyEvent}
-                                                  />)}
-                />
-                <ParticipantGroup
-                    disabled={visitors.approvedUsers.length == 0}
-                    users={visitors.approvedUsers}
-                    label="Visitors"
-                    renderUserActions={(user) => (<ApprovedUsersActionsContainer
-                                                        user={user}
-                                                        isMyEvent={isMyEvent}
-                                                        isMyPrivateEvent={isMyPrivateEvent}
-                                                  />)} //
-                />
-                {isMyPrivateEvent &&
-                    <ParticipantGroup
-                        disabled={visitors.pendingUsers.length == 0}
-                        users={visitors.pendingUsers}
-                        label="Pending users"
-                        renderUserActions={(user) => (<PendingUsersActions
-                                                            user={user}
-                                                            isMyEvent={isMyEvent}
-                                                      />)}
-                    />
-                }
-                {isMyPrivateEvent &&
-                    <ParticipantGroup
-                    disabled={visitors.deniedUsers.length == 0}
-                    users={visitors.deniedUsers}
-                    label="Denied users"
-                    renderUserActions={(user) => (<DeniedUsersActions
-                                                        user={user}
-                                                        isMyEvent={isMyEvent}
-                                                  />)}
-                    />
-                }
-            </div>
-        )
-    }
+			{createParticipantGroup(visitors.approvedUsers.length == 0, visitors.approvedUsers,
+				 "Visitors", ApprovedUsersActionsContainer, true)}
+        
+            {isMyPrivateEvent &&
+				createParticipantGroup(visitors.pendingUsers.length == 0, visitors.pendingUsers, 
+					"Pending users", PendingUsersActions),
+				
+				createParticipantGroup(visitors.deniedUsers.length == 0, visitors.deniedUsers, 
+						"Denied users", DeniedUsersActions)
+			}
+        </>
+    )
 }
 
 export default EventVisitors;
