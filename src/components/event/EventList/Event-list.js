@@ -1,46 +1,37 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { reset_events, updateEventsFilters } from '../../../actions/event/event-list-action';
+import React from 'react';
 import RenderList from '../RenderList/RenderList';
 import EventCard from '../EventItem/Event-item';
-import { change_event_status } from '../../../actions/event/event-item-view-action';
-import eventStatusEnum from '../../../constants/eventStatusEnum';
-import { withRouter } from "react-router";
 import { parse as queryStringParse } from 'query-string';
 import filterHelper from '../../helpers/filterHelper';
 
-class EventList extends Component {
-    componentDidMount() {
-        if (this.props.totalPages >1 && this.props.history.location.search == "")
-            this.props.history.push(this.props.history.location.pathname + `?page=1`);
-    }
+const EventList = ({totalPages, history, current_user, onBlock, onUnBlock, ...props }) => {
+	useEffect(() => {
+		totalPages > 1 && history.location.search == ""
+		history.push(history.location.pathname + `?page=1`);
+	}, [])
 
-    handlePageChange = (page) => {
-        if (this.props.history.location.search == "")
-            this.props.history.push(this.props.history.location.pathname + `?page=${page}`);
-        else {
-            const queryStringToObject = queryStringParse(this.props.history.location.search);
+	handlePageChange = page => {
+        const queryStringToObject = queryStringParse(history.location.search);
+		history.location.search == ""
+		? 
+		    history.push(history.location.pathname + `?page=${page}`)
+        :
             queryStringToObject.page = page;
-            this.props.history.location.search = filterHelper.getQueryStringByFilter(queryStringToObject);
-            this.props.history.push(this.props.history.location.pathname + this.props.history.location.search);
-        }
+            history.location.search = filterHelper.getQueryStringByFilter(queryStringToObject);
+            history.push(history.location.pathname + history.location.search);
+			
     };
-   
-    renderSingleItem = (item) => (
+	
+	renderSingleItem = item => (
         <EventCard
             key={item.id + item.Active}
             item={item}
-            current_user={this.props.current_user}
-            onBlock={this.props.onBlock}
-            onUnBlock={this.props.onUnBlock}
+            current_user={current_user}
+            onBlock={onBlock}
+            onUnBlock={onUnBlock}
         />
     )
-
-    render() {
-        return <>
-            <RenderList {...this.props} renderSingleItem={this.renderSingleItem} handlePageChange={this.handlePageChange} />
-        </>
-    }
+	return <RenderList {...props} renderSingleItem={renderSingleItem} handlePageChange={handlePageChange} />
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ParticipantGroup from '../ParticipantGroup/Participant-group';
 import OwnersActions from '../OwnersAction/Owners-action';
-import ApprovedUsersActions from '../ApprovedUsersAction/Approved-users-action';
+import ApprovedUsersActionsContainer from '../../../containers/Approved-users-action-container';
 import PendingUsersActions from '../PendingUsersAction/Pending-users-action';
 import DeniedUsersActions from '../DeniedUsersAction/Denied-users-action';
 
@@ -25,11 +25,11 @@ class EventVisitors extends Component {
                     disabled={visitors.approvedUsers.length == 0}
                     users={visitors.approvedUsers}
                     label="Visitors"
-                    renderUserActions={(user) => (<ApprovedUsersActions
+                    renderUserActions={(user) => (<ApprovedUsersActionsContainer
                                                         user={user}
                                                         isMyEvent={isMyEvent}
                                                         isMyPrivateEvent={isMyPrivateEvent}
-                                                  />)}
+                                                  />)} //
                 />
                 {isMyPrivateEvent &&
                     <ParticipantGroup

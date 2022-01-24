@@ -3,20 +3,20 @@ import SimpleModal from '../SimpleModal/Simple-modal';
 import Button from "@material-ui/core/Button";
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from "@material-ui/core/IconButton";
-import { connect } from 'react-redux';
-import { promoteToOwner, approveUser } from '../../../actions/event/event-item-view-action';
+import constants from "../../../constants/ApprovedUsersAction";
 
-const ApprovedUsersActions = (props) => {
-    const { user, isMyEvent, isMyPrivateEvent } = props;
+const ApprovedUsersActions = ({ user, isMyEvent, isMyPrivateEvent, eventId, promoteToOwner, approveUser}) => {
+	
+	({WANNA_APPROVE, TO_OWNER, DELETE_FROM_EVENT}) = constants;
 
-    return (
+	return (
         <>
-            {(isMyEvent) &&
-                <div>
+            {isMyEvent &&
+                <>
                     <SimpleModal
                         id={user.id}
-                        action={() => props.promoteToOwner(user.id, props.eventId)}
-                        data={'Are you sure, that you wanna approve ' + user.username + ' to owner?'}
+                        action={() => promoteToOwner(user.id, eventId)}
+                        data={WANNA_APPROVE + user.username + TO_OWNER}
                         button={
                             <Tooltip title="Approve as an owner">
                                 <IconButton aria-label="delete">
@@ -25,28 +25,18 @@ const ApprovedUsersActions = (props) => {
                             </Tooltip>
                         }
                     />
-                </div>
+                </>
             }
-            {(isMyPrivateEvent) &&
+            {isMyPrivateEvent &&
                 <Button
-                    onClick={() => props.approveUser(user.id, props.eventId, false)}
+                    onClick={() => approveUser(user.id, eventId, false)}
                     variant="outlined"
                     color="success"
                 >
-                    Delete from event
-        </Button>
+                    {DELETE_FROM_EVENT}
+        		</Button>
             }
         </>
     )
 }
-
-const mapStateToProps = (state) => ({
-    eventId: state.event.data.id
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    approveUser: (userId, eventId, buttonAction) => dispatch(approveUser(userId, eventId, buttonAction)),
-    promoteToOwner: (userId, eventId) => dispatch(promoteToOwner(userId, eventId))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ApprovedUsersActions);
+export default ApprovedUsersActions;
