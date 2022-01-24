@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { parse as queryStringParse } from 'query-string';
 import EventList from '../components/event/EventList/Event-list';
 import SpinnerWrapper from './spinner';
-import { get_events } from '../actions/event/event-list-action';
+import { get_events, reset_events, updateEventsFilters } from '../actions/event/event-list-action';
 import filterHelper from '../components/helpers/filterHelper';
 import { withRouter } from "react-router";
+import { change_event_status } from '../actions/event/event-item-view-action';
 
 class EventListWrapper extends Component {
     constructor(props) {
