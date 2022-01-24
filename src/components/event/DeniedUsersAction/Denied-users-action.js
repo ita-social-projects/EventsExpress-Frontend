@@ -2,12 +2,10 @@
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from '@material-ui/icons/Delete';
-import { connect } from 'react-redux';
-import { promoteToOwner, approveUser } from '../../../actions/event/event-item-view-action';
 
-const DeniedUsersActions = (props) => {
-    const { user, isMyEvent } = props;
 
+
+const DeniedUsersActions = ({user, isMyEvent}) => {
     return (
         <>
             {(isMyEvent) &&
@@ -22,20 +20,10 @@ const DeniedUsersActions = (props) => {
                 variant="outlined"
                 color="success"
             >
-                Add to event
+                {constants.ADD_TO_EVENT}
         </Button>
         </>
     )
 }
 
-const mapStateToProps = (state) => ({
-    eventId: state.event.data.id
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    approveUser: (userId, eventId, buttonAction) => dispatch(approveUser(userId, eventId, buttonAction)),
-    promoteToOwner: (userId, eventId) => dispatch(promoteToOwner(userId, eventId))
-});
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(DeniedUsersActions);
+export default DeniedUsersActions;
