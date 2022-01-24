@@ -1,0 +1,10 @@
+.admin-events-container {
+  width: 100%;
+  padding-right: 15em;
+}
+
+@media (max-width: 768px) {
+  .admin-events-container {
+    padding-right: 0;
+  }
+}

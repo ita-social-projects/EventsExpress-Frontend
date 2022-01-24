@@ -9,7 +9,7 @@ export default class EventsForAdmin extends Component {
     return (
       <>
         <EventFilterWrapper />
-        <div className="events-container">
+        <div className="admin-events-container">
           <AdminEventListWrapper params={location.search} />
         </div>
       </>
