@@ -7,7 +7,7 @@ import constants from '../../../constants/deniedUsersAction';
 
 
 
-const DeniedUsersActions = ({user, isMyEvent, approveUser, promoteToOwner, eventId}) => {
+const DeniedUsersAction = ({user, isMyEvent, approveUser, promoteToOwner, eventId}) => {
     return (
         <>
             {(isMyEvent) &&
@@ -28,4 +28,4 @@ const DeniedUsersActions = ({user, isMyEvent, approveUser, promoteToOwner, event
     )
 }
 
-export default DeniedUsersActions;
+export default DeniedUsersAction;
