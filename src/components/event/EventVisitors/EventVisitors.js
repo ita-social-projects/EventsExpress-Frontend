@@ -1,5 +1,5 @@
 import React from 'react';
-import OwnersActions from '../OwnersAction/Owners-action';
+import ContainerOwnersActions from '../../../containers/ContainerOwnersAction';
 import ApprovedUsersActionsContainer from '../../../containers/Approved-users-action-container';
 import PendingUsersActions from '../PendingUsersAction/Pending-users-action';
 import DeniedUsersActions from '../DeniedUsersAction/Denied-users-action';
@@ -15,7 +15,7 @@ const EventVisitors = ({isMyPrivateEvent, visitors, admins, isMyEvent}) => {
 			disabled: false,
 			users: admins,
 			label: ADMIN,
-			renderComponent: (user) => (<OwnersActions user={user} isMyEvent={isMyEvent}/>),
+			renderComponent: (user) => (<ContainerOwnersActions user={user} isMyEvent={isMyEvent}/>),
 		}, {
 			disabled: approvedUsers.length == 0,
 			users: visitors.approvedUsers,
