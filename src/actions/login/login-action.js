@@ -15,11 +15,11 @@ export const SET_LOGIN_SUCCESS = "SET_LOGIN_SUCCESS";
 export const SET_USER = "SET_USER";
 
 const history = createBrowserHistory({ forceRefresh: true });
-const api_serv = new AuthenticationService();
+const API_SERV = new AuthenticationService();
 
 export default function login(email, password) {
   const call = () =>
-    api_serv.setLogin({
+    API_SERV.setLogin({
       Email: email,
       Password: password,
     });
@@ -28,7 +28,7 @@ export default function login(email, password) {
 
 export function loginGoogle(tokenId, profile) {
   const call = () =>
-    api_serv.setGoogleLogin({
+    API_SERV.setGoogleLogin({
       TokenId: tokenId,
       Email: profile.email,
       Name: profile.name,
@@ -43,7 +43,7 @@ export function loginGoogle(tokenId, profile) {
 
 export function loginFacebook(profile) {
   const call = () =>
-    api_serv.setFacebookLogin({
+    API_SERV.setFacebookLogin({
       Email: profile.email,
       Name: profile.name,
       PhotoUrl: profile.picture.data.url,
@@ -59,7 +59,7 @@ export function loginFacebook(profile) {
 
 export function loginTwitter(data) {
   const res = () =>
-    api_serv.setTwitterLogin({
+    API_SERV.setTwitterLogin({
       TokenId: data.oauth_token,
       TokenSecret: data.oauth_token_secret,
       UserId: data.user_id,
@@ -76,7 +76,7 @@ export function loginTwitter(data) {
 
 export function loginAfterEmailConfirmation(data) {
   return async dispatch => {
-    const response = await api_serv.auth(data);
+    const response = await API_SERV.auth(data);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -87,7 +87,7 @@ export function loginAfterEmailConfirmation(data) {
 
 export function getUserInfo(profile) {
   return async dispatch => {
-    const response = await api_serv.getUserInfo();
+    const response = await API_SERV.getUserInfo();
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

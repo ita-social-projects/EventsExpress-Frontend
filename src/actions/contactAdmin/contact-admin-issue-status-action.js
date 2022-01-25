@@ -4,16 +4,19 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const CHANGE_STATUS = "UPDATE_STATUS";
 
-const api_serv = new ContactAdminService();
+const API_SERV = new ContactAdminService();
 
-export default function change_issue_status(
-  messageId,
-  resolutionDetails,
-  issueStatus,
-) {
+function changStatus(messageId, issueStatus) {
+  return {
+    type: CHANGE_STATUS,
+    payload: { MessageId: messageId, issueStatus },
+  };
+}
+
+const changeIssueStatus = (messageId, resolutionDetails, issueStatus) => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.updateIssueStatus({
+    const response = await API_SERV.updateIssueStatus({
       MessageId: messageId,
       ResolutionDetails: resolutionDetails,
       Status: issueStatus,
@@ -23,15 +26,10 @@ export default function change_issue_status(
       return Promise.reject();
     }
     dispatch(getRequestDec());
-    dispatch(changeIssueStatus(messageId, issueStatus));
+    dispatch(changStatus(messageId, issueStatus));
     dispatch(setSuccessAllert("Issue status was changed"));
     return Promise.resolve();
   };
-}
+};
 
-function changeIssueStatus(messageId, issueStatus) {
-  return {
-    type: CHANGE_STATUS,
-    payload: { MessageId: messageId, issueStatus },
-  };
-}
+export default changeIssueStatus;

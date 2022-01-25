@@ -5,13 +5,13 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 export const GET_USER_NOTIFICATION_TYPES_DATA =
   "GET_USER_NOTIFICATION_TYPES_DATA";
 
-const api_serv = new NotificationTypeService();
+const API_SERV = new NotificationTypeService();
 
 export default function get_userNotificationTypes() {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.getUserNotificationTypes();
+    const response = await API_SERV.getUserNotificationTypes();
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));

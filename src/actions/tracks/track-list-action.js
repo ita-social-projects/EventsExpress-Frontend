@@ -6,12 +6,12 @@ export const GET_TRACKS_DATA = "GET_TRACKS_DATA";
 export const GET_ENTITY_NAMES = "GET_ENTITY_NAMES";
 export const RESET_TRACKS = "RESET_TRACKS";
 
-const api_serv = new TrackService();
+const API_SERV = new TrackService();
 
 export default function getAllTracks(filter) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getAll(filter);
+    const response = await API_SERV.getAll(filter);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -25,7 +25,7 @@ export default function getAllTracks(filter) {
 
 export function getEntityNames() {
   return async dispatch => {
-    const response = await api_serv.getEntityNames();
+    const response = await API_SERV.getEntityNames();
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

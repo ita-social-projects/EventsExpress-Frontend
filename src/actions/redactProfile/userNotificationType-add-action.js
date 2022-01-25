@@ -8,12 +8,12 @@ export const addUserNotificationType = {
   UPDATE: "UPDATE_NOTIFICATION_TYPES",
 };
 
-const api_serv = new UserService();
+const API_SERV = new UserService();
 
 export default function setUserNotificationTypes(data) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.setUserNotificationType(data);
+    const response = await API_SERV.setUserNotificationType(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }

@@ -1,21 +1,23 @@
 ﻿import { CategoryService } from "../../services";
-import get_categories from "./category-list-action";
+import getCategories from "./category-list-action";
 import { setErrorAllertFromResponse } from "../alert-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-const api_serv = new CategoryService();
+const API_SERV = new CategoryService();
 
-export function delete_category(data) {
+const deleteCategory = data => {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.setCategoryDelete(data);
+    const response = await API_SERV.setCategoryDelete(data);
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
-    dispatch(get_categories());
+    dispatch(getCategories());
     return Promise.resolve();
   };
-}
+};
+
+export default deleteCategory;

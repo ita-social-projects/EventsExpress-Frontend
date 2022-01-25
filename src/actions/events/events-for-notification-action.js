@@ -3,12 +3,12 @@ import { getEvents } from "../event/event-list-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 import { setErrorAllertFromResponse } from "../alert-action";
 
-const api_serv = new EventService();
+const API_SERV = new EventService();
 
-export function eventsForNotification(eventIds, page = 1) {
+const eventsForNotification = (eventIds, page = 1) => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getEvents(eventIds, page);
+    const response = await API_SERV.getEvents(eventIds, page);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -18,4 +18,6 @@ export function eventsForNotification(eventIds, page = 1) {
     dispatch(getEvents(jsonRes));
     return Promise.resolve();
   };
-}
+};
+
+export default eventsForNotification;

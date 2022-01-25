@@ -8,12 +8,12 @@ export const editUsername = {
   UPDATE: "UPDATE_USERNAME",
 };
 
-const api_serv = new UserService();
+const API_SERV = new UserService();
 
 export default function edit_Username(data) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.setUsername(data);
+    const response = await API_SERV.setUsername(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }

@@ -6,16 +6,16 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const SET_UNIT_OF_MEASURING_EDITED = "SET_UNIT_OF_MEASURING_EDITED";
 
-const api_serv = new UnitOfMeasuringService();
+const API_SERV = new UnitOfMeasuringService();
 
 export function add_unitOfMeasuring(data) {
   return async dispatch => {
     dispatch(getRequestInc());
     let response;
     if (data.id) {
-      response = await api_serv.editUnitOfMeasuring(data);
+      response = await API_SERV.editUnitOfMeasuring(data);
     } else {
-      response = await api_serv.setUnitOfMeasuring(data);
+      response = await API_SERV.setUnitOfMeasuring(data);
     }
     dispatch(getRequestDec());
     if (!response.ok) {

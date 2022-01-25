@@ -7,13 +7,13 @@ import { buildValidationState } from "../../components/helpers/action-helpers";
 
 export const GET_USERSINVENTORIES_DATA = "GET_USERSINVENTORIES_SUCCESS";
 
-const api_serv = new InventoryService();
+const API_SERV = new InventoryService();
 
 export function get_users_inventories_by_event_id(eventId) {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.getUsersInventories(eventId);
+    const response = await API_SERV.getUsersInventories(eventId);
     dispatch(get_inventories_by_event_id(eventId));
     dispatch(getRequestDec());
     if (!response.ok) {
@@ -30,7 +30,7 @@ export function delete_users_inventory(data) {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.setUsersInventoryDelete(data);
+    const response = await API_SERV.setUsersInventoryDelete(data);
     dispatch(get_users_inventories_by_event_id(data.eventId));
     dispatch(getRequestDec());
     if (!response.ok) {
@@ -45,7 +45,7 @@ export function edit_users_inventory(data) {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.setUsersInventory(data);
+    const response = await API_SERV.setUsersInventory(data);
     dispatch(get_users_inventories_by_event_id(data.eventId));
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
