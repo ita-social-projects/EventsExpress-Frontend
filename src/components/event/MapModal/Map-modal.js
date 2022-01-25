@@ -11,7 +11,7 @@ import '../slider.css';
 import DisplayMap from '../map/display-map';
 import constants from '../../../constants/mapModal';
 
-export const MapModal = (initialize,values) => {
+export const MapModal = ({initialize,values}) => {
 
     const [open, setOpen] = useState(false);
 
@@ -41,7 +41,7 @@ export const MapModal = (initialize,values) => {
                 <Dialog fullWidth={true} open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">{constants.FILTER_BY_LOCATION}</DialogTitle>
                     <DialogContent>
-                        {values && values.radius &&
+                        {values?.radius &&
                             <div>
                                 <div class="slidecontainer">
                                     <label>{constants.RADIUS_IS}{values.radius} {constants.KM}</label>
@@ -57,10 +57,8 @@ export const MapModal = (initialize,values) => {
                         }
                         <div>
                             {
-                                // values &&
-                                // values.selectedPos != undefined &&
-                                values?.selectedPos?.latitude !== undefined &&
-                                values?.selectedPos?.longitude !== undefined &&
+                                !!values.selectedPos?.latitude &&
+                                !!values.selectedPos?.longitude &&
                                 <div>
                                     <p>{constants.CURRENT_MAP_POSITION}</p>
                                     <p>{constants.LATITUDE} {values.selectedPos.latitude}</p>
@@ -69,9 +67,8 @@ export const MapModal = (initialize,values) => {
                                 </div>
                             }
                             {
-                                values &&
-                                values.selectedPos.latitude === null &&
-                                values.selectedPos.longitude === null &&
+                                !!values.selectedPos?.latitude  &&
+                                !!values.selectedPos?.longitude &&
                                 <div>
                                     <p>{constants.CHOOSE_MAP_POSITION}</p>
                                 </div>
