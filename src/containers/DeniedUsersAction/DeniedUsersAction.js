@@ -2,6 +2,9 @@ import { connect } from 'react-redux';
 import { promoteToOwner, approveUser } from '../../actions/event/event-item-view-action';
 import DeniedUsersAction from '../../components/event/DeniedUsersAction/Denied-users-action';
 
+
+const DeniedUsersActionContainer = props => <DeniedUsersAction props={props} />
+
 const mapStateToProps = (state) => ({
   eventId: state.event.data.id
 });
@@ -11,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
   promoteToOwner: (userId, eventId) => dispatch(promoteToOwner(userId, eventId))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeniedUsersAction);
+export default connect(mapStateToProps, mapDispatchToProps)(DeniedUsersActionContainer);
