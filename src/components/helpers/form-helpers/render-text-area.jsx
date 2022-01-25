@@ -13,7 +13,7 @@ export default ({
       label={label}
       defaultValue={defaultValue}
       multiline
-      rows="4"
+      rows={rows("4")}
       fullWidth
       {...input}
       error={touched && invalid}
