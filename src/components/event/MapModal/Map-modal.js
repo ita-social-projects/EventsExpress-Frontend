@@ -26,7 +26,7 @@ export const MapModal = ({initialize,values}) => {
             selectedPos: { latitude: null, longitude: null }
         })
 
-        (values.selectedPos.latitude !== null) ? startValue :
+        !!values.selectedPos.latitude ? startValue :
          startValue && setOpen(false)  
     };
 
@@ -57,8 +57,8 @@ export const MapModal = ({initialize,values}) => {
                         }
                         <div>
                             {
-                                !!values.selectedPos?.latitude &&
-                                !!values.selectedPos?.longitude &&
+                                !!values.selectedPos.latitude &&
+                                !!values.selectedPos.longitude &&
                                 <div>
                                     <p>{constants.CURRENT_MAP_POSITION}</p>
                                     <p>{constants.LATITUDE} {values.selectedPos.latitude}</p>
@@ -67,8 +67,8 @@ export const MapModal = ({initialize,values}) => {
                                 </div>
                             }
                             {
-                                !!values.selectedPos?.latitude  &&
-                                !!values.selectedPos?.longitude &&
+                                !!values.selectedPos.latitude  &&
+                                !!values.selectedPos.longitude &&
                                 <div>
                                     <p>{constants.CHOOSE_MAP_POSITION}</p>
                                 </div>
