@@ -29,9 +29,7 @@ export default class CarouselEventCard extends Component {
     }
 
     render() {
-
         const event = this.props.event
-		console.log(event);
         return (
             <div className="card">
                 <img className="card-img-top" src={this.state.eventImage}
@@ -39,7 +37,7 @@ export default class CarouselEventCard extends Component {
                 <div className="card-body">
                     <p className="card-text text-muted">{parseDate(event.dateFrom)}</p>
                     <p className="card-text">{event.title}</p>
-					{/*  */}
+					{/*  Temporarily replaced in 41 line owners to organizers */}
                     <p className="card-text text-muted">{event.organizers[0].username}</p> // 
                     <div className="row">
                         <div className="col-md-6">
