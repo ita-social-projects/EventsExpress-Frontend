@@ -3,10 +3,10 @@ import CheckboxList from "./CheckboxList";
 import TileWrapper from "../../components/tile-wrapper/TileWrapper";
 import "./TileRow.css";
 
-const TileRow = (props) => {
+const TileRow = props => {
   const [currTileIndex, setCurrTileIndex] = useState(-1);
 
-  const handleTileToggleAction = (index) => {
+  const handleTileToggleAction = index => {
     if (index == currTileIndex) setCurrTileIndex(-1);
     else setCurrTileIndex(index);
   };

@@ -9,7 +9,7 @@ import add_category, {
 import { delete_category } from "../../actions/category/category-delete-action";
 
 class CategoryItemWrapper extends Component {
-  save = (values) => {
+  save = values => {
     values.categoryGroup =
       typeof values.categoryGroup === "string"
         ? JSON.parse(values.categoryGroup)
@@ -49,7 +49,7 @@ class CategoryItemWrapper extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     status: state.add_category,
     editedCategory: state.categories.editedCategory,
@@ -60,7 +60,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     delete_category: () => dispatch(delete_category(props.item.id)),
-    save_category: (data) => dispatch(add_category(data)),
+    save_category: data => dispatch(add_category(data)),
     set_category_edited: () => dispatch(setCategoryEdited(props.item.id)),
     edit_cansel: () => dispatch(setCategoryEdited(null)),
   };
@@ -68,5 +68,5 @@ const mapDispatchToProps = (dispatch, props) => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(CategoryItemWrapper);

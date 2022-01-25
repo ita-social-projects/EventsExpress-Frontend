@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import CategoryAddWrapper from "../../containers/categories/category-add";
 import CategoryListWrapper from "../../containers/categories/category-list";
 import SpinnerWrapper from "../../containers/spinner";
 import get_categories from "../../actions/category/category-list-action";
 import get_category_groups from "../../actions/categoryGroup/category-group-list-action";
-import { connect } from "react-redux";
 
 class Categories extends Component {
   constructor(props) {
@@ -44,12 +44,12 @@ class Categories extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   categories: state.categories,
   categoryGroups: state.categoryGroups,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     get_categories: () => dispatch(get_categories()),
     get_category_groups: () => dispatch(get_category_groups()),

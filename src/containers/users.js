@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { get_users, reset_users } from "../actions/users/users-action";
 import { connect } from "react-redux";
+import { get_users, reset_users } from "../actions/users/users-action";
 import Users from "../components/users";
 import SpinnerWrapper from "./spinner";
-import UsersFilterWrapper from "../containers/user-filter";
+import UsersFilterWrapper from "./user-filter";
 
 class UsersWrapper extends Component {
   componentDidMount() {
@@ -14,7 +14,7 @@ class UsersWrapper extends Component {
     this.props.reset_users();
   };
 
-  getUsers = (page) => this.props.get_users(page);
+  getUsers = page => this.props.get_users(page);
 
   render() {
     const {
@@ -42,13 +42,13 @@ class UsersWrapper extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   users: state.users,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    get_users: (page) => dispatch(get_users(page)),
+    get_users: page => dispatch(get_users(page)),
     reset_users: () => dispatch(reset_users()),
   };
 };

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import EventsForProfile from '../event/EventsForProfile/EventsForProfile';
-import 'moment-timezone';
-import './User-profile.css';
+import React, { Component } from "react";
+import EventsForProfile from "../event/EventsForProfile/EventsForProfile";
+import "moment-timezone";
+import "./User-profile.css";
 
 export default class Events extends Component {
   render() {

@@ -5,20 +5,20 @@ import ThreeStateCheckbox from "../three-state-checkbox/ThreeStateCheckbox";
 import "./Tile.css";
 import "./covers/tile-covers.css";
 
-const Tile = (props) => {
+const Tile = props => {
   const isFormInitialized = () =>
     props.formValues !== undefined && props.formValues.categories !== undefined;
 
-  const handleTriStateChange = (state) => {
-    const ids = props.categories.map((c) => c.id);
+  const handleTriStateChange = state => {
+    const ids = props.categories.map(c => c.id);
     let formValues = isFormInitialized()
       ? [...props.formValues.categories]
       : [];
     if (state) {
-      let filteredIds = ids.filter((id) => !formValues.includes(id));
-      filteredIds.forEach((el) => formValues.push(el));
+      const filteredIds = ids.filter(id => !formValues.includes(id));
+      filteredIds.forEach(el => formValues.push(el));
     } else {
-      formValues = formValues.filter((el) => !ids.includes(el));
+      formValues = formValues.filter(el => !ids.includes(el));
     }
 
     props.handleTileToggleAction();
@@ -27,9 +27,9 @@ const Tile = (props) => {
 
   const toggleTriStateCheckbox = () => {
     if (isFormInitialized()) {
-      const opts = props.categories.map((c) => c.id);
-      const values = [...props.formValues.categories].filter((item) =>
-        opts.includes(item)
+      const opts = props.categories.map(c => c.id);
+      const values = [...props.formValues.categories].filter(item =>
+        opts.includes(item),
       );
 
       if (values.length === 0) return false;
@@ -53,15 +53,15 @@ const Tile = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     formValues: getFormValues("registrationForm")(state),
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    updateFormValue: (value) =>
+    updateFormValue: value =>
       dispatch(change("registrationForm", "categories", value)),
   };
 };

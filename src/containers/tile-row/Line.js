@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import "./Line.css";
 
-const Line = (props) => {
+const Line = props => {
   const definePath = () => {
     const param = props.index * 40;
 

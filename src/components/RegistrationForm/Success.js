@@ -11,16 +11,16 @@ export class Success extends Component {
           <h1 style={{ fontSize: 25 }}>Successful registration!</h1>
         </Grid>
         <div>
-          <svg class="checkmark" viewBox="0 0 52 52">
+          <svg className="checkmark" viewBox="0 0 52 52">
             <circle
-              class="checkmark__circle"
+              className="checkmark__circle"
               cx="26"
               cy="26"
               r="25"
               fill="none"
             />
             <path
-              class="checkmark__check"
+              className="checkmark__check"
               fill="none"
               d="M14.1 27.2l7.1 7.2 16.7-16.8"
             />

@@ -1,67 +1,67 @@
 ﻿import React, { Component } from "react";
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from "@material-ui/core/Avatar";
+import { connect } from "react-redux";
 import { userDefaultImage } from "../../constants/userDefaultImage";
-import { connect } from 'react-redux';
-import PhotoService from '../../services/PhotoService';
+import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();
 
 export class CustomAvatar extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            avatarImage: null
-        }
-    }
+    this.state = {
+      avatarImage: null,
+    };
+  }
 
-    uploadPhoto() {
-        photoService.getUserPhoto(this.props.userId).then(
-            avatarImage => {
-                if (avatarImage != null) {
-                    this.setState({ avatarImage: URL.createObjectURL(avatarImage) });
-                }
-            }
-        );
-    }
+  uploadPhoto() {
+    photoService.getUserPhoto(this.props.userId).then(avatarImage => {
+      if (avatarImage != null) {
+        this.setState({ avatarImage: URL.createObjectURL(avatarImage) });
+      }
+    });
+  }
 
-    componentDidMount() {
-        this.uploadPhoto()
-    }
-    componentDidUpdate(prevProps) {
-        if (this.props.changeAvatarCounter !== prevProps.changeAvatarCounter)
-            this.uploadPhoto();
-    }
+  componentDidMount() {
+    this.uploadPhoto();
+  }
 
-    componentWillUnmount() {
-        URL.revokeObjectURL(this.state.avatarImage);
-    }
-    
+  componentDidUpdate(prevProps) {
+    if (this.props.changeAvatarCounter !== prevProps.changeAvatarCounter)
+      this.uploadPhoto();
+  }
 
-    render() {
+  componentWillUnmount() {
+    URL.revokeObjectURL(this.state.avatarImage);
+  }
 
-        const { name } = this.props;
+  render() {
+    const { name } = this.props;
 
-        let size = `${this.props.size}Avatar`;
-         
+    const size = `${this.props.size}Avatar`;
 
-
-        return (
-            <>
-                <Avatar
-                    alt={name + "avatar"}
-                    src={this.state.avatarImage}
-                    className={size}
-                    imgProps={{ onError: (e) => { e.target.onerror = null; e.target.src = `${userDefaultImage}` } }} />
-            </>
-        );
-    }
+    return (
+      <>
+        <Avatar
+          alt={`${name}avatar`}
+          src={this.state.avatarImage}
+          className={size}
+          imgProps={{
+            onError: e => {
+              e.target.onerror = null;
+              e.target.src = `${userDefaultImage}`;
+            },
+          }}
+        />
+      </>
+    );
+  }
 }
-const mapStateToProps = (state) => {
-    return {
-        changeAvatarCounter: state.change_avatar.Update
-    }
+const mapStateToProps = state => {
+  return {
+    changeAvatarCounter: state.change_avatar.Update,
+  };
 };
-
 
 export default connect(mapStateToProps, null)(CustomAvatar);

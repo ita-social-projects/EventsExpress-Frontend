@@ -6,7 +6,7 @@ import ErrorMessages from "../../shared/errorMessage";
 import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
 import { fieldIsRequired } from "../../helpers/validators/required-fields-validator";
 
-const validate = (values) => {
+const validate = values => {
   const errors = {};
   const requiredFields = ["birthday"];
 
@@ -19,7 +19,7 @@ const validate = (values) => {
   };
 };
 
-const EditBirthday = (props) => {
+const EditBirthday = props => {
   const minValue = moment(new Date()).subtract(115, "years");
   const maxValue = moment(new Date()).subtract(14, "years");
   const { handleSubmit, pristine, reset, submitting } = props;

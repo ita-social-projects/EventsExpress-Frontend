@@ -2,7 +2,7 @@ import React from "react";
 import Tile from "../tile/Tile";
 import "./TileWrapper.css";
 
-const TileWrapper = (props) => {
+const TileWrapper = props => {
   const handleTileToggleAction = () => {
     props.handleTileToggleAction(props.index);
   };

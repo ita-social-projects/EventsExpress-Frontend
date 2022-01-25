@@ -1,26 +1,28 @@
-﻿import React, { Component } from 'react';
-import { connect } from 'react-redux';
+﻿import React, { Component } from "react";
+import { connect } from "react-redux";
 import { get_all_templates } from "../../actions/notification-templates";
-import NotificationTemplates from '../../components/notification-template';
+import NotificationTemplates from "../../components/notification-template";
 
 class NotificationTemplateWrapper extends Component {
+  componentDidMount = () => {
+    this.props.get_all_templates();
+  };
 
-    componentDidMount = () => {
-        this.props.get_all_templates();
-    }
-
-    render() {
-        const { data } = this.props.notificationTemplates;
-        return <NotificationTemplates templates={data} />;
-    }
+  render() {
+    const { data } = this.props.notificationTemplates;
+    return <NotificationTemplates templates={data} />;
+  }
 }
 
-const mapStateToProps = (state) => ({
-    notificationTemplates: state.NotificationTemplates
+const mapStateToProps = state => ({
+  notificationTemplates: state.NotificationTemplates,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    get_all_templates: () => dispatch(get_all_templates())
-})
+const mapDispatchToProps = dispatch => ({
+  get_all_templates: () => dispatch(get_all_templates()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(NotificationTemplateWrapper);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(NotificationTemplateWrapper);

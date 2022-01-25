@@ -1,25 +1,26 @@
-﻿import { changePassword } from '../../actions/redactProfile/password-change-action';
+﻿import { changePassword } from "../../actions/redactProfile/password-change-action";
 
 export const reducer = (
-    state = {
+  state = {
+    isChangePasswordPending: false,
+    isChangePasswordSuccess: false,
+  },
+  action,
+) => {
+  switch (action.type) {
+    case changePassword.PENDING:
+      return {
+        ...state,
+        isChangePasswordPending: action.isChangePasswordPending,
+      };
+    case changePassword.SUCCESS:
+      return {
+        ...state,
         isChangePasswordPending: false,
         isChangePasswordSuccess: false,
-    },
-    action) => {
-    switch (action.type) {
-        case changePassword.PENDING:
-            return {
-                ...state,
-                isChangePasswordPending: action.isChangePasswordPending
-            };
-        case changePassword.SUCCESS:
-            return {
-                ...state,
-                isChangePasswordPending: false,
-                isChangePasswordSuccess: false,
-                ChangePasswordError: null
-            };
-        default:
-            return state;
-    }
-}
+        ChangePasswordError: null,
+      };
+    default:
+      return state;
+  }
+};

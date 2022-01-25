@@ -15,7 +15,7 @@ class EventVisitors extends Component {
           disabled={false}
           users={admins}
           label="Admin"
-          renderUserActions={(user) => (
+          renderUserActions={user => (
             <ContainerOwnersActions user={user} isMyEvent={isMyEvent} />
           )}
         />
@@ -23,7 +23,7 @@ class EventVisitors extends Component {
           disabled={visitors.approvedUsers.length == 0}
           users={visitors.approvedUsers}
           label="Visitors"
-          renderUserActions={(user) => (
+          renderUserActions={user => (
             <ApprovedUsersActionsContainer
               user={user}
               isMyEvent={isMyEvent}
@@ -36,7 +36,7 @@ class EventVisitors extends Component {
             disabled={visitors.pendingUsers.length == 0}
             users={visitors.pendingUsers}
             label="Pending users"
-            renderUserActions={(user) => (
+            renderUserActions={user => (
               <PendingUsersActions user={user} isMyEvent={isMyEvent} />
             )}
           />
@@ -46,7 +46,7 @@ class EventVisitors extends Component {
             disabled={visitors.deniedUsers.length == 0}
             users={visitors.deniedUsers}
             label="Denied users"
-            renderUserActions={(user) => (
+            renderUserActions={user => (
               <DeniedUsersActions user={user} isMyEvent={isMyEvent} />
             )}
           />

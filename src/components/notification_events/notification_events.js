@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { eventsForNotification } from '../../actions/events/events-for-notification-action';
-import EventList from '../event/EventsForProfile/EventsForProfile';
-import SpinnerWrapper from '../../containers/spinner';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { eventsForNotification } from "../../actions/events/events-for-notification-action";
+import EventList from "../event/EventsForProfile/EventsForProfile";
+import SpinnerWrapper from "../../containers/spinner";
 
 class NotificationEvents extends Component {
   componentWillMount = () => {
@@ -32,7 +32,7 @@ class NotificationEvents extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     events: state.events,
     current_user: state.user,
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     get_events: (eventIds, page) =>
       dispatch(eventsForNotification(eventIds, page)),

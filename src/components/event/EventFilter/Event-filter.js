@@ -6,7 +6,7 @@ import {
   MultiCheckbox,
   renderTextField,
   renderMultiselect,
-  parseEuDate
+  parseEuDate,
 } from "../../helpers/form-helpers";
 import filterHelper from "../../helpers/filterHelper";
 import MapModal from "../MapModal/Map-modal";
@@ -29,7 +29,7 @@ class EventFilter extends Component {
     if (
       !filterHelper.compareObjects(
         initialValues,
-        prevProps.initialFormValues
+        prevProps.initialFormValues,
       ) ||
       this.state.needInitializeValues
     ) {
@@ -46,15 +46,15 @@ class EventFilter extends Component {
             : { latitude: null, longitude: null },
       });
       this.setState({
-        ["needInitializeValues"]: false,
+        needInitializeValues: false,
       });
     }
   }
 
   render() {
     const { all_categories, form_values, current_user } = this.props;
-    let values = form_values || { selectedPos: {} };
-    let options = [
+    const values = form_values || { selectedPos: {} };
+    const options = [
       { value: eventStatusEnum.Active, text: "Active" },
       { value: eventStatusEnum.Blocked, text: "Blocked" },
       { value: eventStatusEnum.Canceled, text: "Canceled" },
@@ -97,8 +97,8 @@ class EventFilter extends Component {
                     name="categories"
                     component={renderMultiselect}
                     data={all_categories.data}
-                    valueField={"id"}
-                    textField={"name"}
+                    valueField="id"
+                    textField="name"
                     className="form-control mt-2"
                     placeholder="#hashtags"
                   />
@@ -134,7 +134,7 @@ class EventFilter extends Component {
             <div>
               <Button
                 key={this.state.viewMore}
-                fullWidth={true}
+                fullWidth
                 color="secondary"
                 onClick={() => {
                   this.setState({ viewMore: !this.state.viewMore });
@@ -145,7 +145,7 @@ class EventFilter extends Component {
             </div>
             <div className="d-flex">
               <Button
-                fullWidth={true}
+                fullWidth
                 color="primary"
                 onClick={this.props.onReset}
                 disabled={this.props.submitting}
@@ -154,7 +154,7 @@ class EventFilter extends Component {
               </Button>
               {current_user.id && (
                 <Button
-                  fullWidth={true}
+                  fullWidth
                   color="primary"
                   onClick={this.props.onLoadUserDefaults}
                   disabled={this.props.submitting}
@@ -163,7 +163,7 @@ class EventFilter extends Component {
                 </Button>
               )}
               <Button
-                fullWidth={true}
+                fullWidth
                 type="submit"
                 color="primary"
                 disabled={this.props.submitting}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Button } from "@material-ui/core";
 import { reduxForm, Field } from "redux-form";
+import moment from "moment";
 import {
   renderDatePicker,
   renderTextField,
@@ -8,10 +9,9 @@ import {
   parseEuDate,
 } from "../helpers/form-helpers";
 
-import moment from "moment";
 import ChangeAvatarWrapper from "../../containers/editProfileContainers/change-avatar";
 
-const CompleteProfileForm = (props) => {
+const CompleteProfileForm = props => {
   const { handleSubmit } = props;
   return (
     <>
@@ -83,7 +83,6 @@ const CompleteProfileForm = (props) => {
 
             <Grid item sm={2}></Grid>
             <Grid item sm={4}>
-
               <Field
                 minWidth={140}
                 name="gender"
@@ -115,7 +114,7 @@ const CompleteProfileForm = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     formValues: getFormValues("registrationForm")(state),
   };

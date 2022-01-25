@@ -45,8 +45,8 @@ const useStyles1 = makeStyles(theme => ({
     zIndex: 100000,
   },
   message: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     zIndex: 100000,
   },
 }));
@@ -58,23 +58,19 @@ export default function MySnackbar(props) {
   const Icon = variantIcon[variant];
   let timeToShow;
 
-  if(variant !== 'error')
-  {
-    if(autoHideDuration)
-    {
+  if (variant !== "error") {
+    if (autoHideDuration) {
       timeToShow = autoHideDuration;
-    }
-    else
-    {
+    } else {
       timeToShow = 5000;
     }
   }
-  
+
   return (
     <Snackbar
       anchorOrigin={{
         vertical: "bottom",
-        horizontal: "left"
+        horizontal: "left",
       }}
       open={open}
       autoHideDuration={timeToShow}
@@ -85,19 +81,24 @@ export default function MySnackbar(props) {
         aria-describedby="client-snackbar"
         message={
           <span id="client-snackbar" className={classes.message}>
-            {Icon &&
+            {Icon && (
               <Icon className={clsx(classes.icon, classes.iconVariant)} />
-            }
+            )}
             {message}
           </span>
         }
         action={[
-          <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>
+          <IconButton
+            key="close"
+            aria-label="close"
+            color="inherit"
+            onClick={onClose}
+          >
             <CloseIcon className={classes.icon} />
           </IconButton>,
         ]}
         {...other}
       />
     </Snackbar>
-  )
+  );
 }

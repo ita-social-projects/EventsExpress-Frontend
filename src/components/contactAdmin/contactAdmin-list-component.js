@@ -1,15 +1,15 @@
 ﻿import React, { Component } from "react";
+import { parse as queryStringParse } from "query-string";
+import { withRouter } from "react-router";
 import ContactAdminItemWrapper from "../../containers/contactAdmin/contactAdmin-item-container";
 import RenderIssuesList from "./renderIssuesList";
-import { parse as queryStringParse } from "query-string";
 import filterHelper from "../helpers/filterHelper";
-import { withRouter } from "react-router";
 
 class ContactAdminList extends Component {
-  pageChange = (page) => {
-    const history = this.props.history;
+  pageChange = page => {
+    const { history } = this.props;
     if (history.location.search == "")
-      history.push(history.location.pathname + `?page=${page}`);
+      history.push(`${history.location.pathname}?page=${page}`);
     else {
       const queryStringInObject = queryStringParse(history.location.search);
       queryStringInObject.page = page;
@@ -19,7 +19,7 @@ class ContactAdminList extends Component {
     }
   };
 
-  renderSingleIssue = (item) => (
+  renderSingleIssue = item => (
     <ContactAdminItemWrapper key={item.messageId + item.status} item={item} />
   );
 

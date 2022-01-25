@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import UnitOfMeasuringList from '../../components/unitOfMeasuring/unitOfMeasuring-list';
-
+import React, { Component } from "react";
+import UnitOfMeasuringList from "../../components/unitOfMeasuring/unitOfMeasuring-list";
 
 export default class UnitOfMeasuringListWrapper extends Component {
+  render() {
+    const { data } = this.props;
 
-    render() {
-        const { data} = this.props;
-
-        return <UnitOfMeasuringList data_list={data} /> 
-    }
+    return <UnitOfMeasuringList data_list={data} />;
+  }
 }

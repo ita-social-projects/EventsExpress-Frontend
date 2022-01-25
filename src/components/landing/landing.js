@@ -29,15 +29,15 @@ class Landing extends Component {
     this.props.get_upcoming_events();
   }
 
-  renderCarouselBlock = (eventBlock) => (
+  renderCarouselBlock = eventBlock => (
     <div className="carousel-block wd-100">
-      {eventBlock.map((event) => (
+      {eventBlock.map(event => (
         <CarouselEventCard key={event.id} event={event} />
       ))}
     </div>
   );
 
-  render() {    
+  render() {
     const { items } = this.props.events.data;
     const events = this.splitDataIntoBlocks(items);
 
@@ -76,7 +76,7 @@ class Landing extends Component {
             <AuthComponent onlyAnonymous>
               <div className="text-center">
                 <ModalWind
-                  renderButton={(action) => (
+                  renderButton={action => (
                     <button
                       className="btn btn-warning"
                       onClick={() => action()}
@@ -101,25 +101,25 @@ class Landing extends Component {
               <div className="carousel-wrapper text-center">
                 <Carousel
                   autoPlay={false}
-                  animation={"slide"}
+                  animation="slide"
                   interval={1000}
                   indicators={false}
                   navButtonsAlwaysVisible={carouselNavIsVisible}
                   navButtonsAlwaysInvisible={!carouselNavIsVisible}
                   NextIcon={
                     <i
-                      style={{ width: 32 + "px", height: 32 + "px" }}
+                      style={{ width: `${32}px`, height: `${32}px` }}
                       className="fas fa-angle-right"
                     ></i>
                   }
                   PrevIcon={
                     <i
-                      style={{ width: 32 + "px", height: 32 + "px" }}
+                      style={{ width: `${32}px`, height: `${32}px` }}
                       className="fas fa-angle-left"
                     ></i>
                   }
                 >
-                  {events.map((block) => this.renderCarouselBlock(block))}
+                  {events.map(block => this.renderCarouselBlock(block))}
                 </Carousel>
               </div>
             </article>
@@ -130,14 +130,14 @@ class Landing extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     events: state.events,
     user: state.user,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     get_upcoming_events: () => dispatch(get_upcoming_events()),
   };

@@ -9,7 +9,7 @@ const SelectedActivitiesList = ({ data }) => {
       </Grid>
       <Grid item sm={4} />
       <Grid container spacing={3} xs={12}>
-        {data.map((el) => (
+        {data.map(el => (
           <Grid item lg={4} md={4} xs={6}>
             <b>{el.group}</b>
             <Typography variant="body2" gutterBottom>

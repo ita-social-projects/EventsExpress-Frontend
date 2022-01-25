@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { renderSelectField } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
 
-let editGenderRegister = (props) => {
+const editGenderRegister = props => {
   const { handleSubmit } = props;
   return render(
     <form name="editGenderRegister" onSubmit={handleSubmit}>
@@ -23,7 +23,7 @@ let editGenderRegister = (props) => {
           <ErrorMessages error={props.error} className="text-center" />
         )}
       </div>
-    </form>
+    </form>,
   );
 };
 

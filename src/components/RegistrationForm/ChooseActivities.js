@@ -6,7 +6,7 @@ import get_category_groups from "../../actions/categoryGroup/category-group-list
 import get_categories from "../../actions/category/category-list-action";
 import TileGroup from "../../containers/TileGroup";
 
-const ChooseActivities = (props) => {
+const ChooseActivities = props => {
   const { handleSubmit, previousPage } = props;
 
   useEffect(() => {
@@ -16,11 +16,11 @@ const ChooseActivities = (props) => {
 
   const mapToCategories = () => {
     const groups = props.categoryGroups;
-    const categories = props.categories;
+    const { categories } = props;
 
-    return groups.map((el) => ({
+    return groups.map(el => ({
       group: el,
-      categories: categories.filter((c) => c.categoryGroup.id === el.id),
+      categories: categories.filter(c => c.categoryGroup.id === el.id),
     }));
   };
 
@@ -65,12 +65,12 @@ const ChooseActivities = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   categoryGroups: state.categoryGroups.data,
   categories: state.categories.data,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     getCategoryGroups: () => dispatch(get_category_groups()),
     getCategories: () => dispatch(get_categories()),
@@ -79,11 +79,11 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(
   reduxForm({
     form: "registrationForm",
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
-  })(ChooseActivities)
+  })(ChooseActivities),
 );

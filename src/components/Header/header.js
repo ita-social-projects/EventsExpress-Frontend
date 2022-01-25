@@ -4,7 +4,7 @@ import AuthComponent from "../../security/authComponent";
 import "./header.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import logout from "./../../actions/login/logout-action";
+import logout from "../../actions/login/logout-action";
 import CustomAvatar from "../avatar/custom-avatar";
 import { Roles } from "../../constants/userRoles";
 import add_event from "../../actions/event/event-add-action";
@@ -20,19 +20,23 @@ class Header extends Component {
 
     return (
       <nav
-        class="navbar navbar-expand-lg navbar-light extraHeaderStyles"
+        className="navbar navbar-expand-lg navbar-light extraHeaderStyles"
         id="bgcolornav"
       >
-        <div class="navbar-brand">
-          <Link to={"/home"} className="nav-link" id="EEButton">
+        <div className="navbar-brand">
+          <Link to="/home" className="nav-link" id="EEButton">
             EVENTS EXPRESS
           </Link>
         </div>
-        <ul class="navbar-nav mr-auto"></ul>
-        <span class="form-inline my-2 my-lg-0">
+        <ul className="navbar-nav mr-auto"></ul>
+        <span className="form-inline my-2 my-lg-0">
           <AuthComponent rolesMatch={Roles.User}>
             <div className="my-2 my-sm-0">
-              <div className="btn btn-light" id="headbtn" onClick={this.props.add_event}>
+              <div
+                className="btn btn-light"
+                id="headbtn"
+                onClick={this.props.add_event}
+              >
                 Create Event
               </div>
             </div>
@@ -41,7 +45,7 @@ class Header extends Component {
             <div className="my-2 my-sm-0">
               {!id && (
                 <ModalWind
-                  renderButton={(action) => (
+                  renderButton={action => (
                     <div
                       className="btn btn-light"
                       id="headbtn"
@@ -71,17 +75,17 @@ class Header extends Component {
                 </div>
                 <div className="dropdown-menu dropdown-menu-right bgcolorwhite">
                   <AuthComponent rolesMatch={Roles.User}>
-                    <Link className="removedecorations" to={'/user/' + id}>
-                    <button
-                      className="dropdown-item bgcolorwhite"
-                      type="button"
-                    >
-                      my events
-                    </button>
+                    <Link className="removedecorations" to={`/user/${id}`}>
+                      <button
+                        className="dropdown-item bgcolorwhite"
+                        type="button"
+                      >
+                        my events
+                      </button>
                     </Link>
                   </AuthComponent>
                   <AuthComponent>
-                    <Link className="removedecorations" to={'/editProfile'}>
+                    <Link className="removedecorations" to="/editProfile">
                       <button
                         className="dropdown-item bgcolorwhite"
                         type="button"
@@ -110,14 +114,14 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     user: state.user,
     hub: state.hubConnections.chatHub,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     logout: () => {
       dispatch(logout());

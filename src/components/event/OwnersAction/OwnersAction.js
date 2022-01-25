@@ -1,7 +1,7 @@
 ﻿import React from "react";
-import SimpleModal from "../SimpleModal/Simple-modal";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
+import SimpleModal from "../SimpleModal/Simple-modal";
 import constants from "../../../constants/ConstantsOwnersAction";
 
 export default function OwnersActions({
@@ -19,11 +19,7 @@ export default function OwnersActions({
       <div>
         <SimpleModal
           action={handlerDeleteFromOwners}
-          data={
-            constants.MESSAGE_ACCEPT_DELETE_FIRST +
-            ` ${user.username} ` +
-            constants.MESSAGE_ACCEPT_DELETE_LAST
-          }
+          data={`${constants.MESSAGE_ACCEPT_DELETE_FIRST} ${user.username} ${constants.MESSAGE_ACCEPT_DELETE_LAST}`}
           button={
             <Tooltip title={constants.TITLE_DELETE_BUTTON}>
               <IconButton aria-label="delete">

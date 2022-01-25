@@ -1,10 +1,10 @@
-﻿import React, { Component } from 'react';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import UserView from '../UserView/UserView';
+﻿import React, { Component } from "react";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import UserView from "../UserView/UserView";
 
 export default class ParticipantGroup extends Component {
   render() {
@@ -21,7 +21,7 @@ export default class ParticipantGroup extends Component {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography className="w-100">
-            {users.map((user) => (
+            {users.map(user => (
               <UserView user={user}>{renderUserActions(user)}</UserView>
             ))}
           </Typography>

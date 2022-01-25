@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Header from "./../Header"
 import { Link } from "react-router-dom";
+import Header from "../Header";
 import image1 from "./landing-images/1.jpg";
 import image2 from "./landing-images/2.jpg";
 import image3 from "./landing-images/3.jpg";
@@ -29,7 +29,7 @@ export default class HeadArticle extends Component {
       currentImageCounter: 0,
       preloadedPictures: [],
     };
-    var preloadedData = imagesPreload.map((image) => {
+    const preloadedData = imagesPreload.map(image => {
       const newImage = new Image();
       newImage.src = image;
       return newImage;
@@ -41,7 +41,8 @@ export default class HeadArticle extends Component {
   async componentDidMount() {
     this.interval = setInterval(() => {
       this.setState({
-        currentImageCounter: (this.state.currentImageCounter + 1) % imagesPreload.length,
+        currentImageCounter:
+          (this.state.currentImageCounter + 1) % imagesPreload.length,
         currentImage: imagesPreload[this.state.currentImageCounter],
       });
     }, 5000);
@@ -64,7 +65,7 @@ export default class HeadArticle extends Component {
             <button className="btn btn-warning" onClick={this.handleClick}>
               Create event
             </button>
-            <Link to={"home/events"} className="btn btn-warning">
+            <Link to="home/events" className="btn btn-warning">
               Find event
             </Link>
           </div>

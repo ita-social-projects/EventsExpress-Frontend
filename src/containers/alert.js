@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import { connect } from "react-redux";
-import MySnackbar from '../components/helpers/Alert';
-import { setAlertOpen } from '../actions/alert-action'
+import MySnackbar from "../components/helpers/Alert";
+import { setAlertOpen } from "../actions/alert-action";
 
 class AlertContainer extends React.Component {
   render() {
@@ -9,25 +9,23 @@ class AlertContainer extends React.Component {
       <MySnackbar
         open={this.props.open}
         onClose={this.props.close}
-        alert={this.props.alert} />
+        alert={this.props.alert}
+      />
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    alert: state.alert
-  }
+    alert: state.alert,
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     close: () => dispatch(setAlertOpen(false)),
-    open: () => dispatch(setAlertOpen(true))
-  }
+    open: () => dispatch(setAlertOpen(true)),
+  };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AlertContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(AlertContainer);

@@ -18,7 +18,7 @@ const ThreeStateCheckbox = ({ name, checked, onChange }) => {
     updateInput(inputRef, checked);
   }, [checked]);
 
-  const handleClick = (event) => {
+  const handleClick = event => {
     event.stopPropagation();
     switch (checkedRef.current) {
       case true:
@@ -44,7 +44,7 @@ const ThreeStateCheckbox = ({ name, checked, onChange }) => {
       ref={inputRef}
       type="checkbox"
       name={name}
-      onClick={(evt) => handleClick(evt)}
+      onClick={evt => handleClick(evt)}
     />
   );
 };

@@ -1,12 +1,12 @@
 import "./RegistrationForm.css";
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Stepper from "../stepper/Stepper";
 import CompleteProfileForm from "./CompleteProfileForm";
 import ConfirmForm from "./ConfirmForm";
 import ChooseActivities from "./ChooseActivities";
 import Success from "./Success";
 import PlaceHolder from "./PlaceHolder";
-import PropTypes from "prop-types";
 
 export default class RegistrationForm extends Component {
   constructor(props) {

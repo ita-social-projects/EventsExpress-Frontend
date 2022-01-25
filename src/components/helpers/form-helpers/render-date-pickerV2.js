@@ -15,15 +15,15 @@ export default ({
   disabled,
 }) => {
   return (
-    <Fragment>
+    <>
       <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
         <KeyboardDatePicker
           {...inputProps}
           label={label}
           selected={moment(value).format("L")}
           value={value ? moment(value).format("L") : null}
-          autoOK={true}
-          emptyLabel={""}
+          autoOK
+          emptyLabel=""
           format="DD-MM-YYYY"
           error={touched && invalid}
           helperText={touched && error}
@@ -33,6 +33,6 @@ export default ({
           maxDate={maxValue ? moment(maxValue) : undefined}
         />
       </MuiPickersUtilsProvider>
-    </Fragment>
+    </>
   );
 };

@@ -18,9 +18,10 @@ import {
 import { enumLocationType } from "../../../constants/EventLocationType";
 import "./event-form.css";
 import asyncValidatePhoto from "../../../containers/async-validate-photo";
-import ErrorMessages from '../../shared/errorMessage';
+import ErrorMessages from "../../shared/errorMessage";
 import Location from "../../location";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
+
 momentLocaliser(moment);
 
 const photoService = new PhotoService();
@@ -29,12 +30,12 @@ class EventForm extends Component {
   state = { checked: this.props.initialValues.isReccurent };
 
   handleChange = () => {
-    this.setState((state) => ({
+    this.setState(state => ({
       checked: !state.checked,
     }));
   };
 
-  checkLocation = (location) => {
+  checkLocation = location => {
     if (location !== null) {
       if (location.type == enumLocationType.map) {
         location.latitude = null;
@@ -49,7 +50,7 @@ class EventForm extends Component {
     }
   };
 
-  periodicityListOptions = periodicity.map((item) => (
+  periodicityListOptions = periodicity.map(item => (
     <option value={item.value} key={item.value}>
       {" "}
       {item.label}{" "}
@@ -72,7 +73,7 @@ class EventForm extends Component {
             name="photo"
             component={DropZoneField}
             type="file"
-            crop={true}
+            crop
             cropShape="rect"
             loadImage={() => photoService.getFullEventPhoto(this.props.eventId)}
           />
@@ -194,13 +195,13 @@ class EventForm extends Component {
               name="categories"
               component={renderMultiselect}
               data={all_categories.data}
-              valueField={"id"}
-              textField={"name"}
+              valueField="id"
+              textField="name"
               className="form-control"
               placeholder="#hashtags"
             />
           </div>
-          <Field name="location" component={Location}/>
+          <Field name="location" component={Location} />
         </div>
         <div className="row my-4">
           {error && <ErrorMessages error={error} className="text-center" />}

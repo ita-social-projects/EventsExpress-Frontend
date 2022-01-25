@@ -6,7 +6,7 @@ import add_category, {
 import CategoryEdit from "../../components/category/category-edit";
 
 class CategoryAddWrapper extends React.Component {
-  submit = (values) => {
+  submit = values => {
     values.categoryGroup =
       typeof values.categoryGroup === "string"
         ? JSON.parse(values.categoryGroup)
@@ -43,7 +43,7 @@ class CategoryAddWrapper extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     editedCategory: state.categories.editedCategory,
     counter: state.requestCount.counter,
@@ -52,7 +52,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    add: (data) => dispatch(add_category(data)),
+    add: data => dispatch(add_category(data)),
     set_category_edited: () => dispatch(setCategoryEdited(props.item.id)),
     edit_cancel: () => {
       dispatch(setCategoryEdited(null));

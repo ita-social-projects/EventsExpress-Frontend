@@ -21,7 +21,7 @@ class ContactAdminFilter extends Component {
     if (
       !filterHelper.compareObjects(
         initialValues,
-        prevProps.initialFormValues
+        prevProps.initialFormValues,
       ) ||
       this.state.needInitializeValues
     ) {
@@ -31,15 +31,15 @@ class ContactAdminFilter extends Component {
         status: initialValues.status,
       });
       this.setState({
-        ["needInitializeValues"]: false,
+        needInitializeValues: false,
       });
     }
   }
 
   render() {
     const { form_values, submitting, onReset } = this.props;
-    let values = form_values || {};
-    let options = [
+    const values = form_values || {};
+    const options = [
       { value: issueStatusEnum.Open, text: "Open" },
       { value: issueStatusEnum.InProgress, text: "In progress" },
       { value: issueStatusEnum.Resolve, text: "Resolve" },
@@ -49,38 +49,36 @@ class ContactAdminFilter extends Component {
       <>
         <div className="sidebar-filter">
           <form onSubmit={this.props.handleSubmit} className="box">
-            {
-              <>
-                <div className="form-group">
-                  <Field
-                    name="dateFrom"
-                    label="From"
-                    minValue={new Date(2000, 1, 1)}
-                    component={renderDatePicker}
-                    parse={parseEuDate}
-                  />
-                </div>
-                <div className="form-group">
-                  <Field
-                    name="dateTo"
-                    label="To"
-                    minValue={new Date(values.dateFrom)}
-                    component={renderDatePicker}
-                    parse={parseEuDate}
-                  />
-                </div>
-                <div className="form-group">
-                  <Field
-                    name="status"
-                    component={MultiCheckbox}
-                    options={options}
-                  />
-                </div>
-              </>
-            }
+            <>
+              <div className="form-group">
+                <Field
+                  name="dateFrom"
+                  label="From"
+                  minValue={new Date(2000, 1, 1)}
+                  component={renderDatePicker}
+                  parse={parseEuDate}
+                />
+              </div>
+              <div className="form-group">
+                <Field
+                  name="dateTo"
+                  label="To"
+                  minValue={new Date(values.dateFrom)}
+                  component={renderDatePicker}
+                  parse={parseEuDate}
+                />
+              </div>
+              <div className="form-group">
+                <Field
+                  name="status"
+                  component={MultiCheckbox}
+                  options={options}
+                />
+              </div>
+            </>
             <div className="d-flex">
               <Button
-                fullWidth={true}
+                fullWidth
                 color="primary"
                 onClick={onReset}
                 disabled={submitting}
@@ -88,7 +86,7 @@ class ContactAdminFilter extends Component {
                 Reset
               </Button>
               <Button
-                fullWidth={true}
+                fullWidth
                 type="submit"
                 color="primary"
                 disabled={submitting}

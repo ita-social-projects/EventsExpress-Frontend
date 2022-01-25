@@ -13,8 +13,8 @@ export default class Stepper extends Component {
     const stepsState = steps.map((step, index) => {
       const stepObj = {};
       stepObj.description = step;
-      stepObj.highlighted = index === 0 ? true : false;
-      stepObj.selected = index === 0 ? true : false;
+      stepObj.highlighted = index === 0;
+      stepObj.selected = index === 0;
       stepObj.completed = false;
       return stepObj;
     });

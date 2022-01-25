@@ -1,11 +1,11 @@
 ﻿import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import IconButton from "@material-ui/core/IconButton";
 import { renderTextField, renderSelectField } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
-import IconButton from "@material-ui/core/IconButton";
 import { fieldIsRequired } from "../helpers/validators/required-fields-validator";
 
-const validate = (values) => {
+const validate = values => {
   const requiredFields = ["name", "categoryGroup"];
   return {
     ...fieldIsRequired(values, requiredFields),
@@ -43,11 +43,11 @@ class CategoryEdit extends Component {
                 label="Select a group"
                 component={renderSelectField}
                 defaultValue={JSON.stringify(
-                  this.props?.initialValues?.categoryGroup
+                  this.props?.initialValues?.categoryGroup,
                 )}
               >
                 <option value="" disabled></option>
-                {this.props.groups.map((item) => (
+                {this.props.groups.map(item => (
                   <option key={item.id} value={JSON.stringify(item)}>
                     {item.title}
                   </option>

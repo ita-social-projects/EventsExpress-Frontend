@@ -1,7 +1,7 @@
-﻿import React, { useEffect, useState } from 'react';
-import PagePagination from '../../shared/pagePagination';
-import LocalSpinnerWrapper from '../../../containers/local-spinner';
-import { renderItems } from '../../helpers/eventsForProfileUtils';
+﻿import React, { useEffect, useState } from "react";
+import PagePagination from "../../shared/pagePagination";
+import LocalSpinnerWrapper from "../../../containers/local-spinner";
+import { renderItems } from "../../helpers/eventsForProfileUtils";
 
 const EventsForProfile = ({
   page,
@@ -17,7 +17,7 @@ const EventsForProfile = ({
     return notification_events === null ? callback(currentPage) : null;
   }, []);
 
-  const handlePageChange = (page) => {
+  const handlePageChange = page => {
     setCurrentPage(page);
     notification_events !== null
       ? callback(notification_events, page)
