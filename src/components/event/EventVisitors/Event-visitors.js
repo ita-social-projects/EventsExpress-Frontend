@@ -3,7 +3,7 @@ import ParticipantGroup from "../ParticipantGroup/Participant-group";
 import ContainerOwnersActions from "../../../containers/ContainerOwnersAction";
 import ApprovedUsersActionsContainer from "../../../containers/Approved-users-action-container";
 import PendingUsersActions from "../PendingUsersAction/Pending-users-action";
-import DeniedUsersActions from "../DeniedUsersAction/Denied-users-action";
+import DeniedUsersActionContainer from "../../../containers/DeniedUsersAction/DeniedUsersActionContainer";
 
 class EventVisitors extends Component {
   render() {
@@ -47,7 +47,7 @@ class EventVisitors extends Component {
             users={visitors.deniedUsers}
             label="Denied users"
             renderUserActions={(user) => (
-              <DeniedUsersActions user={user} isMyEvent={isMyEvent} />
+              <DeniedUsersActionContainer user={user} isMyEvent={isMyEvent} />
             )}
           />
         )}
