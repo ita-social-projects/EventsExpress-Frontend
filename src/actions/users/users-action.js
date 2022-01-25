@@ -17,7 +17,7 @@ export const accountStatus = {
   Blocked: 2,
 };
 
-const api_serv = new UserService();
+const API_SERV = new UserService();
 
 export function initialConnection() {
   return async (dispatch, getState) => {
@@ -51,7 +51,7 @@ export function closeConnection() {
 
 export function get_count(status) {
   return async dispatch => {
-    const response = await api_serv.getCount(status);
+    const response = await API_SERV.getCount(status);
 
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -68,7 +68,7 @@ export function get_count(status) {
 export function get_users(filters) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getUsers(filters);
+    const response = await API_SERV.getUsers(filters);
     dispatch(getRequestDec());
 
     if (!response.ok) {
@@ -98,7 +98,7 @@ export function change_Filter(filters) {
 export function get_SearchUsers(filters) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getSearchUsers(filters);
+    const response = await API_SERV.getSearchUsers(filters);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

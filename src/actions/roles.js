@@ -6,12 +6,12 @@ export const getRoles = {
   DATA: "ROLES_SUCCESS",
 };
 
-const api_serv = new RoleService();
+const API_SERV = new RoleService();
 
 export default function get_roles() {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getRoles();
+    const response = await API_SERV.getRoles();
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));

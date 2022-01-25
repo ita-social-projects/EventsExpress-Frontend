@@ -21,14 +21,14 @@ export const changeUserRole = {
   SUCCESS: "SUCCESS_CHANGE_ROLE",
   UPDATE: "UPDATE_CHANGE_ROLE",
 };
-const api_serv = new UserService();
+const API_SERV = new UserService();
 
 // ACTION CREATOR FOR USER UNBLOCK:
 export function unblock_user(id) {
   return async dispatch => {
     dispatch(setUnBlockUserPending(true));
 
-    const response = await api_serv.setUserUnblock(id);
+    const response = await API_SERV.setUserUnblock(id);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -44,7 +44,7 @@ export function block_user(id) {
   return async dispatch => {
     dispatch(setBlockUserPending(true));
 
-    const response = await api_serv.setUserBlock(id);
+    const response = await API_SERV.setUserBlock(id);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -60,7 +60,7 @@ export function change_user_role(userId, newRoles) {
   return async dispatch => {
     dispatch(setChangeUserRolePending(true));
 
-    const response = await api_serv.setChangeUserRole({
+    const response = await API_SERV.setChangeUserRole({
       userId,
       roles: newRoles,
     });

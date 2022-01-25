@@ -10,13 +10,13 @@ export const changeAvatar = {
   UPDATE: "UPDATE_CHANGE_AVATAR",
 };
 
-const api_serv = new UserService();
+const API_SERV = new UserService();
 
 export default function change_avatar(data) {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.setAvatar(data);
+    const response = await API_SERV.setAvatar(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }

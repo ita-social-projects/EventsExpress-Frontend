@@ -6,7 +6,7 @@ import { updateEventsFilters } from "../event/event-list-action";
 
 export const SET_LOGOUT = "SET_LOGOUT";
 
-const api_serv = new AuthenticationService();
+const API_SERV = new AuthenticationService();
 
 export default function logout() {
   return async dispatch => {
@@ -15,7 +15,7 @@ export default function logout() {
     dispatch(setLogout());
     dispatch(resetNotification());
     localStorage.clear();
-    return api_serv.revokeToken();
+    return API_SERV.revokeToken();
   };
 }
 

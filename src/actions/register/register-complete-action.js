@@ -6,14 +6,14 @@ import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { jwtStorageKey } from "../../constants/constants";
 
-const api_serv = new AuthenticationService();
+const API_SERV = new AuthenticationService();
 const history = createBrowserHistory({ forceRefresh: true });
 
 export default function registerComplete(data) {
   return async dispatch => {
     data.accountId = getAccountIdFromJWT();
 
-    const response = await api_serv.setRegisterComplete(data);
+    const response = await API_SERV.setRegisterComplete(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }

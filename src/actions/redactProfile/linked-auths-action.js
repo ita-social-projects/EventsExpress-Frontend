@@ -3,11 +3,11 @@ import { setErrorAllertFromResponse } from "../alert-action";
 
 export const GET_LINKED_AUTHS_SUCCESS = "GET_LINKED_AUTHS_SUCCESS";
 
-const api_serv = new AccountService();
+const API_SERV = new AccountService();
 
 export default function getLinkedAuths() {
   return async dispatch => {
-    const response = await api_serv.getLinkedAuths();
+    const response = await API_SERV.getLinkedAuths();
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

@@ -10,12 +10,12 @@ export const addUserCategory = {
   UPDATE: "UPDATE_CATEGORIES",
 };
 
-const api_serv = new UserService();
+const API_SERV = new UserService();
 
 export default function setUserCategory(data) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.setUserCategory(data);
+    const response = await API_SERV.setUserCategory(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }

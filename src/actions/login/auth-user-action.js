@@ -1,11 +1,11 @@
 import { AuthenticationService } from "../../services";
 import { getUserInfo } from "./login-action";
 
-const api_serv = new AuthenticationService();
+const API_SERV = new AuthenticationService();
 
 export default () => {
   return dispatch => {
-    if (!api_serv.getCurrentToken()) return;
+    if (!API_SERV.getCurrentToken()) return;
 
     dispatch(getUserInfo());
   };

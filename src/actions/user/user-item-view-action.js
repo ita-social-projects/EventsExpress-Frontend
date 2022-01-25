@@ -5,13 +5,13 @@ import { setErrorAllertFromResponse } from "../alert-action";
 export const GET_PROFILE_DATA = "GET_PROFILE_DATA";
 export const RESET_USER = "RESET_USER";
 
-const api_serv = new UserService();
+const API_SERV = new UserService();
 
 export default function get_user(id) {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.getUserById(id);
+    const response = await API_SERV.getUserById(id);
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -25,9 +25,9 @@ export default function get_user(id) {
 
 export function setAttitude(data) {
   return async dispatch => {
-    const response = await api_serv.setAttitude(data);
+    const response = await API_SERV.setAttitude(data);
     if (response.ok) {
-      const res = await api_serv.getUserById(data.userToId);
+      const res = await API_SERV.getUserById(data.userToId);
       if (!res.ok) {
         dispatch(setErrorAllertFromResponse(response));
         return Promise.reject();

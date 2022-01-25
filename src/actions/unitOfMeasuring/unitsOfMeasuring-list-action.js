@@ -4,13 +4,13 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const GET_UNITS_OF_MEASURING_DATA = "GET_UNITS_OF_MEASURING_SUCCESS";
 
-const api_serv = new UnitOfMeasuringService();
+const API_SERV = new UnitOfMeasuringService();
 
 export default function get_unitsOfMeasuring() {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.getUnitsOfMeasuring();
+    const response = await API_SERV.getUnitsOfMeasuring();
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

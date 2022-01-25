@@ -8,12 +8,12 @@ export const editBirthday = {
   UPDATE: "UPDATE_BIRTHDAY",
 };
 
-const api_serv = new UserService();
+const API_SERV = new UserService();
 
 export default function edit_Birthday(data) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.setBirthday(data);
+    const response = await API_SERV.setBirthday(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }
