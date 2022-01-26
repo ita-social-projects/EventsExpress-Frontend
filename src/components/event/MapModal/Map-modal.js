@@ -1,10 +1,12 @@
-﻿import React, { Component } from "react";
+﻿/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Field } from "redux-form";
+import PropTypes from "prop-types";
 import { LocationMapWithCircle } from "../../helpers/form-helpers/location";
 import "../slider.css";
 import DisplayMap from "../map/display-map";
@@ -56,7 +58,7 @@ class MapModal extends Component {
             {this.props.values && this.props.values.radius && (
               <div>
                 <div className="slidecontainer">
-                  <label>Radius is {this.props.values.radius} km</label>
+                  <label htmlFor="radius ">Radius is {this.props.values.radius} km</label>
                   <Field
                     name="radius"
                     component="input"
@@ -73,9 +75,9 @@ class MapModal extends Component {
             )}
             <div>
               {this.props.values &&
-                this.props.values.selectedPos != undefined &&
-                this.props.values.selectedPos.latitude != undefined &&
-                this.props.values.selectedPos.longitude != undefined && (
+                this.props.values.selectedPos !== undefined &&
+                this.props.values.selectedPos.latitude !== undefined &&
+                this.props.values.selectedPos.longitude !== undefined && (
                   <div>
                     <p>Current position on the Map is:</p>
                     <p>latitude: {this.props.values.selectedPos.latitude}</p>
@@ -86,8 +88,8 @@ class MapModal extends Component {
                   </div>
                 )}
               {this.props.values &&
-                this.props.values.selectedPos.latitude == null &&
-                this.props.values.selectedPos.longitude == null && (
+                this.props.values.selectedPos.latitude === null &&
+                this.props.values.selectedPos.longitude === null && (
                   <div>
                     <p>Choose position on the Map!</p>
                   </div>
@@ -111,6 +113,23 @@ class MapModal extends Component {
       </div>
     );
   }
+}
+
+MapModal.propTypes = {
+  initialize: PropTypes.func,
+  values: PropTypes.object,
+  radius: PropTypes.number,
+  latitude: PropTypes.number,
+  longitude: PropTypes.number,
+}
+
+MapModal.defaultProps = {
+  initialize: () => {},
+  values: {},
+  radius: null,
+  latitude: null,
+  longitude: null,
+
 }
 
 export default MapModal;
