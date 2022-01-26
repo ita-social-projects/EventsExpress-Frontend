@@ -1,62 +1,33 @@
-﻿import React from 'react';
+﻿import React from "react";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/styles";
-import { connect } from 'react-redux';
-import { promoteToOwner, approveUser } from '../../../actions/event/event-item-view-action';
+import "./Pending-users-action-style.js";
+import PENDING_USERS_ACTION_BUTTON from "../../../constants/pendingUsersActionButton";
 
-const useStyles = makeStyles((theme) => ({
-    success: {
-        color: '#fff',
-        backgroundColor: '#4caf50',
-        '&:hover': {
-            backgroundColor: '#388e3c'
-        }
-    },
-    danger: {
-        color: '#fff',
-        backgroundColor: '#f44336',
-        '&:hover': {
-            backgroundColor: '#d32f2f'
-        }
-    }
-}));
+export const PendingUsersActions = (props) => {
+  const { user, isMyEvent, useStyles } = props;
+  const { DENY, APPROVE } = PENDING_USERS_ACTION_BUTTON;
 
-const PendingUsersActions = (props) => {
-    const { user, isMyEvent } = props;
-    const classes = useStyles();
-
-    return (
+  return (
+    <>
+      {isMyEvent && (
         <>
-            {(isMyEvent) &&
-                <>
-                    <Button
-                        variant="contained"
-                        className={classes.success}
-                        onClick={() => props.approveUser(user.id, props.eventId, true)}
-                    >
-                        Approve
-                    </Button>
-                    <Button
-                        variant="contained"
-                        className={classes.danger}
-                        onClick={() => props.approveUser(user.id, props.eventId, false)}
-                    >
-                            Deny
-                    </Button>
-                </>
-            }
+          <Button
+            variant="contained"
+            className={useStyles.success}
+            onClick={() => props.approveUser(user.id, props.eventId, true)}
+          >
+            {APPROVE}
+          </Button>
+          <Button
+            variant="contained"
+            className={useStyles.danger}
+            onClick={() => props.approveUser(user.id, props.eventId, false)}
+          >
+            {DENY}
+          </Button>
         </>
-    )
-}
-
-const mapStateToProps = (state) => ({
-    eventId: state.event.data.id
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    approveUser: (userId, eventId, buttonAction) => dispatch(approveUser(userId, eventId, buttonAction)),
-    promoteToOwner: (userId, eventId) => dispatch(promoteToOwner(userId, eventId))
-});
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(PendingUsersActions);
+      )}
+    </>
+  );
+};
+export default PendingUsersActions;
