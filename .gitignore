@@ -106,4 +106,5 @@ dist
 #Visual Studio Code
 .vscode
 
-pachage-lock.json
+
+package-lock.json

@@ -4,12 +4,19 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const GET_CONFIG_DATA = "GET_CONFIG_DATA";
 
-const api_serv = new ConfigService();
+const API_SERV = new ConfigService();
 
-export default function getConfig() {
+export function getConfigSuccess(data) {
+  return {
+    type: GET_CONFIG_DATA,
+    payload: data,
+  };
+}
+
+const getConfig = () => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getConfigFromBack();
+    const response = await API_SERV.getConfigFromBack();
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -21,11 +28,6 @@ export default function getConfig() {
 
     return Promise.resolve();
   };
-}
+};
 
-export function getConfigSuccess(data) {
-  return {
-    type: GET_CONFIG_DATA,
-    payload: data,
-  };
-}
+export default getConfig;

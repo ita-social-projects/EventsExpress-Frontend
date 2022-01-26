@@ -1,15 +1,15 @@
-﻿import { addUserCategory } from "./userCategory-add-action";
-import { addUserNotificationType } from "./userNotificationType-add-action";
-import { editBirthday } from "./birthday-edit-action";
-import { editGender } from "./gender-edit-action";
-import { editUsername } from "./userName-edit-action";
-import { changeAvatar } from "./avatar-change-action";
+﻿import { addUserCategoryStates } from "./userCategory-add-action";
+import { addUserNotificationTypeStates } from "./userNotificationType-add-action";
+import { editBirthdayStates } from "./birthday-edit-action";
+import { editGenderStates } from "./gender-edit-action";
+import { editUsernameStates } from "./userName-edit-action";
+import { changeAvatarStates } from "./avatar-change-action";
 
 export {
-  addUserCategory,
-  addUserNotificationType,
-  editBirthday,
-  editGender,
-  editUsername,
-  changeAvatar,
+  addUserCategoryStates,
+  addUserNotificationTypeStates,
+  editBirthdayStates,
+  editGenderStates,
+  editUsernameStates,
+  changeAvatarStates,
 };

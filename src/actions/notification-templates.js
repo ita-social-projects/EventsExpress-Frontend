@@ -6,86 +6,86 @@ export const GET_TEMPLATE_SUCCESS = "GET_TEMPLATE_SUCCESS";
 export const GET_TEMPLATE_PROPERTIES_SUCCESS =
   "GET_TEMPLATE_PROPERTIES_SUCCESS";
 
-const api_serv = new NotificationTemplateService();
+const API_SERV = new NotificationTemplateService();
 
-export function get_all_templates() {
-  return async dispatch => {
-    const response = await api_serv.getAll();
-
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-
-    const jsonRes = await response.json();
-    dispatch(getTemplates(jsonRes));
-
-    return Promise.resolve();
-  };
-}
-
-export function get_template(id) {
-  return async dispatch => {
-    const response = await api_serv.getByIdAsync(id);
-
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-
-    const jsonRes = await response.json();
-    dispatch(getTemplate(jsonRes));
-
-    return Promise.resolve();
-  };
-}
-
-export function get_template_properties(template_id) {
-  return async dispatch => {
-    const response = await api_serv.getProperties(template_id);
-
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-
-    const jsonRes = await response.json();
-    dispatch(getProperties(jsonRes));
-
-    return Promise.resolve();
-  };
-}
-
-export function update_template(template) {
-  return async dispatch => {
-    const response = await api_serv.updateAsync(template);
-
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-
-    return Promise.resolve();
-  };
-}
-
-function getTemplates(data) {
+function getTemplatesData(data) {
   return {
     type: GET_TEMPLATES_SUCCESS,
     payload: data,
   };
 }
 
-function getTemplate(data) {
+function getTemplateData(data) {
   return {
     type: GET_TEMPLATE_SUCCESS,
     payload: data,
   };
 }
 
-function getProperties(data) {
+function getPropertiesData(data) {
   return {
     type: GET_TEMPLATE_PROPERTIES_SUCCESS,
     payload: data,
+  };
+}
+
+export function getAllTemplates() {
+  return async dispatch => {
+    const response = await API_SERV.getAll();
+
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+
+    const jsonRes = await response.json();
+    dispatch(getTemplatesData(jsonRes));
+
+    return Promise.resolve();
+  };
+}
+
+export function getTemplate(id) {
+  return async dispatch => {
+    const response = await API_SERV.getByIdAsync(id);
+
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+
+    const jsonRes = await response.json();
+    dispatch(getTemplateData(jsonRes));
+
+    return Promise.resolve();
+  };
+}
+
+export function getTemplateProperties(templateId) {
+  return async dispatch => {
+    const response = await API_SERV.getProperties(templateId);
+
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+
+    const jsonRes = await response.json();
+    dispatch(getPropertiesData(jsonRes));
+
+    return Promise.resolve();
+  };
+}
+
+export function updateTemplate(template) {
+  return async dispatch => {
+    const response = await API_SERV.updateAsync(template);
+
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+
+    return Promise.resolve();
   };
 }

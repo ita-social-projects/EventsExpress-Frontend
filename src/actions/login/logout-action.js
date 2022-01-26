@@ -6,21 +6,22 @@ import { updateEventsFilters } from "../event/event-list-action";
 
 export const SET_LOGOUT = "SET_LOGOUT";
 
-const api_serv = new AuthenticationService();
-
-export default function logout() {
-  return async dispatch => {
-    dispatch(updateEventsFilters(filterHelper.getDefaultEventFilter()));
-    dispatch(reset());
-    dispatch(setLogout());
-    dispatch(resetNotification());
-    localStorage.clear();
-    return api_serv.revokeToken();
-  };
-}
+const API_SERV = new AuthenticationService();
 
 function setLogout() {
   return {
     type: SET_LOGOUT,
   };
 }
+
+const logout = () => {
+  return async dispatch => {
+    dispatch(updateEventsFilters(filterHelper.getDefaultEventFilter()));
+    dispatch(reset());
+    dispatch(setLogout());
+    dispatch(resetNotification());
+    localStorage.clear();
+    return API_SERV.revokeToken();
+  };
+};
+export default logout;

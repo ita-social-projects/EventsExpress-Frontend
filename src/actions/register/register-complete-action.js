@@ -6,14 +6,21 @@ import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { jwtStorageKey } from "../../constants/constants";
 
-const api_serv = new AuthenticationService();
+const API_SERV = new AuthenticationService();
 const history = createBrowserHistory({ forceRefresh: true });
 
-export default function registerComplete(data) {
-  return async dispatch => {
-    data.accountId = getAccountIdFromJWT();
+export function getAccountIdFromJWT() {
+  const token = localStorage.getItem(jwtStorageKey);
+  const decoded = jwt.decode(token);
+  return decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid"];
+}
 
-    const response = await api_serv.setRegisterComplete(data);
+const registerComplete = data => {
+  return async dispatch => {
+    const response = await API_SERV.setRegisterComplete({
+      ...data,
+      accountId: getAccountIdFromJWT(),
+    });
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }
@@ -23,10 +30,6 @@ export default function registerComplete(data) {
     dispatch(history.push("/home"));
     return Promise.resolve();
   };
-}
+};
 
-export function getAccountIdFromJWT() {
-  const token = localStorage.getItem(jwtStorageKey);
-  const decoded = jwt.decode(token);
-  return decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid"];
-}
+export default registerComplete;

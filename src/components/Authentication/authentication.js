@@ -1,5 +1,6 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { loginAfterEmailConfirmation } from "../../actions/login/login-action";
 
 class Authentication extends Component {
@@ -18,6 +19,16 @@ class Authentication extends Component {
     );
   }
 }
+
+Authentication.defaultProps = {
+  match: {},
+  auth: () => {},
+};
+
+Authentication.propTypes = {
+  match: PropTypes.object,
+  auth: PropTypes.func,
+};
 
 const mapStateToProps = state => state.user;
 

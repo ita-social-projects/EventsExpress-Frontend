@@ -1,20 +1,27 @@
 import { SubmissionError } from "redux-form";
 import InventoryService from "../../services/InventoryService";
-import { get_inventories_by_event_id } from "../inventory/inventory-list-action";
+import { getInventoriesByEventId } from "../inventory/inventory-list-action";
 import { setErrorAllertFromResponse } from "../alert-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 
 export const GET_USERSINVENTORIES_DATA = "GET_USERSINVENTORIES_SUCCESS";
 
-const api_serv = new InventoryService();
+const API_SERV = new InventoryService();
 
-export function get_users_inventories_by_event_id(eventId) {
+export function getUsersInventoriesSuccess(data) {
+  return {
+    type: GET_USERSINVENTORIES_DATA,
+    payload: data,
+  };
+}
+
+export function getUsersInventoriesByEventId(eventId) {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.getUsersInventories(eventId);
-    dispatch(get_inventories_by_event_id(eventId));
+    const response = await API_SERV.getUsersInventories(eventId);
+    dispatch(getInventoriesByEventId(eventId));
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -26,12 +33,12 @@ export function get_users_inventories_by_event_id(eventId) {
   };
 }
 
-export function delete_users_inventory(data) {
+export function deleteUsersInventory(data) {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.setUsersInventoryDelete(data);
-    dispatch(get_users_inventories_by_event_id(data.eventId));
+    const response = await API_SERV.setUsersInventoryDelete(data);
+    dispatch(getInventoriesByEventId(data.eventId));
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -41,12 +48,12 @@ export function delete_users_inventory(data) {
   };
 }
 
-export function edit_users_inventory(data) {
+export function editUsersInventory(data) {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.setUsersInventory(data);
-    dispatch(get_users_inventories_by_event_id(data.eventId));
+    const response = await API_SERV.setUsersInventory(data);
+    dispatch(getInventoriesByEventId(data.eventId));
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }
@@ -54,12 +61,5 @@ export function edit_users_inventory(data) {
     dispatch(getUsersInventoriesSuccess(jsonRes));
     dispatch(getRequestDec());
     return Promise.resolve();
-  };
-}
-
-export function getUsersInventoriesSuccess(data) {
-  return {
-    type: GET_USERSINVENTORIES_DATA,
-    payload: data,
   };
 }

@@ -16,70 +16,7 @@ export const DELETE_OLD_NOTIFICATION = "DELETE_OLD_NOTIFICATION";
 export const DELETE_SEEN_MSG_NOTIFICATION = "DELETE_SEEN_MSG_NOTIFICATION";
 export const RECEIVED_NEW_EVENT = "RECEIVED_NEW_EVENT";
 
-const api_serv = new ChatService();
-
-export default function get_chat(chatId) {
-  return async dispatch => {
-    dispatch(getRequestInc());
-
-    const response = await api_serv.getChat(chatId);
-    dispatch(getRequestDec());
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-    const jsonRes = await response.json();
-    dispatch(getChatSuccess(jsonRes));
-    return Promise.resolve();
-  };
-}
-
-export function initialConnection() {
-  return async dispatch => {
-    const hubConnection = new SignalR.HubConnectionBuilder()
-      .withUrl(`${window.location.origin}/chatroom`, {
-        accessTokenFactory: () => localStorage.getItem(jwtStorageKey),
-      })
-      .build();
-    try {
-      await hubConnection.start();
-
-      hubConnection.on("ReceiveMessage", data => {
-        dispatch(ReceiveMsg(data));
-        if (data.senderId != localStorage.getItem("id")) {
-          dispatch(
-            setAlert({
-              variant: "info",
-              message: "You have a new message",
-              autoHideDuration: 5000,
-            }),
-          );
-        }
-      });
-      hubConnection.on("wasSeen", data => {
-        dispatch(ReceiveSeenMsg(data));
-      });
-
-      hubConnection.on("ReceivedNewEvent", data => {
-        dispatch(receivedNewEvent(data));
-        dispatch(
-          setAlert({
-            variant: "info",
-            message: `The event was created which could interested you.`,
-            autoHideDuration: 5000,
-          }),
-        );
-      });
-    } catch (err) {
-      console.log("Error while establishing connection :(");
-    }
-
-    dispatch({
-      type: INITIAL_CONNECTION,
-      payload: hubConnection,
-    });
-  };
-}
+const API_SERV = new ChatService();
 
 function receivedNewEvent(data) {
   return {
@@ -137,3 +74,68 @@ export function getChatSuccess(data) {
     payload: data,
   };
 }
+
+export function initialConnection() {
+  return async dispatch => {
+    const hubConnection = new SignalR.HubConnectionBuilder()
+      .withUrl(`${window.location.origin}/chatroom`, {
+        accessTokenFactory: () => localStorage.getItem(jwtStorageKey),
+      })
+      .build();
+    try {
+      await hubConnection.start();
+
+      hubConnection.on("ReceiveMessage", data => {
+        dispatch(ReceiveMsg(data));
+        if (data.senderId !== localStorage.getItem("id")) {
+          dispatch(
+            setAlert({
+              variant: "info",
+              message: "You have a new message",
+              autoHideDuration: 5000,
+            }),
+          );
+        }
+      });
+      hubConnection.on("wasSeen", data => {
+        dispatch(ReceiveSeenMsg(data));
+      });
+
+      hubConnection.on("ReceivedNewEvent", data => {
+        dispatch(receivedNewEvent(data));
+        dispatch(
+          setAlert({
+            variant: "info",
+            message: `The event was created which could interested you.`,
+            autoHideDuration: 5000,
+          }),
+        );
+      });
+    } catch (err) {
+      console.log("Error while establishing connection :(");
+    }
+
+    dispatch({
+      type: INITIAL_CONNECTION,
+      payload: hubConnection,
+    });
+  };
+}
+
+const getChat = chatId => {
+  return async dispatch => {
+    dispatch(getRequestInc());
+
+    const response = await API_SERV.getChat(chatId);
+    dispatch(getRequestDec());
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+    const jsonRes = await response.json();
+    dispatch(getChatSuccess(jsonRes));
+    return Promise.resolve();
+  };
+};
+
+export default getChat;
