@@ -11,10 +11,11 @@ import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
 import Tooltip from "@material-ui/core/Tooltip";
 import Badge from "@material-ui/core/Badge";
-import CustomAvatar from "../avatar/custom-avatar";
+import IconButton from "@material-ui/core/IconButton";
+import PropTypes from "prop-types";
+import { CustomAvatar } from "../avatar/custom-avatar";
 import "./event-item.css";
 import { useStyle } from "../event/CardStyle/CardStyle";
-import IconButton from "@material-ui/core/IconButton";
 import SimpleModalWithDetails from "../helpers/simple-modal-with-details";
 import PhotoService from "../../services/PhotoService";
 import { eventDefaultImage } from "../../constants/eventDefaultImage";
@@ -129,3 +130,13 @@ export default class DraftEventCard extends Component {
     );
   }
 }
+
+DraftEventCard.defaultProps = {
+  item: {},
+  onDelete: () => {},
+};
+
+DraftEventCard.propTypes = {
+  item: PropTypes.object,
+  onDelete: PropTypes.func,
+};
