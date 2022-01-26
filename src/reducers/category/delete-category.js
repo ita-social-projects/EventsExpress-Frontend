@@ -4,7 +4,7 @@ import {
   SET_CATEGORY_DELETE_SUCCESS,
 } from "../../actions/category/category-delete-action";
 
-export const reducer = (state = initialState.add_category, action) => {
+const reducer = (state = initialState.add_category, action) => {
   switch (action.type) {
     case SET_CATEGORY_DELETE_PENDING:
       return {
@@ -22,3 +22,4 @@ export const reducer = (state = initialState.add_category, action) => {
       return state;
   }
 };
+export default reducer;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import RegisterBindAccount from "../components/register/register-bind-account";
 import registerBindAccount from "../actions/register/register-bind-account-action";
@@ -14,7 +15,6 @@ class RegisterCompleteWrapper extends Component {
   }
 
   render() {
-    const { profile } = this;
     return (
       <>
         {this.profile !== null && (
@@ -25,9 +25,19 @@ class RegisterCompleteWrapper extends Component {
     );
   }
 }
+RegisterCompleteWrapper.propTypes = {
+  location: PropTypes.object,
+  bind: PropTypes.func,
+  submit: PropTypes.func,
+};
+
+RegisterCompleteWrapper.defaultProps = {
+  location: {},
+  bind: () => {},
+  submit: () => {},
+};
 
 const mapStateToProps = () => ({});
-
 const mapDispatchToProps = dispatch => ({
   bind: data => dispatch(registerBindAccount(data)),
   submit: data => dispatch(registerComplete(data)),

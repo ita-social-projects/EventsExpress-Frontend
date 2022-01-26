@@ -5,11 +5,11 @@ import { confirmAlert } from "react-confirm-alert";
 import UnitOfMeasuringItem from "../../components/unitOfMeasuring/unitOfMeasuring-item";
 import UnitOfMeasuringEdit from "../../components/unitOfMeasuring/unitOfMeasuring-edit";
 import {
-  add_unitOfMeasuring,
+  addUnitOfMeasuring,
   setUnitOfMeasuringEdited,
 } from "../../actions/unitOfMeasuring/unitOfMeasuring-add-action";
-import { delete_unitOfMeasuring } from "../../actions/unitOfMeasuring/unitOfMeasuring-delete-action";
-import get_categoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
+import { deleteUnitOfMeasuring } from "../../actions/unitOfMeasuring/unitOfMeasuring-delete-action";
+import getCategoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 class UnitOfMeasuringItemWrapper extends Component {
@@ -19,9 +19,9 @@ class UnitOfMeasuringItemWrapper extends Component {
       values.shortName === this.props.item.shortName &&
       values.categoryId === this.props.item.category
     ) {
-      this.props.edit_cancel();
+      this.props.editCancel();
     } else {
-      return this.props.save_unitOfMeasuring({
+      return this.props.saveUnitOfMeasuring({
         ...values,
         id: this.props.item.id,
       });
@@ -43,7 +43,7 @@ class UnitOfMeasuringItemWrapper extends Component {
         {
           label: "Yes",
           onClick: () => {
-            this.props.delete_unitOfMeasuring(id);
+            this.props.deleteUnitOfMeasuring(id);
           },
         },
         {

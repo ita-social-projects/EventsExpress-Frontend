@@ -8,7 +8,7 @@ export const SET_UNIT_OF_MEASURING_EDITED = "SET_UNIT_OF_MEASURING_EDITED";
 
 const api_serv = new UnitOfMeasuringService();
 
-export function add_unitOfMeasuring(data) {
+export function addUnitOfMeasuring(data) {
   return async dispatch => {
     dispatch(getRequestInc());
     let response;

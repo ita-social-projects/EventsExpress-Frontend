@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import CheckboxList from "./CheckboxList";
 import TileWrapper from "../../components/tile-wrapper/TileWrapper";
 import "./TileRow.css";
@@ -7,7 +8,7 @@ const TileRow = props => {
   const [currTileIndex, setCurrTileIndex] = useState(-1);
 
   const handleTileToggleAction = index => {
-    if (index == currTileIndex) setCurrTileIndex(-1);
+    if (index === currTileIndex) setCurrTileIndex(-1);
     else setCurrTileIndex(index);
   };
 
@@ -31,6 +32,13 @@ const TileRow = props => {
       )}
     </div>
   );
+};
+
+TileRow.propTypes = {
+  data: PropTypes.array,
+};
+TileRow.defaultProps = {
+  data: [],
 };
 
 export default TileRow;
