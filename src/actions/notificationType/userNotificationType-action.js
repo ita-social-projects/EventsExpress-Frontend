@@ -7,7 +7,14 @@ export const GET_USER_NOTIFICATION_TYPES_DATA =
 
 const API_SERV = new NotificationTypeService();
 
-export default function get_userNotificationTypes() {
+function getUserNotificationTypesData(data) {
+  return {
+    type: GET_USER_NOTIFICATION_TYPES_DATA,
+    payload: data,
+  };
+}
+
+const getUserNotificationTypes = () => {
   return async dispatch => {
     dispatch(getRequestInc());
 
@@ -18,14 +25,9 @@ export default function get_userNotificationTypes() {
       return Promise.reject();
     }
     const jsonRes = await response.json();
-    dispatch(getUserNotificationTypes(jsonRes));
+    dispatch(getUserNotificationTypesData(jsonRes));
     return Promise.resolve();
   };
-}
+};
 
-function getUserNotificationTypes(data) {
-  return {
-    type: GET_USER_NOTIFICATION_TYPES_DATA,
-    payload: data,
-  };
-}
+export default getUserNotificationTypes;

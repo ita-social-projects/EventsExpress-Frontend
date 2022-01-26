@@ -8,6 +8,20 @@ export const RESET_TRACKS = "RESET_TRACKS";
 
 const API_SERV = new TrackService();
 
+function getNames(names) {
+  return { type: GET_ENTITY_NAMES, payload: names };
+}
+
+function getTracks(data) {
+  return { type: GET_TRACKS_DATA, payload: data };
+}
+
+export function resetTracks() {
+  return {
+    type: RESET_TRACKS,
+  };
+}
+
 export default function getAllTracks(filter) {
   return async dispatch => {
     dispatch(getRequestInc());
@@ -33,19 +47,5 @@ export function getEntityNames() {
     const jsonRes = await response.json();
     dispatch(getNames(jsonRes));
     return Promise.resolve();
-  };
-}
-
-function getNames(names) {
-  return { type: GET_ENTITY_NAMES, payload: names };
-}
-
-function getTracks(data) {
-  return { type: GET_TRACKS_DATA, payload: data };
-}
-
-export function reset_tracks() {
-  return {
-    type: RESET_TRACKS,
   };
 }

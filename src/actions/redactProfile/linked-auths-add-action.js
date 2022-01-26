@@ -6,6 +6,18 @@ import { buildValidationState } from "../../components/helpers/action-helpers";
 
 const API_SERV = new AccountService();
 
+const loginResponseHandler = call => {
+  return async dispatch => {
+    const response = await call();
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+    dispatch(getLinkedAuths());
+    return Promise.resolve();
+  };
+};
+
 export function localLoginAdd(email, password) {
   return async dispatch => {
     const response = await API_SERV.setLocalLoginAdd({
@@ -44,15 +56,3 @@ export function twitterLoginAdd(email) {
     });
   return loginResponseHandler(res);
 }
-
-const loginResponseHandler = call => {
-  return async dispatch => {
-    const response = await call();
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-    dispatch(getLinkedAuths());
-    return Promise.resolve();
-  };
-};

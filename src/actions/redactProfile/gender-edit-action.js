@@ -4,13 +4,20 @@ import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-export const editGender = {
+export const editGenderStates = {
   UPDATE: "UPDATE_GENDER",
 };
 
 const API_SERV = new UserService();
 
-export default function edit_Gender(data) {
+function updateGender(data) {
+  return {
+    type: editGenderStates.UPDATE,
+    payload: data,
+  };
+}
+
+const editGender = data => {
   return async dispatch => {
     dispatch(getRequestInc());
     const response = await API_SERV.setGender(data);
@@ -22,11 +29,6 @@ export default function edit_Gender(data) {
     dispatch(setSuccessAllert("Gender is successfully set"));
     return Promise.resolve();
   };
-}
+};
 
-function updateGender(data) {
-  return {
-    type: editGender.UPDATE,
-    payload: data,
-  };
-}
+export default editGender;

@@ -1,4 +1,5 @@
-﻿import { UserService } from "../../services";
+﻿/* eslint-disable consistent-return */
+import { UserService } from "../../services";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 import { setErrorAllertFromResponse } from "../alert-action";
 
@@ -7,19 +8,16 @@ export const RESET_USER = "RESET_USER";
 
 const API_SERV = new UserService();
 
-export default function get_user(id) {
-  return async dispatch => {
-    dispatch(getRequestInc());
+function getProfile(data) {
+  return {
+    type: GET_PROFILE_DATA,
+    payload: data,
+  };
+}
 
-    const response = await API_SERV.getUserById(id);
-    dispatch(getRequestDec());
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-    const jsonRes = await response.json();
-    dispatch(getProfile(jsonRes));
-    return Promise.resolve();
+export function resetUser() {
+  return {
+    type: RESET_USER,
   };
 }
 
@@ -39,15 +37,20 @@ export function setAttitude(data) {
   };
 }
 
-function getProfile(data) {
-  return {
-    type: GET_PROFILE_DATA,
-    payload: data,
-  };
-}
+const getUser = id => {
+  return async dispatch => {
+    dispatch(getRequestInc());
 
-export function reset_user() {
-  return {
-    type: RESET_USER,
+    const response = await API_SERV.getUserById(id);
+    dispatch(getRequestDec());
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+    const jsonRes = await response.json();
+    dispatch(getProfile(jsonRes));
+    return Promise.resolve();
   };
-}
+};
+
+export default getUser;

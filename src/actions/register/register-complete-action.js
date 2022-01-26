@@ -9,8 +9,16 @@ import { jwtStorageKey } from "../../constants/constants";
 const API_SERV = new AuthenticationService();
 const history = createBrowserHistory({ forceRefresh: true });
 
-export default function registerComplete(data) {
+export function getAccountIdFromJWT() {
+  const token = localStorage.getItem(jwtStorageKey);
+  const decoded = jwt.decode(token);
+  return decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid"];
+}
+
+const registerComplete = data => {
   return async dispatch => {
+    //! HOW TO FIX IT, I DIDN`T FIND ANYTHING IN INTERNET
+    // eslint-disable-next-line no-param-reassign
     data.accountId = getAccountIdFromJWT();
 
     const response = await API_SERV.setRegisterComplete(data);
@@ -23,10 +31,6 @@ export default function registerComplete(data) {
     dispatch(history.push("/home"));
     return Promise.resolve();
   };
-}
+};
 
-export function getAccountIdFromJWT() {
-  const token = localStorage.getItem(jwtStorageKey);
-  const decoded = jwt.decode(token);
-  return decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid"];
-}
+export default registerComplete;

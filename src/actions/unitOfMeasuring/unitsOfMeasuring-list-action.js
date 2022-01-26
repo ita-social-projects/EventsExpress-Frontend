@@ -6,7 +6,14 @@ export const GET_UNITS_OF_MEASURING_DATA = "GET_UNITS_OF_MEASURING_SUCCESS";
 
 const API_SERV = new UnitOfMeasuringService();
 
-export default function get_unitsOfMeasuring() {
+function getUnitsOfMeasuringData(data) {
+  return {
+    type: GET_UNITS_OF_MEASURING_DATA,
+    payload: data,
+  };
+}
+
+const getUnitsOfMeasuring = () => {
   return async dispatch => {
     dispatch(getRequestInc());
 
@@ -16,15 +23,10 @@ export default function get_unitsOfMeasuring() {
       return Promise.reject();
     }
     const jsonRes = await response.json();
-    dispatch(getUnitsOfMeasuring(jsonRes));
+    dispatch(getUnitsOfMeasuringData(jsonRes));
     dispatch(getRequestDec());
     return Promise.resolve();
   };
-}
+};
 
-function getUnitsOfMeasuring(data) {
-  return {
-    type: GET_UNITS_OF_MEASURING_DATA,
-    payload: data,
-  };
-}
+export default getUnitsOfMeasuring;
