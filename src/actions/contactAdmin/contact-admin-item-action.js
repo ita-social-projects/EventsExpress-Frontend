@@ -4,27 +4,29 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const GET_CONTACT_ADMIN_DATA = "GET_CONTACT_ADMIN_DATA";
 
-const api_serv = new ContactAdminService();
+const API_SERV = new ContactAdminService();
 
-export default function get_message_by_id(id) {
+function getMessageByIdData(data) {
+  return {
+    type: GET_CONTACT_ADMIN_DATA,
+    payload: data,
+  };
+}
+
+const getMessageById = id => {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.getMessage(id);
+    const response = await API_SERV.getMessage(id);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
     const jsonRes = await response.json();
     dispatch(getRequestDec());
-    dispatch(getMessageById(jsonRes));
+    dispatch(getMessageByIdData(jsonRes));
     return Promise.resolve();
   };
-}
+};
 
-function getMessageById(data) {
-  return {
-    type: GET_CONTACT_ADMIN_DATA,
-    payload: data,
-  };
-}
+export default getMessageById;

@@ -4,17 +4,24 @@ import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-export const changePassword = {
+export const changePasswordStates = {
   UPDATE: "UPDATE_PASSWORD",
 };
 
-const api_serv = new AuthenticationService();
+const API_SERV = new AuthenticationService();
 
-export default function change_Password(data) {
+export function changePasswordUpdate(data) {
+  return {
+    type: changePasswordStates.UPDATE,
+    payload: data,
+  };
+}
+
+const changePassword = data => {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.setChangePassword(data);
+    const response = await API_SERV.setChangePassword(data);
     dispatch(getRequestDec());
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
@@ -23,11 +30,5 @@ export default function change_Password(data) {
     dispatch(reset("ChangePassword"));
     return Promise.resolve();
   };
-}
-
-export function changePasswordUpdate(data) {
-  return {
-    type: changePassword.UPDATE,
-    payload: data,
-  };
-}
+};
+export default changePassword;

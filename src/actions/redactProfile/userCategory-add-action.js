@@ -4,18 +4,25 @@ import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-export const addUserCategory = {
+export const addUserCategoryStates = {
   PENDING: "SET_ADDUSERCATEGORY_PENDING",
   SUCCESS: "SET_ADDUSERCATEGORY_SUCCESS",
   UPDATE: "UPDATE_CATEGORIES",
 };
 
-const api_serv = new UserService();
+const API_SERV = new UserService();
 
-export default function setUserCategory(data) {
+function updateCategories(data) {
+  return {
+    type: addUserCategoryStates.UPDATE,
+    payload: data.categories,
+  };
+}
+
+const setUserCategory = data => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.setUserCategory(data);
+    const response = await API_SERV.setUserCategory(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }
@@ -24,11 +31,6 @@ export default function setUserCategory(data) {
     dispatch(setSuccessAllert("Favorite categories are updated"));
     return Promise.resolve();
   };
-}
+};
 
-function updateCategories(data) {
-  return {
-    type: addUserCategory.UPDATE,
-    payload: data.categories,
-  };
-}
+export default setUserCategory;

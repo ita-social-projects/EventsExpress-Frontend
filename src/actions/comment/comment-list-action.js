@@ -7,12 +7,19 @@ import {
 
 export const GET_COMMENTS_DATA = "GET_COMMENTS_DATA";
 
-const api_serv = new CommentService();
+const API_SERV = new CommentService();
 
-export default function getComments(data, page = 1) {
+function getCommentsInternal(data) {
+  return {
+    type: GET_COMMENTS_DATA,
+    payload: data,
+  };
+}
+
+const getComments = (data, page = 1) => {
   return async dispatch => {
     dispatch(getRequestLocalInc());
-    const response = await api_serv.getAllComments(data, page);
+    const response = await API_SERV.getAllComments(data, page);
     dispatch(getRequestLocalDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -22,11 +29,6 @@ export default function getComments(data, page = 1) {
     dispatch(getCommentsInternal(jsonRes));
     return Promise.resolve();
   };
-}
+};
 
-function getCommentsInternal(data) {
-  return {
-    type: GET_COMMENTS_DATA,
-    payload: data,
-  };
-}
+export default getComments;

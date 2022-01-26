@@ -7,26 +7,13 @@ import {
 
 export const GET_EVENTS_PROFILE_DATA = "GET_EVENTS_PROFILE_DATA";
 
-const api_serv = new EventService();
+const API_SERV = new EventService();
 
-export function get_future_events(id, page = 1) {
-  const call = api_serv.getFutureEvents;
-  return master(call, id, page);
-}
-
-export function get_past_events(id, page = 1) {
-  const call = api_serv.getPastEvents;
-  return master(call, id, page);
-}
-
-export function get_visited_events(id, page = 1) {
-  const call = api_serv.getVisitedEvents;
-  return master(call, id, page);
-}
-
-export function get_events_togo(id, page = 1) {
-  const call = api_serv.getEventsToGo;
-  return master(call, id, page);
+function getEvents(data) {
+  return {
+    type: GET_EVENTS_PROFILE_DATA,
+    payload: data,
+  };
 }
 
 function master(call, id, page) {
@@ -47,9 +34,22 @@ function master(call, id, page) {
   };
 }
 
-function getEvents(data) {
-  return {
-    type: GET_EVENTS_PROFILE_DATA,
-    payload: data,
-  };
+export function getFutureEvents(id, page = 1) {
+  const call = API_SERV.getFutureEvents;
+  return master(call, id, page);
+}
+
+export function getPastEvents(id, page = 1) {
+  const call = API_SERV.getPastEvents;
+  return master(call, id, page);
+}
+
+export function getVisitedEvents(id, page = 1) {
+  const call = API_SERV.getVisitedEvents;
+  return master(call, id, page);
+}
+
+export function getEventsTogo(id, page = 1) {
+  const call = API_SERV.getEventsToGo;
+  return master(call, id, page);
 }

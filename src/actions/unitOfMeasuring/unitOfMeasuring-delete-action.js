@@ -1,21 +1,23 @@
 import UnitOfMeasuringService from "../../services/unitOfMeasuringService";
-import get_unitsOfMeasuring from "./unitsOfMeasuring-list-action";
+import getUnitsOfMeasuring from "./unitsOfMeasuring-list-action";
 import { setErrorAllertFromResponse } from "../alert-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-const api_serv = new UnitOfMeasuringService();
+const API_SERV = new UnitOfMeasuringService();
 
-export function delete_unitOfMeasuring(data) {
+const deleteUnitOfMeasuring = data => {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.setUnitOfMeasuringDelete(data);
+    const response = await API_SERV.setUnitOfMeasuringDelete(data);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
     dispatch(getRequestDec());
-    dispatch(get_unitsOfMeasuring());
+    dispatch(getUnitsOfMeasuring());
     return Promise.resolve();
   };
-}
+};
+
+export default deleteUnitOfMeasuring;

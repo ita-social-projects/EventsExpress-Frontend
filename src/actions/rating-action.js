@@ -2,27 +2,71 @@ import { EventService } from "../services";
 import { setErrorAllertFromResponse } from "./alert-action";
 import { getRequestInc, getRequestDec } from "./request-count-action";
 
-export const getRate = {
+// TODO: FIX IMPORT IN \src\reducers\event-item-view.js
+export const getRateStates = {
   PENDING: "GET_RATE_PENDING",
   SUCCESS: "GET_RATE_SUCCESS",
 };
 
-export const getAverageRate = {
+export const getAverageRateStates = {
   PENDING: "GET_AVERAGE_RATE_PENDING",
   SUCCESS: "GET_AVERAGE_RATE_SUCCESS",
 };
 
-export const setRate = {
+export const setRateStates = {
   PENDING: "SET_RATE_PENDING",
   SUCCESS: "SET_RATE_SUCCESS",
 };
 
-const api_serv = new EventService();
+const API_SERV = new EventService();
 
-export function set_rating(data) {
+function getAverageRatingPending(data) {
+  return {
+    type: getAverageRateStates.PENDING,
+    payload: data,
+  };
+}
+
+function getAverageRatingSuccess(data) {
+  return {
+    type: getAverageRateStates.SUCCESS,
+    payload: data,
+  };
+}
+
+function getRatingPending(data) {
+  return {
+    type: getRateStates.PENDING,
+    payload: data,
+  };
+}
+
+function getRatingSuccess(data) {
+  return {
+    type: getRateStates.SUCCESS,
+    payload: data,
+  };
+}
+// TODO: MAKE AC FOR THE FURUTE FUNCTION
+// eslint-disable-next-line no-unused-vars
+function setRatingPending(data) {
+  return {
+    type: setRateStates.PENDING,
+    payload: data,
+  };
+}
+
+function setRatingSuccess(data) {
+  return {
+    type: setRateStates.SUCCESS,
+    payload: data,
+  };
+}
+
+export function setRating(data) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.setRate(data);
+    const response = await API_SERV.setRate(data);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -35,11 +79,11 @@ export function set_rating(data) {
   };
 }
 
-export function get_currrent_rating(data) {
+export function getCurrrentRating(data) {
   return async dispatch => {
     dispatch(getRatingPending(true));
 
-    const response = await api_serv.getCurrentRate(data);
+    const response = await API_SERV.getCurrentRate(data);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -50,11 +94,11 @@ export function get_currrent_rating(data) {
   };
 }
 
-export function get_average_rating(data) {
+export function getAverageRating(data) {
   return async dispatch => {
     dispatch(getAverageRatingPending(true));
 
-    const response = await api_serv.getAverageRate(data);
+    const response = await API_SERV.getAverageRate(data);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -62,47 +106,5 @@ export function get_average_rating(data) {
     const jsonRes = await response.json();
     dispatch(getAverageRatingSuccess(jsonRes));
     return Promise.resolve();
-  };
-}
-
-function getAverageRatingPending(data) {
-  return {
-    type: getAverageRate.PENDING,
-    payload: data,
-  };
-}
-
-function getAverageRatingSuccess(data) {
-  return {
-    type: getAverageRate.SUCCESS,
-    payload: data,
-  };
-}
-
-function getRatingPending(data) {
-  return {
-    type: getRate.PENDING,
-    payload: data,
-  };
-}
-
-function getRatingSuccess(data) {
-  return {
-    type: getRate.SUCCESS,
-    payload: data,
-  };
-}
-
-function setRatingPending(data) {
-  return {
-    type: setRate.PENDING,
-    payload: data,
-  };
-}
-
-function setRatingSuccess(data) {
-  return {
-    type: setRate.SUCCESS,
-    payload: data,
   };
 }

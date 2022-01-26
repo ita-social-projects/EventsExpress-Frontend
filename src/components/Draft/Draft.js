@@ -1,12 +1,14 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
+import PropTypes from "prop-types";
 import EventDraftListWrapper from "../../containers/event-draft-list";
 
-export default class Draft extends Component {
-  render() {
-    return (
-      <>
-        <EventDraftListWrapper location={this.props.location} />
-      </>
-    );
-  }
-}
+const Draft = ({ location }) => <EventDraftListWrapper location={location} />;
+
+Draft.defaultProps = {
+  location: {},
+};
+
+Draft.propTypes = {
+  location: PropTypes.object,
+};
+export default Draft;

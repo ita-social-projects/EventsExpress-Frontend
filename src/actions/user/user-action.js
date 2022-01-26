@@ -3,32 +3,105 @@ import { UserService } from "../../services";
 import { setErrorAllertFromResponse } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 
-export const blockUser = {
+// TODO: REFACTOR IMPORTS IN \src\reducers\users.js
+export const blockUserStates = {
   PENDING: "PENDING_BLOCK",
   SUCCESS: "SUCCESS_BLOCK",
   UPDATE: "UPDATE_BLOCKED",
 };
 
-export const unBlockUser = {
+export const unBlockUserStates = {
   PENDING: "PENDING_UNBLOCK",
   SUCCESS: "SUCCESS_UNBLOCK",
   UPDATE: "UPDATE_UNBLOCKED",
 };
 
-export const changeUserRole = {
+export const changeUserRoleStates = {
   SET_EDITED: "SET_EDITED_USER",
   PENDING: "PENDING_CHANGE_ROLE",
   SUCCESS: "SUCCESS_CHANGE_ROLE",
   UPDATE: "UPDATE_CHANGE_ROLE",
 };
-const api_serv = new UserService();
+
+// change role actions
+
+function setEditedUserData(data) {
+  return {
+    type: changeUserRoleStates.SET_EDITED,
+    payload: data,
+  };
+}
+
+function setChangeUserRolePending(data) {
+  return {
+    type: changeUserRoleStates.PENDING,
+    payload: data,
+  };
+}
+
+function setChangeUserRoleSuccess() {
+  return {
+    type: changeUserRoleStates.SUCCESS,
+  };
+}
+
+function updateChangeUserRoles(data) {
+  return {
+    type: changeUserRoleStates.UPDATE,
+    payload: data,
+  };
+}
+
+// block User actions
+function setBlockUserPending(data) {
+  return {
+    type: blockUserStates.PENDING,
+    payload: data,
+  };
+}
+
+function setBlockUserSuccess() {
+  return {
+    type: blockUserStates.SUCCESS,
+  };
+}
+
+function updateBlockedUser(id) {
+  return {
+    type: blockUserStates.UPDATE,
+    payload: id,
+  };
+}
+
+// unBlock User actions
+function setUnBlockUserPending(data) {
+  return {
+    type: unBlockUserStates.PENDING,
+    payload: data,
+  };
+}
+
+function setUnBlockUserSuccess() {
+  return {
+    type: unBlockUserStates.SUCCESS,
+  };
+}
+
+function updateUnBlockedUser(id) {
+  return {
+    type: unBlockUserStates.UPDATE,
+    payload: id,
+  };
+}
+
+const API_SERV = new UserService();
 
 // ACTION CREATOR FOR USER UNBLOCK:
-export function unblock_user(id) {
+export function unblockUser(id) {
   return async dispatch => {
     dispatch(setUnBlockUserPending(true));
 
-    const response = await api_serv.setUserUnblock(id);
+    const response = await API_SERV.setUserUnblock(id);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -40,11 +113,11 @@ export function unblock_user(id) {
 }
 
 // ACTION CREATOR FOR USER BLOCK:
-export function block_user(id) {
+export function blockUser(id) {
   return async dispatch => {
     dispatch(setBlockUserPending(true));
 
-    const response = await api_serv.setUserBlock(id);
+    const response = await API_SERV.setUserBlock(id);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -56,11 +129,11 @@ export function block_user(id) {
 }
 
 // ACTION CREATOR FOR CHANGE USER ROLE:
-export function change_user_role(userId, newRoles) {
+export function changeUserRole(userId, newRoles) {
   return async dispatch => {
     dispatch(setChangeUserRolePending(true));
 
-    const response = await api_serv.setChangeUserRole({
+    const response = await API_SERV.setChangeUserRole({
       userId,
       roles: newRoles,
     });
@@ -73,79 +146,8 @@ export function change_user_role(userId, newRoles) {
   };
 }
 
-export function set_edited_user(userId) {
+export function setEditedUser(userId) {
   return dispatch => {
-    dispatch(setEditedUser(userId));
-  };
-}
-
-// change role actions
-
-function setEditedUser(data) {
-  return {
-    type: changeUserRole.SET_EDITED,
-    payload: data,
-  };
-}
-
-function setChangeUserRolePending(data) {
-  return {
-    type: changeUserRole.PENDING,
-    payload: data,
-  };
-}
-
-function setChangeUserRoleSuccess() {
-  return {
-    type: changeUserRole.SUCCESS,
-  };
-}
-
-function updateChangeUserRoles(data) {
-  return {
-    type: changeUserRole.UPDATE,
-    payload: data,
-  };
-}
-
-// block User actions
-function setBlockUserPending(data) {
-  return {
-    type: blockUser.PENDING,
-    payload: data,
-  };
-}
-
-function setBlockUserSuccess() {
-  return {
-    type: blockUser.SUCCESS,
-  };
-}
-
-function updateBlockedUser(id) {
-  return {
-    type: blockUser.UPDATE,
-    payload: id,
-  };
-}
-
-// unBlock User actions
-function setUnBlockUserPending(data) {
-  return {
-    type: unBlockUser.PENDING,
-    payload: data,
-  };
-}
-
-function setUnBlockUserSuccess() {
-  return {
-    type: unBlockUser.SUCCESS,
-  };
-}
-
-function updateUnBlockedUser(id) {
-  return {
-    type: unBlockUser.UPDATE,
-    payload: id,
+    dispatch(setEditedUserData(userId));
   };
 }
