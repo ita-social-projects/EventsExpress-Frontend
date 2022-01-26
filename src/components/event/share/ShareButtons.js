@@ -24,7 +24,7 @@ const ShareButtons = ({ config, href }) => {
   }
 
   ShareButtons.propTypes = {
-  config: PropTypes.oneOf(PropTypes.array, PropTypes.object), 
+  config: PropTypes.oneOfType(PropTypes.array, PropTypes.object), 
   href: PropTypes.string,
   }
 

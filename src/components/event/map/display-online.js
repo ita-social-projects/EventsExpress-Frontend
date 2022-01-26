@@ -21,7 +21,7 @@ const DisplayOnline = ({ locationPath }) => {
   }
   
   DisplayOnline.propTypes = {
-    locationPath: PropTypes.oneOf(PropTypes.obkect, PropTypes.array),
+    locationPath: PropTypes.oneOfType(PropTypes.obkect, PropTypes.array),
   }
   
   DisplayOnline.defaultProps = {
