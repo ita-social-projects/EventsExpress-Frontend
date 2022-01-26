@@ -1,9 +1,34 @@
+/* eslint-disable no-shadow */
 import { getErrorMessage } from "../components/helpers/action-helpers";
 
-export const _alert = {
+export const alert = {
   SET: "SET_ALERT",
   SETOPEN: "ALERT_SET_OPEN",
 };
+
+export function setAlertOpen(data) {
+  return {
+    type: alert.SETOPEN,
+    payload: data,
+  };
+}
+
+function setAlertInternal(data) {
+  return {
+    type: alert.SET,
+    payload: data,
+  };
+}
+
+const buildAlertWithError = msg => ({
+  variant: "error",
+  message: msg,
+});
+
+const buildAlertWithSuccess = msg => ({
+  variant: "success",
+  message: msg,
+});
 
 export function setAlert(data) {
   return dispatch => {
@@ -33,27 +58,3 @@ export function setErrorAlert(msg) {
     dispatch(setAlert(alert));
   };
 }
-
-export function setAlertOpen(data) {
-  return {
-    type: _alert.SETOPEN,
-    payload: data,
-  };
-}
-
-function setAlertInternal(data) {
-  return {
-    type: _alert.SET,
-    payload: data,
-  };
-}
-
-const buildAlertWithError = msg => ({
-  variant: "error",
-  message: msg,
-});
-
-const buildAlertWithSuccess = msg => ({
-  variant: "success",
-  message: msg,
-});

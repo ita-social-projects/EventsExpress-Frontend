@@ -1,6 +1,5 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import propTypes from "prop-types";
 import { renderSelectField } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
 

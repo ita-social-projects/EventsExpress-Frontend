@@ -3,11 +3,18 @@ import { setErrorAllertFromResponse } from "../alert-action";
 
 export const GET_LINKED_AUTHS_SUCCESS = "GET_LINKED_AUTHS_SUCCESS";
 
-const api_serv = new AccountService();
+const API_SERV = new AccountService();
 
-export default function getLinkedAuths() {
+export function pushToStateLinkedAuths(data) {
+  return {
+    type: GET_LINKED_AUTHS_SUCCESS,
+    payload: data,
+  };
+}
+
+const getLinkedAuths = () => {
   return async dispatch => {
-    const response = await api_serv.getLinkedAuths();
+    const response = await API_SERV.getLinkedAuths();
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -17,11 +24,6 @@ export default function getLinkedAuths() {
     dispatch(pushToStateLinkedAuths(jsonRes));
     return Promise.resolve();
   };
-}
+};
 
-export function pushToStateLinkedAuths(data) {
-  return {
-    type: GET_LINKED_AUTHS_SUCCESS,
-    payload: data,
-  };
-}
+export default getLinkedAuths;

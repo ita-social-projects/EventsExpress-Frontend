@@ -4,12 +4,12 @@ import { CommentService } from "../../services";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-const api_serv = new CommentService();
+const API_SERV = new CommentService();
 
-export default function (data) {
+const addComent = data => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.setComment(data);
+    const response = await API_SERV.setComment(data);
     dispatch(getRequestDec());
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
@@ -18,4 +18,6 @@ export default function (data) {
     dispatch(reset("add-comment"));
     return Promise.resolve();
   };
-}
+};
+
+export default addComent;
