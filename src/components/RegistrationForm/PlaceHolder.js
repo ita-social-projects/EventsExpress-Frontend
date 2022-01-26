@@ -1,9 +1,9 @@
 import React from "react";
+import propTypes from "prop-types";
 import { Grid, Button } from "@material-ui/core";
 import { reduxForm } from "redux-form";
 
-const PlaceHolder = props => {
-  const { handleSubmit, previousPage } = props;
+const PlaceHolder = ({ handleSubmit, previousPage }) => {
   return (
     <>
       <div style={{ width: "97%", padding: "10px" }}>
@@ -35,6 +35,16 @@ const PlaceHolder = props => {
       </div>
     </>
   );
+};
+
+PlaceHolder.propTypes = {
+  handleSubmit: propTypes.func,
+  previousPage: propTypes.func,
+};
+
+PlaceHolder.defaultProps = {
+  handleSubmit: () => {},
+  previousPage: () => {},
 };
 
 export default reduxForm({

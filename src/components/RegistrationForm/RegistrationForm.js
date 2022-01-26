@@ -1,12 +1,19 @@
 import "./RegistrationForm.css";
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Stepper from "../stepper/Stepper";
 import CompleteProfileForm from "./CompleteProfileForm";
 import ConfirmForm from "./ConfirmForm";
 import ChooseActivities from "./ChooseActivities";
-import Success from "./Success";
+import SuccessResult from "./Success";
 import PlaceHolder from "./PlaceHolder";
+
+const stepsArray = [
+  "Register",
+  "Complete Profile",
+  "Step 3",
+  "Step 4",
+  "Confirm",
+];
 
 export default class RegistrationForm extends Component {
   constructor(props) {
@@ -19,15 +26,16 @@ export default class RegistrationForm extends Component {
   }
 
   nextPage() {
-    this.setState({ currentStep: this.state.currentStep + 1 });
+    this.setState(state => ({ currentStep: state.currentStep + 1 }));
   }
 
   previousPage() {
-    this.setState({ currentStep: this.state.currentStep - 1 });
+    this.setState(state => ({ currentStep: state.currentStep - 1 }));
   }
 
   render() {
-    const { onSubmit } = this.props;
+    // TODO: don`t use this props (it`s func)
+    // const { onSubmit } = this.props;
     const { currentStep } = this.state;
 
     return (
@@ -62,7 +70,7 @@ export default class RegistrationForm extends Component {
                   onSubmit={this.nextPage}
                 />
               )}
-              {currentStep === 6 && <Success />}
+              {currentStep === 6 && <SuccessResult />}
             </div>
           </div>
         </div>
@@ -70,15 +78,3 @@ export default class RegistrationForm extends Component {
     );
   }
 }
-
-const stepsArray = [
-  "Register",
-  "Complete Profile",
-  "Step 3",
-  "Step 4",
-  "Confirm",
-];
-
-RegistrationForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};

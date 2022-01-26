@@ -1,11 +1,12 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import propTypes from "prop-types";
 import { renderSelectField } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
 
 const editGenderRegister = props => {
   const { handleSubmit } = props;
-  return render(
+  return (
     <form name="editGenderRegister" onSubmit={handleSubmit}>
       <div>
         <Field
@@ -23,7 +24,7 @@ const editGenderRegister = props => {
           <ErrorMessages error={props.error} className="text-center" />
         )}
       </div>
-    </form>,
+    </form>
   );
 };
 
