@@ -102,7 +102,7 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
 
 LocationFilter.propTypes = {
   dispatch: PropTypes.func,
-  formValues: PropTypes.oneOf(PropTypes.object, PropTypes.array),
+  formValues: PropTypes.oneOfType(PropTypes.object, PropTypes.array),
   clear: PropTypes.func,
   changeLocation: PropTypes.func,
 }

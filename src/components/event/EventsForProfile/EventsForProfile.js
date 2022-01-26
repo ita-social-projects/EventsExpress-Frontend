@@ -47,11 +47,11 @@ const EventsForProfile = ({
 
 
 EventsForProfile.propTypes = {
-  page: PropTypes.oneOf(PropTypes.number, PropTypes.string),
-  totalPages: PropTypes.oneOf(PropTypes.number, PropTypes.string),
+  page: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
+  totalPages: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
   callback: PropTypes.func,
   notificationEvents: PropTypes.string,
-  currentUser: PropTypes.oneOf(PropTypes.number, PropTypes.string),
+  currentUser: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
   dataList: []
 }
 

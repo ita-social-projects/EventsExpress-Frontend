@@ -66,7 +66,7 @@ class DisplayMap extends Component {
 
 
 DisplayMap.propTypes = {
-  location: PropTypes.oneOf(PropTypes.object, PropTypes.array),
+  location: PropTypes.oneOfType(PropTypes.object, PropTypes.array),
 }
 
 DisplayMap.defaultProps = {

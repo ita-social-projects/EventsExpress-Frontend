@@ -61,7 +61,7 @@ const FilterExpansionPanel = ({
 
 FilterExpansionPanel.propTypes = {
   title: PropTypes.string,
-  children:PropTypes.oneOf(PropTypes.array, PropTypes.object),
+  children:PropTypes.oneOfType(PropTypes.array, PropTypes.object),
   onClearClick: PropTypes.func,
   clearDisabled: PropTypes.func,
 }

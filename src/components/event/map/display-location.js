@@ -22,7 +22,7 @@ const DisplayLocation = ( {location} ) => {
   }
 
   DisplayLocation.propTypes = {
-    location: PropTypes.oneOf(PropTypes.array,PropTypes.object)
+    location: PropTypes.oneOfType(PropTypes.array,PropTypes.object)
   }
 
   DisplayLocation.defaultProps = {

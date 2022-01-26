@@ -45,7 +45,7 @@ const mapDispatchToProps = dispatch => ({
 
 OrganizerFilter.propTypes = {
   organizers: PropTypes.array,
-  formValues: PropTypes.oneOf(PropTypes.array, PropTypes.object),
+  formValues: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
   change: PropTypes.func,
   fetchUsers: PropTypes.func,
 }
