@@ -3,13 +3,20 @@ import { AuthenticationService } from "../../services";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-export const recoverPassword = {
+export const recoverPasswordStates = {
   DATA: "SET_RECOVERPASSWORD_STATE",
 };
 
 const API_SERV = new AuthenticationService();
 
-export default function recover_Password(data) {
+const setRecoverPasswordStateError = data => {
+  return {
+    type: recoverPasswordStates.DATA,
+    payload: data,
+  };
+};
+
+const recoverPassword = data => {
   return async dispatch => {
     dispatch(getRequestInc());
     const response = await API_SERV.setRecoverPassword(data);
@@ -21,11 +28,6 @@ export default function recover_Password(data) {
     dispatch(setRecoverPasswordStateError(false));
     return Promise.resolve();
   };
-}
-
-const setRecoverPasswordStateError = data => {
-  return {
-    type: recoverPassword.DATA,
-    payload: data,
-  };
 };
+
+export default recoverPassword;

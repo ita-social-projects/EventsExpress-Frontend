@@ -17,13 +17,63 @@ export const SET_USER = "SET_USER";
 const history = createBrowserHistory({ forceRefresh: true });
 const API_SERV = new AuthenticationService();
 
-export default function login(email, password) {
-  const call = () =>
-    API_SERV.setLogin({
-      Email: email,
-      Password: password,
-    });
-  return loginResponseHandler(call);
+export function setUser(data) {
+  return {
+    type: SET_USER,
+    payload: data,
+  };
+}
+
+export function getUserInfo(profile) {
+  return async dispatch => {
+    const response = await API_SERV.getUserInfo();
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+
+    if (
+      response.status === 204 &&
+      history.location.pathname !== "/registerComplete"
+    ) {
+      history.push("/registerComplete", { profile });
+      return Promise.resolve();
+    }
+
+    const userInfo = await response.json();
+    const eventFilter = {
+      ...filterHelper.getDefaultEventFilter(),
+      categories: userInfo.categories.map(item => item.id),
+    };
+    dispatch(setUser(userInfo));
+    dispatch(updateEventsFilters(eventFilter));
+    localStorage.setItem("id", userInfo.id);
+    dispatch(initialConnection());
+    dispatch(getUnreadMessages(userInfo.id));
+
+    return Promise.resolve();
+  };
+}
+
+async function setUserInfo(response, profile, dispatch) {
+  const jsonRes = await response.json();
+  localStorage.setItem(jwtStorageKey, jsonRes.token);
+
+  dispatch(getUserInfo(profile));
+  return Promise.resolve();
+}
+
+function loginResponseHandler(call, profile) {
+  return async dispatch => {
+    dispatch(getRequestInc());
+    const response = await call();
+    dispatch(getRequestDec());
+    if (!response.ok) {
+      localStorage.clear();
+      throw new SubmissionError(await buildValidationState(response));
+    }
+    return setUserInfo(response, profile, dispatch);
+  };
 }
 
 export function loginGoogle(tokenId, profile) {
@@ -85,61 +135,13 @@ export function loginAfterEmailConfirmation(data) {
   };
 }
 
-export function getUserInfo(profile) {
-  return async dispatch => {
-    const response = await API_SERV.getUserInfo();
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
+const login = (email, password) => {
+  const call = () =>
+    API_SERV.setLogin({
+      Email: email,
+      Password: password,
+    });
+  return loginResponseHandler(call);
+};
 
-    if (
-      response.status == 204 &&
-      history.location.pathname != "/registerComplete"
-    ) {
-      history.push("/registerComplete", { profile });
-      return Promise.resolve();
-    }
-
-    const userInfo = await response.json();
-    const eventFilter = {
-      ...filterHelper.getDefaultEventFilter(),
-      categories: userInfo.categories.map(item => item.id),
-    };
-    dispatch(setUser(userInfo));
-    dispatch(updateEventsFilters(eventFilter));
-    localStorage.setItem("id", userInfo.id);
-    dispatch(initialConnection());
-    dispatch(getUnreadMessages(userInfo.id));
-
-    return Promise.resolve();
-  };
-}
-
-export function setUser(data) {
-  return {
-    type: SET_USER,
-    payload: data,
-  };
-}
-
-function loginResponseHandler(call, profile) {
-  return async dispatch => {
-    dispatch(getRequestInc());
-    const response = await call();
-    dispatch(getRequestDec());
-    if (!response.ok) {
-      localStorage.clear();
-      throw new SubmissionError(await buildValidationState(response));
-    }
-    return setUserInfo(response, profile, dispatch);
-  };
-}
-
-async function setUserInfo(response, profile, dispatch) {
-  const jsonRes = await response.json();
-  localStorage.setItem(jwtStorageKey, jsonRes.token);
-
-  dispatch(getUserInfo(profile));
-  return Promise.resolve();
-}
+export default login;

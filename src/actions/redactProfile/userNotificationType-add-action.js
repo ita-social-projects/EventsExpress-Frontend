@@ -4,13 +4,20 @@ import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-export const addUserNotificationType = {
+export const addUserNotificationTypeStates = {
   UPDATE: "UPDATE_NOTIFICATION_TYPES",
 };
 
 const API_SERV = new UserService();
 
-export default function setUserNotificationTypes(data) {
+function updateNotificationTypes(data) {
+  return {
+    type: addUserNotificationTypeStates.UPDATE,
+    payload: data.notificationTypes,
+  };
+}
+
+const setUserNotificationTypes = data => {
   return async dispatch => {
     dispatch(getRequestInc());
     const response = await API_SERV.setUserNotificationType(data);
@@ -25,11 +32,6 @@ export default function setUserNotificationTypes(data) {
     dispatch(setSuccessAllert(textMessage));
     return Promise.resolve();
   };
-}
+};
 
-function updateNotificationTypes(data) {
-  return {
-    type: addUserNotificationType.UPDATE,
-    payload: data.notificationTypes,
-  };
-}
+export default setUserNotificationTypes;

@@ -8,7 +8,28 @@ export const GET_TEMPLATE_PROPERTIES_SUCCESS =
 
 const API_SERV = new NotificationTemplateService();
 
-export function get_all_templates() {
+function getTemplatesData(data) {
+  return {
+    type: GET_TEMPLATES_SUCCESS,
+    payload: data,
+  };
+}
+
+function getTemplateData(data) {
+  return {
+    type: GET_TEMPLATE_SUCCESS,
+    payload: data,
+  };
+}
+
+function getPropertiesData(data) {
+  return {
+    type: GET_TEMPLATE_PROPERTIES_SUCCESS,
+    payload: data,
+  };
+}
+
+export function getAllTemplates() {
   return async dispatch => {
     const response = await API_SERV.getAll();
 
@@ -18,13 +39,13 @@ export function get_all_templates() {
     }
 
     const jsonRes = await response.json();
-    dispatch(getTemplates(jsonRes));
+    dispatch(getTemplatesData(jsonRes));
 
     return Promise.resolve();
   };
 }
 
-export function get_template(id) {
+export function getTemplate(id) {
   return async dispatch => {
     const response = await API_SERV.getByIdAsync(id);
 
@@ -34,15 +55,15 @@ export function get_template(id) {
     }
 
     const jsonRes = await response.json();
-    dispatch(getTemplate(jsonRes));
+    dispatch(getTemplateData(jsonRes));
 
     return Promise.resolve();
   };
 }
 
-export function get_template_properties(template_id) {
+export function getTemplateProperties(templateId) {
   return async dispatch => {
-    const response = await API_SERV.getProperties(template_id);
+    const response = await API_SERV.getProperties(templateId);
 
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -50,13 +71,13 @@ export function get_template_properties(template_id) {
     }
 
     const jsonRes = await response.json();
-    dispatch(getProperties(jsonRes));
+    dispatch(getPropertiesData(jsonRes));
 
     return Promise.resolve();
   };
 }
 
-export function update_template(template) {
+export function updateTemplate(template) {
   return async dispatch => {
     const response = await API_SERV.updateAsync(template);
 
@@ -66,26 +87,5 @@ export function update_template(template) {
     }
 
     return Promise.resolve();
-  };
-}
-
-function getTemplates(data) {
-  return {
-    type: GET_TEMPLATES_SUCCESS,
-    payload: data,
-  };
-}
-
-function getTemplate(data) {
-  return {
-    type: GET_TEMPLATE_SUCCESS,
-    payload: data,
-  };
-}
-
-function getProperties(data) {
-  return {
-    type: GET_TEMPLATE_PROPERTIES_SUCCESS,
-    payload: data,
   };
 }

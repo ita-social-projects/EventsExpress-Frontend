@@ -26,6 +26,7 @@
     "moment": "2.24.0",
     "moment-timezone": "0.5.26",
     "progress": "2.0.3",
+    "prop-types": "^15.8.1",
     "query-string": "7.0.1",
     "react": "16.8.6",
     "react-alert": "5.5.0",

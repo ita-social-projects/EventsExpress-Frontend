@@ -10,7 +10,7 @@ export const SET_REGISTER_SUCCESS = "SET_REGISTER_SUCCESS";
 const API_SERV = new AuthenticationService();
 const history = createBrowserHistory({ forceRefresh: true });
 
-export default function register(email, password) {
+const register = (email, password) => {
   return async dispatch => {
     dispatch(getRequestInc());
 
@@ -25,4 +25,6 @@ export default function register(email, password) {
     dispatch(history.push("/registerSuccess"));
     return Promise.resolve();
   };
-}
+};
+
+export default register;

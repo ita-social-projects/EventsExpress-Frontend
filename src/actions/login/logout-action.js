@@ -8,7 +8,13 @@ export const SET_LOGOUT = "SET_LOGOUT";
 
 const API_SERV = new AuthenticationService();
 
-export default function logout() {
+function setLogout() {
+  return {
+    type: SET_LOGOUT,
+  };
+}
+
+const logout = () => {
   return async dispatch => {
     dispatch(updateEventsFilters(filterHelper.getDefaultEventFilter()));
     dispatch(reset());
@@ -17,10 +23,5 @@ export default function logout() {
     localStorage.clear();
     return API_SERV.revokeToken();
   };
-}
-
-function setLogout() {
-  return {
-    type: SET_LOGOUT,
-  };
-}
+};
+export default logout;
