@@ -2,7 +2,7 @@ import { EventService } from "../services";
 import { setErrorAllertFromResponse } from "./alert-action";
 import { getRequestInc, getRequestDec } from "./request-count-action";
 
-//! FIX IMPORT IN \src\reducers\event-item-view.js
+// TODO: FIX IMPORT IN \src\reducers\event-item-view.js
 export const getRateStates = {
   PENDING: "GET_RATE_PENDING",
   SUCCESS: "GET_RATE_SUCCESS",
@@ -47,7 +47,7 @@ function getRatingSuccess(data) {
     payload: data,
   };
 }
-//! MAKE AC FOR THE FURUTE FUNCTION
+// TODO: MAKE AC FOR THE FURUTE FUNCTION
 // eslint-disable-next-line no-unused-vars
 function setRatingPending(data) {
   return {

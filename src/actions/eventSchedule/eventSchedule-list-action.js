@@ -7,7 +7,7 @@ export const RESET_EVENTS_SCHEDULE = "RESET_EVENTS_SCHEDULE";
 
 const API_SERV = new EventScheduleService();
 
-//! cnahge import in C:\_D\Practice_work\EventsExpress-Frontend\src\containers\eventSchedules-list.js
+// TODO: cnahge import in \src\containers\eventSchedules-list.js
 export function getEventSchedulesData(data) {
   return {
     type: GET_EVENTS_SCHEDULE_DATA,

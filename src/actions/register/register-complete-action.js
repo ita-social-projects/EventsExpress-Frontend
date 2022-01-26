@@ -17,11 +17,10 @@ export function getAccountIdFromJWT() {
 
 const registerComplete = data => {
   return async dispatch => {
-    //! HOW TO FIX IT, I DIDN`T FIND ANYTHING IN INTERNET
-    // eslint-disable-next-line no-param-reassign
-    data.accountId = getAccountIdFromJWT();
-
-    const response = await API_SERV.setRegisterComplete(data);
+    const response = await API_SERV.setRegisterComplete({
+      ...data,
+      accountId: getAccountIdFromJWT(),
+    });
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }

@@ -28,7 +28,6 @@ export default class DraftEventCard extends Component {
     super(props);
 
     this.state = {
-      anchorEl: null,
       eventImage: eventDefaultImage,
     };
   }
