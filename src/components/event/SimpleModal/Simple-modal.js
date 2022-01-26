@@ -3,14 +3,14 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import { DialogContent } from "@material-ui/core";
+import PropTypes from "prop-types";
 
-export default class SimpleModal extends Component {
+class SimpleModal extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isOpen: false,
-      id: null,
     };
   }
 
@@ -19,7 +19,7 @@ export default class SimpleModal extends Component {
   };
 
   onClose = () => {
-    this.setState({ isOpen: false, id: null });
+    this.setState({ isOpen: false });
   };
 
   onConfirm = () => {
@@ -30,11 +30,17 @@ export default class SimpleModal extends Component {
   render() {
     return (
       <>
-        <div onClick={this.onclick}>{this.props.button}</div>
+        <div role = "button" 
+        onClick={this.onclick} 
+        onKeyDown={this.onclick}
+        tabIndex={0}
+        >
+          {this.props.button}</div>
         <Dialog open={this.state.isOpen} onClose={this.onClose}>
           <div className="eventCancel">
             <DialogContent>
-              <div>{this.props.data}</div>
+              <div>{this.props.data}
+              </div>
             </DialogContent>
             <DialogActions>
               <Button
@@ -61,3 +67,19 @@ export default class SimpleModal extends Component {
     );
   }
 }
+
+SimpleModal.propTypes = {
+  action: PropTypes.func,
+  data: PropTypes.object,
+  button: PropTypes.func,
+}
+
+SimpleModal.defaultProps = {
+  action: () => {},
+  data: {},
+  button: () => {},
+}
+
+export default SimpleModal;
+
+
