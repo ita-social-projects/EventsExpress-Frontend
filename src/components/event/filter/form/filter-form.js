@@ -2,7 +2,8 @@ import { Button, Icon, IconButton } from "@material-ui/core";
 import React from "react";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { useFilterStyles } from "../filter-styles";
+import PropTypes from "prop-types";
+import useFilterStyles from "../filter-styles";
 import { GreenButton } from "./green-button";
 import OrganizerFilter from "../parts/organizer/organizer-filter";
 import {
@@ -58,6 +59,26 @@ const mapDispatchToProps = dispatch => ({
   applyFilters: filters => dispatch(applyFilters(filters)),
   resetFilters: () => dispatch(resetFilters()),
 });
+
+FilterForm.propTypes = {
+  handleSubmit: PropTypes.func,
+  toggleOpen: PropTypes.func,
+  reset: PropTypes.func,
+  pristine: PropTypes.func,
+  applyFilters: PropTypes.func,
+  resetFilters: PropTypes.func,
+
+
+} 
+
+FilterForm.defaultProps = {
+  handleSubmit: ()=> {},
+  toggleOpen: ()=> {},
+  reset: ()=> {},
+  pristine: ()=> {},
+  applyFilters: () => {},
+  resetFilters: () => {},
+} 
 
 export default connect(
   null,

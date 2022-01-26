@@ -1,29 +1,32 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { enumLocationType } from "../../../constants/EventLocationType";
 import DisplayMap from "./display-map";
 import DisplayOnline from "./display-online";
 
-class DisplayLocation extends Component {
-  constructor(props) {
-    super(props);
-  }
+const DisplayLocation = ( {location} ) => {
 
-  render() {
-    if (
-      this.props.location &&
-      this.props.location.type == enumLocationType.map
+  if (
+      location &&
+      location?.type === enumLocationType.map
     ) {
-      return <DisplayMap location={this.props.location} />;
+      return <DisplayMap location={location} />;
     }
     if (
-      this.props.location &&
-      this.props.location.type == enumLocationType.online
+      location?.type === enumLocationType.online
     ) {
-      return <DisplayOnline locationPath={this.props.location.onlineMeeting} />;
+      return <DisplayOnline locationPath={location?.onlineMeeting} />;
     }
 
     return null;
   }
-}
+
+  DisplayLocation.propTypes = {
+    location: PropTypes.oneOf(PropTypes.array,PropTypes.object)
+  }
+
+  DisplayLocation.defaultProps = {
+    location: {}
+  }
 
 export default DisplayLocation;

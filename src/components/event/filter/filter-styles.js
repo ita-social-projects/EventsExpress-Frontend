@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const drawerWidth = 320;
 const drawerIndex = 250;
 
-export const useFilterStyles = makeStyles({
+const useFilterStyles = makeStyles({
   drawerPaper: {
     zIndex: drawerIndex,
     paddingTop: "53px",
@@ -39,3 +39,5 @@ export const useFilterStyles = makeStyles({
     margin: 0,
   },
 });
+
+export default useFilterStyles;

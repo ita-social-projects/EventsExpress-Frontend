@@ -10,7 +10,6 @@ import RenderList from "../RenderList/RenderList";
 import EventCard from "../EventItem/Event-item";
 import filterHelper from "../../helpers/filterHelper";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
-// eslint-disable-next-line import/named
 import { resetEvents, updateEventsFilters } from "../../../actions/event/event-list-action";
 // eslint-disable-next-line import/named
 import { changedEventStatus } from "../../../actions/event/event-item-view-action";

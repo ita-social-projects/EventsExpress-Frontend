@@ -5,8 +5,9 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
+import PropTypes from "prop-types";
 import { enumLocationType } from "../../../../../constants/EventLocationType";
-import { FilterExpansionPanel } from "../../expansion-panel/filter-expansion-panel";
+import FilterExpansionPanel from "../../expansion-panel/filter-expansion-panel";
 import { LocationMapWithCircle } from "../../../../helpers/form-helpers/location";
 import DisplayMap from "../../../map/display-map";
 import "../../../slider.css";
@@ -63,7 +64,7 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
           formValues.location !== null &&
           formValues.location.radius && (
             <div className="slidecontainer">
-              <label>Radius is {formValues.location.radius} km</label>
+              <label htmlFor="location">Radius is {formValues.location.radius} km</label>
               <Field
                 name="location.radius"
                 component="input"
@@ -99,9 +100,26 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
   );
 };
 
+LocationFilter.propTypes = {
+  dispatch: PropTypes.func,
+  formValues: PropTypes.oneOf(PropTypes.object, PropTypes.array),
+  clear: PropTypes.func,
+  changeLocation: PropTypes.func,
+}
+
+LocationFilter.defaultProps = {
+  dispatch: ()=>{},
+  formValues: {},
+  clear: () => {},
+  changeLocation: () => {},
+
+
+}
+
 const mapStateToProps = state => {
   return {
     ...state.eventsFilter.locationFilter,
+    // eslint-disable-next-line sonarjs/no-duplicate-string
     formValues: getFormValues("filter-form")(state),
   };
 };

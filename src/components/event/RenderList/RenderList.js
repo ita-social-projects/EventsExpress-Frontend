@@ -52,7 +52,7 @@ RenderList.defaultProps = {
   dataList: [], 
   customNoResultsMessage: "",
   handlePageChange: () => {},
-  renderSingleItem: () => {}
+  renderSingleItem: () => {},
 }
 
 
