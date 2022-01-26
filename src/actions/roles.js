@@ -2,7 +2,7 @@ import { RoleService } from "../services";
 import { setErrorAllertFromResponse } from "./alert-action";
 import { getRequestInc, getRequestDec } from "./request-count-action";
 
-//! REFACTOR IMPORT IN \src\reducers\roles.js
+// TODO: REFACTOR IMPORT IN \src\reducers\roles.js
 export const getRolesData = {
   DATA: "ROLES_SUCCESS",
 };

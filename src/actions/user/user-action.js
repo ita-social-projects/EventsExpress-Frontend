@@ -3,7 +3,7 @@ import { UserService } from "../../services";
 import { setErrorAllertFromResponse } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 
-//! REFACTOR IMPORTS IN \src\reducers\users.js
+// TODO: REFACTOR IMPORTS IN \src\reducers\users.js
 export const blockUserStates = {
   PENDING: "PENDING_BLOCK",
   SUCCESS: "SUCCESS_BLOCK",
