@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import ImagePreview from "./ImagePreview";
 import Placeholder from "./Placeholder";
 import ImageResizer from "../event/ImageResizer/Image-resizer";
-import renderFieldError from "./form-helpers/RenderFieldError";
+import renderFieldError from "./form-helpers/render-field-error";
 
 export default class DropZoneField extends Component {
   state = {
