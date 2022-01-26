@@ -17,8 +17,71 @@ export const accountStatus = {
   Blocked: 2,
 };
 
-const api_serv = new UserService();
+const API_SERV = new UserService();
 
+function getCountData(data) {
+  return {
+    type: GET_USERS_COUNT,
+    payload: data,
+  };
+}
+
+function getUsersData(data) {
+  return {
+    type: GET_USERS_DATA,
+    payload: data,
+  };
+}
+
+function changeStatusData(data) {
+  return {
+    type: CHANGE_STATUS,
+    payload: data,
+  };
+}
+
+function changeFiltersData(data) {
+  return {
+    type: CHANGE_USERS_FILTER,
+    payload: data,
+  };
+}
+
+function setHubData(data) {
+  return {
+    type: SET_USERS_HUB,
+    payload: data,
+  };
+}
+
+function resetHubData() {
+  return {
+    type: RESET_USERS_HUB,
+    payload: null,
+  };
+}
+
+export function resetUsers() {
+  return {
+    type: RESET_USERS,
+  };
+}
+
+export function getCount(status) {
+  return async dispatch => {
+    const response = await API_SERV.getCount(status);
+
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+
+    const jsonRes = await response.json();
+    dispatch(getCountData(jsonRes));
+
+    return Promise.resolve();
+  };
+}
 export function initialConnection() {
   return async (dispatch, getState) => {
     const hubConnection = new SignalR.HubConnectionBuilder()
@@ -30,45 +93,29 @@ export function initialConnection() {
     try {
       await hubConnection.start();
       hubConnection.on("CountUsers", () => {
-        dispatch(get_count(getState().users.status ?? accountStatus.All));
+        dispatch(getCount(getState().users.status ?? accountStatus.All));
       });
     } catch (err) {
       console.error(err.toString());
     }
 
-    dispatch(setHub(hubConnection));
+    dispatch(setHubData(hubConnection));
   };
 }
 
 export function closeConnection() {
   return async (dispatch, getState) => {
     await getState().hubConnections.usersHub.stop();
-    dispatch(resetHub());
+    dispatch(resetHubData());
 
     return Promise.resolve();
   };
 }
 
-export function get_count(status) {
-  return async dispatch => {
-    const response = await api_serv.getCount(status);
-
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-
-    const jsonRes = await response.json();
-    dispatch(getCount(jsonRes));
-
-    return Promise.resolve();
-  };
-}
-
-export function get_users(filters) {
+export function getUsers(filters) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getUsers(filters);
+    const response = await API_SERV.getUsers(filters);
     dispatch(getRequestDec());
 
     if (!response.ok) {
@@ -77,83 +124,35 @@ export function get_users(filters) {
     }
 
     const jsonRes = await response.json();
-    dispatch(getUsers(jsonRes));
+    dispatch(getUsersData(jsonRes));
 
     return Promise.resolve();
   };
 }
 
-export function change_status(status) {
+export function changeStatus(status) {
   return dispatch => {
-    dispatch(changeStatus(status));
+    dispatch(changeStatusData(status));
   };
 }
 
-export function change_Filter(filters) {
+export function changeFilter(filters) {
   return dispatch => {
-    dispatch(changeFilters(filters));
+    dispatch(changeFiltersData(filters));
   };
 }
 
-export function get_SearchUsers(filters) {
+export function getSearchUsers(filters) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getSearchUsers(filters);
+    const response = await API_SERV.getSearchUsers(filters);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
     const jsonRes = await response.json();
     dispatch(getRequestDec());
-    dispatch(getUsers(jsonRes));
+    dispatch(getUsersData(jsonRes));
     return Promise.resolve();
-  };
-}
-
-export function reset_users() {
-  return {
-    type: RESET_USERS,
-  };
-}
-
-function getCount(data) {
-  return {
-    type: GET_USERS_COUNT,
-    payload: data,
-  };
-}
-
-function getUsers(data) {
-  return {
-    type: GET_USERS_DATA,
-    payload: data,
-  };
-}
-
-function changeStatus(data) {
-  return {
-    type: CHANGE_STATUS,
-    payload: data,
-  };
-}
-
-function changeFilters(data) {
-  return {
-    type: CHANGE_USERS_FILTER,
-    payload: data,
-  };
-}
-
-function setHub(data) {
-  return {
-    type: SET_USERS_HUB,
-    payload: data,
-  };
-}
-
-function resetHub() {
-  return {
-    type: RESET_USERS_HUB,
-    payload: null,
   };
 }

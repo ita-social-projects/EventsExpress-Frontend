@@ -6,27 +6,29 @@ export const GET_NOTIFICATION_TYPES_DATA = "GET_NOTIFICATION_TYPES_DATA";
 export const GET_USER_NOTIFICATION_TYPES_DATA =
   "GET_USER_NOTIFICATION_TYPES_DATA";
 
-const api_serv = new NotificationTypeService();
+const API_SERV = new NotificationTypeService();
 
-export default function get_notificationTypes() {
+function getNotificationTypesData(data) {
+  return {
+    type: GET_NOTIFICATION_TYPES_DATA,
+    payload: data,
+  };
+}
+
+const getNotificationTypes = () => {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await api_serv.getAllNotificationTypes();
+    const response = await API_SERV.getAllNotificationTypes();
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
     const jsonRes = await response.json();
-    dispatch(getNotificationTypes(jsonRes));
+    dispatch(getNotificationTypesData(jsonRes));
     return Promise.resolve();
   };
-}
+};
 
-function getNotificationTypes(data) {
-  return {
-    type: GET_NOTIFICATION_TYPES_DATA,
-    payload: data,
-  };
-}
+export default getNotificationTypes;

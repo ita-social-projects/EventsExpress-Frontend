@@ -15,87 +15,26 @@ export const SET_LOGIN_SUCCESS = "SET_LOGIN_SUCCESS";
 export const SET_USER = "SET_USER";
 
 const history = createBrowserHistory({ forceRefresh: true });
-const api_serv = new AuthenticationService();
+const API_SERV = new AuthenticationService();
 
-export default function login(email, password) {
-  const call = () =>
-    api_serv.setLogin({
-      Email: email,
-      Password: password,
-    });
-  return loginResponseHandler(call);
-}
-
-export function loginGoogle(tokenId, profile) {
-  const call = () =>
-    api_serv.setGoogleLogin({
-      TokenId: tokenId,
-      Email: profile.email,
-      Name: profile.name,
-      PhotoUrl: profile.imageUrl,
-    });
-  return loginResponseHandler(call, {
-    email: profile.email,
-    name: profile.name,
-    type: 0,
-  });
-}
-
-export function loginFacebook(profile) {
-  const call = () =>
-    api_serv.setFacebookLogin({
-      Email: profile.email,
-      Name: profile.name,
-      PhotoUrl: profile.picture.data.url,
-    });
-  return loginResponseHandler(call, {
-    email: profile.email,
-    name: profile.name,
-    birthday: profile.birthday,
-    gender: profile.gender,
-    type: 1,
-  });
-}
-
-export function loginTwitter(data) {
-  const res = () =>
-    api_serv.setTwitterLogin({
-      TokenId: data.oauth_token,
-      TokenSecret: data.oauth_token_secret,
-      UserId: data.user_id,
-      Email: data.email,
-      Name: typeof data.name !== "undefined" ? data.name : data.screen_name,
-      PhotoUrl: data.image_url,
-    });
-  return loginResponseHandler(res, {
-    email: data.email,
-    name: typeof data.name !== "undefined" ? data.name : data.screen_name,
-    type: 2,
-  });
-}
-
-export function loginAfterEmailConfirmation(data) {
-  return async dispatch => {
-    const response = await api_serv.auth(data);
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-    return setUserInfo(response, null, dispatch);
+export function setUser(data) {
+  return {
+    type: SET_USER,
+    payload: data,
   };
 }
 
 export function getUserInfo(profile) {
   return async dispatch => {
-    const response = await api_serv.getUserInfo();
+    const response = await API_SERV.getUserInfo();
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
 
     if (
-      response.status == 204 &&
-      history.location.pathname != "/registerComplete"
+      response.status === 204 &&
+      history.location.pathname !== "/registerComplete"
     ) {
       history.push("/registerComplete", { profile });
       return Promise.resolve();
@@ -116,11 +55,12 @@ export function getUserInfo(profile) {
   };
 }
 
-export function setUser(data) {
-  return {
-    type: SET_USER,
-    payload: data,
-  };
+async function setUserInfo(response, profile, dispatch) {
+  const jsonRes = await response.json();
+  localStorage.setItem(jwtStorageKey, jsonRes.token);
+
+  dispatch(getUserInfo(profile));
+  return Promise.resolve();
 }
 
 function loginResponseHandler(call, profile) {
@@ -136,10 +76,72 @@ function loginResponseHandler(call, profile) {
   };
 }
 
-async function setUserInfo(response, profile, dispatch) {
-  const jsonRes = await response.json();
-  localStorage.setItem(jwtStorageKey, jsonRes.token);
-
-  dispatch(getUserInfo(profile));
-  return Promise.resolve();
+export function loginGoogle(tokenId, profile) {
+  const call = () =>
+    API_SERV.setGoogleLogin({
+      TokenId: tokenId,
+      Email: profile.email,
+      Name: profile.name,
+      PhotoUrl: profile.imageUrl,
+    });
+  return loginResponseHandler(call, {
+    email: profile.email,
+    name: profile.name,
+    type: 0,
+  });
 }
+
+export function loginFacebook(profile) {
+  const call = () =>
+    API_SERV.setFacebookLogin({
+      Email: profile.email,
+      Name: profile.name,
+      PhotoUrl: profile.picture.data.url,
+    });
+  return loginResponseHandler(call, {
+    email: profile.email,
+    name: profile.name,
+    birthday: profile.birthday,
+    gender: profile.gender,
+    type: 1,
+  });
+}
+
+export function loginTwitter(data) {
+  const res = () =>
+    API_SERV.setTwitterLogin({
+      TokenId: data.oauth_token,
+      TokenSecret: data.oauth_token_secret,
+      UserId: data.user_id,
+      Email: data.email,
+      Name: typeof data.name !== "undefined" ? data.name : data.screen_name,
+      PhotoUrl: data.image_url,
+    });
+  return loginResponseHandler(res, {
+    email: data.email,
+    name: typeof data.name !== "undefined" ? data.name : data.screen_name,
+    type: 2,
+  });
+}
+
+export function loginAfterEmailConfirmation(data) {
+  return async dispatch => {
+    const response = await API_SERV.auth(data);
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+    return setUserInfo(response, null, dispatch);
+  };
+}
+
+const login = (email, password) => {
+  const call = () =>
+    API_SERV.setLogin({
+      Email: email,
+      Password: password,
+    });
+  return loginResponseHandler(call);
+};
+
+export default login;

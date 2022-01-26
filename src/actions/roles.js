@@ -2,16 +2,24 @@ import { RoleService } from "../services";
 import { setErrorAllertFromResponse } from "./alert-action";
 import { getRequestInc, getRequestDec } from "./request-count-action";
 
-export const getRoles = {
+// TODO: REFACTOR IMPORT IN \src\reducers\roles.js
+export const getRolesData = {
   DATA: "ROLES_SUCCESS",
 };
 
-const api_serv = new RoleService();
+const API_SERV = new RoleService();
 
-export default function get_roles() {
+function setRolesSuccess(data) {
+  return {
+    type: getRolesData.DATA,
+    payload: data,
+  };
+}
+
+const getRoles = () => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getRoles();
+    const response = await API_SERV.getRoles();
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -22,11 +30,6 @@ export default function get_roles() {
     dispatch(setRolesSuccess(jsonRes));
     return Promise.resolve();
   };
-}
+};
 
-function setRolesSuccess(data) {
-  return {
-    type: getRoles.DATA,
-    payload: data,
-  };
-}
+export default getRoles;

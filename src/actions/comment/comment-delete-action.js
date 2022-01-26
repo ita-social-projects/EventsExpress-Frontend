@@ -3,12 +3,12 @@ import getComments from "./comment-list-action";
 import { setErrorAllertFromResponse } from "../alert-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-const api_serv = new CommentService();
+const API_SERV = new CommentService();
 
-export default function (data) {
+const deleteComment = data => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.setCommentDelete(data);
+    const response = await API_SERV.setCommentDelete(data);
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -17,4 +17,6 @@ export default function (data) {
     dispatch(getComments(data.eventId));
     return Promise.resolve;
   };
-}
+};
+
+export default deleteComment;

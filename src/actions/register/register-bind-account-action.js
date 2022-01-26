@@ -5,12 +5,12 @@ import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { jwtStorageKey } from "../../constants/constants";
 
-const api_serv = new AuthenticationService();
+const API_SERV = new AuthenticationService();
 const history = createBrowserHistory({ forceRefresh: true });
 
-export default function registerBindAccount(data) {
+const registerBindAccount = data => {
   return async dispatch => {
-    const response = await api_serv.setRegisterBindAccount(data);
+    const response = await API_SERV.setRegisterBindAccount(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }
@@ -21,4 +21,6 @@ export default function registerBindAccount(data) {
     dispatch(history.push("/home"));
     return Promise.resolve();
   };
-}
+};
+
+export default registerBindAccount;

@@ -4,26 +4,28 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const GET_CATEGORIES_DATA = "GET_CATEGORIES_DATA";
 
-const api_serv = new CategoryService();
+const API_SERV = new CategoryService();
 
-export default function getCategories() {
+function getCategoriesData(data) {
+  return {
+    type: GET_CATEGORIES_DATA,
+    payload: data,
+  };
+}
+
+const getСategories = () => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getAllCategories();
+    const response = await API_SERV.getAllCategories();
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
     const jsonRes = await response.json();
     dispatch(getRequestDec());
-    dispatch(getCategories(jsonRes));
+    dispatch(getCategoriesData(jsonRes));
     return Promise.resolve();
   };
-}
+};
 
-export function getCategories(data) {
-  return {
-    type: GET_CATEGORIES_DATA,
-    payload: data,
-  };
-}
+export default getСategories;
