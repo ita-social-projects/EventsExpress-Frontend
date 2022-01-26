@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const DisplayOnline = ({locationPath}) => {
+const DisplayOnline = ({ locationPath }) => {
 
     return (
       <div>

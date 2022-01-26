@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import useOrganizerFilterStyles from "./organizer-filter-styles";
 import { fetchUsers } from "../../../../../actions/events/filter/users-data";
-import { useDelay } from "./use-delay";
+import useDelay from "./use-delay";
 
 const OrganizerAutocomplete = ({ input, options, ...props }) => {
   const [username, setUsername] = useDelay(delayedUsername => {
@@ -74,7 +74,7 @@ const OrganizerAutocomplete = ({ input, options, ...props }) => {
 
 OrganizerAutocomplete.propTypes = {
   input: PropTypes.array,
-  options: PropTypes.oneOf(PropTypes.object, PropTypes.array),
+  options: PropTypes.oneOfType(PropTypes.object, PropTypes.array),
   fetchUsers: PropTypes.func,
 }
 
