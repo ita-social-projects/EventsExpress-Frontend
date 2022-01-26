@@ -1,10 +1,11 @@
 ﻿import React from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
+import PropTypes from "prop-types";
 import SimpleModal from "../SimpleModal/Simple-modal";
 import constants from "../../../constants/ConstantsOwnersAction";
 
-export default function OwnersActions({
+ function OwnersActions({
   user,
   isMyEvent,
   currentUserId,
@@ -32,3 +33,20 @@ export default function OwnersActions({
     )
   );
 }
+
+OwnersActions.propTypes = {
+  user: PropTypes.object,
+  isMyEvent: PropTypes.bool,
+  currentUserId: PropTypes.number,
+  eventId: PropTypes.number,
+  deleteFromOwners: PropTypes.func,
+}
+
+OwnersActions.defaultProps = {
+  user: {},
+  isMyEvent: false,
+  currentUserId: null,
+  eventId: null,
+  deleteFromOwners: () => {},
+}
+export default OwnersActions;
