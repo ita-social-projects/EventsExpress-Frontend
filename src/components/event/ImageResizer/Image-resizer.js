@@ -1,14 +1,21 @@
 ﻿import React, { Component } from "react";
 import Slider from "@material-ui/core/Slider";
 import Cropper from "react-easy-crop";
+import PropTypes from "prop-types";
 import "./image-resizer.css";
 import Button from "@material-ui/core/Button";
 
 class ImageResizer extends Component {
-  state = {
-    crop: { x: 0, y: 0 },
-    zoom: 1,
-  };
+
+  constructor() {
+    super();
+    this.state = {
+      crop: { x: 0, y: 0 },
+      zoom: 1,
+    };
+  }
+
+  
 
   componentWillMount = () => {
     const isRound = this.props.cropShape === "round";
@@ -125,4 +132,22 @@ class ImageResizer extends Component {
   }
 }
 
+ImageResizer.propTypes = {
+  cropShape: PropTypes.string,
+  image: PropTypes.object,
+  handleOnCrop: PropTypes.func,
+  onChange: PropTypes.func,
+  submitting: PropTypes.bool,
+
+
+}
+
+ImageResizer.defaultProps = {
+  cropShape: "",
+  image: {},
+  handleOnCrop: () => {},
+  onChange: () => {},
+  submitting: false,
+
+}
 export default ImageResizer;
