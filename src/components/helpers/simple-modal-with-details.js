@@ -1,13 +1,14 @@
 ﻿import React, { Component } from "react";
+import PropTypes from "prop-types";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import { DialogContent } from "@material-ui/core";
 import { Field, reduxForm } from "redux-form";
 import { renderTextField } from "./form-helpers";
-import { fieldIsRequired } from "./validators/required-fields-validator";
+import fieldIsRequired from "./validators/required-fields-validator";
 
-export const validate = values => {
+const validate = values => {
   const errors = {};
   const requiredFields = ["detailsString"];
 
@@ -46,7 +47,14 @@ class SimpleModalWithDetails extends Component {
     const { handleSubmit, pristine, submitting, data } = this.props;
     return (
       <>
-        <div onClick={this.handleClickOpen}>{this.props.button}</div>
+        <div
+          onClick={this.handleClickOpen}
+          onKeyPress={this.handleKeyPress}
+          role="button"
+          tabIndex="0"
+        >
+          {this.props.button}
+        </div>
         <Dialog open={this.state.isOpen} onClose={this.handleClose}>
           <form onSubmit={handleSubmit(this.submit)}>
             <DialogContent>
@@ -83,6 +91,24 @@ class SimpleModalWithDetails extends Component {
     );
   }
 }
+
+SimpleModalWithDetails.defaultProps = {
+  submitCallback: () => {},
+  handleSubmit: () => {},
+  pristine: () => {},
+  submitting: () => {},
+  data: {},
+  button: () => {},
+};
+
+SimpleModalWithDetails.propTypes = {
+  submitCallback: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  pristine: PropTypes.func,
+  submitting: PropTypes.func,
+  data: PropTypes.object,
+  button: PropTypes.func,
+};
 
 export default reduxForm({
   form: "details-modal-form",

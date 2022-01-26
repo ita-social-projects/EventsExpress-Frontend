@@ -1,4 +1,4 @@
-export const numberField = values => {
+const numberField = values => {
   const errors = {};
   const numberFields = ["maxParticipants", "frequency"];
 
@@ -9,3 +9,5 @@ export const numberField = values => {
   });
   return errors;
 };
+
+export default numberField;
