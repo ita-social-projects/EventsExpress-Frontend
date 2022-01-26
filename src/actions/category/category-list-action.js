@@ -6,7 +6,7 @@ export const GET_CATEGORIES_DATA = "GET_CATEGORIES_DATA";
 
 const api_serv = new CategoryService();
 
-export default function get_categories() {
+export default function getCategories() {
   return async dispatch => {
     dispatch(getRequestInc());
     const response = await api_serv.getAllCategories();

@@ -9,7 +9,7 @@ export const SET_EVENT_FROM_PARENT_PENDING = "SET_EVENT_FROM_PARENT_PENDING";
 const api_serv = new EventService();
 const history = createBrowserHistory({ forceRefresh: true });
 
-export default function edit_event_from_parent(data) {
+export default function editEventFromParent(data) {
   return async dispatch => {
     dispatch(getRequestInc());
     const response = await api_serv.setEventFromParent(data);
