@@ -1,9 +1,11 @@
-﻿import React, { Component } from "react";
+﻿/* eslint-disable react/no-unused-state */
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createBrowserHistory } from "history";
+import PropTypes from "prop-types";
 import DraftEventCard from "./DraftEventCard";
 import RenderList from "../event/RenderList/RenderList";
-import { change_event_status } from "../../actions/event/event-item-view-action";
+import { changeEventStatus } from "../../actions/event/event-item-view-action";
 import eventStatusEnum from "../../constants/eventStatusEnum";
 import { setSuccessAllert } from "../../actions/alert-action";
 
@@ -52,11 +54,25 @@ class DraftList extends Component {
   }
 }
 
+DraftList.defaultProps = {
+  alert: () => {},
+  delete: () => {},
+  get_drafts: () => {},
+  current_user: {},
+};
+
+DraftList.propTypes = {
+  alert: PropTypes.func,
+  delete: PropTypes.func,
+  get_drafts: PropTypes.func,
+  current_user: PropTypes.object,
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     alert: msg => dispatch(setSuccessAllert(msg)),
     delete: (eventId, reason) =>
-      dispatch(change_event_status(eventId, reason, eventStatusEnum.Deleted)),
+      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Deleted)),
   };
 };
 

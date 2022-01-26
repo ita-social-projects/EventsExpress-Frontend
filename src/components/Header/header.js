@@ -1,16 +1,16 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import ModalWind from "../modal-wind";
 import AuthComponent from "../../security/authComponent";
 import "./header.css";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import logout from "../../actions/login/logout-action";
-import CustomAvatar from "../avatar/custom-avatar";
+import { CustomAvatar } from "../avatar/custom-avatar";
 import { Roles } from "../../constants/userRoles";
-import add_event from "../../actions/event/event-add-action";
+import addEvent from "../../actions/event/event-add-action";
 
 class Header extends Component {
-  logout_reset = () => {
+  logoutReset = () => {
     this.props.hub.stop();
     this.props.logout();
   };
@@ -35,7 +35,7 @@ class Header extends Component {
               <div
                 className="btn btn-light"
                 id="headbtn"
-                onClick={this.props.add_event}
+                onClick={this.props.addEvent}
               >
                 Create Event
               </div>
@@ -97,7 +97,7 @@ class Header extends Component {
                   <button
                     className="dropdown-item bgcolorwhite"
                     type="button"
-                    onClick={this.logout_reset}
+                    onClick={this.logoutReset}
                   >
                     log out
                   </button>
@@ -126,7 +126,7 @@ const mapDispatchToProps = dispatch => {
     logout: () => {
       dispatch(logout());
     },
-    add_event: () => dispatch(add_event()),
+    add_event: () => dispatch(addEvent()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
