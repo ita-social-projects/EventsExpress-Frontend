@@ -6,13 +6,20 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
+import PropTypes from "prop-types";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default class EventLeaveModal extends Component {
-  state = { open: false };
+ class EventLeaveModal extends Component {
+
+  // const {submitLeave} = this.props;
+
+  constructor() {
+    super();
+    this.state = { open: false };
+  }
 
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -46,9 +53,9 @@ export default class EventLeaveModal extends Component {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              Are you sure that you want to leave this event. If you leave, your
-              statement will be deleted. Press "Agree" if you want to leave
-              event and "Disagree" if not.
+              `Are you sure that you want to leave this event. If you leave, your
+              statement will be deleted. Press &quot;Agree&quot; if you want to leave
+              event and &quot;Disagree&quot; if not.`
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -64,3 +71,13 @@ export default class EventLeaveModal extends Component {
     );
   }
 }
+
+EventLeaveModal.propTypes = {
+  submitLeave: PropTypes.func,
+}
+
+EventLeaveModal.defaultProps = {
+  submitLeave: () => {},
+}
+
+export default EventLeaveModal;

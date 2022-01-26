@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import ParticipantGroup from "../ParticipantGroup/Participant-group";
 import ContainerOwnersActions from "../../../containers/ContainerOwnersAction";
 import ApprovedUsersActionsContainer from "../../../containers/Approved-users-action-container";
 import PendingUsersActions from "../PendingUsersAction/Pending-users-action";
 import DeniedUsersActions from "../DeniedUsersAction/Denied-users-action";
 
-class EventVisitors extends Component {
-  render() {
-    const { isMyPrivateEvent, visitors, admins, isMyEvent } = this.props;
-
+const EventVisitors = ({isMyPrivateEvent, visitors, admins, isMyEvent}) => {
     return (
       <div>
         <ParticipantGroup
@@ -20,7 +18,7 @@ class EventVisitors extends Component {
           )}
         />
         <ParticipantGroup
-          disabled={visitors.approvedUsers.length == 0}
+          disabled={visitors.approvedUsers.length === 0}
           users={visitors.approvedUsers}
           label="Visitors"
           renderUserActions={user => (
@@ -33,7 +31,7 @@ class EventVisitors extends Component {
         />
         {isMyPrivateEvent && (
           <ParticipantGroup
-            disabled={visitors.pendingUsers.length == 0}
+            disabled={visitors.pendingUsers.length === 0}
             users={visitors.pendingUsers}
             label="Pending users"
             renderUserActions={user => (
@@ -43,7 +41,7 @@ class EventVisitors extends Component {
         )}
         {isMyPrivateEvent && (
           <ParticipantGroup
-            disabled={visitors.deniedUsers.length == 0}
+            disabled={visitors.deniedUsers.length === 0}
             users={visitors.deniedUsers}
             label="Denied users"
             renderUserActions={user => (
@@ -54,6 +52,19 @@ class EventVisitors extends Component {
       </div>
     );
   }
-}
+  EventVisitors.propTypes = {
+    isMyPrivateEvent: PropTypes.array,
+    visitors: PropTypes.array,
+    admins: PropTypes.object,
+    isMyEvent: PropTypes.array,
+  };
+  
+  EventVisitors.defaultProps = {
+    isMyPrivateEvent: false,
+    visitors: [],
+    admins: [],
+    isMyEvent: false,
+  };
+  
 
 export default EventVisitors;
