@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { EventService } from "../../services";
 import { setErrorAllertFromResponse } from "../alert-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
@@ -6,46 +7,16 @@ export const GET_EVENTS_DATA = "GET_EVENTS_DATA";
 export const RESET_EVENTS = "RESET_EVENTS";
 export const UPDATE_EVENTS_FILTERS = "UPDATE_EVENTS_FILTERS";
 
-const api_serv = new EventService();
+const API_SERV = new EventService();
 
-export function get_events(filters) {
-  return async dispatch => {
-    dispatch(getRequestInc());
-    const response = await api_serv.getAllEvents(filters);
-    dispatch(getRequestDec());
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-    const jsonRes = await response.json();
-    dispatch(getEvents(jsonRes));
-    return Promise.resolve();
-  };
-}
-
-export function get_drafts(page = 1) {
-  return async dispatch => {
-    dispatch(getRequestInc());
-    const response = await api_serv.getAllDrafts(page);
-    dispatch(getRequestDec());
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-    const jsonRes = await response.json();
-    dispatch(getEvents(jsonRes));
-    return Promise.resolve();
-  };
-}
-
-export function getEvents(data) {
+export function getEventsData(data) {
   return {
     type: GET_EVENTS_DATA,
     payload: data,
   };
 }
 
-export function reset_events() {
+export function resetEvents() {
   return {
     type: RESET_EVENTS,
   };
@@ -57,18 +28,47 @@ export function updateEventsFilters(data) {
     payload: data,
   };
 }
-
-export function get_upcoming_events(filters) {
+export function getEvents(filters) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getUpcomingEvents();
+    const response = await API_SERV.getAllEvents(filters);
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
     const jsonRes = await response.json();
-    dispatch(getEvents(jsonRes));
+    dispatch(getEventsData(jsonRes));
+    return Promise.resolve();
+  };
+}
+
+export function getDrafts(page = 1) {
+  return async dispatch => {
+    dispatch(getRequestInc());
+    const response = await API_SERV.getAllDrafts(page);
+    dispatch(getRequestDec());
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+    const jsonRes = await response.json();
+    dispatch(getEventsData(jsonRes));
+    return Promise.resolve();
+  };
+}
+
+export function getUpcomingEvents(filters) {
+  return async dispatch => {
+    dispatch(getRequestInc());
+    const response = await API_SERV.getUpcomingEvents();
+    dispatch(getRequestDec());
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+    const jsonRes = await response.json();
+    dispatch(getEventsData(jsonRes));
     return Promise.resolve();
   };
 }

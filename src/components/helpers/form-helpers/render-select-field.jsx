@@ -13,7 +13,7 @@ const RenderSelectField = ({
   minWidth,
   children,
 }) => {
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles(() => ({
     formControl: { minWidth },
   }));
   return (
@@ -25,9 +25,10 @@ const RenderSelectField = ({
         value={input.value}
         onChange={input.onChange}
         label={label}
-        children={children}
         error={touched && invalid}
-      ></Select>
+      >
+        {children}
+      </Select>
       {renderFieldError({ touched, error })}
     </FormControl>
   );
@@ -38,7 +39,7 @@ export default RenderSelectField;
 RenderSelectField.defaultProps = {
   input: {},
   meta: {},
-  minWidth: 0,
+  minWidth: null,
   label: "",
   children: {},
 };

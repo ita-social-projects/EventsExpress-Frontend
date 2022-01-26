@@ -43,8 +43,8 @@ export default RenderDatePicker;
 RenderDatePicker.defaultProps = {
   input: {},
   meta: {},
-  minValue: 0,
-  maxValue: 0,
+  minValue: null,
+  maxValue: null,
   label: "",
   disabled: false,
 };

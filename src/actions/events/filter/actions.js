@@ -1,5 +1,6 @@
+/* eslint-disable no-param-reassign */
 import { stringify, exclude } from "query-string";
-import { get_events } from "../../event/event-list-action";
+import { getEvents } from "../../event/event-list-action";
 import { enumLocationType } from "../../../constants/EventLocationType";
 
 export const applyFilters = filters => {
@@ -19,12 +20,12 @@ export const applyFilters = filters => {
       options,
     );
 
-    dispatch(get_events(filter));
+    dispatch(getEvents(filter));
   };
 };
 
 export const resetFilters = () => {
   return async dispatch => {
-    dispatch(get_events(""));
+    dispatch(getEvents(""));
   };
 };

@@ -6,30 +6,16 @@ export const GET_CHATS_DATA = "GET_CHATS_DATA";
 export const GET_UNREAD_MESSAGES = "GET_UNREAD_MESSAGES";
 export const RESET_NOTIFICATION = "RESET_NOTIFICATION";
 
-const api_serv = new ChatService();
-
-export default function get_chats() {
-  return async dispatch => {
-    dispatch(getRequestInc());
-    const response = await api_serv.getChats();
-    dispatch(getRequestDec());
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-    const jsonRes = await response.json();
-    dispatch(getChatsSuccess(jsonRes));
-    return Promise.resolve();
-  };
-}
+const API_SERV = new ChatService();
 
 export function resetNotification() {
   return dispatch => dispatch({ type: RESET_NOTIFICATION });
 }
 
 export function getUnreadMessages(userId) {
+  // eslint-disable-next-line consistent-return
   return async dispatch => {
-    const response = await api_serv.getUnreadMessages(userId);
+    const response = await API_SERV.getUnreadMessages(userId);
     if (response.ok) {
       const jsonRes = await response.json();
       dispatch({ type: GET_UNREAD_MESSAGES, payload: jsonRes });
@@ -44,3 +30,20 @@ export function getChatsSuccess(data) {
     payload: data,
   };
 }
+
+const getChats = () => {
+  return async dispatch => {
+    dispatch(getRequestInc());
+    const response = await API_SERV.getChats();
+    dispatch(getRequestDec());
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+    const jsonRes = await response.json();
+    dispatch(getChatsSuccess(jsonRes));
+    return Promise.resolve();
+  };
+};
+
+export default getChats;

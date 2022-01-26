@@ -4,26 +4,28 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const GET_CATEGORY_GROUPS_DATA = "GET_CATEGORY_GROUPS_DATA";
 
-const api_serv = new CategoryGroupService();
+const API_SERV = new CategoryGroupService();
 
-export default function get_category_groups() {
+function getCategoryGroupsData(data) {
+  return {
+    type: GET_CATEGORY_GROUPS_DATA,
+    payload: data,
+  };
+}
+
+const getCategoryGroups = () => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.getAllCategoryGroups();
+    const response = await API_SERV.getAllCategoryGroups();
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
     const jsonRes = await response.json();
     dispatch(getRequestDec());
-    dispatch(getCategoryGroups(jsonRes));
+    dispatch(getCategoryGroupsData(jsonRes));
     return Promise.resolve();
   };
-}
+};
 
-export function getCategoryGroups(data) {
-  return {
-    type: GET_CATEGORY_GROUPS_DATA,
-    payload: data,
-  };
-}
+export default getCategoryGroups;

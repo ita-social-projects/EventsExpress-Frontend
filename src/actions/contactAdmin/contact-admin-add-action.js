@@ -4,16 +4,16 @@ import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-export const contactAdmin = {
+export const contactAdminData = {
   DATA: "SET_CONTACT_ADMIN_DATA",
 };
 
-const api_serv = new ContactAdminService();
+const API_SERV = new ContactAdminService();
 
-export default function contact_Admin(data) {
+const contactAdmin = data => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.setContactAdmin(data);
+    const response = await API_SERV.setContactAdmin(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }
@@ -22,4 +22,6 @@ export default function contact_Admin(data) {
     dispatch(reset("ContactAdmin"));
     return Promise.resolve();
   };
-}
+};
+
+export default contactAdmin;

@@ -4,16 +4,23 @@ import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-export const editBirthday = {
+export const editBirthdayStates = {
   UPDATE: "UPDATE_BIRTHDAY",
 };
 
-const api_serv = new UserService();
+const API_SERV = new UserService();
 
-export default function edit_Birthday(data) {
+function updateBirthday(data) {
+  return {
+    type: editBirthdayStates.UPDATE,
+    payload: data,
+  };
+}
+
+const editBirthday = data => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await api_serv.setBirthday(data);
+    const response = await API_SERV.setBirthday(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }
@@ -22,11 +29,5 @@ export default function edit_Birthday(data) {
     dispatch(setSuccessAllert("Date of birth is successfully set"));
     return Promise.resolve();
   };
-}
-
-function updateBirthday(data) {
-  return {
-    type: editBirthday.UPDATE,
-    payload: data,
-  };
-}
+};
+export default editBirthday;
