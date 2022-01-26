@@ -1,11 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 
-export default ({
+const RenderTextArea = ({
   input,
   label,
   defaultValue,
-  rows,
   meta: { touched, error, invalid },
 }) => {
   return (
@@ -13,7 +13,7 @@ export default ({
       label={label}
       defaultValue={defaultValue}
       multiline
-      rows={rows("4")}
+      rows="4"
       fullWidth
       {...input}
       error={touched && invalid}
@@ -21,4 +21,20 @@ export default ({
       variant="outlined"
     />
   );
+};
+
+export default RenderTextArea;
+
+RenderTextArea.defaultProps = {
+  input: {},
+  meta: {},
+  label: "",
+  defaultValue: "",
+};
+
+RenderTextArea.propTypes = {
+  input: PropTypes.object,
+  meta: PropTypes.object,
+  label: PropTypes.string,
+  defaultValue: PropTypes.string,
 };

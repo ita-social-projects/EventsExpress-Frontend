@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 
-export default ({
+const RenderTextField = ({
   input,
   label,
   inputProps,
@@ -26,4 +27,26 @@ export default ({
       {...custom}
     />
   );
+};
+
+export default RenderTextField;
+
+RenderTextField.defaultProps = {
+  input: {},
+  inputProps: {},
+  meta: {},
+  rows: {},
+  defaultValue: "",
+  fullWidth: null,
+  label: "",
+};
+
+RenderTextField.propTypes = {
+  input: PropTypes.object,
+  inputProps: PropTypes.object,
+  meta: PropTypes.object,
+  rows: PropTypes.object,
+  defaultValue: PropTypes.string,
+  fullWidth: PropTypes.number,
+  label: PropTypes.string,
 };
