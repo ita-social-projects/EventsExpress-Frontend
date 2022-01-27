@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import ModalWind from "../modal-wind";
 import AuthComponent from "../../security/authComponent";
 import "./header.css";
@@ -33,9 +34,12 @@ class Header extends Component {
           <AuthComponent rolesMatch={Roles.User}>
             <div className="my-2 my-sm-0">
               <div
+                role="button"
+                tabIndex={0}
                 className="btn btn-light"
                 id="headbtn"
                 onClick={this.props.addEvent}
+                onKeyDown={this.props.addEvent}
               >
                 Create Event
               </div>
@@ -47,11 +51,13 @@ class Header extends Component {
                 <ModalWind
                   renderButton={action => (
                     <div
-                      className="btn btn-light"
+                      role="button"
+                      tabIndex={0}
                       id="headbtn"
                       className="btn btn-light navbtns"
                       variant="contained"
                       onClick={action}
+                      onKeyDown={action}
                     >
                       Sign In/Up
                     </div>
@@ -113,6 +119,20 @@ class Header extends Component {
     );
   }
 }
+
+Header.defaultProps = {
+  user: {},
+  addEvent: () => {},
+  logout: () => {},
+  hub: {},
+};
+
+Header.propTypes = {
+  user: PropTypes.object,
+  addEvent: PropTypes.func,
+  hub: PropTypes.object,
+  logout: PropTypes.func,
+};
 
 const mapStateToProps = state => {
   return {

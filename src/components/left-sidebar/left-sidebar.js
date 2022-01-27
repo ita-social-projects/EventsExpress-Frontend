@@ -48,7 +48,7 @@ class LeftSidebar extends Component {
                 />
                 <NavItem
                   to="/eventSchedules"
-                  my_icon={<i className="fa fa-clone" />}
+                  myIcon={<i className="fa fa-clone" />}
                   text="Recurrent Events"
                 />
                 <NavItem
@@ -60,7 +60,7 @@ class LeftSidebar extends Component {
               <AuthComponent>
                 <NavItem
                   to="/user_chats"
-                  my_icon={
+                  myIcon={
                     <Badge
                       badgeContent={this.props.msg_for_read().length}
                       color="primary"
