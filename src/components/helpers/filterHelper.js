@@ -5,30 +5,26 @@ const filterHelper = (() => {
     isObject(object) {
       return object !== null && typeof object === "object";
     },
+    
     compareObjects(objFirst, objSecond) {
       const keysObjectFirst = Object.keys(objFirst);
       const keysObjectSecond = Object.keys(objSecond);
 
-      if (keysObjectFirst.length !== keysObjectSecond.length) {
-        return false;
-      }
-
-      for (const key of keysObjectFirst) {
+      keysObjectFirst.map((key) => {
         const valObjectFirst = objFirst[key];
         const valObjectSecond = objSecond[key];
         const areObjects =
           this.isObject(valObjectFirst) && this.isObject(valObjectSecond);
-        if (
-          (areObjects &&
-            !this.compareObjects(valObjectFirst, valObjectSecond)) ||
+        const compareObjectsKeys =
+        keysObjectFirst.length !== keysObjectSecond.length;
+         
+          return (areObjects && !compareObjectsKeys) ||
           (!areObjects && valObjectFirst !== valObjectSecond)
-        ) {
-          return false;
-        }
-      }
+      });
 
       return true;
-    },
+  },
+  
     getDefaultEventFilter() {
       return {
         page: "1",
