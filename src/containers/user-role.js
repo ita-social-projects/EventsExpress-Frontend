@@ -30,6 +30,23 @@ class UserRoleWrapper extends Component {
     );
   }
 }
+UserRoleWrapper.propTypes = {
+  user: PropTypes.object,
+  setModeEdit: PropTypes.func,
+  setNewRole: PropTypes.func,
+  setModeDisplay: PropTypes.func,
+  isCurrentUser: PropTypes.bool,
+  isEdit: PropTypes.bool,
+};
+
+UserRoleWrapper.defaultProps = {
+  user: {},
+  setNewRole: () => {},
+  setModeDisplay: () => {},
+  setModeEdit: () => {},
+  isCurrentUser: false,
+  isEdit: false,
+};
 
 const mapDispatchToProps = (dispatch, props) => ({
   set_new_role: (uid, role) => dispatch(changeUserRole(uid, role)),

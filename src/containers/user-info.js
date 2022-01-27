@@ -59,8 +59,8 @@ UserInfoWrapper.propTypes = {
   currentUser: PropTypes.object,
   block: PropTypes.func,
   unblock: PropTypes.func,
-  editedUser: PropTypes.string,
-  key: PropTypes.string,
+  editedUser: PropTypes.number,
+  key: PropTypes.number,
 };
 
 UserInfoWrapper.defaultProps = {
@@ -68,8 +68,8 @@ UserInfoWrapper.defaultProps = {
   currentUser: {},
   block: () => {},
   unblock: () => {},
-  editedUser: "",
-  key: "",
+  editedUser: null,
+  key: null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInfoWrapper);
