@@ -39,7 +39,7 @@ class Header extends Component {
                 className="btn btn-light"
                 id="headbtn"
                 onClick={this.props.addEvent}
-                onKeyDown={this.props.addEvent}
+                aria-hidden
               >
                 Create Event
               </div>
@@ -57,7 +57,7 @@ class Header extends Component {
                       className="btn btn-light navbtns"
                       variant="contained"
                       onClick={action}
-                      onKeyDown={action}
+                      aria-hidden
                     >
                       Sign In/Up
                     </div>
