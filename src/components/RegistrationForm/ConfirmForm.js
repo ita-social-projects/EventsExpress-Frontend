@@ -2,8 +2,11 @@ import React from "react";
 import { Grid, List, ListItem, ListItemText, Button } from "@material-ui/core";
 import { reduxForm, getFormValues } from "redux-form";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import moment from "moment";
 import SelectedActivitiesList from "./SelectedActivitiesList";
+
+const gendersArray = ["", "Male", "Female", "Other"];
 
 const ConfirmForm = props => {
   const { handleSubmit, pristine, previousPage, submitting } = props;
@@ -128,7 +131,25 @@ const ConfirmForm = props => {
   );
 };
 
-const gendersArray = ["", "Male", "Female", "Other"];
+ConfirmForm.defaultProps = {
+  handleSubmit: () => {},
+  previousPage: () => {},
+  formValues: {},
+  categoryGroups: [],
+  categories: [],
+  pristine: false,
+  submitting: false,
+};
+
+ConfirmForm.propTypes = {
+  handleSubmit: PropTypes.func,
+  previousPage: PropTypes.func,
+  formValues: PropTypes.object,
+  categoryGroups: PropTypes.array,
+  categories: PropTypes.array,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
+};
 
 const mapStateToProps = state => {
   return {

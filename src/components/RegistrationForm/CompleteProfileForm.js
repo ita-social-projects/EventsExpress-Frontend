@@ -1,18 +1,17 @@
 import React from "react";
 import { Grid, Button } from "@material-ui/core";
-import { reduxForm, Field } from "redux-form";
+import { reduxForm, Field, getFormValues } from "redux-form";
 import moment from "moment";
+import PropTypes from "prop-types";
 import {
   renderDatePicker,
   renderTextField,
   renderSelectField,
   parseEuDate,
 } from "../helpers/form-helpers";
-
 import ChangeAvatarWrapper from "../../containers/editProfileContainers/change-avatar";
 
-const CompleteProfileForm = props => {
-  const { handleSubmit } = props;
+const CompleteProfileForm = ({ handleSubmit }) => {
   return (
     <>
       <div style={{ width: "97%", padding: "10px" }}>
@@ -114,13 +113,21 @@ const CompleteProfileForm = props => {
   );
 };
 
+CompleteProfileForm.defaultProps = {
+  handleSubmit: () => {},
+};
+
+CompleteProfileForm.propTypes = {
+  handleSubmit: PropTypes.func,
+};
+
 const mapStateToProps = state => {
   return {
     formValues: getFormValues("registrationForm")(state),
   };
 };
 
-export default reduxForm({
+export default reduxForm(mapStateToProps, {
   form: "registrationForm",
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
