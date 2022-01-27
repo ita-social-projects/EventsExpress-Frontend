@@ -1,4 +1,5 @@
 ﻿import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import {
   TextField,
@@ -84,7 +85,6 @@ class NotificationTemplateForm extends Component {
     return (
       <div className="d-flex">
         <form
-          role="form"
           className="d-flex flex-grow-1 flex-column mt-3 ml-0 w-100 float-left"
           onSubmit={handleSubmit}
         >
@@ -144,9 +144,23 @@ class NotificationTemplateForm extends Component {
   }
 }
 
-NotificationTemplateForm = reduxForm({
+NotificationTemplateForm.defaultProps = {
+  handleSubmit: () => {},
+  submitting: () => {},
+  reset: false,
+  pristine: () => {},
+  availableProps: {},
+};
+
+NotificationTemplateForm.propTypes = {
+  handleSubmit: PropTypes.func,
+  submitting: PropTypes.func,
+  reset: PropTypes.bool,
+  pristine: PropTypes.func,
+  availableProps: PropTypes.object,
+};
+
+export default reduxForm({
   form: "NotificationTemplateForm",
   enableReinitialize: true,
 })(NotificationTemplateForm);
-
-export default NotificationTemplateForm;
