@@ -1,20 +1,22 @@
-import { _alert } from "../actions/alert-action";
+import { alert } from "../actions/alert-action";
 import initialState from "../store/initialState";
 
-export const reducer = (state = initialState.alert, action) => {
+const reducer = (state = initialState.alert, action) => {
   switch (action.type) {
-    case _alert.SET:
+    case alert.SET:
       return {
         variant: action.payload.variant,
         message: action.payload.message,
         autoHideDuration: action.payload.autoHideDuration,
         open: false,
       };
-    case _alert.SETOPEN:
+    case alert.SETOPEN:
       return { ...state, open: action.payload };
-    case _alert.RESET:
+    case alert.RESET:
       return initialState.alert;
     default:
       return state;
   }
 };
+
+export default reducer;
