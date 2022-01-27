@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import { renderFieldError } from ".";
 
-export default ({
+const RenderRadioButton = ({
   input,
   label,
   children,
@@ -18,4 +19,20 @@ export default ({
       {renderFieldError({ touched, error })}
     </FormControl>
   );
+};
+
+export default RenderRadioButton;
+
+RenderRadioButton.defaultProps = {
+  input: {},
+  meta: {},
+  label: "",
+  children: {},
+};
+
+RenderRadioButton.propTypes = {
+  input: PropTypes.object,
+  meta: PropTypes.object,
+  label: PropTypes.string,
+  children: PropTypes.object,
 };
