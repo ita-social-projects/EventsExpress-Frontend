@@ -4,7 +4,7 @@ import {
   RESET_USER,
 } from "../actions/user/user-item-view-action";
 
-export const reducer = (state = initialState.profile, action) => {
+const reducer = (state = initialState.profile, action) => {
   switch (action.type) {
     case GET_PROFILE_DATA:
       return {
@@ -18,3 +18,4 @@ export const reducer = (state = initialState.profile, action) => {
       return state;
   }
 };
+export default reducer;

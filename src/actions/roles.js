@@ -3,6 +3,7 @@ import { setErrorAllertFromResponse } from "./alert-action";
 import { getRequestInc, getRequestDec } from "./request-count-action";
 
 // TODO: REFACTOR IMPORT IN \src\reducers\roles.js
+// DONE
 export const getRolesData = {
   DATA: "ROLES_SUCCESS",
 };

@@ -2,12 +2,12 @@ import initialState from "../store/initialState";
 import { SET_USER } from "../actions/login/login-action";
 import { SET_LOGOUT } from "../actions/login/logout-action";
 import {
-  addUserCategory,
-  addUserNotificationType,
-  editBirthday,
-  editGender,
-  editUsername,
-  changeAvatar,
+  addUserCategoryStates,
+  addUserNotificationTypeStates,
+  editBirthdayStates,
+  editGenderStates,
+  editUsernameStates,
+  changeAvatarStates,
 } from "../actions/redactProfile/index";
 import { GET_USER_NOTIFICATION_TYPES_DATA } from "../actions/notificationType/userNotificationType-action";
 import { GET_USER_CATEGORIES_DATA } from "../actions/category/userCategory-action";
@@ -20,34 +20,34 @@ export const reducer = (state = initialState.user, action) => {
     case SET_LOGOUT:
       return initialState.user;
 
-    case addUserCategory.UPDATE:
+    case addUserCategoryStates.UPDATE:
     case GET_USER_CATEGORIES_DATA:
       return {
         ...state,
         categories: action.payload,
       };
-    case addUserNotificationType.UPDATE:
+    case addUserNotificationTypeStates.UPDATE:
     case GET_USER_NOTIFICATION_TYPES_DATA:
       return {
         ...state,
         notificationTypes: action.payload,
       };
-    case editBirthday.UPDATE:
+    case editBirthdayStates.UPDATE:
       return {
         ...state,
         birthday: new Date(action.payload).toDateString(),
       };
-    case editUsername.UPDATE:
+    case editUsernameStates.UPDATE:
       return {
         ...state,
         name: action.payload.userName,
       };
-    case editGender.UPDATE:
+    case editGenderStates.UPDATE:
       return {
         ...state,
         gender: action.payload.gender,
       };
-    case changeAvatar.UPDATE:
+    case changeAvatarStates.UPDATE:
       return {
         ...state,
         photoUrl: action.payload,
@@ -56,3 +56,4 @@ export const reducer = (state = initialState.user, action) => {
       return state;
   }
 };
+export default reducer;

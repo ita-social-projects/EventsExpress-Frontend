@@ -20,3 +20,5 @@ export const reducer = (state = initialState.requestLocalCount, action) => {
       return state;
   }
 };
+
+export default reducer;
