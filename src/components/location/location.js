@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "react-widgets/dist/css/react-widgets.css";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
@@ -9,7 +10,7 @@ import { renderFieldError } from "../helpers/form-helpers";
 import { enumLocationType } from "../../constants/EventLocationType";
 import { LocationMapWithMarker } from "../helpers/form-helpers/location";
 
-export default class Location extends Component {
+class Location extends Component {
   onChangeLocationType = event => {
     const type = Number(event.target.value);
     if (type === enumLocationType.map) {
@@ -67,7 +68,7 @@ export default class Location extends Component {
           )}
           {value !== "" && value.type === enumLocationType.online && (
             <>
-              <label htmlFor="url">Enter an https:// URL:</label>
+              <span htmlFor="url">Enter an https:// URL:</span>
               <br />
               <TextField
                 name="onlineMeeting"
@@ -86,3 +87,15 @@ export default class Location extends Component {
     );
   }
 }
+
+Location.defaultProps = {
+  input: {},
+  meta: {},
+};
+
+Location.propTypes = {
+  input: PropTypes.object,
+  meta: PropTypes.object,
+};
+
+export default Location;

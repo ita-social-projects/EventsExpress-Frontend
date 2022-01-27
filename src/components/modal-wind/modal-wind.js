@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Dialog from "@material-ui/core/Dialog";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
@@ -14,13 +15,21 @@ import RegisterWrapper from "../../containers/register";
 import { TogleOpenWind } from "../../actions/modalWind-action";
 import Modalwind2 from "../recoverPassword/modalwind2";
 
-function TabContainer(props) {
+const TabContainer = ({ children }) => {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
-      {props.children}
+      {children}
     </Typography>
   );
-}
+};
+
+TabContainer.defaultProps = {
+  children: {},
+};
+
+TabContainer.propTypes = {
+  children: PropTypes.object,
+};
 
 const useStyles = makeStyles({
   root: {
@@ -29,7 +38,7 @@ const useStyles = makeStyles({
   },
 });
 
-function ModalWind(props) {
+const ModalWind = ({ setStatus, status, renderButton }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -38,17 +47,17 @@ function ModalWind(props) {
   };
 
   const handleClickOpen = () => {
-    props.setStatus(true);
+    setStatus(true);
   };
 
   const handleClose = () => {
-    props.setStatus(false);
+    setStatus(false);
   };
 
   return (
     <div className="d-inline-block">
-      {props.renderButton(handleClickOpen)}
-      <Dialog open={props.status.isOpen} onClose={handleClose}>
+      {renderButton(handleClickOpen)}
+      <Dialog open={status.isOpen} onClose={handleClose}>
         <Paper square className={classes.root}>
           <Tabs
             value={value}
@@ -82,7 +91,19 @@ function ModalWind(props) {
       </Dialog>
     </div>
   );
-}
+};
+
+ModalWind.defaultProps = {
+  setStatus: () => {},
+  status: false,
+  renderButton: () => {},
+};
+
+ModalWind.propTypes = {
+  setStatus: PropTypes.func,
+  status: PropTypes.bool,
+  renderButton: PropTypes.func,
+};
 
 const mapStateToProps = state => ({
   status: state.modal,

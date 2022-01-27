@@ -1,6 +1,6 @@
 ﻿import React from "react";
-import { Field, reduxForm } from "redux-form";
 import PropTypes from "prop-types";
+import { Field, reduxForm } from "redux-form";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import DialogContentText from "@material-ui/core/DialogContentText";
