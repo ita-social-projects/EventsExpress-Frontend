@@ -15,7 +15,7 @@ const pStyle = {
 
 class UnitOfMeasuringAddWrapper extends React.Component {
   componentDidMount() {
-    this.props.get_CategoriesOfMeasuring();
+    this.props.getCategoriesOfMeasuring();
   }
 
   submit = values => {
@@ -58,8 +58,7 @@ UnitOfMeasuringAddWrapper.propTypes = {
   allCategories: PropTypes.array,
   editedUnitOfMeasuring: PropTypes.number,
   setUnitOfMeasuringEdited: PropTypes.func,
-  get_CategoriesOfMeasuring: PropTypes.func,
-
+  getCategoriesOfMeasuring: PropTypes.func,
 };
 
 UnitOfMeasuringAddWrapper.defaultProps = {
@@ -68,9 +67,8 @@ UnitOfMeasuringAddWrapper.defaultProps = {
   editCancel: false,
   allCategories: [],
   editedUnitOfMeasuring: null,
-  setUnitOfMeasuringEdited: ()=>{},
-  get_CategoriesOfMeasuring: ()=>{},
-
+  setUnitOfMeasuringEdited: () => {},
+  getCategoriesOfMeasuring: () => {},
 };
 
 const mapStateToProps = state => ({
@@ -81,7 +79,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    add: data => dispatch(add_unitOfMeasuring(data)),
+    add: data => dispatch(addUnitOfMeasuring(data)),
     set_unitOfMeasuring_edited: () =>
       dispatch(setUnitOfMeasuringEdited(props.item.id)),
     get_CategoriesOfMeasuring: () => dispatch(getCategoriesOfMeasuring()),

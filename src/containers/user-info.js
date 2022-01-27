@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { block_user, unblock_user } from "../actions/user/user-action";
+import PropTypes from "prop-types";
+import { blockUser, unblockUser } from "../actions/user/user-action";
 import UserInfo from "../components/user-info";
 import { UserBlock } from "../components/user-info/user-block";
 import UserRoleWrapper from "./user-role";
@@ -48,9 +49,27 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    block: id => dispatch(block_user(id)),
-    unblock: id => dispatch(unblock_user(id)),
+    block: id => dispatch(blockUser(id)),
+    unblock: id => dispatch(unblockUser(id)),
   };
+};
+
+UserInfoWrapper.propTypes = {
+  user: PropTypes.object,
+  currentUser: PropTypes.object,
+  block: PropTypes.func,
+  unblock: PropTypes.func,
+  editedUser: PropTypes.string,
+  key: PropTypes.string,
+};
+
+UserInfoWrapper.defaultProps = {
+  user: {},
+  currentUser: {},
+  block: () => {},
+  unblock: () => {},
+  editedUser: "",
+  key: "",
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInfoWrapper);

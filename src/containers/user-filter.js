@@ -1,15 +1,16 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { parse } from "query-string";
 import UsersFilters from "../components/users/UsersFilters";
 import history from "../history";
 import {
   accountStatus,
-  get_users,
-  get_count,
+  getUsers,
+  getCount,
   initialConnection,
   closeConnection,
-  change_status,
+  changeStatus,
 } from "../actions/users/users-action";
 
 class UsersFilterWrapper extends Component {
@@ -26,7 +27,7 @@ class UsersFilterWrapper extends Component {
     }
 
     this.props.changeStatus(status);
-    this.props.get_count(status);
+    this.props.getCount(status);
     this.props.initialConnection();
   }
 
@@ -35,41 +36,41 @@ class UsersFilterWrapper extends Component {
   };
 
   onSubmit = filters => {
-    let search_string = "?page=1";
+    let searchString = "?page=1";
     let status;
 
     if (filters != null) {
       if (filters.search != null) {
-        search_string += `&keyWord=${filters.search}`;
+        searchString += `&keyWord=${filters.search}`;
       }
       if (filters.role != null) {
-        search_string += `&Role=${filters.role}`;
+        searchString += `&Role=${filters.role}`;
       }
 
       switch (filters.status) {
         case "blocked":
-          search_string += `&Blocked=${true}`;
+          searchString += `&Blocked=${true}`;
           status = accountStatus.Blocked;
           break;
         case "active":
-          search_string += `&Unblocked=${true}`;
+          searchString += `&Unblocked=${true}`;
           status = accountStatus.Activated;
           break;
         default:
-          search_string += `&All=${true}`;
+          searchString += `&All=${true}`;
           status = accountStatus.All;
       }
 
       this.props.changeStatus(status);
-      this.props.get_count(status);
+      this.props.getCount(status);
 
       if (filters.PageSize != null) {
-        search_string += `&PageSize=${filters.PageSize}`;
+        searchString += `&PageSize=${filters.PageSize}`;
       }
     }
 
-    this.props.search(search_string);
-    history.push(window.location.pathname + search_string);
+    this.props.search(searchString);
+    history.push(window.location.pathname + searchString);
   };
 
   renderCount = status => {
@@ -116,12 +117,33 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeStatus: status => dispatch(change_status(status)),
+    changeStatus: status => dispatch(changeStatus(status)),
     closeConnection: () => dispatch(closeConnection()),
     initialConnection: () => dispatch(initialConnection()),
-    get_count: status => dispatch(get_count(status)),
-    search: values => dispatch(get_users(values)),
+    get_count: status => dispatch(getCount(status)),
+    search: values => dispatch(getUsers(values)),
   };
+};
+
+UsersFilterWrapper.propTypes = {
+  status: PropTypes.object,
+  count: PropTypes.number,
+  search: PropTypes.func,
+  changeStatus: PropTypes.func,
+  getCount: PropTypes.func,
+  initialConnection: PropTypes.func,
+  closeConnection: PropTypes.func,
+  location: PropTypes.object,
+};
+UsersFilterWrapper.defaultProps = {
+  status: {},
+  count: null,
+  search: () => {},
+  changeStatus: () => {},
+  getCount: () => {},
+  initialConnection: () => {},
+  closeConnection: () => {},
+  location: {},
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersFilterWrapper);
