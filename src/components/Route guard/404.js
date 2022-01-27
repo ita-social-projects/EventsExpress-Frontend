@@ -1,8 +1,8 @@
-﻿import React, { Component } from "react";
+﻿import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import "./css/error.css";
 
-export default class NotFound extends Component {
+export default class NotFound extends PureComponent {
   render() {
     return (
       <>

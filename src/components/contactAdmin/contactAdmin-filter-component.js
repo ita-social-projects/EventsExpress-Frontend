@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
+import propTypes from "prop-types";
 import { MultiCheckbox, renderDatePicker } from "../helpers/form-helpers";
 import parseEuDate from "../helpers/form-helpers/parseEuDate";
 import filterHelper from "../helpers/filterHelper";
@@ -37,8 +38,8 @@ class ContactAdminFilter extends Component {
   }
 
   render() {
-    const { form_values, submitting, onReset } = this.props;
-    const values = form_values || {};
+    const { form_values: formValues, submitting, onReset } = this.props;
+    const values = formValues || {};
     const options = [
       { value: issueStatusEnum.Open, text: "Open" },
       { value: issueStatusEnum.InProgress, text: "In progress" },
@@ -101,8 +102,26 @@ class ContactAdminFilter extends Component {
   }
 }
 
-ContactAdminFilter = reduxForm({
+ContactAdminFilter.propTypes = {
+  handleSubmit: propTypes.func,
+  initialize: propTypes.func,
+  initialFormValues: propTypes.object,
+  form_values: propTypes.object,
+  submitting: propTypes.bool,
+  onReset: propTypes.func,
+};
+
+ContactAdminFilter.defaultProps = {
+  handleSubmit: () => {},
+  initialize: () => {},
+  initialFormValues: {},
+  form_values: {},
+  submitting: false,
+  onReset: () => {},
+};
+
+const FormContactAdminFilter = reduxForm({
   form: "contactAdmin-filter-form",
 })(ContactAdminFilter);
 
-export default ContactAdminFilter;
+export default FormContactAdminFilter;

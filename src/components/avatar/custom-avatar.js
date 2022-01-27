@@ -1,6 +1,7 @@
 ﻿import React, { Component } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { connect } from "react-redux";
+import propTypes from "prop-types";
 import { userDefaultImage } from "../../constants/userDefaultImage";
 import PhotoService from "../../services/PhotoService";
 
@@ -15,14 +16,6 @@ export class CustomAvatar extends Component {
     };
   }
 
-  uploadPhoto() {
-    photoService.getUserPhoto(this.props.userId).then(avatarImage => {
-      if (avatarImage != null) {
-        this.setState({ avatarImage: URL.createObjectURL(avatarImage) });
-      }
-    });
-  }
-
   componentDidMount() {
     this.uploadPhoto();
   }
@@ -34,6 +27,14 @@ export class CustomAvatar extends Component {
 
   componentWillUnmount() {
     URL.revokeObjectURL(this.state.avatarImage);
+  }
+
+  uploadPhoto() {
+    photoService.getUserPhoto(this.props.userId).then(avatarImage => {
+      if (avatarImage != null) {
+        this.setState({ avatarImage: URL.createObjectURL(avatarImage) });
+      }
+    });
   }
 
   render() {
@@ -58,10 +59,27 @@ export class CustomAvatar extends Component {
     );
   }
 }
+
+// TODO: change size and changeAvatarCounter in actual props
+CustomAvatar.propTypes = {
+  userId: propTypes.number,
+  name: propTypes.string,
+  size: propTypes.any,
+  changeAvatarCounter: propTypes.any,
+};
+
+CustomAvatar.defaultProps = {
+  userId: 0,
+  name: "",
+  size: "change this",
+  changeAvatarCounter: "change this",
+};
+
 const mapStateToProps = state => {
   return {
     changeAvatarCounter: state.change_avatar.Update,
   };
 };
 
-export default connect(mapStateToProps, null)(CustomAvatar);
+const CustomAvatarContainer = connect(mapStateToProps, null)(CustomAvatar);
+export default CustomAvatarContainer;

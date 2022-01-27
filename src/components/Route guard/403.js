@@ -1,7 +1,7 @@
-﻿import React, { Component } from "react";
+﻿import React, { PureComponent } from "react";
 import "./css/error.css";
 
-export default class Forbidden extends Component {
+export default class Forbidden extends PureComponent {
   render() {
     return (
       <>

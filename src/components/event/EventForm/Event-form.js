@@ -1,8 +1,9 @@
-﻿import React, { Component } from "react";
+import React, { Component } from "react";
 import { reduxForm, Field, change } from "redux-form";
 import moment from "moment";
 import "react-widgets/dist/css/react-widgets.css";
 import momentLocaliser from "react-widgets-moment";
+import propTypes from "prop-types";
 import DropZoneField from "../../helpers/DropZoneField";
 import PhotoService from "../../../services/PhotoService";
 import periodicity from "../../../constants/PeriodicityConstants";
@@ -27,29 +28,6 @@ momentLocaliser(moment);
 const photoService = new PhotoService();
 
 class EventForm extends Component {
-  state = { checked: this.props.initialValues.isReccurent };
-
-  handleChange = () => {
-    this.setState(state => ({
-      checked: !state.checked,
-    }));
-  };
-
-  checkLocation = location => {
-    if (location !== null) {
-      if (location.type == enumLocationType.map) {
-        location.latitude = null;
-        location.longitude = null;
-        change(`event-form`, `location`, location);
-      }
-
-      if (location.type == enumLocationType.online) {
-        location.onlineMeeting = null;
-        change(`event-form`, `location.onlineMeeting`, location);
-      }
-    }
-  };
-
   periodicityListOptions = periodicity.map(item => (
     <option value={item.value} key={item.value}>
       {" "}
@@ -57,8 +35,41 @@ class EventForm extends Component {
     </option>
   ));
 
+  constructor(props) {
+    super(props);
+    this.state = { checked: this.props.initialValues.isReccurent };
+  }
+
+  checkLocation = location => {
+    if (location !== null) {
+      if (location.type === enumLocationType.map) {
+        const result = { ...location };
+        result.latitude = null;
+        result.longitude = null;
+        change(`event-form`, `location`, result);
+      }
+
+      if (location.type === enumLocationType.online) {
+        const result = { ...location };
+        result.onlineMeeting = null;
+        change(`event-form`, `location.onlineMeeting`, result);
+      }
+    }
+  };
+
+  handleChange = () => {
+    this.setState(state => ({
+      checked: !state.checked,
+    }));
+  };
+
   render() {
-    const { form_values, all_categories, user_name, error } = this.props;
+    const {
+      form_values: formValues,
+      all_categories: allCategories,
+      user_name: userName,
+      error,
+    } = this.props;
     const { checked } = this.state;
 
     return (
@@ -84,7 +95,7 @@ class EventForm extends Component {
               type="input"
               label="Organizer"
               InputLabelProps={{ shrink: true }}
-              inputProps={{ value: user_name }}
+              inputProps={{ value: userName }}
               readOnly
             />
           </div>
@@ -150,7 +161,7 @@ class EventForm extends Component {
               label="Public"
             />
           </div>
-          {this.props.initialValues.eventStatus == eventStatusEnum.Draft && (
+          {this.props.initialValues.eventStatus === eventStatusEnum.Draft && (
             <div className="mt-2">
               <Field
                 name="isOnlyForAdults"
@@ -170,12 +181,12 @@ class EventForm extends Component {
                 parse={parseEuDate}
               />
             </span>
-            {form_values && form_values.dateFrom && (
+            {formValues && formValues.dateFrom && (
               <span className="retreat">
                 <Field
                   name="dateTo"
                   label="To"
-                  minValue={form_values.dateFrom}
+                  minValue={formValues.dateFrom}
                   component={renderDatePicker}
                   parse={parseEuDate}
                 />
@@ -194,7 +205,7 @@ class EventForm extends Component {
             <Field
               name="categories"
               component={renderMultiselect}
-              data={all_categories.data}
+              data={allCategories.data}
               valueField="id"
               textField="name"
               className="form-control"
@@ -211,6 +222,33 @@ class EventForm extends Component {
     );
   }
 }
+
+// TODO: Check props haveReccurentCheckBox and children
+EventForm.propTypes = {
+  onSubmit: propTypes.func,
+  handleSubmit: propTypes.func,
+  error: propTypes.string,
+  eventId: propTypes.number,
+  user_name: propTypes.string,
+  all_categories: propTypes.object,
+  form_values: propTypes.object,
+  haveReccurentCheckBox: propTypes.bool,
+  initialValues: propTypes.object,
+  children: propTypes.any,
+};
+
+EventForm.defaultProps = {
+  onSubmit: () => {},
+  handleSubmit: () => {},
+  error: "",
+  eventId: 0,
+  user_name: "",
+  all_categories: {},
+  form_values: {},
+  haveReccurentCheckBox: false,
+  initialValues: {},
+  children: "something",
+};
 
 export default reduxForm({
   form: "event-form",

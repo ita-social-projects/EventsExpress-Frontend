@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
+import propTypes from "prop-types";
 import {
   promoteToOwner,
   approveUser,
@@ -32,6 +33,22 @@ const DeniedUsersActions = props => {
       </Button>
     </>
   );
+};
+
+DeniedUsersActions.propTypes = {
+  user: propTypes.object,
+  isMyEvent: propTypes.bool,
+  promoteToOwner: propTypes.func,
+  approveUser: propTypes.func,
+  eventId: propTypes.number,
+};
+
+DeniedUsersActions.defaultProps = {
+  user: {},
+  isMyEvent: false,
+  promoteToOwner: () => {},
+  approveUser: () => {},
+  eventId: 0,
 };
 
 const mapStateToProps = state => ({

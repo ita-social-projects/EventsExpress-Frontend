@@ -1,4 +1,5 @@
 import React from "react";
+import propTypes from "prop-types";
 
 class CheckboxGroup extends React.Component {
   checkboxGroup() {
@@ -7,8 +8,9 @@ class CheckboxGroup extends React.Component {
     return options.map((option, index) => {
       return (
         <div className="checkbox" key={option.id}>
-          <label>
+          <label htmlFor="checkboxGroup">
             <input
+              id="checkboxGroup"
               type="checkbox"
               style={{ marginRight: "8px" }}
               name={`${input.name}[${index}]`}
@@ -38,5 +40,15 @@ class CheckboxGroup extends React.Component {
     return <div>{this.checkboxGroup()}</div>;
   }
 }
+
+CheckboxGroup.propTypes = {
+  options: propTypes.array,
+  input: propTypes.array,
+};
+
+CheckboxGroup.defaultProps = {
+  options: [],
+  input: [],
+};
 
 export default CheckboxGroup;

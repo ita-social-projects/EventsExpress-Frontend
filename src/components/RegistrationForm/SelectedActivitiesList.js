@@ -24,11 +24,11 @@ const SelectedActivitiesList = ({ data }) => {
 };
 
 SelectedActivitiesList.propTypes = {
-  data: propTypes.object,
+  data: propTypes.array,
 };
 
 SelectedActivitiesList.defaultProps = {
-  data: {},
+  data: [],
 };
 
 export default SelectedActivitiesList;

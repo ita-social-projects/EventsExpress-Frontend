@@ -1,14 +1,11 @@
 ﻿import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
+import propTypes from "prop-types";
 import { renderMultiselect } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
 
 class SelectCategories extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     this.props.initialize({
       categories: this.props.initialValues.categories,
@@ -40,6 +37,24 @@ class SelectCategories extends Component {
     );
   }
 }
+
+SelectCategories.propTypes = {
+  initialize: propTypes.func,
+  initialValues: propTypes.object,
+  handleSubmit: propTypes.func,
+  submitting: propTypes.bool,
+  items: propTypes.array,
+  error: propTypes.array,
+};
+
+SelectCategories.defaultProps = {
+  initialize: () => {},
+  initialValues: {},
+  handleSubmit: () => {},
+  submitting: false,
+  items: {},
+  error: [],
+};
 
 export default reduxForm({
   form: "SelectCategories",

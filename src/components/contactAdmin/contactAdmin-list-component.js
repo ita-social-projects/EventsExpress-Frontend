@@ -1,6 +1,7 @@
 ﻿import React, { Component } from "react";
 import { parse as queryStringParse } from "query-string";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
+import propTypes from "prop-types";
 import ContactAdminItemWrapper from "../../containers/contactAdmin/contactAdmin-item-container";
 import RenderIssuesList from "./renderIssuesList";
 import filterHelper from "../helpers/filterHelper";
@@ -8,7 +9,7 @@ import filterHelper from "../helpers/filterHelper";
 class ContactAdminList extends Component {
   pageChange = page => {
     const { history } = this.props;
-    if (history.location.search == "")
+    if (history.location.search === "")
       history.push(`${history.location.pathname}?page=${page}`);
     else {
       const queryStringInObject = queryStringParse(history.location.search);
@@ -56,4 +57,15 @@ class ContactAdminList extends Component {
     );
   }
 }
+
+ContactAdminList.propTypes = {
+  history: propTypes.object,
+  data_list: propTypes.array,
+};
+
+ContactAdminList.defaultProps = {
+  history: {},
+  data_list: [],
+};
+
 export default withRouter(ContactAdminList);

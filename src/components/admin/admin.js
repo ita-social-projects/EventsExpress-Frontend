@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import "./admin.css";
 import { NavItem } from "../NavItem/NavItem";
@@ -9,7 +9,7 @@ import NotificationTemplateWrapper from "../../containers/notification-template/
 import NotificationInfoWrapper from "../../containers/notification-template/notification-info";
 import Track from "../tracks/track";
 
-export default class Admin extends Component {
+export default class Admin extends PureComponent {
   render() {
     return (
       <>

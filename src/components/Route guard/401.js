@@ -1,5 +1,6 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
+import propTypes from "prop-types";
 import { TogleOpenWind, isOpen } from "../../actions/modalWind-action";
 import logout from "../../actions/login/logout-action";
 
@@ -23,6 +24,19 @@ class Unauthorized extends Component {
     );
   }
 }
+
+Unauthorized.propTypes = {
+  resetError: propTypes.func,
+  logout: propTypes.func,
+  setStatus: propTypes.func,
+};
+
+Unauthorized.defaultProps = {
+  resetError: () => {},
+  logout: () => {},
+  setStatus: () => {},
+};
+
 const mapStateToProps = state => ({
   users: state.users,
 });

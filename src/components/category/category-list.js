@@ -1,4 +1,5 @@
 ﻿import React, { Component } from "react";
+import propTypes from "prop-types";
 import CategoryItemWrapper from "../../containers/categories/category-item";
 
 export default class CategoryList extends Component {
@@ -6,7 +7,7 @@ export default class CategoryList extends Component {
     arr.map(item => <CategoryItemWrapper key={item.id} item={item} />);
 
   render() {
-    const { data_list } = this.props;
+    const { data_list: dataList } = this.props;
 
     return (
       <>
@@ -20,8 +21,16 @@ export default class CategoryList extends Component {
           <td></td>
           <td></td>
         </tr>
-        {this.renderItems(data_list)}
+        {this.renderItems(dataList)}
       </>
     );
   }
 }
+
+CategoryList.propTypes = {
+  data_list: propTypes.array,
+};
+
+CategoryList.defaultProps = {
+  data_list: [],
+};
