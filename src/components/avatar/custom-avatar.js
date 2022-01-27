@@ -69,7 +69,7 @@ CustomAvatar.propTypes = {
 };
 
 CustomAvatar.defaultProps = {
-  userId: 0,
+  userId: null,
   name: "",
   size: "change this",
   changeAvatarCounter: "change this",

@@ -61,7 +61,7 @@ ApprovedUsersActions.defaultProps = {
   user: {},
   isMyEvent: false,
   isMyPrivateEvent: false,
-  eventId: 0,
+  eventId: null,
   promoteToOwner: () => {},
   approveUser: () => {},
 };

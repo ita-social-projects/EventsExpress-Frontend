@@ -186,7 +186,7 @@ EventHeader.propTypes = {
 
 EventHeader.defaultProps = {
   members: [],
-  countVisitor: 0,
+  countVisitor: null,
   owners: [],
   dateFrom: "",
   title: "",

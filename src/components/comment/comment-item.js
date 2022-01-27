@@ -55,6 +55,6 @@ commentItem.propTypes = {
 };
 
 commentItem.defaultProps = {
-  user: 0,
+  user: null,
   item: {},
 };

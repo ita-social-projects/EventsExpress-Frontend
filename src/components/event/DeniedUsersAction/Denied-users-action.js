@@ -48,7 +48,7 @@ DeniedUsersActions.defaultProps = {
   isMyEvent: false,
   promoteToOwner: () => {},
   approveUser: () => {},
-  eventId: 0,
+  eventId: null,
 };
 
 const mapStateToProps = state => ({

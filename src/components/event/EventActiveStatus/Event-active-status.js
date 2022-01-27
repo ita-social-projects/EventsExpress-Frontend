@@ -62,7 +62,7 @@ EventActiveStatus.propTypes = {
 
 EventActiveStatus.defaultProps = {
   eventStatus: false,
-  eventId: 0,
+  eventId: null,
   onBlock: () => {},
   onUnBlock: () => {},
 };

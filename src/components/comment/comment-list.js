@@ -41,8 +41,8 @@ CommentList.propTypes = {
 
 CommentList.defaultProps = {
   callback: () => {},
-  evId: 0,
+  evId: null,
   data_list: [],
-  page: 0,
-  totalPages: 0,
+  page: null,
+  totalPages: null,
 };

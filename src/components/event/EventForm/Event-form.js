@@ -241,7 +241,7 @@ EventForm.defaultProps = {
   onSubmit: () => {},
   handleSubmit: () => {},
   error: "",
-  eventId: 0,
+  eventId: null,
   user_name: "",
   all_categories: {},
   form_values: {},
