@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export const getAge = birthday => {
+const getAge = birthday => {
   const today = new Date();
   const date = moment(today);
   const birthDate = moment(birthday);
@@ -12,3 +12,5 @@ export const getAge = birthday => {
 
   return age;
 };
+
+export default getAge;

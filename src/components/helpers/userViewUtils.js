@@ -2,7 +2,7 @@ import { USER_VIEW_LABELS } from "../../constants/userViewConstants";
 
 const { LIKE, DISLIKE } = USER_VIEW_LABELS;
 
-export const userViewAttitude = attitude => {
+const userViewAttitude = attitude => {
   switch (attitude) {
     case 0: {
       return {
@@ -23,3 +23,5 @@ export const userViewAttitude = attitude => {
     }
   }
 };
+
+export default userViewAttitude;
