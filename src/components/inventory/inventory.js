@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Field, FieldArray, getFormSyncErrors } from "redux-form";
 import { connect } from "react-redux";
 import { renderSelectField, renderTextField } from "../helpers/form-helpers";
-import get_unitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
+import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
 import InventoryHeaderButton from "./InventoryHeaderButton";
 import "./inventory.css";
 import ErrorMessages from "../shared/errorMessage";
 
-const renderInventories = ({ fields, unitOfMeasuringState }) => {
+const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
   return (
     <div className="form-group">
       <button
@@ -23,7 +24,7 @@ const renderInventories = ({ fields, unitOfMeasuringState }) => {
       </button>
       <ul className="">
         {fields.map((item, index) => (
-          <li className="" key={index}>
+          <li className="" key={item.id}>
             <div className="d-flex flex-wrap justify-content-between align-items-center">
               <div className="p-2 bd-highlight align-self-end">
                 <span>{index + 1}.</span>
@@ -53,17 +54,14 @@ const renderInventories = ({ fields, unitOfMeasuringState }) => {
                   minWidth={100}
                   component={renderSelectField}
                 >
-                  <option></option>
-                  {unitOfMeasuringState.units.map((unit, key) => (
-                    <option value={unit.id} key={key}>
+                  {unitOfMeasuringState.units.map(unit => (
+                    <option value={unit.id} key={unit.id}>
                       {unit.unitName}
                     </option>
                   ))}
                 </Field>
               </div>
-              {props.error && (
-                <ErrorMessages error={props.error} className="text-center" />
-              )}
+              {error && <ErrorMessages error={error} className="text-center" />}
               <button
                 type="button"
                 title="Remove item"
@@ -92,7 +90,7 @@ class Inventory extends Component {
   }
 
   componentWillMount() {
-    this.props.get_unitsOfMeasuring();
+    this.props.getUnitsOfMeasuring();
   }
 
   handleOnClickCaret() {
@@ -135,8 +133,18 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_unitsOfMeasuring: () => dispatch(get_unitsOfMeasuring()),
+    getUnitsOfMeasuring: () => dispatch(getUnitsOfMeasuring()),
   };
+};
+
+Inventory.defaultProps = {
+  syncErrors: "",
+  getUnitsOfMeasuring: () => {},
+};
+
+Inventory.propTypes = {
+  syncErrors: PropTypes.string,
+  getUnitsOfMeasuring: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Inventory);
