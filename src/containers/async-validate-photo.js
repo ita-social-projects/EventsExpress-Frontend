@@ -4,7 +4,7 @@ const photoService = new PhotoService();
 
 const asyncValidatePhoto = async values => {
   if (values.photo === undefined) {
-    throw { photo: "Please, upload the photo." };
+    throw new Error({ photo: "Please, upload the photo." });
   }
 
   const response = await photoService.setEventTempPhoto(
@@ -13,7 +13,9 @@ const asyncValidatePhoto = async values => {
   );
   if (!response.ok) {
     const { errors } = await response.json();
-    throw { photo: errors.Photo, _error: errors._error };
+    //! TODO : DON'T USE UNDERSCORE
+    // eslint-disable-next-line no-underscore-dangle
+    throw new Error({ photo: errors.Photo, _error: errors._error });
   }
 };
 
