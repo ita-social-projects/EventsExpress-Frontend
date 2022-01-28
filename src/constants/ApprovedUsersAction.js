@@ -3,3 +3,5 @@ const ApprovedUsersActions = {
   TO_OWNER: " to owner? ",
   DELETE_FROM_EVENT: " Delete from event ",
 };
+
+export default ApprovedUsersActions;
