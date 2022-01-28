@@ -3,7 +3,7 @@ import { stringify as queryStringStringify } from "query-string";
 const filterHelper = (() => {
   return {
     isObject(object) {
-      return object && typeof object === "object";
+      return !object && typeof object === "object";
     },
     
     compareObjects(objFirst, objSecond) {
