@@ -1,11 +1,11 @@
 import { jwtStorageKey } from "../constants/constants";
 
 export default class EventsExpressService {
-  _baseUrl = "api/";
+  baseUrl = "api/";
 
-  getResource = async url => {
-    const call = _url =>
-      fetch(this._baseUrl + _url, {
+  getResource = async Url => {
+    const call = url =>
+      fetch(this.baseUrl + url, {
         method: "get",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -13,17 +13,17 @@ export default class EventsExpressService {
         }),
       });
 
-    let res = await call(url);
+    let res = await call(Url);
     if (res.status === 401 && (await this.refreshHandler())) {
       // one more try:
-      res = await call(url);
+      res = await call(Url);
     }
     return res;
   };
 
-  getPhoto = async url => {
-    const call = _url => fetch(this._baseUrl + url);
-    const res = await call(url);
+  getPhoto = async Url => {
+    const call = url => fetch(this.baseUrl + Url);
+    const res = await call(Url);
 
     if (res.ok) {
       return res.blob();
@@ -31,9 +31,9 @@ export default class EventsExpressService {
     return null;
   };
 
-  setResource = async (url, data) => {
-    const call = (url, data) =>
-      fetch(this._baseUrl + url, {
+  setResource = async (Url, data) => {
+    const call = (Url, data) =>
+      fetch(this.baseUrl + Url, {
         method: "post",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -42,19 +42,19 @@ export default class EventsExpressService {
         body: JSON.stringify(data),
       });
 
-    let res = await call(url, data);
+    let res = await call(Url, data);
 
     if (res.status === 401 && (await this.refreshHandler())) {
       // one more try:
-      res = await call(url, data);
+      res = await call(Url, data);
     }
 
     return res;
   };
 
-  setResourceWithData = async (url, data) => {
-    const call = (url, data) =>
-      fetch(this._baseUrl + url, {
+  setResourceWithData = async (Url, data) => {
+    const call = (Url, data) =>
+      fetch(this.baseUrl + Url, {
         method: "post",
         headers: new Headers({
           Authorization: `Bearer ${localStorage.getItem(jwtStorageKey)}`,
@@ -62,11 +62,11 @@ export default class EventsExpressService {
         body: data,
       });
 
-    let res = await call(url, data);
+    let res = await call(Url, data);
 
     if (res.status === 401 && (await this.refreshHandler())) {
       // one more try:
-      res = await call(url, data);
+      res = await call(Url, data);
     }
 
     return res;
