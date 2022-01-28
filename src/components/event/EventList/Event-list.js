@@ -11,8 +11,7 @@ import EventCard from "../EventItem/Event-item";
 import filterHelper from "../../helpers/filterHelper";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
 import { resetEvents, updateEventsFilters } from "../../../actions/event/event-list-action";
-// eslint-disable-next-line import/named
-import { changedEventStatus } from "../../../actions/event/event-item-view-action";
+import { changeEventStatus } from "../../../actions/event/event-item-view-action";
 
 
 const EventList = ({
@@ -23,22 +22,6 @@ const EventList = ({
   onUnBlock,
   ...props
 }) => {
-
-  EventList.propTypes = {
-    totalPages: PropTypes.number,
-    history: PropTypes.array,
-    currentUser: PropTypes.object,
-    onBlock: PropTypes.func,
-    onUnBlock: PropTypes.func
-  };
-  
-  EventList.defaultProps = {
-    totalPages: null,
-    history: [],
-    currentUser: {},
-    onBlock: () => {},
-    onUnBlock: () => {},
-  };
 
   useEffect(() => {
     return(
@@ -85,10 +68,35 @@ const mapDispatchToProps = dispatch => {
     resetEvents: () => dispatch(resetEvents()),
     updateEventsFilters: filter => dispatch(updateEventsFilters(filter)),
     onBlock: (eventId, reason) =>
-      dispatch(changedEventStatus(eventId, reason, eventStatusEnum.Blocked)),
+      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Blocked)),
     onUnBlock: (eventId, reason) =>
-      dispatch(changedEventStatus(eventId, reason, eventStatusEnum.Active)),
+      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Active)),
   };
 };
+
+EventList.propTypes = {
+  totalPages: PropTypes.number,
+  history: PropTypes.array,
+  location: PropTypes.shape({
+    search: PropTypes.string,
+    pathname: PropTypes.string,
+ }),
+  currentUser: PropTypes.object,
+  onBlock: PropTypes.func,
+  onUnBlock: PropTypes.func,
+};
+
+EventList.defaultProps = {
+  totalPages: null,
+  history: [],
+    location: {
+        search: "",
+        pathname: "",
+    },
+  currentUser: {},
+  onBlock: () => {},
+  onUnBlock: () => {},
+};
+
 
 export default withRouter(connect(null, mapDispatchToProps)(EventList));

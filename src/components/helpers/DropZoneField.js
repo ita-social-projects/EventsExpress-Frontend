@@ -155,13 +155,13 @@ DropZoneField.propTypes = {
 // TODO file props
 
 DropZoneField.defaultProps = {
-  imagefile: PropTypes.arrayOf(
-    PropTypes.shape({
+  imagefile: [
+    {
       file: {},
       name: "",
       preview: "",
-    }),
-  ),
+    },
+  ],
   onChange: () => {},
   touched: false,
   submitting: false,

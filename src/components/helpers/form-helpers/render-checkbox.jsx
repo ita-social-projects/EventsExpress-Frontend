@@ -23,10 +23,10 @@ RenderFormCheckbox.propTypes = {
 };
 
 RenderFormCheckbox.defaultProps = {
-  input: ({
+  input: {
     value: "",
     onChange: () => {},
-  }),
+  },
   label: "",
 };
 

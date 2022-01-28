@@ -150,4 +150,5 @@ ImageResizer.defaultProps = {
   submitting: false,
 
 }
+
 export default ImageResizer;

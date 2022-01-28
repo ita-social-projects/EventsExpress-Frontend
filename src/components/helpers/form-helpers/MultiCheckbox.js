@@ -48,13 +48,11 @@ class MultiCheckbox extends Component {
     };
 
     MultiCheckbox.defaultProps = {
-      input: ({
+      input: {
         value: "",
         name: "",
         onChange: () => {},
-
-
-      }),
+      },
     options: [],
     };
 

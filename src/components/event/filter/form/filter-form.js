@@ -63,8 +63,8 @@ const mapDispatchToProps = dispatch => ({
 FilterForm.propTypes = {
   handleSubmit: PropTypes.func,
   toggleOpen: PropTypes.func,
-  reset: PropTypes.func,
-  pristine: PropTypes.func,
+  reset: PropTypes.bool,
+  pristine: PropTypes.bool,
   applyFilters: PropTypes.func,
   resetFilters: PropTypes.func,
 
@@ -74,8 +74,8 @@ FilterForm.propTypes = {
 FilterForm.defaultProps = {
   handleSubmit: ()=> {},
   toggleOpen: ()=> {},
-  reset: ()=> {},
-  pristine: ()=> {},
+  reset: false,
+  pristine: false,
   applyFilters: () => {},
   resetFilters: () => {},
 } 

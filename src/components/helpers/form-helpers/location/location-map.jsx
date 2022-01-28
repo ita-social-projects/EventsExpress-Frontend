@@ -54,7 +54,7 @@ class LocationMap extends Component {
 
 LocationMap.propTypes = {
   meta: PropTypes.shape({
-    error: PropTypes.string,
+    error: PropTypes.array,
     touched: PropTypes.bool,
     invalid: PropTypes.bool,
   }),
@@ -64,11 +64,11 @@ LocationMap.propTypes = {
 };
 
 LocationMap.defaultProps = {
-  meta: ({
-    error: "",
+  meta: {
+    error: [],
     touched: false,
     invalid: false,
-  }),
+  },
   onUpdate: () => {},
   location: {},
   children: {},

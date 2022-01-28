@@ -53,10 +53,10 @@ const EventVisitors = ({isMyPrivateEvent, visitors, admins, isMyEvent}) => {
     );
   }
   EventVisitors.propTypes = {
-    isMyPrivateEvent: PropTypes.array,
+    isMyPrivateEvent: PropTypes.bool,
     visitors: PropTypes.array,
-    admins: PropTypes.object,
-    isMyEvent: PropTypes.array,
+    admins: PropTypes.array,
+    isMyEvent: PropTypes.bool,
   };
   
   EventVisitors.defaultProps = {

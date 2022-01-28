@@ -46,7 +46,7 @@ RenderDatePickerFirst.propTypes = {
   meta: PropTypes.shape({
     touched: PropTypes.bool,
     invalid: PropTypes.bool,
-    error: PropTypes.string,
+    error: PropTypes.array,
   }),
   label: PropTypes.string,
   minValue: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
@@ -55,15 +55,15 @@ RenderDatePickerFirst.propTypes = {
 };
 
 RenderDatePickerFirst.defaultProps = {
-  input: ({
+  input: {
     value: "",
     onChange: () => {},
-  }),
-  meta: PropTypes.shape({
+  },
+  meta:{
     touched: false,
     invalid: false,
-    error: "",
-  }),
+    error: [],
+  },
   label: "",
   minValue: "",
   maxValue: "",

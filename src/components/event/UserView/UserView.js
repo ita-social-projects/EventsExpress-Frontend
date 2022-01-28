@@ -59,7 +59,9 @@ const UsersView = ({ user, children }) => {
 };
 
 UsersView.propTypes = {
-  user: PropTypes.array, 
+  user: PropTypes.arrayof({
+    
+  }), 
   children: PropTypes.array,
 }
 
