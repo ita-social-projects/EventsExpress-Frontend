@@ -1,11 +1,12 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
-import { get_all_templates } from "../../actions/notification-templates";
+import PropTypes from "prop-types";
+import { getAllTemplates } from "../../actions/notification-templates";
 import NotificationTemplates from "../../components/notification-template";
 
 class NotificationTemplateWrapper extends Component {
   componentDidMount = () => {
-    this.props.get_all_templates();
+    this.props.getAllTemplates();
   };
 
   render() {
@@ -19,8 +20,18 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  get_all_templates: () => dispatch(get_all_templates()),
+  get_all_templates: () => dispatch(getAllTemplates()),
 });
+
+NotificationTemplateWrapper.propTypes = {
+  getAllTemplates: PropTypes.func,
+  notificationTemplates: PropTypes.object,
+};
+
+NotificationTemplateWrapper.defaultProps = {
+  getAllTemplates: () => {},
+  notificationTemplates: {},
+};
 
 export default connect(
   mapStateToProps,

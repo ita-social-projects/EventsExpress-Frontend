@@ -1,7 +1,7 @@
 import { numberField } from "../components/helpers/validators/number-fields-validator";
 import { fieldIsRequired } from "../components/helpers/validators/required-fields-validator";
 
-export const validate = values => {
+const validate = values => {
   const errors = {};
   const occurenceFields = ["periodicity", "frequency"];
   const requiredFields = ["title", "description", "categories"];
@@ -11,10 +11,10 @@ export const validate = values => {
     }
   });
 
-  if (values.categories != null && values.categories.length == 0) {
+  if (values.categories != null && values.categories.length === 0) {
     errors.categories = "Required";
   }
-  if (!values.selectedPos || values.selectedPos == "") {
+  if (!values.selectedPos || values.selectedPos === "") {
     errors.selectedPos = "Required";
   }
   if (values.maxParticipants && values.maxParticipants < 1) {
@@ -36,3 +36,5 @@ export const validate = values => {
     ...fieldIsRequired(values, requiredFields),
   };
 };
+
+export default validate;

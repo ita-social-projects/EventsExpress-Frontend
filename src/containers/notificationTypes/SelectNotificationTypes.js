@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import setUserNotificationTypes from "../../actions/redactProfile/userNotificationType-add-action";
-import get_notificationTypes from "../../actions/notificationType/notificationType-list-action";
+import getNotificationTypes from "../../actions/notificationType/notificationType-list-action";
 import SelectNotificationType from "../../components/SelectNotificationTypes/SelectNotificationType";
-import get_userNotificationTypes from "../../actions/notificationType/userNotificationType-action";
+import getUserNotificationTypes from "../../actions/notificationType/userNotificationType-action";
 
 class SelectNotificationTypesWrapper extends Component {
   constructor(props) {
@@ -12,15 +13,16 @@ class SelectNotificationTypesWrapper extends Component {
   }
 
   componentWillMount = () => {
-    this.props.get_notificationTypes();
-    this.props.getuserNotificationTypes();
+    this.props.getNotificationTypes();
+    this.props.getUserNotificationTypes();
   };
 
   handleSubmit(event) {
     this.props.setUserNotificationTypes({
       notificationTypes: event.notificationTypes,
     });
-    event.notificationTypes = [];
+    const item = event;
+    item.notificationTypes = [];
   }
 
   render() {
@@ -43,9 +45,23 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setUserNotificationTypes: data => dispatch(setUserNotificationTypes(data)),
-    get_notificationTypes: () => dispatch(get_notificationTypes()),
-    getuserNotificationTypes: () => dispatch(get_userNotificationTypes()),
+    get_notificationTypes: () => dispatch(getNotificationTypes()),
+    getuserNotificationTypes: () => dispatch(getUserNotificationTypes()),
   };
+};
+SelectNotificationTypesWrapper.propTypes = {
+  getNotificationTypes: PropTypes.func,
+  getUserNotificationTypes: PropTypes.func,
+  allNotificationTypes: PropTypes.func,
+  user: PropTypes.object,
+  setUserNotificationTypes: PropTypes.func,
+};
+SelectNotificationTypesWrapper.defaultProps = {
+  getNotificationTypes: () => {},
+  getUserNotificationTypes: () => {},
+  allNotificationTypes: () => {},
+  user: {},
+  setUserNotificationTypes: () => {},
 };
 
 export default connect(

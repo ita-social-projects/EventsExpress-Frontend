@@ -1,5 +1,6 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
+import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import DropZoneField from "../../helpers/DropZoneField";
 import ErrorMessages from "../../shared/errorMessage";
@@ -51,6 +52,24 @@ const ChangeAvatar = props => {
       </div>
     </form>
   );
+};
+
+ChangeAvatar.propTypes = {
+  handleSubmit: PropTypes.func,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
+  invalid: PropTypes.bool,
+  error: PropTypes.object,
+  initialValues: PropTypes.object,
+};
+
+ChangeAvatar.defaultProps = {
+  handleSubmit: () => {},
+  pristine: false,
+  submitting: false,
+  invalid: false,
+  error: {},
+  initialValues: {},
 };
 
 export default reduxForm({

@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { getFormValues, reset } from "redux-form";
 import { withRouter } from "react-router";
 import EventFilter from "../components/event/EventFilter/Event-filter";
-import get_categories from "../actions/category/category-list-action";
+import getCategories from "../actions/category/category-list-action";
 import filterHelper from "../components/helpers/filterHelper";
 
 class EventFilterWrapper extends Component {
   componentWillMount() {
-    this.props.get_categories();
+    this.props.getCategories();
   }
 
   onReset = () => {
@@ -29,14 +30,14 @@ class EventFilterWrapper extends Component {
     );
   };
 
-  onSubmit = filters => {
-    filters = filterHelper.trimUndefinedKeys(filters);
+  onSubmit = initialFilters => {
+    const filters = filterHelper.trimUndefinedKeys(initialFilters);
     const filterCopy = { ...this.props.events.filter };
     Object.entries(filters).forEach(function ([key, value]) {
       switch (key) {
         case "page":
           filterCopy[key] = value;
-        case "dateFrom":
+          break;
         case "dateTo":
           filterCopy[key] = new Date(value).toDateString();
           break;
@@ -50,10 +51,8 @@ class EventFilterWrapper extends Component {
           filterCopy[key] = value;
           break;
         case "selectedPos":
-          var x = value.latitude;
-          var y = value.longitude;
-          filterCopy.x = x;
-          filterCopy.y = y;
+          filterCopy.x = value.latitude;
+          filterCopy.y = value.longitude;
           filterCopy[key] = undefined;
           break;
         default:
@@ -117,9 +116,28 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_categories: () => dispatch(get_categories()),
+    get_categories: () => dispatch(getCategories()),
     reset_events: () => dispatch(reset("event-filter-form")),
   };
+};
+
+EventFilterWrapper.propTypes = {
+  getCategories: PropTypes.func,
+  history: PropTypes.array,
+  reset_events: PropTypes.func,
+  current_user: PropTypes.object,
+  events: PropTypes.object,
+  all_categories: PropTypes.object,
+  form_values: PropTypes.object,
+};
+EventFilterWrapper.defaultProps = {
+  getCategories: () => {},
+  reset_events: () => {},
+  history: [],
+  current_user: {},
+  events: [],
+  all_categories: {},
+  form_values: {},
 };
 
 export default withRouter(

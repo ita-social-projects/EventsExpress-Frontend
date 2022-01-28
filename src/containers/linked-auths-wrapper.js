@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import LinkedAuths from "../components/profile/editProfile/linked-auths";
 import getLinkedAuths from "../actions/redactProfile/linked-auths-action";
 import {
@@ -42,5 +43,17 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   loadData: () => dispatch(getLinkedAuths()),
 });
+
+LinkedAuthsWrapper.propTypes = {
+  loadData: PropTypes.func,
+  linkedAuths: PropTypes.array,
+  data: PropTypes.array,
+};
+
+LinkedAuthsWrapper.defaultProps = {
+  loadData: () => {},
+  linkedAuths: [],
+  data: [],
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LinkedAuthsWrapper);
