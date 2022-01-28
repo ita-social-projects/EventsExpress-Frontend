@@ -1,12 +1,13 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import UnitOfMeasuringAddWrapper from "../../containers/unitsOfMeasuring/unitOfMeasuring-add";
 import SpinnerWrapper from "../../containers/spinner";
 import UnitOfMeasuringListWrapper from "../../containers/unitsOfMeasuring/UnitOfMeasuringListWrapper";
-import get_unitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
+import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
 
 class UnitsOfMeasuring extends Component {
-  componentWillMount = () => this.props.get_unitsOfMeasuring();
+  componentWillMount = () => this.props.getUnitsOfMeasuringDispatch();
 
   render() {
     const { unitsOfMeasuring } = this.props;
@@ -22,7 +23,7 @@ class UnitsOfMeasuring extends Component {
                 category: "",
               }}
             />
-            <SpinnerWrapper showContent={unitsOfMeasuring != undefined}>
+            <SpinnerWrapper showContent={unitsOfMeasuring !== undefined}>
               <UnitOfMeasuringListWrapper data={unitsOfMeasuring} />
             </SpinnerWrapper>
           </tbody>
@@ -32,13 +33,23 @@ class UnitsOfMeasuring extends Component {
   }
 }
 
+UnitsOfMeasuring.defaultProps = {
+  getUnitsOfMeasuringDispatch: () => {},
+  unitsOfMeasuring: [],
+};
+
+UnitsOfMeasuring.propTypes = {
+  getUnitsOfMeasuringDispatch: PropTypes.func,
+  unitsOfMeasuring: PropTypes.array,
+};
+
 const mapStateToProps = state => ({
   unitsOfMeasuring: state.unitsOfMeasuring.units,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_unitsOfMeasuring: () => dispatch(get_unitsOfMeasuring()),
+    getUnitsOfMeasuringDispatch: () => dispatch(getUnitsOfMeasuring()),
   };
 };
 

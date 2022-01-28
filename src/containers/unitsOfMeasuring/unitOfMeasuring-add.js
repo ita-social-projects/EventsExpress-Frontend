@@ -42,7 +42,7 @@ class UnitOfMeasuringAddWrapper extends React.Component {
           item={this.props.item}
           onSubmit={this.submit}
           cancel={this.props.edit_cancel}
-          all_categories={this.props.all_categories}
+          allCategories={this.props.all_categories}
         />
         <td />
       </tr>

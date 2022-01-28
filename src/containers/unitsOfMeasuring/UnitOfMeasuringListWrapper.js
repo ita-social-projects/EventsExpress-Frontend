@@ -5,6 +5,6 @@ export default class UnitOfMeasuringListWrapper extends Component {
   render() {
     const { data } = this.props;
 
-    return <UnitOfMeasuringList data_list={data} />;
+    return <UnitOfMeasuringList dataList={data} />;
   }
 }

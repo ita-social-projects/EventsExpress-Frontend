@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
 import { confirmAlert } from "react-confirm-alert";
 import UnitOfMeasuringItem from "../../components/unitOfMeasuring/unitOfMeasuring-item";
 import UnitOfMeasuringEdit from "../../components/unitOfMeasuring/unitOfMeasuring-edit";
 import {
-  add_unitOfMeasuring,
+  addUnitOfMeasuring,
   setUnitOfMeasuringEdited,
 } from "../../actions/unitOfMeasuring/unitOfMeasuring-add-action";
-import { delete_unitOfMeasuring } from "../../actions/unitOfMeasuring/unitOfMeasuring-delete-action";
-import get_categoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
+import deleteUnitOfMeasuring from "../../actions/unitOfMeasuring/unitOfMeasuring-delete-action";
+import getCategoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 class UnitOfMeasuringItemWrapper extends Component {
@@ -19,13 +20,12 @@ class UnitOfMeasuringItemWrapper extends Component {
       values.shortName === this.props.item.shortName &&
       values.categoryId === this.props.item.category
     ) {
-      this.props.edit_cancel();
-    } else {
-      return this.props.save_unitOfMeasuring({
-        ...values,
-        id: this.props.item.id,
-      });
+      return this.props.editСancel();
     }
+    return this.props.save_unitOfMeasuring({
+      ...values,
+      id: this.props.item.id,
+    });
   };
 
   isDeleteConfirm = () => {
@@ -54,7 +54,7 @@ class UnitOfMeasuringItemWrapper extends Component {
   };
 
   render() {
-    const { set_unitOfMeasuring_edited, edit_cancel } = this.props;
+    const { setUnitOfMeasuringEditedDispatch, editСancel } = this.props;
 
     return (
       <tr>
@@ -63,13 +63,13 @@ class UnitOfMeasuringItemWrapper extends Component {
             key={this.props.item.id + this.props.editedUnitOfMeasuring}
             initialValues={this.props.item}
             onSubmit={this.save}
-            cancel={edit_cancel}
-            all_categories={this.props.all_categories}
+            cancel={editСancel}
+            allCategories={this.props.allCategories}
           />
         ) : (
           <UnitOfMeasuringItem
             item={this.props.item}
-            callback={set_unitOfMeasuring_edited}
+            callback={setUnitOfMeasuringEditedDispatch}
           />
         )}
         <td className="align-middle align-items-stretch">
@@ -93,7 +93,7 @@ class UnitOfMeasuringItemWrapper extends Component {
 
 const mapStateToProps = state => {
   return {
-    all_categories: state.categoriesOfMeasuring,
+    allCategories: state.categoriesOfMeasuring,
     status: state.add_unitOfMeasuring,
     editedUnitOfMeasuring: state.unitsOfMeasuring.editedUnitOfMeasuring,
   };
@@ -101,16 +101,35 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    get_categoriesOfMeasuring: () => dispatch(get_categoriesOfMeasuring()),
+    get_categoriesOfMeasuring: () => dispatch(getCategoriesOfMeasuring()),
     delete_unitOfMeasuring: () =>
-      dispatch(delete_unitOfMeasuring(props.item.id)),
-    save_unitOfMeasuring: data => dispatch(add_unitOfMeasuring(data)),
-    set_unitOfMeasuring_edited: () =>
+      dispatch(deleteUnitOfMeasuring(props.item.id)),
+    save_unitOfMeasuring: data => dispatch(addUnitOfMeasuring(data)),
+    setUnitOfMeasuringEditedDispatch: () =>
       dispatch(setUnitOfMeasuringEdited(props.item.id)),
-    edit_cancel: () => dispatch(setUnitOfMeasuringEdited(null)),
+    editСancel: () => dispatch(setUnitOfMeasuringEdited(null)),
   };
 };
 
+UnitOfMeasuringItemWrapper.defaultProps = {
+  item: {},
+  editedUnitOfMeasuring: null,
+  allCategories: {},
+  editСancel: () => {},
+  save_unitOfMeasuring: () => {},
+  delete_unitOfMeasuring: () => {},
+  setUnitOfMeasuringEditedDispatch: () => {},
+};
+
+UnitOfMeasuringItemWrapper.propTypes = {
+  item: PropTypes.object,
+  editedUnitOfMeasuring: PropTypes.object,
+  allCategories: PropTypes.object,
+  editСancel: PropTypes.func,
+  save_unitOfMeasuring: PropTypes.func,
+  delete_unitOfMeasuring: PropTypes.func,
+  setUnitOfMeasuringEditedDispatch: PropTypes.func,
+};
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
