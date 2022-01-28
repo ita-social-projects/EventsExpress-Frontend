@@ -3,14 +3,14 @@ import { stringify as queryStringStringify } from "query-string";
 const filterHelper = (() => {
   return {
     isObject(object) {
-      return object !== null && typeof object === "object";
+      return object && typeof object === "object";
     },
     
     compareObjects(objFirst, objSecond) {
       const keysObjectFirst = Object.keys(objFirst);
       const keysObjectSecond = Object.keys(objSecond);
 
-      keysObjectFirst.map((key) => {
+      keysObjectFirst.map(key => {
         const valObjectFirst = objFirst[key];
         const valObjectSecond = objSecond[key];
         const areObjects =
