@@ -1,41 +1,45 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
+import PropTypes from "prop-types";
 import UserInfoCard from "../user-info/User-info-card";
 import PagePagination from "../shared/pagePagination";
 
-export default class UserItemList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      currentPage: 1,
-    };
-  }
-
-  handlePageChange = (page, e) => {
-    this.props.callback(
-      window.location.search.replace(/(page=)[0-9]+/gm, `page=${page}`),
+const UserItemList = ({ page, totalPages, users, callback }) => {
+  const handlePageChange = pageEl => {
+    callback(
+      window.location.search.replace(/(page=)[0-9]+/gm, `page=${pageEl}`),
     );
-    this.setState({
-      currentPage: page,
-    });
   };
 
-  renderUsers = arr => {
+  const renderUsers = arr => {
     return arr.map(user => <UserInfoCard key={user.id} user={user} />);
   };
 
-  render() {
-    const { page, totalPages } = this.props;
-    return (
-      <>
-        {this.renderUsers(this.props.users)}
-        {totalPages > 1 && (
-          <PagePagination
-            currentPage={page}
-            totalPages={totalPages}
-            callback={this.handlePageChange}
-          />
-        )}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      {renderUsers(users)}
+      {totalPages > 1 && (
+        <PagePagination
+          currentPage={page}
+          totalPages={totalPages}
+          callback={handlePageChange}
+        />
+      )}
+    </>
+  );
+};
+
+UserItemList.defaultProps = {
+  callback: () => {},
+  totalPages: null,
+  page: null,
+  users: [],
+};
+
+UserItemList.propTypes = {
+  callback: PropTypes.func,
+  totalPages: PropTypes.number,
+  page: PropTypes.number,
+  users: PropTypes.array,
+};
+
+export default UserItemList;

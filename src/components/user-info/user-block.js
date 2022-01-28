@@ -1,9 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
 
-export function UserBlock(props) {
-  const { user, isCurrentUser, block, unblock } = props;
-
+const UserBlock = ({ user, isCurrentUser, block, unblock }) => {
   return isCurrentUser ? (
     <td> </td>
   ) : (
@@ -24,4 +23,20 @@ export function UserBlock(props) {
       </td>
     </>
   );
-}
+};
+
+UserBlock.defaultProps = {
+  block: () => {},
+  unblock: () => {},
+  isCurrentUser: false,
+  user: {},
+};
+
+UserBlock.propTypes = {
+  block: PropTypes.func,
+  unblock: PropTypes.func,
+  isCurrentUser: PropTypes.bool,
+  user: PropTypes.object,
+};
+
+export default UserBlock;

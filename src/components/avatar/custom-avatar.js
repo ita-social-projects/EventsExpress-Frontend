@@ -6,7 +6,7 @@ import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();
 
-export class CustomAvatar extends Component {
+class CustomAvatar extends Component {
   constructor(props) {
     super(props);
 
