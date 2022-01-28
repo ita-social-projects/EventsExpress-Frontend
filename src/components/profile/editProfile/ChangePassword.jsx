@@ -123,17 +123,17 @@ const ChangePassword = ({
 };
 
 ChangePassword.defaultProps = {
-  pristine: () => {},
-  reset: false,
-  submitting: () => {},
+  pristine: false,
+  reset: () => {},
+  submitting: false,
   error: "",
   handleSubmit: () => {},
 };
 
 ChangePassword.propTypes = {
-  pristine: PropTypes.func,
-  reset: PropTypes.bool,
-  submitting: PropTypes.func,
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
   error: PropTypes.string,
   handleSubmit: PropTypes.func,
 };

@@ -30,17 +30,17 @@ const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
 };
 
 EditUsername.defaultProps = {
-  pristine: () => {},
-  reset: false,
-  submitting: () => {},
+  pristine: false,
+  reset: () => {},
+  submitting: false,
   error: "",
   handleSubmit: () => {},
 };
 
 EditUsername.propTypes = {
-  pristine: PropTypes.func,
-  reset: PropTypes.bool,
-  submitting: PropTypes.func,
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
   error: PropTypes.string,
   handleSubmit: PropTypes.func,
 };

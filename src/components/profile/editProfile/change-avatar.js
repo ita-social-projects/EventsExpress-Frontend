@@ -58,18 +58,18 @@ const ChangeAvatar = ({
 };
 
 ChangeAvatar.defaultProps = {
-  pristine: () => {},
-  invalid: () => {},
-  submitting: () => {},
+  pristine: false,
+  invalid: false,
+  submitting: false,
   error: "",
   handleSubmit: () => {},
   initialValues: [],
 };
 
 ChangeAvatar.propTypes = {
-  pristine: PropTypes.func,
-  invalid: PropTypes.func,
-  submitting: PropTypes.func,
+  pristine: PropTypes.bool,
+  invalid: PropTypes.bool,
+  submitting: PropTypes.bool,
   error: PropTypes.string,
   handleSubmit: PropTypes.func,
   initialValues: PropTypes.array,

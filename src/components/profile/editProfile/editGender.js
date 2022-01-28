@@ -33,15 +33,15 @@ const EditGender = ({ handleSubmit, pristine, submitting, error }) => {
 };
 
 EditGender.defaultProps = {
-  pristine: () => {},
-  submitting: () => {},
+  pristine: false,
+  submitting: false,
   error: "",
   handleSubmit: () => {},
 };
 
 EditGender.propTypes = {
-  pristine: PropTypes.func,
-  submitting: PropTypes.func,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
   error: PropTypes.string,
   handleSubmit: PropTypes.func,
 };
