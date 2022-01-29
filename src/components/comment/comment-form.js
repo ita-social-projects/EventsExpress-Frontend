@@ -7,7 +7,7 @@ import { renderTextField } from "../helpers/form-helpers";
 import "./Comment.css";
 import ErrorMessages from "../shared/errorMessage";
 
-function Comment(props) {
+const Comment = props => {
   return (
     <>
       <form name="addComment" onSubmit={props.handleSubmit}>
@@ -24,7 +24,7 @@ function Comment(props) {
       )}
     </>
   );
-}
+};
 
 Comment.propTypes = {
   handleSubmit: propTypes.func,

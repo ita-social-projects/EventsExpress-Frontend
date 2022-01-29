@@ -6,7 +6,7 @@ class RenderIssuesList extends Component {
   renderIssues = arr => arr.map(item => this.props.renderSingleIssue(item));
 
   render() {
-    const { page, totalPages, data_list: dataList } = this.props;
+    const { page, totalPages, dataList } = this.props;
 
     return (
       <>
@@ -36,7 +36,7 @@ class RenderIssuesList extends Component {
 
 RenderIssuesList.propTypes = {
   renderSingleIssue: propTypes.func,
-  data_list: propTypes.array,
+  dataList: propTypes.array,
   page: propTypes.number,
   totalPages: propTypes.number,
   handlePageChange: propTypes.func,
@@ -44,7 +44,7 @@ RenderIssuesList.propTypes = {
 
 RenderIssuesList.defaultProps = {
   renderSingleIssue: () => {},
-  data_list: [],
+  dataList: [],
   page: null,
   totalPages: null,
   handlePageChange: () => {},

@@ -38,7 +38,7 @@ class ContactAdminFilter extends Component {
   }
 
   render() {
-    const { form_values: formValues, submitting, onReset } = this.props;
+    const { formValues, submitting, onReset } = this.props;
     const values = formValues || {};
     const options = [
       { value: issueStatusEnum.Open, text: "Open" },
@@ -106,7 +106,7 @@ ContactAdminFilter.propTypes = {
   handleSubmit: propTypes.func,
   initialize: propTypes.func,
   initialFormValues: propTypes.object,
-  form_values: propTypes.object,
+  formValues: propTypes.object,
   submitting: propTypes.bool,
   onReset: propTypes.func,
 };
@@ -115,7 +115,7 @@ ContactAdminFilter.defaultProps = {
   handleSubmit: () => {},
   initialize: () => {},
   initialFormValues: {},
-  form_values: {},
+  formValues: {},
   submitting: false,
   onReset: () => {},
 };

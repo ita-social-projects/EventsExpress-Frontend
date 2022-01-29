@@ -52,7 +52,7 @@ class ContactAdminFilterWrapper extends Component {
         <ContactAdminFilter
           onSubmit={this.onSubmit}
           onReset={this.onReset}
-          form_values={this.props.form_values}
+          formValues={this.props.form_values}
           initialFormValues={initialFormValues}
         />
       </>

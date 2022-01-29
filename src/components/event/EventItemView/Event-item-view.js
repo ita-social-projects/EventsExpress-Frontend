@@ -81,7 +81,7 @@ export default class EventItemView extends Component {
 
   // eslint-disable-next-line sonarjs/cognitive-complexity
   render() {
-    const { current_user: currentUser } = this.props;
+    const { currentUser } = this.props;
     const {
       id,
       categories,
@@ -98,7 +98,6 @@ export default class EventItemView extends Component {
     } = this.props.event.data;
 
     const today = moment().startOf("day");
-    const categoriesList = this.renderCategories(categories);
     const INT32_MAX_VALUE = 2147483647;
     const visitorsEnum = {
       approvedUsers: visitors.filter(x => x.userStatusEvent === 0),
@@ -190,7 +189,7 @@ export default class EventItemView extends Component {
                       location={this.props.event.data.location}
                     />
                   )}
-                  {categoriesList}
+                  {this.renderCategories(categories)}
                 </div>
                 <div className="btn-group dropup change-event">
                   <button
@@ -338,7 +337,7 @@ export default class EventItemView extends Component {
 // TODO: Check prop match
 EventItemView.propTypes = {
   event: propTypes.object,
-  current_user: propTypes.object,
+  currentUser: propTypes.object,
   onCancel: propTypes.func,
   onDelete: propTypes.func,
   onUnCancel: propTypes.func,
@@ -349,7 +348,7 @@ EventItemView.propTypes = {
 
 EventItemView.defaultProps = {
   event: {},
-  current_user: {},
+  currentUser: {},
   onCancel: () => {},
   onDelete: () => {},
   onUnCancel: () => {},

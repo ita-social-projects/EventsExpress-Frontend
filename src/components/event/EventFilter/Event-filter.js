@@ -53,11 +53,7 @@ class EventFilter extends Component {
   }
 
   render() {
-    const {
-      all_categories: allCategories,
-      form_values: formValues,
-      current_user: currentUser,
-    } = this.props;
+    const { allCategories, formValues, currentUser } = this.props;
     const values = formValues || { selectedPos: {} };
     const options = [
       { value: eventStatusEnum.Active, text: "Active" },
@@ -192,9 +188,9 @@ EventFilter.propTypes = {
   onReset: propTypes.func,
   submitting: propTypes.bool,
   onLoadUserDefaults: propTypes.func,
-  all_categories: propTypes.object,
-  form_values: propTypes.object,
-  current_user: propTypes.object,
+  allCategories: propTypes.object,
+  formValues: propTypes.object,
+  currentUser: propTypes.object,
 };
 
 EventFilter.defaultProps = {
@@ -204,9 +200,9 @@ EventFilter.defaultProps = {
   onReset: () => {},
   submitting: false,
   onLoadUserDefaults: () => {},
-  all_categories: {},
-  form_values: {},
-  current_user: {},
+  allCategories: {},
+  formValues: {},
+  currentUser: {},
 };
 
 const FormEventFilter = reduxForm({

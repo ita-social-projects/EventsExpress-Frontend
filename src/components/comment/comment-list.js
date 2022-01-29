@@ -12,7 +12,7 @@ export default class CommentList extends Component {
     arr.map(item => <CommentItemWrapper key={item.id} item={item} />);
 
   render() {
-    const { data_list: dataList } = this.props;
+    const { dataList } = this.props;
     const items = this.renderItems(dataList);
     const { page, totalPages } = this.props;
 
@@ -34,7 +34,7 @@ export default class CommentList extends Component {
 CommentList.propTypes = {
   callback: propTypes.func,
   evId: propTypes.number,
-  data_list: propTypes.array,
+  dataList: propTypes.array,
   page: propTypes.number,
   totalPages: propTypes.number,
 };
@@ -42,7 +42,7 @@ CommentList.propTypes = {
 CommentList.defaultProps = {
   callback: () => {},
   evId: null,
-  data_list: [],
+  dataList: [],
   page: null,
   totalPages: null,
 };

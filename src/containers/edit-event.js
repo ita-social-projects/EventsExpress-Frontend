@@ -32,11 +32,11 @@ class EditEventWrapper extends Component {
         <div className="pl-md-4">
           <EventForm
             validate={validate}
-            all_categories={this.props.all_categories}
+            allCategories={this.props.all_categories}
             onSubmit={this.onSubmit}
             onError={this.onError}
             initialValues={this.props.event}
-            form_values={this.props.form_values}
+            formValues={this.props.form_values}
             haveReccurentCheckBox={false}
             eventId={this.props.event.id}
           >

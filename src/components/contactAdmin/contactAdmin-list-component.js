@@ -25,6 +25,8 @@ class ContactAdminList extends Component {
   );
 
   render() {
+    const changedProps = { ...this.props, dataList: this.props.data_list };
+
     return (
       <>
         {this.props.data_list > 0 ? (
@@ -36,7 +38,7 @@ class ContactAdminList extends Component {
             <td className="justify-content-center">Status</td>
             <td className="justify-content-center">Details</td>
             <RenderIssuesList
-              {...this.props}
+              {...changedProps}
               renderSingleIssue={this.renderSingleIssue}
               handlePageChange={this.pageChange}
             />
@@ -46,7 +48,7 @@ class ContactAdminList extends Component {
         )}
         {this.props.data_list < 1 ? (
           <RenderIssuesList
-            {...this.props}
+            {...changedProps}
             renderSingleIssue={this.renderSingleIssue}
             handlePageChange={this.pageChange}
           />

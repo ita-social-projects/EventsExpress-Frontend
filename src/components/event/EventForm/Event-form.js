@@ -64,12 +64,7 @@ class EventForm extends Component {
   };
 
   render() {
-    const {
-      form_values: formValues,
-      all_categories: allCategories,
-      user_name: userName,
-      error,
-    } = this.props;
+    const { formValues, allCategories, userName, error } = this.props;
     const { checked } = this.state;
 
     return (
@@ -229,9 +224,9 @@ EventForm.propTypes = {
   handleSubmit: propTypes.func,
   error: propTypes.string,
   eventId: propTypes.number,
-  user_name: propTypes.string,
-  all_categories: propTypes.object,
-  form_values: propTypes.object,
+  userName: propTypes.string,
+  allCategories: propTypes.object,
+  formValues: propTypes.object,
   haveReccurentCheckBox: propTypes.bool,
   initialValues: propTypes.object,
   children: propTypes.any,
@@ -242,9 +237,9 @@ EventForm.defaultProps = {
   handleSubmit: () => {},
   error: "",
   eventId: null,
-  user_name: "",
-  all_categories: {},
-  form_values: {},
+  userName: "",
+  allCategories: {},
+  formValues: {},
   haveReccurentCheckBox: false,
   initialValues: {},
   children: "something",

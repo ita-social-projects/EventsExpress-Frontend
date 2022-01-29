@@ -7,7 +7,7 @@ export default class CategoryList extends Component {
     arr.map(item => <CategoryItemWrapper key={item.id} item={item} />);
 
   render() {
-    const { data_list: dataList } = this.props;
+    const { dataList } = this.props;
 
     return (
       <>
@@ -28,9 +28,9 @@ export default class CategoryList extends Component {
 }
 
 CategoryList.propTypes = {
-  data_list: propTypes.array,
+  dataList: propTypes.array,
 };
 
 CategoryList.defaultProps = {
-  data_list: [],
+  dataList: [],
 };
