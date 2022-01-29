@@ -4,7 +4,7 @@ import {
   GET_CATEGORIES_OF_MEASURING_SUCCESS,
 } from "../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
 
-export const reducer = (state = initialState.categoriesOfMeasuring, action) => {
+const reducer = (state = initialState.categoriesOfMeasuring, action) => {
   switch (action.type) {
     case SET_CATEGORIES_OF_MEASURING_PENDING:
       return {
@@ -21,3 +21,5 @@ export const reducer = (state = initialState.categoriesOfMeasuring, action) => {
       return state;
   }
 };
+
+export default reducer;

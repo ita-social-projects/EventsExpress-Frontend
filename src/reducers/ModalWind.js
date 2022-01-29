@@ -2,7 +2,7 @@
 import { SET_OPEN_STATUS } from "../actions/modalWind-action";
 import { SET_LOGIN_SUCCESS } from "../actions/login/login-action";
 
-export const reducer = (state = initialState.modalWind, action) => {
+const reducer = (state = initialState.modalWind, action) => {
   switch (action.type) {
     case SET_OPEN_STATUS:
       return { ...state, isOpen: action.payload };
@@ -15,3 +15,5 @@ export const reducer = (state = initialState.modalWind, action) => {
       return state;
   }
 };
+
+export default reducer;

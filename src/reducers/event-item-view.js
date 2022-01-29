@@ -4,9 +4,11 @@ import {
   RESET_EVENT,
   event,
 } from "../actions/event/event-item-view-action";
-import { getRate, getAverageRate } from "../actions/rating-action";
+import { getRateStates, getAverageRateStates } from "../actions/rating-action";
 
-export const reducer = (state = initialState.event, action) => {
+const reducer = (state = initialState.event, action) => {
+  const stateChangeEvent = { ...state };
+
   switch (action.type) {
     case GET_EVENT_DATA:
       return {
@@ -14,20 +16,19 @@ export const reducer = (state = initialState.event, action) => {
         data: action.payload,
       };
     case event.CHANGE_STATUS:
-      const stateChangeEvent = { ...state };
       stateChangeEvent.data.eventStatus = action.payload.eventStatus;
       return stateChangeEvent;
     case RESET_EVENT:
       return {
         ...initialState.event,
       };
-    case getRate.SUCCESS:
+    case getRateStates.SUCCESS:
       return {
         ...state,
         myRate: action.payload,
       };
 
-    case getAverageRate.SUCCESS:
+    case getAverageRateStates.SUCCESS:
       return {
         ...state,
         averageRate: action.payload,
@@ -36,3 +37,5 @@ export const reducer = (state = initialState.event, action) => {
       return state;
   }
 };
+
+export default reducer;

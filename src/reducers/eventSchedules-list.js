@@ -4,7 +4,7 @@ import {
   RESET_EVENTS_SCHEDULE,
 } from "../actions/eventSchedule/eventSchedule-list-action";
 
-export const reducer = (state = initialState.eventSchedules, action) => {
+const reducer = (state = initialState.eventSchedules, action) => {
   switch (action.type) {
     case GET_EVENTS_SCHEDULE_DATA:
       return {
@@ -17,3 +17,5 @@ export const reducer = (state = initialState.eventSchedules, action) => {
       return state;
   }
 };
+
+export default reducer;

@@ -1,24 +1,28 @@
-﻿import initialState from "../../store/initialState";
-import {
-  SET_CATEGORY_DELETE_PENDING,
-  SET_CATEGORY_DELETE_SUCCESS,
-} from "../../actions/category/category-delete-action";
+﻿// TODO unused reducer
 
-export const reducer = (state = initialState.add_category, action) => {
-  switch (action.type) {
-    case SET_CATEGORY_DELETE_PENDING:
-      return {
-        ...state,
-        isCategoryDeletePending: action.isCategoryDeletePending,
-      };
+// import initialState from "../../store/initialState";
+// import {
+//   SET_CATEGORY_DELETE_PENDING,
+//   SET_CATEGORY_DELETE_SUCCESS,
+// } from "../../actions/category/category-delete-action";
 
-    case SET_CATEGORY_DELETE_SUCCESS:
-      return {
-        ...state,
-        isCategoryDeleteSuccess: action.isCategoryDeleteSuccess,
-      };
+// const reducer = (state = initialState.add_category, action) => {
+//   switch (action.type) {
+//     case SET_CATEGORY_DELETE_PENDING:
+//       return {
+//         ...state,
+//         isCategoryDeletePending: action.isCategoryDeletePending,
+//       };
 
-    default:
-      return state;
-  }
-};
+//     case SET_CATEGORY_DELETE_SUCCESS:
+//       return {
+//         ...state,
+//         isCategoryDeleteSuccess: action.isCategoryDeleteSuccess,
+//       };
+
+//     default:
+//       return state;
+//   }
+// };
+
+// export default reducer;

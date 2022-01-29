@@ -6,8 +6,8 @@ import {
   RECEIVE_SEEN_MESSAGE,
 } from "../actions/chat/chat-action";
 
-export const reducer = (state = initialState.chat, action) => {
-  let new_msg = state.data.messages;
+const reducer = (state = initialState.chat, action) => {
+  let newMsg = state.data.messages;
 
   switch (action.type) {
     case RESET_CHAT:
@@ -15,18 +15,20 @@ export const reducer = (state = initialState.chat, action) => {
         ...initialState.chat,
       };
     case CONCAT_NEW_MSG:
-      new_msg = new_msg.concat(action.payload);
+      newMsg = newMsg.concat(action.payload);
       return {
         ...state,
         data: {
           ...state.data,
-          messages: new_msg,
+          messages: newMsg,
         },
       };
     case RECEIVE_SEEN_MESSAGE:
-      new_msg = state.data.messages;
-      new_msg = new_msg.map(x => {
+      newMsg = state.data.messages;
+      newMsg = newMsg.map(x => {
         if (action.payload.includes(x.id)) {
+          // TODO
+          // eslint-disable-next-line no-param-reassign
           x.seen = true;
         }
         return x;
@@ -35,7 +37,7 @@ export const reducer = (state = initialState.chat, action) => {
         ...state,
         data: {
           ...state.data,
-          messages: new_msg,
+          messages: newMsg,
         },
       };
     case GET_CHAT_DATA:
@@ -47,3 +49,5 @@ export const reducer = (state = initialState.chat, action) => {
       return state;
   }
 };
+
+export default reducer;
