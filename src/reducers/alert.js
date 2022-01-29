@@ -1,18 +1,21 @@
 import { alert } from "../actions/alert-action";
 import initialState from "../store/initialState";
 
+const { SET, SETOPEN, RESET } = alert;
+
 const reducer = (state = initialState.alert, action) => {
   switch (action.type) {
-    case alert.SET:
+    case SET:
       return {
         variant: action.payload.variant,
         message: action.payload.message,
         autoHideDuration: action.payload.autoHideDuration,
         open: false,
       };
-    case alert.SETOPEN:
+    case SETOPEN:
       return { ...state, open: action.payload };
-    case alert.RESET:
+    // TODO State RESET not created in actions
+    case RESET:
       return initialState.alert;
     default:
       return state;

@@ -1,6 +1,6 @@
 ﻿// TODO editGenderStates don`t have states PENDING and SUCCESS
 // TODO unused reducer
-// import { editGenderStates } from "../../actions/redactProfile/gender-edit-action";
+//  import { editGender } from "../../actions/redactProfile/gender-edit-action";
 // export const reducer = (
 //   state = {
 //     isEditGenderPending: false,
