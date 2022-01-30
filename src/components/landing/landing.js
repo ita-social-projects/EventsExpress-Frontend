@@ -1,33 +1,30 @@
 ﻿import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Carousel from "react-material-ui-carousel";
+import { connect } from "react-redux";
 import CarouselEventCard from "./CarouselEventCard";
 import ModalWind from "../modal-wind";
 import AuthComponent from "../../security/authComponent";
 import "./landing.css";
-import { get_upcoming_events } from "../../actions/event/event-list-action";
-import { connect } from "react-redux";
+import { getUpcomingEvents } from "../../actions/event/event-list-action";
 import HeadArticle from "./HeadArticle";
 
 class Landing extends Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    this.props.getUpcomingEvents();
   }
 
   handleClick = () => {
     this.props.onSubmit();
   };
 
-  splitDataIntoBlocks(itemsArray) {
+  splitDataIntoBlocks = itemsArray => {
     return itemsArray.reduce((acc, c, i) => {
-      if ((i & 3) === 0) acc.push([]);
+      if ((i && 3) === 0) acc.push([]);
       acc[acc.length - 1].push(c);
       return acc;
     }, []);
-  }
-
-  componentDidMount() {
-    this.props.get_upcoming_events();
-  }
+  };
 
   renderCarouselBlock = eventBlock => (
     <div className="carousel-block wd-100">
@@ -80,6 +77,7 @@ class Landing extends Component {
                     <button
                       className="btn btn-warning"
                       onClick={() => action()}
+                      type="button"
                     >
                       Join EventsExpress
                     </button>
@@ -139,8 +137,20 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_upcoming_events: () => dispatch(get_upcoming_events()),
+    getUpcomingEvents: () => dispatch(getUpcomingEvents()),
   };
+};
+
+Landing.defaultProps = {
+  events: [],
+  getUpcomingEvents: () => {},
+  onSubmit: () => {},
+};
+
+Landing.propTypes = {
+  events: PropTypes.array,
+  getUpcomingEvents: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

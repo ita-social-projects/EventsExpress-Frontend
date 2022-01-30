@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Header from "../Header";
 import image1 from "./landing-images/1.jpg";
 import image2 from "./landing-images/2.jpg";
 import image3 from "./landing-images/3.jpg";
@@ -21,30 +20,22 @@ const imagesPreload = [
   image8,
 ];
 
-export default class HeadArticle extends Component {
+class HeadArticle extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentImage: image1,
       currentImageCounter: 0,
-      preloadedPictures: [],
     };
-    const preloadedData = imagesPreload.map(image => {
-      const newImage = new Image();
-      newImage.src = image;
-      return newImage;
-    });
-
-    this.setState.preloadedPictures = preloadedData;
   }
 
   async componentDidMount() {
     this.interval = setInterval(() => {
-      this.setState({
+      this.setState(prevState => ({
         currentImageCounter:
-          (this.state.currentImageCounter + 1) % imagesPreload.length,
-        currentImage: imagesPreload[this.state.currentImageCounter],
-      });
+          (prevState.currentImageCounter + 1) % imagesPreload.length,
+        currentImage: imagesPreload[prevState.currentImageCounter],
+      }));
     }, 5000);
   }
 
@@ -62,7 +53,11 @@ export default class HeadArticle extends Component {
         <div className="button-container text-center">
           <h2>What do you want to do?</h2>
           <div className="buttons">
-            <button className="btn btn-warning" onClick={this.handleClick}>
+            <button
+              className="btn btn-warning"
+              onClick={this.handleClick}
+              type="button"
+            >
               Create event
             </button>
             <Link to="home/events" className="btn btn-warning">
@@ -74,3 +69,5 @@ export default class HeadArticle extends Component {
     );
   }
 }
+
+export default HeadArticle;

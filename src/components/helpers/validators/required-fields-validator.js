@@ -1,4 +1,4 @@
-export const fieldIsRequired = (values, requiredFields) => {
+const fieldIsRequired = (values, requiredFields) => {
   const errors = {};
   requiredFields.forEach(field => {
     if (!values[field]) {
@@ -7,3 +7,5 @@ export const fieldIsRequired = (values, requiredFields) => {
   });
   return errors;
 };
+
+export default fieldIsRequired;

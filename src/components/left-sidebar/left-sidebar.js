@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Badge from "@material-ui/core/Badge";
 import "./left-sidebar.css";
 import { NavItem } from "../NavItem/NavItem";
@@ -9,27 +10,32 @@ class LeftSidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      _class: "left-sidebar-closed",
+      class: "left-sidebar-closed",
     };
   }
 
   render() {
+    const LEFT_SIDEBAR_OPENED = "left-sidebar-opened";
+    const LEFT_SIDEBAR_CLOSED = "left-sidebar-closed";
     return (
       <>
         <div
           id="open-close-zone"
-          className={`${this.state._class} d-flex justify-content-start`}
+          className={`${this.state.class} d-flex justify-content-start`}
           onClick={() => {
-            this.state._class === "left-sidebar-opened"
-              ? this.setState({ _class: "left-sidebar-closed" })
-              : this.setState({ _class: "left-sidebar-opened" });
+            return this.state.class === LEFT_SIDEBAR_OPENED
+              ? this.setState({ class: LEFT_SIDEBAR_CLOSED })
+              : this.setState({ class: LEFT_SIDEBAR_OPENED });
           }}
+          onKeyPress={() => {}}
+          role="button"
+          tabIndex="0"
         >
-          <button className="open-close-btn">
-            {this.state._class === "left-sidebar-opened" ? "×" : "☰"}
+          <button className="open-close-btn" type="button">
+            {this.state.class === LEFT_SIDEBAR_OPENED ? "×" : "☰"}
           </button>
         </div>
-        <div className={`${this.state._class} left-sidebar`}>
+        <div className={`${this.state.class} left-sidebar`}>
           <nav>
             <hr />
             <ul className="list-unstyled">
@@ -48,7 +54,7 @@ class LeftSidebar extends Component {
                 />
                 <NavItem
                   to="/eventSchedules"
-                  my_icon={<i className="fa fa-clone" />}
+                  myIcon={<i className="fa fa-clone" />}
                   text="Recurrent Events"
                 />
                 <NavItem
@@ -60,9 +66,9 @@ class LeftSidebar extends Component {
               <AuthComponent>
                 <NavItem
                   to="/user_chats"
-                  my_icon={
+                  myIcon={
                     <Badge
-                      badgeContent={this.props.msg_for_read().length}
+                      badgeContent={this.props.msgForRead().length}
                       color="primary"
                     >
                       <i className="fas fa-comments" />
@@ -93,5 +99,15 @@ class LeftSidebar extends Component {
     );
   }
 }
+
+LeftSidebar.defaultProps = {
+  user: {},
+  msgForRead: () => {},
+};
+
+LeftSidebar.propTypes = {
+  user: PropTypes.object,
+  msgForRead: PropTypes.func,
+};
 
 export default LeftSidebar;

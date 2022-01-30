@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -6,7 +7,7 @@ import {
 import MomentUtils from "@date-io/moment";
 import moment from "moment";
 
-export default ({
+const RenderDatePicker = ({
   input: { onChange, value, ...inputProps },
   meta: { touched, invalid, error },
   minValue,
@@ -35,4 +36,24 @@ export default ({
       </MuiPickersUtilsProvider>
     </>
   );
+};
+
+export default RenderDatePicker;
+
+RenderDatePicker.defaultProps = {
+  input: {},
+  meta: {},
+  minValue: null,
+  maxValue: null,
+  label: "",
+  disabled: false,
+};
+
+RenderDatePicker.propTypes = {
+  input: PropTypes.object,
+  meta: PropTypes.object,
+  minValue: PropTypes.number,
+  maxValue: PropTypes.number,
+  label: PropTypes.string,
+  disabled: PropTypes.bool,
 };

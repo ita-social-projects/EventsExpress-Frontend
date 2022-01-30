@@ -1,5 +1,9 @@
-﻿const initialState = { isReqested: false, category: "", error: "" };
+﻿// TODO unused reducer
 
-export const reducer = (state = initialState, action) => {
-  return state;
-};
+// const initialState = { isReqested: false, category: "", error: "" };
+
+// const reducer = (state = initialState) => {
+//   return state;
+// };
+
+// export default reducer;

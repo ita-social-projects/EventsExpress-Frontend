@@ -2,13 +2,12 @@
 import { Grid, Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
-import get_category_groups from "../../actions/categoryGroup/category-group-list-action";
-import get_categories from "../../actions/category/category-list-action";
-import TileGroup from "../../containers/TileGroup";
+import PropTypes from "prop-types";
+import getCategoryGroups from "../../actions/categoryGroup/category-group-list-action";
+import getCategories from "../../actions/category/category-list-action";
+import { TileGroup } from "../../containers/TileGroup";
 
-const ChooseActivities = props => {
-  const { handleSubmit, previousPage } = props;
-
+const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
   useEffect(() => {
     props.getCategoryGroups();
     props.getCategories();
@@ -65,6 +64,24 @@ const ChooseActivities = props => {
   );
 };
 
+ChooseActivities.defaultProps = {
+  handleSubmit: () => {},
+  previousPage: () => {},
+  getCategoryGroups: () => {},
+  getCategories: () => {},
+  categoryGroups: [],
+  categories: [],
+};
+
+ChooseActivities.propTypes = {
+  handleSubmit: PropTypes.func,
+  previousPage: PropTypes.func,
+  getCategoryGroups: PropTypes.func,
+  getCategories: PropTypes.func,
+  categoryGroups: PropTypes.array,
+  categories: PropTypes.array,
+};
+
 const mapStateToProps = state => ({
   categoryGroups: state.categoryGroups.data,
   categories: state.categories.data,
@@ -72,8 +89,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCategoryGroups: () => dispatch(get_category_groups()),
-    getCategories: () => dispatch(get_categories()),
+    getCategoryGroups: () => dispatch(getCategoryGroups()),
+    getCategories: () => dispatch(getCategories()),
   };
 };
 

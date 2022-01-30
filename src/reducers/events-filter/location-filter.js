@@ -4,14 +4,14 @@ const initialState = {
   location: {},
 };
 
-export const locationFilterReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_LOCATION:
-      return {
-        ...state,
-        location: action.payload,
-      };
-    default:
-      return state;
+const locationFilterReducer = (state = initialState, action) => {
+  if (action.type === SET_LOCATION) {
+    return {
+      ...state,
+      location: action.payload,
+    };
   }
+  return state;
 };
+
+export default locationFilterReducer;

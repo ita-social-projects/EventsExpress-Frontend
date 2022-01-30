@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
 import InventoryHeaderButton from "./InventoryHeaderButton";
 import { getInventoryData } from "../../actions/inventory/inventory-list-action";
 import InventoryItemWrapper from "../../containers/inventory-item";
-import { edit_users_inventory } from "../../actions/users/users-inventories-action";
+import { editUsersInventory } from "../../actions/users/users-inventories-action";
 
 class InventoryList extends Component {
   constructor() {
@@ -16,6 +17,7 @@ class InventoryList extends Component {
     };
 
     this.handleOnClickCaret = this.handleOnClickCaret.bind(this);
+    this.addItemToList = this.addItemToList.bind(this);
   }
 
   addItemToList = () => {
@@ -45,7 +47,7 @@ class InventoryList extends Component {
 
   render() {
     const { inventories, event, user, usersInventories } = this.props;
-    const isMyEvent = event.owners.find(x => x.id === user.id) != undefined;
+    const isMyEvent = event.owners.find(x => x.id === user.id) !== undefined;
     let updateList = [];
     if (inventories.items) {
       updateList = inventories.items.map(item => {
@@ -71,7 +73,7 @@ class InventoryList extends Component {
             {isMyEvent && (
               <IconButton
                 disabled={this.state.disabledEdit}
-                onClick={this.addItemToList.bind(this)}
+                onClick={this.addItemToList}
                 size="small"
               >
                 <span className="icon">
@@ -114,12 +116,12 @@ class InventoryList extends Component {
                   isMyEvent={isMyEvent}
                   disabledEdit={this.state.disabledEdit}
                   changeDisableEdit={this.changeDisableEdit}
-                  get_inventories={this.props.get_inventories}
+                  getInventories={this.props.getInventories}
                   eventId={this.props.eventId}
                   isNew
                 />
               )}
-              {updateList.map((item, key) => {
+              {updateList.map(item => {
                 return (
                   <InventoryItemWrapper
                     item={item}
@@ -129,9 +131,9 @@ class InventoryList extends Component {
                     isMyEvent={isMyEvent}
                     disabledEdit={this.state.disabledEdit}
                     changeDisableEdit={this.changeDisableEdit}
-                    get_inventories={this.props.get_inventories}
+                    getInventories={this.props.getInventories}
                     eventId={this.props.eventId}
-                    key={key}
+                    key={item.id}
                   />
                 );
               })}
@@ -152,9 +154,27 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_inventories: inventories => dispatch(getInventoryData(inventories)),
-    edit_users_inventory: data => dispatch(edit_users_inventory(data)),
+    getInventories: inventories => dispatch(getInventoryData(inventories)),
+    editUsersInventory: data => dispatch(editUsersInventory(data)),
   };
+};
+
+InventoryList.defaultProps = {
+  inventories: [],
+  event: {},
+  user: {},
+  usersInventories: [],
+  getInventories: [],
+  eventId: null,
+};
+
+InventoryList.propTypes = {
+  inventories: PropTypes.array,
+  event: PropTypes.object,
+  user: PropTypes.object,
+  usersInventories: PropTypes.array,
+  getInventories: PropTypes.array,
+  eventId: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(InventoryList);

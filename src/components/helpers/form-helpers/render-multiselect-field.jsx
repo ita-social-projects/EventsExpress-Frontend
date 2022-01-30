@@ -1,14 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Multiselect from "react-widgets/lib/Multiselect";
 import { renderFieldError } from ".";
 
-export default ({
+const RenderMultiselectField = ({
   input,
   data,
   valueField,
   textField,
   placeholder,
-  meta: { touched, invalid, error },
+  meta: { touched, error },
 }) => (
   <>
     <Multiselect
@@ -23,3 +24,23 @@ export default ({
     {renderFieldError({ touched, error })}
   </>
 );
+
+export default RenderMultiselectField;
+
+RenderMultiselectField.defaultProps = {
+  input: {},
+  meta: {},
+  valueField: "",
+  textField: "",
+  placeholder: "",
+  data: {},
+};
+
+RenderMultiselectField.propTypes = {
+  input: PropTypes.object,
+  meta: PropTypes.object,
+  valueField: PropTypes.string,
+  textField: PropTypes.string,
+  placeholder: PropTypes.string,
+  data: PropTypes.object,
+};

@@ -1,11 +1,12 @@
 ﻿import React, { Component } from "react";
+import PropTypes from "prop-types";
 import PhotoService from "../../services/PhotoService";
 import { eventDefaultImage } from "../../constants/eventDefaultImage";
 import { parseDate } from "../helpers/parseDate";
 
 const photoService = new PhotoService();
 
-export default class CarouselEventCard extends Component {
+class CarouselEventCard extends Component {
   constructor(props) {
     super(props);
 
@@ -32,11 +33,7 @@ export default class CarouselEventCard extends Component {
     const { event } = this.props;
     return (
       <div className="card">
-        <img
-          className="card-img-top"
-          src={this.state.eventImage}
-          alt="Event image"
-        />
+        <img className="card-img-top" src={this.state.eventImage} alt="Event" />
         <div className="card-body">
           <p className="card-text text-muted">{parseDate(event.dateFrom)}</p>
           <p className="card-text">{event.title}</p>
@@ -54,3 +51,13 @@ export default class CarouselEventCard extends Component {
     );
   }
 }
+
+CarouselEventCard.defaultProps = {
+  event: {},
+};
+
+CarouselEventCard.propTypes = {
+  event: PropTypes.object,
+};
+
+export default CarouselEventCard;

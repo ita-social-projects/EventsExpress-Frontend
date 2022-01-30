@@ -1,7 +1,7 @@
 import { fieldIsRequired } from "../helpers/validators/required-fields-validator";
 import { maxLength30 } from "../helpers/validators/min-max-length-validators";
 
-export const validate = values => {
+const validate = values => {
   const errors = {};
 
   const requiredFields = ["itemName", "needQuantity", "unitOfMeasuring.id"];
@@ -20,3 +20,5 @@ export const validate = values => {
     ...errors,
   };
 };
+
+export default validate;

@@ -1,20 +1,21 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import IconButton from "@material-ui/core/IconButton";
 import { renderTextField } from "../helpers/form-helpers";
 
 class VisitorEditItemForm extends Component {
-  maxValue = max => value =>
-    value && value > max ? `Must be less or equal than ${max}` : undefined;
-
   maxValueLimitor = this.maxValue(
     this.props.initialValues.needQuantity - this.props.alreadyGet,
   );
 
+  minValueLimitor = this.minValue(1);
+
   minValue = min => value =>
     value && value < min ? `Must be at least ${min}` : undefined;
 
-  minValueLimitor = this.minValue(1);
+  maxValue = max => value =>
+    value && value > max ? `Must be less or equal than ${max}` : undefined;
 
   render() {
     const { initialValues, alreadyGet } = this.props;
@@ -48,6 +49,20 @@ class VisitorEditItemForm extends Component {
     );
   }
 }
+
+VisitorEditItemForm.defaultProps = {
+  initialValues: {},
+  alreadyGet: [],
+  handleSubmit: () => {},
+  onCancel: () => {},
+};
+
+VisitorEditItemForm.propTypes = {
+  initialValues: PropTypes.object,
+  alreadyGet: PropTypes.array,
+  handleSubmit: PropTypes.func,
+  onCancel: PropTypes.func,
+};
 
 export default reduxForm({
   form: "will-take-item-form",
