@@ -1,8 +1,3 @@
-# Node.js with React
-# Build a Node.js project that uses React.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 name: $(Date:yyyyMMdd)$(Rev:.r)
 
 trigger:
@@ -10,47 +5,60 @@ trigger:
 pr:
 - deployment
 
-
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '14.x'
-  displayName: 'Install Node.js'
+stages:
+  - stage: 'build'
+    displayName: 'Initial steps'
+    jobs:
+      - job: 'build'
+        displayName: 'Build App'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '14.x'
+            displayName: 'Install Node.js'
+          - script: |
+              npm install --legacy-peer-deps
+              npm run build
+            displayName: 'Install deps and build'
 
-- script: |
-    npm install --legacy-peer-deps
-    npm run build
-  displayName: 'npm install and build'
-  
-- task: CopyFiles@2
-  displayName: 'Copy files'
-  inputs:
-    sourceFolder: 'build' 
-    Contents: '**/*'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    cleanTargetFolder: true
- 
-- task: ArchiveFiles@2
-  displayName: 'Archive files'
-  inputs:
-    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-    includeRootFolder: false
-    archiveType: zip
-    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    replaceExistingArchive: true
- 
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Build Artifacts'
-  inputs: 
-    pathtoPublish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Azure subscription 1 (0033c6eb-8348-44fc-910f-492d6df58064)'
-    appType: 'webAppLinux'
-    appName: 'eventexpress-frontend-dev'
-    package: '$(System.ArtifactsDirectory)/$(Build.BuildId).zip'
-    runtimeStack: 'NODE|14-lts'
-    startUpCommand: 'pm2 serve /home/site/wwwroot --no-daemon --spa'
+  - stage: 'deploy'
+    displayName: 'Publish & Deploy App'
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    jobs:
+      - job: 'publish'
+        displayName: 'Publish Artifact'
+        steps:
+          - task: CopyFiles@2
+            displayName: 'Copy files'
+            inputs:
+              sourceFolder: 'build' 
+              Contents: '**/*'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+              cleanTargetFolder: true
+          - task: ArchiveFiles@2
+            displayName: 'Archive files'
+            inputs:
+              rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+              includeRootFolder: false
+              archiveType: zip
+              archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+              replaceExistingArchive: true
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Build Artifacts'
+            inputs:
+              pathtoPublish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+
+      - job: 'deploy'
+        displayName: 'Deploy App'
+        steps:
+          - task: AzureWebApp@1
+            inputs:
+              azureSubscription: 'Azure subscription 1 (0033c6eb-8348-44fc-910f-492d6df58064)'
+              appType: 'webAppLinux'
+              appName: 'eventexpress-frontend-dev'
+              package: '$(System.ArtifactsDirectory)/$(Build.BuildId).zip'
+              runtimeStack: 'NODE|14-lts'
+              startUpCommand: 'pm2 serve /home/site/wwwroot --no-daemon --spa'
