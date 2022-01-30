@@ -9,8 +9,8 @@ import editEventFromParent, {
   setEventFromParentPending,
   setEventFromParentSuccess,
 } from "../actions/event/event-copy-with-edit-action";
-import { validate } from "./event-edit-validate-form ";
-import { validateEventForm } from "./event-validate-form";
+import validate from "./event-edit-validate-form ";
+import validateEventForm from "./event-validate-form";
 import getCategories from "../actions/category/category-list-action";
 
 class EditFromParentEventWraper extends Component {
