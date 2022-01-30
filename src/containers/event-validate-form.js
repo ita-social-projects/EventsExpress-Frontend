@@ -1,24 +1,32 @@
 const validateEventForm = values => {
   const valuesCopy = values;
+  const {
+    isPublic,
+    isReccurent,
+    frequency,
+    maxParticipants,
+    dateFrom,
+    dateTo,
+  } = values;
   if (!values) return valuesCopy;
 
-  if (!values.isPublic) {
+  if (!isPublic) {
     valuesCopy.isPublic = false;
   }
 
-  if (values.isReccurent && !values.frequency) {
+  if (isReccurent && !frequency) {
     valuesCopy.frequency = 0;
   }
 
-  if (!values.maxParticipants) {
+  if (!maxParticipants) {
     valuesCopy.maxParticipants = 2147483647;
   }
 
-  if (!values.dateFrom) {
+  if (!dateFrom) {
     valuesCopy.dateFrom = new Date(Date.now());
   }
 
-  if (!values.dateTo) {
+  if (!dateTo) {
     valuesCopy.dateTo = new Date(values.dateFrom);
   }
 
