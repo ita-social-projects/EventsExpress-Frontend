@@ -16,9 +16,8 @@ class commentItemWrapper extends React.Component {
   }
 
   changeInfo = () => {
-    this.setState(previousState => ({
-      ...previousState,
-      info: !this.stare.info,
+    this.setState(prevState => ({
+      info: !prevState.info,
     }));
   };
 
