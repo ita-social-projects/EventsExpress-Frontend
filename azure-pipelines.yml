@@ -53,12 +53,19 @@ stages:
       - job: 'deploy'
         displayName: 'Deploy to Test Environment'
         steps:
+          - checkout: none
+          - task: DownloadBuildArtifacts@1
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'EventExpressFrontend'
+              downloadPath: '$(Pipeline.Workspace)/artifact/'
           - task: AzureWebApp@1
             displayName: 'Deploy artifact'
             inputs:
               azureSubscription: 'Azure subscription 1 (0033c6eb-8348-44fc-910f-492d6df58064)'
               appType: 'webAppLinux'
               appName: 'eventexpress-frontend-dev'
-              package: '$(System.ArtifactsDirectory)/$(Build.BuildId).zip'
+              package: '$(Pipeline.Workspace)/artifact/$(Build.BuildId).zip'
               runtimeStack: 'NODE|14-lts'
               startUpCommand: 'pm2 serve /home/site/wwwroot --no-daemon --spa'
