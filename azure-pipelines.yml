@@ -6,9 +6,9 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
 
 trigger:
-- main
+- deployment
 pr:
-- main
+- deployment
 
 
 pool:
@@ -46,11 +46,3 @@ steps:
   displayName: 'Publish Build Artifacts'
   inputs: 
     pathtoPublish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Visual Studio Professional Subscription (osavchuk2)(0bbbf432-fe2e-4ecb-9bdd-457595fea396)'
-    appType: 'webAppLinux'
-    appName: 'eventsexpress-ui-dev'
-    package: '$(System.ArtifactsDirectory)/$(Build.BuildId).zip'
-    runtimeStack: 'NODE|14-lts'
