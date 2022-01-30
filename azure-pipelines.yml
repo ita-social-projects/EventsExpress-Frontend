@@ -66,6 +66,6 @@ stages:
               azureSubscription: 'Azure subscription 1 (0033c6eb-8348-44fc-910f-492d6df58064)'
               appType: 'webAppLinux'
               appName: 'eventexpress-frontend-dev'
-              package: '$(Pipeline.Workspace)/artifact/$(Build.BuildId).zip'
+              package: '$(Pipeline.Workspace)/artifact/EventExpressFrontend/$(Build.BuildId).zip'
               runtimeStack: 'NODE|14-lts'
               startUpCommand: 'pm2 serve /home/site/wwwroot --no-daemon --spa'
