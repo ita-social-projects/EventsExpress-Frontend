@@ -6,6 +6,7 @@ import { withRouter } from "react-router";
 import EventFilter from "../components/event/EventFilter/Event-filter";
 import getCategories from "../actions/category/category-list-action";
 import filterHelper from "../components/helpers/filterHelper";
+import EventFilterConstants from "../constants/EventFilterConstants";
 
 class EventFilterWrapper extends Component {
   componentWillMount() {
@@ -33,24 +34,24 @@ class EventFilterWrapper extends Component {
   onSubmit = initialFilters => {
     const filters = filterHelper.trimUndefinedKeys(initialFilters);
     const filterCopy = { ...this.props.events.filter };
-    Object.entries(filters).forEach(function ([key, value]) {
+    Object.entries(filters).forEach(([key, value]) => {
       switch (key) {
-        case "page":
+        case EventFilterConstants.PAGE:
           filterCopy[key] = value;
           break;
-        case "dateTo":
+        case EventFilterConstants.DATE_TO:
           filterCopy[key] = new Date(value).toDateString();
           break;
-        case "categories":
+        case EventFilterConstants.CATEGORIES:
           filterCopy[key] = value.map(item => item.id);
           break;
-        case "statuses":
+        case EventFilterConstants.STATUSES:
           filterCopy[key] = value;
           break;
-        case "radius":
+        case EventFilterConstants.RADIUS:
           filterCopy[key] = value;
           break;
-        case "selectedPos":
+        case EventFilterConstants.SELECTED_POS:
           filterCopy.x = value.latitude;
           filterCopy.y = value.longitude;
           filterCopy[key] = undefined;

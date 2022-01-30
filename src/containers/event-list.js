@@ -6,11 +6,7 @@ import { parse as queryStringParse } from "query-string";
 import { withRouter } from "react-router";
 import EventList from "../components/event/EventList/Event-list";
 import SpinnerWrapper from "./spinner";
-import {
-  getEvents,
-  // resetEvents,
-  // updateEventsFilters,
-} from "../actions/event/event-list-action";
+import { getEvents } from "../actions/event/event-list-action";
 import filterHelper from "../components/helpers/filterHelper";
 
 class EventListWrapper extends Component {
