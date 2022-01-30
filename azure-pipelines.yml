@@ -1,9 +1,9 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
 
 trigger:
-- deployment
+- development
 pr:
-- deployment
+- development
 
 pool:
   vmImage: ubuntu-latest
