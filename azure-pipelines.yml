@@ -10,7 +10,7 @@ pool:
 
 stages:
   - stage: 'build'
-    displayName: 'Initial steps'
+    displayName: 'Build and Publish Artifact'
     jobs:
       - job: 'build'
         displayName: 'Build App'
@@ -21,16 +21,10 @@ stages:
             displayName: 'Install Node.js'
           - script: |
               npm install --legacy-peer-deps
+            displayName: 'Install dependencies'
+          - script: |
               npm run build
-            displayName: 'Install deps and build'
-
-  - stage: 'deploy'
-    displayName: 'Publish & Deploy App'
-    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-    jobs:
-      - job: 'publish'
-        displayName: 'Publish Artifact'
-        steps:
+            displayName: 'Create Production Build'
           - task: CopyFiles@2
             displayName: 'Copy files'
             inputs:
@@ -49,12 +43,18 @@ stages:
           - task: PublishBuildArtifacts@1
             displayName: 'Publish Build Artifacts'
             inputs:
+              ArtifactName: EventExpressFrontend
               pathtoPublish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
 
+  - stage: 'deploy'
+    displayName: 'Deploy App'
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    jobs:
       - job: 'deploy'
-        displayName: 'Deploy App'
+        displayName: 'Deploy to Test Environment'
         steps:
           - task: AzureWebApp@1
+            displayName: 'Deploy artifact'
             inputs:
               azureSubscription: 'Azure subscription 1 (0033c6eb-8348-44fc-910f-492d6df58064)'
               appType: 'webAppLinux'
