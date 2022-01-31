@@ -1,13 +1,14 @@
-﻿import React, { Component } from "react";
+import React, { Component } from "react";
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import Moment from "react-moment";
+import propTypes from "prop-types";
 import Tooltip from "@material-ui/core/Tooltip";
 import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";
-import CustomAvatar from "../../avatar/custom-avatar";
-import { useStyle } from "../CardStyle/CardStyle";
+import ContainerCustomAvatar from "../../avatar/custom-avatar";
+import useStyle from "../CardStyle/CardStyle";
 import { getAttitudeClassName } from "../attitude/attitude";
 import "./event-item-header.css";
 
@@ -45,7 +46,7 @@ export default class EventHeader extends Component {
         onClick={this.handleClickOnOwners}
       >
         <Badge overlap="circle" badgeContent={owners.length} color="primary">
-          <CustomAvatar
+          <ContainerCustomAvatar
             className={avatar}
             userId={owners[0].id}
             name={owners[0].username}
@@ -64,7 +65,7 @@ export default class EventHeader extends Component {
           onClick={this.handleClickOnMember}
         >
           <Badge overlap="circle" badgeContent={visitorsCount} color="primary">
-            <CustomAvatar
+            <ContainerCustomAvatar
               className={avatar}
               userId={first.id}
               name={first.username}
@@ -95,6 +96,7 @@ export default class EventHeader extends Component {
 
     const PrintMenuMembers = members.map(user => (
       <MenuItem
+        key={user.id}
         onClick={this.handleCloseOnMember}
         style={{ overflow: "visible" }}
       >
@@ -106,7 +108,10 @@ export default class EventHeader extends Component {
           <div className="flex-grow-1">
             <Link to={`/user/${user.id}`} className="btn-custom">
               <div className="d-flex align-items-center border-bottom">
-                <CustomAvatar userId={user.photoUrl} name={user.username} />
+                <ContainerCustomAvatar
+                  userId={user.photoUrl}
+                  name={user.username}
+                />
                 <div>
                   <h5 className="pl-2">{user.username}</h5>
                 </div>
@@ -118,12 +123,12 @@ export default class EventHeader extends Component {
     ));
 
     const PrintMenuItems = owners.map(user => (
-      <MenuItem onClick={this.handleCloseOnOwners}>
+      <MenuItem onClick={this.handleCloseOnOwners} key={user.id}>
         <div className="d-flex align-items-center border-bottom">
           <div className="flex-grow-1">
             <Link to={`/user/${user.id}`} className="btn-custom">
               <div className="d-flex align-items-center border-bottom">
-                <CustomAvatar userId={user.id} name={user.username} />
+                <ContainerCustomAvatar userId={user.id} name={user.username} />
                 <div>
                   <h5 className="pl-2">{user.username}</h5>
                 </div>
@@ -169,3 +174,20 @@ export default class EventHeader extends Component {
     );
   }
 }
+
+// TODO: Check prop countVisitor
+EventHeader.propTypes = {
+  members: propTypes.array,
+  countVisitor: propTypes.number,
+  owners: propTypes.array,
+  dateFrom: propTypes.string,
+  title: propTypes.string,
+};
+
+EventHeader.defaultProps = {
+  members: [],
+  countVisitor: null,
+  owners: [],
+  dateFrom: "",
+  title: "",
+};

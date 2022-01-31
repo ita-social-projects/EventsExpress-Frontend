@@ -68,7 +68,7 @@ class commentItemWrapper extends React.Component {
         <div className="children">
           {this.props.item.children.length !== 0 &&
           this.props.item.children !== null ? (
-            <CommentList data_list={this.props.item.children} />
+            <CommentList dataList={this.props.item.children} />
           ) : null}
         </div>
       </>

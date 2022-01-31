@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
 import ContactAdminListWrapper from "../../containers/contactAdmin/contactAdmin-list-container";
 import ContactAdminFilterWrapper from "../../containers/contactAdmin/contactAdmin-filter-container";
 
-export default class Issues extends Component {
+export default class Issues extends PureComponent {
   render() {
     return (
       <>
@@ -14,3 +15,12 @@ export default class Issues extends Component {
     );
   }
 }
+
+// TODO: Check this prop
+Issues.propTypes = {
+  location: propTypes.object,
+};
+
+Issues.defaultProps = {
+  location: {},
+};

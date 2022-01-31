@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import get_chats from "../../actions/chat/chats-action";
+import propTypes from "prop-types";
+import getChatsAction from "../../actions/chat/chats-action";
 import SpinnerWrapper from "../../containers/spinner";
 import "./user_chats.css";
-import CustomAvatar from "../avatar/custom-avatar";
+import ContainerCustomAvatar from "../avatar/custom-avatar";
 
 class UserChats extends Component {
   componentWillMount = () => {
@@ -15,10 +16,10 @@ class UserChats extends Component {
   renderChats = arr => {
     return arr.map(x => {
       const user = x.users.find(y => y.id !== this.props.current_user.id);
-      const new_msg = this.props.notification.messages.filter(
+      const newMsg = this.props.notification.messages.filter(
         y => y.chatRoomId === x.id,
       );
-      const chatBg = new_msg.length > 0 ? "new-msgs" : "";
+      const chatBg = newMsg.length > 0 ? "new-msgs" : "";
 
       return (
         <>
@@ -26,7 +27,7 @@ class UserChats extends Component {
             <Link to={`/chat/${x.id}`}>
               <div className={`${chatBg} col-12 d-flex`}>
                 <ButtonBase>
-                  <CustomAvatar
+                  <ContainerCustomAvatar
                     size="Small"
                     userId={user.id}
                     name={user.name}
@@ -34,15 +35,15 @@ class UserChats extends Component {
                 </ButtonBase>
                 <div className="my-auto ml-5 wrap-text">
                   <h5>{user.username}</h5>
-                  {new_msg.length == 0 && (
+                  {newMsg.length === 0 && (
                     <span className="text-info">{x.lastMessage}</span>
                   )}
-                  {new_msg.length == 1 && (
+                  {newMsg.length === 1 && (
                     <span className="text-info">You have 1 unread message</span>
                   )}
-                  {new_msg.length > 1 && (
+                  {newMsg.length > 1 && (
                     <span className="text-info">
-                      You have {new_msg.length} unread messages
+                      You have {newMsg.length} unread messages
                     </span>
                   )}
                 </div>
@@ -57,7 +58,7 @@ class UserChats extends Component {
   };
 
   render() {
-    const data = this.props.chats.data.sort(function (b, a) {
+    const data = this.props.chats.data.sort((b, a) => {
       return (
         new Date(a.lastMessageTime).getTime() -
         new Date(b.lastMessageTime).getTime()
@@ -65,7 +66,7 @@ class UserChats extends Component {
     });
 
     return (
-      <SpinnerWrapper showContent={data != undefined}>
+      <SpinnerWrapper showContent={data !== undefined}>
         <div className="row shadow mt-5 p-5 mb-5 bg-white rounded limit-width">
           {this.renderChats(data)}
         </div>
@@ -73,6 +74,20 @@ class UserChats extends Component {
     );
   }
 }
+
+UserChats.propTypes = {
+  getChats: propTypes.func,
+  current_user: propTypes.object,
+  notification: propTypes.object,
+  chats: propTypes.object,
+};
+
+UserChats.defaultProps = {
+  getChats: () => {},
+  current_user: {},
+  notification: {},
+  chats: {},
+};
 
 const mapStateToProps = state => ({
   chats: state.chats,
@@ -83,7 +98,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    getChats: () => dispatch(get_chats()),
+    getChats: () => dispatch(getChatsAction()),
   };
 };
 

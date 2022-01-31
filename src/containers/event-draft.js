@@ -83,12 +83,12 @@ class EventDraftWrapper extends Component {
             <hr className="gradient mt-0 mb-3" />
           </header>
           <EventForm
-            user_name={this.props.user_name}
-            all_categories={this.props.all_categories}
+            userName={this.props.user_name}
+            allCategories={this.props.all_categories}
             onSubmit={this.onPublish}
             onError={this.onError}
             initialValues={this.props.event}
-            form_values={this.props.form_values}
+            formValues={this.props.form_values}
             haveReccurentCheckBox
             eventId={this.props.event.id}
           >

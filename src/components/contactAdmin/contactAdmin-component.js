@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { reduxForm, Field, getFormValues } from "redux-form";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
+import propTypes from "prop-types";
 import { renderTextField, renderTextArea } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
 import issueTypeEnum from "../../constants/issue-type-enum";
@@ -23,7 +24,7 @@ const validate = values => {
   };
 };
 
-class ContactAdmin extends Component {
+class ContactAdmin extends PureComponent {
   render() {
     const { pristine, reset, submitting, error } = this.props;
     return (
@@ -66,7 +67,7 @@ class ContactAdmin extends Component {
               </Field>
 
               {this.props.form_values !== undefined &&
-                this.props.form_values.subject == issueTypeEnum.Other && (
+                this.props.form_values.subject === issueTypeEnum.Other && (
                   <Field
                     name="title"
                     className="form-control"
@@ -107,6 +108,28 @@ class ContactAdmin extends Component {
     );
   }
 }
+
+ContactAdmin.propTypes = {
+  pristine: propTypes.bool,
+  reset: propTypes.func,
+  submitting: propTypes.bool,
+  error: propTypes.string,
+  user: propTypes.object,
+  handleSubmit: propTypes.func,
+  email: propTypes.string,
+  form_values: propTypes.object,
+};
+
+ContactAdmin.defaultProps = {
+  pristine: false,
+  reset: () => {},
+  submitting: false,
+  error: "",
+  user: {},
+  handleSubmit: () => {},
+  email: "",
+  form_values: {},
+};
 
 const mapStateToProps = state => {
   return {

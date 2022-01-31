@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import "./CheckMarkAnimation.css";
 import { Button, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-export class Success extends Component {
+export class Success extends PureComponent {
   render() {
     return (
       <>

@@ -1,6 +1,7 @@
 import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
+import propTypes from "prop-types";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
 
@@ -46,5 +47,22 @@ export default function EventActiveStatus(props) {
           </IconButton>
         </Tooltip>
       );
+    default:
+      return null;
   }
 }
+
+// TODO: Check prop eventStatus
+EventActiveStatus.propTypes = {
+  eventStatus: propTypes.bool,
+  eventId: propTypes.number,
+  onBlock: propTypes.func,
+  onUnBlock: propTypes.func,
+};
+
+EventActiveStatus.defaultProps = {
+  eventStatus: false,
+  eventId: null,
+  onBlock: () => {},
+  onUnBlock: () => {},
+};

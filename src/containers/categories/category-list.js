@@ -5,6 +5,6 @@ export default class CategoryListWrapper extends Component {
   render() {
     const { data } = this.props;
 
-    return <CategoryList data_list={data} />;
+    return <CategoryList dataList={data} />;
   }
 }

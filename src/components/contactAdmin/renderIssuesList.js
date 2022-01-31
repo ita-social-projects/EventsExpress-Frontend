@@ -1,16 +1,17 @@
 ﻿import React, { Component } from "react";
+import propTypes from "prop-types";
 import PagePagination from "../shared/pagePagination";
 
 class RenderIssuesList extends Component {
   renderIssues = arr => arr.map(item => this.props.renderSingleIssue(item));
 
   render() {
-    const { page, totalPages, data_list } = this.props;
+    const { page, totalPages, dataList } = this.props;
 
     return (
       <>
-        {data_list.length > 0 ? (
-          this.renderIssues(data_list)
+        {dataList.length > 0 ? (
+          this.renderIssues(dataList)
         ) : (
           <div id="notfound" className="w-100">
             <div className="notfound">
@@ -32,5 +33,21 @@ class RenderIssuesList extends Component {
     );
   }
 }
+
+RenderIssuesList.propTypes = {
+  renderSingleIssue: propTypes.func,
+  dataList: propTypes.array,
+  page: propTypes.number,
+  totalPages: propTypes.number,
+  handlePageChange: propTypes.func,
+};
+
+RenderIssuesList.defaultProps = {
+  renderSingleIssue: () => {},
+  dataList: [],
+  page: null,
+  totalPages: null,
+  handlePageChange: () => {},
+};
 
 export default RenderIssuesList;

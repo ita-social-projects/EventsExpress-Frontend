@@ -1,10 +1,11 @@
-﻿import React, { Component } from "react";
+﻿import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
+import propTypes from "prop-types";
 import "./Comment.css";
 import { getTimeDifferenceFromNull } from "../helpers/TimeHelper";
-import CustomAvatar from "../avatar/custom-avatar";
+import ContainerCustomAvatar from "../avatar/custom-avatar";
 
-export default class commentItem extends Component {
+export default class commentItem extends PureComponent {
   render() {
     const { text, date, userName, userId } = this.props.item;
     const { user } = this.props;
@@ -14,7 +15,7 @@ export default class commentItem extends Component {
           <div className="row">
             {user !== userId && (
               <div className="photo-container">
-                <CustomAvatar userId={userId} name={userName} />
+                <ContainerCustomAvatar userId={userId} name={userName} />
                 <h1 className="text-secondary comment-text">
                   {" "}
                   {getTimeDifferenceFromNull(date)}
@@ -34,7 +35,7 @@ export default class commentItem extends Component {
             </div>
             {user === userId && (
               <div className="photo-container">
-                <CustomAvatar userId={userId} name={userName} />
+                <ContainerCustomAvatar userId={userId} name={userName} />
                 <h1 className="text-secondary comment-text">
                   {" "}
                   {getTimeDifferenceFromNull(date)}
@@ -47,3 +48,13 @@ export default class commentItem extends Component {
     );
   }
 }
+
+commentItem.propTypes = {
+  user: propTypes.number,
+  item: propTypes.object,
+};
+
+commentItem.defaultProps = {
+  user: null,
+  item: {},
+};

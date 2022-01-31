@@ -17,7 +17,7 @@ class CommentListWrapper extends Component {
       <LocalSpinnerWrapper showContent={data !== null}>
         <CommentList
           evId={this.props.eventId}
-          data_list={data.items}
+          dataList={data.items}
           page={data.pageViewModel.pageNumber}
           totalPages={data.pageViewModel.totalPages}
           callback={this.props.getComments}

@@ -2,11 +2,12 @@
 import { Field, reduxForm } from "redux-form";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
+import propTypes from "prop-types";
 import { renderTextField } from "../helpers/form-helpers";
 import "./Comment.css";
 import ErrorMessages from "../shared/errorMessage";
 
-let Comment = props => {
+const Comment = props => {
   return (
     <>
       <form name="addComment" onSubmit={props.handleSubmit}>
@@ -25,8 +26,18 @@ let Comment = props => {
   );
 };
 
-Comment = reduxForm({
+Comment.propTypes = {
+  handleSubmit: propTypes.func,
+  error: propTypes.string,
+};
+
+Comment.defaultProps = {
+  handleSubmit: () => {},
+  error: "",
+};
+
+const FormComment = reduxForm({
   form: "add-comment",
 })(Comment);
 
-export default Comment;
+export default FormComment;

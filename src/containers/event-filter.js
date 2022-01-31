@@ -95,12 +95,12 @@ class EventFilterWrapper extends Component {
     return (
       <>
         <EventFilter
-          all_categories={this.props.all_categories}
+          allCategories={this.props.all_categories}
           onLoadUserDefaults={this.onLoadUserDefaults}
           onSubmit={this.onSubmit}
           onReset={this.onReset}
-          form_values={this.props.form_values}
-          current_user={this.props.current_user}
+          formValues={this.props.form_values}
+          currentUser={this.props.current_user}
           initialFormValues={initialFormValues}
         />
       </>

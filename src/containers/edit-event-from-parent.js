@@ -58,10 +58,10 @@ class EditFromParentEventWraper extends Component {
       <>
         <EventForm
           validate={validate}
-          all_categories={this.props.all_categories}
+          allCategories={this.props.all_categories}
           onSubmit={this.onSubmit}
           initialValues={initialValues}
-          form_values={this.props.form_values}
+          formValues={this.props.form_values}
           haveReccurentCheckBox={false}
           disabledDate
           eventId={this.props.event.id}

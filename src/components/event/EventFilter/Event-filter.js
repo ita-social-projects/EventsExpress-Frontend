@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
+import propTypes from "prop-types";
 import {
   renderDatePicker,
   MultiCheckbox,
@@ -52,8 +53,8 @@ class EventFilter extends Component {
   }
 
   render() {
-    const { all_categories, form_values, current_user } = this.props;
-    const values = form_values || { selectedPos: {} };
+    const { allCategories, formValues, currentUser } = this.props;
+    const values = formValues || { selectedPos: {} };
     const options = [
       { value: eventStatusEnum.Active, text: "Active" },
       { value: eventStatusEnum.Blocked, text: "Blocked" },
@@ -96,7 +97,7 @@ class EventFilter extends Component {
                   <Field
                     name="categories"
                     component={renderMultiselect}
-                    data={all_categories.data}
+                    data={allCategories.data}
                     valueField="id"
                     textField="name"
                     className="form-control mt-2"
@@ -104,7 +105,7 @@ class EventFilter extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  {current_user.roles.includes("Admin") && (
+                  {currentUser.roles.includes("Admin") && (
                     <Field
                       name="statuses"
                       component={MultiCheckbox}
@@ -137,7 +138,9 @@ class EventFilter extends Component {
                 fullWidth
                 color="secondary"
                 onClick={() => {
-                  this.setState({ viewMore: !this.state.viewMore });
+                  this.setState(state => {
+                    return !state.viewMore;
+                  });
                 }}
               >
                 {this.state.viewMore ? "less..." : "more filters..."}
@@ -152,7 +155,7 @@ class EventFilter extends Component {
               >
                 Reset
               </Button>
-              {current_user.id && (
+              {currentUser.id && (
                 <Button
                   fullWidth
                   color="primary"
@@ -178,8 +181,32 @@ class EventFilter extends Component {
   }
 }
 
-EventFilter = reduxForm({
+EventFilter.propTypes = {
+  initialFormValues: propTypes.object,
+  initialize: propTypes.func,
+  handleSubmit: propTypes.func,
+  onReset: propTypes.func,
+  submitting: propTypes.bool,
+  onLoadUserDefaults: propTypes.func,
+  allCategories: propTypes.object,
+  formValues: propTypes.object,
+  currentUser: propTypes.object,
+};
+
+EventFilter.defaultProps = {
+  initialFormValues: {},
+  initialize: () => {},
+  handleSubmit: () => {},
+  onReset: () => {},
+  submitting: false,
+  onLoadUserDefaults: () => {},
+  allCategories: {},
+  formValues: {},
+  currentUser: {},
+};
+
+const FormEventFilter = reduxForm({
   form: "event-filter-form",
 })(EventFilter);
 
-export default EventFilter;
+export default FormEventFilter;

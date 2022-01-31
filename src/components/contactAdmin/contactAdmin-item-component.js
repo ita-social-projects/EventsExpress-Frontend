@@ -1,10 +1,11 @@
-﻿import React, { Component } from "react";
+﻿import React, { PureComponent } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Moment from "moment";
 import { Link } from "react-router-dom";
+import propTypes from "prop-types";
 
-export default class ContactAdminItem extends Component {
+export default class ContactAdminItem extends PureComponent {
   render() {
     const { item } = this.props;
 
@@ -31,3 +32,11 @@ export default class ContactAdminItem extends Component {
     );
   }
 }
+
+ContactAdminItem.propTypes = {
+  item: propTypes.object,
+};
+
+ContactAdminItem.defaultProps = {
+  item: {},
+};

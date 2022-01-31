@@ -59,7 +59,7 @@ class EventItemViewWrapper extends Component {
           onCancel={this.onCancel}
           onUnCancel={this.onUnCancel}
           onDelete={this.onDelete}
-          current_user={this.props.current_user}
+          currentUser={this.props.current_user}
         />
       </SpinnerWrapper>
     );
