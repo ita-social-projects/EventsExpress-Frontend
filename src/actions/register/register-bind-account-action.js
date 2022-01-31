@@ -5,12 +5,12 @@ import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { jwtStorageKey } from "../../constants/constants";
 
-const API_SERV = new AuthenticationService();
+const apiService = new AuthenticationService();
 const history = createBrowserHistory({ forceRefresh: true });
 
 const registerBindAccount = data => {
   return async dispatch => {
-    const response = await API_SERV.setRegisterBindAccount(data);
+    const response = await apiService.setRegisterBindAccount(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }

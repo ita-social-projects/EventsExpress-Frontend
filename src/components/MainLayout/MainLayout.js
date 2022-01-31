@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "../Header";
-import { Footer } from "../footer/footer";
+import Footer from "../footer/footer";
 import AlertContainer from "../../containers/alert";
 import "./main-layout.css";
 

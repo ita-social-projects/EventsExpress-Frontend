@@ -10,7 +10,7 @@ export const event = {
   CHANGE_STATUS: "UPDATE_EVENT",
 };
 
-const API_SERV = new EventService();
+const apiService = new EventService();
 
 export function resetEvent() {
   return {
@@ -36,12 +36,12 @@ function changeEventStatusData(id, eventStatus) {
 
 export function leave(userId, eventId) {
   return async dispatch => {
-    const response = await API_SERV.setUserFromEvent({
+    const response = await apiService.setUserFromEvent({
       userId,
       eventId,
     });
     if (response.ok) {
-      const res = await API_SERV.getEvent(eventId);
+      const res = await apiService.getEvent(eventId);
       if (!res.ok) {
         dispatch(setErrorAllertFromResponse(response));
         return Promise.reject();
@@ -55,12 +55,12 @@ export function leave(userId, eventId) {
 
 export function join(userId, eventId) {
   return async dispatch => {
-    const response = await API_SERV.setUserToEvent({
+    const response = await apiService.setUserToEvent({
       userId,
       eventId,
     });
     if (response.ok) {
-      const res = await API_SERV.getEvent(eventId);
+      const res = await apiService.getEvent(eventId);
       if (!res.ok) {
         dispatch(setErrorAllertFromResponse(response));
         return Promise.reject();
@@ -75,13 +75,13 @@ export function join(userId, eventId) {
 // ACTION APPROVER FOR USER
 export function approveUser(userId, eventId, buttonAction) {
   return async dispatch => {
-    const response = await API_SERV.setApprovedUser({
+    const response = await apiService.setApprovedUser({
       userId,
       eventId,
       buttonAction,
     });
     if (response.ok) {
-      const res = await API_SERV.getEvent(eventId);
+      const res = await apiService.getEvent(eventId);
       if (!res.ok) {
         dispatch(setErrorAllertFromResponse(response));
         return Promise.reject();
@@ -96,12 +96,12 @@ export function approveUser(userId, eventId, buttonAction) {
 // ACTION CREATOR FOR DELETE FROM OWNERS:
 export function deleteFromOwners(userId, eventId) {
   return async dispatch => {
-    const response = await API_SERV.onDeleteFromOwners({
+    const response = await apiService.onDeleteFromOwners({
       userId,
       eventId,
     });
     if (response.ok) {
-      const res = await API_SERV.getEvent(eventId);
+      const res = await apiService.getEvent(eventId);
       if (!res.ok) {
         dispatch(setErrorAllertFromResponse(response));
         return Promise.reject();
@@ -116,12 +116,12 @@ export function deleteFromOwners(userId, eventId) {
 // ACTION CREATOR FOR PROMOTE TO OWNER:
 export function promoteToOwner(userId, eventId) {
   return async dispatch => {
-    const response = await API_SERV.onPromoteToOwner({
+    const response = await apiService.onPromoteToOwner({
       userId,
       eventId,
     });
     if (response.ok) {
-      const res = await API_SERV.getEvent(eventId);
+      const res = await apiService.getEvent(eventId);
       if (!res.ok) {
         dispatch(setErrorAllertFromResponse(response));
         return Promise.reject();
@@ -136,7 +136,7 @@ export function promoteToOwner(userId, eventId) {
 // ACTION CREATOR FOR CHANGE EVENT STATUS:
 export function changeEventStatus(eventId, reason, eventStatus) {
   return async dispatch => {
-    const response = await API_SERV.setEventStatus({
+    const response = await apiService.setEventStatus({
       EventId: eventId,
       Reason: reason,
       EventStatus: eventStatus,
@@ -154,7 +154,7 @@ const getEvent = id => {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await API_SERV.getEvent(id);
+    const response = await apiService.getEvent(id);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

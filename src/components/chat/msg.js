@@ -5,7 +5,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import propTypes from "prop-types";
 import { deleteSeenMsgNotification } from "../../actions/chat/chat-action";
 import "./msg.css";
-import { getTimeDifferenceFromNull } from "../helpers/TimeHelper";
+import getTimeDifferenceFromNull from "../helpers/TimeHelper";
 import ContainerCustomAvatar from "../avatar/custom-avatar";
 
 class Msg extends Component {

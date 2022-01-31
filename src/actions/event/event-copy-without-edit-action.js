@@ -3,13 +3,13 @@ import { EventService } from "../../services";
 import { setErrorAllertFromResponse, setSuccessAllert } from "../alert-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
-const API_SERV = new EventService();
+const apiService = new EventService();
 const history = createBrowserHistory({ forceRefresh: true });
 
 const addCopyEvent = eventId => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.setCopyEvent(eventId);
+    const response = await apiService.setCopyEvent(eventId);
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));

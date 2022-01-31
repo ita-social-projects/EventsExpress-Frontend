@@ -4,7 +4,7 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const GET_CATEGORIES_BY_GROUP_ID = "GET_CATEGORIES_BY_GROUP_ID";
 
-const API_SERV = new CategoryService();
+const apiService = new CategoryService();
 
 export function getCategoriesByGroupIdData(data) {
   return {
@@ -16,7 +16,7 @@ export function getCategoriesByGroupIdData(data) {
 const getCategoriesByGroupId = id => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.getCategoriesByGroup(id);
+    const response = await apiService.getCategoriesByGroup(id);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

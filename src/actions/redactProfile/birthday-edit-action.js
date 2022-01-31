@@ -8,7 +8,7 @@ export const editBirthdayStates = {
   UPDATE: "UPDATE_BIRTHDAY",
 };
 
-const API_SERV = new UserService();
+const apiService = new UserService();
 
 function updateBirthday(data) {
   return {
@@ -20,7 +20,7 @@ function updateBirthday(data) {
 const editBirthday = data => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.setBirthday(data);
+    const response = await apiService.setBirthday(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }
