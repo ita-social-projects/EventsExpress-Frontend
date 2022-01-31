@@ -137,20 +137,12 @@ UnitOfMeasuringItemWrapper.defaultProps = {
   item: {},
   editedUnitOfMeasuring: null,
   allCategories: {},
-  editСancel: () => {},
-  save_unitOfMeasuring: () => {},
-  delete_unitOfMeasuring: () => {},
-  setUnitOfMeasuringEditedDispatch: () => {},
 };
 
 UnitOfMeasuringItemWrapper.propTypes = {
   item: PropTypes.object,
   editedUnitOfMeasuring: PropTypes.object,
   allCategories: PropTypes.object,
-  editСancel: PropTypes.func,
-  save_unitOfMeasuring: PropTypes.func,
-  delete_unitOfMeasuring: PropTypes.func,
-  setUnitOfMeasuringEditedDispatch: PropTypes.func,
 };
 export default connect(
   mapStateToProps,

@@ -22,7 +22,7 @@ export default class EventsExpressService {
   };
 
   getPhoto = async Url => {
-    const call = url => fetch(this.baseUrl + Url);
+    const call = url => fetch(this.baseUrl + url);
     const res = await call(Url);
 
     if (res.ok) {
@@ -32,14 +32,14 @@ export default class EventsExpressService {
   };
 
   setResource = async (Url, data) => {
-    const call = (Url, data) =>
-      fetch(this.baseUrl + Url, {
+    const call = (url, Data) =>
+      fetch(this.baseUrl + url, {
         method: "post",
         headers: new Headers({
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem(jwtStorageKey)}`,
         }),
-        body: JSON.stringify(data),
+        body: JSON.stringify(Data),
       });
 
     let res = await call(Url, data);
@@ -53,13 +53,13 @@ export default class EventsExpressService {
   };
 
   setResourceWithData = async (Url, data) => {
-    const call = (Url, data) =>
-      fetch(this.baseUrl + Url, {
+    const call = (newUrl, newData) =>
+      fetch(this.baseUrl + newUrl, {
         method: "post",
         headers: new Headers({
           Authorization: `Bearer ${localStorage.getItem(jwtStorageKey)}`,
         }),
-        body: data,
+        body: newData,
       });
 
     let res = await call(Url, data);
