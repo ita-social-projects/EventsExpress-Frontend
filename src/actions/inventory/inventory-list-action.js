@@ -4,7 +4,7 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const GET_INVENTORY_DATA = "GET_INVENTORY_DATA";
 
-const API_SERV = new InventoryService();
+const apiService = new InventoryService();
 
 export function getInventoryData(data) {
   return {
@@ -16,7 +16,7 @@ export function getInventoryData(data) {
 export function getInventoriesByEventId(eventId) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.getInventoriesByEventId(eventId);
+    const response = await apiService.getInventoriesByEventId(eventId);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

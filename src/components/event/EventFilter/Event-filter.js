@@ -10,7 +10,7 @@ import {
   parseEuDate,
 } from "../../helpers/form-helpers";
 import filterHelper from "../../helpers/filterHelper";
-import MapModal from "../MapModal/Map-modal";
+import EventMapModal from "../MapModal/Map-modal";
 import "./event-filter.css";
 import DisplayMap from "../map/display-map";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
@@ -115,7 +115,7 @@ class EventFilter extends Component {
                 </div>
 
                 <div>
-                  <MapModal
+                  <EventMapModal
                     initialize={this.props.initialize}
                     values={values}
                     reset={this.props.onReset}

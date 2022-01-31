@@ -15,7 +15,7 @@ import DisplayLocation from "../map/display-location";
 import userStatusEnum from "../../../constants/userStatusEnum";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
-import { eventDefaultImage } from "../../../constants/eventDefaultImage";
+import eventDefaultImage from "../../../constants/eventDefaultImage";
 import PhotoService from "../../../services/PhotoService";
 
 const photoService = new PhotoService();

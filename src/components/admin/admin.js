@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import "./admin.css";
-import { NavItem } from "../NavItem/NavItem";
+import NavItem from "../NavItem/NavItem";
 import Category from "../category/categories";
 import UsersWrapper from "../../containers/users";
 import UnitOfMeasuring from "../unitOfMeasuring/unitsOfMeasuring";

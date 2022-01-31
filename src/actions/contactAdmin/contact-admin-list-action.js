@@ -5,7 +5,7 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 export const GET_CONTACT_ADMIN_DATA = "GET_CONTACT_ADMIN_DATA";
 export const RESET_CONTACT_ADMIN = "RESET_CONTACT_ADMIN";
 
-const API_SERV = new ContactAdminService();
+const apiService = new ContactAdminService();
 
 export function getListOfIssues(data) {
   return {
@@ -23,7 +23,7 @@ export function resetFilters() {
 const getIssues = filters => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.getAllIssues(filters);
+    const response = await apiService.getAllIssues(filters);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

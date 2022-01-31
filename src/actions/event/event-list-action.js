@@ -7,7 +7,7 @@ export const GET_EVENTS_DATA = "GET_EVENTS_DATA";
 export const RESET_EVENTS = "RESET_EVENTS";
 export const UPDATE_EVENTS_FILTERS = "UPDATE_EVENTS_FILTERS";
 
-const API_SERV = new EventService();
+const apiService = new EventService();
 
 export function getEventsData(data) {
   return {
@@ -31,7 +31,7 @@ export function updateEventsFilters(data) {
 export function getEvents(filters) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.getAllEvents(filters);
+    const response = await apiService.getAllEvents(filters);
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -46,7 +46,7 @@ export function getEvents(filters) {
 export function getDrafts(page = 1) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.getAllDrafts(page);
+    const response = await apiService.getAllDrafts(page);
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -61,7 +61,7 @@ export function getDrafts(page = 1) {
 export function getUpcomingEvents(filters) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.getUpcomingEvents();
+    const response = await apiService.getUpcomingEvents();
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));

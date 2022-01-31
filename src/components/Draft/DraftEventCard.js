@@ -13,12 +13,12 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import PropTypes from "prop-types";
-import { CustomAvatar } from "../avatar/custom-avatar";
+import CustomAvatar from "../avatar/custom-avatar";
 import "./event-item.css";
 import useStyle from "../event/CardStyle/CardStyle";
 import SimpleModalWithDetails from "../helpers/simple-modal-with-details";
 import PhotoService from "../../services/PhotoService";
-import { eventDefaultImage } from "../../constants/eventDefaultImage";
+import eventDefaultImage from "../../constants/eventDefaultImage";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();

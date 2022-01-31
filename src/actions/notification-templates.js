@@ -6,7 +6,7 @@ export const GET_TEMPLATE_SUCCESS = "GET_TEMPLATE_SUCCESS";
 export const GET_TEMPLATE_PROPERTIES_SUCCESS =
   "GET_TEMPLATE_PROPERTIES_SUCCESS";
 
-const API_SERV = new NotificationTemplateService();
+const apiService = new NotificationTemplateService();
 
 function getTemplatesData(data) {
   return {
@@ -31,7 +31,7 @@ function getPropertiesData(data) {
 
 export function getAllTemplates() {
   return async dispatch => {
-    const response = await API_SERV.getAll();
+    const response = await apiService.getAll();
 
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -47,7 +47,7 @@ export function getAllTemplates() {
 
 export function getTemplate(id) {
   return async dispatch => {
-    const response = await API_SERV.getByIdAsync(id);
+    const response = await apiService.getByIdAsync(id);
 
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -63,7 +63,7 @@ export function getTemplate(id) {
 
 export function getTemplateProperties(templateId) {
   return async dispatch => {
-    const response = await API_SERV.getProperties(templateId);
+    const response = await apiService.getProperties(templateId);
 
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -79,7 +79,7 @@ export function getTemplateProperties(templateId) {
 
 export function updateTemplate(template) {
   return async dispatch => {
-    const response = await API_SERV.updateAsync(template);
+    const response = await apiService.updateAsync(template);
 
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
