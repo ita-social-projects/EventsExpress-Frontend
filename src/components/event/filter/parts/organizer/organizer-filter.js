@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import useOrganizerFilterStyles from "./organizer-filter-styles";
 import FilterExpansionPanel from "../../expansion-panel/filter-expansion-panel";
 // eslint-disable-next-line import/named
-import {OrganizerAutocomplete}  from "./organizer-autocomplete";
+import { OrganizerAutocomplete } from "./organizer-autocomplete";
 import { fetchUsers } from "../../../../../actions/events/filter/users-data";
 
 const OrganizerFilter = ({ organizers, formValues, ...props }) => {
@@ -48,13 +48,13 @@ OrganizerFilter.propTypes = {
   formValues: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
   change: PropTypes.func,
   fetchUsers: PropTypes.func,
-}
+};
 
 OrganizerFilter.defaultProps = {
   organizers: [],
   formValues: {},
   change: () => {},
   fetchUsers: () => {},
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrganizerFilter);

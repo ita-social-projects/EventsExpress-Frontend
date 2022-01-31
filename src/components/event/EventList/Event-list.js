@@ -7,7 +7,10 @@ import RenderList from "../RenderList/RenderList";
 import EventCard from "../EventItem/Event-item";
 import getQueryStringByFilter from "../../helpers/filterHelper";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
-import { resetEvents, updateEventsFilters } from "../../../actions/event/event-list-action";
+import {
+  resetEvents,
+  updateEventsFilters,
+} from "../../../actions/event/event-list-action";
 import { changeEventStatus } from "../../../actions/event/event-item-view-action";
 
 const EventList = ({
@@ -18,10 +21,9 @@ const EventList = ({
   onUnBlock,
   ...props
 }) => {
-
   useEffect(() => {
-    return(
-    totalPages > 1 &&
+    return (
+      totalPages > 1 &&
       history.location.search === "" &&
       history.push(`${history.location.pathname}?page=1`)
     );
@@ -29,13 +31,15 @@ const EventList = ({
 
   const handlePageChange = page => {
     const queryStringToObject = queryStringParse(history.location.search);
-    if(history.location.search === "") {
-      history.push(`${history.location.pathname}?page=${page}`)
-    }else {
+    if (history.location.search === "") {
+      history.push(`${history.location.pathname}?page=${page}`);
+    } else {
       queryStringToObject.page = page;
-    };
+    }
 
-    history.push(history.location.pathname + getQueryStringByFilter(queryStringToObject));
+    history.push(
+      history.location.pathname + getQueryStringByFilter(queryStringToObject),
+    );
   };
 
   const renderSingleItem = item => (
@@ -73,7 +77,7 @@ EventList.propTypes = {
   location: PropTypes.shape({
     search: PropTypes.string,
     pathname: PropTypes.string,
- }),
+  }),
   currentUser: PropTypes.object,
   onBlock: PropTypes.func,
   onUnBlock: PropTypes.func,
@@ -82,10 +86,10 @@ EventList.propTypes = {
 EventList.defaultProps = {
   totalPages: null,
   history: [],
-    location: {
-        search: "",
-        pathname: "",
-    },
+  location: {
+    search: "",
+    pathname: "",
+  },
   currentUser: {},
   onBlock: () => {},
   onUnBlock: () => {},

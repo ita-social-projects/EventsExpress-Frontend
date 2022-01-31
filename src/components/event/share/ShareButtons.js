@@ -6,33 +6,33 @@ import PropTypes from "prop-types";
 import "./share.css";
 
 const ShareButtons = ({ config, href }) => {
-    return (
-      <>
-        <FacebookProvider appId={config.facebookClientId}>
-          <ShareButton className="btn btn-link" href={href}>
-            <div id="fb-share-button" title="Share on Facebook">
-              <i className="fab fa-facebook text-white" />
-            </div>
-          </ShareButton>
-        </FacebookProvider>
+  return (
+    <>
+      <FacebookProvider appId={config.facebookClientId}>
+        <ShareButton className="btn btn-link" href={href}>
+          <div id="fb-share-button" title="Share on Facebook">
+            <i className="fab fa-facebook text-white" />
+          </div>
+        </ShareButton>
+      </FacebookProvider>
 
-        <Telegram solid small link={href} />
-        <Twitter solid small link={href} />
-        <Linkedin solid small link={href} />
-      </>
-    );
-  }
+      <Telegram solid small link={href} />
+      <Twitter solid small link={href} />
+      <Linkedin solid small link={href} />
+    </>
+  );
+};
 
-  ShareButtons.propTypes = {
-  config: PropTypes.oneOfType(PropTypes.array, PropTypes.object), 
+ShareButtons.propTypes = {
+  config: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
   href: PropTypes.string,
-  }
+};
 
-  ShareButtons.defaultProps = {
-  config: [], 
+ShareButtons.defaultProps = {
+  config: [],
   href: "",
-  }
-  
+};
+
 const mapStateToProps = state => {
   return {
     config: state.config,

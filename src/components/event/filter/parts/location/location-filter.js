@@ -64,7 +64,9 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
           formValues.location !== null &&
           formValues.location.radius && (
             <div className="slidecontainer">
-              <label htmlFor="location">Radius is {formValues.location.radius} km</label>
+              <label htmlFor="location">
+                Radius is {formValues.location.radius} km
+              </label>
               <Field
                 name="location.radius"
                 component="input"
@@ -105,16 +107,14 @@ LocationFilter.propTypes = {
   formValues: PropTypes.oneOfType(PropTypes.object, PropTypes.array),
   clear: PropTypes.func,
   changeLocation: PropTypes.func,
-}
+};
 
 LocationFilter.defaultProps = {
-  dispatch: ()=>{},
+  dispatch: () => {},
   formValues: {},
   clear: () => {},
   changeLocation: () => {},
-
-
-}
+};
 
 const mapStateToProps = state => {
   return {

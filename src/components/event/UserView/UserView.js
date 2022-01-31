@@ -1,7 +1,7 @@
 ﻿import React, { useEffect, useState } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
-import { Link } from 'react-router';
+import { Link } from "react-router";
 import PropTypes from "prop-types";
 import { userViewAttitude } from "../../helpers/userViewUtils";
 import { CustomAvatar } from "../../avatar/custom-avatar";
@@ -59,16 +59,13 @@ const UsersView = ({ user, children }) => {
 };
 
 UsersView.propTypes = {
-  user: PropTypes.arrayof({
-    
-  }), 
+  user: PropTypes.arrayof({}),
   children: PropTypes.array,
-}
+};
 
 UsersView.defaultProps = {
-  user: [], 
+  user: [],
   children: [],
-}
-
+};
 
 export default UsersView;

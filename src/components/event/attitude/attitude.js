@@ -1,6 +1,6 @@
 ﻿import "./attitude.css";
 
- const getAttitudeClassName = attitude => {
+const getAttitudeClassName = attitude => {
   switch (attitude) {
     case 0:
       return "attitude-like";

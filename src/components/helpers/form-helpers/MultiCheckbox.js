@@ -6,12 +6,12 @@ class MultiCheckbox extends Component {
     const { options, input } = this.props;
     if (input.value === "") input.value = [];
 
-    return options.map(option  => {
+    return options.map(option => {
       return (
         <div className="checkbox" key={option.name}>
           <label htmlFor="checkbox">
             <input
-            // TODO key = need properly to think
+              // TODO key = need properly to think
               type="checkbox"
               name={`${input.name}[${option.name}]`}
               value={option.value}
@@ -38,22 +38,22 @@ class MultiCheckbox extends Component {
   }
 }
 
-    MultiCheckbox.propTypes = {
-        input: PropTypes.shape({
-          value: PropTypes.string,
-          name: PropTypes.string,
-          onChange: PropTypes.func,
-        }),
-      options: PropTypes.array,
-    };
+MultiCheckbox.propTypes = {
+  input: PropTypes.shape({
+    value: PropTypes.string,
+    name: PropTypes.string,
+    onChange: PropTypes.func,
+  }),
+  options: PropTypes.array,
+};
 
-    MultiCheckbox.defaultProps = {
-      input: {
-        value: "",
-        name: "",
-        onChange: () => {},
-      },
-    options: [],
-    };
+MultiCheckbox.defaultProps = {
+  input: {
+    value: "",
+    name: "",
+    onChange: () => {},
+  },
+  options: [],
+};
 
 export default MultiCheckbox;

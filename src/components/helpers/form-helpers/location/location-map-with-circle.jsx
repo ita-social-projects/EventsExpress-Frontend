@@ -21,7 +21,7 @@ const LocationMapWithCircle = props => {
       latitude: latlng.lat,
       longitude: latlng.lng,
     });
-  }
+  };
 
   return (
     <Field
@@ -39,7 +39,7 @@ const LocationMapWithCircle = props => {
       )}
     </Field>
   );
-}
+};
 
 LocationMapWithCircle.propTypes = {
   input: PropTypes.shape({

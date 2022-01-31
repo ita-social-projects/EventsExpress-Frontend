@@ -30,5 +30,4 @@ RenderFormCheckbox.defaultProps = {
   label: "",
 };
 
-
 export default RenderFormCheckbox;

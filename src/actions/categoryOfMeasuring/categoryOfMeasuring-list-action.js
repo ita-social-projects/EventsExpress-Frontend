@@ -22,7 +22,6 @@ export default function getCategoriesOfMeasuring() {
   };
 }
 
-
 function setCategoryOfMeasuringPending(data) {
   return {
     type: SET_CATEGORIES_OF_MEASURING_PENDING,

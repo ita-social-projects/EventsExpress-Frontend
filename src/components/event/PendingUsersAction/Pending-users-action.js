@@ -65,20 +65,19 @@ const mapDispatchToProps = dispatch => ({
     dispatch(promoteToOwner(userId, eventId)),
 });
 
-
 PendingUsersActions.propTypes = {
   user: PropTypes.object,
   isMyEvent: PropTypes.bool,
   approveUser: PropTypes.func,
   eventId: PropTypes.number,
-}
+};
 
 PendingUsersActions.defaultProps = {
   user: {},
   isMyEvent: false,
   approveUser: () => {},
   eventId: null,
-}
+};
 
 export default connect(
   mapStateToProps,

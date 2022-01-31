@@ -12,4 +12,4 @@ export const GreenButton = withStyles({
   },
 });
 
-export default (GreenButton)(Button);
+export default GreenButton(Button);

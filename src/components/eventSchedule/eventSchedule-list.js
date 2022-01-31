@@ -38,12 +38,12 @@ class EventSchedulesList extends Component {
 
 EventSchedulesList.propTypes = {
   dataList: PropTypes.array,
-  currentUser: PropTypes.oneOfType(PropTypes.array, PropTypes.object)
-}
+  currentUser: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+};
 
 EventSchedulesList.defaultProps = {
   dataList: [],
   currentUser: [],
-}
+};
 
 export default EventSchedulesList;

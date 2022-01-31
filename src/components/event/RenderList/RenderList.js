@@ -39,21 +39,21 @@ class RenderList extends Component {
 }
 
 RenderList.propTypes = {
-  page: PropTypes.number, 
+  page: PropTypes.number,
   totalPages: PropTypes.number,
-  dataList: PropTypes.array, 
+  dataList: PropTypes.array,
   customNoResultsMessage: PropTypes.string,
   handlePageChange: PropTypes.func,
-  renderSingleItem: PropTypes.func
-}
+  renderSingleItem: PropTypes.func,
+};
 
 RenderList.defaultProps = {
-  page: null, 
+  page: null,
   totalPages: null,
-  dataList: [], 
+  dataList: [],
   customNoResultsMessage: "",
   handlePageChange: () => {},
   renderSingleItem: () => {},
-}
+};
 
 export default RenderList;

@@ -7,7 +7,6 @@ import Button from "@material-ui/core/Button";
 import CROP from "../../../constants/ImageResizer";
 
 class ImageResizer extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -137,7 +136,7 @@ ImageResizer.propTypes = {
   handleOnCrop: PropTypes.func,
   onChange: PropTypes.func,
   submitting: PropTypes.bool,
-}
+};
 
 ImageResizer.defaultProps = {
   cropShape: "",
@@ -145,6 +144,6 @@ ImageResizer.defaultProps = {
   handleOnCrop: () => {},
   onChange: () => {},
   submitting: false,
-}
+};
 
 export default ImageResizer;

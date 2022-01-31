@@ -3,7 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import moment from "moment";
 import PropTypes from "prop-types";
 
- const RenderDatePickerFirst = ({
+const RenderDatePickerFirst = ({
   input: { onChange, value },
   meta: { touched, invalid, error },
   minValue,
@@ -11,10 +11,9 @@ import PropTypes from "prop-types";
   label,
   disabled,
 }) => {
+  const DATE = "YYYY-MM-DD";
 
-  const DATE = "YYYY-MM-DD"; 
-
-  // TODO checking 
+  // TODO checking
   if (value && new Date(value) < new Date(minValue)) {
     onChange(moment(minValue).format("L"));
   }
@@ -24,19 +23,18 @@ import PropTypes from "prop-types";
       type="date"
       label={label}
       selected={moment(value).format("L")}
-      value={moment(value).format({DATE})}
+      value={moment(value).format({ DATE })}
       error={touched && invalid}
       helperText={touched && error}
       onChange={onChange}
       disabled={disabled}
       inputProps={{
-        min: minValue ? moment(minValue).format({DATE}) : null,
-        max: maxValue ? moment(maxValue).format({DATE}) : null,
+        min: minValue ? moment(minValue).format({ DATE }) : null,
+        max: maxValue ? moment(maxValue).format({ DATE }) : null,
       }}
     />
   );
 };
-
 
 RenderDatePickerFirst.propTypes = {
   input: PropTypes.shape({
@@ -59,7 +57,7 @@ RenderDatePickerFirst.defaultProps = {
     value: "",
     onChange: () => {},
   },
-  meta:{
+  meta: {
     touched: false,
     invalid: false,
     error: [],

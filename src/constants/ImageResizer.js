@@ -1,5 +1,5 @@
 const imageConstants = {
-  CROP: 'Crop'
-}
+  CROP: "Crop",
+};
 
 export default imageConstants;

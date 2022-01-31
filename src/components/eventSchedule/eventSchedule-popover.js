@@ -5,14 +5,13 @@ import Popover from "@material-ui/core/Popover";
 import "./eventSchedule.css";
 
 class EventSchedulePopover extends Component {
-
   constructor() {
     super();
-    this.state = { 
+    this.state = {
       anchorEl: null,
-    isFocused: false,
-    }
-  };
+      isFocused: false,
+    };
+  }
 
   handlePopover = event => {
     this.setState({
@@ -54,9 +53,11 @@ class EventSchedulePopover extends Component {
           }}
         >
           <Typography style={{ maxWidth: "500px", padding: "15px" }}>
-            Click &quot;Create without editing&quot; to create the event without editing.
+            Click &quot;Create without editing&quot; to create the event without
+            editing.
             <br />
-            Click &quot;Create with editing&quot; to create the event with editing.
+            Click &quot;Create with editing&quot; to create the event with
+            editing.
             <br />
             Click &quot;Cancel Once&quot; to cancel the next event.
             <br />

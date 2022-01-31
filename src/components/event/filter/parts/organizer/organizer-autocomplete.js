@@ -52,7 +52,6 @@ const OrganizerAutocomplete = ({ input, options, ...props }) => {
               ...params.inputProps,
               maxLength: 50,
             }}
-
             value={username}
             onChange={updateUsername}
           />
@@ -76,13 +75,13 @@ OrganizerAutocomplete.propTypes = {
   input: PropTypes.array,
   options: PropTypes.oneOfType(PropTypes.object, PropTypes.array),
   fetchUsers: PropTypes.func,
-}
+};
 
 OrganizerAutocomplete.defaultProps = {
   input: [],
   options: {},
   fetchUsers: PropTypes.func,
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchUsers: filter => dispatch(fetchUsers(filter)),

@@ -20,9 +20,9 @@ const EventsForProfile = ({
 
   const handlePageChange = pageEl => {
     setCurrentPage(pageEl);
-    if(notificationEvents !== null) {
-      callback(notificationEvents, pageEl)
-    }else{
+    if (notificationEvents !== null) {
+      callback(notificationEvents, pageEl);
+    } else {
       callback(pageEl);
     }
   };
@@ -50,8 +50,8 @@ EventsForProfile.propTypes = {
   callback: PropTypes.func,
   notificationEvents: PropTypes.string,
   currentUser: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
-  dataList: []
-}
+  dataList: [],
+};
 
 EventsForProfile.defaultProps = {
   page: null,
@@ -59,7 +59,7 @@ EventsForProfile.defaultProps = {
   callback: () => {},
   notificationEvents: "",
   currentUser: "",
-  dataList: []
-}
+  dataList: [],
+};
 
 export default EventsForProfile;

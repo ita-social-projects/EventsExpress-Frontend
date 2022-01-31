@@ -60,7 +60,7 @@ LocationMap.propTypes = {
   }),
   onUpdate: PropTypes.func,
   location: PropTypes.object,
-  children: PropTypes.oneOfType(PropTypes.object, PropTypes.array)
+  children: PropTypes.oneOfType(PropTypes.object, PropTypes.array),
 };
 
 LocationMap.defaultProps = {

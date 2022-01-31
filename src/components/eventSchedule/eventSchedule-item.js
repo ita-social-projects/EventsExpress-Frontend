@@ -17,7 +17,7 @@ import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();
 
- class EventSchedule extends Component {
+class EventSchedule extends Component {
   constructor(props) {
     super(props);
 
@@ -42,15 +42,8 @@ const photoService = new PhotoService();
 
   render() {
     const classes = useStyles;
-    const {
-      id,
-      frequency,
-      periodicity,
-      lastRun,
-      nextRun,
-      title,
-      eventId,
-    } = this.props.item;
+    const { id, frequency, periodicity, lastRun, nextRun, title, eventId } =
+      this.props.item;
     const period = renderPeriod(periodicity, frequency);
     return (
       <div className="col-12 col-sm-8 col-md-6 col-xl-4 mt-3">
@@ -104,10 +97,10 @@ const photoService = new PhotoService();
 
 EventSchedule.propTypes = {
   item: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
-}
+};
 
 EventSchedule.defaultProps = {
   item: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
-}
+};
 
 export default EventSchedule;

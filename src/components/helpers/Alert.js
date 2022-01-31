@@ -108,12 +108,12 @@ MySnackbar.propTypes = {
   onClose: PropTypes.func,
   message: PropTypes.string,
   alert: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
-}
+};
 
 MySnackbar.defaultProps = {
   onClose: () => {},
   message: "",
   alert: [],
-}
+};
 
 export default MySnackbar;

@@ -1,5 +1,5 @@
 const simpleModalConstants = {
-    CONFIRM: "Confirm",
-    DISCARD: "Discard",
-  };
-  export default simpleModalConstants;
+  CONFIRM: "Confirm",
+  DISCARD: "Discard",
+};
+export default simpleModalConstants;

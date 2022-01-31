@@ -8,7 +8,6 @@ import ImageResizer from "../event/ImageResizer/Image-resizer";
 import renderFieldError from "./form-helpers/render-field-error";
 
 class DropZoneField extends Component {
-  
   constructor() {
     super();
     this.state = {
@@ -150,7 +149,6 @@ DropZoneField.propTypes = {
   meta: PropTypes.object,
   input: PropTypes.object,
   loadImage: PropTypes.func,
-
 };
 // TODO file props
 
@@ -170,7 +168,6 @@ DropZoneField.defaultProps = {
   meta: {},
   input: {},
   loadImage: () => {},
-
 };
 
 export default DropZoneField;

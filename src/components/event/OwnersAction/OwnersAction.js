@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import SimpleModal from "../SimpleModal/Simple-modal";
 import constants from "../../../constants/ConstantsOwnersAction";
 
- function OwnersActions({
+function OwnersActions({
   user,
   isMyEvent,
   currentUserId,
@@ -40,7 +40,7 @@ OwnersActions.propTypes = {
   currentUserId: PropTypes.number,
   eventId: PropTypes.number,
   deleteFromOwners: PropTypes.func,
-}
+};
 
 OwnersActions.defaultProps = {
   user: {},
@@ -48,6 +48,6 @@ OwnersActions.defaultProps = {
   currentUserId: null,
   eventId: null,
   deleteFromOwners: () => {},
-}
+};
 
 export default OwnersActions;

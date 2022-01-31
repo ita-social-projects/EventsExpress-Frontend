@@ -97,14 +97,13 @@ EventScheduleItemView.propTypes = {
   eventSchedule: PropTypes.object,
   getEvent: PropTypes.func,
   currentUser: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
-
-}
+};
 
 EventScheduleItemView.defaultProps = {
   eventSchedule: {},
   getEvent: () => {},
   currentUser: {},
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   getEvent: id => dispatch(getEvent(id)),

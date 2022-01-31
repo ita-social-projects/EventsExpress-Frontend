@@ -67,18 +67,16 @@ FilterForm.propTypes = {
   pristine: PropTypes.bool,
   applyFilters: PropTypes.func,
   resetFilters: PropTypes.func,
-
-
-} 
+};
 
 FilterForm.defaultProps = {
-  handleSubmit: ()=> {},
-  toggleOpen: ()=> {},
+  handleSubmit: () => {},
+  toggleOpen: () => {},
   reset: false,
   pristine: false,
   applyFilters: () => {},
   resetFilters: () => {},
-} 
+};
 
 export default connect(
   null,
