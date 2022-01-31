@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { parse as queryStringParse } from "query-string";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -26,7 +26,7 @@ const EventList = ({
       history.push(`${history.location.pathname}?page=1`);
   }, [totalPages, history.location.search]);
 
-  handlePageChange = page => {
+  const handlePageChange = page => {
     const queryStringToObject = queryStringParse(history.location.search);
     history.location.search == ""
       ? history.push(`${history.location.pathname}?page=${page}`)
@@ -36,7 +36,7 @@ const EventList = ({
     history.push(history.location.pathname + history.location.search);
   };
 
-  renderSingleItem = item => (
+  const renderSingleItem = item => (
     <EventCard
       key={item.id + item.Active}
       item={item}

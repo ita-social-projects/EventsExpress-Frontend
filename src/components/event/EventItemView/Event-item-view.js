@@ -7,7 +7,7 @@ import Comment from "../../comment/comment";
 import "moment-timezone";
 import "../../layout/colorlib.css";
 import "./event-item-view.css";
-import EventVisitors from "../EventVisitors/Event-visitors";
+import EventVisitors from "../EventVisitors/EventVisitors";
 import EventLeaveModal from "../EventLeaveModal/Event-leave-modal";
 import InventoryList from "../../inventory/InventoryList";
 import DisplayLocation from "../map/display-location";

@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import PhotoService from "../../services/PhotoService";
 import { eventDefaultImage } from "../../constants/eventDefaultImage";
-import { parseDate } from "../helpers/parseDate";
+import parseDate from "../helpers/parseDate";
 
 const photoService = new PhotoService();
 
@@ -31,6 +31,7 @@ class CarouselEventCard extends Component {
 
   render() {
     const { event } = this.props;
+
     return (
       <div className="card">
         <img className="card-img-top" src={this.state.eventImage} alt="Event" />
