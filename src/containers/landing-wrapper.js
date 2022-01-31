@@ -1,12 +1,13 @@
 ﻿import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import add_event from "../actions/event/event-add-action";
+import addEvent from "../actions/event/event-add-action";
 import Landing from "../components/landing";
 
 class LandingWrapper extends Component {
   onSubmit = () => {
-    return this.props.add_event();
+    return this.props.addEvent();
   };
 
   render() {
@@ -21,8 +22,18 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    add_event: () => dispatch(add_event()),
+    add_event: () => dispatch(addEvent()),
   };
+};
+
+LandingWrapper.propTypes = {
+  addEvent: PropTypes.func,
+  user: PropTypes.object,
+};
+
+LandingWrapper.defaultProps = {
+  addEvent: () => {},
+  user: {},
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingWrapper);

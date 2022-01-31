@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 import GoogleLogin from "../../components/google-login";
 import { googleLoginAdd } from "../../actions/redactProfile/linked-auths-add-action";
 import { setErrorAlert } from "../../actions/alert-action";
@@ -35,6 +36,17 @@ const mapDispatchToProps = dispatch => ({
   googleLoginAdd: (tokenId, email) => dispatch(googleLoginAdd(tokenId, email)),
   setErrorAlert: msg => dispatch(setErrorAlert(msg)),
 });
+
+GoogleLoginAdd.propTypes = {
+  setErrorAlert: PropTypes.func,
+  config: PropTypes.object,
+  googleLoginAdd: PropTypes.func,
+};
+GoogleLoginAdd.defaultProps = {
+  setErrorAlert: () => {},
+  config: {},
+  googleLoginAdd: () => {},
+};
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(GoogleLoginAdd),

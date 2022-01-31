@@ -1,7 +1,8 @@
 ﻿import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import RecoverPassword from "../../components/recoverPassword/recoverPassword";
-import recover_Password from "../../actions/redactProfile/password-recover-action";
+import recoverPassword from "../../actions/redactProfile/password-recover-action";
 
 class RecoverPasswordContainer extends React.Component {
   submit = value => {
@@ -34,8 +35,18 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    recoverPassword: data => dispatch(recover_Password(data)),
+    recoverPassword: data => dispatch(recoverPassword(data)),
   };
+};
+
+RecoverPasswordContainer.propTypes = {
+  status: PropTypes.func,
+  recoverPassword: PropTypes.func,
+};
+
+RecoverPasswordContainer.defaultProps = {
+  status: {},
+  recoverPassword: () => {},
 };
 
 export default connect(

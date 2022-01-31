@@ -13,7 +13,7 @@ function getCategoriesData(data) {
   };
 }
 
-const getСategories = () => {
+const getСategoriesList = () => {
   return async dispatch => {
     dispatch(getRequestInc());
     const response = await API_SERV.getAllCategories();
@@ -28,4 +28,4 @@ const getСategories = () => {
   };
 };
 
-export default getСategories;
+export default getСategoriesList;
