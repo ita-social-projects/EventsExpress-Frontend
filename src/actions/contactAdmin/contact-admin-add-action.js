@@ -8,12 +8,12 @@ export const contactAdminData = {
   DATA: "SET_CONTACT_ADMIN_DATA",
 };
 
-const API_SERV = new ContactAdminService();
+const apiService = new ContactAdminService();
 
 const contactAdmin = data => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.setContactAdmin(data);
+    const response = await apiService.setContactAdmin(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }

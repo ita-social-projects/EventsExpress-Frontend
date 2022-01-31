@@ -8,7 +8,7 @@ export const changePasswordStates = {
   UPDATE: "UPDATE_PASSWORD",
 };
 
-const API_SERV = new AuthenticationService();
+const apiService = new AuthenticationService();
 
 export function changePasswordUpdate(data) {
   return {
@@ -21,7 +21,7 @@ const changePassword = data => {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await API_SERV.setChangePassword(data);
+    const response = await apiService.setChangePassword(data);
     dispatch(getRequestDec());
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));

@@ -8,7 +8,7 @@ export const addUserNotificationTypeStates = {
   UPDATE: "UPDATE_NOTIFICATION_TYPES",
 };
 
-const API_SERV = new UserService();
+const apiService = new UserService();
 
 function updateNotificationTypes(data) {
   return {
@@ -20,7 +20,7 @@ function updateNotificationTypes(data) {
 const setUserNotificationTypes = data => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.setUserNotificationType(data);
+    const response = await apiService.setUserNotificationType(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }

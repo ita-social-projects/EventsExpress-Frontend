@@ -16,7 +16,7 @@ export const DELETE_OLD_NOTIFICATION = "DELETE_OLD_NOTIFICATION";
 export const DELETE_SEEN_MSG_NOTIFICATION = "DELETE_SEEN_MSG_NOTIFICATION";
 export const RECEIVED_NEW_EVENT = "RECEIVED_NEW_EVENT";
 
-const API_SERV = new ChatService();
+const apiService = new ChatService();
 
 function receivedNewEvent(data) {
   return {
@@ -128,7 +128,7 @@ const getChat = chatId => {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await API_SERV.getChat(chatId);
+    const response = await apiService.getChat(chatId);
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));

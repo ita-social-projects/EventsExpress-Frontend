@@ -7,7 +7,7 @@ import {
 
 export const GET_EVENTS_PROFILE_DATA = "GET_EVENTS_PROFILE_DATA";
 
-const API_SERV = new EventService();
+const apiService = new EventService();
 
 function getEvents(data) {
   return {
@@ -35,21 +35,21 @@ function master(call, id, page) {
 }
 
 export function getFutureEvents(id, page = 1) {
-  const call = API_SERV.getFutureEvents;
+  const call = apiService.getFutureEvents;
   return master(call, id, page);
 }
 
 export function getPastEvents(id, page = 1) {
-  const call = API_SERV.getPastEvents;
+  const call = apiService.getPastEvents;
   return master(call, id, page);
 }
 
 export function getVisitedEvents(id, page = 1) {
-  const call = API_SERV.getVisitedEvents;
+  const call = apiService.getVisitedEvents;
   return master(call, id, page);
 }
 
 export function getEventsTogo(id, page = 1) {
-  const call = API_SERV.getEventsToGo;
+  const call = apiService.getEventsToGo;
   return master(call, id, page);
 }

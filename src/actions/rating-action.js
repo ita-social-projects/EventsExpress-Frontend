@@ -18,7 +18,7 @@ export const setRateStates = {
   SUCCESS: "SET_RATE_SUCCESS",
 };
 
-const API_SERV = new EventService();
+const apiService = new EventService();
 
 function getAverageRatingPending(data) {
   return {
@@ -66,7 +66,7 @@ function setRatingSuccess(data) {
 export function setRating(data) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.setRate(data);
+    const response = await apiService.setRate(data);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -83,7 +83,7 @@ export function getCurrrentRating(data) {
   return async dispatch => {
     dispatch(getRatingPending(true));
 
-    const response = await API_SERV.getCurrentRate(data);
+    const response = await apiService.getCurrentRate(data);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -98,7 +98,7 @@ export function getAverageRating(data) {
   return async dispatch => {
     dispatch(getAverageRatingPending(true));
 
-    const response = await API_SERV.getAverageRate(data);
+    const response = await apiService.getAverageRate(data);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

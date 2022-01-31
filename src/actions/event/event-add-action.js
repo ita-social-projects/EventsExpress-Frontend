@@ -8,7 +8,7 @@ import { setSuccessAllert, setErrorAllertFromResponse } from "../alert-action";
 
 export const EVENT_WAS_CREATED = "EVENT_WAS_CREATED";
 
-const API_SERV = new EventService();
+const apiService = new EventService();
 const history = createBrowserHistory({ forceRefresh: true });
 
 function eventWasCreated(eventId) {
@@ -21,7 +21,7 @@ function eventWasCreated(eventId) {
 export function editEvent(data, onError, onSuccess) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.editEvent(data);
+    const response = await apiService.editEvent(data);
     dispatch(getRequestDec());
     if (!response.ok && onError) {
       await onError(response);
@@ -36,7 +36,7 @@ export function editEvent(data, onError, onSuccess) {
 export function publishEvent(eventId) {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.publishEvent(eventId);
+    const response = await apiService.publishEvent(eventId);
     dispatch(getRequestDec());
     if (response.ok) {
       dispatch(getEvent(eventId));
@@ -53,7 +53,7 @@ export function publishEvent(eventId) {
 const addEvent = () => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.setEvent();
+    const response = await apiService.setEvent();
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));

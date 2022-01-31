@@ -6,7 +6,7 @@ export const SET_CATEGORIES_OF_MEASURING_PENDING =
 export const GET_CATEGORIES_OF_MEASURING_SUCCESS =
   "GET_CATEGORIES_OF_MEASURING_SUCCESS";
 
-const API_SERV = new CategoryOfMeasuringService();
+const apiService = new CategoryOfMeasuringService();
 
 const setCategoryOfMeasuringPending = data => ({
   type: SET_CATEGORIES_OF_MEASURING_PENDING,
@@ -21,7 +21,7 @@ const getCategoriesOfMeasuringSuccess = data => ({
 export default function getCategoriesOfMeasuring() {
   return async dispatch => {
     dispatch(setCategoryOfMeasuringPending(true));
-    const response = await API_SERV.getCategoriesOfMeasuring();
+    const response = await apiService.getCategoriesOfMeasuring();
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

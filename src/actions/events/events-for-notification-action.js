@@ -3,12 +3,12 @@ import { getEvents } from "../event/event-list-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 import { setErrorAllertFromResponse } from "../alert-action";
 
-const API_SERV = new EventService();
+const apiService = new EventService();
 
 const eventsForNotification = (eventIds, page = 1) => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.getEvents(eventIds, page);
+    const response = await apiService.getEvents(eventIds, page);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
