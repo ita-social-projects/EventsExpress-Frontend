@@ -112,6 +112,8 @@ export function initialConnection() {
         );
       });
     } catch (err) {
+      // TODO in the future need to create normal error handling
+      // eslint-disable-next-line no-console
       console.log("Error while establishing connection :(");
     }
 

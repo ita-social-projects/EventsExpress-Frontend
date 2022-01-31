@@ -96,6 +96,8 @@ export function initialConnection() {
         dispatch(getCount(getState().users.status ?? accountStatus.All));
       });
     } catch (err) {
+      // TODO in the future need to create normal error handling
+      // eslint-disable-next-line no-console
       console.error(err.toString());
     }
 
