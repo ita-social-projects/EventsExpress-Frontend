@@ -17,7 +17,7 @@ const Events = ({ events, currentUser, typeOfEvents }) => {
         callback={typeOfEvents}
       />
 
-      {!(data.items && data.items.length > 0) && (
+      {!data.items.length && (
         <div id="notfound" className="w-100">
           <div className="notfound">
             <div className="notfound-404">

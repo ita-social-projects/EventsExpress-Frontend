@@ -15,8 +15,7 @@ const renderType = type => {
   }
 };
 
-const LinkedAuths = props => {
-  const { item } = props;
+const LinkedAuths = ({ item }) => {
   return (
     <div>
       <div className="btn-group m-1" role="group" disabled>
