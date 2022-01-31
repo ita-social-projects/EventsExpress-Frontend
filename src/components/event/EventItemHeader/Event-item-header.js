@@ -9,7 +9,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";
 import ContainerCustomAvatar from "../../avatar/custom-avatar";
 import useStyle from "../CardStyle/CardStyle";
-import { getAttitudeClassName } from "../attitude/attitude";
+import getAttitudeClassName from "../attitude/attitude";
 import "./event-item-header.css";
 
 export default class EventHeader extends Component {

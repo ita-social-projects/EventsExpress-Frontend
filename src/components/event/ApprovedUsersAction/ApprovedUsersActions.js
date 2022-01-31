@@ -4,7 +4,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 import propTypes from "prop-types";
 import SimpleModal from "../SimpleModal/Simple-modal";
-import { APPROVED_USERS_ACTION } from "../../../constants/ApprovedUsersAction";
+import APPROVED_USERS_ACTION from "../../../constants/ApprovedUsersAction";
 
 const ApprovedUsersActions = ({
   user,
