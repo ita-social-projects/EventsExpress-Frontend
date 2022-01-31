@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
@@ -10,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/errorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
-import { fieldIsRequired } from "../../helpers/validators/required-fields-validator";
+import fieldIsRequired from "../../helpers/validators/required-fields-validator";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,8 +40,13 @@ const validate = values => {
   };
 };
 
-const ChangePassword = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+const ChangePassword = ({
+  handleSubmit,
+  pristine,
+  reset,
+  submitting,
+  error,
+}) => {
   const classes = useStyles();
 
   const [expanded, setExpanded] = React.useState(false);
@@ -90,9 +96,7 @@ const ChangePassword = props => {
                   className="mb-3"
                 />
               </div>
-              {props.error && (
-                <ErrorMessages error={props.error} className="text-center" />
-              )}
+              {error && <ErrorMessages error={error} className="text-center" />}
 
               <div>
                 <Button
@@ -116,6 +120,22 @@ const ChangePassword = props => {
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );
+};
+
+ChangePassword.defaultProps = {
+  pristine: false,
+  reset: () => {},
+  submitting: false,
+  error: "",
+  handleSubmit: () => {},
+};
+
+ChangePassword.propTypes = {
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
+  error: PropTypes.string,
+  handleSubmit: PropTypes.func,
 };
 
 export default reduxForm({

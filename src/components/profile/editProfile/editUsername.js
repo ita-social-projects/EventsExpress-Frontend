@@ -1,18 +1,16 @@
 ﻿import React from "react";
+import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/errorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
 
-const EditUsername = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <Field name="userName" component={renderTextField} label="UserName" />
-        {props.error && (
-          <ErrorMessages error={props.error} className="text-center" />
-        )}
+        {error && <ErrorMessages error={error} className="text-center" />}
       </div>
       <div>
         <Button type="submit" color="primary" disabled={pristine || submitting}>
@@ -29,6 +27,22 @@ const EditUsername = props => {
       </div>
     </form>
   );
+};
+
+EditUsername.defaultProps = {
+  pristine: false,
+  reset: () => {},
+  submitting: false,
+  error: "",
+  handleSubmit: () => {},
+};
+
+EditUsername.propTypes = {
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
+  error: PropTypes.string,
+  handleSubmit: PropTypes.func,
 };
 
 export default reduxForm({
