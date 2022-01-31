@@ -1,49 +1,61 @@
 ﻿import React from "react";
+import PropTypes from "prop-types";
 import { getFormValues, change } from "redux-form";
 import { connect } from "react-redux";
 import ThreeStateCheckbox from "../three-state-checkbox/ThreeStateCheckbox";
 import "./Tile.css";
 import "./covers/tile-covers.css";
 
-const Tile = props => {
-  const isFormInitialized = () =>
-    props.formValues !== undefined && props.formValues.categories !== undefined;
+const Tile = ({
+  formValues,
+  categories,
+  handleTileToggleAction,
+  updateFormValue,
+  groupId,
+}) => {
+  const isFormInitialized = () => formValues?.categories !== undefined;
 
   const handleTriStateChange = state => {
-    const ids = props.categories.map(c => c.id);
-    let formValues = isFormInitialized()
-      ? [...props.formValues.categories]
+    const ids = categories.map(c => c.id);
+    let formValuesCategories = isFormInitialized()
+      ? [...formValues.categories]
       : [];
     if (state) {
-      const filteredIds = ids.filter(id => !formValues.includes(id));
-      filteredIds.forEach(el => formValues.push(el));
+      const filteredIds = ids.filter(id => !formValuesCategories.includes(id));
+      filteredIds.forEach(el => formValuesCategories.push(el));
     } else {
-      formValues = formValues.filter(el => !ids.includes(el));
+      formValuesCategories = formValuesCategories.filter(
+        el => !ids.includes(el),
+      );
     }
 
-    props.handleTileToggleAction();
-    props.updateFormValue(formValues);
+    handleTileToggleAction();
+    updateFormValue(formValuesCategories);
   };
 
   const toggleTriStateCheckbox = () => {
     if (isFormInitialized()) {
-      const opts = props.categories.map(c => c.id);
-      const values = [...props.formValues.categories].filter(item =>
+      const opts = categories.map(c => c.id);
+      const values = [...formValues.categories].filter(item =>
         opts.includes(item),
       );
 
       if (values.length === 0) return false;
       if (values.length < opts.length) return null;
       if (values.length === opts.length) return true;
-    } else {
-      return false;
+      //! TODO : RETURN UNDEFINED IS NOT CORRECT
+      return undefined;
     }
+    return false;
   };
 
   return (
     <div
-      className={`tile cover_${props.groupId}`}
-      onClick={() => props.handleTileToggleAction()}
+      role="button"
+      className={`tile cover_${groupId}`}
+      onClick={() => handleTileToggleAction()}
+      onKeyDown={() => handleTileToggleAction()}
+      tabIndex={0}
     >
       <ThreeStateCheckbox
         checked={toggleTriStateCheckbox()}
@@ -51,6 +63,22 @@ const Tile = props => {
       />
     </div>
   );
+};
+
+Tile.defaultProps = {
+  formValues: {},
+  categories: [],
+  handleTileToggleAction: () => {},
+  updateFormValue: () => {},
+  groupId: null,
+};
+
+Tile.propTypes = {
+  formValues: PropTypes.object,
+  categories: PropTypes.array,
+  handleTileToggleAction: PropTypes.func,
+  updateFormValue: PropTypes.func,
+  groupId: PropTypes.number,
 };
 
 const mapStateToProps = state => {

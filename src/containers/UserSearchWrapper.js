@@ -1,8 +1,15 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
+import PropTypes from "prop-types";
 import SearchUsers from "./SearchUsers";
 
-export default class UsersPWrapper extends Component {
-  render() {
-    return <SearchUsers params={this.props.location.search} />;
-  }
-}
+const UsersPWrapper = ({ location }) => (
+  <SearchUsers params={location.search} />
+);
+
+UsersPWrapper.defaultProps = {
+  location: {},
+};
+UsersPWrapper.propTypes = {
+  location: PropTypes.object,
+};
+export default UsersPWrapper;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
 import SimpleModal from "../event/SimpleModal/Simple-modal";
 
@@ -14,13 +15,17 @@ export default class TrackItem extends Component {
         return "Created";
       case 3:
         return "Deleted";
+      default:
+        //! TODO : RETURN UNDEFINED IS NOT CORRECT
+        return undefined;
     }
   };
 
   getPropertyChangesText = propertyChangesText => {
     const test = JSON.parse(propertyChangesText);
     return test.map(x => (
-      <tr>
+      //! TODO : MAYBE, X.ID IS NOT DEFINED. IT NEED TO CHECK
+      <tr key={x.id}>
         <td className="text-center">{x.entityName}</td>
         <td className="text-center">Old value: {x.OldValue}</td>
         <td className="text-center">New value: {x.NewValue}</td>
@@ -55,3 +60,11 @@ export default class TrackItem extends Component {
     );
   }
 }
+
+TrackItem.defaultProps = {
+  item: {},
+};
+
+TrackItem.propTypes = {
+  item: PropTypes.object,
+};

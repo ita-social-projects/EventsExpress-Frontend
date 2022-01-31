@@ -1,26 +1,21 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import UserSearchFilter from "../components/users/UserSearchFilter";
-import { get_SearchUsers, change_Filter } from "../actions/users/users-action";
+import { getSearchUsers, changeFilter } from "../actions/users/users-action";
 
-class UserSearchFilterWrapper extends Component {
-  onSubmit = filters => {
+const UserSearchFilterWrapper = ({ changeFilterDispatch, onReset }) => {
+  const onSubmit = filters => {
     if (filters !== null) {
-      this.props.change_Filter(filters);
+      changeFilterDispatch(filters);
     }
   };
-
-  render() {
-    return (
-      <>
-        <UserSearchFilter
-          onSubmit={this.onSubmit}
-          onReset={this.props.onReset}
-        />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <UserSearchFilter onSubmit={onSubmit} onReset={onReset} />
+    </>
+  );
+};
 
 const mapStateToProps = state => ({
   users: state.users,
@@ -28,9 +23,19 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    search: values => dispatch(get_SearchUsers(values)),
-    change_Filter: values => dispatch(change_Filter(values)),
+    search: values => dispatch(getSearchUsers(values)),
+    changeFilterDispatch: values => dispatch(changeFilter(values)),
   };
+};
+
+UserSearchFilterWrapper.defaultProps = {
+  changeFilterDispatch: () => {},
+  onReset: () => {},
+};
+
+UserSearchFilterWrapper.propTypes = {
+  changeFilterDispatch: PropTypes.func,
+  onReset: PropTypes.func,
 };
 
 export default connect(

@@ -1,19 +1,21 @@
 ﻿import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 import IconButton from "@material-ui/core/IconButton";
-import get_roles from "../../actions/roles";
+import getRoles from "../../actions/roles";
 import { renderMultiselect } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
 
 class UserRoleEdit extends Component {
   componentDidMount = () => {
-    this.props.get_roles();
+    this.props.getRolesDispatch();
   };
 
   render() {
-    const { pristine, submitting, handleSubmit, error } = this.props;
+    const { pristine, submitting, handleSubmit, error, roles, cancel } =
+      this.props;
     return (
       <>
         <td className="align-middle">
@@ -22,7 +24,7 @@ class UserRoleEdit extends Component {
               className="form-control"
               name="roles"
               component={renderMultiselect}
-              data={this.props.roles}
+              data={roles}
               valueField="id"
               textField="name"
             />
@@ -41,11 +43,7 @@ class UserRoleEdit extends Component {
             >
               <i className="fas fa-check" />
             </IconButton>
-            <IconButton
-              className="text-danger"
-              size="small"
-              onClick={this.props.cancel}
-            >
+            <IconButton className="text-danger" size="small" onClick={cancel}>
               <i className="fas fa-times" />
             </IconButton>
           </div>
@@ -54,13 +52,32 @@ class UserRoleEdit extends Component {
     );
   }
 }
+UserRoleEdit.defaultProps = {
+  handleSubmit: () => {},
+  pristine: false,
+  submitting: false,
+  error: [],
+  cancel: () => {},
+  roles: [],
+  getRolesDispatch: () => {},
+};
+
+UserRoleEdit.propTypes = {
+  handleSubmit: PropTypes.func,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
+  error: PropTypes.array,
+  cancel: PropTypes.func,
+  roles: PropTypes.array,
+  getRolesDispatch: PropTypes.func,
+};
 
 const mapStateToProps = state => ({
   roles: state.roles.data,
 });
 
 const mapDispatchToProps = dispatch => ({
-  get_roles: () => dispatch(get_roles()),
+  getRolesDispatch: () => dispatch(getRoles()),
 });
 
 export default compose(

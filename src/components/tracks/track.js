@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getFormValues, reset } from "redux-form";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import TrackList from "./track-list";
 import TracksFilter from "./tracks-filter";
 import SpinnerWrapper from "../../containers/spinner";
@@ -50,14 +51,14 @@ class Tracks extends Component {
   render() {
     const { data, entityNames } = this.props.tracks;
     return (
-      <SpinnerWrapper showContent={data != undefined}>
+      <SpinnerWrapper showContent={data !== undefined}>
         <table className="table w-100 m-auto">
           <tbody>
             <div className="d-flex">
               {data?.items && (
                 <div className="w-75">
                   <TrackList
-                    data_list={data}
+                    dataList={data}
                     handlePageChange={this.handlePageChange}
                   />
                 </div>
@@ -67,7 +68,7 @@ class Tracks extends Component {
                   entityNames={entityNames}
                   onSubmit={this.handleSubmit}
                   onReset={this.onReset}
-                  form_values={this.props.form_values}
+                  formValues={this.props.form_values}
                 />
               </div>
             </div>
@@ -77,6 +78,22 @@ class Tracks extends Component {
     );
   }
 }
+
+Tracks.defaultProps = {
+  tracks: {},
+  reset_filters: () => {},
+  getAllTracks: () => {},
+  getEntityNames: () => {},
+  form_values: {},
+};
+
+Tracks.propTypes = {
+  tracks: PropTypes.object,
+  reset_filters: PropTypes.func,
+  getAllTracks: PropTypes.func,
+  getEntityNames: PropTypes.func,
+  form_values: PropTypes.object,
+};
 
 const mapStateToProps = state => ({
   tracks: state.tracks,

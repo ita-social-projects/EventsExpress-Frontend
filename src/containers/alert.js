@@ -1,19 +1,24 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import MySnackbar from "../components/helpers/Alert";
 import { setAlertOpen } from "../actions/alert-action";
 
-class AlertContainer extends React.Component {
-  render() {
-    return (
-      <MySnackbar
-        open={this.props.open}
-        onClose={this.props.close}
-        alert={this.props.alert}
-      />
-    );
-  }
-}
+const AlertContainer = ({ open, close, alert }) => {
+  return <MySnackbar open={open} onClose={close} alert={alert} />;
+};
+
+AlertContainer.defaultProps = {
+  close: () => {},
+  alert: {},
+  open: false,
+};
+
+AlertContainer.propTypes = {
+  close: PropTypes.func,
+  alert: PropTypes.object,
+  open: PropTypes.bool,
+};
 
 const mapStateToProps = state => {
   return {
