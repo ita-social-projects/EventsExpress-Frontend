@@ -3,24 +3,31 @@ import { stringify as queryStringStringify } from "query-string";
 const filterHelper = (() => {
   return {
     isObject(object) {
-      return !object && typeof object === "object";
-    },
+      return object !== null && typeof object === "object";    },
     
     compareObjects(objFirst, objSecond) {
       const keysObjectFirst = Object.keys(objFirst);
       const keysObjectSecond = Object.keys(objSecond);
 
-      keysObjectFirst.map(key => {
+      if (keysObjectFirst.length !== keysObjectSecond.length) {
+        return false;
+      }
+
+      // TODO refactring function with heavy iterators
+      // eslint-disable-next-line no-restricted-syntax
+      for (const key of keysObjectFirst) {
         const valObjectFirst = objFirst[key];
         const valObjectSecond = objSecond[key];
         const areObjects =
           this.isObject(valObjectFirst) && this.isObject(valObjectSecond);
-        const compareObjectsKeys =
-        keysObjectFirst.length !== keysObjectSecond.length;
-         
-          return (areObjects && !compareObjectsKeys) ||
-          (!areObjects && valObjectFirst !== valObjectSecond)
-      });
+          if (
+            (areObjects &&
+              !this.compareObjects(valObjectFirst, valObjectSecond)) ||
+            (!areObjects && valObjectFirst !== valObjectSecond)
+            ) {
+              return false;
+            }
+          }
 
       return true;
   },
