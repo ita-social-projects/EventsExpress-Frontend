@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from "react-moment";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
@@ -18,6 +19,7 @@ import ChangeAvatarWrapper from "../../containers/editProfileContainers/change-a
 import "./profile.css";
 import SelectNotificationTypesWrapper from "../../containers/notificationTypes/SelectNotificationTypes";
 import LinkedAuthsWrapper from "../../containers/linked-auths-wrapper";
+import getComments from "../../actions/comment/comment-list-action";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,7 +36,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Profile = props => {
+const Profile = ({
+  name,
+  gender,
+  birthday,
+  categories,
+  notificationTypes,
+  canChangePassword,
+}) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -73,9 +82,7 @@ const Profile = props => {
           id="panel1bh-header"
         >
           <Typography className={classes.heading}>Username</Typography>
-          <Typography className={classes.secondaryHeading}>
-            {props.name}
-          </Typography>
+          <Typography className={classes.secondaryHeading}>{name}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
@@ -96,7 +103,7 @@ const Profile = props => {
         >
           <Typography className={classes.heading}>Gender</Typography>
           <Typography className={classes.secondaryHeading}>
-            {genders[props.gender]}
+            {genders[gender]}
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
@@ -119,7 +126,7 @@ const Profile = props => {
           <Typography className={classes.heading}>Date of Birth</Typography>
           <Typography className={classes.secondaryHeading}>
             <Moment format="D MMM YYYY" withTitle>
-              {props.birthday}
+              {birthday}
             </Moment>
           </Typography>
         </ExpansionPanelSummary>
@@ -144,7 +151,7 @@ const Profile = props => {
             Favorite Categories
           </Typography>
           <Typography className={classes.secondaryHeading}>
-            {props.categories.map(category => (
+            {categories.map(category => (
               <div key={category.id}>{category.name}</div>
             ))}
           </Typography>
@@ -170,7 +177,7 @@ const Profile = props => {
             Manage notifications
           </Typography>
           <Typography className={classes.secondaryHeading}>
-            {props.notificationTypes.map(notificatin => (
+            {notificationTypes.map(notificatin => (
               <div key={notificatin.id}>{notificatin.name}</div>
             ))}
           </Typography>
@@ -202,9 +209,27 @@ const Profile = props => {
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
-      {props.canChangePassword && <ChangePasswordContainer />}
+      {canChangePassword && <ChangePasswordContainer />}
     </div>
   );
+};
+
+Profile.defaultProps = {
+  name: "",
+  gender: "",
+  birthday: "",
+  categories: [],
+  notificationTypes: [],
+  canChangePassword: false,
+};
+
+Profile.propTypes = {
+  name: PropTypes.string,
+  gender: PropTypes.string,
+  birthday: PropTypes.string,
+  categories: PropTypes.array,
+  notificationTypes: PropTypes.array,
+  canChangePassword: PropTypes.bool,
 };
 
 const mapStateToProps = state => {
@@ -215,4 +240,4 @@ const mapDispatchToProps = dispatch => ({
   getComments: (data, page) => dispatch(getComments(data, page)),
 });
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
