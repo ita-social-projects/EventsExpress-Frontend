@@ -67,8 +67,6 @@ FilterForm.propTypes = {
   pristine: PropTypes.bool,
   applyFilters: PropTypes.func,
   resetFilters: PropTypes.func,
-
-
 } 
 
 FilterForm.defaultProps = {

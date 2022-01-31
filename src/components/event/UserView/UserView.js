@@ -70,5 +70,4 @@ UsersView.defaultProps = {
   children: [],
 }
 
-
 export default UsersView;

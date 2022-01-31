@@ -112,8 +112,6 @@ LocationFilter.defaultProps = {
   formValues: {},
   clear: () => {},
   changeLocation: () => {},
-
-
 }
 
 const mapStateToProps = state => {
