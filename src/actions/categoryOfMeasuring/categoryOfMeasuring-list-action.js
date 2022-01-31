@@ -6,19 +6,17 @@ export const SET_CATEGORIES_OF_MEASURING_PENDING =
 export const GET_CATEGORIES_OF_MEASURING_SUCCESS =
   "GET_CATEGORIES_OF_MEASURING_SUCCESS";
 
-function setCategoryOfMeasuringPending(data) {
-  return {
-    type: SET_CATEGORIES_OF_MEASURING_PENDING,
-    payload: data,
-  };
-}
+const API_SERV = new CategoryOfMeasuringService();
+
+const setCategoryOfMeasuringPending = data => ({
+  type: SET_CATEGORIES_OF_MEASURING_PENDING,
+  payload: data,
+});
 
 const getCategoriesOfMeasuringSuccess = data => ({
   type: GET_CATEGORIES_OF_MEASURING_SUCCESS,
   payload: data,
 });
-
-const API_SERV = new CategoryOfMeasuringService();
 
 export default function getCategoriesOfMeasuring() {
   return async dispatch => {
