@@ -49,4 +49,5 @@ OwnersActions.defaultProps = {
   eventId: null,
   deleteFromOwners: () => {},
 }
+
 export default OwnersActions;

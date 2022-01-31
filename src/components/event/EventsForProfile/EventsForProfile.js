@@ -1,6 +1,5 @@
 ﻿import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-
 import PagePagination from "../../shared/pagePagination";
 import LocalSpinnerWrapper from "../../../containers/local-spinner";
 import { renderItems } from "../../helpers/eventsForProfileUtils";
@@ -45,7 +44,6 @@ const EventsForProfile = ({
   );
 };
 
-
 EventsForProfile.propTypes = {
   page: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
   totalPages: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
@@ -63,4 +61,5 @@ EventsForProfile.defaultProps = {
   currentUser: "",
   dataList: []
 }
+
 export default EventsForProfile;

@@ -1,7 +1,6 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import EventFilterWrapper from "../../../containers/event-filter";
-// import eventsForAdmin from "../../../containers/events-for-admin";
 import AdminEventListWrapper from "../../../containers/events-for-admin";
 
 const EventsForAdmin= ({location}) => {
@@ -22,6 +21,5 @@ const EventsForAdmin= ({location}) => {
   EventsForAdmin.defaultProps = {
     location: {}
   }
-
 
 export default EventsForAdmin;

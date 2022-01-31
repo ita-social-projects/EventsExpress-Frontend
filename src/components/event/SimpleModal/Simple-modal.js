@@ -81,5 +81,3 @@ SimpleModal.defaultProps = {
 }
 
 export default SimpleModal;
-
-

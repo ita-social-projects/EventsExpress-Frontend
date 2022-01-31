@@ -18,7 +18,7 @@ const EventVisitors = ({isMyPrivateEvent, visitors, admins, isMyEvent}) => {
           )}
         />
         <ParticipantGroup
-          disabled={visitors.approvedUsers.length === 0}
+          disabled={!visitors.approvedUsers.length}
           users={visitors.approvedUsers}
           label="Visitors"
           renderUserActions={user => (
@@ -31,7 +31,7 @@ const EventVisitors = ({isMyPrivateEvent, visitors, admins, isMyEvent}) => {
         />
         {isMyPrivateEvent && (
           <ParticipantGroup
-            disabled={visitors.pendingUsers.length === 0}
+            disabled={!visitors.pendingUsers.length}
             users={visitors.pendingUsers}
             label="Pending users"
             renderUserActions={user => (
@@ -52,6 +52,7 @@ const EventVisitors = ({isMyPrivateEvent, visitors, admins, isMyEvent}) => {
       </div>
     );
   }
+  
   EventVisitors.propTypes = {
     isMyPrivateEvent: PropTypes.bool,
     visitors: PropTypes.array,
@@ -66,5 +67,4 @@ const EventVisitors = ({isMyPrivateEvent, visitors, admins, isMyEvent}) => {
     isMyEvent: false,
   };
   
-
 export default EventVisitors;

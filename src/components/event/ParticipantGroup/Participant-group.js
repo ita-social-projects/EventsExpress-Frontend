@@ -28,14 +28,12 @@ const ParticipantGroup = ({label, disabled, users, renderUserActions}) => {
     );
   }
 
-
   ParticipantGroup.propTypes = {
     label: PropTypes.string, 
     disabled:PropTypes.bool, 
     users:PropTypes.object, 
     renderUserActions:PropTypes.func,
     map:PropTypes.func,
-
   }
 
   ParticipantGroup.defaultProps = {

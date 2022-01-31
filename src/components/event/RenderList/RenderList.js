@@ -37,6 +37,7 @@ class RenderList extends Component {
     );
   }
 }
+
 RenderList.propTypes = {
   page: PropTypes.number, 
   totalPages: PropTypes.number,
@@ -54,6 +55,5 @@ RenderList.defaultProps = {
   handlePageChange: () => {},
   renderSingleItem: () => {},
 }
-
 
 export default RenderList;

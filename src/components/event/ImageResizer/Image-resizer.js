@@ -4,6 +4,7 @@ import Cropper from "react-easy-crop";
 import PropTypes from "prop-types";
 import "./image-resizer.css";
 import Button from "@material-ui/core/Button";
+import CROP from "../../../constants/ImageResizer";
 
 class ImageResizer extends Component {
 
@@ -14,8 +15,6 @@ class ImageResizer extends Component {
       zoom: 1,
     };
   }
-
-  
 
   componentWillMount = () => {
     const isRound = this.props.cropShape === "round";
@@ -123,7 +122,7 @@ class ImageResizer extends Component {
               onClick={cropImage}
               style={{ float: "right" }}
             >
-              Crop
+              {CROP}
             </Button>
           </div>
         </div>
@@ -138,8 +137,6 @@ ImageResizer.propTypes = {
   handleOnCrop: PropTypes.func,
   onChange: PropTypes.func,
   submitting: PropTypes.bool,
-
-
 }
 
 ImageResizer.defaultProps = {
@@ -148,7 +145,6 @@ ImageResizer.defaultProps = {
   handleOnCrop: () => {},
   onChange: () => {},
   submitting: false,
-
 }
 
 export default ImageResizer;

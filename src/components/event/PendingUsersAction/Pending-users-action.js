@@ -7,6 +7,7 @@ import {
   promoteToOwner,
   approveUser,
 } from "../../../actions/event/event-item-view-action";
+// import { APPROVE, DENY } from "../../../constants/PendingUsersAction"
 
 const useStyles = makeStyles(() => ({
   success: {

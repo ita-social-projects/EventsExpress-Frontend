@@ -7,17 +7,23 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import PropTypes from "prop-types";
+import leaveModal from '../../../constants/EventLeaveModal'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
- class EventLeaveModal extends Component {
+const {
+  LEAVE,
+  EXIT_EVENT,
+  ALERT_LEAVE_EVENT, 
+  AGREE,
+  DISAGREE,
+} = leaveModal
+class EventLeaveModal extends Component {
 
-  // const {submitLeave} = this.props;
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { open: false };
   }
 
@@ -38,7 +44,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
           className="btn btn-danger join-leave"
           variant="contained"
         >
-          Leave
+          {LEAVE}
         </button>
         <Dialog
           open={this.state.open}
@@ -49,21 +55,19 @@ const Transition = React.forwardRef(function Transition(props, ref) {
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle id="alert-dialog-slide-title">
-            Exiting from event
+            {EXIT_EVENT}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              `Are you sure that you want to leave this event. If you leave, your
-              statement will be deleted. Press &quot;Agree&quot; if you want to leave
-              event and &quot;Disagree&quot; if not.`
+              `{ALERT_LEAVE_EVENT}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
-              Disagree
+              {DISAGREE}
             </Button>
             <Button onClick={this.props.submitLeave} color="secondary">
-              Agree
+            {AGREE}
             </Button>
           </DialogActions>
         </Dialog>
