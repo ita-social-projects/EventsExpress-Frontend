@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import { getFormValues, reset } from "redux-form";
 import { withRouter } from "react-router";
 import EventFilter from "../components/event/EventFilter/Event-filter";
-import getCategories from "../actions/category/category-list-action";
+import getСategoriesList from "../actions/category/category-list-action";
 import filterHelper from "../components/helpers/filterHelper";
 import EventFilterConstants from "../constants/EventFilterConstants";
 
 class EventFilterWrapper extends Component {
   componentWillMount() {
-    this.props.getCategories();
+    this.props.getСategoriesList();
   }
 
   onReset = () => {
@@ -117,13 +117,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_categories: () => dispatch(getCategories()),
+    getСategoriesList: () => dispatch(getСategoriesList()),
     reset_events: () => dispatch(reset("event-filter-form")),
   };
 };
 
 EventFilterWrapper.propTypes = {
-  getCategories: PropTypes.func,
+  getСategoriesList: PropTypes.func,
   history: PropTypes.array,
   reset_events: PropTypes.func,
   current_user: PropTypes.object,
@@ -132,7 +132,7 @@ EventFilterWrapper.propTypes = {
   form_values: PropTypes.object,
 };
 EventFilterWrapper.defaultProps = {
-  getCategories: () => {},
+  getСategoriesList: () => {},
   reset_events: () => {},
   history: [],
   current_user: {},

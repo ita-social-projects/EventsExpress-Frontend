@@ -8,7 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import EventForm from "../components/event/EventForm/Event-form";
 import SimpleModalWithDetails from "../components/helpers/simple-modal-with-details";
 import eventStatusEnum from "../constants/eventStatusEnum";
-import getCategories from "../actions/category/category-list-action";
+import getСategoriesList from "../actions/category/category-list-action";
 import { editEvent, publishEvent } from "../actions/event/event-add-action";
 import validateEventForm from "./event-validate-form";
 import { changeEventStatus } from "../actions/event/event-item-view-action";
@@ -143,12 +143,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    edit_event: (data, onError, onSuccess) =>
+    editEvent: (data, onError, onSuccess) =>
       dispatch(editEvent(data, onError, onSuccess)),
     delete: (eventId, reason) =>
       dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Deleted)),
     publish: data => dispatch(publishEvent(data)),
-    get_categories: () => dispatch(getCategories()),
+    getСategoriesList: () => dispatch(getСategoriesList()),
     alert: msg => dispatch(setSuccessAllert(msg)),
     errorAlertFromResponse: response =>
       dispatch(setErrorAllertFromResponse(response)),

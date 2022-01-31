@@ -5,7 +5,7 @@ import SpinnerWrapper from "./spinner";
 import EventDraftWrapper from "./event-draft";
 import EditEventWrapper from "./edit-event";
 import eventStatusEnum from "../constants/eventStatusEnum";
-import getCategories from "../actions/category/category-list-action";
+import getСategoriesList from "../actions/category/category-list-action";
 import getEvent, {
   resetEvent,
   approveUser,
@@ -15,7 +15,7 @@ class EventEditWrapper extends Component {
   componentWillMount() {
     const { id } = this.props.match.params;
     this.props.getEvent(id);
-    this.props.getCategories();
+    this.props.getСategoriesList();
   }
 
   componentWillUnmount() {
@@ -51,17 +51,17 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  get_event: id => dispatch(getEvent(id)),
+  getEvent: id => dispatch(getEvent(id)),
   approveUser: (userId, eventId, buttonAction) =>
     dispatch(approveUser(userId, eventId, buttonAction)),
-  get_Categories: () => dispatch(getCategories()),
+  getСategoriesList: () => dispatch(getСategoriesList()),
   reset: () => dispatch(resetEvent()),
 });
 
 EventEditWrapper.propTypes = {
   match: PropTypes.object,
   event: PropTypes.object,
-  getCategories: PropTypes.func,
+  getСategoriesList: PropTypes.func,
   cancel: PropTypes.func,
   reset: PropTypes.func,
   getEvent: PropTypes.func,
@@ -70,7 +70,7 @@ EventEditWrapper.propTypes = {
 EventEditWrapper.defaultProps = {
   match: {},
   event: {},
-  getCategories: () => {},
+  getСategoriesList: () => {},
   cancel: () => {},
   reset: () => {},
   getEvent: () => {},

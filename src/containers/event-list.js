@@ -75,7 +75,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_events: filter => dispatch(getEvents(filter)),
+    getEvents: filter => dispatch(getEvents(filter)),
   };
 };
 

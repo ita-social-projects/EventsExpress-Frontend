@@ -73,7 +73,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  get_event: id => dispatch(getEvent(id)),
+  getEvent: id => dispatch(getEvent(id)),
   join: (userId, eventId) => dispatch(join(userId, eventId)),
   leave: (userId, eventId) => dispatch(leave(userId, eventId)),
   cancel: (eventId, reason) =>
@@ -82,11 +82,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Active)),
   delete: (eventId, reason) =>
     dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Deleted)),
-  get_users_inventories_by_event_id: eventId =>
+  getUsersInventoriesByEventId: eventId =>
     dispatch(getUsersInventoriesByEventId(eventId)),
-  get_inventories_by_event_id: eventId =>
+  getInventoriesByEventId: eventId =>
     dispatch(getInventoriesByEventId(eventId)),
-  get_unitsOfMeasuring: () => dispatch(getUnitsOfMeasuring()),
+  getUnitsOfMeasuring: () => dispatch(getUnitsOfMeasuring()),
   reset: () => dispatch(resetEvent()),
 });
 
