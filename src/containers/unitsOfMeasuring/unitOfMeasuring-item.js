@@ -133,17 +133,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-UnitOfMeasuringItemWrapper.defaultProps = {
-  item: {},
-  editedUnitOfMeasuring: null,
-  allCategories: {},
-};
-
-UnitOfMeasuringItemWrapper.propTypes = {
-  item: PropTypes.object,
-  editedUnitOfMeasuring: PropTypes.object,
-  allCategories: PropTypes.object,
-};
 export default connect(
   mapStateToProps,
   mapDispatchToProps,

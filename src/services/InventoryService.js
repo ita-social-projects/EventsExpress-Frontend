@@ -39,7 +39,7 @@ export default class InventoryService {
   setUsersInventoryDelete = async data => {
     const dataCopy = data;
     dataCopy.quantity = 1;
-    await baseService.setResource(`UserEventInventory/Delete`, data);
+    await baseService.setResource(`UserEventInventory/Delete`, dataCopy);
   };
 
   setUsersInventory = data =>

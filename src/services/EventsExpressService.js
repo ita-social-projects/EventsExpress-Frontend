@@ -32,14 +32,14 @@ export default class EventsExpressService {
   };
 
   setResource = async (Url, data) => {
-    const call = (url, Data) =>
-      fetch(this.baseUrl + url, {
+    const call = (callurl, callData) =>
+      fetch(this.baseUrl + callurl, {
         method: "post",
         headers: new Headers({
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem(jwtStorageKey)}`,
         }),
-        body: JSON.stringify(Data),
+        body: JSON.stringify(callData),
       });
 
     let res = await call(Url, data);
