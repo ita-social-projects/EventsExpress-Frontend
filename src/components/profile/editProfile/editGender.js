@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
+import PropTypes from "prop-types";
 import { renderSelectField } from "../../helpers/form-helpers";
 import ErrorMessages from "../../shared/errorMessage";
 
@@ -37,3 +38,17 @@ const EditGender = props => {
 export default reduxForm({
   form: "EditGender",
 })(EditGender);
+
+EditGender.propTypes = {
+  handleSubmit: PropTypes.func,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
+  error: PropTypes.array,
+};
+
+EditGender.defaultProps = {
+  handleSubmit: () => {},
+  pristine: false,
+  submitting: false,
+  error: [],
+};

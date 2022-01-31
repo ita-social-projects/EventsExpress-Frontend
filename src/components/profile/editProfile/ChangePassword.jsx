@@ -8,9 +8,10 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import PropTypes from "prop-types";
 import ErrorMessages from "../../shared/errorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
-import { fieldIsRequired } from "../../helpers/validators/required-fields-validator";
+import fieldIsRequired from "../../helpers/validators/required-fields-validator";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -122,3 +123,19 @@ export default reduxForm({
   form: "ChangePassword",
   validate,
 })(ChangePassword);
+
+ChangePassword.propTypes = {
+  handleSubmit: PropTypes.func,
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
+  error: PropTypes.array,
+};
+
+ChangePassword.defaultProps = {
+  handleSubmit: () => {},
+  pristine: false,
+  reset: () => {},
+  submitting: false,
+  error: [],
+};

@@ -2,9 +2,10 @@
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import moment from "moment";
+import PropTypes from "prop-types";
 import ErrorMessages from "../../shared/errorMessage";
 import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
-import { fieldIsRequired } from "../../helpers/validators/required-fields-validator";
+import fieldIsRequired from "../../helpers/validators/required-fields-validator";
 
 const validate = values => {
   const errors = {};
@@ -59,3 +60,19 @@ export default reduxForm({
   form: "EditBirthday",
   validate,
 })(EditBirthday);
+
+EditBirthday.propTypes = {
+  handleSubmit: PropTypes.func,
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
+  error: PropTypes.array,
+};
+
+EditBirthday.defaultProps = {
+  handleSubmit: () => {},
+  pristine: false,
+  reset: () => {},
+  submitting: false,
+  error: [],
+};
