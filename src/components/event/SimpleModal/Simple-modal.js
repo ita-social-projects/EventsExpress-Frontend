@@ -9,15 +9,13 @@ import simpleModalConstants from "../../../constants/sipleModalConstants";
 const SimpleModal = props => {
   const { data, button } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const [id, setId] = useState(null);
 
-  const onclick = () => {
+  const onOpen = () => {
     setIsOpen(true);
   };
 
   const onClose = () => {
     setIsOpen(false);
-    setId(null);
   };
 
   const onConfirm = () => {
@@ -27,7 +25,9 @@ const SimpleModal = props => {
 
   return (
     <>
-      <div onClick={onclick}>{button}</div>
+      <div role="button" onClick={onOpen} onKeyDown={onOpen} tabIndex={0}>
+        {button}
+      </div>
       <Dialog open={isOpen} onClose={onClose}>
         <div className="eventCancel">
           <DialogContent>

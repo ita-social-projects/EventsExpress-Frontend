@@ -14,6 +14,8 @@ const OrganizerFilter = ({ organizers, formValues, ...props }) => {
 
   useEffect(() => {
     props.fetchUsers("");
+    //! TODO: ADD CORECT DEPENDENCY IN THE useEffect
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

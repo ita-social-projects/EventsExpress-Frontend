@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { enumLocationType } from "../../../constants/EventLocationType";
+import enumLocationType from "../../../constants/EventLocationType";
 import DisplayMap from "./display-map";
 import DisplayOnline from "./display-online";
 
