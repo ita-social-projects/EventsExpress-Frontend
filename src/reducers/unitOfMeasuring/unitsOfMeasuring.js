@@ -18,3 +18,4 @@ export const reducer = (state = initialState.unitsOfMeasuring, action) => {
       return state;
   }
 };
+export default reducer;

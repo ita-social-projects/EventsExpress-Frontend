@@ -72,4 +72,22 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+UserInfoWrapper.propTypes = {
+  user: PropTypes.object,
+  currentUser: PropTypes.object,
+  block: PropTypes.func,
+  unblock: PropTypes.func,
+  editedUser: PropTypes.number,
+  key: PropTypes.number,
+};
+
+UserInfoWrapper.defaultProps = {
+  user: {},
+  currentUser: {},
+  block: () => {},
+  unblock: () => {},
+  editedUser: null,
+  key: null,
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(UserInfoWrapper);

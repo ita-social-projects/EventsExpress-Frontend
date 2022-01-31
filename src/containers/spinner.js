@@ -10,15 +10,16 @@ const mapStateToProps = state => ({
   counter: state.requestCount.counter,
 });
 
-SpinnerWrapper.defaultProps = {
-  counter: null,
-  children: {},
-  showContent: false,
-};
-
 SpinnerWrapper.propTypes = {
   counter: PropTypes.number,
-  children: PropTypes.object,
   showContent: PropTypes.bool,
+  children: PropTypes.array,
 };
+
+SpinnerWrapper.defaultProps = {
+  counter: null,
+  showContent: false,
+  children: [],
+};
+
 export default connect(mapStateToProps)(SpinnerWrapper);

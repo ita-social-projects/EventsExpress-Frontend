@@ -1,7 +1,7 @@
 ﻿import initialState from "../store/initialState";
 import { REQUEST_INC, REQUEST_DEC } from "../actions/request-count-action";
 
-export const reducer = (state = initialState.requestCount, action) => {
+const reducer = (state = initialState.requestCount, action) => {
   switch (action.type) {
     case REQUEST_INC:
       return {
@@ -17,3 +17,4 @@ export const reducer = (state = initialState.requestCount, action) => {
       return state;
   }
 };
+export default reducer;

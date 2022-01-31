@@ -7,9 +7,9 @@ import {
   CHANGE_STATUS,
 } from "../actions/users/users-action";
 import {
-  blockUser,
-  unBlockUser,
-  changeUserRole,
+  blockUserStates,
+  unBlockUserStates,
+  changeUserRoleStates,
 } from "../actions/user/user-action";
 
 export const reducer = (state = initialState.users, action) => {
@@ -22,7 +22,7 @@ export const reducer = (state = initialState.users, action) => {
     case RESET_USERS:
       return initialState.users;
 
-    case blockUser.UPDATE: {
+    case blockUserStates.UPDATE: {
       const newState = { ...state };
       newState.data.items = state.data.items.map(item => {
         if (item.id === action.payload) {
@@ -35,7 +35,7 @@ export const reducer = (state = initialState.users, action) => {
       return newState;
     }
 
-    case unBlockUser.UPDATE: {
+    case unBlockUserStates.UPDATE: {
       const newState = { ...state };
       newState.data.items = state.data.items.map(item => {
         if (item.id === action.payload) {
@@ -48,14 +48,14 @@ export const reducer = (state = initialState.users, action) => {
       return newState;
     }
 
-    case changeUserRole.SET_EDITED: {
+    case changeUserRoleStates.SET_EDITED: {
       return {
         ...state,
         editedUser: action.payload,
       };
     }
 
-    case changeUserRole.UPDATE: {
+    case changeUserRoleStates.UPDATE: {
       const newState = { ...state };
       newState.data.items = state.data.items.map(item => {
         if (item.id === action.payload.userId) {
@@ -93,3 +93,4 @@ export const reducer = (state = initialState.users, action) => {
       return state;
   }
 };
+export default reducer;
