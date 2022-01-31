@@ -9,14 +9,15 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
+import PropTypes from "prop-types";
 import { renderPeriod } from "./render-period";
-import { useStyles } from "./card-style-const";
+import useStyles from "./card-style-const";
 import { eventDefaultImage } from "../../constants/eventDefaultImage";
 import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();
 
-export default class EventSchedule extends Component {
+ class EventSchedule extends Component {
   constructor(props) {
     super(props);
 
@@ -43,7 +44,6 @@ export default class EventSchedule extends Component {
     const classes = useStyles;
     const {
       id,
-      isActive,
       frequency,
       periodicity,
       lastRun,
@@ -101,3 +101,13 @@ export default class EventSchedule extends Component {
     );
   }
 }
+
+EventSchedule.propTypes = {
+  item: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+}
+
+EventSchedule.defaultProps = {
+  item: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+}
+
+export default EventSchedule;

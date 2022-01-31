@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Field } from "redux-form";
-
+import PropTypes from "prop-types";
 import { LocationMapWithCircle } from "../../helpers/form-helpers/location";
 import "../slider.css";
 import DisplayMap from "../map/display-map";
@@ -107,6 +108,22 @@ export const MapModal = ({ initialize, values }) => {
       </Dialog>
     </div>
   );
+};
+
+MapModal.propTypes = {
+  initialize: PropTypes.func,
+  values: PropTypes.object,
+  radius: PropTypes.number,
+  latitude: PropTypes.oneOfType(PropTypes.number, PropTypes.number),
+  longitude: PropTypes.oneOfType(PropTypes.number, PropTypes.number),
+};
+
+MapModal.defaultProps = {
+  initialize: () => {},
+  values: {},
+  radius: null,
+  latitude: null,
+  longitude: null,
 };
 
 export default MapModal;

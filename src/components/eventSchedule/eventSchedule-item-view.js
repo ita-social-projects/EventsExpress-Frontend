@@ -5,12 +5,13 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import { connect } from "react-redux";
 import Moment from "react-moment";
+import PropTypes from "prop-types";
 import "moment-timezone";
 import { renderPeriod } from "./render-period";
-import { useStyles } from "./card-style-const";
+import useStyles from "./card-style-const";
 import SelectiveForm from "./selective-form";
 import "../layout/colorlib.css";
-import get_event from "../../actions/event/event-item-view-action";
+import getEvent from "../../actions/event/event-item-view-action";
 import { eventDefaultImage } from "../../constants/eventDefaultImage";
 import PhotoService from "../../services/PhotoService";
 
@@ -23,6 +24,10 @@ class EventScheduleItemView extends Component {
     this.state = {
       eventImage: eventDefaultImage,
     };
+  }
+
+  componentWillMount() {
+    this.props.getEvent(this.props.eventSchedule.data.eventId);
   }
 
   componentDidMount() {
@@ -39,17 +44,13 @@ class EventScheduleItemView extends Component {
     URL.revokeObjectURL(this.state.eventImage);
   }
 
-  componentWillMount() {
-    this.props.get_event(this.props.eventSchedule.data.eventId);
-  }
-
   render() {
     const classes = useStyles;
-    const { current_user } = this.props;
+    const { currentUser } = this.props;
     const { frequency, periodicity, lastRun, nextRun, title, eventId, owners } =
       this.props.eventSchedule.data;
     const period = renderPeriod(periodicity, frequency);
-    const isMyEvent = owners.find(x => x.id === current_user.id) != undefined;
+    const isMyEvent = owners.find(x => x.id === currentUser.id) !== undefined;
     return (
       <>
         <div className="container-fluid mt-1">
@@ -92,8 +93,21 @@ class EventScheduleItemView extends Component {
   }
 }
 
+EventScheduleItemView.propTypes = {
+  eventSchedule: PropTypes.object,
+  getEvent: PropTypes.func,
+  currentUser: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+
+}
+
+EventScheduleItemView.defaultProps = {
+  eventSchedule: {},
+  getEvent: () => {},
+  currentUser: {},
+}
+
 const mapDispatchToProps = dispatch => ({
-  get_event: id => dispatch(get_event(id)),
+  getEvent: id => dispatch(getEvent(id)),
 });
 
 export default connect(null, mapDispatchToProps)(EventScheduleItemView);

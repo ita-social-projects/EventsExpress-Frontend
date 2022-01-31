@@ -1,10 +1,8 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
 import { GoogleLogin as Login } from "react-google-login";
+import PropTypes from "prop-types";
 
-export default class GoogleLogin extends Component {
-  render() {
-    const { googleClientId, googleResponseHandler, googleResponseOnFailure } =
-      this.props;
+const GoogleLogin = ({ googleClientId, googleResponseHandler, googleResponseOnFailure }) => {
 
     return (
       <div>
@@ -12,6 +10,7 @@ export default class GoogleLogin extends Component {
           clientId={googleClientId}
           render={renderProps => (
             <button
+            type="button"
               className="btnGoogle"
               onClick={renderProps.onClick}
               disabled={renderProps.disabled}
@@ -27,4 +26,17 @@ export default class GoogleLogin extends Component {
       </div>
     );
   }
-}
+
+   GoogleLogin.propTypes = {
+    googleClientId: PropTypes.string, 
+    googleResponseHandler: PropTypes.oneOfType(PropTypes.string, PropTypes.object, PropTypes.array),
+    googleResponseOnFailure: PropTypes.oneOfType(PropTypes.string, PropTypes.object, PropTypes.array)
+   }
+
+   GoogleLogin.defaultProps = {
+    googleClientId: "", 
+    googleResponseHandler: "",
+    googleResponseOnFailure: "",
+   }
+
+  export default GoogleLogin;

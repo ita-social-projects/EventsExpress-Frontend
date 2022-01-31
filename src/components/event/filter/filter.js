@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Drawer, Icon, IconButton, Typography } from "@material-ui/core";
-import { useFilterStyles } from "./filter-styles";
+import useFilterStyles from "./filter-styles";
 import FilterForm from "./form/filter-form";
 
-export const Filter = () => {
+const Filter = () => {
   const [open, setOpen] = useState(false);
   const classes = useFilterStyles();
 
@@ -30,3 +30,5 @@ export const Filter = () => {
     </div>
   );
 };
+
+export default Filter;

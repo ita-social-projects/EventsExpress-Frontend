@@ -1,11 +1,9 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
+import PropTypes from "prop-types";
 import EventFilterWrapper from "../../../containers/event-filter";
 import AdminEventListWrapper from "../../../containers/events-for-admin";
 
-export default class EventsForAdmin extends Component {
-  render() {
-    const { location } = this.props;
-
+const EventsForAdmin= ({location}) => {
     return (
       <>
         <EventFilterWrapper />
@@ -15,4 +13,13 @@ export default class EventsForAdmin extends Component {
       </>
     );
   }
-}
+
+  EventsForAdmin.propTypes = {
+    location: PropTypes.object
+  }
+
+  EventsForAdmin.defaultProps = {
+    location: {}
+  }
+
+export default EventsForAdmin;

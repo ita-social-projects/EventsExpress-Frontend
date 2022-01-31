@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Button } from "@material-ui/core";
+import PropTypes from "prop-types";
 import {
   FilterExpansionPanelDetails,
   FilterExpansionPanelSummary,
   FilterExpansionPanelWrapper,
 } from "./filter-expansion-panel-parts";
-import { useFilterExpansionPanelStyles } from "./filter-expansion-panel-styles";
+import useFilterExpansionPanelStyles from "./filter-expansion-panel-styles";
 
-export const FilterExpansionPanel = ({
+const FilterExpansionPanel = ({
   title,
   children,
   onClearClick,
@@ -57,3 +58,19 @@ export const FilterExpansionPanel = ({
     </FilterExpansionPanelWrapper>
   );
 };
+
+FilterExpansionPanel.propTypes = {
+  title: PropTypes.string,
+  children:PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  onClearClick: PropTypes.func,
+  clearDisabled: PropTypes.func,
+}
+
+FilterExpansionPanel.defaultProps = {
+  title: "",
+  children:[],
+  onClearClick: () => {},
+  clearDisabled: () => {},
+}
+
+export default FilterExpansionPanel;

@@ -6,13 +6,26 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
+import PropTypes from "prop-types";
+import leaveModal from '../../../constants/EventLeaveModal'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default class EventLeaveModal extends Component {
-  state = { open: false };
+const {
+  LEAVE,
+  EXIT_EVENT,
+  ALERT_LEAVE_EVENT, 
+  AGREE,
+  DISAGREE,
+} = leaveModal
+class EventLeaveModal extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { open: false };
+  }
 
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -31,7 +44,7 @@ export default class EventLeaveModal extends Component {
           className="btn btn-danger join-leave"
           variant="contained"
         >
-          Leave
+          {LEAVE}
         </button>
         <Dialog
           open={this.state.open}
@@ -42,21 +55,19 @@ export default class EventLeaveModal extends Component {
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle id="alert-dialog-slide-title">
-            Exiting from event
+            {EXIT_EVENT}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              Are you sure that you want to leave this event. If you leave, your
-              statement will be deleted. Press "Agree" if you want to leave
-              event and "Disagree" if not.
+              `{ALERT_LEAVE_EVENT}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
-              Disagree
+              {DISAGREE}
             </Button>
             <Button onClick={this.props.submitLeave} color="secondary">
-              Agree
+            {AGREE}
             </Button>
           </DialogActions>
         </Dialog>
@@ -64,3 +75,13 @@ export default class EventLeaveModal extends Component {
     );
   }
 }
+
+EventLeaveModal.propTypes = {
+  submitLeave: PropTypes.func,
+}
+
+EventLeaveModal.defaultProps = {
+  submitLeave: () => {},
+}
+
+export default EventLeaveModal;

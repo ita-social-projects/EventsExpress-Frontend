@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import EventSchedule from "./eventSchedule-item";
 
 class EventSchedulesList extends Component {
@@ -7,18 +8,18 @@ class EventSchedulesList extends Component {
       <EventSchedule
         key={item.id}
         item={item}
-        current_user={this.props.current_user}
+        current_user={this.props.currentUser}
       />
     ));
 
   render() {
-    const items = this.renderItems(this.props.data_list);
-    const { data_list } = this.props;
+    const items = this.renderItems(this.props.dataList);
+    const { dataList } = this.props;
 
     return (
       <>
         <div className="row">
-          {data_list.length > 0 ? (
+          {dataList.length > 0 ? (
             items
           ) : (
             <div id="notfound" className="w-100">
@@ -33,6 +34,16 @@ class EventSchedulesList extends Component {
       </>
     );
   }
+}
+
+EventSchedulesList.propTypes = {
+  dataList: PropTypes.array,
+  currentUser: PropTypes.oneOfType(PropTypes.array, PropTypes.object)
+}
+
+EventSchedulesList.defaultProps = {
+  dataList: [],
+  currentUser: [],
 }
 
 export default EventSchedulesList;

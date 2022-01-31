@@ -1,11 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
-class DisplayOnline extends Component {
-  constructor(props) {
-    super(props);
-  }
+const DisplayOnline = ({ locationPath }) => {
 
-  render() {
     return (
       <div>
         <a
@@ -14,7 +11,7 @@ class DisplayOnline extends Component {
             textDecoration: "underline",
           }}
           target="_blank"
-          href={this.props.locationPath}
+          href={locationPath}
           rel="noreferrer"
         >
           Online meeting here
@@ -22,5 +19,13 @@ class DisplayOnline extends Component {
       </div>
     );
   }
-}
+  
+  DisplayOnline.propTypes = {
+    locationPath: PropTypes.oneOfType(PropTypes.obkect, PropTypes.array),
+  }
+  
+  DisplayOnline.defaultProps = {
+    locationPath: {},
+  }
+
 export default DisplayOnline;

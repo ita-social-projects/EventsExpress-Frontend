@@ -10,6 +10,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import WarningIcon from "@material-ui/icons/Warning";
 import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -51,7 +52,7 @@ const useStyles1 = makeStyles(theme => ({
   },
 }));
 
-export default function MySnackbar(props) {
+function MySnackbar(props) {
   const classes = useStyles1();
   const { onClose, ...other } = props;
   const { message, open, variant, autoHideDuration } = props.alert;
@@ -102,3 +103,17 @@ export default function MySnackbar(props) {
     </Snackbar>
   );
 }
+
+MySnackbar.propTypes = {
+  onClose: PropTypes.func,
+  message: PropTypes.string,
+  alert: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+}
+
+MySnackbar.defaultProps = {
+  onClose: () => {},
+  message: "",
+  alert: [],
+}
+
+export default MySnackbar;

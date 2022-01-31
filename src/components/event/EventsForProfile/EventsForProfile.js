@@ -1,4 +1,5 @@
 ﻿import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import PagePagination from "../../shared/pagePagination";
 import LocalSpinnerWrapper from "../../../containers/local-spinner";
 import { renderItems } from "../../helpers/eventsForProfileUtils";
@@ -7,27 +8,29 @@ const EventsForProfile = ({
   page,
   totalPages,
   callback,
-  notification_events,
-  current_user,
-  data_list,
+  notificationEvents,
+  currentUser,
+  dataList,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    return notification_events === null ? callback(currentPage) : null;
+    return notificationEvents === null ? callback(currentPage) : null;
   }, []);
 
-  const handlePageChange = page => {
-    setCurrentPage(page);
-    notification_events !== null
-      ? callback(notification_events, page)
-      : callback(page);
+  const handlePageChange = pageEl => {
+    setCurrentPage(pageEl);
+    if(notificationEvents !== null) {
+      callback(notificationEvents, pageEl)
+    }else{
+      callback(pageEl);
+    }
   };
 
   return (
     <>
-      <LocalSpinnerWrapper showContent={data_list !== null}>
-        <div className="row">{renderItems(data_list, current_user)}</div>
+      <LocalSpinnerWrapper showContent={dataList !== null}>
+        <div className="row">{renderItems(dataList, currentUser)}</div>
         <br />
         {totalPages > 1 && (
           <PagePagination
@@ -40,5 +43,23 @@ const EventsForProfile = ({
     </>
   );
 };
+
+EventsForProfile.propTypes = {
+  page: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
+  totalPages: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
+  callback: PropTypes.func,
+  notificationEvents: PropTypes.string,
+  currentUser: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
+  dataList: []
+}
+
+EventsForProfile.defaultProps = {
+  page: null,
+  totalPages: null,
+  callback: () => {},
+  notificationEvents: "",
+  currentUser: "",
+  dataList: []
+}
 
 export default EventsForProfile;

@@ -1,9 +1,10 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Tooltip from "@material-ui/core/Tooltip";
+import PropTypes from "prop-types";
 import ShareButtons from "./ShareButtons";
 
 const StyledMenu = withStyles({
@@ -37,16 +38,16 @@ const StyledMenuItem = withStyles(theme => ({
   },
 }))(MenuItem);
 
-export default function SocialShareMenu(props) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+const SocialShareMenu = ({ href }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  function handleClick(event) {
+  const handleClick = event => {
     setAnchorEl(event.currentTarget);
-  }
+  };
 
-  function handleClose() {
+  const handleClose = () => {
     setAnchorEl(null);
-  }
+  };
 
   return (
     <div>
@@ -68,9 +69,19 @@ export default function SocialShareMenu(props) {
         onClose={handleClose}
       >
         <StyledMenuItem>
-          <ShareButtons href={props.href} />
+          <ShareButtons href={href} />
         </StyledMenuItem>
       </StyledMenu>
     </div>
   );
-}
+};
+
+SocialShareMenu.propTypes = {
+  href: PropTypes.string,
+};
+
+SocialShareMenu.defaultProps = {
+  href: "",
+};
+
+export default SocialShareMenu;
