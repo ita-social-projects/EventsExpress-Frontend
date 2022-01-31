@@ -31,11 +31,11 @@ export default class RegistrationForm extends Component {
   }
 
   nextPage() {
-    this.setState(state => ({ currentStep: state.currentStep + 1 }));
+    this.setState(prevState => ({ currentStep: prevState.currentStep + 1 }));
   }
 
   previousPage() {
-    this.setState(state => ({ currentStep: state.currentStep - 1 }));
+    this.setState(prevState => ({ currentStep: prevState.currentStep - 1 }));
   }
 
   render() {
