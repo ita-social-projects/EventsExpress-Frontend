@@ -12,7 +12,8 @@ const filterHelper = (() => {
       if (keysObjectFirst.length !== keysObjectSecond.length) {
         return false;
       }
-
+      //! TODO: iterators/generators require regenerator-runtime...
+      // eslint-disable-next-line no-restricted-syntax
       for (const key of keysObjectFirst) {
         const valObjectFirst = objFirst[key];
         const valObjectSecond = objSecond[key];
