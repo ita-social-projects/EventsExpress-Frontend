@@ -51,7 +51,7 @@ class Tracks extends Component {
   render() {
     const { data, entityNames } = this.props.tracks;
     return (
-      <SpinnerWrapper showContent={data !== undefined}>
+      <SpinnerWrapper showContent={data}>
         <table className="table w-100 m-auto">
           <tbody>
             <div className="d-flex">
