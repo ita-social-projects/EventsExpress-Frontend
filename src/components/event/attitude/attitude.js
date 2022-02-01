@@ -1,6 +1,6 @@
 ﻿import "./attitude.css";
 
-export const getAttitudeClassName = attitude => {
+const getAttitudeClassName = attitude => {
   switch (attitude) {
     case 0:
       return "attitude-like";
@@ -10,3 +10,5 @@ export const getAttitudeClassName = attitude => {
       return "";
   }
 };
+
+export default getAttitudeClassName;

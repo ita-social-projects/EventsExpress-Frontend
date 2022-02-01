@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { getFormValues, reset } from "redux-form";
 import { withRouter } from "react-router";
 import EventFilter from "../components/event/EventFilter/Event-filter";
-import get_categories from "../actions/category/category-list-action";
+import getСategoriesList from "../actions/category/category-list-action";
 import filterHelper from "../components/helpers/filterHelper";
+import EventFilterConstants from "../constants/EventFilterConstants";
 
 class EventFilterWrapper extends Component {
   componentWillMount() {
-    this.props.get_categories();
+    this.props.getСategoriesList();
   }
 
   onReset = () => {
@@ -29,31 +31,29 @@ class EventFilterWrapper extends Component {
     );
   };
 
-  onSubmit = filters => {
-    filters = filterHelper.trimUndefinedKeys(filters);
+  onSubmit = initialFilters => {
+    const filters = filterHelper.trimUndefinedKeys(initialFilters);
     const filterCopy = { ...this.props.events.filter };
-    Object.entries(filters).forEach(function ([key, value]) {
+    Object.entries(filters).forEach(([key, value]) => {
       switch (key) {
-        case "page":
+        case EventFilterConstants.PAGE:
           filterCopy[key] = value;
-        case "dateFrom":
-        case "dateTo":
+          break;
+        case EventFilterConstants.DATE_TO:
           filterCopy[key] = new Date(value).toDateString();
           break;
-        case "categories":
+        case EventFilterConstants.CATEGORIES:
           filterCopy[key] = value.map(item => item.id);
           break;
-        case "statuses":
+        case EventFilterConstants.STATUSES:
           filterCopy[key] = value;
           break;
-        case "radius":
+        case EventFilterConstants.RADIUS:
           filterCopy[key] = value;
           break;
-        case "selectedPos":
-          var x = value.latitude;
-          var y = value.longitude;
-          filterCopy.x = x;
-          filterCopy.y = y;
+        case EventFilterConstants.SELECTED_POS:
+          filterCopy.x = value.latitude;
+          filterCopy.y = value.longitude;
           filterCopy[key] = undefined;
           break;
         default:
@@ -95,12 +95,12 @@ class EventFilterWrapper extends Component {
     return (
       <>
         <EventFilter
-          all_categories={this.props.all_categories}
+          allCategories={this.props.all_categories}
           onLoadUserDefaults={this.onLoadUserDefaults}
           onSubmit={this.onSubmit}
           onReset={this.onReset}
-          form_values={this.props.form_values}
-          current_user={this.props.current_user}
+          formValues={this.props.form_values}
+          currentUser={this.props.current_user}
           initialFormValues={initialFormValues}
         />
       </>
@@ -117,9 +117,28 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_categories: () => dispatch(get_categories()),
+    getСategoriesList: () => dispatch(getСategoriesList()),
     reset_events: () => dispatch(reset("event-filter-form")),
   };
+};
+
+EventFilterWrapper.propTypes = {
+  getСategoriesList: PropTypes.func,
+  history: PropTypes.array,
+  reset_events: PropTypes.func,
+  current_user: PropTypes.object,
+  events: PropTypes.object,
+  all_categories: PropTypes.object,
+  form_values: PropTypes.object,
+};
+EventFilterWrapper.defaultProps = {
+  getСategoriesList: () => {},
+  reset_events: () => {},
+  history: [],
+  current_user: {},
+  events: [],
+  all_categories: {},
+  form_values: {},
 };
 
 export default withRouter(

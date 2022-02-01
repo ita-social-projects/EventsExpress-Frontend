@@ -6,7 +6,7 @@ export const GET_NOTIFICATION_TYPES_DATA = "GET_NOTIFICATION_TYPES_DATA";
 export const GET_USER_NOTIFICATION_TYPES_DATA =
   "GET_USER_NOTIFICATION_TYPES_DATA";
 
-const API_SERV = new NotificationTypeService();
+const apiService = new NotificationTypeService();
 
 function getNotificationTypesData(data) {
   return {
@@ -19,7 +19,7 @@ const getNotificationTypes = () => {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await API_SERV.getAllNotificationTypes();
+    const response = await apiService.getAllNotificationTypes();
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));

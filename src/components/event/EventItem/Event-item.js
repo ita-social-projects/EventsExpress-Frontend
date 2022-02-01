@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import "moment-timezone";
 import Card from "@material-ui/core/Card";
+import propTypes from "prop-types";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
@@ -13,12 +14,12 @@ import SocialShareMenu from "../share/SocialShareMenu";
 import EventActiveStatus from "../EventActiveStatus/Event-active-status";
 import DisplayLocation from "../map/display-location";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
-import { useStyle } from "../CardStyle/CardStyle";
+import useStyle from "../CardStyle/CardStyle";
 import AuthComponent from "../../../security/authComponent";
 import EventHeader from "../EventItemHeader/Event-item-header";
-import { Roles } from "../../../constants/userRoles";
+import Roles from "../../../constants/userRoles";
 import PhotoService from "../../../services/PhotoService";
-import { eventDefaultImage } from "../../../constants/eventDefaultImage";
+import eventDefaultImage from "../../../constants/eventDefaultImage";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();
@@ -63,10 +64,9 @@ export default class EventCard extends Component {
       eventStatus,
       categories,
       countVisitor,
-      owners,
+      organizers: owners, // Did this for correction data of owners,
       members,
     } = this.props.item;
-
     const INT32_MAX_VALUE = null;
     const categoriesNotDisplayed = categories.length - 2;
     const restCategories = ` ... ${categoriesNotDisplayed} more`;
@@ -133,18 +133,21 @@ export default class EventCard extends Component {
               )}
               <br />
               <div className="float-left">
-                {categories.length <= 2
-                  ? displayedCategories
-                  : [
-                      displayedCategories,
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="span"
-                      >
-                        {restCategories}
-                      </Typography>,
-                    ]}
+                {categories.length <= 2 ? (
+                  displayedCategories
+                ) : (
+                  <>
+                    {displayedCategories},
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="span"
+                    >
+                      {restCategories}
+                    </Typography>
+                    ,
+                  </>
+                )}
               </div>
               <div className="d-flex flex-row align-items-center justify-content-center float-right">
                 {isOnlyForAdults && (
@@ -181,3 +184,15 @@ export default class EventCard extends Component {
     );
   }
 }
+
+EventCard.propTypes = {
+  item: propTypes.object,
+  onBlock: propTypes.func,
+  onUnBlock: propTypes.func,
+};
+
+EventCard.defaultProps = {
+  item: {},
+  onBlock: () => {},
+  onUnBlock: () => {},
+};

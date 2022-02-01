@@ -3,35 +3,58 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
+import propTypes from "prop-types";
 import {
   promoteToOwner,
   approveUser,
 } from "../../../actions/event/event-item-view-action";
 
-const DeniedUsersActions = props => {
-  const { user, isMyEvent } = props;
+import constants from "../../../constants/deniedUsersAction";
 
+const DeniedUsersAction = ({
+  user,
+  isMyEvent,
+  approveUserAction,
+  promoteToOwnerAction,
+  eventId,
+}) => {
   return (
     <>
       {isMyEvent && (
         <div>
           <IconButton
             aria-label="delete"
-            onClick={() => props.promoteToOwner(user.id, props.eventId)}
+            onClick={() => promoteToOwnerAction(user.id, eventId)}
           >
             <DeleteIcon />
           </IconButton>
         </div>
       )}
       <Button
-        onClick={() => props.approveUser(user.id, props.eventId, true)}
+        onClick={() => approveUserAction(user.id, eventId, true)}
         variant="outlined"
         color="success"
       >
-        Add to event
+        {constants.ADD_TO_EVENT}
       </Button>
     </>
   );
+};
+
+DeniedUsersAction.propTypes = {
+  user: propTypes.object,
+  isMyEvent: propTypes.bool,
+  promoteToOwnerAction: propTypes.func,
+  approveUserAction: propTypes.func,
+  eventId: propTypes.number,
+};
+
+DeniedUsersAction.defaultProps = {
+  user: {},
+  isMyEvent: false,
+  promoteToOwnerAction: () => {},
+  approveUserAction: () => {},
+  eventId: null,
 };
 
 const mapStateToProps = state => ({
@@ -39,10 +62,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  approveUser: (userId, eventId, buttonAction) =>
+  approveUserAction: (userId, eventId, buttonAction) =>
     dispatch(approveUser(userId, eventId, buttonAction)),
-  promoteToOwner: (userId, eventId) =>
+  promoteToOwnerAction: (userId, eventId) =>
     dispatch(promoteToOwner(userId, eventId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeniedUsersActions);
+export default connect(mapStateToProps, mapDispatchToProps)(DeniedUsersAction);

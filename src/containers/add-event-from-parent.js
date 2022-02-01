@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Dropdown from "react-bootstrap/Dropdown";
 import EventScheduleModal from "../components/eventSchedule/eventSchedule-modal";
-import add_copy_event from "../actions/event/event-copy-without-edit-action";
+import addСopyEvent from "../actions/event/event-copy-without-edit-action";
 
 class AddFromParentEventWrapper extends Component {
   constructor() {
@@ -28,7 +29,7 @@ class AddFromParentEventWrapper extends Component {
     this.setState({
       show: false,
     });
-    this.props.add_copy_event(this.props.eventId);
+    this.props.addCopyEventDispatch(this.props.eventId);
   };
 
   render() {
@@ -48,6 +49,16 @@ class AddFromParentEventWrapper extends Component {
   }
 }
 
+AddFromParentEventWrapper.defaultProps = {
+  eventId: null,
+  addCopyEventDispatch: () => {},
+};
+
+AddFromParentEventWrapper.propTypes = {
+  eventId: PropTypes.number,
+  addCopyEventDispatch: PropTypes.func,
+};
+
 const mapStateToProps = state => ({
   add_copy_event_status: state.add_copy_event,
   eventId: state.event.data.id,
@@ -55,7 +66,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    add_copy_event: data => dispatch(add_copy_event(data)),
+    addCopyEventDispatch: data => dispatch(addСopyEvent(data)),
   };
 };
 

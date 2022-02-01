@@ -4,11 +4,14 @@ import Typography from "@material-ui/core/Typography";
 import Popover from "@material-ui/core/Popover";
 import "./eventSchedule.css";
 
-export default class EventSchedulePopover extends Component {
-  state = {
-    anchorEl: null,
-    isFocused: false,
-  };
+class EventSchedulePopover extends Component {
+  constructor() {
+    super();
+    this.state = {
+      anchorEl: null,
+      isFocused: false,
+    };
+  }
 
   handlePopover = event => {
     this.setState({
@@ -50,13 +53,15 @@ export default class EventSchedulePopover extends Component {
           }}
         >
           <Typography style={{ maxWidth: "500px", padding: "15px" }}>
-            Click "Create without editing" to create the event without editing.
+            Click &quot;Create without editing&quot; to create the event without
+            editing.
             <br />
-            Click "Create with editing" to create the event with editing.
+            Click &quot;Create with editing&quot; to create the event with
+            editing.
             <br />
-            Click "Cancel Once" to cancel the next event.
+            Click &quot;Cancel Once&quot; to cancel the next event.
             <br />
-            Click "Cancel" to cancel all events.
+            Click &quot;Cancel&quot; to cancel all events.
             <br />
           </Typography>
         </Popover>
@@ -64,3 +69,5 @@ export default class EventSchedulePopover extends Component {
     );
   }
 }
+
+export default EventSchedulePopover;

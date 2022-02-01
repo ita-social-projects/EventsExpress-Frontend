@@ -4,7 +4,7 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const GET_CONFIG_DATA = "GET_CONFIG_DATA";
 
-const API_SERV = new ConfigService();
+const apiService = new ConfigService();
 
 export function getConfigSuccess(data) {
   return {
@@ -16,7 +16,7 @@ export function getConfigSuccess(data) {
 const getConfig = () => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.getConfigFromBack();
+    const response = await apiService.getConfigFromBack();
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));

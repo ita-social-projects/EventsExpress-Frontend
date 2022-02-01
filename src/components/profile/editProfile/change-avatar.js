@@ -57,22 +57,22 @@ const ChangeAvatar = ({
   );
 };
 
-ChangeAvatar.defaultProps = {
-  pristine: false,
-  invalid: false,
-  submitting: false,
-  error: "",
-  handleSubmit: () => {},
-  initialValues: [],
+ChangeAvatar.propTypes = {
+  handleSubmit: PropTypes.func,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
+  invalid: PropTypes.bool,
+  error: PropTypes.object,
+  initialValues: PropTypes.object,
 };
 
-ChangeAvatar.propTypes = {
-  pristine: PropTypes.bool,
-  invalid: PropTypes.bool,
-  submitting: PropTypes.bool,
-  error: PropTypes.string,
-  handleSubmit: PropTypes.func,
-  initialValues: PropTypes.array,
+ChangeAvatar.defaultProps = {
+  handleSubmit: () => {},
+  pristine: false,
+  submitting: false,
+  invalid: false,
+  error: {},
+  initialValues: {},
 };
 
 export default reduxForm({

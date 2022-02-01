@@ -1,4 +1,5 @@
 ﻿import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import GoogleLogin from "../components/google-login";
@@ -8,14 +9,15 @@ import "./css/Auth.css";
 
 class LoginGoogle extends Component {
   googleResponseHandler = response => {
-    if (typeof response.profileObj.email === "undefined") {
-      this.props.login.loginError = "Please add email to your google account!";
-    }
+    //! TODO: LOGIN ISN'T USED ANYWHERE
+    // if (typeof response.profileObj.email === "undefined") {
+    //   this.props.login.loginError = "Please add email to your google account!";
+    // }
 
     this.props.loginGoogle(response.tokenId, response.profileObj);
   };
 
-  googleResponseOnFailure = response => {
+  googleResponseOnFailure = () => {
     this.props.setErrorAlert(
       "You cannot login via google because third party cookies are blocked in your browser, you can enable it on browser settings.",
     );
@@ -31,6 +33,20 @@ class LoginGoogle extends Component {
     );
   }
 }
+
+LoginGoogle.defaultProps = {
+  config: {},
+  // login: {},
+  loginGoogle: () => {},
+  setErrorAlert: () => {},
+};
+
+LoginGoogle.propTypes = {
+  config: PropTypes.object,
+  // login: PropTypes.object,
+  loginGoogle: PropTypes.func,
+  setErrorAlert: PropTypes.func,
+};
 
 const mapStateToProps = state => {
   return {

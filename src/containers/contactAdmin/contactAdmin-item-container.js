@@ -1,12 +1,19 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
+import PropTypes from "prop-types";
 import ContactAdminItem from "../../components/contactAdmin/contactAdmin-item-component";
 
-export default class ContactAdminItemWrapper extends Component {
-  render() {
-    return (
-      <tr>
-        <ContactAdminItem item={this.props.item} />
-      </tr>
-    );
-  }
-}
+const ContactAdminItemWrapper = ({ item }) => (
+  <tr>
+    <ContactAdminItem item={item} />
+  </tr>
+);
+
+ContactAdminItemWrapper.defaultProps = {
+  item: {},
+};
+
+ContactAdminItemWrapper.propTypes = {
+  item: PropTypes.object,
+};
+
+export default ContactAdminItemWrapper;

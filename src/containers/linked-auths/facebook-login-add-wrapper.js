@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { facebookLoginAdd } from "../../actions/redactProfile/linked-auths-add-action";
 import { setErrorAlert } from "../../actions/alert-action";
 import "../css/Auth.css";
@@ -45,5 +46,17 @@ const mapDispatchToProps = dispatch => ({
   facebookLoginAdd: email => dispatch(facebookLoginAdd(email)),
   setErrorAlert: msg => dispatch(setErrorAlert(msg)),
 });
+
+LoginFacebook.propTypes = {
+  setErrorAlert: PropTypes.func,
+  facebookLoginAdd: PropTypes.func,
+  config: PropTypes.object,
+};
+
+LoginFacebook.defaultProps = {
+  setErrorAlert: () => {},
+  facebookLoginAdd: () => {},
+  config: {},
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginFacebook);

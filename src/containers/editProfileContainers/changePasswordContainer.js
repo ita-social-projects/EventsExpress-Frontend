@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import { connect } from "react-redux";
 import { reset } from "redux-form";
+import PropTypes from "prop-types";
 import ChangePassword from "../../components/profile/editProfile/ChangePassword";
 import changePassword from "../../actions/redactProfile/password-change-action";
 
@@ -25,6 +26,14 @@ const mapDispatchToProps = dispatch => {
       dispatch(reset("ChangePassword"));
     },
   };
+};
+
+ChangePasswordContainer.propTypes = {
+  changePassword: PropTypes.func,
+};
+
+ChangePasswordContainer.defaultProps = {
+  changePassword: () => {},
 };
 
 export default connect(

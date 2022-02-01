@@ -32,10 +32,17 @@ const Placeholder = ({ getInputProps, getRootProps, error, touched }) => {
 };
 
 Placeholder.propTypes = {
-  error: PropTypes.string,
-  getInputProps: PropTypes.func.isRequired,
-  getRootProps: PropTypes.func.isRequired,
+  error: PropTypes.array,
+  getInputProps: PropTypes.func,
+  getRootProps: PropTypes.func,
   touched: PropTypes.bool,
+};
+
+Placeholder.defaultProps = {
+  error: [],
+  getInputProps: () => {},
+  getRootProps: () => {},
+  touched: false,
 };
 
 export default Placeholder;

@@ -1,15 +1,16 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
 import { confirmAlert } from "react-confirm-alert";
 import UnitOfMeasuringItem from "../../components/unitOfMeasuring/unitOfMeasuring-item";
 import UnitOfMeasuringEdit from "../../components/unitOfMeasuring/unitOfMeasuring-edit";
 import {
-  add_unitOfMeasuring,
+  addUnitOfMeasuring,
   setUnitOfMeasuringEdited,
 } from "../../actions/unitOfMeasuring/unitOfMeasuring-add-action";
-import { delete_unitOfMeasuring } from "../../actions/unitOfMeasuring/unitOfMeasuring-delete-action";
-import get_categoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
+import deleteUnitOfMeasuring from "../../actions/unitOfMeasuring/unitOfMeasuring-delete-action";
+import getCategoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 class UnitOfMeasuringItemWrapper extends Component {
@@ -19,13 +20,14 @@ class UnitOfMeasuringItemWrapper extends Component {
       values.shortName === this.props.item.shortName &&
       values.categoryId === this.props.item.category
     ) {
-      this.props.edit_cancel();
+      this.props.editCancel();
     } else {
-      return this.props.save_unitOfMeasuring({
+      return this.props.saveUnitOfMeasuring({
         ...values,
         id: this.props.item.id,
       });
     }
+    return values;
   };
 
   isDeleteConfirm = () => {
@@ -43,7 +45,7 @@ class UnitOfMeasuringItemWrapper extends Component {
         {
           label: "Yes",
           onClick: () => {
-            this.props.delete_unitOfMeasuring(id);
+            this.props.deleteUnitOfMeasuring(id);
           },
         },
         {
@@ -54,7 +56,7 @@ class UnitOfMeasuringItemWrapper extends Component {
   };
 
   render() {
-    const { set_unitOfMeasuring_edited, edit_cancel } = this.props;
+    const { setUnitsOfMeasuringEdited, editCancel } = this.props;
 
     return (
       <tr>
@@ -63,13 +65,13 @@ class UnitOfMeasuringItemWrapper extends Component {
             key={this.props.item.id + this.props.editedUnitOfMeasuring}
             initialValues={this.props.item}
             onSubmit={this.save}
-            cancel={edit_cancel}
-            all_categories={this.props.all_categories}
+            cancel={editCancel}
+            all_categories={this.props.allCategories}
           />
         ) : (
           <UnitOfMeasuringItem
             item={this.props.item}
-            callback={set_unitOfMeasuring_edited}
+            callback={setUnitsOfMeasuringEdited}
           />
         )}
         <td className="align-middle align-items-stretch">
@@ -91,9 +93,29 @@ class UnitOfMeasuringItemWrapper extends Component {
   }
 }
 
+UnitOfMeasuringItemWrapper.propTypes = {
+  item: PropTypes.object,
+  editCancel: PropTypes.func,
+  saveUnitOfMeasuring: PropTypes.func,
+  deleteUnitOfMeasuring: PropTypes.func,
+  allCategories: PropTypes.array,
+  editedUnitOfMeasuring: PropTypes.string,
+  setUnitsOfMeasuringEdited: PropTypes.func,
+};
+
+UnitOfMeasuringItemWrapper.defaultProps = {
+  item: {},
+  editCancel: () => {},
+  saveUnitOfMeasuring: () => {},
+  deleteUnitOfMeasuring: () => {},
+  allCategories: [],
+  editedUnitOfMeasuring: "",
+  setUnitsOfMeasuringEdited: () => {},
+};
+
 const mapStateToProps = state => {
   return {
-    all_categories: state.categoriesOfMeasuring,
+    allCategories: state.categoriesOfMeasuring,
     status: state.add_unitOfMeasuring,
     editedUnitOfMeasuring: state.unitsOfMeasuring.editedUnitOfMeasuring,
   };
@@ -101,13 +123,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    get_categoriesOfMeasuring: () => dispatch(get_categoriesOfMeasuring()),
+    get_categoriesOfMeasuring: () => dispatch(getCategoriesOfMeasuring()),
     delete_unitOfMeasuring: () =>
-      dispatch(delete_unitOfMeasuring(props.item.id)),
-    save_unitOfMeasuring: data => dispatch(add_unitOfMeasuring(data)),
+      dispatch(deleteUnitOfMeasuring(props.item.id)),
+    save_unitOfMeasuring: data => dispatch(addUnitOfMeasuring(data)),
     set_unitOfMeasuring_edited: () =>
       dispatch(setUnitOfMeasuringEdited(props.item.id)),
-    edit_cancel: () => dispatch(setUnitOfMeasuringEdited(null)),
+    editСancel: () => dispatch(setUnitOfMeasuringEdited(null)),
   };
 };
 

@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import PropTypes from "prop-types";
 import SpinnerWrapper from "./spinner";
 import TileRow from "./tile-row/TileRow";
 
@@ -19,6 +20,14 @@ export const TileGroup = props => {
       </SpinnerWrapper>
     </div>
   );
+};
+
+TileGroup.defaultProps = {
+  data: [],
+};
+
+TileGroup.propTypes = {
+  data: PropTypes.array,
 };
 
 export default TileGroup;

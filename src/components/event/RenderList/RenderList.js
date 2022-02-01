@@ -1,17 +1,18 @@
 ﻿import React, { Component } from "react";
+import PropTypes from "prop-types";
 import PagePagination from "../../shared/pagePagination";
 
 class RenderList extends Component {
   renderItems = arr => arr.map(item => this.props.renderSingleItem(item));
 
   render() {
-    const { page, totalPages, data_list, customNoResultsMessage } = this.props;
+    const { page, totalPages, dataList, customNoResultsMessage } = this.props;
 
     return (
       <>
         <div className="row">
-          {data_list.length > 0 ? (
-            this.renderItems(data_list)
+          {dataList.length > 0 ? (
+            this.renderItems(dataList)
           ) : (
             <div id="notfound" className="w-100">
               <div className="notfound mw-100">
@@ -36,5 +37,23 @@ class RenderList extends Component {
     );
   }
 }
+
+RenderList.propTypes = {
+  page: PropTypes.number,
+  totalPages: PropTypes.number,
+  dataList: PropTypes.array,
+  customNoResultsMessage: PropTypes.string,
+  handlePageChange: PropTypes.func,
+  renderSingleItem: PropTypes.func,
+};
+
+RenderList.defaultProps = {
+  page: null,
+  totalPages: null,
+  dataList: [],
+  customNoResultsMessage: "",
+  handlePageChange: () => {},
+  renderSingleItem: () => {},
+};
 
 export default RenderList;

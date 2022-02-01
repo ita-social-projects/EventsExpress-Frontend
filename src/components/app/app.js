@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import "./app.css";
 
 import { connect } from "react-redux";
+import propTypes from "prop-types";
 import LandingWrapper from "../../containers/landing-wrapper";
 import Home from "../home";
 import Issues from "../contactAdmin/issues";
@@ -34,17 +35,17 @@ import RegistrationForm from "../RegistrationForm";
 import MainLayout from "../MainLayout";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.props.authUser();
-    this.props.getConfig();
-  }
-
   UserRoleSecurity = withAuthRedirect(["User"]);
 
   AdminRoleSecurity = withAuthRedirect(["Admin"]);
 
   AdminAndUserRoleSecurity = withAuthRedirect(["Admin", "User"]);
+
+  constructor(props) {
+    super(props);
+    this.props.authUser();
+    this.props.getConfig();
+  }
 
   render() {
     return (
@@ -144,6 +145,16 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  authUser: propTypes.func,
+  getConfig: propTypes.func,
+};
+
+App.defaultProps = {
+  authUser: () => {},
+  getConfig: () => {},
+};
 
 const mapDispatchToProps = dispatch => {
   return {

@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { getFormValues, isPristine, SubmissionError } from "redux-form";
+import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import EventForm from "../components/event/EventForm/Event-form";
 import SimpleModalWithDetails from "../components/helpers/simple-modal-with-details";
 import eventStatusEnum from "../constants/eventStatusEnum";
-import { edit_event, publish_event } from "../actions/event/event-add-action";
-import { validateEventForm } from "./event-validate-form";
-import { change_event_status } from "../actions/event/event-item-view-action";
+import getСategoriesList from "../actions/category/category-list-action";
+import { editEvent, publishEvent } from "../actions/event/event-add-action";
+import validateEventForm from "./event-validate-form";
+import { changeEventStatus } from "../actions/event/event-item-view-action";
 import {
   setErrorAllertFromResponse,
   setSuccessAllert,
@@ -23,7 +25,7 @@ import {
 class EventDraftWrapper extends Component {
   onPublish = async values => {
     if (!this.props.pristine) {
-      await this.props.edit_event(
+      await this.props.editEvent(
         {
           ...validateEventForm(values),
           user_id: this.props.user_id,
@@ -38,14 +40,14 @@ class EventDraftWrapper extends Component {
   };
 
   onSave = async () => {
-    await this.props.edit_event(
+    await this.props.editEvent(
       {
         ...validateEventForm(this.props.form_values),
         user_id: this.props.user_id,
         id: this.props.event.id,
       },
       response => this.props.errorAlertFromResponse(response),
-      _ => this.props.alert("Your event has been successfully saved!"),
+      () => this.props.alert("Your event has been successfully saved!"),
     );
   };
 
@@ -83,12 +85,12 @@ class EventDraftWrapper extends Component {
             <hr className="gradient mt-0 mb-3" />
           </header>
           <EventForm
-            user_name={this.props.user_name}
-            all_categories={this.props.all_categories}
+            userName={this.props.user_name}
+            allCategories={this.props.all_categories}
             onSubmit={this.onPublish}
             onError={this.onError}
             initialValues={this.props.event}
-            form_values={this.props.form_values}
+            formValues={this.props.form_values}
             haveReccurentCheckBox
             eventId={this.props.event.id}
           >
@@ -141,17 +143,49 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    edit_event: (data, onError, onSuccess) =>
-      dispatch(edit_event(data, onError, onSuccess)),
+    editEvent: (data, onError, onSuccess) =>
+      dispatch(editEvent(data, onError, onSuccess)),
     delete: (eventId, reason) =>
-      dispatch(change_event_status(eventId, reason, eventStatusEnum.Deleted)),
-    publish: data => dispatch(publish_event(data)),
-    get_categories: () => dispatch(get_categories()),
+      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Deleted)),
+    publish: data => dispatch(publishEvent(data)),
+    getСategoriesList: () => dispatch(getСategoriesList()),
     alert: msg => dispatch(setSuccessAllert(msg)),
     errorAlertFromResponse: response =>
       dispatch(setErrorAllertFromResponse(response)),
     handleFormError: error => dispatch(handleFormError(error)),
   };
+};
+
+EventDraftWrapper.propTypes = {
+  event: PropTypes.object,
+  editEvent: PropTypes.func,
+  user_id: PropTypes.string,
+  user_name: PropTypes.string,
+  publish: PropTypes.func,
+  history: PropTypes.object,
+  all_categories: PropTypes.object,
+  handleFormError: PropTypes.func,
+  delete: PropTypes.func,
+  alert: PropTypes.func,
+  errorAlertFromResponse: PropTypes.func,
+  form_values: PropTypes.object,
+  pristine: PropTypes.bool,
+};
+
+EventDraftWrapper.defaultProps = {
+  editEvent: () => {},
+  user_id: "",
+  event: {},
+  user_name: "",
+  publish: () => {},
+  history: {},
+  all_categories: {},
+  handleFormError: () => {},
+  delete: () => {},
+  alert: () => {},
+  errorAlertFromResponse: () => {},
+  form_values: {},
+  pristine: false,
 };
 
 export default withRouter(

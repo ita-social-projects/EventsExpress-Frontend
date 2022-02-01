@@ -1,5 +1,6 @@
 ﻿import React, { Component } from "react";
 import { withRouter } from "react-router";
+import PropTypes from "prop-types";
 import { getFormValues } from "redux-form";
 import { connect } from "react-redux";
 import { parse as queryStringParse } from "query-string";
@@ -26,7 +27,7 @@ class ContactAdminListWrapper extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.history.location.search != this.prevQueryStringSearch) {
+    if (this.props.history.location.search !== this.prevQueryStringSearch) {
       this.prevQueryStringSearch = this.props.history.location.search;
       this.props.getIssues(this.props.history.location.search);
     }
@@ -36,7 +37,7 @@ class ContactAdminListWrapper extends Component {
     const filterCopy = { ...this.props.contactAdminList.filter };
     this.objCurrentQueryParams = queryStringParse(search);
 
-    Object.entries(this.objCurrentQueryParams).forEach(function ([key, value]) {
+    Object.entries(this.objCurrentQueryParams).forEach(([key, value]) => {
       filterCopy[key] = value;
     });
     this.objCurrentQueryParams = filterHelper.trimUndefinedKeys(filterCopy);
@@ -46,7 +47,7 @@ class ContactAdminListWrapper extends Component {
     const { data } = this.props.contactAdminList;
     const { items } = this.props.contactAdminList.data;
     return (
-      <SpinnerWrapper showContent={data != undefined}>
+      <SpinnerWrapper showContent={data !== undefined}>
         <div>
           <table className="table w-100 m-auto">
             <tbody>
@@ -63,6 +64,18 @@ class ContactAdminListWrapper extends Component {
     );
   }
 }
+
+ContactAdminListWrapper.defaultProps = {
+  history: {},
+  getIssues: () => {},
+  contactAdminList: {},
+};
+
+ContactAdminListWrapper.propTypes = {
+  history: PropTypes.object,
+  getIssues: PropTypes.func,
+  contactAdminList: PropTypes.object,
+};
 
 const mapStateToProps = state => {
   return {

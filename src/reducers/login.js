@@ -4,7 +4,7 @@ import {
 } from "../actions/login/login-action";
 import initialState from "../store/initialState";
 
-export const reducer = (state = initialState.login, action) => {
+const reducer = (state = initialState.login, action) => {
   switch (action.type) {
     case SET_LOGIN_PENDING:
       return { ...state, isLoginPending: action.isLoginPending };
@@ -20,3 +20,4 @@ export const reducer = (state = initialState.login, action) => {
       return state;
   }
 };
+export default reducer;

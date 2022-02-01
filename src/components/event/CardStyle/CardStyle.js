@@ -2,7 +2,7 @@
 import { red } from "@material-ui/core/colors";
 import "../EventItem/event-item.css";
 
-export const useStyle = makeStyles(theme => ({
+export default makeStyles(theme => ({
   card: {
     maxWidth: 345,
     maxHeight: 200,

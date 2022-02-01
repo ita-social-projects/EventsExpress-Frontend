@@ -1,15 +1,20 @@
 ﻿import { connect } from "react-redux";
 import React, { Component } from "react";
 import { reset } from "redux-form";
-import { get_SearchUsers, reset_users } from "../actions/users/users-action";
+import PropTypes from "prop-types";
+import { getSearchUsers, resetUsers } from "../actions/users/users-action";
 import SpinnerWrapper from "./spinner";
 import UserItemList from "../components/users/user-item";
 import UserSearchFilterWrapper from "./UserSearchFilterWrapper";
 import history from "../history";
-import { getQueryStringByUsersFilter } from "../components/helpers/userHelper";
+import getQueryStringByUsersFilter from "../components/helpers/userHelper";
 
 class SearchUsers extends Component {
-  componentDidUpdate(prevProps, prevState) {
+  componentWillMount() {
+    this.getUsers(this.props.params);
+  }
+
+  componentDidUpdate(prevProps) {
     if (
       prevProps.users.userSearchFilter !== this.props.users.userSearchFilter
     ) {
@@ -19,45 +24,55 @@ class SearchUsers extends Component {
     }
   }
 
-  componentWillMount() {
-    this.getUsers(this.props.params);
-  }
-
   componentWillUnmount = () => {
-    this.props.reset_users();
+    this.props.resetUsersDispatch();
   };
 
   onReset = () => {
-    this.props.reset_filters();
-    const search_string = "?page=1";
-    this.props.get_SearchUsers(search_string);
-    history.push(window.location.pathname + search_string);
+    this.props.resetFiltersDispatch();
+    const searchString = "?page=1";
+    this.props.getSearchUsersDispatch(searchString);
+    history.push(window.location.pathname + searchString);
   };
 
-  getUsers = page => this.props.get_SearchUsers(page);
+  getUsers = page => this.props.getSearchUsersDispatch(page);
 
   render() {
     const { data } = this.props.users;
 
     return (
-      <>
-        <div className="row">
-          <div className="col-12">
-            <UserSearchFilterWrapper onReset={this.onReset} />
-            <SpinnerWrapper showContent={data != undefined}>
-              <UserItemList
-                users={this.props.users.data.items}
-                page={this.props.users.data.pageViewModel.pageNumber}
-                totalPages={this.props.users.data.pageViewModel.totalPages}
-                callback={this.getUsers}
-              />
-            </SpinnerWrapper>
-          </div>
+      <div className="row">
+        <div className="col-12">
+          <UserSearchFilterWrapper onReset={this.onReset} />
+          <SpinnerWrapper showContent={data}>
+            <UserItemList
+              users={this.props.users.data.items}
+              page={this.props.users.data.pageViewModel.pageNumber}
+              totalPages={this.props.users.data.pageViewModel.totalPages}
+              callback={this.getUsers}
+            />
+          </SpinnerWrapper>
         </div>
-      </>
+      </div>
     );
   }
 }
+
+SearchUsers.defaultProps = {
+  users: {},
+  getSearchUsersDispatch: () => {},
+  resetUsersDispatch: () => {},
+  resetFiltersDispatch: () => {},
+  params: {},
+};
+
+SearchUsers.propTypes = {
+  users: PropTypes.object,
+  getSearchUsersDispatch: PropTypes.func,
+  resetUsersDispatch: PropTypes.func,
+  resetFiltersDispatch: PropTypes.func,
+  params: PropTypes.object,
+};
 
 const mapStateToProps = state => ({
   users: state.users,
@@ -65,9 +80,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_SearchUsers: page => dispatch(get_SearchUsers(page)),
-    reset_users: () => dispatch(reset_users()),
-    reset_filters: () => dispatch(reset("user-search-filter-form")),
+    getSearchUsersDispatch: page => dispatch(getSearchUsers(page)),
+    resetUsersDispatch: () => dispatch(resetUsers()),
+    resetFiltersDispatch: () => dispatch(reset("user-search-filter-form")),
   };
 };
 

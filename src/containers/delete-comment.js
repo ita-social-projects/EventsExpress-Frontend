@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import { connect } from "react-redux";
 import Fab from "@material-ui/core/Fab";
+import PropTypes from "prop-types";
 import CommentItem from "../components/comment/comment-item";
 import deleteComm from "../actions/comment/comment-delete-action";
 import "../components/comment/Comment.css";
@@ -9,14 +10,15 @@ import AddComment from "./add-comment";
 import { setAlert } from "../actions/alert-action";
 
 class commentItemWrapper extends React.Component {
-  state = {
-    info: true,
-  };
+  constructor(props) {
+    super(props);
+    this.state = { info: true };
+  }
 
   changeInfo = () => {
-    this.setState({
-      info: !this.state.info,
-    });
+    this.setState(prevState => ({
+      info: !prevState.info,
+    }));
   };
 
   submit = () => {
@@ -68,7 +70,7 @@ class commentItemWrapper extends React.Component {
         <div className="children">
           {this.props.item.children.length !== 0 &&
           this.props.item.children !== null ? (
-            <CommentList data_list={this.props.item.children} />
+            <CommentList dataList={this.props.item.children} />
           ) : null}
         </div>
       </>
@@ -87,4 +89,19 @@ const mapDispatchToProps = dispatch => {
     alert: data => dispatch(setAlert(data)),
   };
 };
+
+commentItemWrapper.propTypes = {
+  deleteComm: PropTypes.func,
+  eventId: PropTypes.string,
+  item: PropTypes.object,
+  userId: PropTypes.string,
+};
+
+commentItemWrapper.defaultProps = {
+  deleteComm: () => {},
+  eventId: "",
+  item: {},
+  userId: "",
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(commentItemWrapper);

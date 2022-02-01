@@ -15,7 +15,7 @@ export const SET_LOGIN_SUCCESS = "SET_LOGIN_SUCCESS";
 export const SET_USER = "SET_USER";
 
 const history = createBrowserHistory({ forceRefresh: true });
-const API_SERV = new AuthenticationService();
+const apiService = new AuthenticationService();
 
 export function setUser(data) {
   return {
@@ -26,7 +26,7 @@ export function setUser(data) {
 
 export function getUserInfo(profile) {
   return async dispatch => {
-    const response = await API_SERV.getUserInfo();
+    const response = await apiService.getUserInfo();
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -78,7 +78,7 @@ function loginResponseHandler(call, profile) {
 
 export function loginGoogle(tokenId, profile) {
   const call = () =>
-    API_SERV.setGoogleLogin({
+    apiService.setGoogleLogin({
       TokenId: tokenId,
       Email: profile.email,
       Name: profile.name,
@@ -93,7 +93,7 @@ export function loginGoogle(tokenId, profile) {
 
 export function loginFacebook(profile) {
   const call = () =>
-    API_SERV.setFacebookLogin({
+    apiService.setFacebookLogin({
       Email: profile.email,
       Name: profile.name,
       PhotoUrl: profile.picture.data.url,
@@ -109,7 +109,7 @@ export function loginFacebook(profile) {
 
 export function loginTwitter(data) {
   const res = () =>
-    API_SERV.setTwitterLogin({
+    apiService.setTwitterLogin({
       TokenId: data.oauth_token,
       TokenSecret: data.oauth_token_secret,
       UserId: data.user_id,
@@ -126,7 +126,7 @@ export function loginTwitter(data) {
 
 export function loginAfterEmailConfirmation(data) {
   return async dispatch => {
-    const response = await API_SERV.auth(data);
+    const response = await apiService.auth(data);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -137,7 +137,7 @@ export function loginAfterEmailConfirmation(data) {
 
 const login = (email, password) => {
   const call = () =>
-    API_SERV.setLogin({
+    apiService.setLogin({
       Email: email,
       Password: password,
     });

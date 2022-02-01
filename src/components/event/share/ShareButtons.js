@@ -1,28 +1,37 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
 import { FacebookProvider, ShareButton } from "react-facebook";
 import { Telegram, Twitter, Linkedin } from "react-social-sharing";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import "./share.css";
 
-export class ShareButtons extends Component {
-  render() {
-    return (
-      <>
-        <FacebookProvider appId={this.props.config.facebookClientId}>
-          <ShareButton className="btn btn-link" href={this.props.href}>
-            <div id="fb-share-button" title="Share on Facebook">
-              <i className="fab fa-facebook text-white" />
-            </div>
-          </ShareButton>
-        </FacebookProvider>
+const ShareButtons = ({ config, href }) => {
+  return (
+    <>
+      <FacebookProvider appId={config.facebookClientId}>
+        <ShareButton className="btn btn-link" href={href}>
+          <div id="fb-share-button" title="Share on Facebook">
+            <i className="fab fa-facebook text-white" />
+          </div>
+        </ShareButton>
+      </FacebookProvider>
 
-        <Telegram solid small link={this.props.href} />
-        <Twitter solid small link={this.props.href} />
-        <Linkedin solid small link={this.props.href} />
-      </>
-    );
-  }
-}
+      <Telegram solid small link={href} />
+      <Twitter solid small link={href} />
+      <Linkedin solid small link={href} />
+    </>
+  );
+};
+
+ShareButtons.propTypes = {
+  config: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  href: PropTypes.string,
+};
+
+ShareButtons.defaultProps = {
+  config: [],
+  href: "",
+};
 
 const mapStateToProps = state => {
   return {

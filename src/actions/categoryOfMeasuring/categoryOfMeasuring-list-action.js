@@ -6,26 +6,22 @@ export const SET_CATEGORIES_OF_MEASURING_PENDING =
 export const GET_CATEGORIES_OF_MEASURING_SUCCESS =
   "GET_CATEGORIES_OF_MEASURING_SUCCESS";
 
-const API_SERV = new CategoryOfMeasuringService();
+const apiService = new CategoryOfMeasuringService();
 
-function setCategoryOfMeasuringPending(data) {
-  return {
-    type: SET_CATEGORIES_OF_MEASURING_PENDING,
-    payload: data,
-  };
-}
+const setCategoryOfMeasuringPending = data => ({
+  type: SET_CATEGORIES_OF_MEASURING_PENDING,
+  payload: data,
+});
 
-function getCategoriesOfMeasuringSuccess(data) {
-  return {
-    type: GET_CATEGORIES_OF_MEASURING_SUCCESS,
-    payload: data,
-  };
-}
+const getCategoriesOfMeasuringSuccess = data => ({
+  type: GET_CATEGORIES_OF_MEASURING_SUCCESS,
+  payload: data,
+});
 
-const getCategoriesOfMeasuring = () => {
+export default function getCategoriesOfMeasuring() {
   return async dispatch => {
     dispatch(setCategoryOfMeasuringPending(true));
-    const response = await API_SERV.getCategoriesOfMeasuring();
+    const response = await apiService.getCategoriesOfMeasuring();
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -34,6 +30,4 @@ const getCategoriesOfMeasuring = () => {
     dispatch(getCategoriesOfMeasuringSuccess(jsonRes));
     return Promise.resolve();
   };
-};
-
-export default getCategoriesOfMeasuring;
+}

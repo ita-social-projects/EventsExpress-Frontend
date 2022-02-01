@@ -1,11 +1,11 @@
 import { jwtStorageKey } from "../constants/constants";
 
 export default class EventsExpressService {
-  _baseUrl = "api/";
+  baseUrl = "api/";
 
   getResource = async url => {
-    const call = _url =>
-      fetch(this._baseUrl + _url, {
+    const call = callUrl =>
+      fetch(this.baseUrl + callUrl, {
         method: "get",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export default class EventsExpressService {
   };
 
   getPhoto = async url => {
-    const call = _url => fetch(this._baseUrl + url);
+    const call = callUrl => fetch(this.baseUrl + callUrl);
     const res = await call(url);
 
     if (res.ok) {
@@ -31,42 +31,42 @@ export default class EventsExpressService {
     return null;
   };
 
-  setResource = async (url, data) => {
-    const call = (url, data) =>
-      fetch(this._baseUrl + url, {
+  setResource = async (Url, data) => {
+    const call = (callurl, callData) =>
+      fetch(this.baseUrl + callurl, {
         method: "post",
         headers: new Headers({
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem(jwtStorageKey)}`,
         }),
-        body: JSON.stringify(data),
+        body: JSON.stringify(callData),
       });
 
-    let res = await call(url, data);
+    let res = await call(Url, data);
 
     if (res.status === 401 && (await this.refreshHandler())) {
       // one more try:
-      res = await call(url, data);
+      res = await call(Url, data);
     }
 
     return res;
   };
 
-  setResourceWithData = async (url, data) => {
-    const call = (url, data) =>
-      fetch(this._baseUrl + url, {
+  setResourceWithData = async (Url, data) => {
+    const call = (newUrl, newData) =>
+      fetch(this.baseUrl + newUrl, {
         method: "post",
         headers: new Headers({
           Authorization: `Bearer ${localStorage.getItem(jwtStorageKey)}`,
         }),
-        body: data,
+        body: newData,
       });
 
-    let res = await call(url, data);
+    let res = await call(Url, data);
 
     if (res.status === 401 && (await this.refreshHandler())) {
       // one more try:
-      res = await call(url, data);
+      res = await call(Url, data);
     }
 
     return res;

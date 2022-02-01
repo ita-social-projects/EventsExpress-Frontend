@@ -10,5 +10,4 @@ const reducer = (state = initialState.categoryGroups, action) => {
   }
   return state;
 };
-
 export default reducer;

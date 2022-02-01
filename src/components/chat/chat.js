@@ -1,8 +1,10 @@
+/* eslint-disable no-console */ // TODO in lines 42,43,67 in the future need cnahge console.log
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { reduxForm, Field, reset as resetForm } from "redux-form";
 import ButtonBase from "@material-ui/core/ButtonBase";
+import propTypes from "prop-types";
 import { renderTextArea } from "../helpers/form-helpers";
 import getChat, {
   initialConnection,
@@ -12,7 +14,7 @@ import getChat, {
 } from "../../actions/chat/chat-action";
 import Msg from "./msg";
 import SpinnerWrapper from "../../containers/spinner";
-import CustomAvatar from "../avatar/custom-avatar";
+import CustomAvatarContainer from "../avatar/custom-avatar";
 
 class Chat extends Component {
   componentWillMount = () => {
@@ -22,7 +24,7 @@ class Chat extends Component {
   componentDidUpdate = () => {
     const newMsg = this.props.notification.messages.filter(
       x =>
-        x.chatRoomId == this.props.chat.data.id &&
+        x.chatRoomId === this.props.chat.data.id &&
         !this.props.chat.data.messages.map(y => y.id).includes(x.id),
     );
 
@@ -32,7 +34,7 @@ class Chat extends Component {
     }
 
     const msgIds = this.props.chat.data.messages
-      .filter(x => !x.seen && x.senderId != this.props.current_user.id)
+      .filter(x => !x.seen && x.senderId !== this.props.current_user.id)
       .map(x => x.id);
 
     if (msgIds.length > 0) {
@@ -44,7 +46,7 @@ class Chat extends Component {
 
     const deleteMsg = this.props.notification.messages.filter(
       x =>
-        x.chatRoomId == this.props.chat.data.id &&
+        x.chatRoomId === this.props.chat.data.id &&
         this.props.chat.data.messages.map(y => y.id).includes(x.id),
     );
 
@@ -59,7 +61,7 @@ class Chat extends Component {
 
   Send = e => {
     e.preventDefault();
-    if (e.target.msg.value != "") {
+    if (e.target.msg.value !== "") {
       this.props.hubConnection
         .invoke("send", this.props.chat.data.id, e.target.msg.value)
         .catch(err => console.error(err));
@@ -70,8 +72,8 @@ class Chat extends Component {
   renderMessages = arr => {
     if (this.props.chat.data) {
       return arr.messages.map(x => {
-        const sender = arr.users.find(y => y.id == x.senderId);
-        if (arr.id == x.chatRoomId) {
+        const sender = arr.users.find(y => y.id === x.senderId);
+        if (arr.id === x.chatRoomId) {
           return (
             <>
               <Msg
@@ -91,11 +93,13 @@ class Chat extends Component {
         );
       });
     }
+
+    return null;
   };
 
   render() {
     const sender = this.props.chat.data.users.find(
-      y => y.id != this.props.current_user.id,
+      y => y.id !== this.props.current_user.id,
     );
     const { data } = this.props.chat;
     return (
@@ -107,7 +111,7 @@ class Chat extends Component {
                 <div className="d-flex bd-highlight">
                   {sender != null && (
                     <ButtonBase>
-                      <CustomAvatar
+                      <CustomAvatarContainer
                         size="Small"
                         userId={sender.id}
                         name={sender.name}
@@ -155,6 +159,33 @@ class Chat extends Component {
   }
 }
 
+Chat.propTypes = {
+  getChat: propTypes.func,
+  match: propTypes.object,
+  notification: propTypes.object,
+  chat: propTypes.object,
+  concatNewMsg: propTypes.func,
+  deleteOldNotififcation: propTypes.func,
+  current_user: propTypes.object,
+  resetChat: propTypes.func,
+  // TODO: change hubConnection prop
+  hubConnection: propTypes.any,
+  resetForm: propTypes.func,
+};
+
+Chat.defaultProps = {
+  getChat: () => {},
+  match: {},
+  notification: {},
+  chat: {},
+  concatNewMsg: () => {},
+  deleteOldNotififcation: () => {},
+  current_user: {},
+  resetChat: () => {},
+  hubConnection: {},
+  resetForm: () => {},
+};
+
 const mapStateToProps = state => ({
   current_user: state.user,
   hubConnection: state.hubConnections.chatHub,
@@ -175,8 +206,8 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-Chat = reduxForm({
+const FormChat = reduxForm({
   form: "chat-form",
 })(Chat);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chat);
+export default connect(mapStateToProps, mapDispatchToProps)(FormChat);

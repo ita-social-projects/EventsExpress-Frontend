@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Dropdown from "react-bootstrap/Dropdown";
 import EventScheduleModal from "../components/eventSchedule/eventSchedule-modal";
-import cancel_next_eventSchedule from "../actions/eventSchedule/eventSchedule-cancel-next-action";
+import cancelNextEventSchedule from "../actions/eventSchedule/eventSchedule-cancel-next-action";
 
 class CancelNextEventWrapper extends Component {
   constructor() {
@@ -28,7 +29,7 @@ class CancelNextEventWrapper extends Component {
     this.setState({
       show: false,
     });
-    this.props.cancel_next_eventSchedule(this.props.eventId);
+    this.props.cancelNextEventScheduleDispatch(this.props.eventId);
   };
 
   render() {
@@ -46,6 +47,16 @@ class CancelNextEventWrapper extends Component {
   }
 }
 
+CancelNextEventWrapper.defaultProps = {
+  cancelNextEventScheduleDispatch: () => {},
+  eventId: null,
+};
+
+CancelNextEventWrapper.propTypes = {
+  cancelNextEventScheduleDispatch: PropTypes.func,
+  eventId: PropTypes.number,
+};
+
 const mapStateToProps = state => ({
   cancel_next_eventSchedule_status: state.cancel_next_eventSchedule,
   eventId: state.event.data.id,
@@ -53,8 +64,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    cancel_next_eventSchedule: data =>
-      dispatch(cancel_next_eventSchedule(data)),
+    cancelNextEventScheduleDispatch: data =>
+      dispatch(cancelNextEventSchedule(data)),
   };
 };
 

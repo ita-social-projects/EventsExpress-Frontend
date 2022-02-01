@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import { Circle } from "react-leaflet";
 import { LocationMap } from ".";
 
-export default function LocationMapWithCircle(props) {
+const LocationMapWithCircle = props => {
   let initialPos = { lat: 50.4547, lng: 30.5238 };
-  if (props.input.value.latitude != undefined) {
+  if (props.input.value.latitude !== undefined) {
     initialPos = {
       lat: props.input.value.latitude,
       lng: props.input.value.longitude,
@@ -13,14 +14,14 @@ export default function LocationMapWithCircle(props) {
   }
   const [location, setLocation] = React.useState(initialPos);
 
-  function handleChange(latlng) {
+  const handleChange = latlng => {
     setLocation(latlng);
     props.input.onChange({
       ...props.input.value,
       latitude: latlng.lat,
       longitude: latlng.lng,
     });
-  }
+  };
 
   return (
     <Field
@@ -38,4 +39,24 @@ export default function LocationMapWithCircle(props) {
       )}
     </Field>
   );
-}
+};
+
+LocationMapWithCircle.propTypes = {
+  input: PropTypes.shape({
+    value: PropTypes.string,
+    name: PropTypes.string,
+    onChange: PropTypes.func,
+  }),
+  radius: PropTypes.number,
+};
+
+LocationMapWithCircle.defaultProps = {
+  input: {
+    value: "",
+    name: "",
+    onChange: () => {},
+  },
+  radius: null,
+};
+
+export default LocationMapWithCircle;

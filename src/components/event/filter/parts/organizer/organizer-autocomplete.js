@@ -2,11 +2,12 @@ import { Autocomplete } from "@material-ui/lab";
 import { Chip, InputAdornment, TextField } from "@material-ui/core";
 import React from "react";
 import { connect } from "react-redux";
-import { useOrganizerFilterStyles } from "./organizer-filter-styles";
+import PropTypes from "prop-types";
+import useOrganizerFilterStyles from "./organizer-filter-styles";
 import { fetchUsers } from "../../../../../actions/events/filter/users-data";
-import { useDelay } from "./use-delay";
+import useDelay from "./use-delay";
 
-export const OrganizerAutocomplete = ({ input, options, ...props }) => {
+const OrganizerAutocomplete = ({ input, options, ...props }) => {
   const [username, setUsername] = useDelay(delayedUsername => {
     props.fetchUsers(`?KeyWord=${delayedUsername}`);
   }, "");
@@ -46,6 +47,7 @@ export const OrganizerAutocomplete = ({ input, options, ...props }) => {
                 </InputAdornment>
               ),
             }}
+            // eslint-disable-next-line react/jsx-no-duplicate-props
             inputProps={{
               ...params.inputProps,
               maxLength: 50,
@@ -67,6 +69,18 @@ export const OrganizerAutocomplete = ({ input, options, ...props }) => {
       </div>
     </>
   );
+};
+
+OrganizerAutocomplete.propTypes = {
+  input: PropTypes.array,
+  options: PropTypes.oneOfType(PropTypes.object, PropTypes.array),
+  fetchUsers: PropTypes.func,
+};
+
+OrganizerAutocomplete.defaultProps = {
+  input: [],
+  options: {},
+  fetchUsers: PropTypes.func,
 };
 
 const mapDispatchToProps = dispatch => ({

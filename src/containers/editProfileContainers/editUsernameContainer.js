@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import EditUsername from "../../components/profile/editProfile/editUsername";
 import editUsername from "../../actions/redactProfile/userName-edit-action";
 
@@ -21,6 +22,13 @@ const mapDispatchToProps = dispatch => {
   return {
     editUsername: name => dispatch(editUsername(name)),
   };
+};
+EditUsernameContainer.propTypes = {
+  editUsername: PropTypes.func,
+};
+
+EditUsernameContainer.defaultProps = {
+  editUsername: () => {},
 };
 
 export default connect(

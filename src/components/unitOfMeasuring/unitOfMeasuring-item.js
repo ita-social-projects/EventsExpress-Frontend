@@ -1,15 +1,17 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
 
-export default class UnitOfMeasuringItem extends Component {
-  state = {
-    editUnit: false,
-  };
+class UnitOfMeasuringItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      editUnit: false,
+    };
+  }
 
   displayEditedUnit = () => {
-    this.setState({
-      editUnit: !this.state.editUnit,
-    });
+    this.setState(prevState => ({ editUnit: !prevState.editUnit }));
   };
 
   render() {
@@ -42,3 +44,15 @@ export default class UnitOfMeasuringItem extends Component {
     );
   }
 }
+
+UnitOfMeasuringItem.defaultProps = {
+  item: {},
+  callback: () => {},
+};
+
+UnitOfMeasuringItem.propTypes = {
+  item: PropTypes.object,
+  callback: PropTypes.func,
+};
+
+export default UnitOfMeasuringItem;
