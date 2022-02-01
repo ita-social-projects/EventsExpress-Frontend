@@ -51,14 +51,12 @@ const ContactAdminFilterWrapper = ({
 
   const initialFormValues = buildInitialFormValues();
   return (
-    <>
-      <ContactAdminFilter
-        onSubmit={onSubmit}
-        onReset={onReset}
-        form_values={formValues}
-        initialFormValues={initialFormValues}
-      />
-    </>
+    <ContactAdminFilter
+      onSubmit={onSubmit}
+      onReset={onReset}
+      form_values={formValues}
+      initialFormValues={initialFormValues}
+    />
   );
 };
 

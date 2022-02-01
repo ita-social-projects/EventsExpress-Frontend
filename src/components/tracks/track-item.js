@@ -16,8 +16,8 @@ export default class TrackItem extends Component {
       case 3:
         return "Deleted";
       default:
-        //! TODO : RETURN UNDEFINED IS NOT CORRECT
-        return undefined;
+        //! TODO : MAYBE SOMETHING BETTER IS FOR DEFAULT
+        return null;
     }
   };
 

@@ -23,7 +23,7 @@ class UnitsOfMeasuring extends Component {
                 category: "",
               }}
             />
-            <SpinnerWrapper showContent={unitsOfMeasuring !== undefined}>
+            <SpinnerWrapper showContent={unitsOfMeasuring}>
               <UnitOfMeasuringListWrapper data={unitsOfMeasuring} />
             </SpinnerWrapper>
           </tbody>

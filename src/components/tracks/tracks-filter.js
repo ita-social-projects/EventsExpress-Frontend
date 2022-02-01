@@ -27,69 +27,67 @@ const TracksFilter = ({
   ];
 
   return (
-    <>
-      {entityNames?.length !== 0 && (
-        <form className="box" onSubmit={handleSubmit}>
+    entityNames?.length && (
+      <form className="box" onSubmit={handleSubmit}>
+        <div className="form-group">
           <div className="form-group">
-            <div className="form-group">
-              <Field
-                data={entityNames}
-                component={renderMultiselect}
-                name="entityNames"
-                valueField="id"
-                textField="entityName"
-                className="form-control mt-2"
-                placeholder="Entity name"
-              />
-            </div>
-            <div className="form-group">
-              <Field
-                options={options}
-                component={MultiCheckbox}
-                name="changesType"
-                className="form-control mt-2"
-                placeholder="Changes type"
-              />
-            </div>
-            <div className="form-group">
-              <Field
-                name="dateFrom"
-                label="From"
-                component={renderDatePicker}
-                parse={parseEuDate}
-              />
-            </div>
-            <div className="form-group">
-              <Field
-                name="dateTo"
-                label="To"
-                minValue={new Date(values.dateFrom)}
-                component={renderDatePicker}
-                parse={parseEuDate}
-              />
-            </div>
+            <Field
+              data={entityNames}
+              component={renderMultiselect}
+              name="entityNames"
+              valueField="id"
+              textField="entityName"
+              className="form-control mt-2"
+              placeholder="Entity name"
+            />
           </div>
-          <div className="form-group d-flex">
-            <Button
-              fullWidth
-              color="primary"
-              onClick={onReset}
-              disabled={submitting}
-            >
-              Reset
-            </Button>
-            <Button
-              fullWidth
-              type="submit"
-              color="primary"
-              disabled={pristine || submitting}
-            >
-              Search
-            </Button>
+          <div className="form-group">
+            <Field
+              options={options}
+              component={MultiCheckbox}
+              name="changesType"
+              className="form-control mt-2"
+              placeholder="Changes type"
+            />
           </div>
-        </form>
-      )}
-    </>
+          <div className="form-group">
+            <Field
+              name="dateFrom"
+              label="From"
+              component={renderDatePicker}
+              parse={parseEuDate}
+            />
+          </div>
+          <div className="form-group">
+            <Field
+              name="dateTo"
+              label="To"
+              minValue={new Date(values.dateFrom)}
+              component={renderDatePicker}
+              parse={parseEuDate}
+            />
+          </div>
+        </div>
+        <div className="form-group d-flex">
+          <Button
+            fullWidth
+            color="primary"
+            onClick={onReset}
+            disabled={submitting}
+          >
+            Reset
+          </Button>
+          <Button
+            fullWidth
+            type="submit"
+            color="primary"
+            disabled={pristine || submitting}
+          >
+            Search
+          </Button>
+        </div>
+      </form>
+    )
   );
 };
 
