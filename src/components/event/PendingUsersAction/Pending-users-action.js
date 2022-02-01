@@ -2,12 +2,13 @@
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/styles";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import {
   promoteToOwner,
   approveUser,
 } from "../../../actions/event/event-item-view-action";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   success: {
     color: "#fff",
     backgroundColor: "#4caf50",
@@ -62,6 +63,20 @@ const mapDispatchToProps = dispatch => ({
   promoteToOwner: (userId, eventId) =>
     dispatch(promoteToOwner(userId, eventId)),
 });
+
+PendingUsersActions.propTypes = {
+  user: PropTypes.object,
+  isMyEvent: PropTypes.bool,
+  approveUser: PropTypes.func,
+  eventId: PropTypes.number,
+};
+
+PendingUsersActions.defaultProps = {
+  user: {},
+  isMyEvent: false,
+  approveUser: () => {},
+  eventId: null,
+};
 
 export default connect(
   mapStateToProps,
