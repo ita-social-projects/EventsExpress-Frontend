@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Dialog from "@material-ui/core/Dialog";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
@@ -31,6 +32,7 @@ class LocalLoginAdd extends Component {
     return (
       <div>
         <button
+          type="button"
           className="btnGoogle"
           onClick={this.handleClick}
           disabled={false}
@@ -60,5 +62,13 @@ class LocalLoginAdd extends Component {
 const mapDispatchToProps = dispatch => ({
   localLoginAdd: (email, password) => dispatch(localLoginAdd(email, password)),
 });
+
+LocalLoginAdd.propTypes = {
+  localLoginAdd: PropTypes.func,
+};
+
+LocalLoginAdd.defaultProps = {
+  localLoginAdd: () => {},
+};
 
 export default connect(null, mapDispatchToProps)(LocalLoginAdd);

@@ -9,8 +9,8 @@ import editEventFromParent, {
   setEventFromParentPending,
   setEventFromParentSuccess,
 } from "../actions/event/event-copy-with-edit-action";
-import { validate } from "./event-edit-validate-form ";
-import { validateEventForm } from "./event-validate-form";
+import validate from "./event-edit-validate-form ";
+import validateEventForm from "./event-validate-form";
 import getCategories from "../actions/category/category-list-action";
 
 class EditFromParentEventWraper extends Component {
@@ -58,10 +58,10 @@ class EditFromParentEventWraper extends Component {
       <>
         <EventForm
           validate={validate}
-          all_categories={this.props.all_categories}
+          allCategories={this.props.all_categories}
           onSubmit={this.onSubmit}
           initialValues={initialValues}
-          form_values={this.props.form_values}
+          formValues={this.props.form_values}
           haveReccurentCheckBox={false}
           disabledDate
           eventId={this.props.event.id}

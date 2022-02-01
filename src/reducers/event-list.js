@@ -6,14 +6,14 @@ import {
   UPDATE_EVENTS_FILTERS,
 } from "../actions/event/event-list-action";
 
-export const reducer = (state = initialState.events, action) => {
+const reducer = (state = initialState.events, action) => {
   switch (action.type) {
     case GET_EVENTS_DATA:
       return {
         ...state,
         data: action.payload,
       };
-    case event.CHANGE_STATUS:
+    case event.CHANGE_STATUS: {
       const stateChangeEvent = { ...state };
       stateChangeEvent.data.items = state.data.items.map(item => {
         if (item.id === action.payload.eventId) {
@@ -24,6 +24,7 @@ export const reducer = (state = initialState.events, action) => {
         return item;
       });
       return stateChangeEvent;
+    }
     case RESET_EVENTS:
       return initialState.events;
     case UPDATE_EVENTS_FILTERS:
@@ -35,3 +36,4 @@ export const reducer = (state = initialState.events, action) => {
       return state;
   }
 };
+export default reducer;

@@ -2,19 +2,20 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import moment from "moment";
+import propTypes from "prop-types";
 import RatingWrapper from "../../../containers/rating";
 import Comment from "../../comment/comment";
 import "moment-timezone";
 import "../../layout/colorlib.css";
 import "./event-item-view.css";
-import EventVisitors from "../EventVisitors/Event-visitors";
+import EventVisitors from "../EventVisitors/EventVisitors";
 import EventLeaveModal from "../EventLeaveModal/Event-leave-modal";
 import InventoryList from "../../inventory/InventoryList";
 import DisplayLocation from "../map/display-location";
 import userStatusEnum from "../../../constants/userStatusEnum";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
-import { eventDefaultImage } from "../../../constants/eventDefaultImage";
+import eventDefaultImage from "../../../constants/eventDefaultImage";
 import PhotoService from "../../../services/PhotoService";
 
 const photoService = new PhotoService();
@@ -67,6 +68,8 @@ export default class EventItemView extends Component {
               Wait until admin approve your request.
             </span>
           );
+        default:
+          return null;
       }
     }
     return (
@@ -76,8 +79,9 @@ export default class EventItemView extends Component {
     );
   };
 
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   render() {
-    const { current_user } = this.props;
+    const { currentUser } = this.props;
     const {
       id,
       categories,
@@ -94,21 +98,19 @@ export default class EventItemView extends Component {
     } = this.props.event.data;
 
     const today = moment().startOf("day");
-    const categories_list = this.renderCategories(categories);
     const INT32_MAX_VALUE = 2147483647;
     const visitorsEnum = {
-      approvedUsers: visitors.filter(x => x.userStatusEvent == 0),
-      deniedUsers: visitors.filter(x => x.userStatusEvent == 1),
-      pendingUsers: visitors.filter(x => x.userStatusEvent == 2),
+      approvedUsers: visitors.filter(x => x.userStatusEvent === 0),
+      deniedUsers: visitors.filter(x => x.userStatusEvent === 1),
+      pendingUsers: visitors.filter(x => x.userStatusEvent === 2),
     };
 
-    const iWillVisitIt = visitors.find(x => x.id === current_user.id);
+    const iWillVisitIt = visitors.find(x => x.id === currentUser.id);
     const isFutureEvent = new Date(dateFrom) >= new Date().setHours(0, 0, 0, 0);
-    const isMyEvent = owners.find(x => x.id === current_user.id) != undefined;
+    const isMyEvent = owners.find(x => x.id === currentUser.id) !== undefined;
     const isFreePlace = visitorsEnum.approvedUsers.length < maxParticipants;
     const isAdult =
-      moment.duration(today.diff(moment(current_user.birthday))).asYears() >=
-      18;
+      moment.duration(today.diff(moment(currentUser.birthday))).asYears() >= 18;
 
     const canEdit = isFutureEvent && isMyEvent;
     const isAppropriateAge = !isOnlyForAdults || isAdult;
@@ -123,11 +125,11 @@ export default class EventItemView extends Component {
       isFutureEvent &&
       !isMyEvent &&
       iWillVisitIt &&
-      visitorsEnum.deniedUsers.find(x => x.id === current_user.id) == null &&
+      visitorsEnum.deniedUsers.find(x => x.id === currentUser.id) == null &&
       eventStatus === eventStatusEnum.Active;
     const canCancel =
       isFutureEvent &&
-      current_user.id != null &&
+      currentUser.id != null &&
       isMyEvent &&
       eventStatus !== eventStatusEnum.Canceled;
     const canUncancel =
@@ -187,7 +189,7 @@ export default class EventItemView extends Component {
                       location={this.props.event.data.location}
                     />
                   )}
-                  {categories_list}
+                  {this.renderCategories(categories)}
                 </div>
                 <div className="btn-group dropup change-event">
                   <button
@@ -202,13 +204,17 @@ export default class EventItemView extends Component {
                   <div className="dropdown-menu">
                     {canEdit && (
                       <Link to={`/editEvent/${id}`}>
-                        <button className="btn btn-danger mb-1">Edit</button>
+                        <button type="button" className="btn btn-danger mb-1">
+                          Edit
+                        </button>
                       </Link>
                     )}
                     {canCancel && (
                       <SimpleModalWithDetails
                         button={
-                          <button className="btn btn-danger ">Cancel</button>
+                          <button type="button" className="btn btn-danger ">
+                            Cancel
+                          </button>
                         }
                         submitCallback={this.props.onCancel}
                         data="Are you sure?"
@@ -217,7 +223,9 @@ export default class EventItemView extends Component {
                     {canDeleted && (
                       <SimpleModalWithDetails
                         button={
-                          <button className="btn btn-danger ">Delete</button>
+                          <button type="button" className="btn btn-danger ">
+                            Delete
+                          </button>
                         }
                         submitCallback={this.props.onDelete}
                         data="Are you sure?"
@@ -226,7 +234,7 @@ export default class EventItemView extends Component {
                     {canUncancel && (
                       <SimpleModalWithDetails
                         button={
-                          <button className="btn btn-danger ">
+                          <button type="button" className="btn btn-danger ">
                             Undo cancel
                           </button>
                         }
@@ -243,7 +251,7 @@ export default class EventItemView extends Component {
                   <RatingWrapper
                     iWillVisitIt={iWillVisitIt}
                     eventId={id}
-                    userId={current_user.id}
+                    userId={currentUser.id}
                   />
                 </div>
               )}
@@ -280,7 +288,7 @@ export default class EventItemView extends Component {
                   <div className="d-flex justify-content-center">
                     {isAppropriateAge ? (
                       this.getUserEventStatus(
-                        visitors.find(x => x.id === current_user.id),
+                        visitors.find(x => x.id === currentUser.id),
                       )
                     ) : (
                       <span className="alert alert-warning shadow" role="alert">
@@ -316,7 +324,7 @@ export default class EventItemView extends Component {
                 visitors={visitorsEnum}
                 isMyPrivateEvent={isMyPrivateEvent}
                 isMyEvent={isMyEvent}
-                current_user_id={current_user.id}
+                current_user_id={currentUser.id}
               />
             </div>
           </div>
@@ -325,3 +333,26 @@ export default class EventItemView extends Component {
     );
   }
 }
+
+// TODO: Check prop match
+EventItemView.propTypes = {
+  event: propTypes.object,
+  currentUser: propTypes.object,
+  onCancel: propTypes.func,
+  onDelete: propTypes.func,
+  onUnCancel: propTypes.func,
+  onJoin: propTypes.func,
+  onLeave: propTypes.func,
+  match: propTypes.object,
+};
+
+EventItemView.defaultProps = {
+  event: {},
+  currentUser: {},
+  onCancel: () => {},
+  onDelete: () => {},
+  onUnCancel: () => {},
+  onJoin: () => {},
+  onLeave: () => {},
+  match: {},
+};

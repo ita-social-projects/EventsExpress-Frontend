@@ -1,9 +1,12 @@
-﻿import React, { Component } from "react";
+﻿// TODO: tix option, this without somethink - 52
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import React, { PureComponent } from "react";
 import { Field, reduxForm } from "redux-form";
 import IconButton from "@material-ui/core/IconButton";
+import propTypes from "prop-types";
 import { renderTextField, renderSelectField } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
-import { fieldIsRequired } from "../helpers/validators/required-fields-validator";
+import fieldIsRequired from "../helpers/validators/required-fields-validator";
 
 const validate = values => {
   const requiredFields = ["name", "categoryGroup"];
@@ -12,7 +15,7 @@ const validate = values => {
   };
 };
 
-class CategoryEdit extends Component {
+class CategoryEdit extends PureComponent {
   render() {
     return (
       <>
@@ -46,7 +49,7 @@ class CategoryEdit extends Component {
                   this.props?.initialValues?.categoryGroup,
                 )}
               >
-                <option value="" disabled></option>
+                <option value="" id="CategoryEditOption" disabled></option>
                 {this.props.groups.map(item => (
                   <option key={item.id} value={JSON.stringify(item)}>
                     {item.title}
@@ -90,10 +93,26 @@ class CategoryEdit extends Component {
   }
 }
 
-CategoryEdit = reduxForm({
+CategoryEdit.propTypes = {
+  handleSubmit: propTypes.func,
+  error: propTypes.string,
+  initialValues: propTypes.object,
+  groups: propTypes.array,
+  cancel: propTypes.func,
+};
+
+CategoryEdit.defaultProps = {
+  handleSubmit: () => {},
+  error: "",
+  initialValues: {},
+  groups: [],
+  cancel: () => {},
+};
+
+const FormCategoryEdit = reduxForm({
   form: "save-form",
   validate,
   enableReinitialize: true,
 })(CategoryEdit);
 
-export default CategoryEdit;
+export default FormCategoryEdit;

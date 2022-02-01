@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export const useOrganizerFilterStyles = makeStyles({
+const useOrganizerFilterStyles = makeStyles({
   wrapper: {
     display: "flex",
     flexDirection: "column",
@@ -16,3 +16,5 @@ export const useOrganizerFilterStyles = makeStyles({
     width: "100%",
   },
 });
+
+export default useOrganizerFilterStyles;

@@ -1,63 +1,68 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import { DialogContent } from "@material-ui/core";
+import PropTypes from "prop-types";
+import simpleModalConstants from "../../../constants/sipleModalConstants";
 
-export default class SimpleModal extends Component {
-  constructor(props) {
-    super(props);
+const SimpleModal = props => {
+  const { data, button } = props;
+  const [isOpen, setIsOpen] = useState(false);
 
-    this.state = {
-      isOpen: false,
-      id: null,
-    };
-  }
-
-  onclick = () => {
-    this.setState({ isOpen: true });
+  const onOpen = () => {
+    setIsOpen(true);
   };
 
-  onClose = () => {
-    this.setState({ isOpen: false, id: null });
+  const onClose = () => {
+    setIsOpen(false);
   };
 
-  onConfirm = () => {
-    this.props.action();
-    this.setState({ isOpen: false });
+  const onConfirm = () => {
+    props.action();
+    setIsOpen(false);
   };
 
-  render() {
-    return (
-      <>
-        <div onClick={this.onclick}>{this.props.button}</div>
-        <Dialog open={this.state.isOpen} onClose={this.onClose}>
-          <div className="eventCancel">
-            <DialogContent>
-              <div>{this.props.data}</div>
-            </DialogContent>
-            <DialogActions>
-              <Button
-                fullWidth
-                type="button"
-                color="primary"
-                onClick={this.onClose}
-              >
-                Discard
-              </Button>
-              <Button
-                fullWidth
-                type="button"
-                value="Login"
-                color="primary"
-                onClick={this.onConfirm}
-              >
-                Confirm
-              </Button>
-            </DialogActions>
-          </div>
-        </Dialog>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <div role="button" onClick={onOpen} onKeyDown={onOpen} tabIndex={0}>
+        {button}
+      </div>
+      <Dialog open={isOpen} onClose={onClose}>
+        <div className="eventCancel">
+          <DialogContent>
+            <div>{data}</div>
+          </DialogContent>
+          <DialogActions>
+            <Button fullWidth type="button" color="primary" onClick={onClose}>
+              {simpleModalConstants.DISCARD}
+            </Button>
+            <Button
+              fullWidth
+              type="button"
+              value="Login"
+              color="primary"
+              onClick={onConfirm}
+            >
+              {simpleModalConstants.CONFIRM}
+            </Button>
+          </DialogActions>
+        </div>
+      </Dialog>
+    </>
+  );
+};
+
+SimpleModal.propTypes = {
+  action: PropTypes.func,
+  data: PropTypes.object,
+  button: PropTypes.func,
+};
+
+SimpleModal.defaultProps = {
+  action: () => {},
+  data: {},
+  button: () => {},
+};
+
+export default SimpleModal;

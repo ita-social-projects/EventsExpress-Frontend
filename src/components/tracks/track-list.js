@@ -1,14 +1,16 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import PagePagination from "../shared/pagePagination";
 import TrackItem from "./track-item";
 
 class TrackList extends Component {
   renderItems = arr => {
-    return arr.map(item => <TrackItem item={item} />);
+    //! TODO : MAYBE, item.id IS NOT DEFINED. IT NEED TO CHECK
+    return arr.map(item => <TrackItem key={item.id} item={item} />);
   };
 
   render() {
-    const { data_list, handlePageChange } = this.props;
+    const { dataList, handlePageChange } = this.props;
 
     return (
       <>
@@ -29,12 +31,12 @@ class TrackList extends Component {
                   <th scope="col" className="text-center">
                     Changes type
                   </th>
-                  <th />
+                  <th aria-label="Data about user name" />
                 </tr>
               </thead>
               <tbody>
-                {data_list.items.length > 0 ? (
-                  this.renderItems(data_list.items)
+                {dataList?.items?.length > 0 ? (
+                  this.renderItems(dataList.items)
                 ) : (
                   <div id="notfound" className="w-100">
                     <div className="notfound">
@@ -46,10 +48,10 @@ class TrackList extends Component {
                 )}
               </tbody>
             </table>
-            {data_list.pageViewModel.totalPages > 1 && (
+            {dataList?.pageViewModel?.totalPages > 1 && (
               <PagePagination
-                currentPage={data_list.pageViewModel.pageNumber}
-                totalPages={data_list.pageViewModel.totalPages}
+                currentPage={dataList?.pageViewModel?.pageNumber}
+                totalPages={dataList?.pageViewModel?.totalPages}
                 callback={handlePageChange}
               />
             )}
@@ -59,5 +61,15 @@ class TrackList extends Component {
     );
   }
 }
+
+TrackList.defaultProps = {
+  handlePageChange: () => {},
+  dataList: {},
+};
+
+TrackList.propTypes = {
+  handlePageChange: PropTypes.func,
+  dataList: PropTypes.object,
+};
 
 export default TrackList;

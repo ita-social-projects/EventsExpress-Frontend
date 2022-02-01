@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useDelay = (delayedAction, initialValue, timeout = 1000) => {
+const useDelay = (delayedAction, initialValue, timeout = 1000) => {
   const [value, setValue] = useState(initialValue);
 
   useEffect(() => {
@@ -8,7 +8,11 @@ export const useDelay = (delayedAction, initialValue, timeout = 1000) => {
       delayedAction(value);
     }, timeout);
     return () => clearTimeout(timeoutId);
+    //! TODO: ADD CORECT DEPENDENCY IN THE useEffect
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   return [value, setValue];
 };
+
+export default useDelay;

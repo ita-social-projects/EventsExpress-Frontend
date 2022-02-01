@@ -3,7 +3,6 @@ import { UserService } from "../../services";
 import { setErrorAllertFromResponse } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 
-// TODO: REFACTOR IMPORTS IN \src\reducers\users.js
 export const blockUserStates = {
   PENDING: "PENDING_BLOCK",
   SUCCESS: "SUCCESS_BLOCK",
@@ -94,14 +93,14 @@ function updateUnBlockedUser(id) {
   };
 }
 
-const API_SERV = new UserService();
+const apiService = new UserService();
 
 // ACTION CREATOR FOR USER UNBLOCK:
 export function unblockUser(id) {
   return async dispatch => {
     dispatch(setUnBlockUserPending(true));
 
-    const response = await API_SERV.setUserUnblock(id);
+    const response = await apiService.setUserUnblock(id);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -117,7 +116,7 @@ export function blockUser(id) {
   return async dispatch => {
     dispatch(setBlockUserPending(true));
 
-    const response = await API_SERV.setUserBlock(id);
+    const response = await apiService.setUserBlock(id);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -133,7 +132,7 @@ export function changeUserRole(userId, newRoles) {
   return async dispatch => {
     dispatch(setChangeUserRolePending(true));
 
-    const response = await API_SERV.setChangeUserRole({
+    const response = await apiService.setChangeUserRole({
       userId,
       roles: newRoles,
     });

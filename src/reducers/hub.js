@@ -3,7 +3,7 @@ import { INITIAL_CONNECTION, RESET_HUB } from "../actions/chat/chat-action";
 import { EVENT_WAS_CREATED } from "../actions/event/event-add-action";
 import { SET_USERS_HUB, RESET_USERS_HUB } from "../actions/users/users-action";
 
-export const reducer = (state = initialState.hubConnections, action) => {
+const reducer = (state = initialState.hubConnections, action) => {
   switch (action.type) {
     case INITIAL_CONNECTION:
       return {
@@ -11,9 +11,8 @@ export const reducer = (state = initialState.hubConnections, action) => {
         chatHub: action.payload,
       };
     case EVENT_WAS_CREATED:
-      state.chatHub
-        .invoke("EventWasCreated", action.payload)
-        .catch(err => console.error(err));
+      // TODO: Make error handling
+      state.chatHub.invoke("EventWasCreated", action.payload).catch(err => err);
       return state;
     case RESET_HUB:
       return {
@@ -30,3 +29,5 @@ export const reducer = (state = initialState.hubConnections, action) => {
       return state;
   }
 };
+
+export default reducer;

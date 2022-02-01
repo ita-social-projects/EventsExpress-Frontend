@@ -3,16 +3,13 @@ import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import momentLocaliser from "react-widgets-moment";
 import moment from "moment";
+import propTypes from "prop-types";
 import CheckboxGroup from "./CheckboxGroup";
 import ErrorMessages from "../shared/errorMessage";
 
 momentLocaliser(moment);
 
 class SelectNotificationType extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.initialize({
       notificationTypes: this.props.initialValues.notificationTypes,
@@ -42,6 +39,24 @@ class SelectNotificationType extends Component {
     );
   }
 }
+
+SelectNotificationType.propTypes = {
+  initialize: propTypes.func,
+  initialValues: propTypes.object,
+  handleSubmit: propTypes.func,
+  submitting: propTypes.bool,
+  items: propTypes.array,
+  error: propTypes.string,
+};
+
+SelectNotificationType.defaultProps = {
+  initialize: () => {},
+  initialValues: {},
+  handleSubmit: () => {},
+  submitting: false,
+  items: [],
+  error: "",
+};
 
 export default reduxForm({
   form: "SelectNotificationType",

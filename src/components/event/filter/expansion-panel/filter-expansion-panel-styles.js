@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export const useFilterExpansionPanelStyles = makeStyles({
+const useFilterExpansionPanelStyles = makeStyles({
   heading: {
     margin: 0,
     borderWidth: 0,
@@ -12,3 +12,5 @@ export const useFilterExpansionPanelStyles = makeStyles({
     gap: "10px",
   },
 });
+
+export default useFilterExpansionPanelStyles;

@@ -1,7 +1,8 @@
-﻿import React, { Component } from "react";
+﻿import React, { PureComponent } from "react";
 import IconButton from "@material-ui/core/IconButton";
+import propTypes from "prop-types";
 
-export default class CategoryItem extends Component {
+export default class CategoryItem extends PureComponent {
   render() {
     const { item, callback } = this.props;
 
@@ -30,3 +31,13 @@ export default class CategoryItem extends Component {
     );
   }
 }
+
+CategoryItem.propTypes = {
+  item: propTypes.object,
+  callback: propTypes.func,
+};
+
+CategoryItem.defaultProps = {
+  item: {},
+  callback: () => {},
+};

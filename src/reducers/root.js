@@ -1,6 +1,6 @@
 import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
-import { reducer as LoginReducer } from "./login";
+import * as LoginReducer from "./login";
 import * as User from "./user";
 import * as EditEventFromParent from "./edit-event-from-parent";
 import * as Events from "./event-list";

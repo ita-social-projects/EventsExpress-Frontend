@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import { Map, TileLayer } from "react-leaflet";
+import PropTypes from "prop-types";
 import "../../../event/map/map.css";
 
-export default class LocationMap extends Component {
+class LocationMap extends Component {
   constructor(props) {
     super(props);
     this.map = React.createRef();
   }
-
-  updateLocation = latlng => {
-    this.props.onUpdate(latlng);
-  };
 
   handleClick = e => {
     this.updateLocation(e.latlng);
@@ -18,10 +15,14 @@ export default class LocationMap extends Component {
 
   getCurrentZoom() {
     const defaultZoom = 8;
-    return this.map.leafletElement != undefined
-      ? this.map.leafletElement._zoom
+    return this.map.leafletElement !== undefined
+      ? this.map.leafletElement.zoom
       : defaultZoom;
   }
+
+  updateLocation = latlng => {
+    this.props.onUpdate(latlng);
+  };
 
   render() {
     const { error, touched, invalid } = this.props.meta;
@@ -50,3 +51,27 @@ export default class LocationMap extends Component {
     );
   }
 }
+
+LocationMap.propTypes = {
+  meta: PropTypes.shape({
+    error: PropTypes.array,
+    touched: PropTypes.bool,
+    invalid: PropTypes.bool,
+  }),
+  onUpdate: PropTypes.func,
+  location: PropTypes.object,
+  children: PropTypes.oneOfType(PropTypes.object, PropTypes.array),
+};
+
+LocationMap.defaultProps = {
+  meta: {
+    error: [],
+    touched: false,
+    invalid: false,
+  },
+  onUpdate: () => {},
+  location: {},
+  children: {},
+};
+
+export default LocationMap;

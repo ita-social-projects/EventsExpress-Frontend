@@ -1,8 +1,9 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import DraftList from "../components/Draft/Draft-list";
 import SpinnerWrapper from "./spinner";
-import { get_drafts, reset_events } from "../actions/event/event-list-action";
+import { getDrafts, resetEvents } from "../actions/event/event-list-action";
 import filterHelper from "../components/helpers/filterHelper";
 
 class EventDraftListWrapper extends Component {
@@ -12,10 +13,10 @@ class EventDraftListWrapper extends Component {
   }
 
   componentDidMount() {
-    this.props.get_drafts(1);
+    this.props.getDrafts(1);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     const objFilterParams = filterHelper.trimUndefinedKeys(
       this.props.events.filter,
     );
@@ -32,21 +33,21 @@ class EventDraftListWrapper extends Component {
   };
 
   render() {
-    const current_user =
-      this.props.current_user.id !== null ? this.props.current_user : {};
+    const currentUser =
+      this.props.currentUser.id !== null ? this.props.currentUser : {};
     const { data } = this.props.events;
     const { items } = this.props.events.data;
 
     return (
-      <SpinnerWrapper showContent={data != undefined}>
+      <SpinnerWrapper showContent={data !== undefined}>
         <DraftList
-          current_user={current_user}
+          currentUser={currentUser}
           data_list={items}
           filter={this.props.events.filter}
           page={data.pageViewModel.pageNumber}
           totalPages={data.pageViewModel.totalPages}
-          reset_events={this.props.reset_events}
-          get_drafts={this.props.get_drafts}
+          reset_events={this.props.resetEvents}
+          get_drafts={this.props.getDrafts}
           match={this.props.match}
         />
       </SpinnerWrapper>
@@ -57,15 +58,35 @@ class EventDraftListWrapper extends Component {
 const mapStateToProps = state => {
   return {
     events: state.events,
-    current_user: state.user,
+    currentUser: state.user,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_drafts: page => dispatch(get_drafts(page)),
-    reset_events: () => dispatch(reset_events()),
+    get_drafts: page => dispatch(getDrafts(page)),
+    reset_events: () => dispatch(resetEvents()),
   };
+};
+
+EventDraftListWrapper.propTypes = {
+  getDrafts: PropTypes.func,
+  pageViewModel: PropTypes.object,
+  resetEvents: PropTypes.func,
+  events: PropTypes.object,
+  currentUser: PropTypes.object,
+  pageNumber: PropTypes.number,
+  match: PropTypes.object,
+};
+
+EventDraftListWrapper.defaultProps = {
+  getDrafts: () => {},
+  pageViewModel: {},
+  resetEvents: () => {},
+  events: {},
+  currentUser: {},
+  pageNumber: null,
+  match: {},
 };
 
 export default connect(

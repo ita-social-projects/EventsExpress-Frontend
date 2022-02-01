@@ -1,13 +1,14 @@
 ﻿import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { getFormValues, SubmissionError } from "redux-form";
 import Button from "@material-ui/core/Button";
 import EventForm from "../components/event/EventForm/Event-form";
-import { edit_event } from "../actions/event/event-add-action";
+import { editEvent } from "../actions/event/event-add-action";
 import { setSuccessAllert } from "../actions/alert-action";
-import { validate } from "./event-edit-validate-form ";
-import { validateEventForm } from "./event-validate-form";
+import validate from "./event-edit-validate-form ";
+import validateEventForm from "./event-validate-form";
 import {
   buildValidationState,
   handleFormError,
@@ -15,7 +16,7 @@ import {
 
 class EditEventWrapper extends Component {
   onSubmit = async values => {
-    await this.props.edit_event({
+    await this.props.editEvent({
       ...validateEventForm(values),
       user_id: this.props.user_id,
       id: this.props.event.id,
@@ -32,11 +33,11 @@ class EditEventWrapper extends Component {
         <div className="pl-md-4">
           <EventForm
             validate={validate}
-            all_categories={this.props.all_categories}
+            allCategories={this.props.all_categories}
             onSubmit={this.onSubmit}
             onError={this.onError}
             initialValues={this.props.event}
-            form_values={this.props.form_values}
+            formValues={this.props.form_values}
             haveReccurentCheckBox={false}
             eventId={this.props.event.id}
           >
@@ -77,9 +78,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    edit_event: data =>
+    editEvent: data =>
       dispatch(
-        edit_event(
+        editEvent(
           data,
           async response => {
             throw new SubmissionError(await buildValidationState(response));
@@ -90,6 +91,26 @@ const mapDispatchToProps = dispatch => {
     alert: msg => dispatch(setSuccessAllert(msg)),
     handleFormError: error => dispatch(handleFormError(error)),
   };
+};
+
+EditEventWrapper.propTypes = {
+  editEvent: PropTypes.func,
+  event: PropTypes.object,
+  user_id: PropTypes.string,
+  history: PropTypes.object,
+  handleFormError: PropTypes.func,
+  all_categories: PropTypes.object,
+  form_values: PropTypes.object,
+};
+
+EditEventWrapper.defaultProps = {
+  editEvent: () => {},
+  user_id: "",
+  event: {},
+  history: {},
+  handleFormError: () => {},
+  all_categories: {},
+  form_values: {},
 };
 
 export default withRouter(

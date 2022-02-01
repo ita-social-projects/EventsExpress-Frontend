@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as Geocoding from "esri-leaflet-geocoder";
 import L from "leaflet";
 import { countries } from "country-data";
+import PropTypes from "prop-types";
 
 class DisplayMap extends Component {
   constructor(props) {
@@ -12,6 +13,15 @@ class DisplayMap extends Component {
 
     this.defineAddress = this.defineAddress.bind(this);
     this.geocodeCoords();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.location.latitude !== prevProps.location.latitude &&
+      this.props.location.longitude !== prevProps.location.longitude
+    ) {
+      this.geocodeCoords();
+    }
   }
 
   geocodeCoords = () => {
@@ -36,29 +46,29 @@ class DisplayMap extends Component {
     this.setState(() => ({ address: result.address }));
   }
 
-  componentDidUpdate(prevProps) {
-    if (
-      this.props.location.latitude !== prevProps.location.latitude &&
-      this.props.location.longitude !== prevProps.location.longitude
-    ) {
-      this.geocodeCoords();
-    }
-  }
-
   render() {
     const { PlaceName, City, CountryCode } = this.state.address;
 
     return (
       <>
         <div>{PlaceName}</div>
-        {City && City != "" && <div>{City}</div>}
+        {City && City !== "" && <div>{City}</div>}
         {CountryCode &&
-          CountryCode != "" &&
-          PlaceName != countries[CountryCode].name && (
+          CountryCode !== "" &&
+          PlaceName !== countries[CountryCode].name && (
             <div>{countries[CountryCode].name}</div>
           )}
       </>
     );
   }
 }
+
+DisplayMap.propTypes = {
+  location: PropTypes.oneOfType(PropTypes.object, PropTypes.array),
+};
+
+DisplayMap.defaultProps = {
+  location: {},
+};
+
 export default DisplayMap;

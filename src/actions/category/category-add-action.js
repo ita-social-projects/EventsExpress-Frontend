@@ -6,7 +6,7 @@ import { buildValidationState } from "../../components/helpers/action-helpers";
 
 export const SET_CATEGORY_EDITED = "SET_CATEGORY_EDITED";
 
-const API_SERV = new CategoryService();
+const apiService = new CategoryService();
 
 export function setCategoryEdited(data) {
   return {
@@ -20,9 +20,9 @@ const addCategory = data => {
     dispatch(getRequestInc());
     let response;
     if (data.id) {
-      response = await API_SERV.editCategory(data);
+      response = await apiService.editCategory(data);
     } else {
-      response = await API_SERV.setCategory(data);
+      response = await apiService.setCategory(data);
     }
     dispatch(getRequestDec());
     if (!response.ok) {

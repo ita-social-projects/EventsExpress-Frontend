@@ -3,23 +3,27 @@ import PropTypes from "prop-types";
 import EventsForProfile from "../event/EventsForProfile/EventsForProfile";
 import "moment-timezone";
 import "./User-profile.css";
+import eventsProfile from "../../constants/profileEvents";
 
-const Events = ({ data, currentUser, typeOfEvents }) => {
+const Events = ({ events, currentUser, typeOfEvents }) => {
+  const { data } = events;
+
+  const { NO_RESULTS } = eventsProfile;
   return (
     <div className="shadow pl-2 pr-2 pb-2 mb-5 bg-white rounded">
       <EventsForProfile
-        data_list={data.items}
+        dataList={data.items}
         page={data.pageViewModel.pageNumber}
         totalPages={data.pageViewModel.totalPages}
         currentUser={currentUser}
         callback={typeOfEvents}
       />
 
-      {!(data.items && data.items.length > 0) && (
+      {!data.items.length && (
         <div id="notfound" className="w-100">
           <div className="notfound">
             <div className="notfound-404">
-              <div className="h1">No Results</div>
+              <div className="h1">{NO_RESULTS}</div>
             </div>
           </div>
         </div>
@@ -28,16 +32,16 @@ const Events = ({ data, currentUser, typeOfEvents }) => {
   );
 };
 
-Events.defaultProps = {
-  data: [],
-  currentUser: {},
-  typeOfEvents: () => {},
-};
+export default Events;
 
 Events.propTypes = {
-  data: PropTypes.array,
+  events: PropTypes.object,
   currentUser: PropTypes.object,
-  typeOfEvents: PropTypes.func,
+  typeOfEvents: PropTypes.oneOf(PropTypes.string, PropTypes.array),
 };
 
-export default Events;
+Events.defaultProps = {
+  events: {},
+  currentUser: {},
+  typeOfEvents: "",
+};

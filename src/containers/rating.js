@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
-  set_rating,
-  get_currrent_rating,
-  get_average_rating,
+  setRating,
+  getCurrrentRating,
+  getAverageRating,
 } from "../actions/rating-action";
 import RatingAverage from "../components/rating/rating-average";
 import RatingSetter from "../components/rating/rating-setter";
@@ -46,15 +47,32 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     setRate: value =>
       dispatch(
-        set_rating({
+        setRating({
           eventId: props.eventId,
           userId: props.userId,
           rate: value,
         }),
       ),
-    getMyRate: () => dispatch(get_currrent_rating(props.eventId)),
-    getAverageRate: () => dispatch(get_average_rating(props.eventId)),
+    getMyRate: () => dispatch(getCurrrentRating(props.eventId)),
+    getAverageRate: () => dispatch(getAverageRating(props.eventId)),
   };
+};
+
+RatingWrapper.propTypes = {
+  setRate: PropTypes.func,
+  myRate: PropTypes.number,
+  getMyRate: PropTypes.func,
+  getAverageRate: PropTypes.func,
+  iWillVisitIt: PropTypes.array,
+  averageRate: PropTypes.object,
+};
+RatingWrapper.defaultProps = {
+  setRate: () => {},
+  myRate: null,
+  getMyRate: () => {},
+  getAverageRate: () => {},
+  averageRate: {},
+  iWillVisitIt: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RatingWrapper);

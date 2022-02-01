@@ -1,14 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { AuthenticationService } from "../services";
-import { usersHaveAnyOfRoles } from "./auth-utils";
+import usersHaveAnyOfRoles from "./auth-utils";
 
-const api_serv = new AuthenticationService();
+const apiServ = new AuthenticationService();
 
 const withAuthRedirect = allowedRoles => Component => {
   class RedirectComponent extends React.Component {
-    token = api_serv.getCurrentToken();
+    token = apiServ.getCurrentToken();
 
     render() {
       const { user } = this.props;
@@ -25,6 +26,12 @@ const withAuthRedirect = allowedRoles => Component => {
       return <Component {...this.props} />;
     }
   }
+  RedirectComponent.propTypes = {
+    user: PropTypes.object,
+  };
+  RedirectComponent.defaultProps = {
+    user: {},
+  };
 
   const mapStateToProps = state => ({
     user: state.user,

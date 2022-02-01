@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { externalLoginTypeEnum } from "../../../constants/externalLoginTypeEnum";
+import externalLoginTypeEnum from "../../../constants/externalLoginTypeEnum";
 
 const renderType = type => {
   switch (type) {
@@ -19,20 +19,22 @@ const LinkedAuths = ({ item }) => {
   return (
     <div>
       <div className="btn-group m-1" role="group" disabled>
-        <button
+        <a
+          href="/#"
           className="btn btn-secondary disabled"
           aria-disabled="true"
           type="button"
         >
           {renderType(item.type)}
-        </button>
-        <button
+        </a>
+        <a
+          href="/#"
           className="btn btn-outline-secondary disabled"
           type="button"
           aria-disabled="true"
         >
           {item.email}
-        </button>
+        </a>
       </div>
     </div>
   );
@@ -45,5 +47,3 @@ LinkedAuths.defaultProps = {
 LinkedAuths.propTypes = {
   item: PropTypes.object,
 };
-
-export default LinkedAuths;

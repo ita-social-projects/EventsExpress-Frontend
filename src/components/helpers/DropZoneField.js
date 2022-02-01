@@ -7,11 +7,14 @@ import Placeholder from "./Placeholder";
 import ImageResizer from "../event/ImageResizer/Image-resizer";
 import renderFieldError from "./form-helpers/render-field-error";
 
-export default class DropZoneField extends Component {
-  state = {
-    imagefile: [],
-    cropped: false,
-  };
+class DropZoneField extends Component {
+  constructor() {
+    super();
+    this.state = {
+      imagefile: [],
+      cropped: false,
+    };
+  }
 
   componentDidMount() {
     this.props.loadImage().then(image => {
@@ -37,7 +40,7 @@ export default class DropZoneField extends Component {
   };
 
   revokeImageUrl = () => {
-    if (this.state.imagefile[0] != undefined && !this.state.cropped) {
+    if (this.state.imagefile[0] !== undefined && !this.state.cropped) {
       URL.revokeObjectURL(this.state.imagefile[0].preview);
     }
   };
@@ -140,4 +143,31 @@ DropZoneField.propTypes = {
   ),
   onChange: PropTypes.func,
   touched: PropTypes.bool,
+  submitting: PropTypes.bool,
+  crop: PropTypes.func,
+  cropShape: PropTypes.func,
+  meta: PropTypes.object,
+  input: PropTypes.object,
+  loadImage: PropTypes.func,
 };
+// TODO file props
+
+DropZoneField.defaultProps = {
+  imagefile: [
+    {
+      file: {},
+      name: "",
+      preview: "",
+    },
+  ],
+  onChange: () => {},
+  touched: false,
+  submitting: false,
+  crop: () => {},
+  cropShape: () => {},
+  meta: {},
+  input: {},
+  loadImage: () => {},
+};
+
+export default DropZoneField;

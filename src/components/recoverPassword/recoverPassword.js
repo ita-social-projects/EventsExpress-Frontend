@@ -59,19 +59,19 @@ const RecoverPassword = ({
 };
 
 RecoverPassword.defaultProps = {
-  pristine: () => {},
-  reset: false,
-  submitting: () => {},
-  error: "",
   handleSubmit: () => {},
+  pristine: false,
+  reset: () => {},
+  submitting: false,
+  error: [],
 };
 
 RecoverPassword.propTypes = {
-  pristine: PropTypes.func,
-  reset: PropTypes.bool,
-  submitting: PropTypes.func,
-  error: PropTypes.string,
   handleSubmit: PropTypes.func,
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
+  error: PropTypes.array,
 };
 
 export default reduxForm({

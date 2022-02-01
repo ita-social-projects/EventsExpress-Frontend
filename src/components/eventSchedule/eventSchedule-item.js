@@ -9,14 +9,15 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
-import { renderPeriod } from "./render-period";
-import { useStyles } from "./card-style-const";
-import { eventDefaultImage } from "../../constants/eventDefaultImage";
+import PropTypes from "prop-types";
+import renderPeriod from "./render-period";
+import useStyles from "./card-style-const";
+import eventDefaultImage from "../../constants/eventDefaultImage";
 import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();
 
-export default class EventSchedule extends Component {
+class EventSchedule extends Component {
   constructor(props) {
     super(props);
 
@@ -41,16 +42,8 @@ export default class EventSchedule extends Component {
 
   render() {
     const classes = useStyles;
-    const {
-      id,
-      isActive,
-      frequency,
-      periodicity,
-      lastRun,
-      nextRun,
-      title,
-      eventId,
-    } = this.props.item;
+    const { id, frequency, periodicity, lastRun, nextRun, title, eventId } =
+      this.props.item;
     const period = renderPeriod(periodicity, frequency);
     return (
       <div className="col-12 col-sm-8 col-md-6 col-xl-4 mt-3">
@@ -101,3 +94,13 @@ export default class EventSchedule extends Component {
     );
   }
 }
+
+EventSchedule.propTypes = {
+  item: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+};
+
+EventSchedule.defaultProps = {
+  item: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+};
+
+export default EventSchedule;

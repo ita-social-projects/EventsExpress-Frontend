@@ -4,7 +4,7 @@ import { setErrorAllertFromResponse } from "../alert-action";
 import getLinkedAuths from "./linked-auths-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 
-const API_SERV = new AccountService();
+const apiService = new AccountService();
 
 const loginResponseHandler = call => {
   return async dispatch => {
@@ -20,7 +20,7 @@ const loginResponseHandler = call => {
 
 export function localLoginAdd(email, password) {
   return async dispatch => {
-    const response = await API_SERV.setLocalLoginAdd({
+    const response = await apiService.setLocalLoginAdd({
       Email: email,
       Password: password,
     });
@@ -34,7 +34,7 @@ export function localLoginAdd(email, password) {
 
 export function googleLoginAdd(tokenId, email) {
   const call = () =>
-    API_SERV.setGoogleLoginAdd({
+    apiService.setGoogleLoginAdd({
       TokenId: tokenId,
       Email: email,
     });
@@ -43,7 +43,7 @@ export function googleLoginAdd(tokenId, email) {
 
 export function facebookLoginAdd(email) {
   const call = () =>
-    API_SERV.setFacebookLoginAdd({
+    apiService.setFacebookLoginAdd({
       Email: email,
     });
   return loginResponseHandler(call);
@@ -51,7 +51,7 @@ export function facebookLoginAdd(email) {
 
 export function twitterLoginAdd(email) {
   const res = () =>
-    API_SERV.setTwitterLoginAdd({
+    apiService.setTwitterLoginAdd({
       Email: email,
     });
   return loginResponseHandler(res);

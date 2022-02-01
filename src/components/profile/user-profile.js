@@ -10,46 +10,33 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 import genders from "../../constants/GenderConstants";
 import Event from "../event/EventItem/Event-item";
-import { CustomAvatar } from "../avatar/custom-avatar";
+import CustomAvatar from "../avatar/custom-avatar";
 import RatingAverage from "../rating/rating-average";
 import "./User-profile.css";
 import Events from "./events";
 import AuthComponent from "../../security/authComponent";
 import getAge from "../helpers/get-age-string";
+import indexToTabName from "../../constants/indexToTabName";
 
 class UserItemView extends Component {
-  indexToTabName = {
-    futureevents: 0,
-    archiveevents: 1,
-    visitedevents: 2,
-    eventstogo: 3,
-  };
-
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       value:
-        this.indexToTabName[
-          this.splitPath(this.props.history.location.pathname)
-        ],
+        indexToTabName[this.splitPath(this.props.history.location.pathname)],
     };
+    this.splitPath = this.splitPath.bind(this);
   }
 
   componentDidMount = () => {
-    this.handleValue();
+    this.setState({
+      value:
+        indexToTabName[this.splitPath(this.props.history.location.pathname)],
+    });
   };
 
   componentDidUpdate = () => {
-    this.handleValue();
-  };
-
-  handleValue = () => {
-    this.setState({
-      value:
-        this.indexToTabName[
-          this.splitPath(this.props.history.location.pathname)
-        ],
-    });
+    this.componentDidMount();
   };
 
   renderCategories = arr =>
@@ -58,20 +45,26 @@ class UserItemView extends Component {
   renderEvents = arr =>
     arr.map(item => (
       <div className="col-4" key={item.id}>
-        <Event key={item.id} item={item} />
+        <Event item={item} />
       </div>
     ));
 
-  handleChange = (event, value) => {
-    this.setState({ value });
-    if (value === 0) {
-      this.props.onFuture();
-    } else if (value === 1) {
-      this.props.onPast();
-    } else if (value === 2) {
-      this.props.onVisited();
-    } else if (value === 3) {
-      this.props.onToGo();
+  handleChange = value => {
+    switch (value) {
+      case 0:
+        this.props.onFuture();
+        break;
+      case 1:
+        this.props.onPast();
+        break;
+      case 2:
+        this.props.onVisited();
+        break;
+      case 3:
+        this.props.onToGo();
+        break;
+      default:
+        this.setState({ value });
     }
   };
 
@@ -270,32 +263,32 @@ class UserItemView extends Component {
   }
 }
 
-UserItemView.defaultProps = {
-  history: "",
-  data: {},
-  onFuture: () => {},
-  onPast: () => {},
-  onVisited: () => {},
-  onToGo: () => {},
-  onLike: () => {},
-  onDislike: () => {},
-  onReset: () => {},
-  events: {},
-  currentUser: "",
-};
-
 UserItemView.propTypes = {
-  history: PropTypes.string,
-  data: PropTypes.object,
+  history: PropTypes.object,
   onFuture: PropTypes.func,
   onPast: PropTypes.func,
   onVisited: PropTypes.func,
   onToGo: PropTypes.func,
-  onLike: PropTypes.func,
-  onDislike: PropTypes.func,
-  onReset: PropTypes.func,
+  data: PropTypes.object,
   events: PropTypes.object,
-  currentUser: PropTypes.string,
+  onReset: PropTypes.func,
+  onLike: PropTypes.func,
+  currentUser: PropTypes.object,
+  onDislike: PropTypes.func,
+};
+
+UserItemView.defaultProps = {
+  history: {},
+  onFuture: () => {},
+  onPast: () => {},
+  onVisited: () => {},
+  onToGo: () => {},
+  data: {},
+  events: {},
+  onReset: () => {},
+  currentUser: {},
+  onLike: () => {},
+  onDislike: () => {},
 };
 
 export default withRouter(UserItemView);

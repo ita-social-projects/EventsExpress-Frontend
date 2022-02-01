@@ -1,1 +1,1 @@
-export default Issues;
+export { default } from "./issues";

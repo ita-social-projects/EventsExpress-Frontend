@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import EditBirthday from "../../components/profile/editProfile/editBirthday";
 import editBirthday from "../../actions/redactProfile/birthday-edit-action";
 
@@ -21,6 +22,14 @@ const mapDispatchToProps = dispatch => {
   return {
     editBirthday: date => dispatch(editBirthday(date)),
   };
+};
+
+EditBirthdayContainer.propTypes = {
+  editBirthday: PropTypes.func,
+};
+
+EditBirthdayContainer.defaultProps = {
+  editBirthday: () => {},
 };
 
 export default connect(

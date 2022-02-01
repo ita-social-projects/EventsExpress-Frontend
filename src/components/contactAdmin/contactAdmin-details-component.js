@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import propTypes from "prop-types";
 import { createBrowserHistory } from "history";
 import SimpleModalWithDetails from "../helpers/simple-modal-with-details";
 
@@ -29,7 +30,10 @@ export default class ContactAdminDetails extends Component {
               {
                 <SimpleModalWithDetails
                   button={
-                    <button className="btn btn-primary btn-lg mr-5">
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-lg mr-5"
+                    >
                       Mark as resolved
                     </button>
                   }
@@ -40,7 +44,10 @@ export default class ContactAdminDetails extends Component {
               {
                 <SimpleModalWithDetails
                   button={
-                    <button className="btn btn-primary btn-lg mr-5">
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-lg mr-5"
+                    >
                       Move in progress
                     </button>
                   }
@@ -55,3 +62,15 @@ export default class ContactAdminDetails extends Component {
     );
   }
 }
+
+ContactAdminDetails.propTypes = {
+  items: propTypes.object,
+  onInProgress: propTypes.func,
+  onResolve: propTypes.func,
+};
+
+ContactAdminDetails.defaultProps = {
+  items: {},
+  onInProgress: () => {},
+  onResolve: () => {},
+};

@@ -2,7 +2,7 @@ import React from "react";
 import "./footer.css";
 import { Link } from "react-router-dom";
 
-export const Footer = () => {
+const Footer = () => {
   const links = [
     { id: 0, name: "Privacy", path: "/privacy" },
     { id: 1, name: "Terms", path: "/terms" },
@@ -36,3 +36,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;

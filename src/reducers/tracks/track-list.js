@@ -5,7 +5,7 @@ import {
   RESET_TRACKS,
 } from "../../actions/tracks/track-list-action";
 
-export const reducer = (state = initialState.tracks, action) => {
+const reducer = (state = initialState.tracks, action) => {
   switch (action.type) {
     case GET_TRACKS_DATA:
       return {
@@ -23,3 +23,4 @@ export const reducer = (state = initialState.tracks, action) => {
       return state;
   }
 };
+export default reducer;

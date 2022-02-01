@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import "./ThreeStateCheckbox.css";
 
 const updateInput = (ref, checked) => {
@@ -47,6 +48,18 @@ const ThreeStateCheckbox = ({ name, checked, onChange }) => {
       onClick={evt => handleClick(evt)}
     />
   );
+};
+
+ThreeStateCheckbox.defaultProps = {
+  name: "",
+  checked: false,
+  onChange: () => {},
+};
+
+ThreeStateCheckbox.propTypes = {
+  name: PropTypes.string,
+  checked: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 export default ThreeStateCheckbox;

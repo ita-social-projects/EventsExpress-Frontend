@@ -1,26 +1,19 @@
 ﻿import React, { Component } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { connect } from "react-redux";
-import { userDefaultImage } from "../../constants/userDefaultImage";
+import propTypes from "prop-types";
+import userDefaultImage from "../../constants/userDefaultImage";
 import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();
 
-export class CustomAvatar extends Component {
+class CustomAvatar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       avatarImage: null,
     };
-  }
-
-  uploadPhoto() {
-    photoService.getUserPhoto(this.props.userId).then(avatarImage => {
-      if (avatarImage != null) {
-        this.setState({ avatarImage: URL.createObjectURL(avatarImage) });
-      }
-    });
   }
 
   componentDidMount() {
@@ -34,6 +27,14 @@ export class CustomAvatar extends Component {
 
   componentWillUnmount() {
     URL.revokeObjectURL(this.state.avatarImage);
+  }
+
+  uploadPhoto() {
+    photoService.getUserPhoto(this.props.userId).then(avatarImage => {
+      if (avatarImage != null) {
+        this.setState({ avatarImage: URL.createObjectURL(avatarImage) });
+      }
+    });
   }
 
   render() {
@@ -58,10 +59,27 @@ export class CustomAvatar extends Component {
     );
   }
 }
+
+// TODO: change size and changeAvatarCounter in actual props
+CustomAvatar.propTypes = {
+  userId: propTypes.number,
+  name: propTypes.string,
+  size: propTypes.any,
+  changeAvatarCounter: propTypes.any,
+};
+
+CustomAvatar.defaultProps = {
+  userId: null,
+  name: "",
+  size: "change this",
+  changeAvatarCounter: "change this",
+};
+
 const mapStateToProps = state => {
   return {
     changeAvatarCounter: state.change_avatar.Update,
   };
 };
 
-export default connect(mapStateToProps, null)(CustomAvatar);
+const CustomAvatarContainer = connect(mapStateToProps, null)(CustomAvatar);
+export default CustomAvatarContainer;

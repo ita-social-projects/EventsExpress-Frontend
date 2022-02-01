@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import ChangeAvatar from "../../components/profile/editProfile/change-avatar";
-import change_avatar from "../../actions/redactProfile/avatar-change-action";
+import changeAvatar from "../../actions/redactProfile/avatar-change-action";
 import AuthComponent from "../../security/authComponent";
 
 class ChangeAvatarWrapper extends Component {
   submit = values => {
-    return this.props.change_avatar(values);
+    return this.props.changeAvatar(values);
   };
 
   render() {
@@ -27,8 +28,17 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    change_avatar: data => dispatch(change_avatar(data)),
+    change_avatar: data => dispatch(changeAvatar(data)),
   };
+};
+
+ChangeAvatarWrapper.propTypes = {
+  userId: PropTypes.number,
+  changeAvatar: PropTypes.func,
+};
+ChangeAvatarWrapper.defaultProps = {
+  userId: null,
+  changeAvatar: () => {},
 };
 
 export default connect(

@@ -10,4 +10,6 @@ export const GreenButton = withStyles({
       backgroundColor: green[700],
     },
   },
-})(Button);
+});
+
+export default GreenButton(Button);

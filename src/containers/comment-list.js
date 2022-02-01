@@ -1,5 +1,6 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import CommentList from "../components/comment/comment-list";
 import getComments from "../actions/comment/comment-list-action";
 import LocalSpinnerWrapper from "./local-spinner";
@@ -17,7 +18,7 @@ class CommentListWrapper extends Component {
       <LocalSpinnerWrapper showContent={data !== null}>
         <CommentList
           evId={this.props.eventId}
-          data_list={data.items}
+          dataList={data.items}
           page={data.pageViewModel.pageNumber}
           totalPages={data.pageViewModel.totalPages}
           callback={this.props.getComments}
@@ -26,6 +27,20 @@ class CommentListWrapper extends Component {
     );
   }
 }
+
+CommentListWrapper.defaultProps = {
+  getComments: () => {},
+  eventId: null,
+  comments: {},
+  match: {},
+};
+
+CommentListWrapper.propTypes = {
+  getComments: PropTypes.func,
+  eventId: PropTypes.number,
+  comments: PropTypes.object,
+  match: PropTypes.object,
+};
 
 const mapStateToProps = state => ({
   comments: state.comments,
