@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import moment from "moment";
-import PropTypes from "prop-types";
 import ErrorMessages from "../../shared/errorMessage";
 import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";

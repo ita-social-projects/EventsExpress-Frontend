@@ -9,7 +9,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import PropTypes from "prop-types";
 import ErrorMessages from "../../shared/errorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";

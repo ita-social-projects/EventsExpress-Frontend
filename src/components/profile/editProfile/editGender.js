@@ -2,7 +2,6 @@
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
-import PropTypes from "prop-types";
 import { renderSelectField } from "../../helpers/form-helpers";
 import ErrorMessages from "../../shared/errorMessage";
 
