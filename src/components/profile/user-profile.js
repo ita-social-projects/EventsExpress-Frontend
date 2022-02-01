@@ -16,22 +16,14 @@ import "./User-profile.css";
 import Events from "./events";
 import AuthComponent from "../../security/authComponent";
 import getAge from "../helpers/get-age-string";
+import indexToTabName from "../../constants/indexToTabName";
 
 class UserItemView extends Component {
-  indexToTabName = {
-    futureevents: 0,
-    archiveevents: 1,
-    visitedevents: 2,
-    eventstogo: 3,
-  };
-
   constructor() {
     super();
     this.state = {
       value:
-        this.indexToTabName[
-          this.splitPath(this.props.history.location.pathname)
-        ],
+        indexToTabName[this.splitPath(this.props.history.location.pathname)],
     };
     this.splitPath = this.splitPath.bind(this);
   }
@@ -39,7 +31,7 @@ class UserItemView extends Component {
   componentDidMount = () => {
     this.setState({
       value:
-        this.indexToTabName[
+        indexToTabName[
           this.splitPath(this.props.history.location.pathname)
         ],
     });
@@ -61,16 +53,16 @@ class UserItemView extends Component {
 
   handleChange = value => {
     switch (value) {
-      case "0":
+      case 0:
         this.props.onFuture();
         break;
-      case "1":
+      case 1:
         this.props.onPast();
         break;
-      case "2":
+      case 2:
         this.props.onVisited();
         break;
-      case "3":
+      case 3:
         this.props.onToGo();
         break;
       default:
