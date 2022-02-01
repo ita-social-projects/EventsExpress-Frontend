@@ -32,22 +32,14 @@ const GoogleLogin = ({
 
 GoogleLogin.propTypes = {
   googleClientId: PropTypes.string,
-  googleResponseHandler: PropTypes.oneOfType(
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array,
-  ),
-  googleResponseOnFailure: PropTypes.oneOfType(
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array,
-  ),
+  googleResponseHandler: PropTypes.func,
+  googleResponseOnFailure: PropTypes.func,
 };
 
 GoogleLogin.defaultProps = {
   googleClientId: "",
-  googleResponseHandler: "",
-  googleResponseOnFailure: "",
+  googleResponseHandler: () => {},
+  googleResponseOnFailure: () => {},
 };
 
 export default GoogleLogin;

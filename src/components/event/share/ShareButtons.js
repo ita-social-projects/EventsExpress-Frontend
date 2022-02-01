@@ -24,12 +24,12 @@ const ShareButtons = ({ config, href }) => {
 };
 
 ShareButtons.propTypes = {
-  config: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  config: PropTypes.object,
   href: PropTypes.string,
 };
 
 ShareButtons.defaultProps = {
-  config: [],
+  config: {},
   href: "",
 };
 

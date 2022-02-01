@@ -142,13 +142,13 @@ const mapDispatchToProps = dispatch => {
 };
 
 Landing.defaultProps = {
-  events: [],
+  events: {},
   getUpcomingEvents: () => {},
   onSubmit: () => {},
 };
 
 Landing.propTypes = {
-  events: PropTypes.array,
+  events: PropTypes.object,
   getUpcomingEvents: PropTypes.func,
   onSubmit: PropTypes.func,
 };

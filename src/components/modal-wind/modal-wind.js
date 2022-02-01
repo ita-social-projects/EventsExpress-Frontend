@@ -95,13 +95,13 @@ const ModalWind = ({ setStatus, status, renderButton }) => {
 
 ModalWind.defaultProps = {
   setStatus: () => {},
-  status: false,
+  status: {},
   renderButton: () => {},
 };
 
 ModalWind.propTypes = {
   setStatus: PropTypes.func,
-  status: PropTypes.bool,
+  status: PropTypes.object,
   renderButton: PropTypes.func,
 };
 

@@ -22,18 +22,18 @@ class AuthComponent extends Component {
 }
 AuthComponent.propTypes = {
   id: PropTypes.number,
-  roles: PropTypes.object,
-  rolesMatch: PropTypes.bool,
-  children: PropTypes.array,
-  onlyAnonymous: PropTypes.func,
+  roles: PropTypes.array,
+  rolesMatch: PropTypes.string,
+  children: PropTypes.object,
+  onlyAnonymous: PropTypes.bool,
 };
 
 AuthComponent.defaultProps = {
   id: null,
-  roles: {},
-  rolesMatch: false,
-  children: [],
-  onlyAnonymous: () => {},
+  roles: [],
+  rolesMatch: "",
+  children: {},
+  onlyAnonymous: false,
 };
 
 const mapStateToProps = state => ({
