@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
+import PropTypes from "prop-types";
 import genders from "../../constants/GenderConstants";
 import Event from "../event/EventItem/Event-item";
 import CustomAvatar from "../avatar/custom-avatar";
@@ -14,34 +15,30 @@ import RatingAverage from "../rating/rating-average";
 import "./User-profile.css";
 import Events from "./events";
 import AuthComponent from "../../security/authComponent";
-import { getAge } from "../helpers/get-age-string";
+import getAge from "../helpers/get-age-string";
+import indexToTabName from "../../constants/indexToTabName";
 
 class UserItemView extends Component {
-  splitPath(path) {
-    const n = path.toLowerCase().split("/");
-    return n[n.length - 1];
+  constructor() {
+    super();
+    this.state = {
+      value:
+        indexToTabName[this.splitPath(this.props.history.location.pathname)],
+    };
+    this.splitPath = this.splitPath.bind(this);
   }
 
-  indexToTabName = {
-    futureevents: 0,
-    archiveevents: 1,
-    visitedevents: 2,
-    eventstogo: 3,
-  };
-
-  state = {
-    value:
-      this.indexToTabName[this.splitPath(this.props.history.location.pathname)],
-  };
-
   componentDidMount = () => {
-    this.state.value =
-      this.indexToTabName[this.splitPath(this.props.history.location.pathname)];
+    this.setState({
+      value:
+        indexToTabName[
+          this.splitPath(this.props.history.location.pathname)
+        ],
+    });
   };
 
   componentDidUpdate = () => {
-    this.state.value =
-      this.indexToTabName[this.splitPath(this.props.history.location.pathname)];
+    this.componentDidMount();
   };
 
   renderCategories = arr =>
@@ -49,25 +46,41 @@ class UserItemView extends Component {
 
   renderEvents = arr =>
     arr.map(item => (
-      <div className="col-4">
-        <Event key={item.id} item={item} />
+      <div className="col-4" key={item.id}>
+        <Event item={item} />
       </div>
     ));
 
-  handleChange = (event, value) => {
-    this.setState({ value });
-    value === 0 && this.props.onFuture();
-    value === 1 && this.props.onPast();
-    value === 2 && this.props.onVisited();
-    value === 3 && this.props.onToGo();
+  handleChange = value => {
+    switch (value) {
+      case 0:
+        this.props.onFuture();
+        break;
+      case 1:
+        this.props.onPast();
+        break;
+      case 2:
+        this.props.onVisited();
+        break;
+      case 3:
+        this.props.onToGo();
+        break;
+      default:
+        this.setState({ value });
+    }
+  };
+
+  splitPath = path => {
+    const n = path.toLowerCase().split("/");
+    return n[n.length - 1];
   };
 
   render() {
     const { name, email, birthday, gender, categories, id, attitude, rating } =
       this.props.data;
     const userId = this.props.data.id;
-    const categories_list = this.renderCategories(categories);
-    const render_prop = (propName, value) => (
+    const categoriesList = this.renderCategories(categories);
+    const renderProp = (propName, value) => (
       <div className="row mb-3 font-weight-bold">
         <div className="col-4">{`${propName}:`}</div>
         <div className="col-8">{value || ""}</div>
@@ -92,9 +105,11 @@ class UserItemView extends Component {
                     TransitionComponent={Zoom}
                   >
                     <IconButton
-                      className={attitude == "0" ? "text-success" : ""}
+                      className={attitude === "0" ? "text-success" : ""}
                       onClick={
-                        attitude != "0" ? this.props.onLike : this.props.onReset
+                        attitude !== "0"
+                          ? this.props.onLike
+                          : this.props.onReset
                       }
                     >
                       <i className="fas fa-thumbs-up" />
@@ -106,9 +121,9 @@ class UserItemView extends Component {
                     TransitionComponent={Zoom}
                   >
                     <IconButton
-                      className={attitude == "1" ? "text-danger" : ""}
+                      className={attitude === "1" ? "text-danger" : ""}
                       onClick={
-                        attitude != "1"
+                        attitude !== "1"
                           ? this.props.onDislike
                           : this.props.onReset
                       }
@@ -132,11 +147,11 @@ class UserItemView extends Component {
             </div>
           </AuthComponent>
           <div className="col-sm-12  col-md-6">
-            {render_prop("User Name", name)}
-            {render_prop("Age", getAge(birthday))}
-            {render_prop("Gender", genders[gender])}
-            {render_prop("Email", email)}
-            {render_prop("Interests", categories_list)}
+            {renderProp("User Name", name)}
+            {renderProp("Age", getAge(birthday))}
+            {renderProp("Gender", genders[gender])}
+            {renderProp("Email", email)}
+            {renderProp("Interests", categoriesList)}
           </div>
         </div>
         <div className="mt-2">
@@ -205,7 +220,7 @@ class UserItemView extends Component {
               render={() => (
                 <Events
                   events={this.props.events}
-                  current_user={this.props.current_user}
+                  currentUser={this.props.currentUser}
                   typeOfEvents={this.props.onFuture}
                 />
               )}
@@ -216,7 +231,7 @@ class UserItemView extends Component {
               render={() => (
                 <Events
                   events={this.props.events}
-                  current_user={this.props.current_user}
+                  currentUser={this.props.currentUser}
                   typeOfEvents={this.props.onPast}
                 />
               )}
@@ -227,7 +242,7 @@ class UserItemView extends Component {
               render={() => (
                 <Events
                   events={this.props.events}
-                  current_user={this.props.current_user}
+                  currentUser={this.props.currentUser}
                   typeOfEvents={this.props.onVisited}
                 />
               )}
@@ -238,7 +253,7 @@ class UserItemView extends Component {
               render={() => (
                 <Events
                   events={this.props.events}
-                  current_user={this.props.current_user}
+                  currentUser={this.props.currentUser}
                   typeOfEvents={this.props.onToGo}
                 />
               )}
@@ -249,5 +264,32 @@ class UserItemView extends Component {
     );
   }
 }
+UserItemView.propTypes = {
+  history: PropTypes.object,
+  onFuture: PropTypes.func,
+  onPast: PropTypes.func,
+  onVisited: PropTypes.func,
+  onToGo: PropTypes.func,
+  data: PropTypes.object,
+  events: PropTypes.object,
+  onReset: PropTypes.func,
+  onLike: PropTypes.func,
+  currentUser: PropTypes.object,
+  onDislike: PropTypes.func,
+};
+
+UserItemView.defaultProps = {
+  history: {},
+  onFuture: () => {},
+  onPast: () => {},
+  onVisited: () => {},
+  onToGo: () => {},
+  data: {},
+  events: {},
+  onReset: () => {},
+  currentUser: {},
+  onLike: () => {},
+  onDislike: () => {},
+};
 
 export default withRouter(UserItemView);
