@@ -6,8 +6,8 @@ import ModalWind from "../modal-wind";
 import AuthComponent from "../../security/authComponent";
 import "./header.css";
 import logout from "../../actions/login/logout-action";
-import { CustomAvatar } from "../avatar/custom-avatar";
-import { Roles } from "../../constants/userRoles";
+import CustomAvatar from "../avatar/custom-avatar";
+import Roles from "../../constants/userRoles";
 import addEvent from "../../actions/event/event-add-action";
 
 class Header extends Component {

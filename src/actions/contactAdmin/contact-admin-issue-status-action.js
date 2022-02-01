@@ -4,7 +4,7 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const CHANGE_STATUS = "UPDATE_STATUS";
 
-const API_SERV = new ContactAdminService();
+const apiService = new ContactAdminService();
 
 function changStatus(messageId, issueStatus) {
   return {
@@ -16,7 +16,7 @@ function changStatus(messageId, issueStatus) {
 const changeIssueStatus = (messageId, resolutionDetails, issueStatus) => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.updateIssueStatus({
+    const response = await apiService.updateIssueStatus({
       MessageId: messageId,
       ResolutionDetails: resolutionDetails,
       Status: issueStatus,

@@ -7,7 +7,7 @@ export const recoverPasswordStates = {
   DATA: "SET_RECOVERPASSWORD_STATE",
 };
 
-const API_SERV = new AuthenticationService();
+const apiService = new AuthenticationService();
 
 const setRecoverPasswordStateError = data => {
   return {
@@ -19,7 +19,7 @@ const setRecoverPasswordStateError = data => {
 const recoverPassword = data => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.setRecoverPassword(data);
+    const response = await apiService.setRecoverPassword(data);
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setRecoverPasswordStateError(true));

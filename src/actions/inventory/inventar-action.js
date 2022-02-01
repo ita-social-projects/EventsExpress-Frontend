@@ -6,11 +6,11 @@ import { getUsersInventoriesByEventId } from "../users/users-inventories-action"
 import { setErrorAllertFromResponse } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 
-const API_SERV = new InventoryService();
+const apiService = new InventoryService();
 
 export function addItem(item, eventId) {
   return async dispatch => {
-    const response = await API_SERV.setItemToInventory(item, eventId);
+    const response = await apiService.setItemToInventory(item, eventId);
     dispatch(getInventoriesByEventId(eventId));
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
@@ -21,7 +21,7 @@ export function addItem(item, eventId) {
 
 export function deleteItem(itemId, eventId) {
   return async dispatch => {
-    const response = await API_SERV.setItemDelete(itemId, eventId);
+    const response = await apiService.setItemDelete(itemId, eventId);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
@@ -33,7 +33,7 @@ export function deleteItem(itemId, eventId) {
 
 export function editItem(item, eventId) {
   return async dispatch => {
-    const response = await API_SERV.setItem(item, eventId);
+    const response = await apiService.setItem(item, eventId);
     dispatch(getInventoriesByEventId(eventId));
     dispatch(getUsersInventoriesByEventId(eventId));
     if (!response.ok) {
@@ -45,7 +45,7 @@ export function editItem(item, eventId) {
 
 export function wantToTake(data) {
   return async dispatch => {
-    const response = await API_SERV.setWantToTake(data);
+    const response = await apiService.setWantToTake(data);
     if (response.ok) {
       dispatch(getUsersInventoriesByEventId(data.eventId));
       dispatch(getInventoriesByEventId(data.eventId));

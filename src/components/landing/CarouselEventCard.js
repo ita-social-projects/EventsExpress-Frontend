@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import PropTypes from "prop-types";
 import PhotoService from "../../services/PhotoService";
-import { eventDefaultImage } from "../../constants/eventDefaultImage";
+import eventDefaultImage from "../../constants/eventDefaultImage";
 import parseDate from "../helpers/parseDate";
 
 const photoService = new PhotoService();

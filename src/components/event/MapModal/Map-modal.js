@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -11,6 +11,18 @@ import { LocationMapWithCircle } from "../../helpers/form-helpers/location";
 import "../slider.css";
 import DisplayMap from "../map/display-map";
 import constants from "../../../constants/mapModal";
+
+const {
+  FILTER_BY_LOCATION,
+  RADIUS_IS,
+  KM,
+  CURRENT_MAP_POSITION,
+  LATITUDE,
+  LONGITUDE,
+  CHOOSE_MAP_POSITION,
+  CANCEL,
+  APPLY,
+} = constants;
 
 export const MapModal = ({ initialize, values }) => {
   const [open, setOpen] = useState(false);
@@ -25,7 +37,9 @@ export const MapModal = ({ initialize, values }) => {
       selectedPos: { latitude: null, longitude: null },
     });
 
-    values.selectedPos.latitude ? startValue : startValue && setOpen(false);
+    return values.selectedPos.latitude
+      ? startValue
+      : startValue && setOpen(false);
   };
 
   const handleFilter = () => {
@@ -39,7 +53,7 @@ export const MapModal = ({ initialize, values }) => {
         color="primary"
         onClick={handleClickOpen}
       >
-        {constants.FILTER_BY_LOCATION}
+        {FILTER_BY_LOCATION}
       </Button>
       <Dialog
         fullWidth
@@ -47,16 +61,14 @@ export const MapModal = ({ initialize, values }) => {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">
-          {constants.FILTER_BY_LOCATION}
-        </DialogTitle>
+        <DialogTitle id="form-dialog-title">{FILTER_BY_LOCATION}</DialogTitle>
         <DialogContent>
           {values?.radius && (
             <div>
               <div className="slidecontainer">
-                <label>
-                  {constants.RADIUS_IS}
-                  {values.radius} {constants.KM}
+                <label htmlFor="radius-slider">
+                  {RADIUS_IS}
+                  {values.radius} {KM}
                 </label>
                 <Field
                   name="radius"
@@ -65,7 +77,6 @@ export const MapModal = ({ initialize, values }) => {
                   min="1"
                   max="10000"
                   value={values.radius}
-                  onChange={onRadiusChange}
                   step="1"
                   className="radius-slider"
                 />
@@ -75,19 +86,19 @@ export const MapModal = ({ initialize, values }) => {
           <div>
             {!!values.selectedPos.latitude && !!values.selectedPos.longitude && (
               <div>
-                <p>{constants.CURRENT_MAP_POSITION}</p>
+                <p>{CURRENT_MAP_POSITION}</p>
                 <p>
-                  {constants.LATITUDE} {values.selectedPos.latitude}
+                  {LATITUDE} {values.selectedPos.latitude}
                 </p>
                 <p>
-                  {constants.LONGITUDE} {values.selectedPos.longitude}
+                  {LONGITUDE} {values.selectedPos.longitude}
                 </p>
                 <DisplayMap location={{ ...values.selectedPos }} />
               </div>
             )}
             {!!values.selectedPos.latitude && !!values.selectedPos.longitude && (
               <div>
-                <p>{constants.CHOOSE_MAP_POSITION}</p>
+                <p>{CHOOSE_MAP_POSITION}</p>
               </div>
             )}
             <Field
@@ -99,10 +110,10 @@ export const MapModal = ({ initialize, values }) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            {constants.CANCEL}
+            {CANCEL}
           </Button>
           <Button onClick={handleFilter} color="primary">
-            {constants.APPLY}
+            {APPLY}
           </Button>
         </DialogActions>
       </Dialog>

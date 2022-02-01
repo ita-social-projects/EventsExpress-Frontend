@@ -6,9 +6,9 @@ import propTypes from "prop-types";
 import { renderTextField, renderTextArea } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
 import issueTypeEnum from "../../constants/issue-type-enum";
-import { isValidEmail } from "../helpers/validators/email-address-validator";
+import isValidEmail from "../helpers/validators/email-address-validator";
 import { maxLength30 } from "../helpers/validators/min-max-length-validators";
-import { fieldIsRequired } from "../helpers/validators/required-fields-validator";
+import fieldIsRequired from "../helpers/validators/required-fields-validator";
 
 const validate = values => {
   const errors = {};

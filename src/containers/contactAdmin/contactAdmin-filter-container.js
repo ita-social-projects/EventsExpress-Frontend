@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getFormValues, reset } from "redux-form";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 import ContactAdminFilter from "../../components/contactAdmin/contactAdmin-filter-component";
 import filterHelper from "../../components/helpers/filterHelper";
 
@@ -51,14 +51,12 @@ const ContactAdminFilterWrapper = ({
 
   const initialFormValues = buildInitialFormValues();
   return (
-    <>
-      <ContactAdminFilter
-        onSubmit={onSubmit}
-        onReset={onReset}
-        form_values={formValues}
-        initialFormValues={initialFormValues}
-      />
-    </>
+    <ContactAdminFilter
+      onSubmit={onSubmit}
+      onReset={onReset}
+      form_values={formValues}
+      initialFormValues={initialFormValues}
+    />
   );
 };
 

@@ -6,7 +6,7 @@ import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import PropTypes from "prop-types";
-import { enumLocationType } from "../../../../../constants/EventLocationType";
+import enumLocationType from "../../../../../constants/EventLocationType";
 import FilterExpansionPanel from "../../expansion-panel/filter-expansion-panel";
 import { LocationMapWithCircle } from "../../../../helpers/form-helpers/location";
 import DisplayMap from "../../../map/display-map";

@@ -4,7 +4,7 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const GET_CONTACT_ADMIN_DATA = "GET_CONTACT_ADMIN_DATA";
 
-const API_SERV = new ContactAdminService();
+const apiService = new ContactAdminService();
 
 function getMessageByIdData(data) {
   return {
@@ -17,7 +17,7 @@ const getMessageById = id => {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await API_SERV.getMessage(id);
+    const response = await apiService.getMessage(id);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

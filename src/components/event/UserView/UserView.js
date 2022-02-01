@@ -3,11 +3,11 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 import { Link } from "react-router";
 import PropTypes from "prop-types";
-import { userViewAttitude } from "../../helpers/userViewUtils";
-import { CustomAvatar } from "../../avatar/custom-avatar";
+import userViewAttitude from "../../helpers/userViewUtils";
+import CustomAvatar from "../../avatar/custom-avatar";
 import "./UserView.css";
-import { getAge } from "../../helpers/get-age-string";
-import { USER_VIEW_LABELS } from "../../../constants/userViewConstants";
+import getAge from "../../helpers/get-age-string";
+import USER_VIEW_LABELS from "../../../constants/userViewConstants";
 
 const { AGE, YOU, THIS_USER } = USER_VIEW_LABELS;
 

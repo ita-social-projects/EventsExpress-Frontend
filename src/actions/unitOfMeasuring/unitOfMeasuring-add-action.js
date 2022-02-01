@@ -8,7 +8,7 @@ export const SET_UNIT_OF_MEASURING_EDITED = "SET_UNIT_OF_MEASURING_EDITED";
 export const SET_UNIT_OF_MEASURING_PENDING = "SET_UNIT_OF_MEASURING_PENDING";
 export const SET_UNIT_OF_MEASURING_SUCCESS = "SET_UNIT_OF_MEASURING_SUCCESS";
 
-const api_serv = new UnitOfMeasuringService();
+const apiService = new UnitOfMeasuringService();
 
 export function setUnitOfMeasuringEdited(id) {
   return {
@@ -36,9 +36,9 @@ export function addUnitOfMeasuring(data) {
     dispatch(getRequestInc());
     let response;
     if (data.id) {
-      response = await API_SERV.editUnitOfMeasuring(data);
+      response = await apiService.editUnitOfMeasuring(data);
     } else {
-      response = await API_SERV.setUnitOfMeasuring(data);
+      response = await apiService.setUnitOfMeasuring(data);
     }
     dispatch(getRequestDec());
     if (!response.ok) {

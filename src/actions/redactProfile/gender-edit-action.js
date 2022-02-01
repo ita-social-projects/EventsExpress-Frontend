@@ -8,7 +8,7 @@ export const editGenderStates = {
   UPDATE: "UPDATE_GENDER",
 };
 
-const API_SERV = new UserService();
+const apiService = new UserService();
 
 function updateGender(data) {
   return {
@@ -20,7 +20,7 @@ function updateGender(data) {
 const editGender = data => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.setGender(data);
+    const response = await apiService.setGender(data);
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }

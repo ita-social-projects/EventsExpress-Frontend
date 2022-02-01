@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import propTypes from "prop-types";
 import { renderTextField, renderSelectField } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
-import { fieldIsRequired } from "../helpers/validators/required-fields-validator";
+import fieldIsRequired from "../helpers/validators/required-fields-validator";
 
 const validate = values => {
   const requiredFields = ["name", "categoryGroup"];

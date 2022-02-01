@@ -41,21 +41,19 @@ class SearchUsers extends Component {
     const { data } = this.props.users;
 
     return (
-      <>
-        <div className="row">
-          <div className="col-12">
-            <UserSearchFilterWrapper onReset={this.onReset} />
-            <SpinnerWrapper showContent={data !== undefined}>
-              <UserItemList
-                users={this.props.users.data.items}
-                page={this.props.users.data.pageViewModel.pageNumber}
-                totalPages={this.props.users.data.pageViewModel.totalPages}
-                callback={this.getUsers}
-              />
-            </SpinnerWrapper>
-          </div>
+      <div className="row">
+        <div className="col-12">
+          <UserSearchFilterWrapper onReset={this.onReset} />
+          <SpinnerWrapper showContent={data}>
+            <UserItemList
+              users={this.props.users.data.items}
+              page={this.props.users.data.pageViewModel.pageNumber}
+              totalPages={this.props.users.data.pageViewModel.totalPages}
+              callback={this.getUsers}
+            />
+          </SpinnerWrapper>
         </div>
-      </>
+      </div>
     );
   }
 }

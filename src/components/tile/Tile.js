@@ -13,7 +13,7 @@ const Tile = ({
   updateFormValue,
   groupId,
 }) => {
-  const isFormInitialized = () => formValues?.categories !== undefined;
+  const isFormInitialized = () => formValues?.categories;
 
   const handleTriStateChange = state => {
     const ids = categories.map(c => c.id);
@@ -41,10 +41,8 @@ const Tile = ({
       );
 
       if (values.length === 0) return false;
-      if (values.length < opts.length) return null;
       if (values.length === opts.length) return true;
-      //! TODO : RETURN UNDEFINED IS NOT CORRECT
-      return undefined;
+      return null;
     }
     return false;
   };

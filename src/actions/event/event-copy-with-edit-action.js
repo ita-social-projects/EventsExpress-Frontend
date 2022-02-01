@@ -6,7 +6,7 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 export const SET_EVENT_FROM_PARENT_SUCCESS = "SET_EVENT_FROM_PARENT_SUCCESS";
 export const SET_EVENT_FROM_PARENT_PENDING = "SET_EVENT_FROM_PARENT_PENDING";
 
-const API_SERV = new EventService();
+const apiService = new EventService();
 const history = createBrowserHistory({ forceRefresh: true });
 
 export function setEventFromParentSuccess(data) {
@@ -26,7 +26,7 @@ export function setEventFromParentPending(data) {
 const editEventFromParent = data => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.setEventFromParent(data);
+    const response = await apiService.setEventFromParent(data);
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();

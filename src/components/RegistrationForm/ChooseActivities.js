@@ -11,7 +11,8 @@ const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
   useEffect(() => {
     props.getCategoryGroups();
     props.getCategories();
-  }, []);
+    // TODO all options what i tried didn't fix this error
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const mapToCategories = () => {
     const groups = props.categoryGroups;
