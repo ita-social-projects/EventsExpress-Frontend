@@ -11,9 +11,8 @@ const reducer = (state = initialState.hubConnections, action) => {
         chatHub: action.payload,
       };
     case EVENT_WAS_CREATED:
-      state.chatHub
-        .invoke("EventWasCreated", action.payload)
-        .catch(err => console.error(err));
+      // TODO: Make error handling
+      state.chatHub.invoke("EventWasCreated", action.payload).catch(err => err);
       return state;
     case RESET_HUB:
       return {

@@ -3,9 +3,9 @@ import { jwtStorageKey } from "../constants/constants";
 export default class EventsExpressService {
   baseUrl = "api/";
 
-  getResource = async Url => {
-    const call = url =>
-      fetch(this.baseUrl + url, {
+  getResource = async url => {
+    const call = callUrl =>
+      fetch(this.baseUrl + callUrl, {
         method: "get",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -13,17 +13,17 @@ export default class EventsExpressService {
         }),
       });
 
-    let res = await call(Url);
+    let res = await call(url);
     if (res.status === 401 && (await this.refreshHandler())) {
       // one more try:
-      res = await call(Url);
+      res = await call(url);
     }
     return res;
   };
 
-  getPhoto = async Url => {
-    const call = url => fetch(this.baseUrl + Url);
-    const res = await call(Url);
+  getPhoto = async url => {
+    const call = callUrl => fetch(this.baseUrl + callUrl);
+    const res = await call(url);
 
     if (res.ok) {
       return res.blob();
@@ -32,14 +32,14 @@ export default class EventsExpressService {
   };
 
   setResource = async (Url, data) => {
-    const call = (Url, data) =>
-      fetch(this.baseUrl + Url, {
+    const call = (callurl, callData) =>
+      fetch(this.baseUrl + callurl, {
         method: "post",
         headers: new Headers({
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem(jwtStorageKey)}`,
         }),
-        body: JSON.stringify(data),
+        body: JSON.stringify(callData),
       });
 
     let res = await call(Url, data);
@@ -53,13 +53,13 @@ export default class EventsExpressService {
   };
 
   setResourceWithData = async (Url, data) => {
-    const call = (Url, data) =>
-      fetch(this.baseUrl + Url, {
+    const call = (newUrl, newData) =>
+      fetch(this.baseUrl + newUrl, {
         method: "post",
         headers: new Headers({
           Authorization: `Bearer ${localStorage.getItem(jwtStorageKey)}`,
         }),
-        body: data,
+        body: newData,
       });
 
     let res = await call(Url, data);
