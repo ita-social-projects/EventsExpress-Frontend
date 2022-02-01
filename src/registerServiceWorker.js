@@ -22,7 +22,7 @@ function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
-      const registrationCopy = registration;
+      const registrationCopy = { ...registration };
       registrationCopy.onupdatefound = () => {
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {

@@ -3,9 +3,9 @@ import { jwtStorageKey } from "../constants/constants";
 export default class EventsExpressService {
   baseUrl = "api/";
 
-  getResource = async Url => {
-    const call = url =>
-      fetch(this.baseUrl + url, {
+  getResource = async url => {
+    const call = callUrl =>
+      fetch(this.baseUrl + callUrl, {
         method: "get",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -13,17 +13,17 @@ export default class EventsExpressService {
         }),
       });
 
-    let res = await call(Url);
+    let res = await call(url);
     if (res.status === 401 && (await this.refreshHandler())) {
       // one more try:
-      res = await call(Url);
+      res = await call(url);
     }
     return res;
   };
 
-  getPhoto = async Url => {
-    const call = url => fetch(this.baseUrl + url);
-    const res = await call(Url);
+  getPhoto = async url => {
+    const call = callUrl => fetch(this.baseUrl + callUrl);
+    const res = await call(url);
 
     if (res.ok) {
       return res.blob();
