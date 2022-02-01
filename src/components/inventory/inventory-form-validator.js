@@ -1,4 +1,4 @@
-import { fieldIsRequired } from "../helpers/validators/required-fields-validator";
+import fieldIsRequired from "../helpers/validators/required-fields-validator";
 import { maxLength30 } from "../helpers/validators/min-max-length-validators";
 
 const validate = values => {

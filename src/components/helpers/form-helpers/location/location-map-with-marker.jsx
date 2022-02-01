@@ -1,28 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Field } from "redux-form";
 import { Marker, Popup } from "react-leaflet";
-import { LocationMap } from ".";
+import PropTypes from "prop-types";
+import LocationMap from "./location-map";
 
-export default function LocationMapWithMarker(props) {
+const LocationMapWithMarker = ({ latitude, longitude, onChangeValues }) => {
   let initialPos = { lat: 50.4547, lng: 30.5238 };
-  if (props.latitude != null) {
-    initialPos = { lat: props.latitude, lng: props.longitude };
+  if (latitude !== null) {
+    initialPos = { lat: latitude, lng: longitude };
   } else {
-    props.onChangeValues({
+    onChangeValues({
       latitude: initialPos.lat,
       longitude: initialPos.lng,
     });
   }
-  const [location, setLocation] = React.useState(initialPos);
+  const [location, setLocation] = useState(initialPos);
 
-  function handleChange(latlng) {
+  const handleChange = latlng => {
     setLocation(latlng);
-    props.onChangeValues({ latitude: latlng.lat, longitude: latlng.lng });
-  }
+    onChangeValues({ latitude: latlng.lat, longitude: latlng.lng });
+  };
 
-  function updateMarker(e) {
+  const updateMarker = e => {
     handleChange(e.target.getLatLng());
-  }
+  };
 
   return (
     <Field
@@ -38,4 +39,18 @@ export default function LocationMapWithMarker(props) {
       </Marker>
     </Field>
   );
-}
+};
+
+LocationMapWithMarker.defaultProps = {
+  latitude: null,
+  longitude: null,
+  onChangeValues: () => {},
+};
+
+LocationMapWithMarker.propTypes = {
+  latitude: PropTypes.number,
+  longitude: PropTypes.number,
+  onChangeValues: PropTypes.func,
+};
+
+export default LocationMapWithMarker;

@@ -1,4 +1,4 @@
-import { USER_VIEW_LABELS } from "../../constants/userViewConstants";
+import USER_VIEW_LABELS from "../../constants/userViewConstants";
 
 const { LIKE, DISLIKE } = USER_VIEW_LABELS;
 
