@@ -5,14 +5,13 @@ const renderPeriod = (periodicity, frequency) => {
   const periods = ["Day", "Week", "Month", "Year"];
 
   periods.forEach(period => {
-    let value = "";
     if (periodicity === enumPeriodicity.period && frequency > 1) {
-      value = `in ${frequency} ${period.toLowerCase}s`;
+      return `in ${frequency} ${period.toLowerCase}s`;
     }
     if (periodicity === enumPeriodicity.period && frequency === 1) {
-      value = `in a ${period.toLowerCase}`;
+      return `in a ${period.toLowerCase}`;
     }
-    return value;
+    return null;
   });
 };
 
