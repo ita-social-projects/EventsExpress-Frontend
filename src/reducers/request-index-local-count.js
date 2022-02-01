@@ -4,7 +4,7 @@ import {
   REQUEST_LOCAL_DEC,
 } from "../actions/request-local-count-action";
 
-export const reducer = (state = initialState.requestLocalCount, action) => {
+const reducer = (state = initialState.requestLocalCount, action) => {
   switch (action.type) {
     case REQUEST_LOCAL_INC:
       return {

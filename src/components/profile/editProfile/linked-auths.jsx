@@ -47,3 +47,5 @@ LinkedAuths.defaultProps = {
 LinkedAuths.propTypes = {
   item: PropTypes.object,
 };
+
+export default LinkedAuths;

@@ -12,7 +12,7 @@ import {
   changeUserRoleStates,
 } from "../actions/user/user-action";
 
-export const reducer = (state = initialState.users, action) => {
+const reducer = (state = initialState.users, action) => {
   switch (action.type) {
     case GET_USERS_DATA:
       return {
@@ -93,4 +93,5 @@ export const reducer = (state = initialState.users, action) => {
       return state;
   }
 };
+
 export default reducer;
