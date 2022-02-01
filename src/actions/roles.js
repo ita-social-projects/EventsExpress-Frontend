@@ -8,7 +8,7 @@ export const getRolesData = {
   DATA: "ROLES_SUCCESS",
 };
 
-const API_SERV = new RoleService();
+const apiService = new RoleService();
 
 function setRolesSuccess(data) {
   return {
@@ -20,7 +20,7 @@ function setRolesSuccess(data) {
 const getRoles = () => {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await API_SERV.getRoles();
+    const response = await apiService.getRoles();
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));

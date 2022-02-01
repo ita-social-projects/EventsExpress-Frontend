@@ -6,7 +6,7 @@ import { setErrorAllertFromResponse } from "../alert-action";
 export const GET_PROFILE_DATA = "GET_PROFILE_DATA";
 export const RESET_USER = "RESET_USER";
 
-const API_SERV = new UserService();
+const apiService = new UserService();
 
 function getProfile(data) {
   return {
@@ -23,9 +23,9 @@ export function resetUser() {
 
 export function setAttitude(data) {
   return async dispatch => {
-    const response = await API_SERV.setAttitude(data);
+    const response = await apiService.setAttitude(data);
     if (response.ok) {
-      const res = await API_SERV.getUserById(data.userToId);
+      const res = await apiService.getUserById(data.userToId);
       if (!res.ok) {
         dispatch(setErrorAllertFromResponse(response));
         return Promise.reject();
@@ -41,7 +41,7 @@ const getUser = id => {
   return async dispatch => {
     dispatch(getRequestInc());
 
-    const response = await API_SERV.getUserById(id);
+    const response = await apiService.getUserById(id);
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));

@@ -17,9 +17,9 @@ import eventStatusEnum from "../../../constants/eventStatusEnum";
 import useStyle from "../CardStyle/CardStyle";
 import AuthComponent from "../../../security/authComponent";
 import EventHeader from "../EventItemHeader/Event-item-header";
-import { Roles } from "../../../constants/userRoles";
+import Roles from "../../../constants/userRoles";
 import PhotoService from "../../../services/PhotoService";
-import { eventDefaultImage } from "../../../constants/eventDefaultImage";
+import eventDefaultImage from "../../../constants/eventDefaultImage";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();

@@ -6,7 +6,7 @@ import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { jwtStorageKey } from "../../constants/constants";
 
-const API_SERV = new AuthenticationService();
+const apiService = new AuthenticationService();
 const history = createBrowserHistory({ forceRefresh: true });
 
 export function getAccountIdFromJWT() {
@@ -17,7 +17,7 @@ export function getAccountIdFromJWT() {
 
 const registerComplete = data => {
   return async dispatch => {
-    const response = await API_SERV.setRegisterComplete({
+    const response = await apiService.setRegisterComplete({
       ...data,
       accountId: getAccountIdFromJWT(),
     });

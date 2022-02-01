@@ -1,3 +1,4 @@
+/* eslint-disable no-console */ // TODO in lines 42,43,67 in the future need cnahge console.log
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
