@@ -22,15 +22,15 @@ const LinkedAuths = ({ item }) => {
         <a
           href="/#"
           className="btn btn-secondary disabled"
-          role="button"
           aria-disabled="true"
+          type="button"
         >
           {renderType(item.type)}
         </a>
         <a
           href="/#"
           className="btn btn-outline-secondary disabled"
-          role="button"
+          type="button"
           aria-disabled="true"
         >
           {item.email}
@@ -40,22 +40,10 @@ const LinkedAuths = ({ item }) => {
   );
 };
 
-export default LinkedAuths;
-
-LinkedAuths.propTypes = {
-  item: PropTypes.arrayOf(
-    PropTypes.shape({
-      type: PropTypes.string,
-      email: PropTypes.string,
-    }),
-  ),
+LinkedAuths.defaultProps = {
+  item: {},
 };
 
-LinkedAuths.defaultProps = {
-  item: [
-    {
-      type: "",
-      email: "",
-    },
-  ],
+LinkedAuths.propTypes = {
+  item: PropTypes.object,
 };

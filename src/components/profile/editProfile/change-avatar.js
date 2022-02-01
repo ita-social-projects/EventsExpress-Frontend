@@ -1,6 +1,6 @@
 import React from "react";
-import { reduxForm, Field } from "redux-form";
 import PropTypes from "prop-types";
+import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import DropZoneField from "../../helpers/DropZoneField";
 import ErrorMessages from "../../shared/errorMessage";
@@ -24,9 +24,14 @@ const validate = values => {
 
 const photoService = new PhotoService();
 
-const ChangeAvatar = props => {
-  const { handleSubmit, pristine, submitting, invalid } = props;
-
+const ChangeAvatar = ({
+  handleSubmit,
+  pristine,
+  submitting,
+  invalid,
+  error,
+  initialValues,
+}) => {
   return (
     <form name="change-avatar" onSubmit={handleSubmit}>
       <Field
@@ -35,11 +40,9 @@ const ChangeAvatar = props => {
         type="file"
         crop
         cropShape="round"
-        loadImage={() => photoService.getUserPhoto(props.initialValues.userId)}
+        loadImage={() => photoService.getUserPhoto(initialValues.userId)}
       />
-      {props.error && (
-        <ErrorMessages error={props.error} className="text-center" />
-      )}
+      {error && <ErrorMessages error={error} className="text-center" />}
       <div>
         <Button
           color="primary"

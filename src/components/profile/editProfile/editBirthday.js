@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import moment from "moment";
@@ -20,10 +21,9 @@ const validate = values => {
   };
 };
 
-const EditBirthday = props => {
+const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
   const minValue = moment(new Date()).subtract(115, "years");
   const maxValue = moment(new Date()).subtract(14, "years");
-  const { handleSubmit, pristine, reset, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -35,9 +35,7 @@ const EditBirthday = props => {
           component={renderDatePicker}
           parse={parseEuDate}
         />
-        {props.error && (
-          <ErrorMessages error={props.error} className="text-center" />
-        )}
+        {error && <ErrorMessages error={error} className="text-center" />}
       </div>
       <div>
         <Button type="submit" color="primary" disabled={pristine || submitting}>
@@ -54,6 +52,22 @@ const EditBirthday = props => {
       </div>
     </form>
   );
+};
+
+EditBirthday.defaultProps = {
+  pristine: false,
+  reset: () => {},
+  submitting: false,
+  error: "",
+  handleSubmit: () => {},
+};
+
+EditBirthday.propTypes = {
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
+  error: PropTypes.string,
+  handleSubmit: PropTypes.func,
 };
 
 export default reduxForm({

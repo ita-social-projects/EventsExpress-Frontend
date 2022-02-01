@@ -1,4 +1,5 @@
 ﻿import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
 import "moment-timezone";
 import AppBar from "@material-ui/core/AppBar";
@@ -7,7 +8,6 @@ import Tab from "@material-ui/core/Tab";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
-import PropTypes from "prop-types";
 import genders from "../../constants/GenderConstants";
 import Event from "../event/EventItem/Event-item";
 import CustomAvatar from "../avatar/custom-avatar";
@@ -262,6 +262,7 @@ class UserItemView extends Component {
     );
   }
 }
+
 UserItemView.propTypes = {
   history: PropTypes.object,
   onFuture: PropTypes.func,
