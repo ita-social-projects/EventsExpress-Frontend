@@ -27,6 +27,8 @@ const EventList = ({
       history.location.search === "" &&
       history.push(`${history.location.pathname}?page=1`)
     );
+    // TODO: Check useEffect
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalPages, history.location.search]);
 
   const handlePageChange = page => {

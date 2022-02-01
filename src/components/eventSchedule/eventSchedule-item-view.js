@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import Moment from "react-moment";
 import PropTypes from "prop-types";
 import "moment-timezone";
-import { renderPeriod } from "./render-period";
+import renderPeriod from "./render-period";
 import useStyles from "./card-style-const";
 import SelectiveForm from "./selective-form";
 import "../layout/colorlib.css";

@@ -10,7 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
-import { renderPeriod } from "./render-period";
+import renderPeriod from "./render-period";
 import useStyles from "./card-style-const";
 import eventDefaultImage from "../../constants/eventDefaultImage";
 import PhotoService from "../../services/PhotoService";

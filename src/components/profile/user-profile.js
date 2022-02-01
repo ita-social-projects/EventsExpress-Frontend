@@ -31,9 +31,7 @@ class UserItemView extends Component {
   componentDidMount = () => {
     this.setState({
       value:
-        indexToTabName[
-          this.splitPath(this.props.history.location.pathname)
-        ],
+        indexToTabName[this.splitPath(this.props.history.location.pathname)],
     });
   };
 

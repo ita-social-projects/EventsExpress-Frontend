@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import PagePagination from "../../shared/pagePagination";
 import LocalSpinnerWrapper from "../../../containers/local-spinner";
-import { renderItems } from "../../helpers/eventsForProfileUtils";
+import renderItems from "../../helpers/eventsForProfileUtils";
 
 const EventsForProfile = ({
   page,
@@ -16,6 +16,8 @@ const EventsForProfile = ({
 
   useEffect(() => {
     return notificationEvents === null ? callback(currentPage) : null;
+    // TODO: Check useEffect
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handlePageChange = pageEl => {
