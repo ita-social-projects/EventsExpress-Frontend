@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getFormValues, isPristine, SubmissionError } from "redux-form";
 import PropTypes from "prop-types";

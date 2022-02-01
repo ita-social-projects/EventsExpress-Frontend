@@ -36,14 +36,14 @@ class NotificationEvents extends Component {
 NotificationEvents.defaultProps = {
   getEvents: () => {},
   notification: () => {},
-  events: [],
+  events: {},
   currentUser: {},
 };
 
 NotificationEvents.propTypes = {
   getEvents: PropTypes.func,
   notification: PropTypes.func,
-  events: PropTypes.array,
+  events: PropTypes.object,
   currentUser: PropTypes.object,
 };
 

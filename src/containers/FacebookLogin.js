@@ -9,7 +9,8 @@ const LoginFacebook = ({ config }, props) => {
   const responseFacebook = response => {
     //! TODO: LOGIN ISN'T USED ANYWHERE
     // if (typeof response.email === "undefined") {
-    //   props.login.loginError = "Please add email to your facebook account!";
+    // let loginCopy = props.login.loginError;
+    // loginCopy = "Please add email to your facebook account!";
     // }
     props.loginFacebook(response);
   };
@@ -32,14 +33,14 @@ const LoginFacebook = ({ config }, props) => {
 
 LoginFacebook.defaultProps = {
   config: {},
-  // login: {},
+  //   login: {},
   facebookClientId: "",
   loginFacebook: () => {},
 };
 
 LoginFacebook.propTypes = {
   config: PropTypes.object,
-  // login: PropTypes.object,
+  //   login: PropTypes.object,
   facebookClientId: PropTypes.string,
   loginFacebook: PropTypes.func,
 };

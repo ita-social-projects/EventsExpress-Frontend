@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getFormValues, reset } from "redux-form";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 import EventFilter from "../components/event/EventFilter/Event-filter";
 import getСategoriesList from "../actions/category/category-list-action";
 import filterHelper from "../components/helpers/filterHelper";
