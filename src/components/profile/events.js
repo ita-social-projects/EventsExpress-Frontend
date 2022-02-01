@@ -12,10 +12,10 @@ const Events = ({ events, currentUser, typeOfEvents }) => {
   return (
     <div className="shadow pl-2 pr-2 pb-2 mb-5 bg-white rounded">
       <EventsForProfile
-        data_list={data.items}
+        dataList={data.items}
         page={data.pageViewModel.pageNumber}
         totalPages={data.pageViewModel.totalPages}
-        current_user={currentUser}
+        currentUser={currentUser}
         callback={typeOfEvents}
       />
 
