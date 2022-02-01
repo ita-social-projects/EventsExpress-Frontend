@@ -1,15 +1,15 @@
+import { DialogContent } from "@material-ui/core";
 import React, { useState } from "react";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import { DialogContent } from "@material-ui/core";
 import PropTypes from "prop-types";
 import simpleModalConstants from "../../../constants/sipleModalConstants";
 
 const SimpleModal = props => {
   const { data, button } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const [id, setId] = useState(null);
+  const [setId] = useState(null);
 
   const onclick = () => {
     setIsOpen(true);
@@ -27,7 +27,9 @@ const SimpleModal = props => {
 
   return (
     <>
-      <div onClick={onclick}>{button}</div>
+      <div role="button" tabIndex={0} onClick={onclick} onKeyDown={onclick}>
+        {button}
+      </div>
       <Dialog open={isOpen} onClose={onClose}>
         <div className="eventCancel">
           <DialogContent>
