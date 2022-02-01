@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Badge from "@material-ui/core/Badge";
 import "./left-sidebar.css";
-import { NavItem } from "../NavItem/NavItem";
+import NavItem from "../NavItem/NavItem";
 import AuthComponent from "../../security/authComponent";
-import { Roles } from "../../constants/userRoles";
+import Roles from "../../constants/userRoles";
 
 class LeftSidebar extends Component {
   constructor(props) {

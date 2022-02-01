@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
+import PropTypes from "prop-types";
 import ErrorMessages from "../../shared/errorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
 
@@ -34,3 +35,19 @@ const EditUsername = props => {
 export default reduxForm({
   form: "EditUsername",
 })(EditUsername);
+
+EditUsername.propTypes = {
+  handleSubmit: PropTypes.func,
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
+  error: PropTypes.array,
+};
+
+EditUsername.defaultProps = {
+  handleSubmit: () => {},
+  pristine: false,
+  reset: () => {},
+  submitting: false,
+  error: [],
+};
