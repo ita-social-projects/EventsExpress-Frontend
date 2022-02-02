@@ -4,8 +4,9 @@ import Cropper from "react-easy-crop";
 import PropTypes from "prop-types";
 import "./image-resizer.css";
 import Button from "@material-ui/core/Button";
-import CROP from "../../../constants/ImageResizer";
+import imageConstants from "../../../constants/ImageResizer";
 
+const { CROP } = imageConstants;
 class ImageResizer extends Component {
   constructor() {
     super();
