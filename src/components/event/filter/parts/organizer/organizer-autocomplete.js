@@ -73,13 +73,13 @@ const OrganizerAutocomplete = ({ input, options, ...props }) => {
 
 OrganizerAutocomplete.propTypes = {
   input: PropTypes.array,
-  options: PropTypes.oneOfType(PropTypes.object, PropTypes.array),
+  options: PropTypes.array,
   fetchUsers: PropTypes.func,
 };
 
 OrganizerAutocomplete.defaultProps = {
   input: [],
-  options: {},
+  options: [],
   fetchUsers: PropTypes.func,
 };
 

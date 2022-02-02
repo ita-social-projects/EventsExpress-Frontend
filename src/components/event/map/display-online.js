@@ -20,11 +20,11 @@ const DisplayOnline = ({ locationPath }) => {
 };
 
 DisplayOnline.propTypes = {
-  locationPath: PropTypes.oneOfType(PropTypes.obkect, PropTypes.array),
+  locationPath: PropTypes.string,
 };
 
 DisplayOnline.defaultProps = {
-  locationPath: {},
+  locationPath: "",
 };
 
 export default DisplayOnline;

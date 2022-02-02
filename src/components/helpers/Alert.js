@@ -107,13 +107,13 @@ function MySnackbar(props) {
 MySnackbar.propTypes = {
   onClose: PropTypes.func,
   message: PropTypes.string,
-  alert: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  alert: PropTypes.object,
 };
 
 MySnackbar.defaultProps = {
   onClose: () => {},
   message: "",
-  alert: [],
+  alert: {},
 };
 
 export default MySnackbar;

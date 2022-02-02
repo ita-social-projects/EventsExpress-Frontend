@@ -47,8 +47,8 @@ RenderDatePickerFirst.propTypes = {
     error: PropTypes.array,
   }),
   label: PropTypes.string,
-  minValue: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
-  maxValue: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
+  minValue: PropTypes.number,
+  maxValue: PropTypes.number,
   disabled: PropTypes.bool,
 };
 
@@ -63,8 +63,8 @@ RenderDatePickerFirst.defaultProps = {
     error: [],
   },
   label: "",
-  minValue: "",
-  maxValue: "",
+  minValue: null,
+  maxValue: null,
   disabled: false,
 };
 

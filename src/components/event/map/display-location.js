@@ -16,7 +16,7 @@ const DisplayLocation = ({ location }) => {
 };
 
 DisplayLocation.propTypes = {
-  location: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  location: PropTypes.object,
 };
 
 DisplayLocation.defaultProps = {

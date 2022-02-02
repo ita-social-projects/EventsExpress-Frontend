@@ -96,7 +96,7 @@ class EventScheduleItemView extends Component {
 EventScheduleItemView.propTypes = {
   eventSchedule: PropTypes.object,
   getEvent: PropTypes.func,
-  currentUser: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  currentUser: PropTypes.object,
 };
 
 EventScheduleItemView.defaultProps = {

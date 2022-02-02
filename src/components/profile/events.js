@@ -37,11 +37,11 @@ export default Events;
 Events.propTypes = {
   events: PropTypes.object,
   currentUser: PropTypes.object,
-  typeOfEvents: PropTypes.oneOf(PropTypes.string, PropTypes.array),
+  typeOfEvents: PropTypes.func,
 };
 
 Events.defaultProps = {
   events: {},
   currentUser: {},
-  typeOfEvents: "",
+  typeOfEvents: () => {},
 };

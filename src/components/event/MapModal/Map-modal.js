@@ -125,8 +125,8 @@ MapModal.propTypes = {
   initialize: PropTypes.func,
   values: PropTypes.object,
   radius: PropTypes.number,
-  latitude: PropTypes.oneOfType(PropTypes.number, PropTypes.number),
-  longitude: PropTypes.oneOfType(PropTypes.number, PropTypes.number),
+  latitude: PropTypes.number,
+  longitude: PropTypes.number,
 };
 
 MapModal.defaultProps = {

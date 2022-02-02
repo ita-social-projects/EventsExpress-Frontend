@@ -11,13 +11,13 @@ const AlertContainer = ({ open, close, alert }) => {
 AlertContainer.defaultProps = {
   close: () => {},
   alert: {},
-  open: false,
+  open: () => {},
 };
 
 AlertContainer.propTypes = {
   close: PropTypes.func,
   alert: PropTypes.object,
-  open: PropTypes.bool,
+  open: PropTypes.func,
 };
 
 const mapStateToProps = state => {

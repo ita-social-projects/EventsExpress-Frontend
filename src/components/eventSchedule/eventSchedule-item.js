@@ -96,11 +96,11 @@ class EventSchedule extends Component {
 }
 
 EventSchedule.propTypes = {
-  item: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  item: PropTypes.object,
 };
 
 EventSchedule.defaultProps = {
-  item: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  item: {},
 };
 
 export default EventSchedule;

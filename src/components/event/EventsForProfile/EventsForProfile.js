@@ -47,11 +47,11 @@ const EventsForProfile = ({
 };
 
 EventsForProfile.propTypes = {
-  page: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
-  totalPages: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
+  page: PropTypes.number,
+  totalPages: PropTypes.number,
   callback: PropTypes.func,
   notificationEvents: PropTypes.string,
-  currentUser: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
+  currentUser: PropTypes.object,
   dataList: [],
 };
 
@@ -60,7 +60,7 @@ EventsForProfile.defaultProps = {
   totalPages: null,
   callback: () => {},
   notificationEvents: "",
-  currentUser: "",
+  currentUser: {},
   dataList: [],
 };
 
