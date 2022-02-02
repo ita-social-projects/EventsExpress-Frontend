@@ -14,7 +14,7 @@ class LeftSidebarWrapper extends Component {
     return (
       <LeftSidebar
         user={this.props.user}
-        msg_for_read={this.searchUnreadMsg}
+        msgForRead={this.searchUnreadMsg}
         filter={this.props.filter}
       />
     );
