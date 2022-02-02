@@ -1,33 +1,44 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class AuthComponent extends Component {
-    render() {
-        const { id, roles, rolesMatch, children, onlyAnonymous} = this.props;
+  render() {
+    const { id, roles, rolesMatch, children, onlyAnonymous } = this.props;
 
-        if (rolesMatch) {
-            if (id && roles == rolesMatch) {
-                return children;
-            }
-        }
-        else if (onlyAnonymous) {
-            if (!id) {
-                return children;
-            }
-        }
-        else {
-           if (id) {
-                return children;
-            }
-        }
-        return <> </>
+    if (rolesMatch) {
+      if (id && roles === rolesMatch) {
+        return children;
+      }
+    } else if (onlyAnonymous) {
+      if (!id) {
+        return children;
+      }
+    } else if (id) {
+      return children;
     }
+    return <> </>;
+  }
 }
+AuthComponent.propTypes = {
+  id: PropTypes.number,
+  roles: PropTypes.array,
+  rolesMatch: PropTypes.string,
+  children: PropTypes.object,
+  onlyAnonymous: PropTypes.bool,
+};
 
-let mapStateToProps = (state) => (
-{
-    id: state.user.id,
-    roles: state.user.roles,
+AuthComponent.defaultProps = {
+  id: null,
+  roles: [],
+  rolesMatch: "",
+  children: {},
+  onlyAnonymous: false,
+};
+
+const mapStateToProps = state => ({
+  id: state.user.id,
+  roles: state.user.roles,
 });
 
 export default connect(mapStateToProps)(AuthComponent);

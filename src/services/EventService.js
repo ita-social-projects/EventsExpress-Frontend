@@ -1,68 +1,96 @@
-import EventsExpressService from './EventsExpressService'
+import EventsExpressService from "./EventsExpressService";
 
 const baseService = new EventsExpressService();
 
 export default class EventService {
+  getEvent = id => baseService.getResource(`event/${id}`);
 
-    getEvent = id => baseService.getResource(`event/${id}`);
+  getAllEvents = filters => baseService.getResource(`event/all${filters}`);
 
-    getAllEvents = filters => baseService.getResource(`event/all${filters}`);
+  getUpcomingEvents = () => baseService.getResource(`event/Upcoming`);
 
-    getUpcomingEvents = () => baseService.getResource(`event/Upcoming`)
+  getAllDrafts = page => baseService.getResource(`event/AllDraft/${page}`);
 
-    getAllDrafts = (page) => baseService.getResource(`event/AllDraft/${page}`);
-          
-    getEvents = (eventIds, page) => baseService.setResource(`event/getEvents?page=${page}`, eventIds);
+  getEvents = (eventIds, page) =>
+    baseService.setResource(`event/getEvents?page=${page}`, eventIds);
 
-    setEvent = data => baseService.setResource(`event/create`, data);
-    
-    setCopyEvent = eventId =>
-        baseService.setResourceWithData(`event/CreateNextFromParent/${eventId}`);
+  setEvent = data => baseService.setResource(`event/create`, data);
 
-    setEventFromParent = async (data) => {
-        return baseService.setResource( `event/CreateNextFromParentWithEdit/${data.id}`, data);
-    }
-    
-    editEvent = async (data) => {
-        return baseService.setResource(`event/${data.id}/edit`, data)
-    }
-    publishEvent = (id) => {
-       return baseService.setResource(`event/${id}/publish`)
-    }
+  setCopyEvent = eventId =>
+    baseService.setResourceWithData(`event/CreateNextFromParent/${eventId}`);
 
-    setEventStatus = data =>  baseService.setResource(`EventStatusHistory/${data.EventId}/SetStatus`, data);
+  setEventFromParent = async data => {
+    return baseService.setResource(
+      `event/CreateNextFromParentWithEdit/${data.id}`,
+      data,
+    );
+  };
 
-    setUserToEvent = data => baseService.setResource(`event/${data.eventId}/AddUserToEvent?userId=${data.userId}`);
+  editEvent = async data => {
+    return baseService.setResource(`event/${data.id}/edit`, data);
+  };
 
-    setUserFromEvent = data => baseService.setResource(`event/${data.eventId}/DeleteUserFromEvent?userId=${data.userId}`);
+  publishEvent = id => {
+    return baseService.setResource(`event/${id}/publish`);
+  };
 
-    setApprovedUser = data => data.buttonAction
-            ?  baseService.setResource(`event/${data.eventId}/ApproveVisitor?userId=${data.userId}`)
-            :  baseService.setResource(`event/${data.eventId}/DenyVisitor?userId=${data.userId}`);
+  setEventStatus = data =>
+    baseService.setResource(
+      `EventStatusHistory/${data.EventId}/SetStatus`,
+      data,
+    );
 
-    onDeleteFromOwners = data => baseService.setResource(`owners/DeleteFromOwners?userId=${data.userId}&eventId=${data.eventId}`);
+  setUserToEvent = data =>
+    baseService.setResource(
+      `event/${data.eventId}/AddUserToEvent?userId=${data.userId}`,
+    );
 
-    onPromoteToOwner = data => baseService.setResource(`owners/PromoteToOwner?userId=${data.userId}&eventId=${data.eventId}`);
+  setUserFromEvent = data =>
+    baseService.setResource(
+      `event/${data.eventId}/DeleteUserFromEvent?userId=${data.userId}`,
+    );
 
-    setRate = data =>  baseService.setResource('event/setrate', {
-            rate: Number(data.rate),
-            userId: data.userId,
-            eventId: data.eventId
-        });
+  setApprovedUser = data =>
+    data.buttonAction
+      ? baseService.setResource(
+          `event/${data.eventId}/ApproveVisitor?userId=${data.userId}`,
+        )
+      : baseService.setResource(
+          `event/${data.eventId}/DenyVisitor?userId=${data.userId}`,
+        );
 
-    getCurrentRate = eventId => baseService.getResource(`event/${eventId}/GetCurrentRate`);
+  onDeleteFromOwners = data =>
+    baseService.setResource(
+      `owners/DeleteFromOwners?userId=${data.userId}&eventId=${data.eventId}`,
+    );
 
-    getAverageRate = eventId => baseService.getResource(`event/${eventId}/GetAverageRate`);
-    
-    getFutureEvents = async (id, page) =>
-        baseService.getResource(`event/futureEvents?id=${id}&page=${page}`);
+  onPromoteToOwner = data =>
+    baseService.setResource(
+      `owners/PromoteToOwner?userId=${data.userId}&eventId=${data.eventId}`,
+    );
 
-    getPastEvents = (id, page) =>
-        baseService.getResource(`event/pastEvents?id=${id}&page=${page}`);
+  setRate = data =>
+    baseService.setResource("event/setrate", {
+      rate: Number(data.rate),
+      userId: data.userId,
+      eventId: data.eventId,
+    });
 
-    getEventsToGo = (id, page) =>
-        baseService.getResource(`event/EventsToGo?id=${id}&page=${page}`);
+  getCurrentRate = eventId =>
+    baseService.getResource(`event/${eventId}/GetCurrentRate`);
 
-    getVisitedEvents = (id, page) =>
-        baseService.getResource(`event/visitedEvents?id=${id}&page=${page}`);
+  getAverageRate = eventId =>
+    baseService.getResource(`event/${eventId}/GetAverageRate`);
+
+  getFutureEvents = async (id, page) =>
+    baseService.getResource(`event/futureEvents?id=${id}&page=${page}`);
+
+  getPastEvents = (id, page) =>
+    baseService.getResource(`event/pastEvents?id=${id}&page=${page}`);
+
+  getEventsToGo = (id, page) =>
+    baseService.getResource(`event/EventsToGo?id=${id}&page=${page}`);
+
+  getVisitedEvents = (id, page) =>
+    baseService.getResource(`event/visitedEvents?id=${id}&page=${page}`);
 }

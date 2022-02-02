@@ -1,15 +1,15 @@
+import initialState from "../../store/initialState";
+import { GET_NOTIFICATION_TYPES_DATA } from "../../actions/notificationType/notificationType-list-action";
 
-import initialState from '../../store/initialState';
-import { GET_NOTIFICATION_TYPES_DATA } from '../../actions/notificationType/notificationType-list-action';
+const reducer = (state = initialState.notificationTypes, action) => {
+  if (action.type === GET_NOTIFICATION_TYPES_DATA) {
+    return {
+      ...state,
+      data: action.payload,
+    };
+  }
 
-export const reducer = (state = initialState.notificationTypes, action) => {
-    switch (action.type) {
-        case GET_NOTIFICATION_TYPES_DATA:
-            return {
-                ...state,
-                data: action.payload
-            }
-        default:
-            return state;
-    }
-}
+  return state;
+};
+
+export default reducer;

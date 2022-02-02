@@ -1,49 +1,65 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { eventsForNotification } from '../../actions/events/events-for-notification-action';
-import EventList from '../event/events-for-profile';
-import SpinnerWrapper from '../../containers/spinner';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import eventsForNotification from "../../actions/events/events-for-notification-action";
+import EventList from "../event/EventsForProfile/EventsForProfile";
+import SpinnerWrapper from "../../containers/spinner";
 
 class NotificationEvents extends Component {
-    componentWillMount = () => {
-        this.props.get_events(this.props.notification.events);
-    }
+  componentWillMount = () => {
+    this.props.getEvents(this.props.notification.events);
+  };
 
-    render() {
-        const { current_user } = this.props;
-        const { data } = this.props.events;
-        const { items } = this.props.events.data;
+  render() {
+    const { currentUser } = this.props;
+    const { data } = this.props.events;
+    const { items } = this.props.events.data;
 
-        return <SpinnerWrapper showContent={data != undefined}>
-            {items.length == 0 &&
-                <p className="text-center h3">You don't have notifications</p>
-            }
-            <EventList
-                current_user={current_user}
-                notification_events={this.props.notification.events}
-                data_list={items} page={data.pageViewModel.pageNumber}
-                totalPages={data.pageViewModel.totalPages}
-                callback={this.props.get_events}
-            />
-        </SpinnerWrapper>
-    }
+    return (
+      <SpinnerWrapper showContent={data !== undefined}>
+        {items.length === 0 && (
+          <p className="text-center h3">You don&#39;t have notifications</p>
+        )}
+        <EventList
+          current_user={currentUser}
+          notification_events={this.props.notification.events}
+          data_list={items}
+          page={data.pageViewModel.pageNumber}
+          totalPages={data.pageViewModel.totalPages}
+          callback={this.props.getEvents}
+        />
+      </SpinnerWrapper>
+    );
+  }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        events: state.events,
-        current_user: state.user,
-        notification: state.notification
-    }
+NotificationEvents.defaultProps = {
+  getEvents: () => {},
+  notification: () => {},
+  events: {},
+  currentUser: {},
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        get_events: (eventIds, page) => dispatch(eventsForNotification(eventIds, page))
-    }
+NotificationEvents.propTypes = {
+  getEvents: PropTypes.func,
+  notification: PropTypes.func,
+  events: PropTypes.object,
+  currentUser: PropTypes.object,
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(NotificationEvents);
+const mapStateToProps = state => {
+  return {
+    events: state.events,
+    currentUser: state.user,
+    notification: state.notification,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getEvents: (eventIds, page) =>
+      dispatch(eventsForNotification(eventIds, page)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NotificationEvents);

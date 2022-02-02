@@ -1,35 +1,66 @@
-﻿import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+﻿import React from "react";
+import PropTypes from "prop-types";
+import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
-import ErrorMessages from '../../shared/errorMessage';
-import { renderTextField } from '../../helpers/form-helpers';
+import ErrorMessages from "../../shared/errorMessage";
+import { renderTextField } from "../../helpers/form-helpers";
 
-const EditUsername = props => {
-    const { handleSubmit, pristine, reset, submitting } = props;
-    return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <Field
-                    name="userName"
-                    component={renderTextField}
-                    label="UserName"
-                />
-                {
-                    props.error &&
-                    <ErrorMessages error={props.error} className="text-center" />
-                }
-            </div>
-            <div>
-                <Button type="submit" color="primary" disabled={pristine || submitting}>Submit</Button>
-                <Button type="button" color="primary" disabled={pristine || submitting} onClick={reset}>
-                    Clear
-                </Button>
-            </div>
-        </form>
-    );
+const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <Field name="userName" component={renderTextField} label="UserName" />
+        {error && <ErrorMessages error={error} className="text-center" />}
+      </div>
+      <div>
+        <Button type="submit" color="primary" disabled={pristine || submitting}>
+          Submit
+        </Button>
+        <Button
+          type="button"
+          color="primary"
+          disabled={pristine || submitting}
+          onClick={reset}
+        >
+          Clear
+        </Button>
+      </div>
+    </form>
+  );
+};
+
+EditUsername.defaultProps = {
+  pristine: false,
+  reset: () => {},
+  submitting: false,
+  error: "",
+  handleSubmit: () => {},
+};
+
+EditUsername.propTypes = {
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
+  error: PropTypes.string,
+  handleSubmit: PropTypes.func,
 };
 
 export default reduxForm({
-    form: 'EditUsername',
-    
+  form: "EditUsername",
 })(EditUsername);
+
+EditUsername.propTypes = {
+  handleSubmit: PropTypes.func,
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
+  error: PropTypes.array,
+};
+
+EditUsername.defaultProps = {
+  handleSubmit: () => {},
+  pristine: false,
+  reset: () => {},
+  submitting: false,
+  error: [],
+};

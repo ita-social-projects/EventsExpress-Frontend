@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import "./CheckMarkAnimation.css";
 import { Button, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-export class Success extends Component {
+export class Success extends PureComponent {
   render() {
     return (
       <>
@@ -11,16 +11,16 @@ export class Success extends Component {
           <h1 style={{ fontSize: 25 }}>Successful registration!</h1>
         </Grid>
         <div>
-          <svg class="checkmark" viewBox="0 0 52 52">
+          <svg className="checkmark" viewBox="0 0 52 52">
             <circle
-              class="checkmark__circle"
+              className="checkmark__circle"
               cx="26"
               cy="26"
               r="25"
               fill="none"
             />
             <path
-              class="checkmark__check"
+              className="checkmark__check"
               fill="none"
               d="M14.1 27.2l7.1 7.2 16.7-16.8"
             />

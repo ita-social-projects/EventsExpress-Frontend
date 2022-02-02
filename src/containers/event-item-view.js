@@ -1,86 +1,128 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import EventItemView from '../components/event/event-item-view';
-import eventStatusEnum from '../constants/eventStatusEnum';
-import SpinnerWrapper from './spinner';
-import get_event, {
-    join,
-    leave,
-    resetEvent,
-    change_event_status
-}
-    from '../actions/event/event-item-view-action';
-import get_unitsOfMeasuring from '../actions/unitOfMeasuring/unitsOfMeasuring-list-action';
-import { get_inventories_by_event_id } from '../actions/inventory/inventory-list-action';
-import { get_users_inventories_by_event_id, } from '../actions/users/users-inventories-action';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { PropTypes } from "prop-types";
+import EventItemView from "../components/event/EventItemView/Event-item-view";
+import eventStatusEnum from "../constants/eventStatusEnum";
+import SpinnerWrapper from "./spinner";
+import getEvent, {
+  join,
+  leave,
+  resetEvent,
+  changeEventStatus,
+} from "../actions/event/event-item-view-action";
+import getUnitsOfMeasuring from "../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
+import { getInventoriesByEventId } from "../actions/inventory/inventory-list-action";
+import { getUsersInventoriesByEventId } from "../actions/users/users-inventories-action";
 
 class EventItemViewWrapper extends Component {
-    componentWillMount() {
-        const { id } = this.props.match.params;
-        this.props.get_event(id);
-        this.props.get_unitsOfMeasuring();
-        this.props.get_inventories_by_event_id(id);
-        this.props.get_users_inventories_by_event_id(id);
-    }
+  componentWillMount() {
+    const { id } = this.props.match.params;
+    this.props.getEvent(id);
+    this.props.getUnitsOfMeasuring();
+    this.props.getInventoriesByEventId(id);
+    this.props.getUsersInventoriesByEventId(id);
+  }
 
-    componentWillUnmount() {
-        this.props.reset();
-    }
+  componentWillUnmount() {
+    this.props.reset();
+  }
 
-    onJoin = () => {
-        this.props.join(this.props.current_user.id, this.props.event.data.id);
-    }
+  onJoin = () => {
+    this.props.join(this.props.current_user.id, this.props.event.data.id);
+  };
 
-    onLeave = () => {
-        this.props.leave(this.props.current_user.id, this.props.event.data.id);
-    }
+  onLeave = () => {
+    this.props.leave(this.props.current_user.id, this.props.event.data.id);
+  };
 
-    onCancel = (reason, eventStatus) => {
-        this.props.cancel(this.props.event.data.id, reason, eventStatus);
-    }
+  onCancel = (reason, eventStatus) => {
+    this.props.cancel(this.props.event.data.id, reason, eventStatus);
+  };
 
-    onUnCancel = (reason, eventStatus) => {
-        this.props.unCancel(this.props.event.data.id, reason, eventStatus);
-    }
-    onDelete = (reason, eventStatus) => {
-        this.props.delete(this.props.event.data.id, reason, eventStatus);
-    }
+  onUnCancel = (reason, eventStatus) => {
+    this.props.unCancel(this.props.event.data.id, reason, eventStatus);
+  };
 
-    render() {
-        const { data } = this.props.event;
+  onDelete = (reason, eventStatus) => {
+    this.props.delete(this.props.event.data.id, reason, eventStatus);
+  };
 
-        return <SpinnerWrapper showContent={data!=undefined}>
-            <EventItemView
-                event={this.props.event}
-                match={this.props.match}
-                onLeave={this.onLeave}
-                onJoin={this.onJoin}
-                onCancel={this.onCancel}
-                onUnCancel={this.onUnCancel}
-                onDelete={this.onDelete}
-                current_user={this.props.current_user}
-            />
-        </SpinnerWrapper>
-    }
+  render() {
+    const { data } = this.props.event;
+
+    return (
+      <SpinnerWrapper showContent={data !== undefined}>
+        <EventItemView
+          event={this.props.event}
+          match={this.props.match}
+          onLeave={this.onLeave}
+          onJoin={this.onJoin}
+          onCancel={this.onCancel}
+          onUnCancel={this.onUnCancel}
+          onDelete={this.onDelete}
+          currentUser={this.props.current_user}
+        />
+      </SpinnerWrapper>
+    );
+  }
 }
 
-const mapStateToProps = (state) => ({
-    event: state.event,
-    current_user: state.user,
+const mapStateToProps = state => ({
+  event: state.event,
+  current_user: state.user,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    get_event: (id) => dispatch(get_event(id)),
-    join: (userId, eventId) => dispatch(join(userId, eventId)),
-    leave: (userId, eventId) => dispatch(leave(userId, eventId)),
-    cancel: (eventId, reason) => dispatch(change_event_status(eventId, reason, eventStatusEnum.Canceled)),
-    unCancel: (eventId, reason) => dispatch(change_event_status(eventId, reason, eventStatusEnum.Active)),
-    delete: (eventId, reason) => dispatch(change_event_status(eventId, reason, eventStatusEnum.Deleted)),
-    get_users_inventories_by_event_id: (eventId) => dispatch(get_users_inventories_by_event_id(eventId)),
-    get_inventories_by_event_id: (eventId) => dispatch(get_inventories_by_event_id(eventId)),
-    get_unitsOfMeasuring: () => dispatch(get_unitsOfMeasuring()),
-    reset: () => dispatch(resetEvent())
+const mapDispatchToProps = dispatch => ({
+  getEvent: id => dispatch(getEvent(id)),
+  join: (userId, eventId) => dispatch(join(userId, eventId)),
+  leave: (userId, eventId) => dispatch(leave(userId, eventId)),
+  cancel: (eventId, reason) =>
+    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Canceled)),
+  unCancel: (eventId, reason) =>
+    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Active)),
+  delete: (eventId, reason) =>
+    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Deleted)),
+  getUsersInventoriesByEventId: eventId =>
+    dispatch(getUsersInventoriesByEventId(eventId)),
+  getInventoriesByEventId: eventId =>
+    dispatch(getInventoriesByEventId(eventId)),
+  getUnitsOfMeasuring: () => dispatch(getUnitsOfMeasuring()),
+  reset: () => dispatch(resetEvent()),
 });
 
+EventItemViewWrapper.propTypes = {
+  match: PropTypes.object,
+  event: PropTypes.object,
+  delete: PropTypes.func,
+  cancel: PropTypes.func,
+  join: PropTypes.func,
+  reset: PropTypes.func,
+  getEvent: PropTypes.func,
+  getUnitsOfMeasuring: PropTypes.func,
+  unCancel: PropTypes.func,
+  leave: PropTypes.func,
+  current_user: PropTypes.func,
+  getInventoriesByEventId: PropTypes.func,
+  getUsersInventoriesByEventId: PropTypes.func,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventItemViewWrapper);
+EventItemViewWrapper.defaultProps = {
+  match: {},
+  event: {},
+  cancel: () => {},
+  getEvent: () => {},
+  join: () => {},
+  reset: () => {},
+  getUnitsOfMeasuring: () => {},
+  delete: () => {},
+  unCancel: () => {},
+  leave: () => {},
+  current_user: () => {},
+  getInventoriesByEventId: () => {},
+  getUsersInventoriesByEventId: () => {},
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(EventItemViewWrapper);

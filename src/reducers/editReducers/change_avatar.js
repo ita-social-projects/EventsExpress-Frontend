@@ -1,16 +1,13 @@
-import { changeAvatar } from '../../actions/redactProfile/avatar-change-action';
-import initialState from '../../store/initialState';
+import { changeAvatarStates } from "../../actions/redactProfile/avatar-change-action";
+import initialState from "../../store/initialState";
 
-export const reducer = (
-    state = initialState.change_avatar,
-    action) => {
-    switch (action.type) {
-        case changeAvatar.UPDATE:
-            return Object.assign({}, state, {
-                Update: state.Update+1
-            });
-            
-        default:
-            return state;
-    }
-}
+const { UPDATE } = changeAvatarStates;
+
+const reducer = (state = initialState.change_avatar, action) => {
+  if (action.type === UPDATE) {
+    return { ...state, Update: state.Update + 1 };
+  }
+  return state;
+};
+
+export default reducer;

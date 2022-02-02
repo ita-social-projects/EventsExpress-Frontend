@@ -1,3 +1,3 @@
-import ModalWind from './modal-wind';
+import ModalWind from "./modal-wind";
 
 export default ModalWind;

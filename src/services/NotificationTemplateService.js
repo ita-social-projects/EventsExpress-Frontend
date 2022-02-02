@@ -3,12 +3,16 @@
 const baseService = new EventsExpressService();
 
 export default class NotificationTemplateService {
+  getAll = () => baseService.getResource(`NotificationTemplate/All`);
 
-    getAll = () => baseService.getResource(`NotificationTemplate/All`);
+  getByIdAsync = id =>
+    baseService.getResource(`NotificationTemplate/${id}/Get`);
 
-    getByIdAsync = id => baseService.getResource(`NotificationTemplate/${id}/Get`);
+  getProperties = templateId =>
+    baseService.getResource(
+      `NotificationTemplate/${templateId}/GetTemplateProperties`,
+    );
 
-    getProperties = template_id => baseService.getResource(`NotificationTemplate/${template_id}/GetTemplateProperties`);
-
-    updateAsync = data => baseService.setResource(`NotificationTemplate/Edit`, data);
+  updateAsync = data =>
+    baseService.setResource(`NotificationTemplate/Edit`, data);
 }

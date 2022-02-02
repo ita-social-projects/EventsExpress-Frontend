@@ -1,39 +1,45 @@
-﻿import React, { Component } from 'react';
-import UserInfoCard from '../user-info/User-info-card';
-import PagePagination from '../shared/pagePagination';
+﻿import React from "react";
+import PropTypes from "prop-types";
+import UserInfoCard from "../user-info/User-info-card";
+import PagePagination from "../shared/pagePagination";
 
-export default class UserItemList extends Component {
-    constructor() {
-        super();
-        this.state = {
-            currentPage: 1
-        };
-    }
+const UserItemList = ({ page, totalPages, users, callback }) => {
+  const handlePageChange = pageEl => {
+    callback(
+      window.location.search.replace(/(page=)[0-9]+/gm, `page=${pageEl}`),
+    );
+  };
 
-    handlePageChange = (page, e) => {
-        this.props.callback(window.location.search.replace(/(page=)[0-9]+/gm, 'page=' + page));
-        this.setState({
-            currentPage: page
-        });
-    };
+  const renderUsers = arr => {
+    return arr.map(user => <UserInfoCard key={user.id} user={user} />);
+  };
 
+  return (
+    <>
+      {renderUsers(users)}
+      {totalPages > 1 && (
+        <PagePagination
+          currentPage={page}
+          totalPages={totalPages}
+          callback={handlePageChange}
+        />
+      )}
+    </>
+  );
+};
 
-    renderUsers = (arr) => {
-        return arr.map(user =>
-            <UserInfoCard key={user.id} user={user} />);
-    }
+UserItemList.defaultProps = {
+  callback: () => {},
+  totalPages: null,
+  page: null,
+  users: [],
+};
 
-    render() {
-        const { page, totalPages } = this.props;
-        return <>
-            {this.renderUsers(this.props.users)}
-            {totalPages > 1 &&
-                <PagePagination
-                    currentPage={page}
-                    totalPages={totalPages}
-                    callback={this.handlePageChange}
-                />
-            }
-        </>
-    }
-}
+UserItemList.propTypes = {
+  callback: PropTypes.func,
+  totalPages: PropTypes.number,
+  page: PropTypes.number,
+  users: PropTypes.array,
+};
+
+export default UserItemList;

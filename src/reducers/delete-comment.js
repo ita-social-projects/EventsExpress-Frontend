@@ -1,9 +1,9 @@
-﻿import initialState from '../store/initialState';
+﻿// TODO unused reducer
+// import initialState from "../store/initialState";
 
-export const reducer = (state = initialState.delete_comment, action) => {
-
-    switch (action.type) {
-        default:
-            return state;
-    }
-}
+// export const reducer = (state = initialState.delete_comment, action) => {
+//   switch (action.type) {
+//     default:
+//       return state;
+//   }
+// };

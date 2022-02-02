@@ -1,5 +1,4 @@
-export function getQueryStringByUsersFilter (filter) {
-    return `?keyWord=${filter !== undefined 
-        ? filter.keyWord
-        : ''}`;
-}
+const getQueryStringByUsersFilter = filter =>
+  `?keyWord=${filter !== undefined ? filter.keyWord : ""}`;
+
+export default getQueryStringByUsersFilter;

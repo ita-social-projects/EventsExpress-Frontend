@@ -1,26 +1,45 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
 import { GoogleLogin as Login } from "react-google-login";
+import PropTypes from "prop-types";
 
-export default class GoogleLogin extends Component {
+const GoogleLogin = ({
+  googleClientId,
+  googleResponseHandler,
+  googleResponseOnFailure,
+}) => {
+  return (
+    <div>
+      <Login
+        clientId={googleClientId}
+        render={renderProps => (
+          <button
+            type="button"
+            className="btnGoogle"
+            onClick={renderProps.onClick}
+            disabled={renderProps.disabled}
+          >
+            <i className="fab fa-google blue fa-lg" />
+            <span>Log in</span>
+          </button>
+        )}
+        onSuccess={googleResponseHandler}
+        onFailure={googleResponseOnFailure}
+        version="3.2"
+      />
+    </div>
+  );
+};
 
-    render() {
-        const { googleClientId, googleResponseHandler, googleResponseOnFailure } = this.props;
+GoogleLogin.propTypes = {
+  googleClientId: PropTypes.string,
+  googleResponseHandler: PropTypes.func,
+  googleResponseOnFailure: PropTypes.func,
+};
 
-        return (
-            <div>
-                <Login
-                    clientId={googleClientId}
-                    render={renderProps => (
-                        <button className="btnGoogle" onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                            <i className="fab fa-google blue fa-lg" />
-                            <span>Log in</span>
-                        </button>
-                    )}
-                    onSuccess={googleResponseHandler}
-                    onFailure={googleResponseOnFailure}
-                    version="3.2"
-                />
-            </div>
-        );
-    }
-}
+GoogleLogin.defaultProps = {
+  googleClientId: "",
+  googleResponseHandler: () => {},
+  googleResponseOnFailure: () => {},
+};
+
+export default GoogleLogin;

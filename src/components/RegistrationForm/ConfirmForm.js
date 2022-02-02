@@ -1,11 +1,14 @@
 import React from "react";
 import { Grid, List, ListItem, ListItemText, Button } from "@material-ui/core";
-import SelectedActivitiesList from "./SelectedActivitiesList";
 import { reduxForm, getFormValues } from "redux-form";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import moment from "moment";
+import SelectedActivitiesList from "./SelectedActivitiesList";
 
-const ConfirmForm = (props) => {
+const gendersArray = ["", "Male", "Female", "Other"];
+
+const ConfirmForm = props => {
   const { handleSubmit, pristine, previousPage, submitting } = props;
 
   const areCategoriesSelected = () => {
@@ -15,18 +18,18 @@ const ConfirmForm = (props) => {
   const getSelectedCategories = () => {
     const selected = props.formValues.categories;
 
-    const filteredCategories = props.categories.filter((el) =>
-      selected.includes(el.id)
+    const filteredCategories = props.categories.filter(el =>
+      selected.includes(el.id),
     );
 
     return props.categoryGroups
-      .map((g) => ({
+      .map(g => ({
         group: g.title,
         categories: filteredCategories
-          .filter((c) => c.categoryGroup.id === g.id)
-          .map((el) => el.name),
+          .filter(c => c.categoryGroup.id === g.id)
+          .map(el => el.name),
       }))
-      .filter((el) => el.categories.length > 0);
+      .filter(el => el.categories.length > 0);
   };
 
   return (
@@ -61,7 +64,7 @@ const ConfirmForm = (props) => {
                     secondary={
                       props.formValues.birthDate
                         ? moment(props.formValues.birthDate).format(
-                            "DD-MM-YYYY"
+                            "DD-MM-YYYY",
                           )
                         : "Not entered."
                     }
@@ -128,9 +131,27 @@ const ConfirmForm = (props) => {
   );
 };
 
-const gendersArray = ["", "Male", "Female", "Other"];
+ConfirmForm.defaultProps = {
+  handleSubmit: () => {},
+  previousPage: () => {},
+  formValues: {},
+  categoryGroups: [],
+  categories: [],
+  pristine: false,
+  submitting: false,
+};
 
-const mapStateToProps = (state) => {
+ConfirmForm.propTypes = {
+  handleSubmit: PropTypes.func,
+  previousPage: PropTypes.func,
+  formValues: PropTypes.object,
+  categoryGroups: PropTypes.array,
+  categories: PropTypes.array,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
+};
+
+const mapStateToProps = state => {
   return {
     formValues: getFormValues("registrationForm")(state),
     categoryGroups: state.categoryGroups.data,
@@ -143,5 +164,5 @@ export default connect(mapStateToProps)(
     form: "registrationForm",
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
-  })(ConfirmForm)
+  })(ConfirmForm),
 );

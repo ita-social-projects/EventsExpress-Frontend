@@ -1,23 +1,26 @@
-﻿import EventsExpressService from './EventsExpressService'
+﻿import EventsExpressService from "./EventsExpressService";
 
 const baseService = new EventsExpressService();
 
 export default class UnitOfMeasuringService {
-    getUnitsOfMeasuring = async () => baseService.getResource('unitofmeasuring/all');
+  getUnitsOfMeasuring = async () =>
+    baseService.getResource("unitofmeasuring/all");
 
-    setUnitOfMeasuringDelete = data => baseService.setResource(`unitOfMeasuring/delete/${data}`);
+  setUnitOfMeasuringDelete = data =>
+    baseService.setResource(`unitOfMeasuring/delete/${data}`);
 
-    setUnitOfMeasuring = data => baseService.setResource('unitOfMeasuring/create', {
-        unitName: data.unitName,
-        shortName: data.shortName,
-        categoryId: data.categoryId
+  setUnitOfMeasuring = data =>
+    baseService.setResource("unitOfMeasuring/create", {
+      unitName: data.unitName,
+      shortName: data.shortName,
+      categoryId: data.categoryId,
     });
 
-    editUnitOfMeasuring = data => baseService.setResource('unitOfMeasuring/edit', {
-        id: data.id,
-        unitName: data.unitName,
-        shortName: data.shortName,
-        categoryId: data.categoryId
+  editUnitOfMeasuring = data =>
+    baseService.setResource("unitOfMeasuring/edit", {
+      id: data.id,
+      unitName: data.unitName,
+      shortName: data.shortName,
+      categoryId: data.categoryId,
     });
 }
-

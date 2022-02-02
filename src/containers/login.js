@@ -1,29 +1,35 @@
-﻿import { connect } from 'react-redux';
-import React, { Component } from 'react';
-import Login from '../components/login';
-import login from '../actions/login/login-action';
+﻿import { connect } from "react-redux";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Login from "../components/login";
+import login from "../actions/login/login-action";
 
 class LoginWrapper extends Component {
-  submit = values => this.props.login(values.email, values.password)
+  submit = values => this.props.login(values.email, values.password);
 
   render() {
-    return <Login onSubmit={this.submit}/>
+    return <Login onSubmit={this.submit} />;
   }
 }
 
 const mapStateToProps = state => {
   return {
-    loginStatus: state.login
-  }
+    loginStatus: state.login,
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (email, password) => dispatch(login(email, password))
+    login: (email, password) => dispatch(login(email, password)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LoginWrapper);
+LoginWrapper.propTypes = {
+  login: PropTypes.func,
+};
+
+LoginWrapper.defaultProps = {
+  login: () => {},
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginWrapper);

@@ -1,15 +1,17 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "react-widgets/dist/css/react-widgets.css";
-import { LocationMapWithMarker } from "../helpers/form-helpers/location";
-import { enumLocationType } from "../../constants/EventLocationType";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
-import { renderFieldError } from "../helpers/form-helpers";
 import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import TextField from "@material-ui/core/TextField";
-export default class Location extends Component {
-  onChangeLocationType = (event) => {
+import { renderFieldError } from "../helpers/form-helpers";
+import enumLocationType from "../../constants/EventLocationType";
+import { LocationMapWithMarker } from "../helpers/form-helpers/location";
+
+class Location extends Component {
+  onChangeLocationType = event => {
     const type = Number(event.target.value);
     if (type === enumLocationType.map) {
       this.props.input.onChange({ type, latitude: null, longitude: null });
@@ -18,14 +20,14 @@ export default class Location extends Component {
     }
   };
 
-  onUrlInputChange = (event) => {
+  onUrlInputChange = event => {
     this.props.input.onChange({
       type: enumLocationType.online,
       onlineMeeting: event.target.value === "" ? null : event.target.value,
     });
   };
 
-  onMapLocationChange = (mapLocation) => {
+  onMapLocationChange = mapLocation => {
     this.props.input.onChange({
       type: enumLocationType.map,
       latitude: mapLocation.latitude,
@@ -34,7 +36,10 @@ export default class Location extends Component {
   };
 
   render() {
-    const { input:{value}, meta:{touched, error} } = this.props;
+    const {
+      input: { value },
+      meta: { touched, error },
+    } = this.props;
     return (
       <span>
         <FormControl name="location.type">
@@ -63,7 +68,7 @@ export default class Location extends Component {
           )}
           {value !== "" && value.type === enumLocationType.online && (
             <>
-              <label htmlFor="url">Enter an https:// URL:</label>
+              <span htmlFor="url">Enter an https:// URL:</span>
               <br />
               <TextField
                 name="onlineMeeting"
@@ -77,8 +82,20 @@ export default class Location extends Component {
             </>
           )}
         </div>
-        { renderFieldError({ touched, error, })}
+        {renderFieldError({ touched, error })}
       </span>
     );
   }
 }
+
+Location.defaultProps = {
+  input: {},
+  meta: {},
+};
+
+Location.propTypes = {
+  input: PropTypes.object,
+  meta: PropTypes.object,
+};
+
+export default Location;

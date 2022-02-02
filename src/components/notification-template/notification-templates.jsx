@@ -1,30 +1,33 @@
-﻿import React, { Component } from 'react';
-import NotificationTemplateItem from './notification-template-item';
+﻿import React from "react";
+import PropTypes from "prop-types";
+import NotificationTemplateItem from "./notification-template-item";
 
-export default class NotificationTemplates extends Component {
+const NotificationTemplates = ({ templates }) => {
+  return (
+    <table className="table table-hover">
+      <thead className="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        {templates.map(template => (
+          <NotificationTemplateItem key={template.id} template={template} />
+        ))}
+      </tbody>
+    </table>
+  );
+};
 
-    renderTemplates = (arr) => arr.map(
-        template => <NotificationTemplateItem key={template.id} template={template} />
-    );
+NotificationTemplates.defaultProps = {
+  templates: [],
+};
 
-    render() {
-        const { templates } = this.props;
+NotificationTemplates.propTypes = {
+  templates: PropTypes.array,
+};
 
-        return (
-            <table className="table table-hover">
-                <thead className="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Subject</th>
-                        <th scope="col">Message</th>
-                        <th scope="col"/>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.renderTemplates(templates)}
-                </tbody>
-            </table>
-        );
-    }
-}
+export default NotificationTemplates;

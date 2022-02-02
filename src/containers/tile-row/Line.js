@@ -1,7 +1,8 @@
 ﻿import React from "react";
+import PropTypes from "prop-types";
 import "./Line.css";
 
-const Line = (props) => {
+const Line = props => {
   const definePath = () => {
     const param = props.index * 40;
 
@@ -18,6 +19,12 @@ const Line = (props) => {
       <path d={definePath()} strokeLinecap="round" />
     </svg>
   );
+};
+Line.propTypes = {
+  index: PropTypes.number,
+};
+Line.defaultProps = {
+  index: null,
 };
 
 export default Line;

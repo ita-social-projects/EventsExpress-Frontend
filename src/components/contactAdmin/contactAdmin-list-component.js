@@ -1,15 +1,16 @@
 ﻿import React, { Component } from "react";
+import { parse as queryStringParse } from "query-string";
+import { withRouter } from "react-router-dom";
+import propTypes from "prop-types";
 import ContactAdminItemWrapper from "../../containers/contactAdmin/contactAdmin-item-container";
 import RenderIssuesList from "./renderIssuesList";
-import { parse as queryStringParse } from "query-string";
 import filterHelper from "../helpers/filterHelper";
-import { withRouter } from "react-router";
 
 class ContactAdminList extends Component {
-  pageChange = (page) => {
-    const history = this.props.history;
-    if (history.location.search == "")
-      history.push(history.location.pathname + `?page=${page}`);
+  pageChange = page => {
+    const { history } = this.props;
+    if (history.location.search === "")
+      history.push(`${history.location.pathname}?page=${page}`);
     else {
       const queryStringInObject = queryStringParse(history.location.search);
       queryStringInObject.page = page;
@@ -19,11 +20,13 @@ class ContactAdminList extends Component {
     }
   };
 
-  renderSingleIssue = (item) => (
+  renderSingleIssue = item => (
     <ContactAdminItemWrapper key={item.messageId + item.status} item={item} />
   );
 
   render() {
+    const changedProps = { ...this.props, dataList: this.props.data_list };
+
     return (
       <>
         {this.props.data_list > 0 ? (
@@ -35,7 +38,7 @@ class ContactAdminList extends Component {
             <td className="justify-content-center">Status</td>
             <td className="justify-content-center">Details</td>
             <RenderIssuesList
-              {...this.props}
+              {...changedProps}
               renderSingleIssue={this.renderSingleIssue}
               handlePageChange={this.pageChange}
             />
@@ -45,7 +48,7 @@ class ContactAdminList extends Component {
         )}
         {this.props.data_list < 1 ? (
           <RenderIssuesList
-            {...this.props}
+            {...changedProps}
             renderSingleIssue={this.renderSingleIssue}
             handlePageChange={this.pageChange}
           />
@@ -56,4 +59,15 @@ class ContactAdminList extends Component {
     );
   }
 }
+
+ContactAdminList.propTypes = {
+  history: propTypes.object,
+  data_list: propTypes.array,
+};
+
+ContactAdminList.defaultProps = {
+  history: {},
+  data_list: [],
+};
+
 export default withRouter(ContactAdminList);

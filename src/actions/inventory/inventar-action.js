@@ -1,54 +1,55 @@
-import { InventoryService } from '../../services';
-import { get_inventories_by_event_id } from './inventory-list-action';
-import { get_users_inventories_by_event_id } from '../users/users-inventories-action';
-import { setErrorAllertFromResponse } from '../alert-action';
-import { SubmissionError } from 'redux-form';
-import { buildValidationState } from '../../components/helpers/action-helpers';
+/* eslint-disable consistent-return */
+import { SubmissionError } from "redux-form";
+import { InventoryService } from "../../services";
+import { getInventoriesByEventId } from "./inventory-list-action";
+import { getUsersInventoriesByEventId } from "../users/users-inventories-action";
+import { setErrorAllertFromResponse } from "../alert-action";
+import { buildValidationState } from "../../components/helpers/action-helpers";
 
-const api_serv = new InventoryService();
+const apiService = new InventoryService();
 
-export function add_item(item, eventId) {
-    return async dispatch => {
-        let response = await api_serv.setItemToInventory(item, eventId);
-        dispatch(get_inventories_by_event_id(eventId));
-        if (!response.ok) {
-            throw new SubmissionError(await buildValidationState(response));
-        }         
-        return Promise.resolve();
+export function addItem(item, eventId) {
+  return async dispatch => {
+    const response = await apiService.setItemToInventory(item, eventId);
+    dispatch(getInventoriesByEventId(eventId));
+    if (!response.ok) {
+      throw new SubmissionError(await buildValidationState(response));
     }
+    return Promise.resolve();
+  };
 }
 
-export function delete_item(itemId, eventId) {
-    return async dispatch => {
-        let response = await api_serv.setItemDelete(itemId, eventId);
-        if (!response.ok) {
-            dispatch(setErrorAllertFromResponse(response));
-            return Promise.reject();
-        }
-        dispatch(get_inventories_by_event_id(eventId));
-        return Promise.resolve();
+export function deleteItem(itemId, eventId) {
+  return async dispatch => {
+    const response = await apiService.setItemDelete(itemId, eventId);
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
     }
+    dispatch(getInventoriesByEventId(eventId));
+    return Promise.resolve();
+  };
 }
 
-export function edit_item(item, eventId) {
-    return async dispatch => {
-        let response = await api_serv.setItem(item, eventId);
-        dispatch(get_inventories_by_event_id(eventId));
-        dispatch(get_users_inventories_by_event_id(eventId));
-        if (!response.ok) {
-            throw new SubmissionError(await buildValidationState(response));
-        }
-        return Promise.resolve();
+export function editItem(item, eventId) {
+  return async dispatch => {
+    const response = await apiService.setItem(item, eventId);
+    dispatch(getInventoriesByEventId(eventId));
+    dispatch(getUsersInventoriesByEventId(eventId));
+    if (!response.ok) {
+      throw new SubmissionError(await buildValidationState(response));
     }
+    return Promise.resolve();
+  };
 }
 
-export function want_to_take(data) {
-    return async dispatch => {
-        let response = await api_serv.setWantToTake(data);
-        if (response.ok) {
-            dispatch(get_users_inventories_by_event_id(data.eventId));
-            dispatch(get_inventories_by_event_id(data.eventId));
-            return Promise.resolve();
-        }
+export function wantToTake(data) {
+  return async dispatch => {
+    const response = await apiService.setWantToTake(data);
+    if (response.ok) {
+      dispatch(getUsersInventoriesByEventId(data.eventId));
+      dispatch(getInventoriesByEventId(data.eventId));
+      return Promise.resolve();
     }
+  };
 }

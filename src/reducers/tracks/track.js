@@ -1,5 +1,7 @@
-const initialState = { isRequested: false, log: "", error: "" };
+// // TODO unused reducer, uncomplit
 
-export const reducer = (state = initialState) => {
-    return state;
-};
+// const initialState = { isRequested: false, log: "", error: "" };
+
+// export const reducer = (state = initialState) => {
+//   return state;
+// };

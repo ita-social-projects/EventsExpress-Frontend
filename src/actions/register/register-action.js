@@ -1,25 +1,30 @@
-import { AuthenticationService } from '../../services';
-import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from "history";
+import { SubmissionError } from "redux-form";
+import { AuthenticationService } from "../../services";
 import { getRequestInc, getRequestDec } from "../request-count-action";
-import { buildValidationState } from '../../components/helpers/action-helpers';
-import { SubmissionError } from 'redux-form';
+import { buildValidationState } from "../../components/helpers/action-helpers";
 
 export const SET_REGISTER_PENDING = "SET_REGISTER_PENDING";
 export const SET_REGISTER_SUCCESS = "SET_REGISTER_SUCCESS";
 
-const api_serv = new AuthenticationService();
+const apiService = new AuthenticationService();
 const history = createBrowserHistory({ forceRefresh: true });
 
-export default function register(email, password) {
-    return async dispatch => {
-        dispatch(getRequestInc());
+const register = (email, password) => {
+  return async dispatch => {
+    dispatch(getRequestInc());
 
-        let response = await api_serv.setRegister({ Email: email, Password: password });
-        dispatch(getRequestDec());
-        if (!response.ok) {
-            throw new SubmissionError(await buildValidationState(response));
-        }
-        dispatch(history.push('/registerSuccess'))
-        return Promise.resolve();
-    };
-}
+    const response = await apiService.setRegister({
+      Email: email,
+      Password: password,
+    });
+    dispatch(getRequestDec());
+    if (!response.ok) {
+      throw new SubmissionError(await buildValidationState(response));
+    }
+    dispatch(history.push("/registerSuccess"));
+    return Promise.resolve();
+  };
+};
+
+export default register;

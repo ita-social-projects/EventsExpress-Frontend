@@ -1,3 +1,3 @@
-import NotificationEvents from './notification_events';
+import NotificationEvents from "./notification_events";
 
 export default NotificationEvents;

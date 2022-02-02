@@ -1,7 +1,7 @@
-﻿import EventsExpressService from './EventsExpressService'
+﻿import EventsExpressService from "./EventsExpressService";
 
 const baseService = new EventsExpressService();
 
 export default class ConfigService {
-    getConfigFromBack = () => baseService.getResource('FrontConfigs/GetConfigs');
+  getConfigFromBack = () => baseService.getResource("FrontConfigs/GetConfigs");
 }

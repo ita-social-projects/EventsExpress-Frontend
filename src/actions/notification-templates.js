@@ -1,90 +1,91 @@
-import NotificationTemplateService from '../services/NotificationTemplateService'
-import { setErrorAllertFromResponse } from './alert-action';
+import NotificationTemplateService from "../services/NotificationTemplateService";
+import { setErrorAllertFromResponse } from "./alert-action";
 
-export const GET_TEMPLATES_SUCCESS = 'GET_TEMPLATES_SUCCESS';
-export const GET_TEMPLATE_SUCCESS = 'GET_TEMPLATE_SUCCESS';
-export const GET_TEMPLATE_PROPERTIES_SUCCESS = 'GET_TEMPLATE_PROPERTIES_SUCCESS';
+export const GET_TEMPLATES_SUCCESS = "GET_TEMPLATES_SUCCESS";
+export const GET_TEMPLATE_SUCCESS = "GET_TEMPLATE_SUCCESS";
+export const GET_TEMPLATE_PROPERTIES_SUCCESS =
+  "GET_TEMPLATE_PROPERTIES_SUCCESS";
 
-const api_serv = new NotificationTemplateService();
+const apiService = new NotificationTemplateService();
 
-export function get_all_templates() {
-    return async dispatch => {
-        const response = await api_serv.getAll();
-
-        if(!response.ok) {
-            dispatch(setErrorAllertFromResponse(response));
-            return Promise.reject();
-        }
-
-        const jsonRes = await response.json();
-        dispatch(getTemplates(jsonRes));
-
-        return Promise.resolve();
-    }
+function getTemplatesData(data) {
+  return {
+    type: GET_TEMPLATES_SUCCESS,
+    payload: data,
+  };
 }
 
-export function get_template(id) {
-    return async dispatch => {
-        const response = await api_serv.getByIdAsync(id);
-
-        if(!response.ok) {
-            dispatch(setErrorAllertFromResponse(response));
-            return Promise.reject();
-        }
-
-        const jsonRes = await response.json();
-        dispatch(getTemplate(jsonRes));
-
-        return Promise.resolve();
-    }
+function getTemplateData(data) {
+  return {
+    type: GET_TEMPLATE_SUCCESS,
+    payload: data,
+  };
 }
 
-export function get_template_properties(template_id) {
-    return async dispatch => {
-        const response = await api_serv.getProperties(template_id);
-
-        if(!response.ok) {
-            dispatch(setErrorAllertFromResponse(response));
-            return Promise.reject();
-        }
-
-        const jsonRes = await response.json();
-        dispatch(getProperties(jsonRes));
-
-        return Promise.resolve();
-    }
+function getPropertiesData(data) {
+  return {
+    type: GET_TEMPLATE_PROPERTIES_SUCCESS,
+    payload: data,
+  };
 }
 
-export function update_template(template) {
-    return async dispatch => {
-        const response = await api_serv.updateAsync(template);
+export function getAllTemplates() {
+  return async dispatch => {
+    const response = await apiService.getAll();
 
-        if(!response.ok) {
-            dispatch(setErrorAllertFromResponse(response));
-            return Promise.reject();
-        }
-
-        return Promise.resolve();
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
     }
+
+    const jsonRes = await response.json();
+    dispatch(getTemplatesData(jsonRes));
+
+    return Promise.resolve();
+  };
 }
 
-function getTemplates(data) {
-    return {
-        type: GET_TEMPLATES_SUCCESS,
-        payload: data
+export function getTemplate(id) {
+  return async dispatch => {
+    const response = await apiService.getByIdAsync(id);
+
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
     }
+
+    const jsonRes = await response.json();
+    dispatch(getTemplateData(jsonRes));
+
+    return Promise.resolve();
+  };
 }
 
-function getTemplate(data) {
-    return {
-        type: GET_TEMPLATE_SUCCESS,
-        payload: data
+export function getTemplateProperties(templateId) {
+  return async dispatch => {
+    const response = await apiService.getProperties(templateId);
+
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
     }
+
+    const jsonRes = await response.json();
+    dispatch(getPropertiesData(jsonRes));
+
+    return Promise.resolve();
+  };
 }
 
-function getProperties(data) {
-    return {
-        type: GET_TEMPLATE_PROPERTIES_SUCCESS,
-        payload: data
+export function updateTemplate(template) {
+  return async dispatch => {
+    const response = await apiService.updateAsync(template);
+
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
     }
+
+    return Promise.resolve();
+  };
 }

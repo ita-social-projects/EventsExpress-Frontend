@@ -1,5 +1,5 @@
-import * as moment from 'moment';
+import * as moment from "moment";
 
-export function getTimeDifferenceFromNull(value) {
-    return moment.utc(value).fromNow();
-}
+const getTimeDifferenceFromNull = value => moment.utc(value).fromNow();
+
+export default getTimeDifferenceFromNull;

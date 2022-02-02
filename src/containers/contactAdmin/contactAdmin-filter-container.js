@@ -1,74 +1,90 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getFormValues, reset } from 'redux-form';
-import ContactAdminFilter from '../../components/contactAdmin/contactAdmin-filter-component';
-import filterHelper from '../../components/helpers/filterHelper';
-import { withRouter } from "react-router";
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getFormValues, reset } from "redux-form";
+import { withRouter } from "react-router-dom";
+import ContactAdminFilter from "../../components/contactAdmin/contactAdmin-filter-component";
+import filterHelper from "../../components/helpers/filterHelper";
 
-class ContactAdminFilterWrapper extends Component {
+const ContactAdminFilterWrapper = ({
+  resetFilters,
+  history,
+  contactAdminList,
+  formValues,
+}) => {
+  const onReset = () => {
+    resetFilters();
+    history.push(`${history.location.pathname}?page=1`);
+  };
 
-    onReset = () => {
-        this.props.resetFilters();
-        this.props.history.push(this.props.history.location.pathname + "?page=1")
-    }
+  const onSubmit = filters => {
+    const filtersTrimUndefinedKeys = filterHelper.trimUndefinedKeys(filters);
+    const filterCopy = { ...contactAdminList.filter };
+    Object.entries(filtersTrimUndefinedKeys).forEach(([key, value]) => {
+      switch (key) {
+        case "page":
+          filterCopy[key] = value;
+          break;
+        case "dateFrom":
+          filterCopy[key] = new Date(value).toDateString();
+          break;
+        case "dateTo":
+          filterCopy[key] = new Date(value).toDateString();
+          break;
+        case "status":
+          filterCopy[key] = value;
+          break;
+        default:
+          filterCopy[key] = value;
+          break;
+      }
+    });
+    const queryString = filterHelper.getQueryStringByFilter(filterCopy);
 
-    onSubmit = (filters) => {
-        filters = filterHelper.trimUndefinedKeys(filters);
-        var filterCopy = { ...this.props.contactAdminList.filter };
-        Object.entries(filters).forEach(function ([key, value]) {
-            switch (key) {
-                case 'page':
-                    filterCopy[key] = value;
-                    break;
-                case 'dateFrom':
-                    filterCopy[key] = new Date(value).toDateString();
-                    break;
-                case 'dateTo':
-                    filterCopy[key] = new Date(value).toDateString();
-                    break;
-                case 'status':
-                    filterCopy[key] = value;
-                    break;
-                default:
-                    filterCopy[key] = value;
-                    break;
-            }
-        }.bind(this));
-        const queryString = filterHelper.getQueryStringByFilter(filterCopy);
+    history.push(history.location.pathname + queryString);
+  };
 
-        this.props.history.push(this.props.history.location.pathname + queryString);
-    }
+  const buildInitialFormValues = () => {
+    const filter = filterHelper.trimUndefinedKeys(contactAdminList.filter);
+    return { ...filter };
+  };
 
-    buildInitialFormValues = () => {
-        const filter = filterHelper.trimUndefinedKeys(this.props.contactAdminList.filter);
-        return Object.assign({}, filter);
-    };
-
-    render() {
-        const initialFormValues = this.buildInitialFormValues();
-        return <>
-            <ContactAdminFilter
-                onSubmit={this.onSubmit}
-                onReset={this.onReset}
-                form_values={this.props.form_values}
-                initialFormValues={initialFormValues}
-            />
-        </>
-    }
-}
-
-const mapStateToProps = (state) => ({
-    contactAdminList: state.contactAdminList,
-    form_values: getFormValues('contactAdmin-filter-form')(state),
-});
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        resetFilters: () => dispatch(reset('contactAdmin-filter-form')),
-    }
+  const initialFormValues = buildInitialFormValues();
+  return (
+    <ContactAdminFilter
+      onSubmit={onSubmit}
+      onReset={onReset}
+      form_values={formValues}
+      initialFormValues={initialFormValues}
+    />
+  );
 };
 
-export default withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ContactAdminFilterWrapper));
+ContactAdminFilterWrapper.defaultProps = {
+  resetFilters: () => {},
+  history: {},
+  contactAdminList: {},
+  formValues: {},
+};
+
+ContactAdminFilterWrapper.propTypes = {
+  resetFilters: PropTypes.func,
+  history: PropTypes.object,
+  contactAdminList: PropTypes.object,
+  formValues: PropTypes.object,
+};
+
+const mapStateToProps = state => ({
+  contactAdminList: state.contactAdminList,
+  formValues: getFormValues("contactAdmin-filter-form")(state),
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    resetFilters: () => dispatch(reset("contactAdmin-filter-form")),
+  };
+};
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ContactAdminFilterWrapper),
+);

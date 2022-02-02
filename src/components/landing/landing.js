@@ -1,43 +1,40 @@
 ﻿import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Carousel from "react-material-ui-carousel";
+import { connect } from "react-redux";
 import CarouselEventCard from "./CarouselEventCard";
 import ModalWind from "../modal-wind";
 import AuthComponent from "../../security/authComponent";
 import "./landing.css";
-import { get_upcoming_events } from "../../actions/event/event-list-action";
-import { connect } from "react-redux";
+import { getUpcomingEvents } from "../../actions/event/event-list-action";
 import HeadArticle from "./HeadArticle";
 
 class Landing extends Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    this.props.getUpcomingEvents();
   }
 
   handleClick = () => {
     this.props.onSubmit();
   };
 
-  splitDataIntoBlocks(itemsArray) {
+  splitDataIntoBlocks = itemsArray => {
     return itemsArray.reduce((acc, c, i) => {
-      if ((i & 3) === 0) acc.push([]);
+      if ((i && 3) === 0) acc.push([]);
       acc[acc.length - 1].push(c);
       return acc;
     }, []);
-  }
+  };
 
-  componentDidMount() {
-    this.props.get_upcoming_events();
-  }
-
-  renderCarouselBlock = (eventBlock) => (
+  renderCarouselBlock = eventBlock => (
     <div className="carousel-block wd-100">
-      {eventBlock.map((event) => (
+      {eventBlock.map(event => (
         <CarouselEventCard key={event.id} event={event} />
       ))}
     </div>
   );
 
-  render() {    
+  render() {
     const { items } = this.props.events.data;
     const events = this.splitDataIntoBlocks(items);
 
@@ -76,10 +73,11 @@ class Landing extends Component {
             <AuthComponent onlyAnonymous>
               <div className="text-center">
                 <ModalWind
-                  renderButton={(action) => (
+                  renderButton={action => (
                     <button
                       className="btn btn-warning"
                       onClick={() => action()}
+                      type="button"
                     >
                       Join EventsExpress
                     </button>
@@ -101,25 +99,25 @@ class Landing extends Component {
               <div className="carousel-wrapper text-center">
                 <Carousel
                   autoPlay={false}
-                  animation={"slide"}
+                  animation="slide"
                   interval={1000}
                   indicators={false}
                   navButtonsAlwaysVisible={carouselNavIsVisible}
                   navButtonsAlwaysInvisible={!carouselNavIsVisible}
                   NextIcon={
                     <i
-                      style={{ width: 32 + "px", height: 32 + "px" }}
+                      style={{ width: `${32}px`, height: `${32}px` }}
                       className="fas fa-angle-right"
                     ></i>
                   }
                   PrevIcon={
                     <i
-                      style={{ width: 32 + "px", height: 32 + "px" }}
+                      style={{ width: `${32}px`, height: `${32}px` }}
                       className="fas fa-angle-left"
                     ></i>
                   }
                 >
-                  {events.map((block) => this.renderCarouselBlock(block))}
+                  {events.map(block => this.renderCarouselBlock(block))}
                 </Carousel>
               </div>
             </article>
@@ -130,17 +128,29 @@ class Landing extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     events: state.events,
     user: state.user,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    get_upcoming_events: () => dispatch(get_upcoming_events()),
+    getUpcomingEvents: () => dispatch(getUpcomingEvents()),
   };
+};
+
+Landing.defaultProps = {
+  events: {},
+  getUpcomingEvents: () => {},
+  onSubmit: () => {},
+};
+
+Landing.propTypes = {
+  events: PropTypes.object,
+  getUpcomingEvents: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

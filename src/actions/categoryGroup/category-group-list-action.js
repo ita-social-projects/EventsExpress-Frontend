@@ -1,29 +1,31 @@
 ﻿import { CategoryGroupService } from "../../services";
-import { setErrorAllertFromResponse } from "./../alert-action";
+import { setErrorAllertFromResponse } from "../alert-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const GET_CATEGORY_GROUPS_DATA = "GET_CATEGORY_GROUPS_DATA";
 
-const api_serv = new CategoryGroupService();
+const apiService = new CategoryGroupService();
 
-export default function get_category_groups() {
-  return async (dispatch) => {
-    dispatch(getRequestInc());
-    let response = await api_serv.getAllCategoryGroups();
-    if (!response.ok) {
-      dispatch(setErrorAllertFromResponse(response));
-      return Promise.reject();
-    }
-    let jsonRes = await response.json();
-    dispatch(getRequestDec());
-    dispatch(getCategoryGroups(jsonRes));
-    return Promise.resolve();
-  };
-}
-
-export function getCategoryGroups(data) {
+function getCategoryGroupsData(data) {
   return {
     type: GET_CATEGORY_GROUPS_DATA,
     payload: data,
   };
 }
+
+const getCategoryGroups = () => {
+  return async dispatch => {
+    dispatch(getRequestInc());
+    const response = await apiService.getAllCategoryGroups();
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+    const jsonRes = await response.json();
+    dispatch(getRequestDec());
+    dispatch(getCategoryGroupsData(jsonRes));
+    return Promise.resolve();
+  };
+};
+
+export default getCategoryGroups;

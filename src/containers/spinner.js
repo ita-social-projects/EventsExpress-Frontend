@@ -1,20 +1,25 @@
-﻿import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Spinner from '../components/spinner';
+﻿import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import Spinner from "../components/spinner";
 
-class SpinnerWrapper extends Component {
+const SpinnerWrapper = ({ counter, showContent, children }) =>
+  counter > 0 || !showContent ? <Spinner /> : children;
 
-    render() {
-        const { counter, showContent } = this.props;
-
-        return counter > 0 || !showContent
-            ? <Spinner />
-            : this.props.children
-    }
-}
-
-const mapStateToProps = (state) => ({
-    counter: state.requestCount.counter
+const mapStateToProps = state => ({
+  counter: state.requestCount.counter,
 });
+
+SpinnerWrapper.propTypes = {
+  counter: PropTypes.number,
+  showContent: PropTypes.bool,
+  children: PropTypes.array,
+};
+
+SpinnerWrapper.defaultProps = {
+  counter: null,
+  showContent: false,
+  children: [],
+};
 
 export default connect(mapStateToProps)(SpinnerWrapper);
