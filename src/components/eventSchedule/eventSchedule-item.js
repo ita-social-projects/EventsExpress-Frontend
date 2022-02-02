@@ -100,7 +100,7 @@ EventSchedule.propTypes = {
 };
 
 EventSchedule.defaultProps = {
-  item: PropTypes.object,
+  item: {},
 };
 
 export default EventSchedule;
