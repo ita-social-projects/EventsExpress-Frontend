@@ -1,12 +1,12 @@
-import { SET_USERS } from '../../actions/events/filter/users-data';
+import { SET_USERS } from "../../actions/events/filter/users-data";
 
 const initialState = [];
 
-export const usersDataReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case SET_USERS:
-            return action.payload;
-        default:
-            return state;
-    }
+const usersDataReducer = (state = initialState, action) => {
+  if (action.type === SET_USERS) {
+    return action.payload;
+  }
+  return state;
 };
+
+export default usersDataReducer;

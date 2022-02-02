@@ -1,30 +1,38 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ContactAdmin from "../../components/contactAdmin/contactAdmin-component";
-import contact_Admin from '../../actions/contactAdmin/contact-admin-add-action';
+import contactAdmin from "../../actions/contactAdmin/contact-admin-add-action";
 
-class ContactAdminContainer extends React.Component {
-    submit = values => {
-        return this.props.contactAdmin(values);
-    };
+const ContactAdminContainer = ({ user, contactAdminDispatch }) => {
+  const submit = values => {
+    return contactAdminDispatch(values);
+  };
+  return <ContactAdmin onSubmit={submit} user={user} />;
+};
 
-    render() {
-        return <ContactAdmin onSubmit={this.submit} user={this.props.user} />
-    }
-}
+ContactAdminContainer.defaultProps = {
+  contactAdminDispatch: () => {},
+  user: {},
+};
 
-const mapStateToProps = (state) => ({
-    contactAdmin: state.contactAdmin,
-    user: state.user
+ContactAdminContainer.propTypes = {
+  contactAdminDispatch: PropTypes.func,
+  user: PropTypes.string,
+};
+
+const mapStateToProps = state => ({
+  contactAdmin: state.contactAdmin,
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => {
-    return {
-        contactAdmin: (data) => dispatch(contact_Admin(data))
-    };
+  return {
+    contactAdminDispatch: data => dispatch(contactAdmin(data)),
+  };
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ContactAdminContainer)
+  mapStateToProps,
+  mapDispatchToProps,
+)(ContactAdminContainer);

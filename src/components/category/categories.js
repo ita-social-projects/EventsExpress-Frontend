@@ -1,16 +1,17 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import propTypes from "prop-types";
 import CategoryAddWrapper from "../../containers/categories/category-add";
 import CategoryListWrapper from "../../containers/categories/category-list";
 import SpinnerWrapper from "../../containers/spinner";
-import get_categories from "../../actions/category/category-list-action";
-import get_category_groups from "../../actions/categoryGroup/category-group-list-action";
-import { connect } from "react-redux";
+import getCategories from "../../actions/category/category-list-action";
+import getCategoryGroups from "../../actions/categoryGroup/category-group-list-action";
 
 class Categories extends Component {
   constructor(props) {
     super(props);
-    props.get_category_groups();
-    props.get_categories();
+    props.getCategoryGroups();
+    props.getCategories();
   }
 
   render() {
@@ -33,7 +34,7 @@ class Categories extends Component {
               groups={groups}
             />
             <SpinnerWrapper
-              showContent={categories != undefined && groups != undefined}
+              showContent={categories !== undefined && groups !== undefined}
             >
               <CategoryListWrapper data={categories} />
             </SpinnerWrapper>
@@ -44,15 +45,29 @@ class Categories extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+Categories.propTypes = {
+  getCategoryGroups: propTypes.func,
+  getCategories: propTypes.func,
+  categories: propTypes.array,
+  categoryGroups: propTypes.array,
+};
+
+Categories.defaultProps = {
+  getCategoryGroups: () => {},
+  getCategories: () => {},
+  categories: [],
+  categoryGroups: [],
+};
+
+const mapStateToProps = state => ({
   categories: state.categories,
   categoryGroups: state.categoryGroups,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    get_categories: () => dispatch(get_categories()),
-    get_category_groups: () => dispatch(get_category_groups()),
+    getCategories: () => dispatch(getCategories()),
+    getCategoryGroups: () => dispatch(getCategoryGroups()),
   };
 };
 

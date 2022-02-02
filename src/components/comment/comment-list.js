@@ -1,38 +1,48 @@
-﻿import React, { Component } from 'react';
-import CommentItemWrapper from '../../containers/delete-comment';
-import PagePagination from '../shared/pagePagination';
+﻿import React, { Component } from "react";
+import propTypes from "prop-types";
+import CommentItemWrapper from "../../containers/delete-comment";
+import PagePagination from "../shared/pagePagination";
 
 export default class CommentList extends Component {
-    constructor() {
-        super();
-        this.state = {
-            currentPage: 1
-        };
-    }
+  handlePageChange = page => {
+    this.props.callback(this.props.evId, page);
+  };
 
-    handlePageChange = (page) => {
-        this.props.callback(this.props.evId, page);
-        this.setState({
-            currentPage: page
-        });
-    };
+  renderItems = arr =>
+    arr.map(item => <CommentItemWrapper key={item.id} item={item} />);
 
-    renderItems = arr => arr.map(item => <CommentItemWrapper key={item.id} item={item} />)
+  render() {
+    const { dataList } = this.props;
+    const items = this.renderItems(dataList);
+    const { page, totalPages } = this.props;
 
-    render() {
-        const { data_list } = this.props;
-        const items = this.renderItems(data_list);
-        const { page, totalPages } = this.props;
-
-        return <>
-            {items}
-            {totalPages > 1 &&
-                <PagePagination
-                    currentPage={page}
-                    totalPages={totalPages}
-                    callback={this.handlePageChange}
-                />
-            }
-        </>
-    }
+    return (
+      <>
+        {items}
+        {totalPages > 1 && (
+          <PagePagination
+            currentPage={page}
+            totalPages={totalPages}
+            callback={this.handlePageChange}
+          />
+        )}
+      </>
+    );
+  }
 }
+
+CommentList.propTypes = {
+  callback: propTypes.func,
+  evId: propTypes.number,
+  dataList: propTypes.array,
+  page: propTypes.number,
+  totalPages: propTypes.number,
+};
+
+CommentList.defaultProps = {
+  callback: () => {},
+  evId: null,
+  dataList: [],
+  page: null,
+  totalPages: null,
+};

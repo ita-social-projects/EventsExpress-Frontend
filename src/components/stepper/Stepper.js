@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Stepper.css";
+import updateStep from "../helpers/stepperHelper";
 
 export default class Stepper extends Component {
   constructor() {
@@ -10,65 +11,24 @@ export default class Stepper extends Component {
 
   componentDidMount() {
     const { steps, currentStepNumber } = this.props;
-    const stepsState = steps.map((step, index) => {
-      const stepObj = {};
-      stepObj.description = step;
-      stepObj.highlighted = index === 0 ? true : false;
-      stepObj.selected = index === 0 ? true : false;
-      stepObj.completed = false;
-      return stepObj;
-    });
+    const stepsState = steps.map((step, index) => ({
+      description: step,
+      highlighted: index === 0,
+      selected: index === 0,
+      completed: false,
+    }));
 
-    const currentSteps = this.updateStep(currentStepNumber, stepsState);
+    const currentSteps = updateStep(currentStepNumber, stepsState);
     this.setState({ steps: currentSteps });
   }
 
   componentDidUpdate(prevProps) {
     const { steps } = this.state;
-    const currentSteps = this.updateStep(this.props.currentStepNumber, steps);
+    const currentSteps = updateStep(this.props.currentStepNumber, steps);
 
     if (prevProps.currentStepNumber !== this.props.currentStepNumber) {
       this.setState({ steps: currentSteps });
     }
-  }
-
-  updateStep(stepNumber, steps) {
-    const newSteps = [...steps];
-    let stepCounter = 0;
-
-    while (stepCounter < newSteps.length) {
-      // Current step
-      if (stepCounter === stepNumber) {
-        newSteps[stepCounter] = {
-          ...newSteps[stepCounter],
-          highlighted: true,
-          selected: true,
-          completed: false,
-        };
-        stepCounter++;
-      }
-      // Prev step
-      else if (stepCounter < stepNumber) {
-        newSteps[stepCounter] = {
-          ...newSteps[stepCounter],
-          highlighted: false,
-          selected: true,
-          completed: true,
-        };
-        stepCounter++;
-      }
-      // Next steps
-      else {
-        newSteps[stepCounter] = {
-          ...newSteps[stepCounter],
-          highlighted: false,
-          selected: false,
-          completed: false,
-        };
-        stepCounter++;
-      }
-    }
-    return newSteps;
   }
 
   render() {
@@ -76,6 +36,8 @@ export default class Stepper extends Component {
     const { steps } = this.state;
     const stepsDisplay = steps.map((step, index) => {
       return (
+        //! TODO : ARRAY INDEX USE AS A KEY (temporary solution)
+        // eslint-disable-next-line react/no-array-index-key
         <div className="step-wrapper" key={index}>
           <div
             className={`step-number ${

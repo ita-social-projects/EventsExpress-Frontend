@@ -1,79 +1,98 @@
-import React, { Component } from 'react';
-import { getFormValues } from 'redux-form';
-import { connect } from 'react-redux';
-import { parse as queryStringParse } from 'query-string';
-import EventList from '../components/event/EventList/Event-list';
-import SpinnerWrapper from './spinner';
-import { get_events, reset_events, updateEventsFilters } from '../actions/event/event-list-action';
-import filterHelper from '../components/helpers/filterHelper';
-import { withRouter } from "react-router";
-import { change_event_status } from '../actions/event/event-item-view-action';
+import React, { Component } from "react";
+import { getFormValues } from "redux-form";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { parse as queryStringParse } from "query-string";
+import { withRouter } from "react-router-dom";
+import EventList from "../components/event/EventList/Event-list";
+import SpinnerWrapper from "./spinner";
+import { getEvents } from "../actions/event/event-list-action";
+import filterHelper from "../components/helpers/filterHelper";
 
 class EventListWrapper extends Component {
-    constructor(props) {
-        super(props);
-        this.objCurrentQueryParams = Object.create(null);
-        this.prevQueryStringSearch = "";
+  constructor(props) {
+    super(props);
+    this.objCurrentQueryParams = Object.create(null);
+    this.prevQueryStringSearch = "";
+  }
+
+  componentDidMount() {
+    this.setSearchParamsToEventFilter(this.props.history.location.search);
+    const queryString = filterHelper.getQueryStringByFilter(
+      this.objCurrentQueryParams,
+    );
+    this.props.getEvents(queryString);
+  }
+
+  componentDidUpdate() {
+    if (this.props.history.location.search !== this.prevQueryStringSearch) {
+      this.prevQueryStringSearch = this.props.history.location.search;
+      this.props.getEvents(this.props.history.location.search);
     }
+  }
 
-    componentDidMount() {
-        this.setSearchParamsToEventFilter(this.props.history.location.search);
-        const queryString = filterHelper.getQueryStringByFilter(this.objCurrentQueryParams);
-        this.props.get_events(queryString);
-    }
+  setSearchParamsToEventFilter = search => {
+    const filterCopy = { ...this.props.events.filter };
+    this.objCurrentQueryParams = queryStringParse(search);
 
-    componentDidUpdate() {
-        if (this.props.history.location.search != this.prevQueryStringSearch) {
-            this.prevQueryStringSearch = this.props.history.location.search;
-            this.props.get_events(this.props.history.location.search);
-        }
-    }
+    Object.entries(this.objCurrentQueryParams).forEach(function filter([
+      key,
+      value,
+    ]) {
+      filterCopy[key] = value;
+    });
+    this.objCurrentQueryParams = filterHelper.trimUndefinedKeys(filterCopy);
+  };
 
-    setSearchParamsToEventFilter = search => {
-        var filterCopy = { ...this.props.events.filter };
-        this.objCurrentQueryParams = queryStringParse(search);
+  render() {
+    const currentUser =
+      this.props.current_user.id !== null ? this.props.current_user : {};
+    const { data } = this.props.events;
+    const { items } = this.props.events.data;
 
-        Object.entries(this.objCurrentQueryParams).forEach(function ([key, value]) {
-            filterCopy[key] = value;
-        }.bind(this));
-        this.objCurrentQueryParams = filterHelper.trimUndefinedKeys(filterCopy);
-    }
-
-    render() {
-        let current_user = this.props.current_user.id !== null
-            ? this.props.current_user
-            : {};
-        const { data } = this.props.events;
-        const { items } = this.props.events.data;
-
-        return <SpinnerWrapper showContent = { data!= undefined}>
-            <EventList
-                current_user={current_user}
-                data_list={items}
-                filter={this.props.events.filter}
-                page={data.pageViewModel.pageNumber}
-                totalPages={data.pageViewModel.totalPages}
-                customNoResultsMessage="No events meet the specified criteria. Please make another choice."
-            />
-        </SpinnerWrapper>
-    }
+    return (
+      <SpinnerWrapper showContent={data !== undefined}>
+        <EventList
+          current_user={currentUser}
+          data_list={items}
+          filter={this.props.events.filter}
+          page={data.pageViewModel.pageNumber}
+          totalPages={data.pageViewModel.totalPages}
+          customNoResultsMessage="No events meet the specified criteria. Please make another choice."
+        />
+      </SpinnerWrapper>
+    );
+  }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        events: state.events,
-        current_user: state.user,
-        form_values: getFormValues('event-filter-form')(state),
-    }
+const mapStateToProps = state => {
+  return {
+    events: state.events,
+    current_user: state.user,
+    form_values: getFormValues("event-filter-form")(state),
+  };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        get_events: (filter) => dispatch(get_events(filter)),
-    }
+const mapDispatchToProps = dispatch => {
+  return {
+    getEvents: filter => dispatch(getEvents(filter)),
+  };
 };
 
-export default withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(EventListWrapper));
+EventListWrapper.propTypes = {
+  history: PropTypes.object,
+  events: PropTypes.object,
+  getEvents: PropTypes.func,
+  current_user: PropTypes.object,
+};
+
+EventListWrapper.defaultProps = {
+  history: {},
+  events: {},
+  getEvents: () => {},
+  current_user: {},
+};
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(EventListWrapper),
+);

@@ -1,11 +1,7 @@
 const minLength = min => value =>
-    value && value.length < min
-        ? `Must be ${min} characters or more`
-        : undefined;
+  value && value.length < min ? `Must be ${min} characters or more` : undefined;
 const maxLength = max => value =>
-    value && value.length > max
-        ? `Must be ${max} characters or less`
-        : undefined
+  value && value.length > max ? `Must be ${max} characters or less` : undefined;
 
 export const minLength10 = minLength(10);
 export const minLength20 = minLength(20);

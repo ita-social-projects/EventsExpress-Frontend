@@ -1,39 +1,43 @@
 ﻿import React from "react";
-import CommentForm from '../components/comment/comment-form';
-import {connect} from "react-redux";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import CommentForm from "../components/comment/comment-form";
 import addComment from "../actions/comment/comment-add-action";
 
-class CommentWrapper extends React.Component {
-    
-    submit = values => {
-        return this.props.add({
-            ...values,
-            userId: this.props.userId,
-            eventId: this.props.eventId,
-            commentsId: this.props.parentId
-        });
-    };
+const CommentWrapper = ({ add, userId, eventId, parentId }) => {
+  const submit = values => {
+    return add({
+      ...values,
+      userId,
+      eventId,
+      commentsId: parentId,
+    });
+  };
+  return userId ? <CommentForm onSubmit={submit} /> : null;
+};
 
+CommentWrapper.defaultProps = {
+  add: () => {},
+  userId: null,
+  eventId: null,
+  parentId: null,
+};
 
-    render() {
-
-        return this.props.userId
-            ? <CommentForm onSubmit={this.submit}/>
-            : null
-    }
-}
+CommentWrapper.propTypes = {
+  add: PropTypes.func,
+  userId: PropTypes.number,
+  eventId: PropTypes.number,
+  parentId: PropTypes.number,
+};
 
 const mapStateToProps = state => ({
-    addCommentStatus: state.add_comment,
-    userId: state.user.id,
-    eventId: state.event.data.id
+  addCommentStatus: state.add_comment,
+  userId: state.user.id,
+  eventId: state.event.data.id,
 });
 
 const mapDispatchToProps = dispatch => ({
-    add: (data) => dispatch(addComment(data)),
+  add: data => dispatch(addComment(data)),
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(CommentWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(CommentWrapper);

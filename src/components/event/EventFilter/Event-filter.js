@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
+import propTypes from "prop-types";
 import {
   renderDatePicker,
   MultiCheckbox,
   renderTextField,
   renderMultiselect,
-  parseEuDate
+  parseEuDate,
 } from "../../helpers/form-helpers";
 import filterHelper from "../../helpers/filterHelper";
-import MapModal from "../MapModal/Map-modal";
+import EventMapModal from "../MapModal/Map-modal";
 import "./event-filter.css";
 import DisplayMap from "../map/display-map";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
@@ -29,7 +30,7 @@ class EventFilter extends Component {
     if (
       !filterHelper.compareObjects(
         initialValues,
-        prevProps.initialFormValues
+        prevProps.initialFormValues,
       ) ||
       this.state.needInitializeValues
     ) {
@@ -46,15 +47,15 @@ class EventFilter extends Component {
             : { latitude: null, longitude: null },
       });
       this.setState({
-        ["needInitializeValues"]: false,
+        needInitializeValues: false,
       });
     }
   }
 
   render() {
-    const { all_categories, form_values, current_user } = this.props;
-    let values = form_values || { selectedPos: {} };
-    let options = [
+    const { allCategories, formValues, currentUser } = this.props;
+    const values = formValues || { selectedPos: {} };
+    const options = [
       { value: eventStatusEnum.Active, text: "Active" },
       { value: eventStatusEnum.Blocked, text: "Blocked" },
       { value: eventStatusEnum.Canceled, text: "Canceled" },
@@ -96,15 +97,15 @@ class EventFilter extends Component {
                   <Field
                     name="categories"
                     component={renderMultiselect}
-                    data={all_categories.data}
-                    valueField={"id"}
-                    textField={"name"}
+                    data={allCategories.data}
+                    valueField="id"
+                    textField="name"
                     className="form-control mt-2"
                     placeholder="#hashtags"
                   />
                 </div>
                 <div className="form-group">
-                  {current_user.roles.includes("Admin") && (
+                  {currentUser.roles.includes("Admin") && (
                     <Field
                       name="statuses"
                       component={MultiCheckbox}
@@ -114,7 +115,7 @@ class EventFilter extends Component {
                 </div>
 
                 <div>
-                  <MapModal
+                  <EventMapModal
                     initialize={this.props.initialize}
                     values={values}
                     reset={this.props.onReset}
@@ -134,10 +135,12 @@ class EventFilter extends Component {
             <div>
               <Button
                 key={this.state.viewMore}
-                fullWidth={true}
+                fullWidth
                 color="secondary"
                 onClick={() => {
-                  this.setState({ viewMore: !this.state.viewMore });
+                  this.setState(state => {
+                    return !state.viewMore;
+                  });
                 }}
               >
                 {this.state.viewMore ? "less..." : "more filters..."}
@@ -145,16 +148,16 @@ class EventFilter extends Component {
             </div>
             <div className="d-flex">
               <Button
-                fullWidth={true}
+                fullWidth
                 color="primary"
                 onClick={this.props.onReset}
                 disabled={this.props.submitting}
               >
                 Reset
               </Button>
-              {current_user.id && (
+              {currentUser.id && (
                 <Button
-                  fullWidth={true}
+                  fullWidth
                   color="primary"
                   onClick={this.props.onLoadUserDefaults}
                   disabled={this.props.submitting}
@@ -163,7 +166,7 @@ class EventFilter extends Component {
                 </Button>
               )}
               <Button
-                fullWidth={true}
+                fullWidth
                 type="submit"
                 color="primary"
                 disabled={this.props.submitting}
@@ -178,8 +181,32 @@ class EventFilter extends Component {
   }
 }
 
-EventFilter = reduxForm({
+EventFilter.propTypes = {
+  initialFormValues: propTypes.object,
+  initialize: propTypes.func,
+  handleSubmit: propTypes.func,
+  onReset: propTypes.func,
+  submitting: propTypes.bool,
+  onLoadUserDefaults: propTypes.func,
+  allCategories: propTypes.object,
+  formValues: propTypes.object,
+  currentUser: propTypes.object,
+};
+
+EventFilter.defaultProps = {
+  initialFormValues: {},
+  initialize: () => {},
+  handleSubmit: () => {},
+  onReset: () => {},
+  submitting: false,
+  onLoadUserDefaults: () => {},
+  allCategories: {},
+  formValues: {},
+  currentUser: {},
+};
+
+const FormEventFilter = reduxForm({
   form: "event-filter-form",
 })(EventFilter);
 
-export default EventFilter;
+export default FormEventFilter;

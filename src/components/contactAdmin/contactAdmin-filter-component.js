@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
+import propTypes from "prop-types";
 import { MultiCheckbox, renderDatePicker } from "../helpers/form-helpers";
 import parseEuDate from "../helpers/form-helpers/parseEuDate";
 import filterHelper from "../helpers/filterHelper";
@@ -21,7 +22,7 @@ class ContactAdminFilter extends Component {
     if (
       !filterHelper.compareObjects(
         initialValues,
-        prevProps.initialFormValues
+        prevProps.initialFormValues,
       ) ||
       this.state.needInitializeValues
     ) {
@@ -31,15 +32,15 @@ class ContactAdminFilter extends Component {
         status: initialValues.status,
       });
       this.setState({
-        ["needInitializeValues"]: false,
+        needInitializeValues: false,
       });
     }
   }
 
   render() {
-    const { form_values, submitting, onReset } = this.props;
-    let values = form_values || {};
-    let options = [
+    const { formValues, submitting, onReset } = this.props;
+    const values = formValues || {};
+    const options = [
       { value: issueStatusEnum.Open, text: "Open" },
       { value: issueStatusEnum.InProgress, text: "In progress" },
       { value: issueStatusEnum.Resolve, text: "Resolve" },
@@ -49,38 +50,36 @@ class ContactAdminFilter extends Component {
       <>
         <div className="sidebar-filter">
           <form onSubmit={this.props.handleSubmit} className="box">
-            {
-              <>
-                <div className="form-group">
-                  <Field
-                    name="dateFrom"
-                    label="From"
-                    minValue={new Date(2000, 1, 1)}
-                    component={renderDatePicker}
-                    parse={parseEuDate}
-                  />
-                </div>
-                <div className="form-group">
-                  <Field
-                    name="dateTo"
-                    label="To"
-                    minValue={new Date(values.dateFrom)}
-                    component={renderDatePicker}
-                    parse={parseEuDate}
-                  />
-                </div>
-                <div className="form-group">
-                  <Field
-                    name="status"
-                    component={MultiCheckbox}
-                    options={options}
-                  />
-                </div>
-              </>
-            }
+            <>
+              <div className="form-group">
+                <Field
+                  name="dateFrom"
+                  label="From"
+                  minValue={new Date(2000, 1, 1)}
+                  component={renderDatePicker}
+                  parse={parseEuDate}
+                />
+              </div>
+              <div className="form-group">
+                <Field
+                  name="dateTo"
+                  label="To"
+                  minValue={new Date(values.dateFrom)}
+                  component={renderDatePicker}
+                  parse={parseEuDate}
+                />
+              </div>
+              <div className="form-group">
+                <Field
+                  name="status"
+                  component={MultiCheckbox}
+                  options={options}
+                />
+              </div>
+            </>
             <div className="d-flex">
               <Button
-                fullWidth={true}
+                fullWidth
                 color="primary"
                 onClick={onReset}
                 disabled={submitting}
@@ -88,7 +87,7 @@ class ContactAdminFilter extends Component {
                 Reset
               </Button>
               <Button
-                fullWidth={true}
+                fullWidth
                 type="submit"
                 color="primary"
                 disabled={submitting}
@@ -103,8 +102,26 @@ class ContactAdminFilter extends Component {
   }
 }
 
-ContactAdminFilter = reduxForm({
+ContactAdminFilter.propTypes = {
+  handleSubmit: propTypes.func,
+  initialize: propTypes.func,
+  initialFormValues: propTypes.object,
+  formValues: propTypes.object,
+  submitting: propTypes.bool,
+  onReset: propTypes.func,
+};
+
+ContactAdminFilter.defaultProps = {
+  handleSubmit: () => {},
+  initialize: () => {},
+  initialFormValues: {},
+  formValues: {},
+  submitting: false,
+  onReset: () => {},
+};
+
+const FormContactAdminFilter = reduxForm({
   form: "contactAdmin-filter-form",
 })(ContactAdminFilter);
 
-export default ContactAdminFilter;
+export default FormContactAdminFilter;

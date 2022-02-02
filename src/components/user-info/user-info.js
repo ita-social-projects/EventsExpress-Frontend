@@ -1,28 +1,32 @@
-﻿import React, { Component } from 'react';
-import CustomAvatar from '../avatar/custom-avatar';
-import RatingAverage from '../rating/rating-average';
+﻿import React from "react";
+import PropTypes from "prop-types";
+import CustomAvatar from "../avatar/custom-avatar";
+import RatingAverage from "../rating/rating-average";
 
-export default class UserInfo extends Component {
+const UserInfo = ({ user }) => {
+  return (
+    <>
+      <td className="align-middle">
+        <CustomAvatar userId={user.id} name={user.username} />
+      </td>
 
-    render() {
-        const { user } = this.props;
+      <td className="align-middle">
+        <RatingAverage value={user.rating} direction="col" />
+      </td>
 
-        return (
-            <>
-                <td className="align-middle">
-                    <CustomAvatar userId={user.id} name={user.username} />
-                </td>
+      <td className="align-middle">{user.email}</td>
 
-                <td className="align-middle">
-                    <RatingAverage value={user.rating} direction='col' />
-                </td>
+      <td className="align-middle">{user.username}</td>
+    </>
+  );
+};
 
-                <td className="align-middle">{user.email}</td>
+UserInfo.defaultProps = {
+  user: {},
+};
 
-                <td className="align-middle">{user.username}</td>
-            </>
-                
- 
-        )
-    }
-}
+UserInfo.propTypes = {
+  user: PropTypes.object,
+};
+
+export default UserInfo;

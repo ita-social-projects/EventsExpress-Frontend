@@ -1,55 +1,80 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
 import CategoryItem from "../../components/category/category-item";
 import CategoryEdit from "../../components/category/category-edit";
-import add_category, {
+import addCategory, {
   setCategoryEdited,
 } from "../../actions/category/category-add-action";
-import { delete_category } from "../../actions/category/category-delete-action";
+import deleteCategory from "../../actions/category/category-delete-action";
 
-class CategoryItemWrapper extends Component {
-  save = (values) => {
-    values.categoryGroup =
+const CategoryItemWrapper = ({
+  deleteCategoryDispatch,
+  setCategoryEditedDispatch,
+  categoryGroups,
+  editCancelDispatch,
+  editedCategory,
+  saveCategoryDispatch,
+  item,
+}) => {
+  const save = values => {
+    const categoryGroup =
       typeof values.categoryGroup === "string"
         ? JSON.parse(values.categoryGroup)
         : values.categoryGroup;
-    return this.props.save_category({ ...values, id: this.props.item.id });
+    return saveCategoryDispatch({ ...values, id: item.id, categoryGroup });
   };
 
-  render() {
-    const { delete_category, set_category_edited, edit_cansel } = this.props;
+  return (
+    <tr>
+      {item.id === editedCategory ? (
+        <CategoryEdit
+          key={item.id + editedCategory}
+          initialValues={item}
+          groups={categoryGroups.data}
+          onSubmit={save}
+          cancel={editCancelDispatch}
+        />
+      ) : (
+        <CategoryItem item={item} callback={setCategoryEditedDispatch} />
+      )}
+      <td className="align-middle align-items-stretch">
+        <div className="d-flex align-items-center justify-content-center">
+          <IconButton
+            className="text-danger"
+            size="small"
+            onClick={deleteCategoryDispatch}
+          >
+            <i className="fas fa-trash" />
+          </IconButton>
+        </div>
+      </td>
+    </tr>
+  );
+};
 
-    return (
-      <tr>
-        {this.props.item.id === this.props.editedCategory ? (
-          <CategoryEdit
-            key={this.props.item.id + this.props.editedCategory}
-            initialValues={this.props.item}
-            groups={this.props.categoryGroups.data}
-            onSubmit={this.save}
-            cancel={edit_cansel}
-          />
-        ) : (
-          <CategoryItem item={this.props.item} callback={set_category_edited} />
-        )}
-        <td className="align-middle align-items-stretch">
-          <div className="d-flex align-items-center justify-content-center">
-            <IconButton
-              className="text-danger"
-              size="small"
-              onClick={delete_category}
-            >
-              <i className="fas fa-trash" />
-            </IconButton>
-          </div>
-        </td>
-      </tr>
-    );
-  }
-}
+CategoryItemWrapper.defaultProps = {
+  deleteCategoryDispatch: () => {},
+  setCategoryEditedDispatch: () => {},
+  saveCategoryDispatch: () => {},
+  editCancelDispatch: () => {},
+  item: {},
+  editedCategory: null,
+  categoryGroups: {},
+};
 
-const mapStateToProps = (state) => {
+CategoryItemWrapper.propTypes = {
+  deleteCategoryDispatch: PropTypes.func,
+  setCategoryEditedDispatch: PropTypes.func,
+  saveCategoryDispatch: PropTypes.func,
+  editCancelDispatch: PropTypes.func,
+  item: PropTypes.object,
+  editedCategory: PropTypes.number,
+  categoryGroups: PropTypes.array,
+};
+
+const mapStateToProps = state => {
   return {
     status: state.add_category,
     editedCategory: state.categories.editedCategory,
@@ -59,14 +84,14 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    delete_category: () => dispatch(delete_category(props.item.id)),
-    save_category: (data) => dispatch(add_category(data)),
-    set_category_edited: () => dispatch(setCategoryEdited(props.item.id)),
-    edit_cansel: () => dispatch(setCategoryEdited(null)),
+    deleteCategoryDispatch: () => dispatch(deleteCategory(props.item.id)),
+    saveCategoryDispatch: data => dispatch(addCategory(data)),
+    setCategoryEditedDispatch: () => dispatch(setCategoryEdited(props.item.id)),
+    editCanselDispatch: () => dispatch(setCategoryEdited(null)),
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(CategoryItemWrapper);

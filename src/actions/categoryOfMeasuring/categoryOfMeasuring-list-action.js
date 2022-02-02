@@ -1,36 +1,33 @@
-import CategoryOfMeasuringService from '../../services/CategoryOfMeasuringService';
-import { setErrorAllertFromResponse } from '../alert-action';
+import CategoryOfMeasuringService from "../../services/CategoryOfMeasuringService";
+import { setErrorAllertFromResponse } from "../alert-action";
 
-export const SET_CATEGORIES_OF_MEASURING_PENDING = "SET_CATEGORIES_OF_MEASURING_PENDING";
-export const GET_CATEGORIES_OF_MEASURING_SUCCESS = "GET_CATEGORIES_OF_MEASURING_SUCCESS";
+export const SET_CATEGORIES_OF_MEASURING_PENDING =
+  "SET_CATEGORIES_OF_MEASURING_PENDING";
+export const GET_CATEGORIES_OF_MEASURING_SUCCESS =
+  "GET_CATEGORIES_OF_MEASURING_SUCCESS";
 
-const api_serv = new CategoryOfMeasuringService();
+const apiService = new CategoryOfMeasuringService();
 
-export default function get_categoriesOfMeasuring() {
+const setCategoryOfMeasuringPending = data => ({
+  type: SET_CATEGORIES_OF_MEASURING_PENDING,
+  payload: data,
+});
 
-    return async dispatch => {
-        dispatch(setCategoryOfMeasuringPending(true));
-        let response = await api_serv.getCategoriesOfMeasuring();
-        if (!response.ok) {
-            dispatch(setErrorAllertFromResponse(response));
-            return Promise.reject();
-        }
-        let jsonRes = await response.json();
-        dispatch(getCategoriesOfMeasuring(jsonRes));
-        return Promise.resolve();
+const getCategoriesOfMeasuringSuccess = data => ({
+  type: GET_CATEGORIES_OF_MEASURING_SUCCESS,
+  payload: data,
+});
+
+export default function getCategoriesOfMeasuring() {
+  return async dispatch => {
+    dispatch(setCategoryOfMeasuringPending(true));
+    const response = await apiService.getCategoriesOfMeasuring();
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
     }
-}
-
-function setCategoryOfMeasuringPending(data) {
-    return {
-        type: SET_CATEGORIES_OF_MEASURING_PENDING,
-        payload: data
-    }
-}
-
-function getCategoriesOfMeasuring(data) {
-    return {
-        type: GET_CATEGORIES_OF_MEASURING_SUCCESS,
-        payload: data
-    }
+    const jsonRes = await response.json();
+    dispatch(getCategoriesOfMeasuringSuccess(jsonRes));
+    return Promise.resolve();
+  };
 }

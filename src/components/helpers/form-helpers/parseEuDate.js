@@ -1,6 +1,6 @@
 import moment from "moment";
 
-const parseEuDate = (value) => {
+const parseEuDate = value => {
   if (!value) {
     return value;
   }

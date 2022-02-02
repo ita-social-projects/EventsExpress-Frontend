@@ -2,25 +2,25 @@
 import { Grid, Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
-import get_category_groups from "../../actions/categoryGroup/category-group-list-action";
-import get_categories from "../../actions/category/category-list-action";
-import TileGroup from "../../containers/TileGroup";
+import PropTypes from "prop-types";
+import getCategoryGroups from "../../actions/categoryGroup/category-group-list-action";
+import getCategories from "../../actions/category/category-list-action";
+import { TileGroup } from "../../containers/TileGroup";
 
-const ChooseActivities = (props) => {
-  const { handleSubmit, previousPage } = props;
-
+const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
   useEffect(() => {
     props.getCategoryGroups();
     props.getCategories();
-  }, []);
+    // TODO all options what i tried didn't fix this error
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const mapToCategories = () => {
     const groups = props.categoryGroups;
-    const categories = props.categories;
+    const { categories } = props;
 
-    return groups.map((el) => ({
+    return groups.map(el => ({
       group: el,
-      categories: categories.filter((c) => c.categoryGroup.id === el.id),
+      categories: categories.filter(c => c.categoryGroup.id === el.id),
     }));
   };
 
@@ -65,25 +65,43 @@ const ChooseActivities = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+ChooseActivities.defaultProps = {
+  handleSubmit: () => {},
+  previousPage: () => {},
+  getCategoryGroups: () => {},
+  getCategories: () => {},
+  categoryGroups: [],
+  categories: [],
+};
+
+ChooseActivities.propTypes = {
+  handleSubmit: PropTypes.func,
+  previousPage: PropTypes.func,
+  getCategoryGroups: PropTypes.func,
+  getCategories: PropTypes.func,
+  categoryGroups: PropTypes.array,
+  categories: PropTypes.array,
+};
+
+const mapStateToProps = state => ({
   categoryGroups: state.categoryGroups.data,
   categories: state.categories.data,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    getCategoryGroups: () => dispatch(get_category_groups()),
-    getCategories: () => dispatch(get_categories()),
+    getCategoryGroups: () => dispatch(getCategoryGroups()),
+    getCategories: () => dispatch(getCategories()),
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(
   reduxForm({
     form: "registrationForm",
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
-  })(ChooseActivities)
+  })(ChooseActivities),
 );

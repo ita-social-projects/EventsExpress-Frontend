@@ -10,6 +10,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import WarningIcon from "@material-ui/icons/Warning";
 import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -45,36 +46,32 @@ const useStyles1 = makeStyles(theme => ({
     zIndex: 100000,
   },
   message: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     zIndex: 100000,
   },
 }));
 
-export default function MySnackbar(props) {
+function MySnackbar(props) {
   const classes = useStyles1();
   const { onClose, ...other } = props;
   const { message, open, variant, autoHideDuration } = props.alert;
   const Icon = variantIcon[variant];
   let timeToShow;
 
-  if(variant !== 'error')
-  {
-    if(autoHideDuration)
-    {
+  if (variant !== "error") {
+    if (autoHideDuration) {
       timeToShow = autoHideDuration;
-    }
-    else
-    {
+    } else {
       timeToShow = 5000;
     }
   }
-  
+
   return (
     <Snackbar
       anchorOrigin={{
         vertical: "bottom",
-        horizontal: "left"
+        horizontal: "left",
       }}
       open={open}
       autoHideDuration={timeToShow}
@@ -85,19 +82,38 @@ export default function MySnackbar(props) {
         aria-describedby="client-snackbar"
         message={
           <span id="client-snackbar" className={classes.message}>
-            {Icon &&
+            {Icon && (
               <Icon className={clsx(classes.icon, classes.iconVariant)} />
-            }
+            )}
             {message}
           </span>
         }
         action={[
-          <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>
+          <IconButton
+            key="close"
+            aria-label="close"
+            color="inherit"
+            onClick={onClose}
+          >
             <CloseIcon className={classes.icon} />
           </IconButton>,
         ]}
         {...other}
       />
     </Snackbar>
-  )
+  );
 }
+
+MySnackbar.propTypes = {
+  onClose: PropTypes.func,
+  message: PropTypes.string,
+  alert: PropTypes.object,
+};
+
+MySnackbar.defaultProps = {
+  onClose: () => {},
+  message: "",
+  alert: {},
+};
+
+export default MySnackbar;

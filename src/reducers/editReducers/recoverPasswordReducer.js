@@ -1,15 +1,16 @@
-﻿import { recoverPassword } from '../../actions/redactProfile/password-recover-action';
-import initialState from './../../store/initialState'
+﻿import { recoverPasswordStates } from "../../actions/redactProfile/password-recover-action";
+import initialState from "../../store/initialState";
 
-export const reducer = (state = initialState.recoverPassword, action) => {
-    switch (action.type) {        
-        case recoverPassword.DATA:
-            return {
-                ...state,
-                isError: action.payload
-            }
-        default:
-            return state;
-    }
-}
+const { DATA } = recoverPasswordStates;
 
+const reducer = (state = initialState.recoverPassword, action) => {
+  if (action.type === DATA) {
+    return {
+      ...state,
+      isError: action.payload,
+    };
+  }
+  return state;
+};
+
+export default reducer;

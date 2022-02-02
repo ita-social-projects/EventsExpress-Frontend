@@ -1,12 +1,15 @@
-﻿import React, { Component } from 'react';
-import CategoryList from '../../components/category/category-list';
+﻿import React from "react";
+import PropTypes from "prop-types";
+import CategoryList from "../../components/category/category-list";
 
+const CategoryListWrapper = ({ data }) => <CategoryList data_list={data} />;
 
-export default class CategoryListWrapper extends Component {
+CategoryListWrapper.defaultProps = {
+  data: [],
+};
 
-    render() {
-        const { data } = this.props;
+CategoryListWrapper.propTypes = {
+  data: PropTypes.array,
+};
 
-        return <CategoryList data_list={data} /> 
-    }
-}
+export default CategoryListWrapper;

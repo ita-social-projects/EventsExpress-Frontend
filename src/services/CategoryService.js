@@ -5,11 +5,11 @@ const baseService = new EventsExpressService();
 export default class CategoryService {
   getAllCategories = () => baseService.getResource("category/all");
 
-  getCategoriesByGroup = (id) => baseService.getResource(`category/all/${id}`);
+  getCategoriesByGroup = id => baseService.getResource(`category/all/${id}`);
 
   getUserCategories = () => baseService.getResource("Users/GetCategories");
 
-  setCategory = (data) =>
+  setCategory = data =>
     baseService.setResource("category/create", {
       name: data.name,
       categoryGroup: {
@@ -18,7 +18,7 @@ export default class CategoryService {
       },
     });
 
-  editCategory = (data) =>
+  editCategory = data =>
     baseService.setResource("category/edit", {
       id: data.id,
       name: data.name,
@@ -28,6 +28,6 @@ export default class CategoryService {
       },
     });
 
-  setCategoryDelete = (data) =>
+  setCategoryDelete = data =>
     baseService.setResource(`category/delete/${data}`);
 }

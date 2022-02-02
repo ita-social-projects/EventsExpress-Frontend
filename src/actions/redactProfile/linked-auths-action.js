@@ -1,27 +1,29 @@
-import {  AccountService } from '../../services';
-import { setErrorAllertFromResponse } from '../alert-action';
+import { AccountService } from "../../services";
+import { setErrorAllertFromResponse } from "../alert-action";
 
 export const GET_LINKED_AUTHS_SUCCESS = "GET_LINKED_AUTHS_SUCCESS";
 
-const api_serv = new AccountService();
-
-export default function getLinkedAuths() {
-    return async dispatch => {
-        let response = await api_serv.getLinkedAuths();
-        if (!response.ok) {
-            dispatch(setErrorAllertFromResponse(response));
-            return Promise.reject();
-        }
-
-        let jsonRes = await response.json();
-        dispatch(pushToStateLinkedAuths(jsonRes));
-        return Promise.resolve();
-    };
-}
+const apiService = new AccountService();
 
 export function pushToStateLinkedAuths(data) {
-    return {
-        type: GET_LINKED_AUTHS_SUCCESS,
-        payload: data
-    }
+  return {
+    type: GET_LINKED_AUTHS_SUCCESS,
+    payload: data,
+  };
 }
+
+const getLinkedAuths = () => {
+  return async dispatch => {
+    const response = await apiService.getLinkedAuths();
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
+    }
+
+    const jsonRes = await response.json();
+    dispatch(pushToStateLinkedAuths(jsonRes));
+    return Promise.resolve();
+  };
+};
+
+export default getLinkedAuths;

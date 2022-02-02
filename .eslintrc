@@ -1,0 +1,87 @@
+{
+  "extends": [
+    "react-app",
+    "airbnb",
+    "plugin:prettier/recommended",
+    "plugin:sonarjs/recommended",
+    "prettier/react",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "prettier",
+    "sonarjs",
+    "import"
+  ],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "import/no-cycle": [
+      "off",
+      {
+        "maxDepth": 2
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "never"
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "react/destructuring-assignment": "off",
+    "react/display-name": "off",
+    "react/forbid-prop-types": "off",
+    "react/no-did-update-set-state": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-curly-newline": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react-hooks/rules-of-hooks": "off",
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        "required": {
+          "some": [
+            "nesting",
+            "id"
+          ]
+        }
+      }
+    ],
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "auto",
+        "printWidth": 80,
+        "tabWidth": 2,
+        "useTabs": false,
+        "semi": true,
+        "singleQuote": false,
+        "trailingComma": "all",
+        "bracketSpacing": true,
+        "bracketSameLine": false,
+        "arrowParens": "avoid",
+        "proseWrap": "always"
+      }
+    ]
+  },
+  "parser": "babel-eslint",
+  "settings": {
+    "import/extensions": [
+      ".js",
+      ".jsx",
+      ".json"
+    ]
+  }
+}

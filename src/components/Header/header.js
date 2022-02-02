@@ -1,16 +1,17 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import ModalWind from "../modal-wind";
 import AuthComponent from "../../security/authComponent";
 import "./header.css";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import logout from "./../../actions/login/logout-action";
+import logout from "../../actions/login/logout-action";
 import CustomAvatar from "../avatar/custom-avatar";
-import { Roles } from "../../constants/userRoles";
-import add_event from "../../actions/event/event-add-action";
+import Roles from "../../constants/userRoles";
+import addEvent from "../../actions/event/event-add-action";
 
 class Header extends Component {
-  logout_reset = () => {
+  logoutReset = () => {
     this.props.hub.stop();
     this.props.logout();
   };
@@ -20,19 +21,26 @@ class Header extends Component {
 
     return (
       <nav
-        class="navbar navbar-expand-lg navbar-light extraHeaderStyles"
+        className="navbar navbar-expand-lg navbar-light extraHeaderStyles"
         id="bgcolornav"
       >
-        <div class="navbar-brand">
-          <Link to={"/home"} className="nav-link" id="EEButton">
+        <div className="navbar-brand">
+          <Link to="/home" className="nav-link" id="EEButton">
             EVENTS EXPRESS
           </Link>
         </div>
-        <ul class="navbar-nav mr-auto"></ul>
-        <span class="form-inline my-2 my-lg-0">
+        <ul className="navbar-nav mr-auto"></ul>
+        <span className="form-inline my-2 my-lg-0">
           <AuthComponent rolesMatch={Roles.User}>
             <div className="my-2 my-sm-0">
-              <div className="btn btn-light" id="headbtn" onClick={this.props.add_event}>
+              <div
+                role="button"
+                tabIndex={0}
+                className="btn btn-light"
+                id="headbtn"
+                onClick={this.props.addEvent}
+                aria-hidden
+              >
                 Create Event
               </div>
             </div>
@@ -41,13 +49,15 @@ class Header extends Component {
             <div className="my-2 my-sm-0">
               {!id && (
                 <ModalWind
-                  renderButton={(action) => (
+                  renderButton={action => (
                     <div
-                      className="btn btn-light"
+                      role="button"
+                      tabIndex={0}
                       id="headbtn"
                       className="btn btn-light navbtns"
                       variant="contained"
                       onClick={action}
+                      aria-hidden
                     >
                       Sign In/Up
                     </div>
@@ -71,17 +81,17 @@ class Header extends Component {
                 </div>
                 <div className="dropdown-menu dropdown-menu-right bgcolorwhite">
                   <AuthComponent rolesMatch={Roles.User}>
-                    <Link className="removedecorations" to={'/user/' + id}>
-                    <button
-                      className="dropdown-item bgcolorwhite"
-                      type="button"
-                    >
-                      my events
-                    </button>
+                    <Link className="removedecorations" to={`/user/${id}`}>
+                      <button
+                        className="dropdown-item bgcolorwhite"
+                        type="button"
+                      >
+                        my events
+                      </button>
                     </Link>
                   </AuthComponent>
                   <AuthComponent>
-                    <Link className="removedecorations" to={'/editProfile'}>
+                    <Link className="removedecorations" to="/editProfile">
                       <button
                         className="dropdown-item bgcolorwhite"
                         type="button"
@@ -93,7 +103,7 @@ class Header extends Component {
                   <button
                     className="dropdown-item bgcolorwhite"
                     type="button"
-                    onClick={this.logout_reset}
+                    onClick={this.logoutReset}
                   >
                     log out
                   </button>
@@ -110,19 +120,33 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+Header.defaultProps = {
+  user: {},
+  addEvent: () => {},
+  logout: () => {},
+  hub: {},
+};
+
+Header.propTypes = {
+  user: PropTypes.object,
+  addEvent: PropTypes.func,
+  hub: PropTypes.object,
+  logout: PropTypes.func,
+};
+
+const mapStateToProps = state => {
   return {
     user: state.user,
     hub: state.hubConnections.chatHub,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     logout: () => {
       dispatch(logout());
     },
-    add_event: () => dispatch(add_event()),
+    add_event: () => dispatch(addEvent()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,41 +1,68 @@
-import React from 'react';
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from '@material-ui/core/Tooltip';
-import eventStatusEnum from '../../../constants/eventStatusEnum';
-import SimpleModalWithDetails from '../../helpers/simple-modal-with-details';
+import React from "react";
+import propTypes from "prop-types";
+import eventStatusEnum from "../../../constants/eventStatusEnum";
+import eventStatusTitle from "../../../constants/eventStatusTitle";
+import eventStatusButton from "../../../constants/eventStatusButton";
+import eventStatusIcon from "../../../constants/eventStatusIcon";
+import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
+import RenderEventButton from "./RenderEventButton";
 
-export default function EventActiveStatus(props) {
-    switch (props.eventStatus) {
-        case eventStatusEnum.Active:
-            return (
-                <SimpleModalWithDetails
-                    key={props.eventId + props.eventStatus}
-                    data="Are you sure?"
-                    submitCallback={(reason) => props.onBlock(props.eventId, reason, props.eventStatus)}
-                    button={<Tooltip title="Active event">
-                        <IconButton className="text-success" size="middle">
-                            <i className="fas fa-unlock" />
-                        </IconButton>
-                    </Tooltip>}
-                />)
-        case eventStatusEnum.Blocked:
-            return (
-                <SimpleModalWithDetails
-                    key={props.eventId + props.eventStatus}
-                    data="Are you sure?"
-                    submitCallback={(reason) => props.onUnBlock(props.eventId, reason)}
-                    button={<Tooltip title="Blocked event">
-                        <IconButton className="text-danger" size="middle">
-                            <i className="fas fa-lock" />
-                        </IconButton>
-                    </Tooltip>}
-                />)
-        case eventStatusEnum.Canceled:
-            return (
-                <Tooltip title="Canceled event">
-                    <IconButton className="text-danger" size="middle" color="secondary" >
-                        <i className="far fa-calendar-times" />
-                    </IconButton>
-                </Tooltip>)
-    }
-}
+const EventActiveStatus = ({ eventStatus, eventId, onBlock, onUnBlock }) => {
+  switch (eventStatus) {
+    case eventStatusEnum.Active:
+      return (
+        <SimpleModalWithDetails
+          key={eventId + eventStatus}
+          data="Are you sure?"
+          submitCallback={reason => onBlock(eventId, reason, eventStatus)}
+          button={RenderEventButton(
+            eventStatusTitle.ACTIVE,
+            eventStatusButton.TEXT_SUCCESS,
+            eventStatusIcon.ACTIVE,
+          )}
+        />
+      );
+    case eventStatusEnum.Blocked:
+      return (
+        <SimpleModalWithDetails
+          key={eventId + eventStatus}
+          data="Are you sure?"
+          submitCallback={reason => onUnBlock(eventId, reason)}
+          button={RenderEventButton(
+            eventStatusTitle.BLOCKED,
+            eventStatusButton.TEXT_DANGER,
+            eventStatusIcon.BLOCKED,
+          )}
+        />
+      );
+    case eventStatusEnum.Canceled:
+      return (
+        <>
+          {RenderEventButton(
+            eventStatusTitle.CANCELED,
+            eventStatusButton.TEXT_DANGER,
+            eventStatusIcon.CANCELED,
+          )}
+        </>
+      );
+    default:
+      return <></>;
+  }
+};
+
+// TODO: Check prop eventStatus
+EventActiveStatus.propTypes = {
+  eventStatus: propTypes.bool,
+  eventId: propTypes.number,
+  onBlock: propTypes.func,
+  onUnBlock: propTypes.func,
+};
+
+EventActiveStatus.defaultProps = {
+  eventStatus: false,
+  eventId: null,
+  onBlock: () => {},
+  onUnBlock: () => {},
+};
+
+export default EventActiveStatus;

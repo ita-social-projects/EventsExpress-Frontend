@@ -1,53 +1,56 @@
-﻿import { UserService } from '../../services';
+﻿/* eslint-disable consistent-return */
+import { UserService } from "../../services";
 import { getRequestInc, getRequestDec } from "../request-count-action";
-import { setErrorAllertFromResponse } from '../alert-action';
+import { setErrorAllertFromResponse } from "../alert-action";
 
 export const GET_PROFILE_DATA = "GET_PROFILE_DATA";
 export const RESET_USER = "RESET_USER";
 
-const api_serv = new UserService();
+const apiService = new UserService();
 
-export default function get_user(id) {
-    return async dispatch => {
-        dispatch(getRequestInc());
+function getProfile(data) {
+  return {
+    type: GET_PROFILE_DATA,
+    payload: data,
+  };
+}
 
-        let response = await api_serv.getUserById(id);
-        dispatch(getRequestDec());
-        if (!response.ok) {
-            dispatch(setErrorAllertFromResponse(response));
-            return Promise.reject();
-        }
-        let jsonRes = await response.json();
-        dispatch(getProfile(jsonRes));
-        return Promise.resolve();
-    }
+export function resetUser() {
+  return {
+    type: RESET_USER,
+  };
 }
 
 export function setAttitude(data) {
-    return async dispatch => {
-        let response = await api_serv.setAttitude(data);
-        if (response.ok) {
-            let res = await api_serv.getUserById(data.userToId);
-            if (!res.ok) {
-                dispatch(setErrorAllertFromResponse(response));
-                return Promise.reject();
-            }
-            let jsonRes = await res.json();
-            dispatch(getProfile(jsonRes))
-            return Promise.reject();
-        }
+  return async dispatch => {
+    const response = await apiService.setAttitude(data);
+    if (response.ok) {
+      const res = await apiService.getUserById(data.userToId);
+      if (!res.ok) {
+        dispatch(setErrorAllertFromResponse(response));
+        return Promise.reject();
+      }
+      const jsonRes = await res.json();
+      dispatch(getProfile(jsonRes));
+      return Promise.reject();
     }
+  };
 }
 
-function getProfile(data) {
-    return {
-        type: GET_PROFILE_DATA,
-        payload: data
-    }
-}
+const getUser = id => {
+  return async dispatch => {
+    dispatch(getRequestInc());
 
-export function reset_user() {
-    return {
-        type: RESET_USER
+    const response = await apiService.getUserById(id);
+    dispatch(getRequestDec());
+    if (!response.ok) {
+      dispatch(setErrorAllertFromResponse(response));
+      return Promise.reject();
     }
-}
+    const jsonRes = await response.json();
+    dispatch(getProfile(jsonRes));
+    return Promise.resolve();
+  };
+};
+
+export default getUser;

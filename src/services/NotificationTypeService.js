@@ -1,10 +1,11 @@
-import EventsExpressService from './EventsExpressService'
+import EventsExpressService from "./EventsExpressService";
 
 const baseService = new EventsExpressService();
 
 export default class NotificationTypeService {
+  getAllNotificationTypes = () =>
+    baseService.getResource("notificationType/All");
 
-    getAllNotificationTypes = () => baseService.getResource('notificationType/All');
-
-    getUserNotificationTypes = () => baseService.getResource('Users/GetNotificationTypes');
+  getUserNotificationTypes = () =>
+    baseService.getResource("Users/GetNotificationTypes");
 }

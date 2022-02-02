@@ -1,14 +1,14 @@
 ﻿import React from "react";
+import { Field } from "redux-form";
+import PropTypes from "prop-types";
 import Line from "./Line";
 import { MultiCheckbox } from "../../components/helpers/form-helpers";
-import { Field } from "redux-form";
 import "./CheckboxList.css";
 import "./CustomCheckbox.css";
 
 function CheckboxList(props) {
-  const mapToValues = (arr) => {
-    console.log(arr);
-    return arr.map((el) => ({ value: el.id, text: el.name }));
+  const mapToValues = arr => {
+    return arr.map(el => ({ value: el.id, text: el.name }));
   };
 
   return (
@@ -24,5 +24,14 @@ function CheckboxList(props) {
     </div>
   );
 }
+
+CheckboxList.propTypes = {
+  index: PropTypes.number,
+  data: PropTypes.array,
+};
+CheckboxList.defaultProps = {
+  index: null,
+  data: [],
+};
 
 export default CheckboxList;

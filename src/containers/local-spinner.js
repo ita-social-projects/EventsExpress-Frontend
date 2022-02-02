@@ -1,20 +1,24 @@
-﻿import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Spinner from '../components/spinner';
+﻿import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import Spinner from "../components/spinner";
 
-class LocalSpinnerWrapper extends Component {
-
-    render() {
-        const { localCounter, showContent } = this.props;
-        console.log(this.props);
-        return localCounter > 0 || !showContent
-            ? <Spinner />
-            : this.props.children
-    }
+function LocalSpinnerWrapper({ localCounter, children, showContent }) {
+  return localCounter > 0 || !showContent ? <Spinner /> : children;
 }
 
-const mapStateToProps = (state) => ({
-    localCounter: state.requestLocalCount.localCounter
-});
+LocalSpinnerWrapper.propTypes = {
+  showContent: PropTypes.func,
+  children: PropTypes.object,
+  localCounter: PropTypes.number,
+};
+LocalSpinnerWrapper.defaultProps = {
+  showContent: () => {},
+  children: {},
+  localCounter: null,
+};
 
+const mapStateToProps = state => ({
+  localCounter: state.requestLocalCount.localCounter,
+});
 export default connect(mapStateToProps)(LocalSpinnerWrapper);

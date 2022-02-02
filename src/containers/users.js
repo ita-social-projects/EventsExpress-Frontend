@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { get_users, reset_users } from "../actions/users/users-action";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getUsers, resetUsers } from "../actions/users/users-action";
 import Users from "../components/users";
 import SpinnerWrapper from "./spinner";
-import UsersFilterWrapper from "../containers/user-filter";
+import UsersFilterWrapper from "./user-filter";
 
 class UsersWrapper extends Component {
   componentDidMount() {
@@ -11,10 +12,10 @@ class UsersWrapper extends Component {
   }
 
   componentWillUnmount = () => {
-    this.props.reset_users();
+    this.props.resetUsers();
   };
 
-  getUsers = (page) => this.props.get_users(page);
+  getUsers = page => this.props.getUsers(page);
 
   render() {
     const {
@@ -42,15 +43,28 @@ class UsersWrapper extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   users: state.users,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    get_users: (page) => dispatch(get_users(page)),
-    reset_users: () => dispatch(reset_users()),
+    getUsers: page => dispatch(getUsers(page)),
+    resetUsers: () => dispatch(resetUsers()),
   };
+};
+UsersWrapper.propTypes = {
+  location: PropTypes.object,
+  users: PropTypes.object,
+  resetUsers: PropTypes.func,
+  getUsers: PropTypes.func,
+};
+
+UsersWrapper.defaultProps = {
+  location: {},
+  users: {},
+  resetUsers: () => {},
+  getUsers: () => {},
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersWrapper);

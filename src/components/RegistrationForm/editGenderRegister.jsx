@@ -3,9 +3,9 @@ import { Field, reduxForm } from "redux-form";
 import { renderSelectField } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
 
-let editGenderRegister = (props) => {
+const editGenderRegister = props => {
   const { handleSubmit } = props;
-  return render(
+  return (
     <form name="editGenderRegister" onSubmit={handleSubmit}>
       <div>
         <Field

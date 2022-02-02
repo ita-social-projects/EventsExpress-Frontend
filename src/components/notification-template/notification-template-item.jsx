@@ -1,26 +1,32 @@
-﻿import React, { Component } from 'react';
-import { IconButton } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+﻿import React from "react";
+import PropTypes from "prop-types";
+import { IconButton } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
-export default class NotificationTemplateItem extends Component {
+const NotificationTemplateItem = ({ template }) => {
+  return (
+    <tr key={template.id}>
+      <td>{template.id}</td>
+      <td>{template.title}</td>
+      <td>{template.subject}</td>
+      <td>{template.message}</td>
+      <td>
+        <Link to={`/admin/notificationTemplate/${template.id}`}>
+          <IconButton className="text-info" size="small">
+            <i className="fas fa-edit" />
+          </IconButton>
+        </Link>
+      </td>
+    </tr>
+  );
+};
 
-    render() {
-        const { template } = this.props;
+NotificationTemplateItem.defaultProps = {
+  template: {},
+};
 
-        return (
-            <tr key={template.id}>
-                <td>{template.id}</td>
-                <td>{template.title}</td>
-                <td>{template.subject}</td>
-                <td>{template.message}</td>
-                <td>
-                    <Link to={"/admin/notificationTemplate/" + template.id}>
-                        <IconButton className="text-info" size="small">
-                            <i className="fas fa-edit" />
-                        </IconButton>
-                    </Link>
-                </td>
-            </tr>
-        );
-    }
-}
+NotificationTemplateItem.propTypes = {
+  template: PropTypes.object,
+};
+
+export default NotificationTemplateItem;

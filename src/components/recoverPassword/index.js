@@ -1,3 +1,3 @@
-﻿import RecoverPassword from './recoverPassword';
+﻿import RecoverPassword from "./recoverPassword";
 
 export default RecoverPassword;
