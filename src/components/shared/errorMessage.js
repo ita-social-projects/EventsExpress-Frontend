@@ -16,7 +16,7 @@ ErrorMessages.defaultProps = {
 };
 
 ErrorMessages.propTypes = {
-  error: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  error: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   className: PropTypes.string,
 };
 
