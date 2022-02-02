@@ -9,7 +9,7 @@ import registerComplete from "../actions/register/register-complete-action";
 class RegisterCompleteWrapper extends Component {
   constructor(props) {
     super(props);
-    const userProfile = this.props.location.state.profile;
+    const userProfile = this.props.location?.state?.profile;
     this.profile =
       userProfile !== undefined || userProfile !== null ? userProfile : null;
   }
