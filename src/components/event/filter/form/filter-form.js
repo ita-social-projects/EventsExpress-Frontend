@@ -4,7 +4,7 @@ import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import useFilterStyles from "../filter-styles";
-// import { GreenButton } from "./green-button";
+import GreenButton from "./green-button";
 import OrganizerFilter from "../parts/organizer/organizer-filter";
 import {
   applyFilters,
@@ -45,10 +45,9 @@ const FilterForm = ({
           >
             Reset
           </Button>
-          {/* ! TODO: FIX THIS PROBLEM */}
-          {/* <GreenButton type="submit" disabled={pristine}>
+          <GreenButton type="submit" disabled={pristine}>
             Apply
-          </GreenButton> */}
+          </GreenButton>
         </div>
       </div>
       <OrganizerFilter />
