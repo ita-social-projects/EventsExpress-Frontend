@@ -30,13 +30,13 @@ const mapStateToProps = state => ({
 LeftSidebarWrapper.propTypes = {
   notification: PropTypes.object,
   user: PropTypes.object,
-  filter: PropTypes.func,
+  filter: PropTypes.object,
 };
 
 LeftSidebarWrapper.defaultProps = {
   notification: {},
   user: {},
-  filter: () => {},
+  filter: {},
 };
 
 export default connect(mapStateToProps)(LeftSidebarWrapper);

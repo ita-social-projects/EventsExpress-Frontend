@@ -18,7 +18,7 @@ ContactAdminContainer.defaultProps = {
 
 ContactAdminContainer.propTypes = {
   contactAdminDispatch: PropTypes.func,
-  user: PropTypes.string,
+  user: PropTypes.object,
 };
 
 const mapStateToProps = state => ({

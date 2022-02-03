@@ -24,7 +24,7 @@ AuthComponent.propTypes = {
   id: PropTypes.number,
   roles: PropTypes.array,
   rolesMatch: PropTypes.string,
-  children: PropTypes.object,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   onlyAnonymous: PropTypes.bool,
 };
 

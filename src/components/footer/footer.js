@@ -11,9 +11,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { id: 0, icon: "fab fa-facebook-f", link: "" },
-    { id: 1, icon: "fab fa-instagram", link: "" },
-    { id: 2, icon: "fab fa-youtube", link: "" },
+    { id: 0, icon: "fab fa-facebook-f", link: "https://uk-ua.facebook.com" },
+    { id: 1, icon: "fab fa-instagram", link: "https://www.instagram.com" },
+    { id: 2, icon: "fab fa-youtube", link: "https://www.instagram.com" },
   ];
 
   return (
@@ -28,7 +28,7 @@ const Footer = () => {
       </div>
       <div className="social-links">
         {socialLinks.map(link => (
-          <Link key={link.id} to={link.path} className="nav-link social-link">
+          <Link key={link.id} to={link.link} className="nav-link social-link">
             <i className={link.icon} />
           </Link>
         ))}
