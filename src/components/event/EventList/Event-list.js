@@ -22,11 +22,9 @@ const EventList = ({
   ...props
 }) => {
   useEffect(() => {
-    return (
-      totalPages > 1 &&
-      history.location.search === "" &&
-      history.push(`${history.location.pathname}?page=1`)
-    );
+    if (totalPages > 1 && history.location.search === "") {
+      history.push(`${history.location.pathname}?page=1`);
+    }
     // TODO: Check useEffect
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalPages, history.location.search]);
