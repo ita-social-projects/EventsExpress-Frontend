@@ -73,19 +73,3 @@ export default reduxForm({
   form: "EditBirthday",
   validate,
 })(EditBirthday);
-
-EditBirthday.propTypes = {
-  handleSubmit: PropTypes.func,
-  pristine: PropTypes.bool,
-  reset: PropTypes.func,
-  submitting: PropTypes.bool,
-  error: PropTypes.array,
-};
-
-EditBirthday.defaultProps = {
-  handleSubmit: () => {},
-  pristine: false,
-  reset: () => {},
-  submitting: false,
-  error: [],
-};

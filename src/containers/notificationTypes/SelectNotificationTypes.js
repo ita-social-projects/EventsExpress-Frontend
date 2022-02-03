@@ -45,7 +45,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setUserNotificationTypes: data => dispatch(setUserNotificationTypes(data)),
-    get_notificationTypes: () => dispatch(getNotificationTypes()),
+    getNotificationTypes: () => dispatch(getNotificationTypes()),
     getuserNotificationTypes: () => dispatch(getUserNotificationTypes()),
   };
 };

@@ -8,10 +8,9 @@ import { renderTextField } from "../../helpers/form-helpers";
 const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <Field name="userName" component={renderTextField} label="UserName" />
-        {error && <ErrorMessages error={error} className="text-center" />}
-      </div>
+      <Field name="userName" component={renderTextField} label="UserName" />
+      {error && <ErrorMessages error={error} className="text-center" />}
+
       <div>
         <Button type="submit" color="primary" disabled={pristine || submitting}>
           Submit

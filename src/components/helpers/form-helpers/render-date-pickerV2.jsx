@@ -4,7 +4,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-import MomentUtils from "@date-io/moment";
+import DateFnsUtils from "@date-io/date-fns";
 import moment from "moment";
 
 const RenderDatePicker = ({
@@ -17,7 +17,7 @@ const RenderDatePicker = ({
 }) => {
   return (
     <>
-      <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
+      <MuiPickersUtilsProvider libInstance={moment} utils={DateFnsUtils}>
         <KeyboardDatePicker
           {...inputProps}
           label={label}
@@ -25,7 +25,7 @@ const RenderDatePicker = ({
           value={value ? moment(value).format("L") : null}
           autoOK
           emptyLabel=""
-          format="DD-MM-YYYY"
+          format="dd-MM-yyyy"
           error={touched && invalid}
           helperText={touched && error}
           onChange={onChange}
