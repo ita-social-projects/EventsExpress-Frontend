@@ -11,6 +11,7 @@ import { renderTextField } from "../helpers/form-helpers";
 import isValidEmail from "../helpers/validators/email-address-validator";
 import fieldIsRequired from "../helpers/validators/required-fields-validator";
 import ErrorMessages from "../shared/errorMessage";
+import "./register.css";
 
 const validate = values => {
   const errors = {};
@@ -37,7 +38,7 @@ const Register = ({ pristine, reset, submitting, error, handleSubmit }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <Field
-            style={{ width: "100%" }}
+            className="registerFormInputs"
             name="email"
             component={renderTextField}
             label="E-mail:"
@@ -46,7 +47,7 @@ const Register = ({ pristine, reset, submitting, error, handleSubmit }) => {
         </div>
         <div>
           <Field
-            style={{ width: "100%" }}
+            className="registerFormInputs"
             name="password"
             component={renderTextField}
             label="Password:"
@@ -56,7 +57,7 @@ const Register = ({ pristine, reset, submitting, error, handleSubmit }) => {
         </div>
         <div>
           <Field
-            style={{ width: "100%" }}
+            className="registerFormInputs"
             name="RepeatPassword"
             component={renderTextField}
             label="Repeat password:"
