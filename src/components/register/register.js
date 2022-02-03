@@ -37,6 +37,7 @@ const Register = ({ pristine, reset, submitting, error, handleSubmit }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <Field
+            style={{ width: "100%" }}
             name="email"
             component={renderTextField}
             label="E-mail:"
@@ -45,6 +46,7 @@ const Register = ({ pristine, reset, submitting, error, handleSubmit }) => {
         </div>
         <div>
           <Field
+            style={{ width: "100%" }}
             name="password"
             component={renderTextField}
             label="Password:"
@@ -54,6 +56,7 @@ const Register = ({ pristine, reset, submitting, error, handleSubmit }) => {
         </div>
         <div>
           <Field
+            style={{ width: "100%" }}
             name="RepeatPassword"
             component={renderTextField}
             label="Repeat password:"

@@ -13,6 +13,7 @@ class RegisterWrapper extends React.Component {
 
   submit = async values => {
     await this.props.register(values.email, values.password);
+    this.props.handleClose();
   };
 
   render() {
@@ -24,15 +25,6 @@ class RegisterWrapper extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return state.register;
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    register: (email, password) => dispatch(register(email, password)),
-  };
-};
 RegisterWrapper.propTypes = {
   registerError: PropTypes.bool,
   isRegisterSuccess: PropTypes.bool,
@@ -47,4 +39,10 @@ RegisterWrapper.defaultProps = {
   register: () => {},
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterWrapper);
+const mapDispatchToProps = dispatch => {
+  return {
+    register: (email, password) => dispatch(register(email, password)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(RegisterWrapper);
