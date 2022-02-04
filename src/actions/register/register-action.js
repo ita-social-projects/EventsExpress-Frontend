@@ -22,7 +22,7 @@ const register = (email, password) => {
     if (!response.ok) {
       throw new SubmissionError(await buildValidationState(response));
     }
-    dispatch(history.push("/registerSuccess"));
+    history.push("/registerSuccess");
     return Promise.resolve();
   };
 };
