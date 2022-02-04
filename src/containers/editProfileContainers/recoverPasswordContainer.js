@@ -40,7 +40,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 RecoverPasswordContainer.propTypes = {
-  status: PropTypes.func,
+  status: PropTypes.object,
   recoverPassword: PropTypes.func,
 };
 
