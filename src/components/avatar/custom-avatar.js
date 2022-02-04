@@ -77,7 +77,7 @@ CustomAvatar.defaultProps = {
 
 const mapStateToProps = state => {
   return {
-    changeAvatarCounter: state.change_avatar.Update,
+    changeAvatarCounter: state.changeAvatar.Update,
   };
 };
 

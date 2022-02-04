@@ -37,7 +37,7 @@ const initialState = {
     editedUnitOfMeasuring: null,
     isAdded: false,
   },
-  change_avatar: {
+  changeAvatar: {
     Update: 0,
   },
   categories: {

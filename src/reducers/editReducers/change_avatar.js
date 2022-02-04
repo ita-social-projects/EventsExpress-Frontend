@@ -3,7 +3,7 @@ import initialState from "../../store/initialState";
 
 const { UPDATE } = changeAvatarStates;
 
-const reducer = (state = initialState.change_avatar, action) => {
+const reducer = (state = initialState.changeAvatar, action) => {
   if (action.type === UPDATE) {
     return { ...state, Update: state.Update + 1 };
   }

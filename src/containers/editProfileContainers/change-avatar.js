@@ -28,7 +28,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    change_avatar: data => dispatch(changeAvatar(data)),
+    changeAvatar: data => dispatch(changeAvatar(data)),
   };
 };
 
