@@ -5,13 +5,12 @@ import TextField from "@material-ui/core/TextField";
 const RenderTextArea = ({
   input,
   label,
-  defaultValue,
+
   meta: { touched, error, invalid },
 }) => {
   return (
     <TextField
       label={label}
-      defaultValue={defaultValue}
       multiline
       rows="4"
       fullWidth
@@ -29,12 +28,10 @@ RenderTextArea.defaultProps = {
   input: {},
   meta: {},
   label: "",
-  defaultValue: "",
 };
 
 RenderTextArea.propTypes = {
   input: PropTypes.object,
   meta: PropTypes.object,
   label: PropTypes.string,
-  defaultValue: PropTypes.string,
 };

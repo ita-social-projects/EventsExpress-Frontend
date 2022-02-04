@@ -59,7 +59,7 @@ const rootReducers = {
   categories: Categories,
   categoryGroups: CategoryGroups,
   users: Users,
-  change_avatar: ChangeAvatar,
+  changeAvatar: ChangeAvatar,
   event: EventView,
   eventSchedule: EventScheduleView,
   comments: Comments,

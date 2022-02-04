@@ -14,7 +14,7 @@ class LeftSidebarWrapper extends Component {
     return (
       <LeftSidebar
         user={this.props.user}
-        msg_for_read={this.searchUnreadMsg}
+        msgForRead={this.searchUnreadMsg}
         filter={this.props.filter}
       />
     );
@@ -30,13 +30,13 @@ const mapStateToProps = state => ({
 LeftSidebarWrapper.propTypes = {
   notification: PropTypes.object,
   user: PropTypes.object,
-  filter: PropTypes.func,
+  filter: PropTypes.object,
 };
 
 LeftSidebarWrapper.defaultProps = {
   notification: {},
   user: {},
-  filter: () => {},
+  filter: {},
 };
 
 export default connect(mapStateToProps)(LeftSidebarWrapper);

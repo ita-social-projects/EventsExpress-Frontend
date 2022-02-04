@@ -83,50 +83,44 @@ class DropZoneField extends Component {
     const containerClass = error && touched ? "invalid" : "valid";
     return (
       <Fragment className={`preview-container ${containerClass}`}>
-        <div>
-          {imagefile.length && crop && !cropped ? (
-            <div>
-              <ImageResizer
-                image={imagefile[0]}
-                onChange={onChange}
-                handleOnCrop={handleOnCrop}
-                cropShape={cropShape}
-              />
-            </div>
-          ) : (
-            <div>
-              <DropZone
-                accept="image/jpeg, image/png, image/gif, image/bmp"
-                className="upload-container"
-                onDrop={file => handleOnDrop(file)}
-                multiple={false}
-              >
-                {props =>
-                  imagefile && imagefile.length > 0 ? (
-                    <ImagePreview
-                      imagefile={imagefile}
-                      shape={cropShape}
-                      error={error}
-                      touched={touched}
-                    />
-                  ) : (
-                    <Placeholder {...props} error={error} touched={touched} />
-                  )
-                }
-              </DropZone>
-            </div>
-          )}
-          <Button
-            className="mt-3"
-            type="button"
-            color="primary"
-            disabled={submitting}
-            onClick={handleOnClear}
-            style={{ float: "right" }}
+        {imagefile.length && crop && !cropped ? (
+          <ImageResizer
+            image={imagefile[0]}
+            onChange={onChange}
+            handleOnCrop={handleOnCrop}
+            cropShape={cropShape}
+          />
+        ) : (
+          <DropZone
+            accept="image/jpeg, image/png, image/gif, image/bmp"
+            className="upload-container"
+            onDrop={file => handleOnDrop(file)}
+            multiple={false}
           >
-            Clear
-          </Button>
-        </div>
+            {props =>
+              imagefile && imagefile.length > 0 ? (
+                <ImagePreview
+                  imagefile={imagefile}
+                  shape={cropShape}
+                  error={error}
+                  touched={touched}
+                />
+              ) : (
+                <Placeholder {...props} error={error} touched={touched} />
+              )
+            }
+          </DropZone>
+        )}
+        <Button
+          className="mt-3"
+          type="button"
+          color="primary"
+          disabled={submitting}
+          onClick={handleOnClear}
+          style={{ float: "right" }}
+        >
+          Clear
+        </Button>
         {renderFieldError({ touched, error })}
       </Fragment>
     );
