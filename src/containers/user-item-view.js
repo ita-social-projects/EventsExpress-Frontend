@@ -34,7 +34,7 @@ class UserItemViewWrapper extends Component {
   componentWillUpdate = newProps => {
     if (newProps.match.params.id !== this.props.match.params.id)
       this.props.getUser(newProps.match.params.id);
-    if (newProps.current_user !== this.props.currentUser)
+    if (newProps.currentUser !== this.props.currentUser)
       this.props.getUser(newProps.match.params.id);
   };
 
@@ -137,7 +137,7 @@ UserItemViewWrapper.defaultProps = {
 
 const mapStateToProps = state => ({
   profile: state.profile,
-  current_user: state.user.id,
+  currentUser: state.user.id,
   events: state.events_for_profile,
 });
 

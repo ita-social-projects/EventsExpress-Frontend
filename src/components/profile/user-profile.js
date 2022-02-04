@@ -19,8 +19,8 @@ import getAge from "../helpers/get-age-string";
 import indexToTabName from "../../constants/indexToTabName";
 
 class UserItemView extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       value:
         indexToTabName[this.splitPath(this.props.history.location.pathname)],
@@ -29,15 +29,19 @@ class UserItemView extends Component {
   }
 
   componentDidMount = () => {
+    this.setValue();
+  };
+
+  setValue = () => {
     this.setState({
       value:
         indexToTabName[this.splitPath(this.props.history.location.pathname)],
     });
   };
 
-  componentDidUpdate = () => {
-    this.componentDidMount();
-  };
+  // componentDidUpdate = () => {
+  //   this.setValue();
+  // };
 
   renderCategories = arr =>
     arr.map(item => <div key={item.id}>#{item.name}</div>);

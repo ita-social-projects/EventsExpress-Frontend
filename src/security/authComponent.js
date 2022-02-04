@@ -7,7 +7,7 @@ class AuthComponent extends Component {
     const { id, roles, rolesMatch, children, onlyAnonymous } = this.props;
 
     if (rolesMatch) {
-      if (id && roles === rolesMatch) {
+      if (id && roles[0] === rolesMatch) {
         return children;
       }
     } else if (onlyAnonymous) {

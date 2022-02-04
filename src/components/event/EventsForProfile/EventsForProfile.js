@@ -15,7 +15,7 @@ const EventsForProfile = ({
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    return notificationEvents === null ? callback(currentPage) : null;
+    if (notificationEvents === null) callback(currentPage);
     // TODO: Check useEffect
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
