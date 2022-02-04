@@ -56,19 +56,18 @@ class HeadArticle extends Component {
           <h2>What do you want to do?</h2>
           <div className="buttons">
             <AuthComponent onlyAnonymous>
-              <div className="text-center">
-                <ModalWind
-                  renderButton={action => (
-                    <button
-                      className="btn btn-warning"
-                      onClick={() => action()}
-                      type="button"
-                    >
-                      Create event
-                    </button>
-                  )}
-                />
-              </div>
+              <ModalWind
+                className="text-center"
+                renderButton={action => (
+                  <button
+                    className="btn btn-warning"
+                    onClick={action()}
+                    type="button"
+                  >
+                    Create event
+                  </button>
+                )}
+              />
             </AuthComponent>
 
             <Link to="home/events" className="btn btn-warning">
