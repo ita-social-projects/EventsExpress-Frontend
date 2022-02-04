@@ -1,9 +1,9 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import Accordion from "@material-ui/core/Accordion";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import { AccordionSummary } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
@@ -56,17 +56,17 @@ const ChangePassword = ({
   };
 
   return (
-    <ExpansionPanel
+    <Accordion
       expanded={expanded === "panel5"}
       onChange={handleChange("panel5")}
     >
-      <ExpansionPanelSummary
+      <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1bh-content"
         id="panel1bh-header"
       >
         <Typography className={classes.heading}>Change Password</Typography>
-      </ExpansionPanelSummary>
+      </AccordionSummary>
       <ExpansionPanelDetails>
         <Typography>
           <MuiThemeProvider>
@@ -118,7 +118,7 @@ const ChangePassword = ({
           </MuiThemeProvider>
         </Typography>
       </ExpansionPanelDetails>
-    </ExpansionPanel>
+    </Accordion>
   );
 };
 

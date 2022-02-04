@@ -73,7 +73,7 @@ const mapDispatchToProps = dispatch => {
 
 EventList.propTypes = {
   totalPages: PropTypes.number,
-  history: PropTypes.array,
+  history: PropTypes.object,
   location: PropTypes.shape({
     search: PropTypes.string,
     pathname: PropTypes.string,
@@ -85,7 +85,7 @@ EventList.propTypes = {
 
 EventList.defaultProps = {
   totalPages: null,
-  history: [],
+  history: {},
   location: {
     search: "",
     pathname: "",

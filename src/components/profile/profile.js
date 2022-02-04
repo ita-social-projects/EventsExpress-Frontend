@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from "react-moment";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import Accordion from "@material-ui/core/Accordion";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import { AccordionSummary } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -53,17 +53,17 @@ const Profile = ({
 
   return (
     <div className={classes.root}>
-      <ExpansionPanel
+      <Accordion
         expanded={expanded === "panel0"}
         onChange={handleChange("panel0")}
       >
-        <ExpansionPanelSummary
+        <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
           <Typography className={classes.heading}>Change Avatar</Typography>
-        </ExpansionPanelSummary>
+        </AccordionSummary>
         <ExpansionPanelDetails>
           <Typography className="w-100">
             <MuiThemeProvider>
@@ -71,19 +71,19 @@ const Profile = ({
             </MuiThemeProvider>
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel
+      </Accordion>
+      <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
       >
-        <ExpansionPanelSummary
+        <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
           <Typography className={classes.heading}>Username</Typography>
           <Typography className={classes.secondaryHeading}>{name}</Typography>
-        </ExpansionPanelSummary>
+        </AccordionSummary>
         <ExpansionPanelDetails>
           <Typography>
             <MuiThemeProvider>
@@ -91,12 +91,12 @@ const Profile = ({
             </MuiThemeProvider>
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel
+      </Accordion>
+      <Accordion
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}
       >
-        <ExpansionPanelSummary
+        <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2bh-content"
           id="panel2bh-header"
@@ -105,7 +105,7 @@ const Profile = ({
           <Typography className={classes.secondaryHeading}>
             {genders[gender]}
           </Typography>
-        </ExpansionPanelSummary>
+        </AccordionSummary>
         <ExpansionPanelDetails>
           <Typography>
             <MuiThemeProvider>
@@ -113,12 +113,12 @@ const Profile = ({
             </MuiThemeProvider>
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel
+      </Accordion>
+      <Accordion
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}
       >
-        <ExpansionPanelSummary
+        <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel3bh-content"
           id="panel3bh-header"
@@ -129,7 +129,7 @@ const Profile = ({
               {birthday}
             </Moment>
           </Typography>
-        </ExpansionPanelSummary>
+        </AccordionSummary>
         <ExpansionPanelDetails>
           <Typography>
             <MuiThemeProvider>
@@ -137,12 +137,12 @@ const Profile = ({
             </MuiThemeProvider>
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel
+      </Accordion>
+      <Accordion
         expanded={expanded === "panel4"}
         onChange={handleChange("panel4")}
       >
-        <ExpansionPanelSummary
+        <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel4bh-content"
           id="panel4bh-header"
@@ -155,7 +155,7 @@ const Profile = ({
               <div key={category.id}>{category.name}</div>
             ))}
           </Typography>
-        </ExpansionPanelSummary>
+        </AccordionSummary>
         <ExpansionPanelDetails>
           <Typography>
             <MuiThemeProvider>
@@ -163,12 +163,12 @@ const Profile = ({
             </MuiThemeProvider>
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel
+      </Accordion>
+      <Accordion
         expanded={expanded === "panel5"}
         onChange={handleChange("panel5")}
       >
-        <ExpansionPanelSummary
+        <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel5bh-content"
           id="panel5bh-header"
@@ -181,7 +181,7 @@ const Profile = ({
               <div key={notificatin.id}>{notificatin.name}</div>
             ))}
           </Typography>
-        </ExpansionPanelSummary>
+        </AccordionSummary>
         <ExpansionPanelDetails>
           <Typography>
             <MuiThemeProvider>
@@ -189,18 +189,18 @@ const Profile = ({
             </MuiThemeProvider>
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel
+      </Accordion>
+      <Accordion
         expanded={expanded === "panel6"}
         onChange={handleChange("panel6")}
       >
-        <ExpansionPanelSummary
+        <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel6bh-content"
           id="panel6bh-header"
         >
           <Typography className={classes.heading}>Linked accounts</Typography>
-        </ExpansionPanelSummary>
+        </AccordionSummary>
         <ExpansionPanelDetails>
           <Typography>
             <MuiThemeProvider>
@@ -208,7 +208,7 @@ const Profile = ({
             </MuiThemeProvider>
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </Accordion>
       {canChangePassword && <ChangePasswordContainer />}
     </div>
   );

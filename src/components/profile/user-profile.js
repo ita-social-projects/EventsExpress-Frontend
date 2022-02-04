@@ -1,4 +1,5 @@
-﻿import React, { Component } from "react";
+﻿/* eslint-disable no-debugger */
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
 import "moment-timezone";
@@ -29,19 +30,11 @@ class UserItemView extends Component {
   }
 
   componentDidMount = () => {
-    this.setValue();
-  };
-
-  setValue = () => {
     this.setState({
       value:
         indexToTabName[this.splitPath(this.props.history.location.pathname)],
     });
   };
-
-  // componentDidUpdate = () => {
-  //   this.setValue();
-  // };
 
   renderCategories = arr =>
     arr.map(item => <div key={item.id}>#{item.name}</div>);
@@ -107,11 +100,9 @@ class UserItemView extends Component {
                     TransitionComponent={Zoom}
                   >
                     <IconButton
-                      className={attitude === "0" ? "text-success" : ""}
+                      className={attitude === 0 ? "text-success" : ""}
                       onClick={
-                        attitude !== "0"
-                          ? this.props.onLike
-                          : this.props.onReset
+                        attitude !== 0 ? this.props.onLike : this.props.onReset
                       }
                     >
                       <i className="fas fa-thumbs-up" />
@@ -123,9 +114,9 @@ class UserItemView extends Component {
                     TransitionComponent={Zoom}
                   >
                     <IconButton
-                      className={attitude === "1" ? "text-danger" : ""}
+                      className={attitude === 1 ? "text-danger" : ""}
                       onClick={
-                        attitude !== "1"
+                        attitude !== 1
                           ? this.props.onDislike
                           : this.props.onReset
                       }

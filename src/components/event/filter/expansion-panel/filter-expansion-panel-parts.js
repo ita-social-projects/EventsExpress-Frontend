@@ -1,8 +1,8 @@
 import { withStyles } from "@material-ui/core/styles";
 import {
-  ExpansionPanel,
-  ExpansionPanelDetails,
-  ExpansionPanelSummary,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
 } from "@material-ui/core";
 
 export const FilterExpansionPanelWrapper = withStyles({
@@ -19,7 +19,7 @@ export const FilterExpansionPanelWrapper = withStyles({
     },
   },
   expanded: {},
-})(ExpansionPanel);
+})(Accordion);
 
 export const FilterExpansionPanelSummary = withStyles({
   root: {
@@ -38,8 +38,8 @@ export const FilterExpansionPanelSummary = withStyles({
     justifyContent: "space-between",
   },
   expanded: {},
-})(ExpansionPanelSummary);
+})(AccordionSummary);
 
 export const FilterExpansionPanelDetails = withStyles({
   root: {},
-})(ExpansionPanelDetails);
+})(AccordionDetails);

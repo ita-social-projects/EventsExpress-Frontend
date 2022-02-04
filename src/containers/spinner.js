@@ -13,13 +13,13 @@ const mapStateToProps = state => ({
 SpinnerWrapper.propTypes = {
   counter: PropTypes.number,
   showContent: PropTypes.bool,
-  children: PropTypes.array,
+  children: PropTypes.object,
 };
 
 SpinnerWrapper.defaultProps = {
   counter: null,
   showContent: false,
-  children: [],
+  children: {},
 };
 
 export default connect(mapStateToProps)(SpinnerWrapper);
