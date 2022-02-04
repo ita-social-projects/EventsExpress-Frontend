@@ -18,7 +18,7 @@ const registerBindAccount = data => {
     const jsonRes = await response.json();
     localStorage.setItem(jwtStorageKey, jsonRes.token);
     dispatch(setSuccessAllert("Your profile was updated"));
-    dispatch(history.push("/home"));
+    history.push("/home");
     return Promise.resolve();
   };
 };

@@ -16,7 +16,7 @@ const cancelNextEventSchedule = eventId => {
     }
     dispatch(getRequestDec());
     dispatch(setSuccessAllert("The next event has been canceled!"));
-    dispatch(history.push(`/eventSchedules`));
+    history.push(`/eventSchedules`);
     return Promise.resolve();
   };
 };

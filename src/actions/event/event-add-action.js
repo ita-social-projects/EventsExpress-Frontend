@@ -41,7 +41,7 @@ export function publishEvent(eventId) {
     if (response.ok) {
       dispatch(getEvent(eventId));
       dispatch(setSuccessAllert("Your event has been successfully published!"));
-      dispatch(history.push(`/event/${eventId}/1`));
+      history.push(`/event/${eventId}/1`);
       dispatch(eventWasCreated(eventId));
       return Promise.resolve();
     }
@@ -60,7 +60,7 @@ const addEvent = () => {
       return Promise.reject();
     }
     const event = await response.json();
-    dispatch(history.push(`/editEvent/${event.id}`));
+    history.push(`/editEvent/${event.id}`);
     return Promise.resolve();
   };
 };
