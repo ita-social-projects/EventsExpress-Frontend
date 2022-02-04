@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import AuthComponent from "../../security/authComponent";
+import ModalWind from "../modal-wind";
 import image1 from "./landing-images/1.jpg";
 import image2 from "./landing-images/2.jpg";
 import image3 from "./landing-images/3.jpg";
@@ -53,13 +55,22 @@ class HeadArticle extends Component {
         <div className="button-container text-center">
           <h2>What do you want to do?</h2>
           <div className="buttons">
-            <button
-              className="btn btn-warning"
-              onClick={this.handleClick}
-              type="button"
-            >
-              Create event
-            </button>
+            <AuthComponent onlyAnonymous>
+              <div className="text-center">
+                <ModalWind
+                  renderButton={action => (
+                    <button
+                      className="btn btn-warning"
+                      onClick={() => action()}
+                      type="button"
+                    >
+                      Create event
+                    </button>
+                  )}
+                />
+              </div>
+            </AuthComponent>
+
             <Link to="home/events" className="btn btn-warning">
               Find event
             </Link>
