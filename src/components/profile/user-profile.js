@@ -1,4 +1,4 @@
-﻿/* eslint-disable no-debugger */
+﻿/* eslint-disable sonarjs/no-identical-functions */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
@@ -46,7 +46,8 @@ class UserItemView extends Component {
       </div>
     ));
 
-  handleChange = value => {
+  handleChange = (event, value) => {
+    this.setState({ value });
     switch (value) {
       case 0:
         this.props.onFuture();
@@ -151,7 +152,7 @@ class UserItemView extends Component {
           <AppBar position="static" color="inherit">
             <Tabs
               className="w-100"
-              value={this.state.value}
+              value={this.state.value ? this.state.value : 0} // TODO value === undefined, so have Material ui errors, if value to recognize from 0 to 4, we don`t have errors.
               onChange={this.handleChange}
               variant="fullWidth"
               scrollButtons="on"
@@ -268,7 +269,7 @@ UserItemView.propTypes = {
   events: PropTypes.object,
   onReset: PropTypes.func,
   onLike: PropTypes.func,
-  currentUser: PropTypes.object,
+  currentUser: PropTypes.string,
   onDislike: PropTypes.func,
 };
 
@@ -281,7 +282,7 @@ UserItemView.defaultProps = {
   data: {},
   events: {},
   onReset: () => {},
-  currentUser: {},
+  currentUser: "",
   onLike: () => {},
   onDislike: () => {},
 };

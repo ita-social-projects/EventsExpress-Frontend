@@ -51,8 +51,8 @@ EventsForProfile.propTypes = {
   totalPages: PropTypes.number,
   callback: PropTypes.func,
   notificationEvents: PropTypes.string,
-  currentUser: PropTypes.object,
-  dataList: [],
+  currentUser: PropTypes.string,
+  dataList: PropTypes.array,
 };
 
 EventsForProfile.defaultProps = {
@@ -60,7 +60,7 @@ EventsForProfile.defaultProps = {
   totalPages: null,
   callback: () => {},
   notificationEvents: "",
-  currentUser: {},
+  currentUser: "",
   dataList: [],
 };
 

@@ -107,7 +107,7 @@ class UserItemViewWrapper extends Component {
 
 UserItemViewWrapper.propTypes = {
   profile: PropTypes.object,
-  currentUser: PropTypes.object,
+  currentUser: PropTypes.string,
   match: PropTypes.object,
   getEventsTogo: PropTypes.func,
   getVisitedEvents: PropTypes.func,
@@ -116,13 +116,13 @@ UserItemViewWrapper.propTypes = {
   setAttitude: PropTypes.func,
   getFutureEvents: PropTypes.func,
   getPastEvents: PropTypes.func,
-  events: PropTypes.array,
-  history: PropTypes.func,
+  events: PropTypes.object,
+  history: PropTypes.object,
 };
 
 UserItemViewWrapper.defaultProps = {
   profile: {},
-  currentUser: {},
+  currentUser: "",
   match: {},
   getEventsTogo: () => {},
   getVisitedEvents: () => {},
@@ -131,8 +131,8 @@ UserItemViewWrapper.defaultProps = {
   setAttitude: () => {},
   getFutureEvents: () => {},
   getPastEvents: () => {},
-  events: [],
-  history: () => {},
+  events: {},
+  history: {},
 };
 
 const mapStateToProps = state => ({
