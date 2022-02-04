@@ -6,7 +6,7 @@ const RenderTextField = ({
   input,
   label,
   inputProps,
-  defaultValue,
+
   rows,
   fullWidth,
   meta: { touched, error, invalid },
@@ -19,8 +19,6 @@ const RenderTextField = ({
       label={label}
       placeholder={label}
       error={touched && invalid}
-      defaultValue={defaultValue}
-      value={defaultValue}
       inputProps={inputProps}
       helperText={touched && error}
       {...input}
@@ -35,8 +33,8 @@ RenderTextField.defaultProps = {
   input: {},
   inputProps: {},
   meta: {},
-  rows: {},
-  defaultValue: "",
+  rows: "",
+
   fullWidth: null,
   label: "",
 };
@@ -45,8 +43,8 @@ RenderTextField.propTypes = {
   input: PropTypes.object,
   inputProps: PropTypes.object,
   meta: PropTypes.object,
-  rows: PropTypes.object,
-  defaultValue: PropTypes.string,
+  rows: PropTypes.string,
+
   fullWidth: PropTypes.number,
   label: PropTypes.string,
 };
