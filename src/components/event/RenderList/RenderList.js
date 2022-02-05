@@ -1,42 +1,44 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
 import PropTypes from "prop-types";
 import PagePagination from "../../shared/pagePagination";
+import renderListConstants from "../../../constants/RenderListConstants";
 
-class RenderList extends Component {
-  renderItems = arr => arr.map(item => this.props.renderSingleItem(item));
+const RenderList = props => {
+  const {
+    page,
+    totalPages,
+    dataList,
+    customNoResultsMessage,
+    renderSingleItem,
+    handlePageChange,
+  } = props;
 
-  render() {
-    const { page, totalPages, dataList, customNoResultsMessage } = this.props;
+  const { NO_RESULTS } = renderListConstants;
 
-    return (
-      <>
-        <div className="row">
-          {dataList.length > 0 ? (
-            this.renderItems(dataList)
-          ) : (
-            <div id="notfound" className="w-100">
-              <div className="notfound mw-100">
-                <div className="notfound-404">
-                  <div className="h1">
-                    {customNoResultsMessage || "No Results"}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-        <br />
-        {totalPages > 1 && (
-          <PagePagination
-            currentPage={page}
-            totalPages={totalPages}
-            callback={this.props.handlePageChange}
-          />
+  const renderItems = arr => arr.map(item => renderSingleItem(item));
+
+  return (
+    <>
+      <div className="row">
+        {dataList.length > 0 ? (
+          renderItems(dataList)
+        ) : (
+          <div id="notfound" className="w-100 notfound mw-100 notfound-404 h1">
+            {customNoResultsMessage || NO_RESULTS}
+          </div>
         )}
-      </>
-    );
-  }
-}
+      </div>
+      <br />
+      {totalPages > 1 && (
+        <PagePagination
+          currentPage={page}
+          totalPages={totalPages}
+          callback={handlePageChange}
+        />
+      )}
+    </>
+  );
+};
 
 RenderList.propTypes = {
   page: PropTypes.number,
