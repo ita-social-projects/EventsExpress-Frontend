@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Accordion from "@material-ui/core/Accordion";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 import { AccordionSummary } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -67,7 +67,7 @@ const ChangePassword = ({
       >
         <Typography className={classes.heading}>Change Password</Typography>
       </AccordionSummary>
-      <ExpansionPanelDetails>
+      <AccordionDetails>
         <Typography>
           <MuiThemeProvider>
             <form onSubmit={handleSubmit}>
@@ -117,7 +117,7 @@ const ChangePassword = ({
             </form>
           </MuiThemeProvider>
         </Typography>
-      </ExpansionPanelDetails>
+      </AccordionDetails>
     </Accordion>
   );
 };

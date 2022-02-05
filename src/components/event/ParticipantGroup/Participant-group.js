@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import Accordion from "@material-ui/core/Accordion";
 import { AccordionSummary } from "@material-ui/core";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PropTypes from "prop-types";
@@ -17,7 +17,7 @@ const ParticipantGroup = ({ label, disabled, users, renderUserActions }) => {
       >
         <Typography>{label}</Typography>
       </AccordionSummary>
-      <ExpansionPanelDetails>
+      <AccordionDetails>
         <Typography className="w-100">
           {users.map(user => (
             <UserView key={user.id} user={user}>
@@ -25,7 +25,7 @@ const ParticipantGroup = ({ label, disabled, users, renderUserActions }) => {
             </UserView>
           ))}
         </Typography>
-      </ExpansionPanelDetails>
+      </AccordionDetails>
     </Accordion>
   );
 };

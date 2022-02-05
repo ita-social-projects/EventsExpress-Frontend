@@ -22,37 +22,35 @@ class UserChats extends Component {
       const chatBg = newMsg.length > 0 ? "new-msgs" : "";
 
       return (
-        <>
-          <div key={x.id} className="w-100">
-            <Link to={`/chat/${x.id}`}>
-              <div className={`${chatBg} col-12 d-flex`}>
-                <ButtonBase>
-                  <ContainerCustomAvatar
-                    size="Small"
-                    userId={user.id}
-                    name={user.name}
-                  />
-                </ButtonBase>
-                <div className="my-auto ml-5 wrap-text">
-                  <h5>{user.username}</h5>
-                  {newMsg.length === 0 && (
-                    <span className="text-info">{x.lastMessage}</span>
-                  )}
-                  {newMsg.length === 1 && (
-                    <span className="text-info">You have 1 unread message</span>
-                  )}
-                  {newMsg.length > 1 && (
-                    <span className="text-info">
-                      You have {newMsg.length} unread messages
-                    </span>
-                  )}
-                </div>
+        <div key={x.id} className="w-100">
+          <Link to={`/chat/${x.id}`}>
+            <div className={`${chatBg} col-12 d-flex`}>
+              <ButtonBase>
+                <ContainerCustomAvatar
+                  size="Small"
+                  userId={user.id}
+                  name={user.name}
+                />
+              </ButtonBase>
+              <div className="my-auto ml-5 wrap-text">
+                <h5>{user.username}</h5>
+                {newMsg.length === 0 && (
+                  <span className="text-info">{x.lastMessage}</span>
+                )}
+                {newMsg.length === 1 && (
+                  <span className="text-info">You have 1 unread message</span>
+                )}
+                {newMsg.length > 1 && (
+                  <span className="text-info">
+                    You have {newMsg.length} unread messages
+                  </span>
+                )}
               </div>
-              <p> </p>
-            </Link>
-            <hr />
-          </div>
-        </>
+            </div>
+            <p> </p>
+          </Link>
+          <hr />
+        </div>
       );
     });
   };

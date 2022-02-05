@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 
 SpinnerWrapper.propTypes = {
   counter: PropTypes.number,
-  showContent: PropTypes.bool,
+  showContent: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   children: PropTypes.object,
 };
 

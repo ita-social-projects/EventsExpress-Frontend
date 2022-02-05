@@ -15,7 +15,7 @@ class EditUsernameContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.editUsername;
+  return { editUsername: state.editUsername };
 };
 
 const mapDispatchToProps = dispatch => {

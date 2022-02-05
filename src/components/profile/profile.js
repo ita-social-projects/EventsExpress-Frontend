@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Moment from "react-moment";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Accordion from "@material-ui/core/Accordion";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 import { AccordionSummary } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -64,13 +64,13 @@ const Profile = ({
         >
           <Typography className={classes.heading}>Change Avatar</Typography>
         </AccordionSummary>
-        <ExpansionPanelDetails>
+        <AccordionDetails>
           <Typography className="w-100">
             <MuiThemeProvider>
               <ChangeAvatarWrapper />
             </MuiThemeProvider>
           </Typography>
-        </ExpansionPanelDetails>
+        </AccordionDetails>
       </Accordion>
       <Accordion
         expanded={expanded === "panel1"}
@@ -84,13 +84,13 @@ const Profile = ({
           <Typography className={classes.heading}>Username</Typography>
           <Typography className={classes.secondaryHeading}>{name}</Typography>
         </AccordionSummary>
-        <ExpansionPanelDetails>
+        <AccordionDetails>
           <Typography>
             <MuiThemeProvider>
               <EditUsernameContainer />
             </MuiThemeProvider>
           </Typography>
-        </ExpansionPanelDetails>
+        </AccordionDetails>
       </Accordion>
       <Accordion
         expanded={expanded === "panel2"}
@@ -106,13 +106,13 @@ const Profile = ({
             {genders[gender]}
           </Typography>
         </AccordionSummary>
-        <ExpansionPanelDetails>
+        <AccordionDetails>
           <Typography>
             <MuiThemeProvider>
               <EditGenderContainer />
             </MuiThemeProvider>
           </Typography>
-        </ExpansionPanelDetails>
+        </AccordionDetails>
       </Accordion>
       <Accordion
         expanded={expanded === "panel3"}
@@ -130,13 +130,13 @@ const Profile = ({
             </Moment>
           </Typography>
         </AccordionSummary>
-        <ExpansionPanelDetails>
+        <AccordionDetails>
           <Typography>
             <MuiThemeProvider>
               <EditBirthdayContainer />
             </MuiThemeProvider>
           </Typography>
-        </ExpansionPanelDetails>
+        </AccordionDetails>
       </Accordion>
       <Accordion
         expanded={expanded === "panel4"}
@@ -156,13 +156,13 @@ const Profile = ({
             ))}
           </Typography>
         </AccordionSummary>
-        <ExpansionPanelDetails>
+        <AccordionDetails>
           <Typography>
             <MuiThemeProvider>
               <SelectCategoriesWrapper />
             </MuiThemeProvider>
           </Typography>
-        </ExpansionPanelDetails>
+        </AccordionDetails>
       </Accordion>
       <Accordion
         expanded={expanded === "panel5"}
@@ -182,13 +182,13 @@ const Profile = ({
             ))}
           </Typography>
         </AccordionSummary>
-        <ExpansionPanelDetails>
+        <AccordionDetails>
           <Typography>
             <MuiThemeProvider>
               <SelectNotificationTypesWrapper />
             </MuiThemeProvider>
           </Typography>
-        </ExpansionPanelDetails>
+        </AccordionDetails>
       </Accordion>
       <Accordion
         expanded={expanded === "panel6"}
@@ -201,13 +201,13 @@ const Profile = ({
         >
           <Typography className={classes.heading}>Linked accounts</Typography>
         </AccordionSummary>
-        <ExpansionPanelDetails>
+        <AccordionDetails>
           <Typography>
             <MuiThemeProvider>
               <LinkedAuthsWrapper />
             </MuiThemeProvider>
           </Typography>
-        </ExpansionPanelDetails>
+        </AccordionDetails>
       </Accordion>
       {canChangePassword && <ChangePasswordContainer />}
     </div>
@@ -216,7 +216,7 @@ const Profile = ({
 
 Profile.defaultProps = {
   name: "",
-  gender: "",
+  gender: null,
   birthday: "",
   categories: [],
   notificationTypes: [],
@@ -225,7 +225,7 @@ Profile.defaultProps = {
 
 Profile.propTypes = {
   name: PropTypes.string,
-  gender: PropTypes.string,
+  gender: PropTypes.number,
   birthday: PropTypes.string,
   categories: PropTypes.array,
   notificationTypes: PropTypes.array,

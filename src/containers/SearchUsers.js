@@ -63,7 +63,7 @@ SearchUsers.defaultProps = {
   getSearchUsersDispatch: () => {},
   resetUsersDispatch: () => {},
   resetFiltersDispatch: () => {},
-  params: {},
+  params: "",
 };
 
 SearchUsers.propTypes = {
@@ -71,7 +71,7 @@ SearchUsers.propTypes = {
   getSearchUsersDispatch: PropTypes.func,
   resetUsersDispatch: PropTypes.func,
   resetFiltersDispatch: PropTypes.func,
-  params: PropTypes.object,
+  params: PropTypes.string,
 };
 
 const mapStateToProps = state => ({

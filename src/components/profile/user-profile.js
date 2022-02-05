@@ -23,8 +23,7 @@ class UserItemView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value:
-        indexToTabName[this.splitPath(this.props.history.location.pathname)],
+      value: 0,
     };
     this.splitPath = this.splitPath.bind(this);
   }
@@ -35,6 +34,12 @@ class UserItemView extends Component {
         indexToTabName[this.splitPath(this.props.history.location.pathname)],
     });
   };
+
+  componentDidUpdate(_, prevState) {
+    const tabName =
+      indexToTabName[this.splitPath(this.props.history.location.pathname)];
+    if (prevState.value !== tabName) this.handleChange(_, tabName);
+  }
 
   renderCategories = arr =>
     arr.map(item => <div key={item.id}>#{item.name}</div>);
@@ -82,7 +87,6 @@ class UserItemView extends Component {
         <div className="col-8">{value || ""}</div>
       </div>
     );
-
     return (
       <>
         <div className="info">
@@ -152,7 +156,7 @@ class UserItemView extends Component {
           <AppBar position="static" color="inherit">
             <Tabs
               className="w-100"
-              value={this.state.value ? this.state.value : 0} // TODO value === undefined, so have Material ui errors, if value to recognize from 0 to 4, we don`t have errors.
+              value={this.state.value}
               onChange={this.handleChange}
               variant="fullWidth"
               scrollButtons="on"
@@ -162,7 +166,9 @@ class UserItemView extends Component {
               <Tab
                 label="Future events"
                 icon={
-                  <IconButton color={this.state.value === 0 ? "" : "primary"}>
+                  <IconButton
+                    color={this.state.value === 0 ? "default" : "primary"}
+                  >
                     <i className="far fa-calendar-alt" />
                   </IconButton>
                 }
@@ -172,7 +178,9 @@ class UserItemView extends Component {
               <Tab
                 label="Archive events"
                 icon={
-                  <IconButton color={this.state.value === 1 ? "" : "primary"}>
+                  <IconButton
+                    color={this.state.value === 1 ? "default" : "primary"}
+                  >
                     <i className="fas fa-archive" />
                   </IconButton>
                 }
@@ -182,7 +190,9 @@ class UserItemView extends Component {
               <Tab
                 label="Visited events"
                 icon={
-                  <IconButton color={this.state.value === 2 ? "" : "primary"}>
+                  <IconButton
+                    color={this.state.value === 2 ? "default" : "primary"}
+                  >
                     <i className="fas fa-history" />
                   </IconButton>
                 }
@@ -192,7 +202,9 @@ class UserItemView extends Component {
               <Tab
                 label="Events to go"
                 icon={
-                  <IconButton color={this.state.value === 3 ? "" : "primary"}>
+                  <IconButton
+                    color={this.state.value === 3 ? "default" : "primary"}
+                  >
                     <i className="fas fa-map-marker-alt" />
                   </IconButton>
                 }

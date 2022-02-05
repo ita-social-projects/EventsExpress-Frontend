@@ -43,7 +43,7 @@ export default RenderDatePicker;
 RenderDatePicker.defaultProps = {
   input: {},
   meta: {},
-  minValue: null,
+  minValue: {},
   maxValue: null,
   label: "",
   disabled: false,
@@ -52,7 +52,7 @@ RenderDatePicker.defaultProps = {
 RenderDatePicker.propTypes = {
   input: PropTypes.object,
   meta: PropTypes.object,
-  minValue: PropTypes.number,
+  minValue: PropTypes.object,
   maxValue: PropTypes.number,
   label: PropTypes.string,
   disabled: PropTypes.bool,
