@@ -225,7 +225,8 @@ Profile.defaultProps = {
 
 Profile.propTypes = {
   name: PropTypes.string,
-  gender: PropTypes.number,
+  // TODO: CHANGE IT oneOfType ON ONE PROP TYPE
+  gender: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   birthday: PropTypes.string,
   categories: PropTypes.array,
   notificationTypes: PropTypes.array,
