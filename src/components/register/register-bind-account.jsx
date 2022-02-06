@@ -76,14 +76,14 @@ const mapStateToProps = state => {
 
 RegisterBindAccount.defaultProps = {
   handleSubmit: () => {},
-  pristine: false,
-  submitting: false,
+  pristine: () => {},
+  submitting: () => {},
 };
 
 RegisterBindAccount.propTypes = {
   handleSubmit: PropTypes.func,
-  pristine: PropTypes.bool,
-  submitting: PropTypes.bool,
+  pristine: PropTypes.func,
+  submitting: PropTypes.func,
 };
 
 export default connect(mapStateToProps)(

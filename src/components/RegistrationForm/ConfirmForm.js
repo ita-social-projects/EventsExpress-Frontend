@@ -137,8 +137,8 @@ ConfirmForm.defaultProps = {
   formValues: {},
   categoryGroups: [],
   categories: [],
-  pristine: false,
-  submitting: false,
+  pristine: () => {},
+  submitting: () => {},
 };
 
 ConfirmForm.propTypes = {
@@ -147,8 +147,8 @@ ConfirmForm.propTypes = {
   formValues: PropTypes.object,
   categoryGroups: PropTypes.array,
   categories: PropTypes.array,
-  pristine: PropTypes.bool,
-  submitting: PropTypes.bool,
+  pristine: PropTypes.func,
+  submitting: PropTypes.func,
 };
 
 const mapStateToProps = state => {

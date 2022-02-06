@@ -88,17 +88,17 @@ const Register = ({ pristine, reset, submitting, error, handleSubmit }) => {
 };
 
 Register.defaultProps = {
-  pristine: false,
+  pristine: () => {},
   reset: () => {},
-  submitting: false,
+  submitting: () => {},
   error: "",
   handleSubmit: () => {},
 };
 
 Register.propTypes = {
-  pristine: PropTypes.bool,
+  pristine: PropTypes.func,
   reset: PropTypes.func,
-  submitting: PropTypes.bool,
+  submitting: PropTypes.func,
   error: PropTypes.string,
   handleSubmit: PropTypes.func,
 };
