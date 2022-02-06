@@ -12,7 +12,10 @@ import addEvent from "../../actions/event/event-add-action";
 
 class Header extends Component {
   logoutReset = () => {
-    this.props.hub.stop();
+    if (this.props.hub) {
+      this.props.hub.stop();
+    }
+
     this.props.logout();
   };
 
@@ -49,7 +52,7 @@ class Header extends Component {
             <div className="my-2 my-sm-0">
               {!id && (
                 <ModalWind
-                  renderButton={action => (
+                  renderButton={(action) => (
                     <div
                       role="button"
                       tabIndex={0}
@@ -134,14 +137,14 @@ Header.propTypes = {
   logout: PropTypes.func,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     user: state.user,
     hub: state.hubConnections.chatHub,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => {
       dispatch(logout());
