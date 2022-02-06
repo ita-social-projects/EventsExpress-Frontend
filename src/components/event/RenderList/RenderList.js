@@ -3,24 +3,22 @@ import PropTypes from "prop-types";
 import PagePagination from "../../shared/pagePagination";
 import renderListConstants from "../../../constants/RenderListConstants";
 
-const RenderList = props => {
-  const {
-    page,
-    totalPages,
-    dataList,
-    customNoResultsMessage,
-    renderSingleItem,
-    handlePageChange,
-  } = props;
+const { NO_RESULTS } = renderListConstants;
 
-  const { NO_RESULTS } = renderListConstants;
-
+const RenderList = ({
+  page,
+  totalPages,
+  dataList,
+  customNoResultsMessage,
+  renderSingleItem,
+  handlePageChange,
+}) => {
   const renderItems = arr => arr.map(item => renderSingleItem(item));
 
   return (
     <>
       <div className="row">
-        {dataList.length > 0 ? (
+        {dataList.length ? (
           renderItems(dataList)
         ) : (
           <div id="notfound" className="w-100 notfound mw-100 notfound-404 h1">
