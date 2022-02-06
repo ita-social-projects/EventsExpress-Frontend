@@ -1,4 +1,5 @@
-﻿import React, { Component } from "react";
+﻿/* eslint-disable no-shadow */
+import React, { useEffect, useState } from "react";
 import Slider from "@material-ui/core/Slider";
 import Cropper from "react-easy-crop";
 import PropTypes from "prop-types";
@@ -6,37 +7,43 @@ import "./image-resizer.css";
 import Button from "@material-ui/core/Button";
 import imageConstants from "../../../constants/ImageResizer";
 
-const { CROP } = imageConstants;
-class ImageResizer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      crop: { x: 0, y: 0 },
-      zoom: 1,
-    };
-  }
+const { CROP, ROUND } = imageConstants;
 
-  componentWillMount = () => {
-    const isRound = this.props.cropShape === "round";
-    this.setState({
-      aspect: isRound ? 1 : 16 / 9,
-      showGrid: !isRound,
-    });
+const ImageResizer = ({
+  cropShape,
+  image,
+  handleOnCrop,
+  onChange,
+  submitting,
+}) => {
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [aspect, setAspect] = useState(null);
+  const [showGrid, setShowGrid] = useState(null);
+  const [croppedArea, setCroppedArea] = useState(null);
+  // eslint-disable-next-line no-debugger
+  debugger;
+  useEffect(() => {
+    const isRound = cropShape === ROUND;
+    setAspect(isRound ? 1 : 16 / 9);
+    setShowGrid(!isRound);
+    // TODO
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onCropChange = crop => {
+    setCrop(crop);
   };
 
-  onCropChange = crop => {
-    this.setState({ crop });
+  const onCropComplete = (croppedArea, croppedAreaPixels) => {
+    setCroppedArea(croppedAreaPixels);
   };
 
-  onCropComplete = (croppedArea, croppedAreaPixels) => {
-    this.setState({ croppedAreaPixels });
+  const onZoomChange = zoom => {
+    setZoom(zoom);
   };
 
-  onZoomChange = zoom => {
-    this.setState({ zoom });
-  };
-
-  createImage = url =>
+  const createImage = url =>
     new Promise((resolve, reject) => {
       const image = new Image();
       image.addEventListener("load", () => resolve(image));
@@ -44,8 +51,8 @@ class ImageResizer extends Component {
       image.src = url;
     });
 
-  getCroppedImg = async (imageSrc, pixelCrop) => {
-    const image = await this.createImage(imageSrc);
+  const getCroppedImg = async (imageSrc, pixelCrop) => {
+    const image = await createImage(imageSrc);
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 
@@ -77,59 +84,49 @@ class ImageResizer extends Component {
     return canvas.toDataURL("image/jpeg");
   };
 
-  cropImage = async () => {
-    const croppedImage = await this.getCroppedImg(
-      this.props.image.preview,
-      this.state.croppedAreaPixels,
-    );
-    this.props.handleOnCrop([croppedImage], this.props.onChange);
+  const cropImage = async () => {
+    const croppedImage = await getCroppedImg(image.preview, croppedArea);
+    handleOnCrop([croppedImage], onChange);
   };
-
-  render() {
-    const { cropShape } = this.props;
-    const { showGrid, crop, aspect } = this.state;
-    const { onCropChange, onCropComplete, onZoomChange, cropImage } = this;
-
-    return (
-      <div>
-        <div className="ImageResizer">
-          <div className="crop-container">
-            <Cropper
-              image={this.props.image.preview}
-              crop={crop}
-              zoom={this.state.zoom}
-              aspect={aspect}
-              onCropChange={onCropChange}
-              onCropComplete={onCropComplete}
-              onZoomChange={onZoomChange}
-              cropShape={cropShape}
-              showGrid={showGrid}
-            />
-          </div>
-          <div className="controls">
-            <Slider
-              value={this.state.zoom}
-              min={1}
-              max={3}
-              step={0.1}
-              aria-labelledby="Zoom"
-              onChange={(e, zoom) => onZoomChange(zoom)}
-            />
-            <Button
-              type="button"
-              color="primary"
-              disabled={this.props.submitting}
-              onClick={cropImage}
-              style={{ float: "right" }}
-            >
-              {CROP}
-            </Button>
-          </div>
+  return (
+    <>
+      <div className="ImageResizer">
+        <div className="crop-container">
+          <Cropper
+            image={image.preview}
+            crop={crop}
+            zoom={zoom}
+            aspect={aspect}
+            onCropChange={onCropChange}
+            onCropComplete={onCropComplete}
+            onZoomChange={onZoomChange}
+            cropShape={cropShape}
+            showGrid={showGrid}
+          />
+        </div>
+        <div className="controls">
+          <Slider
+            value={zoom}
+            min={1}
+            max={3}
+            step={0.1}
+            aria-labelledby="Zoom"
+            onChange={(e, zoom) => onZoomChange(zoom)}
+          />
+          <Button
+            type="button"
+            color="primary"
+            disabled={submitting}
+            onClick={cropImage}
+            style={{ float: "right" }}
+          >
+            {CROP}
+          </Button>
         </div>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
 ImageResizer.propTypes = {
   cropShape: PropTypes.string,
