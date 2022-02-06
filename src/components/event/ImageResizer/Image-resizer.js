@@ -21,8 +21,7 @@ const ImageResizer = ({
   const [aspect, setAspect] = useState(null);
   const [showGrid, setShowGrid] = useState(null);
   const [croppedArea, setCroppedArea] = useState(null);
-  // eslint-disable-next-line no-debugger
-  debugger;
+
   useEffect(() => {
     const isRound = cropShape === ROUND;
     setAspect(isRound ? 1 : 16 / 9);
@@ -31,17 +30,12 @@ const ImageResizer = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onCropChange = crop => {
-    setCrop(crop);
-  };
+  const onCropChange = crop => setCrop(crop);
 
-  const onCropComplete = (croppedArea, croppedAreaPixels) => {
+  const onCropComplete = (croppedArea, croppedAreaPixels) =>
     setCroppedArea(croppedAreaPixels);
-  };
 
-  const onZoomChange = zoom => {
-    setZoom(zoom);
-  };
+  const onZoomChange = zoom => setZoom(zoom);
 
   const createImage = url =>
     new Promise((resolve, reject) => {
@@ -89,42 +83,40 @@ const ImageResizer = ({
     handleOnCrop([croppedImage], onChange);
   };
   return (
-    <>
-      <div className="ImageResizer">
-        <div className="crop-container">
-          <Cropper
-            image={image.preview}
-            crop={crop}
-            zoom={zoom}
-            aspect={aspect}
-            onCropChange={onCropChange}
-            onCropComplete={onCropComplete}
-            onZoomChange={onZoomChange}
-            cropShape={cropShape}
-            showGrid={showGrid}
-          />
-        </div>
-        <div className="controls">
-          <Slider
-            value={zoom}
-            min={1}
-            max={3}
-            step={0.1}
-            aria-labelledby="Zoom"
-            onChange={(e, zoom) => onZoomChange(zoom)}
-          />
-          <Button
-            type="button"
-            color="primary"
-            disabled={submitting}
-            onClick={cropImage}
-            style={{ float: "right" }}
-          >
-            {CROP}
-          </Button>
-        </div>
+    <div className="ImageResizer">
+      <div className="crop-container">
+        <Cropper
+          image={image.preview}
+          crop={crop}
+          zoom={zoom}
+          aspect={aspect}
+          onCropChange={onCropChange}
+          onCropComplete={onCropComplete}
+          onZoomChange={onZoomChange}
+          cropShape={cropShape}
+          showGrid={showGrid}
+        />
       </div>
-    </>
+      <div className="controls">
+        <Slider
+          value={zoom}
+          min={1}
+          max={3}
+          step={0.1}
+          aria-labelledby="Zoom"
+          onChange={(e, zoom) => onZoomChange(zoom)}
+        />
+        <Button
+          type="button"
+          color="primary"
+          disabled={submitting}
+          onClick={cropImage}
+          style={{ float: "right" }}
+        >
+          {CROP}
+        </Button>
+      </div>
+    </div>
   );
 };
 
