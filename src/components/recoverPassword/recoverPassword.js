@@ -61,16 +61,16 @@ const RecoverPassword = ({
 RecoverPassword.defaultProps = {
   handleSubmit: () => {},
   pristine: () => {},
-  reset: () => {},
+  reset: false,
   submitting: () => {},
   error: [],
 };
 
 RecoverPassword.propTypes = {
   handleSubmit: PropTypes.func,
-  pristine: PropTypes.bool,
-  reset: PropTypes.func,
-  submitting: PropTypes.bool,
+  pristine: PropTypes.func,
+  reset: PropTypes.bool,
+  submitting: PropTypes.func,
   error: PropTypes.oneOfType(PropTypes.string, PropTypes.array),
 };
 
