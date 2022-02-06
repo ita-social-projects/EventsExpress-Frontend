@@ -11,6 +11,7 @@ const LoginFacebook = ({ config }, props) => {
     if (typeof response.email === "undefined") {
       props.setErrorAlert("Please add email to your facebook account!");
     }
+
     props.loginFacebook(response);
   };
 
@@ -32,7 +33,6 @@ const LoginFacebook = ({ config }, props) => {
 
 LoginFacebook.defaultProps = {
   config: {},
-  //   login: {},
   facebookClientId: "",
   loginFacebook: () => {},
 };
