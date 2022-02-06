@@ -27,6 +27,8 @@ const {
 export const MapModal = ({ initialize, values }) => {
   const [open, setOpen] = useState(false);
 
+  const { longitude, latitude } = values.selectedPos;
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -37,9 +39,7 @@ export const MapModal = ({ initialize, values }) => {
       selectedPos: { latitude: null, longitude: null },
     });
 
-    return values.selectedPos.latitude
-      ? startValue
-      : startValue && setOpen(false);
+    return latitude ? startValue : startValue && setOpen(false);
   };
 
   const handleFilter = () => {
@@ -84,19 +84,19 @@ export const MapModal = ({ initialize, values }) => {
             </div>
           )}
           <div>
-            {!!values.selectedPos.latitude && !!values.selectedPos.longitude && (
+            {latitude && longitude && (
               <div>
                 <p>{CURRENT_MAP_POSITION}</p>
                 <p>
-                  {LATITUDE} {values.selectedPos.latitude}
+                  {LATITUDE} {latitude}
                 </p>
                 <p>
-                  {LONGITUDE} {values.selectedPos.longitude}
+                  {LONGITUDE} {longitude}
                 </p>
                 <DisplayMap location={{ ...values.selectedPos }} />
               </div>
             )}
-            {!!values.selectedPos.latitude && !!values.selectedPos.longitude && (
+            {latitude && longitude && (
               <div>
                 <p>{CHOOSE_MAP_POSITION}</p>
               </div>
