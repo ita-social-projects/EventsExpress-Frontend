@@ -9,10 +9,9 @@ import "./css/Auth.css";
 
 class LoginGoogle extends Component {
   googleResponseHandler = response => {
-    //! TODO: LOGIN ISN'T USED ANYWHERE
-    // if (typeof response.profileObj.email === "undefined") {
-    //   this.props.login.loginError = "Please add email to your google account!";
-    // }
+    if (typeof response.profileObj.email === "undefined") {
+      this.props.setErrorAlert("Please add email to your google account!");
+    }
 
     this.props.loginGoogle(response.tokenId, response.profileObj);
   };
@@ -36,14 +35,12 @@ class LoginGoogle extends Component {
 
 LoginGoogle.defaultProps = {
   config: {},
-  // login: {},
   loginGoogle: () => {},
   setErrorAlert: () => {},
 };
 
 LoginGoogle.propTypes = {
   config: PropTypes.object,
-  // login: PropTypes.object,
   loginGoogle: PropTypes.func,
   setErrorAlert: PropTypes.func,
 };
