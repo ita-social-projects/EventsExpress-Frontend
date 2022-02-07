@@ -21,7 +21,7 @@ class AuthComponent extends Component {
   }
 }
 AuthComponent.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   roles: PropTypes.array,
   rolesMatch: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
@@ -29,7 +29,7 @@ AuthComponent.propTypes = {
 };
 
 AuthComponent.defaultProps = {
-  id: null,
+  id: "",
   roles: [],
   rolesMatch: "",
   children: {},
