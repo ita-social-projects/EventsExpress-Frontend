@@ -8,7 +8,7 @@ import "./css/Auth.css";
 
 const LoginFacebook = ({ config }, props) => {
   const responseFacebook = response => {
-    if (typeof response.email === "undefined") {
+    if (!response.email) {
       props.setErrorAlert("Please add email to your facebook account!");
     }
 

@@ -9,7 +9,7 @@ import "./css/Auth.css";
 
 class LoginGoogle extends Component {
   googleResponseHandler = response => {
-    if (typeof response.profileObj.email === "undefined") {
+    if (!response.profileObj.email) {
       this.props.setErrorAlert("Please add email to your google account!");
     }
 
