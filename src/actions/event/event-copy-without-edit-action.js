@@ -17,7 +17,7 @@ const addCopyEvent = eventId => {
     }
     const jsonRes = await response.json();
     dispatch(setSuccessAllert("Your event has been successfully created!"));
-    dispatch(history.push(`/event/${jsonRes.id}/1`));
+    history.push(`/event/${jsonRes.id}/1`);
     return Promise.resolve();
   };
 };

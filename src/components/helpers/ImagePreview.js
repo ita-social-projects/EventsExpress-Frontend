@@ -21,14 +21,12 @@ const ImagePreview = ({ imagefile, shape, error, touched }) =>
     </div>
   ));
 
+ImagePreview.defaultProps = {
+  imagefile: [],
+};
+
 ImagePreview.propTypes = {
-  imagefile: PropTypes.arrayOf(
-    PropTypes.shape({
-      file: PropTypes.file,
-      name: PropTypes.string,
-      preview: PropTypes.string,
-    }),
-  ),
+  imagefile: PropTypes.array,
 };
 
 export default ImagePreview;

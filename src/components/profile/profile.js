@@ -65,7 +65,7 @@ const Profile = ({
           <Typography className={classes.heading}>Change Avatar</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography className="w-100">
+          <Typography component="div" className="w-100">
             <MuiThemeProvider>
               <ChangeAvatarWrapper />
             </MuiThemeProvider>
@@ -85,7 +85,7 @@ const Profile = ({
           <Typography className={classes.secondaryHeading}>{name}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography component="div">
             <MuiThemeProvider>
               <EditUsernameContainer />
             </MuiThemeProvider>
@@ -107,7 +107,7 @@ const Profile = ({
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography component="div">
             <MuiThemeProvider>
               <EditGenderContainer />
             </MuiThemeProvider>
@@ -131,7 +131,7 @@ const Profile = ({
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography component="div">
             <MuiThemeProvider>
               <EditBirthdayContainer />
             </MuiThemeProvider>
@@ -150,14 +150,14 @@ const Profile = ({
           <Typography className={classes.heading}>
             Favorite Categories
           </Typography>
-          <Typography className={classes.secondaryHeading}>
+          <Typography component="div" className={classes.secondaryHeading}>
             {categories.map(category => (
               <div key={category.id}>{category.name}</div>
             ))}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography component="div">
             <MuiThemeProvider>
               <SelectCategoriesWrapper />
             </MuiThemeProvider>
@@ -176,14 +176,14 @@ const Profile = ({
           <Typography className={classes.heading}>
             Manage notifications
           </Typography>
-          <Typography className={classes.secondaryHeading}>
+          <Typography component="div" className={classes.secondaryHeading}>
             {notificationTypes.map(notificatin => (
               <div key={notificatin.id}>{notificatin.name}</div>
             ))}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography component="div">
             <MuiThemeProvider>
               <SelectNotificationTypesWrapper />
             </MuiThemeProvider>
@@ -202,7 +202,7 @@ const Profile = ({
           <Typography className={classes.heading}>Linked accounts</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography component="div">
             <MuiThemeProvider>
               <LinkedAuthsWrapper />
             </MuiThemeProvider>
