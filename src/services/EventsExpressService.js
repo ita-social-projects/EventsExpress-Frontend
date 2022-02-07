@@ -9,6 +9,8 @@ export default class EventsExpressService {
         method: "get",
         headers: new Headers({
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin" : "*", 
+          "Access-Control-Allow-Credentials" : true ,
           Authorization: `Bearer ${localStorage.getItem(jwtStorageKey)}`,
         }),
       });
@@ -37,6 +39,8 @@ export default class EventsExpressService {
         method: "post",
         headers: new Headers({
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin" : "*", 
+          "Access-Control-Allow-Credentials" : true ,
           Authorization: `Bearer ${localStorage.getItem(jwtStorageKey)}`,
         }),
         body: JSON.stringify(callData),

@@ -63,18 +63,18 @@ const Login = ({ pristine, reset, submitting, error, handleSubmit }) => {
 };
 
 Login.defaultProps = {
-  pristine: () => {},
-  reset: false,
-  submitting: () => {},
-  error: "",
+  pristine: false,
+  reset: () => {},
+  submitting: false,
+  error: [],
   handleSubmit: () => {},
 };
 
 Login.propTypes = {
-  pristine: PropTypes.func,
-  reset: PropTypes.bool,
-  submitting: PropTypes.func,
-  error: PropTypes.string,
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
+  error: PropTypes.oneOfType(PropTypes.string, PropTypes.array),
   handleSubmit: PropTypes.func,
 };
 
