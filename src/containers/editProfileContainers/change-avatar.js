@@ -33,11 +33,11 @@ const mapDispatchToProps = dispatch => {
 };
 
 ChangeAvatarWrapper.propTypes = {
-  userId: PropTypes.number,
+  userId: PropTypes.string,
   changeAvatar: PropTypes.func,
 };
 ChangeAvatarWrapper.defaultProps = {
-  userId: null,
+  userId: "",
   changeAvatar: () => {},
 };
 

@@ -62,14 +62,14 @@ class CustomAvatar extends Component {
 
 // TODO: change size and changeAvatarCounter in actual props
 CustomAvatar.propTypes = {
-  userId: propTypes.number,
+  userId: propTypes.string,
   name: propTypes.string,
   size: propTypes.any,
   changeAvatarCounter: propTypes.any,
 };
 
 CustomAvatar.defaultProps = {
-  userId: null,
+  userId: "",
   name: "",
   size: "change this",
   changeAvatarCounter: "change this",

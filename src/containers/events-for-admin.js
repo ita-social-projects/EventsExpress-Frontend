@@ -48,7 +48,7 @@ AdminEventListWrapper.propTypes = {
   current_user: PropTypes.object,
   pageViewModel: PropTypes.object,
   data: PropTypes.object,
-  params: PropTypes.object,
+  params: PropTypes.string,
   events: PropTypes.object,
 };
 
@@ -57,7 +57,7 @@ AdminEventListWrapper.defaultProps = {
   current_user: {},
   pageViewModel: {},
   data: {},
-  params: {},
+  params: "",
   events: {},
 };
 

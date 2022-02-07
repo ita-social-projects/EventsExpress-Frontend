@@ -47,13 +47,13 @@ const mapDispatchToProps = dispatch => ({
 LinkedAuthsWrapper.propTypes = {
   loadData: PropTypes.func,
   linkedAuths: PropTypes.array,
-  data: PropTypes.array,
+  data: PropTypes.object,
 };
 
 LinkedAuthsWrapper.defaultProps = {
   loadData: () => {},
   linkedAuths: [],
-  data: [],
+  data: {},
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LinkedAuthsWrapper);

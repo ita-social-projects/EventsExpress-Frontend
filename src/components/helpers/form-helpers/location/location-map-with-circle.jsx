@@ -43,16 +43,16 @@ const LocationMapWithCircle = props => {
 
 LocationMapWithCircle.propTypes = {
   input: PropTypes.shape({
-    value: PropTypes.string,
+    value: PropTypes.object,
     name: PropTypes.string,
     onChange: PropTypes.func,
   }),
-  radius: PropTypes.number,
+  radius: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 LocationMapWithCircle.defaultProps = {
   input: {
-    value: "",
+    value: {},
     name: "",
     onChange: () => {},
   },

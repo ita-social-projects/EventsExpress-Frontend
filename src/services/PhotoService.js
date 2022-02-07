@@ -4,12 +4,12 @@ const baseService = new EventsExpressService();
 
 export default class PhotoService {
   getPreviewEventPhoto = id =>
-    baseService.getPhoto(`photo/GetPreviewEventPhoto?id=${id}`);
+    baseService.getPhoto(`Photo/GetPreviewEventPhoto?id=${id}`);
 
   getFullEventPhoto = id =>
-    baseService.getPhoto(`photo/GetFullEventPhoto?id=${id}`);
+    baseService.getPhoto(`Photo/GetFullEventPhoto?id=${id}`);
 
-  getUserPhoto = id => baseService.getPhoto(`photo/GetUserPhoto?id=${id}`);
+  getUserPhoto = id => baseService.getPhoto(`Photo/GetUserPhoto?id=${id}`);
 
   setEventTempPhoto = async (id, data) => {
     const photo = new FormData();

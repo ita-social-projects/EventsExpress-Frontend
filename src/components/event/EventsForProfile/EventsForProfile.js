@@ -15,7 +15,7 @@ const EventsForProfile = ({
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    return notificationEvents === null ? callback(currentPage) : null;
+    if (notificationEvents === null) callback(currentPage);
     // TODO: Check useEffect
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -51,8 +51,8 @@ EventsForProfile.propTypes = {
   totalPages: PropTypes.number,
   callback: PropTypes.func,
   notificationEvents: PropTypes.string,
-  currentUser: PropTypes.object,
-  dataList: [],
+  currentUser: PropTypes.string,
+  dataList: PropTypes.array,
 };
 
 EventsForProfile.defaultProps = {
@@ -60,7 +60,7 @@ EventsForProfile.defaultProps = {
   totalPages: null,
   callback: () => {},
   notificationEvents: "",
-  currentUser: {},
+  currentUser: "",
   dataList: [],
 };
 
