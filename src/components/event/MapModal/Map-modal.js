@@ -39,7 +39,7 @@ export const MapModal = ({ initialize, values }) => {
       selectedPos: { latitude: null, longitude: null },
     });
 
-    return latitude ? startValue : startValue && setOpen(false);
+    return latitude && startValue ? startValue : setOpen(false);
   };
 
   const handleFilter = () => {
@@ -85,22 +85,23 @@ export const MapModal = ({ initialize, values }) => {
           )}
           <div>
             {latitude && longitude && (
-              <div>
-                <p>{CURRENT_MAP_POSITION}</p>
-                <p>
-                  {LATITUDE} {latitude}
-                </p>
-                <p>
-                  {LONGITUDE} {longitude}
-                </p>
-                <DisplayMap location={{ ...values.selectedPos }} />
-              </div>
+              <>
+                <div>
+                  <p>{CURRENT_MAP_POSITION}</p>
+                  <p>
+                    {LATITUDE} {latitude}
+                  </p>
+                  <p>
+                    {LONGITUDE} {longitude}
+                  </p>
+                  <DisplayMap location={{ ...values.selectedPos }} />
+                </div>
+                <div>
+                  <p>{CHOOSE_MAP_POSITION}</p>
+                </div>
+              </>
             )}
-            {latitude && longitude && (
-              <div>
-                <p>{CHOOSE_MAP_POSITION}</p>
-              </div>
-            )}
+
             <Field
               name="selectedPos"
               component={LocationMapWithCircle}
