@@ -20,6 +20,7 @@ import EventHeader from "../EventItemHeader/Event-item-header";
 import Roles from "../../../constants/userRoles";
 import PhotoService from "../../../services/PhotoService";
 import eventDefaultImage from "../../../constants/eventDefaultImage";
+import EventItemConstants from "../../../constants/EventItemConstants";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();
@@ -57,7 +58,7 @@ const EventCard = props => {
     organizers: owners,
     members,
   } = item;
-  const INT32_MAX_VALUE = null;
+
   const categoriesNotDisplayed = categories.length - 2;
   const restCategories = ` ... ${categoriesNotDisplayed} more`;
   const displayedCategories = renderCategories(categories.slice(0, 2));
@@ -89,10 +90,10 @@ const EventCard = props => {
             />
           </Link>
         </CardMedia>
-        {maxParticipants < INT32_MAX_VALUE && (
+        {maxParticipants && (
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
-              {countVisitor}/{maxParticipants} Participants
+              {countVisitor}/{maxParticipants} {EventItemConstants.PARTICIPANTS}
             </Typography>
           </CardContent>
         )}
