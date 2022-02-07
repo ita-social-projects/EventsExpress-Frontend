@@ -1,4 +1,5 @@
-﻿import React from "react";
+﻿/* eslint-disable no-debugger */
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../components/spinner";
@@ -8,13 +9,13 @@ function LocalSpinnerWrapper({ localCounter, children, showContent }) {
 }
 
 LocalSpinnerWrapper.propTypes = {
-  showContent: PropTypes.func,
-  children: PropTypes.object,
+  showContent: PropTypes.bool,
+  children: PropTypes.array,
   localCounter: PropTypes.number,
 };
 LocalSpinnerWrapper.defaultProps = {
-  showContent: () => {},
-  children: {},
+  showContent: false,
+  children: [],
   localCounter: null,
 };
 

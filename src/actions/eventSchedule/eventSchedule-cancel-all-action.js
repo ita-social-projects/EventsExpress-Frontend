@@ -16,7 +16,7 @@ const cancelAllEventSchedules = eventId => {
     }
     dispatch(getRequestDec());
     dispatch(setSuccessAllert("Your events have been canceled!"));
-    dispatch(history.push(`/eventSchedules`));
+    history.push(`/eventSchedules`);
     return Promise.resolve();
   };
 };

@@ -52,14 +52,14 @@ const mapDispatchToProps = dispatch => {
 SelectNotificationTypesWrapper.propTypes = {
   getNotificationTypes: PropTypes.func,
   getUserNotificationTypes: PropTypes.func,
-  allNotificationTypes: PropTypes.func,
+  allNotificationTypes: PropTypes.object,
   user: PropTypes.object,
   setUserNotificationTypes: PropTypes.func,
 };
 SelectNotificationTypesWrapper.defaultProps = {
   getNotificationTypes: () => {},
   getUserNotificationTypes: () => {},
-  allNotificationTypes: () => {},
+  allNotificationTypes: {},
   user: {},
   setUserNotificationTypes: () => {},
 };

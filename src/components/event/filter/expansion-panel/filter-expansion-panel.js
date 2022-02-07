@@ -12,7 +12,7 @@ const FilterExpansionPanel = ({
   title,
   children,
   onClearClick,
-  clearDisabled = false,
+  clearDisabled,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const classes = useFilterExpansionPanelStyles();
@@ -63,14 +63,14 @@ FilterExpansionPanel.propTypes = {
   title: PropTypes.string,
   children: PropTypes.object,
   onClearClick: PropTypes.func,
-  clearDisabled: PropTypes.func,
+  clearDisabled: PropTypes.bool,
 };
 
 FilterExpansionPanel.defaultProps = {
   title: "",
   children: {},
   onClearClick: () => {},
-  clearDisabled: () => {},
+  clearDisabled: false,
 };
 
 export default FilterExpansionPanel;

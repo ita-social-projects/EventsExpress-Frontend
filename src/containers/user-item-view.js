@@ -34,7 +34,7 @@ class UserItemViewWrapper extends Component {
   componentWillUpdate = newProps => {
     if (newProps.match.params.id !== this.props.match.params.id)
       this.props.getUser(newProps.match.params.id);
-    if (newProps.current_user !== this.props.currentUser)
+    if (newProps.currentUser !== this.props.currentUser)
       this.props.getUser(newProps.match.params.id);
   };
 
@@ -107,7 +107,7 @@ class UserItemViewWrapper extends Component {
 
 UserItemViewWrapper.propTypes = {
   profile: PropTypes.object,
-  currentUser: PropTypes.object,
+  currentUser: PropTypes.string,
   match: PropTypes.object,
   getEventsTogo: PropTypes.func,
   getVisitedEvents: PropTypes.func,
@@ -116,13 +116,13 @@ UserItemViewWrapper.propTypes = {
   setAttitude: PropTypes.func,
   getFutureEvents: PropTypes.func,
   getPastEvents: PropTypes.func,
-  events: PropTypes.array,
-  history: PropTypes.func,
+  events: PropTypes.object,
+  history: PropTypes.object,
 };
 
 UserItemViewWrapper.defaultProps = {
   profile: {},
-  currentUser: {},
+  currentUser: "",
   match: {},
   getEventsTogo: () => {},
   getVisitedEvents: () => {},
@@ -131,13 +131,13 @@ UserItemViewWrapper.defaultProps = {
   setAttitude: () => {},
   getFutureEvents: () => {},
   getPastEvents: () => {},
-  events: [],
-  history: () => {},
+  events: {},
+  history: {},
 };
 
 const mapStateToProps = state => ({
   profile: state.profile,
-  current_user: state.user.id,
+  currentUser: state.user.id,
   events: state.events_for_profile,
 });
 

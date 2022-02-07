@@ -49,5 +49,5 @@ RenderSelectField.propTypes = {
   meta: PropTypes.object,
   minWidth: PropTypes.number,
   label: PropTypes.string,
-  children: PropTypes.object,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };

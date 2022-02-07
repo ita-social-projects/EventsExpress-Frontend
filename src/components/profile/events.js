@@ -36,12 +36,12 @@ export default Events;
 
 Events.propTypes = {
   events: PropTypes.object,
-  currentUser: PropTypes.object,
+  currentUser: PropTypes.string,
   typeOfEvents: PropTypes.func,
 };
 
 Events.defaultProps = {
   events: {},
-  currentUser: {},
+  currentUser: "",
   typeOfEvents: () => {},
 };

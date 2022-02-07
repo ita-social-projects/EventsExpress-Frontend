@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -27,6 +26,8 @@ const {
 export const MapModal = ({ initialize, values }) => {
   const [open, setOpen] = useState(false);
 
+  const { longitude, latitude } = values.selectedPos;
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -37,9 +38,7 @@ export const MapModal = ({ initialize, values }) => {
       selectedPos: { latitude: null, longitude: null },
     });
 
-    return values.selectedPos.latitude
-      ? startValue
-      : startValue && setOpen(false);
+    return latitude && startValue ? startValue : setOpen(false);
   };
 
   const handleFilter = () => {
@@ -84,23 +83,24 @@ export const MapModal = ({ initialize, values }) => {
             </div>
           )}
           <div>
-            {!!values.selectedPos.latitude && !!values.selectedPos.longitude && (
-              <div>
-                <p>{CURRENT_MAP_POSITION}</p>
-                <p>
-                  {LATITUDE} {values.selectedPos.latitude}
-                </p>
-                <p>
-                  {LONGITUDE} {values.selectedPos.longitude}
-                </p>
-                <DisplayMap location={{ ...values.selectedPos }} />
-              </div>
+            {latitude && longitude && (
+              <>
+                <div>
+                  <p>{CURRENT_MAP_POSITION}</p>
+                  <p>
+                    {LATITUDE} {latitude}
+                  </p>
+                  <p>
+                    {LONGITUDE} {longitude}
+                  </p>
+                  <DisplayMap location={{ ...values.selectedPos }} />
+                </div>
+                <div>
+                  <p>{CHOOSE_MAP_POSITION}</p>
+                </div>
+              </>
             )}
-            {!!values.selectedPos.latitude && !!values.selectedPos.longitude && (
-              <div>
-                <p>{CHOOSE_MAP_POSITION}</p>
-              </div>
-            )}
+
             <Field
               name="selectedPos"
               component={LocationMapWithCircle}
