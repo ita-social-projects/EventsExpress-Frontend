@@ -125,14 +125,14 @@ const mapStateToProps = state => {
 
 RegisterComplete.defaultProps = {
   handleSubmit: () => {},
-  pristine: () => {},
-  submitting: () => {},
+  pristine: false,
+  submitting: false,
 };
 
 RegisterComplete.propTypes = {
   handleSubmit: PropTypes.func,
-  pristine: PropTypes.func,
-  submitting: PropTypes.func,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
 };
 
 export default connect(mapStateToProps)(
