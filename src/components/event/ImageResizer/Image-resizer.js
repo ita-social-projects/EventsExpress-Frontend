@@ -1,5 +1,4 @@
-﻿/* eslint-disable no-shadow */
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import Slider from "@material-ui/core/Slider";
 import Cropper from "react-easy-crop";
 import PropTypes from "prop-types";
@@ -27,6 +26,7 @@ const ImageResizer = ({
   const [aspect, setAspect] = useState(null);
   const [showGrid, setShowGrid] = useState(null);
   const [croppedArea, setCroppedArea] = useState(null);
+
   useEffect(() => {
     const isRound = cropShape === ROUND;
     setAspect(isRound ? 1 : 16 / 9);
@@ -43,11 +43,11 @@ const ImageResizer = ({
           crop={crop}
           zoom={zoom}
           aspect={aspect}
-          onCropChange={crop => onCropChange(crop, setCrop)}
-          onCropComplete={(croppedArea, croppedAreaPixels) =>
-            onCropComplete(croppedArea, croppedAreaPixels, setCroppedArea)
+          onCropChange={cropChange => onCropChange(cropChange, setCrop)}
+          onCropComplete={(croppedAreaChange, croppedAreaPixels) =>
+            onCropComplete(croppedAreaChange, croppedAreaPixels, setCroppedArea)
           }
-          onZoomChange={zoom => onZoomChange(zoom, setZoom)}
+          onZoomChange={zoomChange => onZoomChange(zoomChange, setZoom)}
           cropShape={cropShape}
           showGrid={showGrid}
         />
@@ -59,7 +59,7 @@ const ImageResizer = ({
           max={3}
           step={0.1}
           aria-labelledby="Zoom"
-          onChange={(e, zoom) => onZoomChange(zoom, setZoom)}
+          onChange={(e, zoomSlider) => onZoomChange(zoomSlider, setZoom)}
         />
         <Button
           type="button"
