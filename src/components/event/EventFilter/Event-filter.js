@@ -52,10 +52,9 @@ class EventFilter extends Component {
     ) {
       this.props.initialize({
         ...initialValues,
-        selectedPos:
-          initialValues.selectedPos !== null
-            ? initialValues.selectedPos
-            : { latitude: null, longitude: null },
+        selectedPos: initialValues.selectedPos
+          ? initialValues.selectedPos
+          : { latitude: null, longitude: null },
       });
       this.setState({
         needInitializeValues: false,
