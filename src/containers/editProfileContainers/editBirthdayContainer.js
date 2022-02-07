@@ -15,7 +15,7 @@ class EditBirthdayContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.editBirthday;
+  return { editBirthday: state.editBirthday };
 };
 
 const mapDispatchToProps = dispatch => {

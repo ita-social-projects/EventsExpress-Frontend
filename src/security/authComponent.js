@@ -5,9 +5,8 @@ import PropTypes from "prop-types";
 class AuthComponent extends Component {
   render() {
     const { id, roles, rolesMatch, children, onlyAnonymous } = this.props;
-
     if (rolesMatch) {
-      if (id && roles === rolesMatch) {
+      if (id && roles[0] === rolesMatch) {
         return children;
       }
     } else if (onlyAnonymous) {
@@ -21,7 +20,7 @@ class AuthComponent extends Component {
   }
 }
 AuthComponent.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   roles: PropTypes.array,
   rolesMatch: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
@@ -29,7 +28,7 @@ AuthComponent.propTypes = {
 };
 
 AuthComponent.defaultProps = {
-  id: null,
+  id: "",
   roles: [],
   rolesMatch: "",
   children: {},

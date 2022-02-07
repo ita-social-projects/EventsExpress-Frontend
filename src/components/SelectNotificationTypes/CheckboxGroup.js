@@ -43,12 +43,12 @@ class CheckboxGroup extends React.Component {
 
 CheckboxGroup.propTypes = {
   options: propTypes.array,
-  input: propTypes.array,
+  input: propTypes.object,
 };
 
 CheckboxGroup.defaultProps = {
   options: [],
-  input: [],
+  input: {},
 };
 
 export default CheckboxGroup;

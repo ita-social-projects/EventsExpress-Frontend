@@ -33,7 +33,7 @@ RenderMultiselectField.defaultProps = {
   valueField: "",
   textField: "",
   placeholder: "",
-  data: {},
+  data: [],
 };
 
 RenderMultiselectField.propTypes = {
@@ -42,5 +42,5 @@ RenderMultiselectField.propTypes = {
   valueField: PropTypes.string,
   textField: PropTypes.string,
   placeholder: PropTypes.string,
-  data: PropTypes.object,
+  data: PropTypes.array,
 };

@@ -23,7 +23,6 @@ const RenderDatePicker = ({
           label={label}
           selected={moment(value).format("L")}
           value={value ? moment(value).format("L") : null}
-          autoOK
           emptyLabel=""
           format="dd-MM-yyyy"
           error={touched && invalid}
@@ -43,8 +42,8 @@ export default RenderDatePicker;
 RenderDatePicker.defaultProps = {
   input: {},
   meta: {},
-  minValue: null,
-  maxValue: null,
+  minValue: {},
+  maxValue: {},
   label: "",
   disabled: false,
 };
@@ -52,8 +51,8 @@ RenderDatePicker.defaultProps = {
 RenderDatePicker.propTypes = {
   input: PropTypes.object,
   meta: PropTypes.object,
-  minValue: PropTypes.number,
-  maxValue: PropTypes.number,
+  minValue: PropTypes.object,
+  maxValue: PropTypes.object,
   label: PropTypes.string,
   disabled: PropTypes.bool,
 };

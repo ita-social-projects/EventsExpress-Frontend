@@ -75,22 +75,11 @@ class Chat extends Component {
         const sender = arr.users.find(y => y.id === x.senderId);
         if (arr.id === x.chatRoomId) {
           return (
-            <>
-              <Msg
-                key={x.id + x.seen}
-                user={sender}
-                seenItem={x.seen}
-                item={x}
-              />
-            </>
+            <Msg key={x.id + x.seen} user={sender} seenItem={x.seen} item={x} />
           );
         }
 
-        return (
-          <>
-            <Msg />
-          </>
-        );
+        return <Msg key={x.id + x.seen} />;
       });
     }
 

@@ -1,7 +1,7 @@
 ﻿import React from "react";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import Accordion from "@material-ui/core/Accordion";
+import { AccordionSummary } from "@material-ui/core";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PropTypes from "prop-types";
@@ -9,15 +9,15 @@ import UserView from "../UserView/UserView";
 
 const ParticipantGroup = ({ label, disabled, users, renderUserActions }) => {
   return (
-    <ExpansionPanel disabled={disabled}>
-      <ExpansionPanelSummary
+    <Accordion disabled={disabled}>
+      <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
         <Typography>{label}</Typography>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
+      </AccordionSummary>
+      <AccordionDetails>
         <Typography className="w-100">
           {users.map(user => (
             <UserView key={user.id} user={user}>
@@ -25,8 +25,8 @@ const ParticipantGroup = ({ label, disabled, users, renderUserActions }) => {
             </UserView>
           ))}
         </Typography>
-      </ExpansionPanelDetails>
-    </ExpansionPanel>
+      </AccordionDetails>
+    </Accordion>
   );
 };
 
