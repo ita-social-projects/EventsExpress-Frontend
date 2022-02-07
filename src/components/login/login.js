@@ -66,7 +66,7 @@ Login.defaultProps = {
   pristine: false,
   reset: () => {},
   submitting: false,
-  error: "",
+  error: [],
   handleSubmit: () => {},
 };
 
@@ -74,7 +74,7 @@ Login.propTypes = {
   pristine: PropTypes.bool,
   reset: PropTypes.func,
   submitting: PropTypes.bool,
-  error: PropTypes.string,
+  error: PropTypes.oneOfType(PropTypes.string, PropTypes.array),
   handleSubmit: PropTypes.func,
 };
 
