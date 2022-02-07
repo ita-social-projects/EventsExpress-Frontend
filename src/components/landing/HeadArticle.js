@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthComponent from "../../security/authComponent";
 import ModalWind from "../modal-wind";
+import constants from "../../constants/HeadArticleConstants";
 import image1 from "./landing-images/1.jpg";
 import image2 from "./landing-images/2.jpg";
 import image3 from "./landing-images/3.jpg";
@@ -21,6 +22,7 @@ const imagesPreload = [
   image7,
   image8,
 ];
+const { CREATE_EVENT, FIND_EVENT, WHAT_DO_YOU_WANT_TO_DO } = constants;
 
 class HeadArticle extends Component {
   constructor(props) {
@@ -53,7 +55,7 @@ class HeadArticle extends Component {
         }}
       >
         <div className="button-container text-center">
-          <h2>What do you want to do?</h2>
+          <h2>{WHAT_DO_YOU_WANT_TO_DO}</h2>
           <div className="buttons">
             <AuthComponent onlyAnonymous>
               <ModalWind
@@ -61,17 +63,17 @@ class HeadArticle extends Component {
                 renderButton={action => (
                   <button
                     className="btn btn-warning"
-                    onClick={action()}
+                    onClick={action}
                     type="button"
                   >
-                    Create event
+                    {CREATE_EVENT}
                   </button>
                 )}
               />
             </AuthComponent>
 
             <Link to="home/events" className="btn btn-warning">
-              Find event
+              {FIND_EVENT}
             </Link>
           </div>
         </div>
