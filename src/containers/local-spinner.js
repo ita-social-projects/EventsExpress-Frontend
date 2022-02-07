@@ -14,7 +14,7 @@ LocalSpinnerWrapper.propTypes = {
   localCounter: PropTypes.number,
 };
 LocalSpinnerWrapper.defaultProps = {
-  showContent: null,
+  showContent: false,
   children: [],
   localCounter: null,
 };

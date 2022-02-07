@@ -1,5 +1,4 @@
-﻿/* eslint-disable sonarjs/no-identical-functions */
-import React, { Component } from "react";
+﻿import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
 import "moment-timezone";
@@ -105,9 +104,9 @@ class UserItemView extends Component {
                     TransitionComponent={Zoom}
                   >
                     <IconButton
-                      className={attitude === 0 ? "text-success" : ""}
+                      className={!attitude ? "text-success" : ""}
                       onClick={
-                        attitude !== 0 ? this.props.onLike : this.props.onReset
+                        attitude ? this.props.onLike : this.props.onReset
                       }
                     >
                       <i className="fas fa-thumbs-up" />
