@@ -63,9 +63,9 @@ const Profile = ({
           id="panel1bh-header"
         >
           <Typography className={classes.heading}>Change Avatar</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography className="w-100">
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography component="div" className="w-100">
             <MuiThemeProvider>
               <ChangeAvatarWrapper />
             </MuiThemeProvider>
@@ -83,9 +83,9 @@ const Profile = ({
         >
           <Typography className={classes.heading}>Username</Typography>
           <Typography className={classes.secondaryHeading}>{name}</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography component="div">
             <MuiThemeProvider>
               <EditUsernameContainer />
             </MuiThemeProvider>
@@ -105,9 +105,9 @@ const Profile = ({
           <Typography className={classes.secondaryHeading}>
             {genders[gender]}
           </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography component="div">
             <MuiThemeProvider>
               <EditGenderContainer />
             </MuiThemeProvider>
@@ -129,9 +129,9 @@ const Profile = ({
               {birthday}
             </Moment>
           </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography component="div">
             <MuiThemeProvider>
               <EditBirthdayContainer />
             </MuiThemeProvider>
@@ -150,14 +150,14 @@ const Profile = ({
           <Typography className={classes.heading}>
             Favorite Categories
           </Typography>
-          <Typography className={classes.secondaryHeading}>
+          <Typography component="div" className={classes.secondaryHeading}>
             {categories.map(category => (
               <div key={category.id}>{category.name}</div>
             ))}
           </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography component="div">
             <MuiThemeProvider>
               <SelectCategoriesWrapper />
             </MuiThemeProvider>
@@ -176,14 +176,14 @@ const Profile = ({
           <Typography className={classes.heading}>
             Manage notifications
           </Typography>
-          <Typography className={classes.secondaryHeading}>
+          <Typography component="div" className={classes.secondaryHeading}>
             {notificationTypes.map(notificatin => (
               <div key={notificatin.id}>{notificatin.name}</div>
             ))}
           </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography component="div">
             <MuiThemeProvider>
               <SelectNotificationTypesWrapper />
             </MuiThemeProvider>
@@ -200,9 +200,9 @@ const Profile = ({
           id="panel6bh-header"
         >
           <Typography className={classes.heading}>Linked accounts</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography component="div">
             <MuiThemeProvider>
               <LinkedAuthsWrapper />
             </MuiThemeProvider>
