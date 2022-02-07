@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import DropZone from "react-dropzone";
 import Button from "@material-ui/core/Button";
@@ -82,7 +82,7 @@ class DropZoneField extends Component {
     const { handleOnCrop, handleOnDrop, handleOnClear } = this;
     const containerClass = error && touched ? "invalid" : "valid";
     return (
-      <Fragment className={`preview-container ${containerClass}`}>
+      <div className={`preview-container ${containerClass}`}>
         {imagefile.length && crop && !cropped ? (
           <ImageResizer
             image={imagefile[0]}
@@ -122,24 +122,17 @@ class DropZoneField extends Component {
           Clear
         </Button>
         {renderFieldError({ touched, error })}
-      </Fragment>
+      </div>
     );
   }
 }
 
 DropZoneField.propTypes = {
-  imagefile: PropTypes.arrayOf(
-    PropTypes.shape({
-      file: PropTypes.file,
-      name: PropTypes.string,
-      preview: PropTypes.string,
-    }),
-  ),
   onChange: PropTypes.func,
   touched: PropTypes.bool,
   submitting: PropTypes.bool,
-  crop: PropTypes.func,
-  cropShape: PropTypes.func,
+  crop: PropTypes.bool,
+  cropShape: PropTypes.string,
   meta: PropTypes.object,
   input: PropTypes.object,
   loadImage: PropTypes.func,
@@ -147,18 +140,11 @@ DropZoneField.propTypes = {
 // TODO file props
 
 DropZoneField.defaultProps = {
-  imagefile: [
-    {
-      file: {},
-      name: "",
-      preview: "",
-    },
-  ],
   onChange: () => {},
   touched: false,
   submitting: false,
-  crop: () => {},
-  cropShape: () => {},
+  crop: false,
+  cropShape: "",
   meta: {},
   input: {},
   loadImage: () => {},

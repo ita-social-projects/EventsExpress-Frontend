@@ -15,7 +15,7 @@ class EditGenderContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.gender;
+  return { gender: state.gender };
 };
 
 const mapDispatchToProps = dispatch => {

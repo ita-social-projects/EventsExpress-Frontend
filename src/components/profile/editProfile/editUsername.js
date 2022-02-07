@@ -47,19 +47,3 @@ EditUsername.propTypes = {
 export default reduxForm({
   form: "EditUsername",
 })(EditUsername);
-
-EditUsername.propTypes = {
-  handleSubmit: PropTypes.func,
-  pristine: PropTypes.bool,
-  reset: PropTypes.func,
-  submitting: PropTypes.bool,
-  error: PropTypes.array,
-};
-
-EditUsername.defaultProps = {
-  handleSubmit: () => {},
-  pristine: false,
-  reset: () => {},
-  submitting: false,
-  error: [],
-};

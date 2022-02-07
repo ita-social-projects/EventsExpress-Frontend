@@ -19,11 +19,10 @@ import getAge from "../helpers/get-age-string";
 import indexToTabName from "../../constants/indexToTabName";
 
 class UserItemView extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      value:
-        indexToTabName[this.splitPath(this.props.history.location.pathname)],
+      value: 0,
     };
     this.splitPath = this.splitPath.bind(this);
   }
@@ -35,9 +34,11 @@ class UserItemView extends Component {
     });
   };
 
-  componentDidUpdate = () => {
-    this.componentDidMount();
-  };
+  componentDidUpdate(_, prevState) {
+    const tabName =
+      indexToTabName[this.splitPath(this.props.history.location.pathname)];
+    if (prevState.value !== tabName) this.handleChange(_, tabName);
+  }
 
   renderCategories = arr =>
     arr.map(item => <div key={item.id}>#{item.name}</div>);
@@ -49,7 +50,8 @@ class UserItemView extends Component {
       </div>
     ));
 
-  handleChange = value => {
+  handleChange = (event, value) => {
+    this.setState({ value });
     switch (value) {
       case 0:
         this.props.onFuture();
@@ -84,7 +86,6 @@ class UserItemView extends Component {
         <div className="col-8">{value || ""}</div>
       </div>
     );
-
     return (
       <>
         <div className="info">
@@ -103,11 +104,9 @@ class UserItemView extends Component {
                     TransitionComponent={Zoom}
                   >
                     <IconButton
-                      className={attitude === "0" ? "text-success" : ""}
+                      className={!attitude ? "text-success" : ""}
                       onClick={
-                        attitude !== "0"
-                          ? this.props.onLike
-                          : this.props.onReset
+                        attitude ? this.props.onLike : this.props.onReset
                       }
                     >
                       <i className="fas fa-thumbs-up" />
@@ -119,9 +118,9 @@ class UserItemView extends Component {
                     TransitionComponent={Zoom}
                   >
                     <IconButton
-                      className={attitude === "1" ? "text-danger" : ""}
+                      className={attitude === 1 ? "text-danger" : ""}
                       onClick={
-                        attitude !== "1"
+                        attitude !== 1
                           ? this.props.onDislike
                           : this.props.onReset
                       }
@@ -166,7 +165,9 @@ class UserItemView extends Component {
               <Tab
                 label="Future events"
                 icon={
-                  <IconButton color={this.state.value === 0 ? "" : "primary"}>
+                  <IconButton
+                    color={this.state.value === 0 ? "default" : "primary"}
+                  >
                     <i className="far fa-calendar-alt" />
                   </IconButton>
                 }
@@ -176,7 +177,9 @@ class UserItemView extends Component {
               <Tab
                 label="Archive events"
                 icon={
-                  <IconButton color={this.state.value === 1 ? "" : "primary"}>
+                  <IconButton
+                    color={this.state.value === 1 ? "default" : "primary"}
+                  >
                     <i className="fas fa-archive" />
                   </IconButton>
                 }
@@ -186,7 +189,9 @@ class UserItemView extends Component {
               <Tab
                 label="Visited events"
                 icon={
-                  <IconButton color={this.state.value === 2 ? "" : "primary"}>
+                  <IconButton
+                    color={this.state.value === 2 ? "default" : "primary"}
+                  >
                     <i className="fas fa-history" />
                   </IconButton>
                 }
@@ -196,7 +201,9 @@ class UserItemView extends Component {
               <Tab
                 label="Events to go"
                 icon={
-                  <IconButton color={this.state.value === 3 ? "" : "primary"}>
+                  <IconButton
+                    color={this.state.value === 3 ? "default" : "primary"}
+                  >
                     <i className="fas fa-map-marker-alt" />
                   </IconButton>
                 }
@@ -273,7 +280,7 @@ UserItemView.propTypes = {
   events: PropTypes.object,
   onReset: PropTypes.func,
   onLike: PropTypes.func,
-  currentUser: PropTypes.object,
+  currentUser: PropTypes.string,
   onDislike: PropTypes.func,
 };
 
@@ -286,7 +293,7 @@ UserItemView.defaultProps = {
   data: {},
   events: {},
   onReset: () => {},
-  currentUser: {},
+  currentUser: "",
   onLike: () => {},
   onDislike: () => {},
 };
