@@ -69,8 +69,8 @@ const EventCard = props => {
         className={classes.cardCanceled}
         style={{
           backgroundColor:
-            eventStatus === eventStatusEnum.Blocked ? "gold" : "",
-          opacity: eventStatus === eventStatusEnum.Canceled ? 0.5 : 1,
+            eventStatus === eventStatusEnum.BLOCKED ? "gold" : "",
+          opacity: eventStatus === eventStatusEnum.CANCELED ? 0.5 : 1,
         }}
       >
         <EventHeader

@@ -35,7 +35,7 @@ class EventEditWrapper extends Component {
 
     return (
       <SpinnerWrapper showContent={data !== undefined}>
-        {data.eventStatus === eventStatusEnum.Active ? (
+        {data.eventStatus === eventStatusEnum.ACTIVE ? (
           <EditEventWrapper />
         ) : (
           <EventDraftWrapper />

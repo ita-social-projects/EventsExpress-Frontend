@@ -65,9 +65,9 @@ const mapDispatchToProps = dispatch => {
     resetEvents: () => dispatch(resetEvents()),
     updateEventsFilters: filter => dispatch(updateEventsFilters(filter)),
     onBlock: (eventId, reason) =>
-      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Blocked)),
+      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.BLOCKED)),
     onUnBlock: (eventId, reason) =>
-      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Active)),
+      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.ACTIVE)),
   };
 };
 

@@ -119,23 +119,23 @@ export default class EventItemView extends Component {
       isFreePlace &&
       !iWillVisitIt &&
       !isMyEvent &&
-      eventStatus === eventStatusEnum.Active &&
+      eventStatus === eventStatusEnum.ACTIVE &&
       isAppropriateAge;
     const canLeave =
       isFutureEvent &&
       !isMyEvent &&
       iWillVisitIt &&
       visitorsEnum.deniedUsers.find(x => x.id === currentUser.id) == null &&
-      eventStatus === eventStatusEnum.Active;
+      eventStatus === eventStatusEnum.ACTIVE;
     const canCancel =
       isFutureEvent &&
       currentUser.id != null &&
       isMyEvent &&
-      eventStatus !== eventStatusEnum.Canceled;
+      eventStatus !== eventStatusEnum.CANCELED;
     const canUncancel =
-      isFutureEvent && isMyEvent && eventStatus === eventStatusEnum.Canceled;
+      isFutureEvent && isMyEvent && eventStatus === eventStatusEnum.CANCELED;
     const isMyPrivateEvent = isMyEvent && !isPublic;
-    const canDeleted = isMyEvent && eventStatus === eventStatusEnum.Canceled;
+    const canDeleted = isMyEvent && eventStatus === eventStatusEnum.CANCELED;
 
     return (
       <>
@@ -263,7 +263,7 @@ export default class EventItemView extends Component {
                 </div>
               )}
               <div className="text-box-big overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
-                {eventStatus === eventStatusEnum.Canceled && (
+                {eventStatus === eventStatusEnum.CANCELED && (
                   <div className="text-center text-uppercase cancel-text">
                     <i className="fas fa-exclamation-triangle text-warning" />
                     <span> This event is canceled </span>

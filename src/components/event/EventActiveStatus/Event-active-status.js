@@ -7,13 +7,14 @@ import eventStatusIcon from "../../../constants/eventStatusIcon";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
 import RenderEventButton from "./RenderEventButton";
 
+const ARE_YOU_SURE = "Are you sure?";
 const EventActiveStatus = ({ eventStatus, eventId, onBlock, onUnBlock }) => {
   switch (eventStatus) {
-    case eventStatusEnum.Active:
+    case eventStatusEnum.ACTIVE:
       return (
         <SimpleModalWithDetails
           key={eventId + eventStatus}
-          data="Are you sure?"
+          data={ARE_YOU_SURE}
           submitCallback={reason => onBlock(eventId, reason, eventStatus)}
           button={RenderEventButton(
             eventStatusTitle.ACTIVE,
@@ -22,11 +23,11 @@ const EventActiveStatus = ({ eventStatus, eventId, onBlock, onUnBlock }) => {
           )}
         />
       );
-    case eventStatusEnum.Blocked:
+    case eventStatusEnum.BLOCKED:
       return (
         <SimpleModalWithDetails
           key={eventId + eventStatus}
-          data="Are you sure?"
+          data={ARE_YOU_SURE}
           submitCallback={reason => onUnBlock(eventId, reason)}
           button={RenderEventButton(
             eventStatusTitle.BLOCKED,
@@ -35,7 +36,7 @@ const EventActiveStatus = ({ eventStatus, eventId, onBlock, onUnBlock }) => {
           )}
         />
       );
-    case eventStatusEnum.Canceled:
+    case eventStatusEnum.CANCELED:
       return (
         <>
           {RenderEventButton(

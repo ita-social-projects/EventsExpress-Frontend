@@ -141,7 +141,7 @@ const EventForm = ({
             label="Public"
           />
         </div>
-        {initialValues.eventStatus === eventStatusEnum.Draft && (
+        {initialValues.eventStatus === eventStatusEnum.DRAFT && (
           <div className="mt-2">
             <Field
               name="isOnlyForAdults"

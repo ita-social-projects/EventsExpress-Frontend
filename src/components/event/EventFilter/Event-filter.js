@@ -79,9 +79,9 @@ class EventFilter extends Component {
 
     const values = formValues || { selectedPos: {} };
     const options = [
-      { value: eventStatusEnum.Active, text: OPTIONS_ACTIVE },
-      { value: eventStatusEnum.Blocked, text: OPTIONS_BLOCKED },
-      { value: eventStatusEnum.Canceled, text: OPTIONS_CANCELED },
+      { value: eventStatusEnum.ACTIVE, text: OPTIONS_ACTIVE },
+      { value: eventStatusEnum.BLOCKED, text: OPTIONS_BLOCKED },
+      { value: eventStatusEnum.CANCELED, text: OPTIONS_CANCELED },
     ];
 
     return (

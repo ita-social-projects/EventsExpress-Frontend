@@ -77,11 +77,11 @@ const mapDispatchToProps = dispatch => ({
   join: (userId, eventId) => dispatch(join(userId, eventId)),
   leave: (userId, eventId) => dispatch(leave(userId, eventId)),
   cancel: (eventId, reason) =>
-    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Canceled)),
+    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.CANCELED)),
   unCancel: (eventId, reason) =>
-    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Active)),
+    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.ACTIVE)),
   delete: (eventId, reason) =>
-    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Deleted)),
+    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.DELETED)),
   getUsersInventoriesByEventId: eventId =>
     dispatch(getUsersInventoriesByEventId(eventId)),
   getInventoriesByEventId: eventId =>

@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => {
   return {
     alert: msg => dispatch(setSuccessAllert(msg)),
     delete: (eventId, reason) =>
-      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Deleted)),
+      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.DELETED)),
   };
 };
 

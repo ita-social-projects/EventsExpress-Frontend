@@ -3,10 +3,11 @@ import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import propTypes from "prop-types";
 
+const MIDDLE = "middle";
 const RenderEventButton = ({ eventTitle, eventButton, eventIcon }) => {
   return (
     <Tooltip title={eventTitle}>
-      <IconButton className={eventButton} size="middle">
+      <IconButton className={eventButton} size={MIDDLE}>
         <i className={eventIcon} />
       </IconButton>
     </Tooltip>

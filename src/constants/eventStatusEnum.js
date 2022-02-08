@@ -1,9 +1,9 @@
 const eventStatusEnum = {
-  Active: 0,
-  Blocked: 1,
-  Canceled: 2,
-  Draft: 3,
-  Deleted: 4,
+  ACTIVE: 0,
+  BLOCKED: 1,
+  CANCELED: 2,
+  DRAFT: 3,
+  DELETED: 4,
 };
 
 export default eventStatusEnum;
