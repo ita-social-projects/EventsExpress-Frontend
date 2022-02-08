@@ -63,7 +63,7 @@ class HeadArticle extends Component {
                 renderButton={action => (
                   <button
                     className="btn btn-warning"
-                    onClick={action()}
+                    onClick={action}
                     type="button"
                   >
                     {CREATE_EVENT}
