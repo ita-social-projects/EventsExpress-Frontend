@@ -1,181 +1,83 @@
-import React, { Component } from "react";
-import { Button, Menu, MenuItem } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import Badge from "@material-ui/core/Badge";
+import React, { useState } from "react";
+import { Menu } from "@material-ui/core";
 import Moment from "react-moment";
 import propTypes from "prop-types";
-import Tooltip from "@material-ui/core/Tooltip";
 import CardHeader from "@material-ui/core/CardHeader";
-import IconButton from "@material-ui/core/IconButton";
-import ContainerCustomAvatar from "../../avatar/custom-avatar";
 import useStyle from "../CardStyle/CardStyle";
-import getAttitudeClassName from "../attitude/attitude";
+import PrintMenuMembers from "./PrintMenuMembers";
+import PrintMenuItems from "./PrintMenuItems";
 import "./event-item-header.css";
+import {
+  renderOwners,
+  renderMembers,
+  handleSetAnchorEl,
+} from "../../helpers/EventItemHeaderUtils";
 
-export default class EventHeader extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      anchorElO: null,
-      anchorElM: null,
-    };
-  }
-
-  handleClickOnMember = event => {
-    this.setState({ anchorElM: event.currentTarget });
-  };
-
-  handleCloseOnMember = () => {
-    this.setState({ anchorElM: null });
-  };
-
-  handleClickOnOwners = event => {
-    this.setState({ anchorElO: event.currentTarget });
-  };
-
-  handleCloseOnOwners = () => {
-    this.setState({ anchorElO: null });
-  };
-
-  renderOwners = (owners, avatar) => {
-    return (
-      <Button
-        title={owners[0].username}
-        className="btn-custom"
-        onClick={this.handleClickOnOwners}
-      >
-        <Badge overlap="circle" badgeContent={owners.length} color="primary">
-          <ContainerCustomAvatar
-            className={avatar}
-            userId={owners[0].id}
-            name={owners[0].username}
-          />
-        </Badge>
-      </Button>
-    );
-  };
-
-  renderMembers = (first, visitorsCount, avatar) => {
-    if (first !== undefined) {
-      return (
-        <Button
-          title="Visitors"
-          className="btn-custom"
-          onClick={this.handleClickOnMember}
-        >
-          <Badge overlap="circle" badgeContent={visitorsCount} color="primary">
-            <ContainerCustomAvatar
-              className={avatar}
-              userId={first.id}
-              name={first.username}
-            />
-          </Badge>
-        </Button>
-      );
-    }
-
-    return (
-      <Tooltip title="Visitors">
-        <IconButton>
-          <Badge badgeContent={visitorsCount} color="primary">
-            <i className="fa fa-users" />
-          </Badge>
-        </IconButton>
-      </Tooltip>
-    );
-  };
-
-  render() {
-    const classes = useStyle;
-
-    const { members, countVisitor, owners, dateFrom, title } = this.props;
-    const { anchorElM, anchorElO } = this.state;
-
-    const firstMember = members ? members[0] : null;
-
-    const PrintMenuMembers = members.map(user => (
-      <MenuItem
-        key={user.id}
-        onClick={this.handleCloseOnMember}
-        style={{ overflow: "visible" }}
-      >
-        <div
-          className={`d-flex align-items-center border-bottom w-100 ${getAttitudeClassName(
-            user.attitude,
-          )}`}
-        >
-          <div className="flex-grow-1">
-            <Link to={`/user/${user.id}`} className="btn-custom">
-              <div className="d-flex align-items-center border-bottom">
-                <ContainerCustomAvatar
-                  userId={user.photoUrl}
-                  name={user.username}
-                />
-                <div>
-                  <h5 className="pl-2">{user.username}</h5>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </MenuItem>
-    ));
-
-    const PrintMenuItems = owners.map(user => (
-      <MenuItem onClick={this.handleCloseOnOwners} key={user.id}>
-        <div className="d-flex align-items-center border-bottom">
-          <div className="flex-grow-1">
-            <Link to={`/user/${user.id}`} className="btn-custom">
-              <div className="d-flex align-items-center border-bottom">
-                <ContainerCustomAvatar userId={user.id} name={user.username} />
-                <div>
-                  <h5 className="pl-2">{user.username}</h5>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </MenuItem>
-    ));
-
-    return (
-      <>
-        <Menu
-          id="menu-for-members"
-          anchorEl={anchorElO}
-          keepMounted
-          open={Boolean(anchorElO)}
-          onClose={this.handleCloseOnOwners}
-        >
-          {PrintMenuItems}
-        </Menu>
-        <Menu
-          id="menu-for-members"
-          anchorEl={anchorElM}
-          keepMounted
-          open={Boolean(anchorElM)}
-          onClose={this.handleCloseOnMember}
-        >
-          {PrintMenuMembers}
-        </Menu>
-        <CardHeader
-          avatar={this.renderOwners(owners, classes.avatar)}
-          action={this.renderMembers(firstMember, countVisitor, classes.avatar)}
-          title={title}
-          subheader={
-            <Moment format="D MMM YYYY" withTitle>
-              {dateFrom}
-            </Moment>
-          }
-          classes={{ title: "title" }}
+const EventHeader = ({ members, countVisitor, owners, dateFrom, title }) => {
+  const [anchorElM, setAnchorElM] = useState(null);
+  const [anchorElO, setAnchorElO] = useState(null);
+  const firstMember = members ? members[0] : null;
+  const { avatar } = useStyle;
+  const MAPPER = [
+    {
+      id: 1,
+      anchorEl: anchorElO,
+      onClose: setAnchorElO,
+      children: (
+        <PrintMenuItems
+          owners={owners}
+          handleSetAnchorEl={handleSetAnchorEl}
+          setAnchorElO={setAnchorElO}
         />
-      </>
-    );
-  }
-}
+      ),
+    },
+    {
+      id: 2,
+      anchorEl: anchorElM,
+      onClose: setAnchorElM,
+      children: (
+        <PrintMenuMembers
+          members={members}
+          handleSetAnchorEl={handleSetAnchorEl}
+          setAnchorElM={setAnchorElM}
+        />
+      ),
+    },
+  ];
+  return (
+    <>
+      {MAPPER.map(el => (
+        <Menu
+          key={el.id}
+          id="menu-for-members"
+          anchorEl={el.anchorElO}
+          keepMounted
+          open={Boolean(el.anchorElO)}
+          onClose={() => handleSetAnchorEl(null, el.setAnchorElO)}
+        >
+          {el.children}
+        </Menu>
+      ))}
 
-// TODO: Check prop countVisitor
+      <CardHeader
+        avatar={renderOwners(owners, avatar, e =>
+          handleSetAnchorEl(e, setAnchorElO),
+        )}
+        action={renderMembers(firstMember, countVisitor, avatar, e =>
+          handleSetAnchorEl(e, setAnchorElM),
+        )}
+        title={title}
+        subheader={
+          <Moment format="D MMM YYYY" withTitle>
+            {dateFrom}
+          </Moment>
+        }
+        classes={{ title: "title" }}
+      />
+    </>
+  );
+};
+
 EventHeader.propTypes = {
   members: propTypes.array,
   countVisitor: propTypes.number,
@@ -191,3 +93,5 @@ EventHeader.defaultProps = {
   dateFrom: "",
   title: "",
 };
+
+export default EventHeader;
