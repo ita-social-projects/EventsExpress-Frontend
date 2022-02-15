@@ -15,8 +15,8 @@
         "id": "3",
         "name":  "Self-education",
         "CategoryGroupId": "2",
-        "countOfUser": "0",
-        "countOfEvents": "0"
+        "countOfUser": 0,
+        "countOfEvents": 0
     }],
     "organizers": [{
         "id": "1",
@@ -58,8 +58,8 @@
         "id": "8",
         "name":  "Football",
         "CategoryGroupId": "3",
-        "countOfUser": "0",
-        "countOfEvents": "0"
+        "countOfUser": 0,
+        "countOfEvents": 0
     }
 ],
 "organizers":  [{
@@ -101,8 +101,8 @@
         {   "id": "1",
             "name": "Drawing",
             "CategoryGroupId": "1",
-            "countOfUser": "0",
-            "countOfEvents": "0"
+            "countOfUser": 0,
+            "countOfEvents": 0
         }
     ],
     "organizers":  [{
