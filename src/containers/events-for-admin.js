@@ -20,7 +20,7 @@ class AdminEventListWrapper extends Component {
       <SpinnerWrapper showContent={data !== undefined}>
         <EventList
           current_user={currentUser}
-          data_list={items}
+          dataList={items}
           page={data.pageViewModel.pageNumber}
           totalPages={data.pageViewModel.totalPages}
           callback={this.props.getEvents}
