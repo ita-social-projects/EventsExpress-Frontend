@@ -33,6 +33,7 @@ import AuthUser from "../../actions/login/auth-user-action";
 import getConfig from "../../actions/config/get-config-action";
 import RegistrationForm from "../RegistrationForm";
 import MainLayout from "../MainLayout";
+import AboutUs from "../AboutUs/AboutUs";
 
 class App extends Component {
   UserRoleSecurity = withAuthRedirect(["User"]);
@@ -55,6 +56,7 @@ class App extends Component {
             <Route path="/landing" component={LandingWrapper} />
             <Route exact path="/" render={() => <Redirect to="/landing" />} />
             <Route path="/registrationForm" component={RegistrationForm} />
+            <Route path="/about" component={AboutUs} />
             <Route>
               <Layout>
                 <Switch>
