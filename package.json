@@ -84,6 +84,9 @@
 	},
 	"devDependencies": {
 		"@types/leaflet": "1.5.19",
+		"commitizen": "^4.2.4",
+		"conventional-changelog": "^3.1.25",
+		"conventional-changelog-cli": "^2.2.2",
 		"eslint": "^7.11.0",
 		"eslint-config-airbnb": "^18.2.1",
 		"eslint-config-prettier": "^4.3.0",
@@ -103,7 +106,13 @@
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"lint": "eslint src --ext .js,.jsx",
-		"lint:fix": "eslint src --fix --ext .js,.jsx"
+		"lint:fix": "eslint src --fix --ext .js,.jsx",
+		"commit": "cz"
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog"
+		}
 	},
 	"browserslist": {
 		"production": [
