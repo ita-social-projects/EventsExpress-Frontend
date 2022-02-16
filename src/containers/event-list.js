@@ -49,12 +49,11 @@ class EventListWrapper extends Component {
       this.props.current_user.id !== null ? this.props.current_user : {};
     const { data } = this.props.events;
     const { items } = this.props.events.data;
-
     return (
       <SpinnerWrapper showContent={data !== undefined}>
         <EventList
           current_user={currentUser}
-          data_list={items}
+          dataList={items}
           filter={this.props.events.filter}
           page={data.pageViewModel.pageNumber}
           totalPages={data.pageViewModel.totalPages}
