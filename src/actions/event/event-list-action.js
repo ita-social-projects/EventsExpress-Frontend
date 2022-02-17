@@ -69,7 +69,9 @@ export function getUpcomingEvents(filters) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
+
     const jsonRes = await response.json();
+    jsonRes.items = eventMockup;
     dispatch(getEventsData(jsonRes));
     return Promise.resolve();
   };
