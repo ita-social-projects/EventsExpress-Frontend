@@ -21,7 +21,8 @@
 }
 
 .about__info__button {
-	cursor: pointer;
+	display: flex;
+	justify-content: flex-end;
     border: 2px solid $lightThemeAccept;
 	color: $lightThemeAccept;
 	padding: 5px 25px;
@@ -29,11 +30,14 @@
 	font-weight: bold;
 	align-self: flex-end;
 	transition: 0.5s all;
+	cursor: pointer;
+	font-size: 14px;
 
 	&:hover{
 		color: darken($color: $lightThemeAccept, $amount: 15%);
 		border-color: darken($color: $lightThemeAccept, $amount: 15%);
 		background-color: #e6e6e6;
+		text-decoration: none;
 	}
 }
 

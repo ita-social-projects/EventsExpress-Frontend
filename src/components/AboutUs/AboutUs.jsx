@@ -1,14 +1,20 @@
 import React from "react";
 import "./AboutUs.scss";
-import aboutImg1 from "./images/aboutImg-1.png";
-import aboutImg2 from "./images/aboutImg-2.png";
-import aboutImg3 from "./images/aboutImg-3.png";
-import aboutImg4 from "./images/aboutImg-4.png";
-import aboutImg5 from "./images/aboutImg-5.png";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
+import aboutImg1 from "../../assets/images/aboutUs/aboutImg-1.png";
+import aboutImg2 from "../../assets/images/aboutUs/aboutImg-2.png";
+import aboutImg3 from "../../assets/images/aboutUs/aboutImg-3.png";
+import aboutImg4 from "../../assets/images/aboutUs/aboutImg-4.png";
+import aboutImg5 from "../../assets/images/aboutUs/aboutImg-5.png";
 import constants from "../../constants/AboutUs";
+import ModalWind from "../modal-wind";
 
 const {
+  JOIN_US,
   ABOUT_US,
+  CONTACT_US,
   SEARCH_EVENTS,
   CREATE_YOUR_EVENT,
   FIND_EVENTS,
@@ -16,7 +22,7 @@ const {
   HAVE_FUN_TOGETHER,
 } = constants;
 
-const AboutUs = () => {
+const AboutUs = ({ user }) => {
   const MAPPER = [
     { img: aboutImg1, text: SEARCH_EVENTS },
     { img: aboutImg2, text: CREATE_YOUR_EVENT },
@@ -38,15 +44,23 @@ const AboutUs = () => {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </div>
-        <button
-          className="about__info__button"
-          type="button"
-          onClick={() => {
-            console.log(123);
-          }}
-        >
-          Join us
-        </button>
+        {!user.id ? (
+          <ModalWind
+            renderButton={action => (
+              <button
+                className="about__info__button"
+                onClick={() => action()}
+                type="button"
+              >
+                {JOIN_US}
+              </button>
+            )}
+          />
+        ) : (
+          <NavLink to="/contactAdmin" className="about__info__button">
+            {CONTACT_US}
+          </NavLink>
+        )}
       </div>
       <div className="about__photos">
         {MAPPER.map(({ img, text }) => (
@@ -60,4 +74,18 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+AboutUs.defaultProps = {
+  user: {},
+};
+
+AboutUs.propTypes = {
+  user: PropTypes.object,
+};
+
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, {})(AboutUs);
