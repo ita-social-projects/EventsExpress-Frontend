@@ -51,7 +51,7 @@
     "maxParticipants": 100,
     "frequency": 1,
     "periodicity": "Yearly",
-    "photo": "./mockup-images/football-g10e9bda93_1920.jpg",
+    "photo": "",
     "location": "Map",
     "isPublic": true,
     "isOnlyForAdults": true,
