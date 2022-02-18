@@ -49,7 +49,7 @@ const AboutUs = ({ user }) => {
             renderButton={action => (
               <button
                 className="about__info__button"
-                onClick={() => action()}
+                onClick={action}
                 type="button"
               >
                 {JOIN_US}

@@ -1,10 +1,10 @@
 @import "../../styles/variables";
 
 .about__container {
-  margin-top: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 50px;
 }
 
 .about__info {
@@ -15,23 +15,23 @@
 }
 
 .about__info_text {
-  font-weight: 600;
   width: 515px;
+  font-weight: 600;
   margin-bottom: 15px;
 }
 
 .about__info__button {
   display: flex;
   justify-content: flex-end;
-  border: 2px solid $lightThemeAccept;
-  color: $lightThemeAccept;
-  padding: 5px 25px;
-  border-radius: $buttonBorderRadius;
-  font-weight: bold;
   align-self: flex-end;
-  transition: 0.5s all;
-  cursor: pointer;
+  font-weight: bold;
   font-size: 14px;
+  color: $lightThemeAccept;
+  border: 2px solid $lightThemeAccept;
+  border-radius: $buttonBorderRadius;
+  padding: 5px 25px;
+  cursor: pointer;
+  transition: 0.5s all;
 
   &:hover {
     color: darken($color: $lightThemeAccept, $amount: 15%);
@@ -68,8 +68,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .about__photos_item {
