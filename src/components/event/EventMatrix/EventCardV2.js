@@ -5,12 +5,10 @@ import "./EventCardV2.scss";
 const EventCard = ({ title, photo }) => {
   return (
     <div className="event-card">
-      <div className="event-card__body">
-        <img className="event-card__poster" src={photo} alt="Poster"></img>
-        <div className="event-card__inner-container">
-          <div className="event-card__text-container">
-            <p className="event-card__inner-text">{title}</p>
-          </div>
+      <img className="event-card__poster" src={photo} alt="Poster"></img>
+      <div className="event-card__inner-container">
+        <div className="event-card__text-container">
+          <p className="event-card__inner-text">{title}</p>
         </div>
       </div>
     </div>
