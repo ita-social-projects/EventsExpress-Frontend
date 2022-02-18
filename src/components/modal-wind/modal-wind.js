@@ -55,7 +55,7 @@ const ModalWind = ({ setStatus, status, renderButton }) => {
   };
 
   return (
-    <div className="d-inline-block">
+    <>
       {renderButton(handleClickOpen)}
       <Dialog open={status.isOpen} onClose={handleClose}>
         <Paper square className={classes.root}>
@@ -81,15 +81,15 @@ const ModalWind = ({ setStatus, status, renderButton }) => {
             </TabContainer>
           )}
 
-          <div className="text-center">
+          <>
             <Modalwind2 />
-          </div>
+          </>
           <Button fullWidth onClick={handleClose} color="primary">
             Cancel
           </Button>
         </Paper>
       </Dialog>
-    </div>
+    </>
   );
 };
 
