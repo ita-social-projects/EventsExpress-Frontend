@@ -1,5 +1,5 @@
 [
-{
+{   "id": "1",
     "title": "Vegan For Beginners Online Workshop",
     "description": "More and more people are interested in vegan/plant-based eating. Some are curious, some want to get their feet wet, and others are ready to come to the V-side! I am here for you all! I offer information to introduce you to what eating vegan is like. This workshop occurs on Zoom and it would be awesome if you turned your camera on!",
     "dateFrom": "2022-03-01T10:00:00.0000000Z",
@@ -8,7 +8,7 @@
     "maxParticipants": 250,
     "frequency": 2,
     "periodicity": "Monthly",
-    "photo": "./mockup-images/Screenshot_4.png",
+    "photo": "",
     "location": "Online",
     "isPublic": true,
     "isOnlyForAdults": true,
@@ -42,8 +42,8 @@
         }
     ]
 },
-{
-    "title": "Football, Finances & Fundraising Workshop - Get top tips to help your club",
+{   "id": "2",
+    "title": "Football, Finances & Fundraising Workshop",
     "description": "The workshop will cover a range of areas including: budgeting, planning, grant funding, sponsorship, fundraising. Attendees will receive advice and ideas from the tutor and be encouraged to share their experiences and views in breakouts rooms.",
     "dateFrom": "2022-02-20T013:30:00.0000000Z",
     "dateTo": "2022-02-20T015:30:00.0000000Z",
@@ -51,7 +51,7 @@
     "maxParticipants": 100,
     "frequency": 1,
     "periodicity": "Yearly",
-    "photo": "./mockup-images/Screenshot_2.png",
+    "photo": "",
     "location": "Map",
     "isPublic": true,
     "isOnlyForAdults": true,
@@ -87,8 +87,9 @@
     }
 ]
 },
-{
-    "title": "THE PORTRAIT IN ISOLATION: TONAL PAINTING Online Session",
+{   
+    "id": "3",
+    "title": "THE PORTRAIT IN ISOLATION",
     "description": "Painting from the model can be difficult to navigate, balancing colour, tone, proportions, perspective, composition, and emotional narrative. Through this class we will get back to the basics of life-painting, referencing the work of some of the great life-painters, William Etty, Lucien Freud, Euan Uglow, Jenny Saville and more, mining their work for their wisdom on painting TONE, all whilst using yourself as the model!",
     "dateFrom": "2022-02-27T016:30:00.0000000Z",
     "dateTo": "2022-02-20T019:30:00.0000000Z",
@@ -96,7 +97,7 @@
     "maxParticipants": 200,
     "frequency": 1,
     "periodicity": "Monthly",
-    "photo": "./mockup-images/Screenshot_3.png",
+    "photo": "",
     "location": "Online",
     "isPublic": true,
     "isOnlyForAdults": true,
