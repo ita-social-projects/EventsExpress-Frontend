@@ -13,6 +13,9 @@
    justify-content: center;
    padding: 2px 5px;
    box-sizing: border-box;
+   @media (max-width: 426px) {
+    height: 40px;
+  }
       &__menu {
         width: 54px;
         height: 47px;
@@ -22,6 +25,10 @@
         width: 60px;
         height: 55px;
         }
+        @media (max-width: 426px) {
+        width: 35px;
+        height: 30px;
+        }
       }
       &__right-block {
         display: flex;
@@ -30,6 +37,13 @@
         background: rgba(193, 193, 193, 0.15);
         margin-right: 0px;
         margin-left: auto;
+        border-radius: $buttonBorderRadius;
+        @media (max-width: 426px) {
+          display: grid;
+          align-items: center;
+          justify-content: right;
+          height: 40px;
+        }
       }
       @media (min-width: 992px) {
         -ms-flex-flow: row nowrap;
@@ -45,28 +59,42 @@
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0%);
-        &__textEvent{
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 900;
-        color: $lightThemeAccept;
-        font-size: 24px;
+      &:active, &:focus, &:hover{
+        text-decoration: none;
       }
-      &__textExpress {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 900;
-        font-size: 24px;
-        color:$white;
-      }
-      &__image {
-        height: 25px;
-      }
+        &__textEvents {
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 900;
+          font-size: 24px;
+          color: $lightThemeAccept;
+          @media (max-width: 426px) {
+            font-size: 14px;
+          }
+        }
+        &__textExpress {
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 900;
+          font-size: 24px;
+          color:$white;      
+          @media (max-width: 426px) {
+            font-size: 14px;
+            }
+          }   
+        &__image {
+            height: 25px;
+            @media (max-width: 426px) {
+              height: 15px;
+            }
+          }
   }
 
 .header-icons {
   display: flex;
   vertical-align: middle;
+  justify-content: right;
+
      &__item { 
           width: auto;
           height: 20px;
@@ -74,11 +102,19 @@
           &:hover { 
             height: 30px;
           }
-        }
+          @media (max-width: 426px) {
+            height: 14px;
+          }
+      }
 }
 
 .btn-light-theme {
   padding: 2px 10px;
+  @media (max-width: 426px) {
+    font-size: 10px;
+    padding: 1px 5px;
+    justify-content: center;
+  }
 }
 
 .userNameAlign {
@@ -89,6 +125,10 @@
   flex-direction: column;
   justify-content: center;
   margin-right: 3px;
+  font-size: 14px;
+  @media (max-width: 426px) {
+    font-size: 10px;
+    }
 }
 
 // dropdown menu

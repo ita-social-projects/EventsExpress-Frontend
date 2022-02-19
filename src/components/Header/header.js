@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import ModalWind from "../modal-wind";
 import AuthComponent from "../../security/authComponent";
 import "./header.scss";
-import CustomAvatar from "../avatar/custom-avatar";
+// import CustomAvatar from "../avatar/custom-avatar"; *not desided if we use this element here or not
 import Roles from "../../constants/userRoles";
 import Logo from "../../assets/icons/LogoViolet.png";
 import SerchIcon from "../../assets/icons/header/Search.png";
@@ -28,14 +28,14 @@ function Header({ user, hub, logout, addEvent }) {
 
   return (
     <nav className="header">
-      <div className="header__menu">
+      <div role="button" tabIndex={0} className="header__menu">
         <img src={MenuIcon} alt="Menu" />
       </div>
 
       <Link to="/home" className="logo">
         <img src={Logo} alt="Logo" className="logo__image" />
         <div className="logo__text">
-          <span className="logo__textEvent"> EVENTS</span>
+          <span className="logo__textEvents"> EVENTS</span>
           <span className="logo__textExpress">EXPRESS</span>
         </div>
       </Link>
@@ -75,7 +75,6 @@ function Header({ user, hub, logout, addEvent }) {
                     role="button"
                     tabIndex={0}
                     className="btn-light-theme"
-                    variant="contained"
                     onClick={action}
                     aria-hidden
                   >
@@ -98,7 +97,7 @@ function Header({ user, hub, logout, addEvent }) {
                 aria-expanded="false"
               >
                 <p className="userNameAlign">{name}</p>
-                <CustomAvatar size="small" userId={id} name={name} />
+                {/* <CustomAvatar size="small" userId={id} name={name} /> */}
               </div>
               <div className="dropdown-menu dropdown-menu-right bgcolorwhite">
                 <AuthComponent rolesMatch={Roles.User}>
