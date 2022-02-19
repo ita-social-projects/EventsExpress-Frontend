@@ -4,11 +4,20 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import ModalWind from "../modal-wind";
 import AuthComponent from "../../security/authComponent";
-import "./header.css";
+import "./header.scss";
 import logout from "../../actions/login/logout-action";
 import CustomAvatar from "../avatar/custom-avatar";
 import Roles from "../../constants/userRoles";
 import addEvent from "../../actions/event/event-add-action";
+import Logo from "../../assets/icons/LogoViolet.png";
+import SerchIcon from "../../assets/icons/header/Search.png";
+import SavedIcon from "../../assets/icons/header/Saved.png";
+import MenuIcon from "../../assets/icons/header/Menu.png";
+import LanguageSwich from "../../assets/icons/header/Language.png";
+import constants from "../../constants/headerConstants";
+
+const { CREATE_EVENT, SIGN_IN, LOG_OUT, HELP, MY_PROFILE, MY_EVENTS } =
+  constants;
 
 class Header extends Component {
   logoutReset = () => {
@@ -23,54 +32,72 @@ class Header extends Component {
     const { id, name } = this.props.user.id !== null ? this.props.user : {};
 
     return (
-      <nav
-        className="navbar navbar-expand-lg navbar-light extraHeaderStyles"
-        id="bgcolornav"
-      >
-        <div className="navbar-brand">
-          <Link to="/home" className="nav-link" id="EEButton">
-            EVENTS EXPRESS
-          </Link>
+      <nav className="header">
+        <div className="header__menu">
+          <img src={MenuIcon} alt="Menu" />
         </div>
-        <ul className="navbar-nav mr-auto"></ul>
-        <span className="form-inline my-2 my-lg-0">
+
+        <Link to="/home" className="logo">
+          <img src={Logo} alt="Logo" className="logo__image" />
+          <div className="logo__text">
+            <span className="logo__textEvent"> EVENTS</span>
+            <span className="logo__textExpress">EXPRESS</span>
+          </div>
+        </Link>
+
+        <div className="header__right-block">
           <AuthComponent rolesMatch={Roles.User}>
-            <div className="my-2 my-sm-0">
-              <div
-                role="button"
-                tabIndex={0}
-                className="btn btn-light"
-                id="headbtn"
-                onClick={this.props.addEvent}
-                aria-hidden
-              >
-                Create Event
-              </div>
+            <div
+              role="button"
+              tabIndex={0}
+              className="btn-light-theme"
+              onClick={this.props.addEvent}
+              aria-hidden
+            >
+              {CREATE_EVENT}
             </div>
           </AuthComponent>
+
           <AuthComponent onlyAnonymous>
-            <div className="my-2 my-sm-0">
+            <div className="header__right-block">
+              <div className="header-icons">
+                <img
+                  src={LanguageSwich}
+                  alt="EN"
+                  className="header-icons__item"
+                />
+                <img
+                  src={SerchIcon}
+                  alt="Search"
+                  className="header-icons__item"
+                />
+                <img
+                  src={SavedIcon}
+                  alt="Saved"
+                  className="header-icons__item"
+                />
+              </div>
               {!id && (
                 <ModalWind
                   renderButton={action => (
                     <div
                       role="button"
                       tabIndex={0}
-                      id="headbtn"
-                      className="btn btn-light navbtns"
+                      className="btn-light-theme"
                       variant="contained"
                       onClick={action}
                       aria-hidden
                     >
-                      Sign In/Up
+                      {SIGN_IN}
                     </div>
                   )}
                 />
               )}
             </div>
           </AuthComponent>
+
           <AuthComponent>
-            <div className="my-2 my-sm-0">
+            <div className="users-info">
               <div className="btn-group">
                 <div
                   type="button"
@@ -79,7 +106,7 @@ class Header extends Component {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <p id="userNameAlign">{name}</p>
+                  <p className="userNameAlign">{name}</p>
                   <CustomAvatar size="small" userId={id} name={name} />
                 </div>
                 <div className="dropdown-menu dropdown-menu-right bgcolorwhite">
@@ -89,7 +116,7 @@ class Header extends Component {
                         className="dropdown-item bgcolorwhite"
                         type="button"
                       >
-                        my events
+                        {MY_EVENTS}
                       </button>
                     </Link>
                   </AuthComponent>
@@ -99,7 +126,7 @@ class Header extends Component {
                         className="dropdown-item bgcolorwhite"
                         type="button"
                       >
-                        my profile
+                        {MY_PROFILE}
                       </button>
                     </Link>
                   </AuthComponent>
@@ -108,16 +135,16 @@ class Header extends Component {
                     type="button"
                     onClick={this.logoutReset}
                   >
-                    log out
+                    {LOG_OUT}
                   </button>
                   <button className="dropdown-item bgcolorwhite" type="button">
-                    help and feedback
+                    {HELP}
                   </button>
                 </div>
               </div>
             </div>
           </AuthComponent>
-        </span>
+        </div>
       </nav>
     );
   }
