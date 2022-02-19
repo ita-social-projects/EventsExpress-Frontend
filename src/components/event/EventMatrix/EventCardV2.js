@@ -7,9 +7,7 @@ const EventCard = ({ title, photo }) => {
     <div className="event-card">
       <img className="event-card__poster" src={photo} alt="Poster"></img>
       <div className="event-card__inner-container">
-        <div className="event-card__text-container">
-          <p className="event-card__inner-text">{title}</p>
-        </div>
+        <p className="event-card__inner-text">{title}</p>
       </div>
     </div>
   );

@@ -21,14 +21,11 @@
     border-radius: 20px;
     background-color: $transparentBlackBackground
     }
-    
-    &__text-container {
+
+    &__inner-text {
     width: 314px;
     height: 50px;
     margin: 10px 6px 10px 20px;
-    }
-
-    &__inner-text {
     font-weight: bold;
     font-size: 24px;
     line-height: 127.9%;
