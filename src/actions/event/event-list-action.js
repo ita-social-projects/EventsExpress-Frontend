@@ -71,8 +71,10 @@ export function getUpcomingEvents(filters) {
     }
     // TODO: MOCKUP
     // const jsonRes = await response.json();
+    
     const jsonRes = await response.json();
     jsonRes.items = eventMockup;
+    
     dispatch(getEventsData(jsonRes));
     return Promise.resolve();
   };

@@ -8,6 +8,7 @@ import AuthComponent from "../../security/authComponent";
 import "./landing.css";
 import { getUpcomingEvents } from "../../actions/event/event-list-action";
 import HeadArticle from "./HeadArticle";
+import EventMatrix from "../event/EventMatrix/EventMatrix";
 
 class Landing extends Component {
   componentDidMount() {
@@ -97,6 +98,7 @@ class Landing extends Component {
               </div>
               <div style={{ textAlign: "right" }} className="col-md-2">
                 <a href="/home/events">Explore more events</a>
+                <EventMatrix />
               </div>
             </div>
             <div className="carousel-wrapper text-center">
