@@ -1,4 +1,5 @@
-﻿import React, { Component } from "react";
+﻿// TODO: OLD VERSION OF EVENTS LIST RECOMENDED DELET. EventListItem - new
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import PhotoService from "../../services/PhotoService";
 import eventDefaultImage from "../../constants/eventDefaultImage";

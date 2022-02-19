@@ -1,8 +1,8 @@
 ﻿import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Carousel from "react-material-ui-carousel";
+// import Carousel from "react-material-ui-carousel";
 import { connect } from "react-redux";
-import CarouselEventCard from "./CarouselEventCard";
+import EventsListItem from "./EventsListItem/EventsListItem";
 import ModalWind from "../modal-wind";
 import AuthComponent from "../../security/authComponent";
 import "./landing.css";
@@ -28,9 +28,11 @@ class Landing extends Component {
   };
 
   renderCarouselBlock = eventBlock => (
-    <div className="carousel-block wd-100">
+    // TODO: DELETED CLASS FOR
+    // <div className="carousel-block wd-100">
+    <div className="container">
       {eventBlock.map(event => (
-        <CarouselEventCard key={event.id} event={event} />
+        <EventsListItem key={event.id} event={event} />
       ))}
     </div>
   );
@@ -39,7 +41,7 @@ class Landing extends Component {
     const { items } = this.props.events.data;
     const events = this.splitDataIntoBlocks(items);
 
-    const carouselNavIsVisible = events.length > 1;
+    // const carouselNavIsVisible = events.length > 1;
 
     return (
       <>
@@ -87,43 +89,43 @@ class Landing extends Component {
               </div>
             </AuthComponent>
           </article>
-          {events.length !== 0 && (
-            <article className="events-article">
-              <div className="row">
-                <div className="col-md-10">
-                  <h3>Upcoming events</h3>
-                </div>
-                <div style={{ textAlign: "right" }} className="col-md-2">
-                  <a href="/home/events">Explore more events</a>
-                </div>
+          {events.length &&
+            events.map(block => this.renderCarouselBlock(block))}
+          {/* <article className="events-article">
+            <div className="row">
+              <div className="col-md-10">
+                <h3>Upcoming events</h3>
               </div>
-              <div className="carousel-wrapper text-center">
+              <div style={{ textAlign: "right" }} className="col-md-2">
+                <a href="/home/events">Explore more events</a>
                 <EventMatrix />
-                <Carousel
-                  autoPlay={false}
-                  animation="slide"
-                  interval={1000}
-                  indicators={false}
-                  navButtonsAlwaysVisible={carouselNavIsVisible}
-                  navButtonsAlwaysInvisible={!carouselNavIsVisible}
-                  NextIcon={
-                    <i
-                      style={{ width: `${32}px`, height: `${32}px` }}
-                      className="fas fa-angle-right"
-                    ></i>
-                  }
-                  PrevIcon={
-                    <i
-                      style={{ width: `${32}px`, height: `${32}px` }}
-                      className="fas fa-angle-left"
-                    ></i>
-                  }
-                >
-                  {events.map(block => this.renderCarouselBlock(block))}
-                </Carousel>
               </div>
-            </article>
-          )}
+            </div>
+            <div className="carousel-wrapper text-center">
+              <Carousel
+                autoPlay={false}
+                animation="slide"
+                interval={1000}
+                indicators={false}
+                navButtonsAlwaysVisible={carouselNavIsVisible}
+                navButtonsAlwaysInvisible={!carouselNavIsVisible}
+                NextIcon={
+                  <i
+                    style={{ width: `${32}px`, height: `${32}px` }}
+                    className="fas fa-angle-right"
+                  ></i>
+                }
+                PrevIcon={
+                  <i
+                    style={{ width: `${32}px`, height: `${32}px` }}
+                    className="fas fa-angle-left"
+                  ></i>
+                }
+              >
+                {events.map(block => this.renderCarouselBlock(block))} 
+              </Carousel>
+            </div>
+          </article> */}
         </div>
       </>
     );
