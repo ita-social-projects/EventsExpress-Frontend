@@ -57,21 +57,23 @@ function Header({ user, hub, logout, addEvent }) {
         </div>
 
         <AuthComponent onlyAnonymous>
-          {!id && (
-            <ModalWind
-              renderButton={action => (
-                <div
-                  role="button"
-                  tabIndex={0}
-                  className="btn-light-theme"
-                  onClick={action}
-                  aria-hidden
-                >
-                  {SIGN_IN}
-                </div>
-              )}
-            />
-          )}
+          <div>
+            {!id && (
+              <ModalWind
+                renderButton={action => (
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    className="btn-light-theme"
+                    onClick={action}
+                    aria-hidden
+                  >
+                    {SIGN_IN}
+                  </div>
+                )}
+              />
+            )}
+          </div>
         </AuthComponent>
 
         <AuthComponent>

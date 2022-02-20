@@ -13,23 +13,28 @@
    justify-content: center;
    padding: 2px 5px;
    box-sizing: border-box;
-   @media (max-width: 426px) {
+
+   @media (max-width: $mobile-breakpoint) {
     height: 40px;
   }
-      &__menu {
-        width: 54px;
-        height: 47px;
-        margin: 12px, 0px, 0px, 8px;
-        cursor: pointer;
+  
+     &__menu {
+       width: 54px;
+       height: 47px;
+       margin: 12px, 0px, 0px, 8px;
+       cursor: pointer;
+       
         &:hover {
-        width: 60px;
-        height: 55px;
+          width: 60px;
+          height: 55px;
         }
-        @media (max-width: 426px) {
-        width: 35px;
-        height: 30px;
+       
+        @media (max-width: $mobile-breakpoint) {
+          width: 35px;
+          height: 30px;
         }
       }
+     
       &__right-block {
         display: flex;
         height: 30px;
@@ -40,92 +45,95 @@
         margin-right: 0px;
         margin-left: auto;
         border-radius: $buttonBorderRadius;
-        @media (max-width: 426px) {
+       
+        @media (max-width: $mobile-breakpoint) {
           display: grid;
           align-items: center;
           justify-content: right;
           height: 40px;
         }
       }
-      @media (min-width: 992px) {
-        -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-        -ms-flex-pack: start;
-        justify-content: flex-start;
-      }
 }
-
+    
 .logo {
   display: flex;
   align-items: center;
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0%);
-      &:active, &:focus, &:hover{
-        text-decoration: none;
-      }
-        &__textEvents {
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: 900;
-          font-size: 24px;
-          color: $lightThemeAccept;
-          @media (max-width: 426px) {
-            font-size: 14px;
-          }
-        }
-        &__textExpress {
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: 900;
-          font-size: 24px;
-          color:$white;      
-          @media (max-width: 426px) {
-            font-size: 14px;
-            }
-          }   
-        &__image {
-            height: 25px;
-            @media (max-width: 426px) {
-              height: 15px;
-            }
-          }
+      
+  &:active, &:focus, &:hover{
+    text-decoration: none;
   }
-  .language-toggle{
+        
+  &__textEvents {
+    font: $fontLogo;
+    color: $lightThemeAccept;
+
+    @media (max-width: $mobile-breakpoint) {
+      font-size: 14px;
+    }
+  }
+       
+  &__textExpress {
+    font: $fontLogo;
+    color:$white;  
+
+     @media (max-width: $mobile-breakpoint) {
+       font-size: 14px;
+     }
+  }   
+        
+    &__image {
+      height: 25px;
+
+       @media (max-width: $mobile-breakpoint) {
+         height: 15px;
+       }
+     }
+  }
+
+  .language-toggle {
     display: flex;
     margin-right: 2px;
+   
     &__icon{
       width: auto;
-          height: 16px;
-          color: $white;
-          @media (max-width: 426px) {
-            height: 11px;
-            margin-right: 1px;
-          }
+      height: 16px;
+      color: $white;
+         
+     @media (max-width: $mobile-breakpoint) {
+       height: 11px;
+       margin-right: 1px;
       }
+    }
   }
 
 .header-icons {
   display: flex;
   vertical-align: middle;
   justify-content: right;
-     &__item { 
-          width: auto;
-          height: 20px;
-          margin-right: 2px;
-          &:hover { 
-            height: 30px;
-          }
-          @media (max-width: 426px) {
-            height: 12px;
-            margin-right: 1px;
+
+  &__item { 
+    width: auto;
+    height: 20px;
+    margin-right: 2px;
+
+      &:hover { 
+       height: 30px;
+      }
+
+    @media (max-width: $mobile-breakpoint) {
+      height: 12px;
+      margin-right: 1px;
           }
       }
 }
 
 .btn-light-theme {
   padding: 2px 10px;
-  @media (max-width: 426px) {
+
+  @media (max-width: $mobile-breakpoint) {
     font-size: 10px;
     padding: 1px;
     justify-content: center;
@@ -140,14 +148,15 @@
   justify-content: center;
   font-size: 16px;
   color: $white;
-  @media (max-width: 426px) {
+
+  @media (max-width: $mobile-breakpoint) {
     font-size: 12px;
     margin: 0;
     }
 }
 .user-avatar{
  
-  @media (max-width: 426px) {
+  @media (max-width: $mobile-breakpoint) {
     visibility: hidden;
     display: none;
     }
@@ -162,7 +171,8 @@
   box-sizing: border-box;
   cursor: pointer;
   color: $white;
-  @media (max-width: 426px) {
+
+  @media (max-width: $mobile-breakpoint) {
       margin-bottom: 2px;
   }
   }
@@ -172,7 +182,8 @@
   padding: 0;
   margin-top: 10px;
   border-radius: $buttonBorderRadius;
-  @media (max-width: 426px) {
+
+  @media (max-width: $mobile-breakpoint) {
     font-size: 10px;
     margin-top: 1px;
     }
@@ -181,6 +192,7 @@
   background-color: $white;
   color: $lightThemeAccept;
   margin: 2px;
+
     &:hover{
       padding-left: 50px;
       border-bottom: 3px solid $lightThemeAccept;
@@ -189,9 +201,10 @@
 }
 .removedecorations {
   all:unset;
+
    &:hover {
-  all:unset;
-}
+     all:unset;
+   }
 }
 
 

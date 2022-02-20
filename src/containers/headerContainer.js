@@ -4,8 +4,10 @@ import logout from "../actions/login/logout-action";
 import addEvent from "../actions/event/event-add-action";
 
 const mapStateToProps = state => {
+  const { user } = state;
+
   return {
-    user: state.user,
+    user,
     hub: state.hubConnections.chatHub,
   };
 };
