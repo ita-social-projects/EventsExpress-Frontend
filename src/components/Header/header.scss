@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .header {
-   background: rgba(255, 255, 255, 0.4);
+   background: rgba(241, 235, 235, 0.5);
    height: 60px;
    width: 100%;
    text-align: center;
@@ -34,7 +34,9 @@
         display: flex;
         height: 30px;
         align-items: center;
-        background: rgba(193, 193, 193, 0.15);
+        justify-content: center;
+        vertical-align: middle;
+        background: rgba(109, 107, 107, 0.15);
         margin-right: 0px;
         margin-left: auto;
         border-radius: $buttonBorderRadius;
@@ -89,12 +91,24 @@
             }
           }
   }
+  .language-toggle{
+    display: flex;
+    margin-right: 2px;
+    &__icon{
+      width: auto;
+          height: 16px;
+          color: $white;
+          @media (max-width: 426px) {
+            height: 11px;
+            margin-right: 1px;
+          }
+      }
+  }
 
 .header-icons {
   display: flex;
   vertical-align: middle;
   justify-content: right;
-
      &__item { 
           width: auto;
           height: 20px;
@@ -103,7 +117,8 @@
             height: 30px;
           }
           @media (max-width: 426px) {
-            height: 14px;
+            height: 12px;
+            margin-right: 1px;
           }
       }
 }
@@ -112,53 +127,72 @@
   padding: 2px 10px;
   @media (max-width: 426px) {
     font-size: 10px;
-    padding: 1px 5px;
+    padding: 1px;
     justify-content: center;
+    margin-top: 2px;
   }
 }
 
-.userNameAlign {
-  margin-top: 0;
-  margin-left: 5px;
-  margin-bottom: 0;
+.user-name{
+  margin: 0 3px 0 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 3px;
-  font-size: 14px;
+  font-size: 16px;
+  color: $white;
   @media (max-width: 426px) {
-    font-size: 10px;
+    font-size: 12px;
+    margin: 0;
+    }
+}
+.user-avatar{
+ 
+  @media (max-width: 426px) {
+    visibility: hidden;
+    display: none;
     }
 }
 
-// dropdown menu
-
-.alignItemsCenter {
+.dropdown-toggle {
   align-items: center;
-}
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: $white;
+  @media (max-width: 426px) {
+      margin-bottom: 2px;
+  }
+  }
 
-.dropdownitemsbackcl {
-  background-color: white;
+.dropdown-menu{
+  background-color: $white;
+  padding: 0;
+  margin-top: 10px;
+  border-radius: $buttonBorderRadius;
+  @media (max-width: 426px) {
+    font-size: 10px;
+    margin-top: 1px;
+    }
 }
-
+.dropdown-item{
+  background-color: $white;
+  color: $lightThemeAccept;
+  margin: 2px;
+    &:hover{
+      padding-left: 50px;
+      border-bottom: 3px solid $lightThemeAccept;
+    }
+  
+}
 .removedecorations {
   all:unset;
-}
-
-.removedecorations:hover {
+   &:hover {
   all:unset;
 }
-
-.bgcolorwhite {
-  background-color: white;
 }
 
-.navbar.extraHeaderStyles {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.extraHeaderStyles .navbar-brand {
-  padding: 0;}
 
 

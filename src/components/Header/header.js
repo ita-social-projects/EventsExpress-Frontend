@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import ModalWind from "../modal-wind";
 import AuthComponent from "../../security/authComponent";
 import "./header.scss";
-// import CustomAvatar from "../avatar/custom-avatar"; *not desided if we use this element here or not
+// import CustomAvatar from "../avatar/custom-avatar"; not desided if we need this element here
 import Roles from "../../constants/userRoles";
 import Logo from "../../assets/icons/LogoViolet.png";
 import SerchIcon from "../../assets/icons/header/Search.png";
 import SavedIcon from "../../assets/icons/header/Saved.png";
 import MenuIcon from "../../assets/icons/header/Menu.png";
-import LanguageSwich from "../../assets/icons/header/Language.png";
+import Language from "../../assets/icons/header/Language.png";
 import constants from "../../constants/headerConstants";
 
 const { CREATE_EVENT, SIGN_IN, LOG_OUT, HELP, MY_PROFILE, MY_EVENTS } =
@@ -39,51 +39,39 @@ function Header({ user, hub, logout, addEvent }) {
           <span className="logo__textExpress">EXPRESS</span>
         </div>
       </Link>
-
       <div className="header__right-block">
-        <AuthComponent rolesMatch={Roles.User}>
-          <div
-            role="button"
-            tabIndex={0}
-            className="btn-light-theme"
-            onClick={addEvent}
-            aria-hidden
-          >
-            {CREATE_EVENT}
+        <div className="header-icons">
+          <div className="language-toggle">
+            <img src={Language} alt="EN" className="language-toggle__icon" />
+            <div
+              type="button"
+              className="dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            ></div>
           </div>
-        </AuthComponent>
+
+          <img src={SerchIcon} alt="Search" className="header-icons__item" />
+          <img src={SavedIcon} alt="Saved" className="header-icons__item" />
+        </div>
 
         <AuthComponent onlyAnonymous>
-          <div className="header__right-block">
-            <div className="header-icons">
-              <img
-                src={LanguageSwich}
-                alt="EN"
-                className="header-icons__item"
-              />
-              <img
-                src={SerchIcon}
-                alt="Search"
-                className="header-icons__item"
-              />
-              <img src={SavedIcon} alt="Saved" className="header-icons__item" />
-            </div>
-            {!id && (
-              <ModalWind
-                renderButton={action => (
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    className="btn-light-theme"
-                    onClick={action}
-                    aria-hidden
-                  >
-                    {SIGN_IN}
-                  </div>
-                )}
-              />
-            )}
-          </div>
+          {!id && (
+            <ModalWind
+              renderButton={action => (
+                <div
+                  role="button"
+                  tabIndex={0}
+                  className="btn-light-theme"
+                  onClick={action}
+                  aria-hidden
+                >
+                  {SIGN_IN}
+                </div>
+              )}
+            />
+          )}
         </AuthComponent>
 
         <AuthComponent>
@@ -91,43 +79,48 @@ function Header({ user, hub, logout, addEvent }) {
             <div className="btn-group">
               <div
                 type="button"
-                className="dropdown-toggle d-flex flex-row alignItemsCenter"
+                className="dropdown-toggle"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <p className="userNameAlign">{name}</p>
+                <p className="user-name">{name}</p>
                 {/* <CustomAvatar size="small" userId={id} name={name} /> */}
               </div>
-              <div className="dropdown-menu dropdown-menu-right bgcolorwhite">
+              <div className="dropdown-menu dropdown-menu-right">
                 <AuthComponent rolesMatch={Roles.User}>
                   <Link className="removedecorations" to={`/user/${id}`}>
-                    <button
-                      className="dropdown-item bgcolorwhite"
-                      type="button"
-                    >
+                    <button className="dropdown-item" type="button">
                       {MY_EVENTS}
                     </button>
                   </Link>
                 </AuthComponent>
+                <AuthComponent rolesMatch={Roles.User}>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    className="dropdown-item"
+                    onClick={addEvent}
+                    aria-hidden
+                  >
+                    {CREATE_EVENT}
+                  </div>
+                </AuthComponent>
                 <AuthComponent>
                   <Link className="removedecorations" to="/editProfile">
-                    <button
-                      className="dropdown-item bgcolorwhite"
-                      type="button"
-                    >
+                    <button className="dropdown-item" type="button">
                       {MY_PROFILE}
                     </button>
                   </Link>
                 </AuthComponent>
                 <button
-                  className="dropdown-item bgcolorwhite"
+                  className="dropdown-item"
                   type="button"
                   onClick={logoutReset}
                 >
                   {LOG_OUT}
                 </button>
-                <button className="dropdown-item bgcolorwhite" type="button">
+                <button className="dropdown-item" type="button">
                   {HELP}
                 </button>
               </div>
