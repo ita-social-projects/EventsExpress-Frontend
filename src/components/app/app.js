@@ -4,7 +4,7 @@ import "./app.css";
 
 import { connect } from "react-redux";
 import propTypes from "prop-types";
-import LandingWrapper from "../../containers/landing-wrapper";
+// import LandingWrapper from "../../containers/landing-wrapper";
 import Home from "../home";
 import Issues from "../contactAdmin/issues";
 import Profile from "../profile";
@@ -34,6 +34,7 @@ import getConfig from "../../actions/config/get-config-action";
 import RegistrationForm from "../RegistrationForm";
 import MainLayout from "../MainLayout";
 import AboutUs from "../AboutUs/AboutUs";
+import SplitPanels from "../SplitPanels/SplitPanels";
 
 class App extends Component {
   UserRoleSecurity = withAuthRedirect(["User"]);
@@ -53,7 +54,7 @@ class App extends Component {
       <BrowserRouter>
         <MainLayout>
           <Switch>
-            <Route path="/landing" component={LandingWrapper} />
+            <Route path="/landing" component={SplitPanels} />
             <Route exact path="/" render={() => <Redirect to="/landing" />} />
             <Route path="/registrationForm" component={RegistrationForm} />
             <Route path="/about" component={AboutUs} />

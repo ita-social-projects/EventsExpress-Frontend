@@ -1,0 +1,109 @@
+@import "../../styles/variables";
+
+.firstScreen {
+  display: flex;
+  flex-direction: row;
+}
+
+// .gutter.gutter-horizontal {
+//   background-color: rgb(168, 168, 168);
+//   cursor: col-resize;
+// }
+
+.gutter.gutter-vertical {
+  background-color: white;
+  cursor: row-resize;
+}
+
+.firstSplit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.background-shape {
+  display: flex;
+  flex-direction: column;
+}
+
+.secondSplit {
+  background-image: url("../../mockup-images/secondScrenPanel.jpg");
+  position: relative;
+
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.main__text {
+  // display: flex;
+  color: $black;
+  font-weight: bold;
+  font-size: 72px;
+  margin: 10;
+  padding: 10;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.back-shape {
+  position: relative;
+  display: flex;
+  color: $black;
+  font-weight: bold;
+  font-size: 72px;
+  user-select: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 75px;
+    width: 152px;
+    background-color: $lightThemeAccept;
+    z-index: -1;
+  }
+}
+
+.discover__button {
+  // display: flex;
+  // justify-content: flex-end;
+  // align-self: flex-end;
+  font-weight: bold;
+  font-size: 14px;
+  color: $lightThemeAccept;
+  border: 2px solid $lightThemeAccept;
+  border-radius: $buttonBorderRadius;
+  padding: 5px 25px;
+  cursor: pointer;
+  transition: 0.5s all;
+
+  &:hover {
+    color: darken($color: $lightThemeAccept, $amount: 15%);
+    border-color: darken($color: $lightThemeAccept, $amount: 15%);
+    background-color: #e6e6e6;
+    text-decoration: none;
+  }
+}
+
+.header__text {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  font-weight: bold;
+  font-size: 30px;
+  top: 280px;
+  left: 140px;
+  color: $white;
+  background: $transparentBlackBackground;
+  padding: 5px;
+  width: 450px;
+  user-select: none;
+}
+
+.icon {
+  align-items: center;
+}
