@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./SplitPanels";
 
 const CollapseButton = ({ onClick, icon }) => {
   return (
-    <button type="button" onClick={onClick} className="collapse-button">
+    <button type="button" onClick={onClick}>
       {icon}
     </button>
   );

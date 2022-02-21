@@ -9,7 +9,7 @@ import {
   IoIosArrowRoundForward,
 } from "react-icons/io";
 import { Link } from "react-router-dom";
-import constants from "../../constants/SplitScreens";
+import constantsSplitScreens from "../../constants/SplitScreens";
 import CollapseButton from "./CollapseButton";
 // import AboutUs from "../AboutUs/AboutUs";
 
@@ -23,21 +23,21 @@ const SplitPanels = () => {
     COMMUNITIES,
     MAIN_TEXT_SECOND,
     DISCOVER_MORE,
-  } = constants;
+  } = constantsSplitScreens;
 
   const [collapsedIndex, setCollapsedIndex] = useState(false);
 
   return (
     <Split
       direction="vertical"
-      sizes={[100, 50]}
+      // sizes={[80, 50]}
       style={{ width: "100%", height: "100%" }}
     >
       <Split
         collapsed={collapsedIndex}
         className="firstScreen"
-        sizes={[50, 95]}
-        minSize={[98, 90]}
+        // sizes={[80, 50]}
+        maxSize={[100, 100]}
       >
         <div className="firstSplit">
           <div className="firstSplit__text">
@@ -80,7 +80,7 @@ const SplitPanels = () => {
               </Options>
             </div>
             <h1 className="header__text">{MAIN_TEXT_SECOND}</h1>
-            <Link className="discover__button__left" to="/about">
+            <Link className="discover__button" to="/about">
               <button type="button">
                 <IoIosArrowRoundBack className="icon" />
                 {DISCOVER_MORE}
