@@ -6,6 +6,7 @@ import PhotoService from "../../../services/PhotoService";
 import eventDefaultImage from "../../../constants/eventDefaultImage";
 import parseDate from "../../helpers/parseDate";
 import "./EventsListItem.scss";
+import IconsEventCard from "../EventCard/IconsEventCard/IconsEventCard";
 
 const photoService = new PhotoService();
 const VIEW_DETAIL = "View detail";
@@ -35,20 +36,7 @@ const EventsListItem = ({ event }) => {
         <div className="card__item_bottom-row">
           <span className="card__item_footer">{event.location}</span>
           <span className="card__item_footer">{parseDate(event.dateFrom)}</span>
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label
-            htmlFor="favorite"
-            className="heart__icon add__favorite"
-          ></label>
-          <button
-            type="button"
-            name="favorite"
-            id="favorite"
-            onClick={() => {
-              console.log("add to favorite");
-            }}
-          ></button>
-
+          <IconsEventCard styleForIcon="list" />
           <NavLink to={`/home/events/${event.id}`} className="bttn">
             {VIEW_DETAIL}
           </NavLink>

@@ -1,0 +1,28 @@
+@import "../../../styles/main.scss";
+
+.event-card {
+  position: relative;
+  display: inline-block;
+  background-image: none;
+
+  &__poster {
+    border-radius: 20px;
+  }
+
+  &__inner-container {
+    display: inline-block;
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    border-radius: 20px;
+    background-color: $transparentBlackBackground;
+  }
+
+  &__inner-text {
+    margin: 10px 6px 10px 15px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 127.9%;
+    color: $white;
+  }
+}
