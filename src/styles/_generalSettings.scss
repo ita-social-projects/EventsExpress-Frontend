@@ -17,6 +17,19 @@ body {
 .container {
   max-width: 1170px;
   margin: 0 auto;
+  @media (max-width: $PCScreen) {
+    max-width: 930px;
+  }
+  @media (max-width: $firstTabletScreen) {
+    max-width: 730px;
+  }
+  @media (max-width: $secondTabletScreen) {
+    max-width: 560px;
+  }
+  @media (max-width: $MobileScreen) {
+    width: auto;
+    padding: 0 10px;
+  }
 }
 
 .section__header {
