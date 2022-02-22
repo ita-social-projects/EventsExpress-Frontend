@@ -21,6 +21,7 @@ import Roles from "../../../constants/userRoles";
 import PhotoService from "../../../services/PhotoService";
 import eventDefaultImage from "../../../constants/eventDefaultImage";
 import EventItemConstants from "../../../constants/EventItemConstants";
+import eventItem from "../../../constants/eventItem";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();
@@ -68,9 +69,11 @@ const EventCard = props => {
       <Card
         className={classes.cardCanceled}
         style={{
-          backgroundColor:
-            eventStatus === BLOCKED ? "gold" : "",
-          opacity: eventStatus === CANCELED ? 0.5 : 1,
+          backgroundColor: eventStatus === BLOCKED ? eventItem.GOLD : "",
+          opacity:
+            eventStatus === CANCELED
+              ? eventItem.ZERO_POINT_FIVE
+              : eventItem.ONE,
         }}
       >
         <EventHeader
