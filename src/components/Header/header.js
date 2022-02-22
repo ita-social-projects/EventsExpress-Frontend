@@ -1,22 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { FaStar, FaSearch } from "react-icons/fa";
 import ModalWind from "../modal-wind";
 import AuthComponent from "../../security/authComponent";
 import "./header.scss";
-// import CustomAvatar from "../avatar/custom-avatar"; not desided if we need this element here
+// TODO import CustomAvatar from "../avatar/custom-avatar";  not desided if we need this element here
 import Roles from "../../constants/userRoles";
-import Logo from "../../assets/icons/LogoViolet.png";
-import SerchIcon from "../../assets/icons/header/Search.png";
-import SavedIcon from "../../assets/icons/header/Saved.png";
+import Logo from "../shared/Logo/logo";
+import ToggleButton from "../shared/toggleButton/toggleButton";
 import MenuIcon from "../../assets/icons/header/Menu.png";
-import Language from "../../assets/icons/header/Language.png";
-import constants from "../../constants/headerConstants";
+import headerConstants from "../../constants/headerConstants";
 
 const { CREATE_EVENT, SIGN_IN, LOG_OUT, HELP, MY_PROFILE, MY_EVENTS } =
-  constants;
+  headerConstants;
 
-function Header({ user, hub, logout, addEvent }) {
+const Header = ({ user, hub, logout, addEvent }) => {
   const logoutReset = () => {
     if (hub) {
       hub.stop();
@@ -29,36 +28,21 @@ function Header({ user, hub, logout, addEvent }) {
   return (
     <nav className="header">
       <div role="button" tabIndex={0} className="header__menu">
-        <img src={MenuIcon} alt="Menu" />
+        <img src={MenuIcon} alt="EN" className="language-toggle__icon" />
       </div>
-
-      <Link to="/home" className="logo">
-        <img src={Logo} alt="Logo" className="logo__image" />
-        <div className="logo__text">
-          <span className="logo__textEvents"> EVENTS</span>
-          <span className="logo__textExpress">EXPRESS</span>
-        </div>
-      </Link>
+      <Logo />
       <div className="header__right-block">
         <div className="header-icons">
           <div className="language-toggle">
-            <img src={Language} alt="EN" className="language-toggle__icon" />
-            <div
-              type="button"
-              className="dropdown-toggle"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            ></div>
+            <span className="language-toggle__icon">EN </span>
+            <ToggleButton />
           </div>
-
-          <img src={SerchIcon} alt="Search" className="header-icons__item" />
-          <img src={SavedIcon} alt="Saved" className="header-icons__item" />
+          <FaSearch className="header-icons__item" />
+          <FaStar className="header-icons__item" />
         </div>
-
-        <AuthComponent onlyAnonymous>
-          <div>
-            {!id && (
+        <div>
+          {!id && (
+            <AuthComponent onlyAnonymous>
               <ModalWind
                 renderButton={action => (
                   <div
@@ -72,14 +56,13 @@ function Header({ user, hub, logout, addEvent }) {
                   </div>
                 )}
               />
-            )}
-          </div>
-        </AuthComponent>
-
+            </AuthComponent>
+          )}
+        </div>
         <AuthComponent>
           <div className="users-info">
             <div className="btn-group">
-              <div
+              <button
                 type="button"
                 className="dropdown-toggle"
                 data-toggle="dropdown"
@@ -88,7 +71,7 @@ function Header({ user, hub, logout, addEvent }) {
               >
                 <p className="user-name">{name}</p>
                 {/* <CustomAvatar size="small" userId={id} name={name} /> */}
-              </div>
+              </button>
               <div className="dropdown-menu dropdown-menu-right">
                 <AuthComponent rolesMatch={Roles.User}>
                   <Link className="removedecorations" to={`/user/${id}`}>
@@ -98,15 +81,15 @@ function Header({ user, hub, logout, addEvent }) {
                   </Link>
                 </AuthComponent>
                 <AuthComponent rolesMatch={Roles.User}>
-                  <div
-                    role="button"
+                  <button
+                    type="button"
                     tabIndex={0}
                     className="dropdown-item"
                     onClick={addEvent}
                     aria-hidden
                   >
                     {CREATE_EVENT}
-                  </div>
+                  </button>
                 </AuthComponent>
                 <AuthComponent>
                   <Link className="removedecorations" to="/editProfile">
@@ -132,7 +115,7 @@ function Header({ user, hub, logout, addEvent }) {
       </div>
     </nav>
   );
-}
+};
 
 Header.defaultProps = {
   user: {},

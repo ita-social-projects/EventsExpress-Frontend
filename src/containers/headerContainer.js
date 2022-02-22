@@ -3,22 +3,18 @@ import Header from "../components/Header/header";
 import logout from "../actions/login/logout-action";
 import addEvent from "../actions/event/event-add-action";
 
-const mapStateToProps = state => {
-  const { user } = state;
+const mapStateToProps = ({ user, hubConnections }) => ({
+  user,
+  hub: hubConnections.chatHub,
+});
 
-  return {
-    user,
-    hub: state.hubConnections.chatHub,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    logout: () => {
-      dispatch(logout());
-    },
-    add_event: () => dispatch(addEvent()),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  logout: () => {
+    dispatch(logout());
+  },
+  addEvent: () => {
+    dispatch(addEvent());
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,4 +1,4 @@
-const constants = {
+const headerConstants = {
   CREATE_EVENT: "Create event",
   SIGN_IN: "LogIn /SignUp",
   LOG_OUT: "Log out",
@@ -6,4 +6,4 @@ const constants = {
   MY_PROFILE: "My profile",
   MY_EVENTS: "My events",
 };
-export default constants;
+export default headerConstants;

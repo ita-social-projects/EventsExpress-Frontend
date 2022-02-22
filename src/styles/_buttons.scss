@@ -2,20 +2,18 @@
 .btn-dark-theme {
 	display: flex;
 	justify-content: flex-end;   
-	padding: 5px 25px;
 	border-radius: $buttonBorderRadius;
 	font-weight: bold;
 	align-self: flex-end;
 	transition: 0.5s all;
 	cursor: pointer;
-	font-size: 14px;
  	border: 2px solid $white;
 	color: $white;
 
 	&:hover{
 		color: darken($color: $lightThemeAccept, $amount: 15%);
 		border-color: darken($color: $lightThemeAccept, $amount: 15%);
-		background-color: #e6e6e6;
+		background-color: $gray;
 		text-decoration: none;
 	}
 }

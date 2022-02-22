@@ -1,165 +1,82 @@
 @import "../../styles/main.scss";
 
 .header {
-   background: rgba(241, 235, 235, 0.5);
-   height: 60px;
-   width: 100%;
-   text-align: center;
-   z-index: 500;
-   position: sticky;
-   top: 0;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding: 2px 5px;
-   box-sizing: border-box;
-
-   @media (max-width: $mobile-breakpoint) {
-    height: 40px;
-  }
-  
-     &__menu {
-       width: 54px;
-       height: 47px;
-       margin: 12px, 0px, 0px, 8px;
-       cursor: pointer;
-       
-        &:hover {
-          width: 60px;
-          height: 55px;
-        }
-       
-        @media (max-width: $mobile-breakpoint) {
-          width: 35px;
-          height: 30px;
-        }
-      }
-     
-      &__right-block {
-        display: flex;
-        height: 30px;
-        align-items: center;
-        justify-content: center;
-        vertical-align: middle;
-        background: rgba(109, 107, 107, 0.15);
-        margin-right: 0px;
-        margin-left: auto;
-        border-radius: $buttonBorderRadius;
-       
-        @media (max-width: $mobile-breakpoint) {
-          display: grid;
-          align-items: center;
-          justify-content: right;
-          height: 40px;
-        }
-      }
-}
-    
-.logo {
+  background: $headerBackground;
+  height: 60px;
+  width: 100%;
+  text-align: center;
+  z-index: 50;
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0%);
-      
-  &:active, &:focus, &:hover{
-    text-decoration: none;
-  }
-        
-  &__textEvents {
-    font: $fontLogo;
-    color: $lightThemeAccept;
+  justify-content: center;
+  padding: 2px 5px;
 
-    @media (max-width: $mobile-breakpoint) {
-      font-size: 14px;
+  &__menu {
+    width: 54px;
+    height: 47px;
+    margin: 12px, 0px, 0px, 8px;
+    cursor: pointer;
+
+    &:hover {
+      width: 60px;
+      height: 55px;
     }
   }
-       
-  &__textExpress {
-    font: $fontLogo;
-    color:$white;  
 
-     @media (max-width: $mobile-breakpoint) {
-       font-size: 14px;
-     }
-  }   
-        
-    &__image {
-      height: 25px;
-
-       @media (max-width: $mobile-breakpoint) {
-         height: 15px;
-       }
-     }
-  }
-
-  .language-toggle {
+  &__right-block {
     display: flex;
-    margin-right: 2px;
-   
-    &__icon{
-      width: auto;
-      height: 16px;
-      color: $white;
-         
-     @media (max-width: $mobile-breakpoint) {
-       height: 11px;
-       margin-right: 1px;
-      }
-    }
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    background: $transparentGreykBackground;
+    margin-right: 0px;
+    margin-left: auto;
+    border-radius: $buttonBorderRadius;
   }
+}
+
+.language-toggle {
+  display: flex;
+  margin-right: 2px;
+  align-items: center;
+
+  &__icon {
+    color: $white;
+    font-size: $fontsize-20;
+    font-weight: $bold;
+  }
+}
 
 .header-icons {
   display: flex;
-  vertical-align: middle;
   justify-content: right;
+  align-items: center;
 
-  &__item { 
+  &__item {
     width: auto;
     height: 20px;
     margin-right: 2px;
+    color: $white;
 
-      &:hover { 
-       height: 30px;
-      }
-
-    @media (max-width: $mobile-breakpoint) {
-      height: 12px;
-      margin-right: 1px;
-          }
-      }
-}
-
-.btn-light-theme {
-  padding: 2px 10px;
-
-  @media (max-width: $mobile-breakpoint) {
-    font-size: 10px;
-    padding: 1px;
-    justify-content: center;
-    margin-top: 2px;
+    &:hover {
+      height: 30px;
+    }
   }
 }
 
-.user-name{
+.btn-light-theme {
+  font-size: $fontsize-14;
+  padding: 4px 2px;
+}
+
+.user-name {
   margin: 0 3px 0 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 16px;
   color: $white;
-
-  @media (max-width: $mobile-breakpoint) {
-    font-size: 12px;
-    margin: 0;
-    }
-}
-.user-avatar{
- 
-  @media (max-width: $mobile-breakpoint) {
-    visibility: hidden;
-    display: none;
-    }
 }
 
 .dropdown-toggle {
@@ -173,39 +90,70 @@
   color: $white;
 
   @media (max-width: $mobile-breakpoint) {
-      margin-bottom: 2px;
+    margin-bottom: 2px;
   }
-  }
+}
 
-.dropdown-menu{
+.dropdown-menu {
   background-color: $white;
   padding: 0;
   margin-top: 10px;
   border-radius: $buttonBorderRadius;
-
-  @media (max-width: $mobile-breakpoint) {
-    font-size: 10px;
-    margin-top: 1px;
-    }
 }
-.dropdown-item{
+.dropdown-item {
   background-color: $white;
   color: $lightThemeAccept;
   margin: 2px;
+  font-size: $fontsize-10;
 
-    &:hover{
-      padding-left: 50px;
-      border-bottom: 3px solid $lightThemeAccept;
-    }
-  
+  &:hover {
+    padding-left: 50px;
+    border-bottom: 3px solid $lightThemeAccept;
+  }
 }
-.removedecorations {
-  all:unset;
-
-   &:hover {
-     all:unset;
-   }
+.removedecorations,
+.removedecorations:hover {
+  all: unset;
 }
 
+@media (max-width: $mobile-breakpoint) {
+  .header {
+    height: 40px;
+  }
+  .header__menu {
+    width: 35px;
+    height: 30px;
+  }
+  .header__right-block {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: right;
+    height: 40px;
+    padding: 0;
+  }
 
+  .btn-light-theme {
+    font-size: $fontsize-10;
+    padding: 1px 1px;
 
+    margin-top: 2px;
+  }
+  .header-icons__item {
+    height: 12px;
+    margin-right: 1px;
+  }
+  .language-toggle__icon {
+    font-size: $fontsize-10;
+  }
+  .user-name {
+    font-size: $fontsize-10;
+    margin: 0;
+  }
+  .language-toggle {
+    height: 11px;
+    margin-right: 1px;
+  }
+  .dropdown-toggle {
+    margin-bottom: 2px;
+  }
+}
