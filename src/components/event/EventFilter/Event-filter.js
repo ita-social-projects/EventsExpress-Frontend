@@ -30,6 +30,7 @@ const {
   OPTIONS_CANCELED,
 } = constants;
 
+const { ACTIVE, BLOCKED, CANCELED } = eventStatusEnum;
 class EventFilter extends Component {
   constructor(props) {
     super(props);
@@ -79,9 +80,9 @@ class EventFilter extends Component {
 
     const values = formValues || { selectedPos: {} };
     const options = [
-      { value: eventStatusEnum.ACTIVE, text: OPTIONS_ACTIVE },
-      { value: eventStatusEnum.BLOCKED, text: OPTIONS_BLOCKED },
-      { value: eventStatusEnum.CANCELED, text: OPTIONS_CANCELED },
+      { value: ACTIVE, text: OPTIONS_ACTIVE },
+      { value: BLOCKED, text: OPTIONS_BLOCKED },
+      { value: CANCELED, text: OPTIONS_CANCELED },
     ];
 
     return (

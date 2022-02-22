@@ -25,7 +25,7 @@ import eventStatusEnum from "../../../constants/eventStatusEnum";
 momentLocaliser(moment);
 
 const photoService = new PhotoService();
-
+const { DRAFT } = eventStatusEnum;
 const EventForm = ({
   initialValues,
   formValues,
@@ -141,7 +141,7 @@ const EventForm = ({
             label="Public"
           />
         </div>
-        {initialValues.eventStatus === eventStatusEnum.DRAFT && (
+        {initialValues.eventStatus === DRAFT && (
           <div className="mt-2">
             <Field
               name="isOnlyForAdults"

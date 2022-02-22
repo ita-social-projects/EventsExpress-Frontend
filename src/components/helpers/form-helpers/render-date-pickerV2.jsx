@@ -4,7 +4,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-import DateFnsUtils from "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
 import moment from "moment";
 
 const RenderDatePicker = ({

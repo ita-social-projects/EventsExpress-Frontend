@@ -2,12 +2,12 @@ import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import propTypes from "prop-types";
+import eventActiveStatus from "../../../constants/eventActiveStatus";
 
-const MIDDLE = "middle";
 const RenderEventButton = ({ eventTitle, eventButton, eventIcon }) => {
   return (
     <Tooltip title={eventTitle}>
-      <IconButton className={eventButton} size={MIDDLE}>
+      <IconButton className={eventButton} size={eventActiveStatus.MIDDLE}>
         <i className={eventIcon} />
       </IconButton>
     </Tooltip>

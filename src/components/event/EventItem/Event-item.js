@@ -24,7 +24,7 @@ import EventItemConstants from "../../../constants/EventItemConstants";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();
-
+const { BLOCKED, CANCELED } = eventStatusEnum;
 const EventCard = props => {
   const { item, onBlock, onUnBlock } = props;
   const [eventImage, setEventImage] = useState(eventDefaultImage);
@@ -69,8 +69,8 @@ const EventCard = props => {
         className={classes.cardCanceled}
         style={{
           backgroundColor:
-            eventStatus === eventStatusEnum.BLOCKED ? "gold" : "",
-          opacity: eventStatus === eventStatusEnum.CANCELED ? 0.5 : 1,
+            eventStatus === BLOCKED ? "gold" : "",
+          opacity: eventStatus === CANCELED ? 0.5 : 1,
         }}
       >
         <EventHeader

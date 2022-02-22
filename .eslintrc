@@ -13,7 +13,7 @@
     "import"
   ],
   "env": {
-    "browser": true
+    "browser": true // browser environment
   },
   "rules": {
     "import/no-cycle": [
