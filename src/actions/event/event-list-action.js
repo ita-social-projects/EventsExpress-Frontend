@@ -41,7 +41,7 @@ export function getEvents(filters) {
     // TODO: MOCKUP
     const jsonRes = await response.json();
 
-    dispatch(getEventsData({ jsonRes, items: eventMockup }));
+    dispatch(getEventsData({ ...jsonRes, items: eventMockup }));
     return Promise.resolve();
   };
 }

@@ -37,25 +37,6 @@ body {
   }
 }
 
-.heart__icon {
-  background: url("../assets/icons/Imgheart.svg") no-repeat center;
-}
-
-.join-to-event__icon {
-  background: url("../assets/icons/ImgJoinToEvent.svg") no-repeat center;
-}
-
-.heart__icon,
-.join-to-event__icon {
-  position: absolute;
-  height: 40px;
-  width: 40px;
-  background-color: $lightThemeAccept;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  z-index: 1;
-  cursor: pointer;
-}
-
 .bttn {
   color: $lightThemeAccept;
   font-size: 14px;

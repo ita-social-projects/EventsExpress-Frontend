@@ -75,7 +75,6 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 0;
 }
 
 .events-article .row {
@@ -97,4 +96,9 @@ a {
   height: 22.5vw !important;
   width: 20vw;
   max-width: 20vw;
+}
+
+/* TODO: I think this is a temporary solution. Work on this landing page still needs to be done and will be done in the future */
+.main__upcoming {
+  padding: 10px 5px;
 }

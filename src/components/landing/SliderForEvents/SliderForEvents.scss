@@ -7,21 +7,19 @@ $slick-prev-after-translate: translate(-75%, 50%);
 $slick-prev-rotate: 135deg;
 $slick-next-rotate: 45deg;
 
-.slider {
-  .slick-slide {
-    position: relative;
-    padding: 45px 0 90px;
-    text-align: center;
-    line-height: 0;
-    transition: transform 0.3s ease;
-  }
+.slick-slide {
+  position: relative;
+  padding: 45px 0 90px;
+  text-align: center;
+  line-height: 0;
+  transition: transform 0.3s ease;
+}
 
-  .slick-current {
-    z-index: 2;
-    top: 50%;
-    transform: scale(1.3);
-    transform-origin: center center;
-  }
+.slick-current {
+  z-index: 2;
+  top: 50%;
+  transform: scale(1.3);
+  transform-origin: center center;
 }
 
 .slick-prev {

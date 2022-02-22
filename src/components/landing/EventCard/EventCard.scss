@@ -3,14 +3,15 @@
 .event-card {
   position: relative;
   display: inline-block;
-  background-image: none;
+  max-width: 350px;
+  margin: 10px;
 
   &__poster {
     border-radius: 20px;
   }
 
   &__inner-container {
-    display: inline-block;
+    max-width: 320px;
     position: absolute;
     top: 70px;
     left: 10px;

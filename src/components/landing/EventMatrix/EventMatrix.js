@@ -7,11 +7,9 @@ import "./EventMatrix.scss";
 export default function EventMatrix({ events }) {
   return (
     <div className="event-matrix">
-      <div className="event-matrix__body">
-        {events.map(item => (
-          <EventCard key={item.id} title={item.title} photo={Image} />
-        ))}
-      </div>
+      {events.map(item => (
+        <EventCard key={item.id} title={item.title} photo={Image} />
+      ))}
     </div>
   );
 }
