@@ -13,6 +13,7 @@ import {
 } from "../../../actions/event/event-list-action";
 import { changeEventStatus } from "../../../actions/event/event-item-view-action";
 
+const { ACTIVE, BLOCKED } = eventStatusEnum;
 const EventList = ({
   totalPages,
   history,
@@ -65,9 +66,9 @@ const mapDispatchToProps = dispatch => {
     resetEvents: () => dispatch(resetEvents()),
     updateEventsFilters: filter => dispatch(updateEventsFilters(filter)),
     onBlock: (eventId, reason) =>
-      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.BLOCKED)),
+      dispatch(changeEventStatus(eventId, reason, BLOCKED)),
     onUnBlock: (eventId, reason) =>
-      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.ACTIVE)),
+      dispatch(changeEventStatus(eventId, reason, ACTIVE)),
   };
 };
 

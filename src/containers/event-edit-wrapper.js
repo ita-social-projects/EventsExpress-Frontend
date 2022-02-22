@@ -11,6 +11,7 @@ import getEvent, {
   approveUser,
 } from "../actions/event/event-item-view-action";
 
+const { ACTIVE } = eventStatusEnum;
 class EventEditWrapper extends Component {
   componentWillMount() {
     const { id } = this.props.match.params;
@@ -35,7 +36,7 @@ class EventEditWrapper extends Component {
 
     return (
       <SpinnerWrapper showContent={data !== undefined}>
-        {data.eventStatus === eventStatusEnum.ACTIVE ? (
+        {data.eventStatus === ACTIVE ? (
           <EditEventWrapper />
         ) : (
           <EventDraftWrapper />

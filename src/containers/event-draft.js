@@ -22,6 +22,7 @@ import {
   handleFormError,
 } from "../components/helpers/action-helpers";
 
+const { DELETED } = eventStatusEnum;
 class EventDraftWrapper extends Component {
   onPublish = async values => {
     if (!this.props.pristine) {
@@ -146,7 +147,7 @@ const mapDispatchToProps = dispatch => {
     editEvent: (data, onError, onSuccess) =>
       dispatch(editEvent(data, onError, onSuccess)),
     delete: (eventId, reason) =>
-      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.DELETED)),
+      dispatch(changeEventStatus(eventId, reason, DELETED)),
     publish: data => dispatch(publishEvent(data)),
     getСategoriesList: () => dispatch(getСategoriesList()),
     alert: msg => dispatch(setSuccessAllert(msg)),

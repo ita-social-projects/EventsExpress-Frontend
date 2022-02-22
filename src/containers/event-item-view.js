@@ -14,6 +14,7 @@ import getUnitsOfMeasuring from "../actions/unitOfMeasuring/unitsOfMeasuring-lis
 import { getInventoriesByEventId } from "../actions/inventory/inventory-list-action";
 import { getUsersInventoriesByEventId } from "../actions/users/users-inventories-action";
 
+const { ACTIVE, CANCELED, DELETED } = eventStatusEnum;
 class EventItemViewWrapper extends Component {
   componentWillMount() {
     const { id } = this.props.match.params;
@@ -77,11 +78,11 @@ const mapDispatchToProps = dispatch => ({
   join: (userId, eventId) => dispatch(join(userId, eventId)),
   leave: (userId, eventId) => dispatch(leave(userId, eventId)),
   cancel: (eventId, reason) =>
-    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.CANCELED)),
+    dispatch(changeEventStatus(eventId, reason, CANCELED)),
   unCancel: (eventId, reason) =>
-    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.ACTIVE)),
+    dispatch(changeEventStatus(eventId, reason, ACTIVE)),
   delete: (eventId, reason) =>
-    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.DELETED)),
+    dispatch(changeEventStatus(eventId, reason, DELETED)),
   getUsersInventoriesByEventId: eventId =>
     dispatch(getUsersInventoriesByEventId(eventId)),
   getInventoriesByEventId: eventId =>

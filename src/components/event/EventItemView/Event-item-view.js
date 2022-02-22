@@ -20,6 +20,7 @@ import PhotoService from "../../../services/PhotoService";
 
 const photoService = new PhotoService();
 
+const { ACTIVE, CANCELED } = eventStatusEnum;
 export default class EventItemView extends Component {
   constructor(props) {
     super(props);
@@ -119,23 +120,23 @@ export default class EventItemView extends Component {
       isFreePlace &&
       !iWillVisitIt &&
       !isMyEvent &&
-      eventStatus === eventStatusEnum.ACTIVE &&
+      eventStatus === ACTIVE &&
       isAppropriateAge;
     const canLeave =
       isFutureEvent &&
       !isMyEvent &&
       iWillVisitIt &&
       visitorsEnum.deniedUsers.find(x => x.id === currentUser.id) == null &&
-      eventStatus === eventStatusEnum.ACTIVE;
+      eventStatus === ACTIVE;
     const canCancel =
       isFutureEvent &&
       currentUser.id != null &&
       isMyEvent &&
-      eventStatus !== eventStatusEnum.CANCELED;
+      eventStatus !== CANCELED;
     const canUncancel =
-      isFutureEvent && isMyEvent && eventStatus === eventStatusEnum.CANCELED;
+      isFutureEvent && isMyEvent && eventStatus === CANCELED;
     const isMyPrivateEvent = isMyEvent && !isPublic;
-    const canDeleted = isMyEvent && eventStatus === eventStatusEnum.CANCELED;
+    const canDeleted = isMyEvent && eventStatus === CANCELED;
 
     return (
       <>
@@ -263,7 +264,7 @@ export default class EventItemView extends Component {
                 </div>
               )}
               <div className="text-box-big overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
-                {eventStatus === eventStatusEnum.CANCELED && (
+                {eventStatus === CANCELED && (
                   <div className="text-center text-uppercase cancel-text">
                     <i className="fas fa-exclamation-triangle text-warning" />
                     <span> This event is canceled </span>
