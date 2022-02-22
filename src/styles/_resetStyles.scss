@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $mainFont;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+  
+address {
+    font-style: normal;
+}
+  
+button {
+    background-color: transparent;
+    border: none;
+    font-family: inherit;
+}
+  
+input {
+    font-family: inherit;
+}
+  
+ul,
+ol {
+    list-style: none;
+}
+  
+svg {
+    fill: currentColor;
+    stroke: currentColor;
+}
+  
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}

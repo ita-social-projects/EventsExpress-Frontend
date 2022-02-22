@@ -1,0 +1,66 @@
+@import "./variables";
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.section__header {
+  display: flex;
+  align-items: center;
+  color: $lightThemeHeader;
+  font-weight: 900;
+  font-size: 25px;
+  line-height: 30px;
+
+  &::before {
+    content: "";
+    height: 38px;
+    width: 12px;
+    background-color: $lightThemeAccept;
+    display: block;
+    margin-right: 5px;
+  }
+}
+
+.heart__icon {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background: url("../assets/icons/Imgheart.svg") no-repeat center;
+  background-color: $lightThemeAccept;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.bttn {
+  color: $lightThemeAccept;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
+  border: 2px solid $lightThemeAccept;
+  border-radius: $buttonBorderRadius;
+  cursor: pointer;
+
+  &:hover {
+    color: darken($color: $lightThemeAccept, $amount: 15%);
+    border-color: darken($color: $lightThemeAccept, $amount: 15%);
+    background-color: #e6e6e6;
+    text-decoration: none;
+  }
+}

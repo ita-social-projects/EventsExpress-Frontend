@@ -2,6 +2,7 @@
 import { EventService } from "../../services";
 import { setErrorAllertFromResponse } from "../alert-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
+import eventMockup from "../../mockup-db/events";
 
 export const GET_EVENTS_DATA = "GET_EVENTS_DATA";
 export const RESET_EVENTS = "RESET_EVENTS";
@@ -38,6 +39,7 @@ export function getEvents(filters) {
       return Promise.reject();
     }
     const jsonRes = await response.json();
+    jsonRes.items = eventMockup;
     dispatch(getEventsData(jsonRes));
     return Promise.resolve();
   };
@@ -67,7 +69,12 @@ export function getUpcomingEvents(filters) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
+    // TODO: MOCKUP
+    // const jsonRes = await response.json();
+    
     const jsonRes = await response.json();
+    jsonRes.items = eventMockup;
+    
     dispatch(getEventsData(jsonRes));
     return Promise.resolve();
   };

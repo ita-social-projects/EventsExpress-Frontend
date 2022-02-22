@@ -52,7 +52,7 @@ class Header extends Component {
             <div className="my-2 my-sm-0">
               {!id && (
                 <ModalWind
-                  renderButton={(action) => (
+                  renderButton={action => (
                     <div
                       role="button"
                       tabIndex={0}
@@ -137,14 +137,14 @@ Header.propTypes = {
   logout: PropTypes.func,
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     user: state.user,
     hub: state.hubConnections.chatHub,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     logout: () => {
       dispatch(logout());

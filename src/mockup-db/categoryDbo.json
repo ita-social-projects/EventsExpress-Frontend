@@ -1,0 +1,58 @@
+[
+    {
+        "id": "1",
+        "name": "Drawing",
+        "CategoryGroupId": "1",
+        "countOfUser": 0,
+        "countOfEvents": 0
+    },
+    {
+        "id": "2",
+        "name": "Pottery",
+        "CategoryGroupId": "1",
+        "countOfUser": 0,
+        "countOfEvents": 0
+    },
+    {
+        "id": "3",
+        "name":  "Self-education",
+        "CategoryGroupId": "2",
+        "countOfUser": 0,
+        "countOfEvents": 0
+    },
+    {
+        "id": "4",
+        "name":  "Public Speaking",
+        "CategoryGroupId": "2",
+        "countOfUser": 0,
+        "countOfEvents": 0
+    },
+    {
+        "id": "5",
+        "name":  "Book Club",
+        "CategoryGroupId": "2",
+        "countOfUser": 0,
+        "countOfEvents": 0
+    },
+      {
+        "id": "6",
+        "name":  "Climbing",
+        "CategoryGroupId": "3",
+        "countOfUser": 0,
+        "countOfEvents": 0
+    },
+    {
+        "id": "7",
+        "name":  "Volleyball",
+        "CategoryGroupId": "3",
+        "countOfUser": 0,
+        "countOfEvents": 0
+    },
+    {
+        "id": "8",
+        "name":  "Football",
+        "CategoryGroupId": "3",
+        "countOfUser": 0,
+        "countOfEvents": 0
+    }
+]
