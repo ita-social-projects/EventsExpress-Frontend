@@ -22,6 +22,10 @@ $slick-next-rotate: 45deg;
   transform-origin: center center;
 }
 
+.slick-dots {
+  bottom: -5px;
+}
+
 .slick-prev {
   left: -40px;
 }
