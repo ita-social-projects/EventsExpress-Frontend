@@ -4,7 +4,7 @@ import "./app.css";
 
 import { connect } from "react-redux";
 import propTypes from "prop-types";
-// import LandingWrapper from "../../containers/landing-wrapper";
+import LandingWrapper from "../../containers/landing-wrapper";
 import Home from "../home";
 import Issues from "../contactAdmin/issues";
 import Profile from "../profile";
@@ -54,8 +54,8 @@ class App extends Component {
       <BrowserRouter>
         <MainLayout>
           <Switch>
-            <Route path="/landing" component={SplitPanels} />
-            <Route exact path="/" render={() => <Redirect to="/landing" />} />
+            <Route path="/landing" component={LandingWrapper} />
+            <Route exact path="/" component={SplitPanels} />
             <Route path="/registrationForm" component={RegistrationForm} />
             <Route path="/about" component={AboutUs} />
             <Route>

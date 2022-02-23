@@ -11,7 +11,6 @@ import {
 import { Link } from "react-router-dom";
 import constantsSplitScreens from "../../constants/SplitScreens";
 import CollapseButton from "./CollapseButton";
-// import AboutUs from "../AboutUs/AboutUs";
 
 const SplitPanels = () => {
   const {
@@ -50,7 +49,7 @@ const SplitPanels = () => {
               <span className="back-shape">{COMMUNITIES}</span>
             </div>
             <Link className="discover__button" to="/about">
-              <button type="button">
+              <button className="about-us" type="button">
                 {DISCOVER_MORE}
                 <IoIosArrowRoundForward className="icon" />
               </button>
@@ -80,7 +79,7 @@ const SplitPanels = () => {
               </Options>
             </div>
             <h1 className="header__text">{MAIN_TEXT_SECOND}</h1>
-            <Link className="discover__button" to="/about">
+            <Link className="discover__button" to="/landing">
               <button type="button">
                 <IoIosArrowRoundBack className="icon" />
                 {DISCOVER_MORE}
