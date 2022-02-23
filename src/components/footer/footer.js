@@ -10,11 +10,19 @@ const Footer = () => {
     { id: 3, name: "Contact us", path: "/contactAdmin" },
   ];
 
+<<<<<<< HEAD
   const socialLinks = [
     { id: 0, icon: "fab fa-facebook-f", link: "https://uk-ua.facebook.com" },
     { id: 1, icon: "fab fa-instagram", link: "https://www.instagram.com" },
     { id: 2, icon: "fab fa-youtube", link: "https://www.instagram.com" },
   ];
+=======
+    const socialLinks = [
+        { id: 0, icon: 'fab fa-facebook-f', path: '' },
+        { id: 1, icon: 'fab fa-instagram', path: '' },
+        { id: 2, icon: 'fab fa-youtube', path: '' }
+    ];
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 
   return (
     <footer className="custom-footer">

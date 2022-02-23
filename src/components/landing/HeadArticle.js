@@ -33,6 +33,10 @@ class HeadArticle extends Component {
     };
   }
 
+  handleClick = () => {
+    this.props.onSubmit();
+  };
+
   async componentDidMount() {
     this.interval = setInterval(() => {
       this.setState(prevState => ({

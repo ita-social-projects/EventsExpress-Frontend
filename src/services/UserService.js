@@ -17,6 +17,7 @@ export default class UserService {
   getSearchUsersShortInformation = filter =>
     baseService.getResource(`users/searchUsersShortInformation${filter}`);
 
+<<<<<<< HEAD
   setAvatar = async data => {
     const file = new FormData();
     file.append("Photo", data.image.file);
@@ -25,6 +26,11 @@ export default class UserService {
       file,
     );
   };
+=======
+    getUsersShortInformation = ids => baseService.getResource(`users/getUsersShortInformation${ids}`);
+
+    getSearchUsersShortInformation = filter => baseService.getResource(`users/searchUsersShortInformation${filter}`);
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 
   setChangeUserRole = data =>
     baseService.setResource("Account/ChangeRoles", data);
@@ -34,9 +40,14 @@ export default class UserService {
       name: data.userName,
     });
 
+<<<<<<< HEAD
   setBirthday = data =>
     baseService.setResource("Users/EditBirthday", {
       birthday: new Date(data.birthday),
+=======
+    setBirthday = data => baseService.setResource('Users/EditBirthday', {
+        birthday: data.birthday
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
     });
 
   setGender = data =>

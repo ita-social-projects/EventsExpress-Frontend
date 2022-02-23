@@ -70,6 +70,7 @@ export function getUpcomingEvents(filters) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
+<<<<<<< HEAD
     // TODO: MOCKUP
     // const jsonRes = await response.json();
     const jsonRes = await response.json();
@@ -78,3 +79,7 @@ export function getUpcomingEvents(filters) {
     return Promise.resolve();
   };
 }
+=======
+}
+
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2

@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+<<<<<<< HEAD
 import PropTypes from "prop-types";
 import { getUsers, resetUsers } from "../actions/users/users-action";
+=======
+import get_roles from '../actions/roles';
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 import Users from "../components/users";
 import SpinnerWrapper from "./spinner";
 import UsersFilterWrapper from "./user-filter";
@@ -9,6 +13,7 @@ import UsersFilterWrapper from "./user-filter";
 class UsersWrapper extends Component {
   componentDidMount() {
     this.getUsers(this.props.location.search);
+    this.props.get_roles();
   }
 
   componentWillUnmount = () => {
@@ -22,7 +27,6 @@ class UsersWrapper extends Component {
       users: { data },
       location,
     } = this.props;
-
     return (
       <div className="row">
         <div className="col-9">
@@ -49,8 +53,14 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
+<<<<<<< HEAD
     getUsers: page => dispatch(getUsers(page)),
     resetUsers: () => dispatch(resetUsers()),
+=======
+    get_users: (page) => dispatch(get_users(page)),
+    reset_users: () => dispatch(reset_users()),
+    get_roles: () => dispatch(get_roles()),
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
   };
 };
 UsersWrapper.propTypes = {

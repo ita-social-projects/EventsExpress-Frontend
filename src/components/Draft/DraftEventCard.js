@@ -46,6 +46,7 @@ export default class DraftEventCard extends Component {
     URL.revokeObjectURL(this.state.eventImage);
   }
 
+<<<<<<< HEAD
   render() {
     const classes = useStyles;
     const { id, title, dateFrom, description, owners } = this.props.item;
@@ -122,6 +123,76 @@ export default class DraftEventCard extends Component {
                   }
                 />
               </div>
+=======
+    componentWillUnmount() {
+        URL.revokeObjectURL(this.state.eventImage);
+    }
+
+    render() {
+        const classes = useStyles;
+        const {
+            id,
+            title,
+            dateFrom,
+            description,
+            organizers
+        } = this.props.item;
+        return (
+            <div className={"col-12 col-sm-8 col-md-6 col-xl-4 mt-3"}>
+                <Card
+                    className={classes.card}
+                >
+                    <Link to={`/editEvent/${id}`} className="text-dark">
+                        <CardHeader
+                            avatar={
+                                <Button title={organizers[0].username} className="btn-custom">
+                                    <Badge overlap="circle" badgeContent={organizers.length} color="primary">
+                                        <CustomAvatar
+                                            className={classes.avatar}
+                                            userId={organizers[0].id}
+                                            name={organizers[0].username}
+                                        />
+                                    </Badge>
+                                </Button>
+                            }
+                            title={title}
+                            subheader={<Moment format="D MMM YYYY" withTitle>{dateFrom}</Moment>}
+                            classes={{ title: 'title' }}
+                        />
+                        <CardMedia
+                            className={classes.media + ' d-flex justify-content-center'}
+                            title={title}>
+                            <img src={this.state.eventImage}
+                                id={"eventPreviewPhotoImg" + id} alt="Event"
+                                className="w-100" />
+                        </CardMedia>
+                        <CardContent className="py-2">
+                            {description &&
+                                <Tooltip title={description.substr(0, 570) + (description.length > 570 ? '...' : '')} classes={{ tooltip: 'description-tooltip' }} >
+                                    <Typography variant="body2" color="textSecondary" className="description" component="p">
+                                        {description.substr(0, 128)}
+                                    </Typography>
+                                </Tooltip>
+                            }
+                        </CardContent>
+                    </Link>
+                    <CardActions disableSpacing>
+                        <div className='w-100'>
+                            <div className='d-flex flex-row align-items-center justify-content-center float-right'>
+                                <SimpleModalWithDetails
+                                    submitCallback={(reason) => this.props.onDelete(id, reason)}
+                                    data="Are you sure?"
+                                    button={
+                                        <IconButton className="text-danger" size="medium">
+                                            <i className="fas fa-trash" />
+                                        </IconButton>
+                                    }
+                                />
+                            </div>
+                        </div>
+                    </CardActions>
+                </Card>
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
             </div>
           </CardActions>
         </Card>

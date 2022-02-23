@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { change, Field, getFormValues } from "redux-form";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
@@ -33,6 +34,35 @@ const OrganizerFilter = ({ organizers, formValues, ...props }) => {
       </div>
     </FilterExpansionPanel>
   );
+=======
+import { FilterExpansionPanel } from '../../expansion-panel/filter-expansion-panel';
+import { change, Field, getFormValues } from 'redux-form';
+import React from 'react';
+import { useOrganizerFilterStyles } from './organizer-filter-styles';
+import { connect } from 'react-redux';
+import OrganizerAutocomplete from './organizer-autocomplete';
+
+const OrganizerFilter = ({ organizers, formValues, ...props }) => {
+    const classes = useOrganizerFilterStyles();
+    const clear = () => props.change([]);
+
+    return (
+        <FilterExpansionPanel
+            title="Organizer"
+            onClearClick={clear}
+            clearDisabled={!formValues.organizers.length}
+            clearButton={true}
+        >
+            <div className={classes.wrapper}>
+                <Field
+                    name="organizers"
+                    options={organizers}
+                    component={OrganizerAutocomplete}
+                />
+            </div>
+        </FilterExpansionPanel>
+    );
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 };
 
 const mapStateToProps = state => ({
@@ -41,8 +71,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+<<<<<<< HEAD
   fetchUsers: filter => dispatch(fetchUsers(filter)),
   change: value => dispatch(change("filter-form", "organizers", value)),
+=======
+    change: value => dispatch(change('filter-form', 'organizers', value))
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 });
 
 OrganizerFilter.propTypes = {

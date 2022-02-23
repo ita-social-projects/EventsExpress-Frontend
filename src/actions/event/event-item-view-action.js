@@ -93,6 +93,7 @@ export function approveUser(userId, eventId, buttonAction) {
   };
 }
 
+<<<<<<< HEAD
 // ACTION CREATOR FOR DELETE FROM OWNERS:
 export function deleteFromOwners(userId, eventId) {
   return async dispatch => {
@@ -109,10 +110,27 @@ export function deleteFromOwners(userId, eventId) {
       const jsonRes = await res.json();
       dispatch(getEventData(jsonRes));
       return Promise.reject();
+=======
+// ACTION CREATOR FOR DELETE FROM ORGANIZERS:
+export function deleteFromOrganizers(userId, eventId) {
+    return async dispatch => {
+        let response = await api_serv.onDeleteFromOrganizers({ userId: userId, eventId: eventId });
+        if (response.ok) {
+            let res = await api_serv.getEvent(eventId);
+            if (!res.ok) {
+                dispatch(setErrorAllertFromResponse(response));
+                return Promise.reject();
+            }
+            let jsonRes = await res.json();
+            dispatch(getEvent(jsonRes))
+            return Promise.reject();
+        }
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
     }
   };
 }
 
+<<<<<<< HEAD
 // ACTION CREATOR FOR PROMOTE TO OWNER:
 export function promoteToOwner(userId, eventId) {
   return async dispatch => {
@@ -129,6 +147,22 @@ export function promoteToOwner(userId, eventId) {
       const jsonRes = await res.json();
       dispatch(getEventData(jsonRes));
       return Promise.reject();
+=======
+// ACTION CREATOR FOR PROMOTE TO ORGANIZER:
+export function promoteToOrganizer(userId, eventId) {
+    return async dispatch => {
+        let response = await api_serv.onPromoteToOrganizer({ userId: userId, eventId: eventId });
+        if (response.ok) {
+            let res = await api_serv.getEvent(eventId);
+            if (!res.ok) {
+                dispatch(setErrorAllertFromResponse(response));
+                return Promise.reject();
+            }
+            let jsonRes = await res.json();
+            dispatch(getEvent(jsonRes))
+            return Promise.reject();
+        }
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
     }
   };
 }

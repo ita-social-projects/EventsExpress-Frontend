@@ -44,6 +44,7 @@ class EventScheduleItemView extends Component {
     URL.revokeObjectURL(this.state.eventImage);
   }
 
+<<<<<<< HEAD
   render() {
     const classes = useStyles;
     const { currentUser } = this.props;
@@ -91,6 +92,55 @@ class EventScheduleItemView extends Component {
       </>
     );
   }
+=======
+        const classes = useStyles;
+        const { current_user } = this.props;
+        const {
+            frequency,
+            periodicity,
+            lastRun,
+            nextRun,
+            title,
+            eventId,
+            organizers
+        } = this.props.eventSchedule.data;
+        const period = renderPeriod(periodicity, frequency);
+        let isMyEvent = organizers.find(x => x.id === current_user.id) != undefined;
+        return <>
+            <div className="container-fluid mt-1">
+                <div className={"col-8 col-sm-10 col-md-8 col-xl-8 mt-3"}>
+                    <Card className={classes.card}>
+                        <CardHeader subheader={`Reccurent event ${period}`}/>
+                        <CardMedia
+                            className={classes.media}
+                            title={title}
+                        >
+                            <img src={this.state.eventImage}
+                                 id={"eventPreviewPhotoImg" + eventId} alt="Event"
+                                 className="w-100" />
+                        </CardMedia>
+                        <div className="text-block">
+                            <CardContent>
+                                <div className="title"> {title} </div>
+                                <div>Last Run
+                                    <Moment className="ml-2" format="D MMM YYYY" withTitle>{lastRun}</Moment>
+                                </div>
+                                <div>Next Run
+                                    <Moment className="ml-2" format="D MMM YYYY" withTitle>{nextRun}</Moment>
+                                </div>
+                            </CardContent>
+                        </div>
+                    </Card>
+                </div>
+                <div className={"col-8 col-sm-10 col-md-8 col-xl-8 mt-3"}>
+                    {isMyEvent &&                        
+                        <SelectiveForm />
+                    }
+                </div>
+            </div>
+        </>
+    }
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 }
 
 EventScheduleItemView.propTypes = {

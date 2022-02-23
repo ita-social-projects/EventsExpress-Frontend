@@ -40,6 +40,7 @@ export default class EventService {
       data,
     );
 
+<<<<<<< HEAD
   setUserToEvent = data =>
     baseService.setResource(
       `event/${data.eventId}/AddUserToEvent?userId=${data.userId}`,
@@ -49,6 +50,11 @@ export default class EventService {
     baseService.setResource(
       `event/${data.eventId}/DeleteUserFromEvent?userId=${data.userId}`,
     );
+=======
+    onDeleteFromOrganizers = data => baseService.setResource(`organizers/DeleteFromOrganizers?userId=${data.userId}&eventId=${data.eventId}`);
+
+    onPromoteToOrganizer = data => baseService.setResource(`organizers/PromoteToOrganizer?userId=${data.userId}&eventId=${data.eventId}`);
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 
   setApprovedUser = data =>
     data.buttonAction

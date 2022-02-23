@@ -41,6 +41,7 @@ class UserInfoWrapper extends Component {
   }
 }
 
+<<<<<<< HEAD
 UserInfoWrapper.defaultProps = {
   block: () => {},
   unblock: () => {},
@@ -63,6 +64,11 @@ const mapStateToProps = state => ({
   currentUser: state.user.id,
   editedUser: state.users.editedUser,
   roles: state.roles.data,
+=======
+const mapStateToProps = (state) => ({
+    currentUser: state.user.id,
+    editedUser: state.users.editedUser,
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 });
 
 const mapDispatchToProps = dispatch => {

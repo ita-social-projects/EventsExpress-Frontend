@@ -19,9 +19,33 @@ class Landing extends Component {
     this.props.onSubmit();
   };
 
+<<<<<<< HEAD
+=======
+  splitDataIntoBlocks(itemsArray) {
+    return itemsArray.reduce((acc, c, i) => {
+      if ((i & 3) === 0) acc.push([]);
+      acc[acc.length - 1].push(c);
+      return acc;
+    }, []);
+  }
+
+  componentDidMount() {
+    this.props.get_upcoming_events();
+  }
+
+  renderCarouselBlock = (eventBlock) => (
+    <div className="carousel-block wd-100">
+      {eventBlock.map((event) => (
+        <CarouselEventCard key={event.id} event={event} />
+      ))}
+    </div>
+  );
+
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
   render() {
     const { items } = this.props.events.data;
     return (
+<<<<<<< HEAD
       <div className="main">
         <HeadArticle />
         {items.length !== 0 && (
@@ -35,6 +59,15 @@ class Landing extends Component {
             </div>
             <div className="container">
               {items.length !== 0 && <EventMatrix events={items} />}
+=======
+      <>
+        <div className="main">
+          <HeadArticle
+              onSubmit={this.props.onSubmit}/>
+          <article className="works-article text-center">
+            <div className="works-title">
+              <h2>How EventsExpress Works</h2>
+>>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
             </div>
             <div className="container">
               {items.map(event => (
