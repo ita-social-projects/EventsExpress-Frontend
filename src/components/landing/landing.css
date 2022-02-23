@@ -97,3 +97,8 @@ a {
   width: 20vw;
   max-width: 20vw;
 }
+
+/* TODO: I think this is a temporary solution. Work on this landing page still needs to be done and will be done in the future */
+.main__upcoming {
+  padding: 10px 5px;
+}

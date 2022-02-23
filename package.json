@@ -66,6 +66,7 @@
 		"react-select": "3.0.4",
 		"react-share": "3.0.1",
 		"react-sharingbuttons": "1.0.0",
+		"react-slick": "^0.28.1",
 		"react-social-sharing": "3.0.1",
 		"react-split": "^2.0.14",
 		"react-tap-event-plugin": "3.0.3",
@@ -78,6 +79,7 @@
 		"redux-logger": "3.0.6",
 		"redux-thunk": "2.3.0",
 		"sass": "^1.49.7",
+		"slick-carousel": "^1.8.1",
 		"styled-components": "4.3.2",
 		"tiny-custom-pagination": "1.0.5",
 		"ui": "0.2.4"

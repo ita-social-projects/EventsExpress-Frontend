@@ -1,13 +1,25 @@
 import EventsExpressService from "./EventsExpressService";
+// import previewPhotoEvents from "../mockup-db/previewPhotoEvents";
 
 const baseService = new EventsExpressService();
 
 export default class PhotoService {
-  getPreviewEventPhoto = id =>
-    baseService.getPhoto(`Photo/GetPreviewEventPhoto?id=${id}`);
+  // TODO: MOCKUP
+  // getPreviewEventPhoto = id =>
+  //   baseService.getPhoto(`Photo/GetPreviewEventPhoto?id=${id}`);
 
-  getFullEventPhoto = id =>
-    baseService.getPhoto(`Photo/GetFullEventPhoto?id=${id}`);
+  getPreviewEventPhoto = () => new Promise(resolve => resolve(null));
+  // new Promise(
+  //   resolve =>
+  //     require`${resolve(
+  //       previewPhotoEvents.filter(el => el.id === id)[0].photo,
+  //     )}`,
+  // );
+
+  // getFullEventPhoto = id =>
+  //   baseService.getPhoto(`Photo/GetFullEventPhoto?id=${id}`);
+
+  getFullEventPhoto = () => new Promise(resolve => resolve(null));
 
   getUserPhoto = id => baseService.getPhoto(`Photo/GetUserPhoto?id=${id}`);
 
