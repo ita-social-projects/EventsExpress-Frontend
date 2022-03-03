@@ -4,11 +4,21 @@ $mainFont: "Montserrat", sans-serif;
 
 $black: #000;
 $white: #fff;
-$gray: #F2F2F2;
+$gray: #f2f2f2;
 $lightThemeBackground: #fff;
-$lightThemeAccept: #6C488A; 
+$lightThemeAccept: #6c488a;
 $lightThemeHeader: #696969;
-$darkThemeBackground: #180C30;
+
+$darkThemeBackground: #180c30;
+
+//screens
+$mediaPcScreen: 1180px;
+$mediaFirstTabletScreen: 991px;
+$mediaSecondTabletScreen: 767px;
+$mediaMobileScreen: 575px;
+$widthForContentPcScreen: 930px;
+$widthForContentFirstTabletScreen: 730px;
+$widthForContentSecondTabletScreen: 560px;
 
 $transparentBlackBackground: rgba(0, 0, 0, 0.33);
 $headerBackground: rgba(247, 244, 244, 0.4);

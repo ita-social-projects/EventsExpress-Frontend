@@ -1,0 +1,58 @@
+@import "../../../../styles/main.scss";
+
+$position-icons-top: 205px;
+$position-icons-left: 30px;
+$position-left-from-heart-icon: 50px;
+$position-top-for-icon-slider: 0px;
+$postition-icons-list-top: -10px;
+$postition-icons-list-right: 75px;
+
+.heart__icon {
+  background: url("../../../../assets/icons/Imgheart.svg") no-repeat center;
+}
+
+.join-to-event__icon {
+  background: url("../../../../assets/icons/ImgJoinToEvent.svg") no-repeat
+    center;
+}
+
+.heart__icon,
+.join-to-event__icon {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background-color: $lightThemeAccept;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.add-favorite-slider {
+  top: calc($position-icons-top + $position-top-for-icon-slider);
+  left: $position-icons-left;
+}
+
+.join-to-event-slider {
+  top: calc($position-icons-top + $position-top-for-icon-slider);
+  left: calc($position-icons-left + $position-left-from-heart-icon);
+}
+
+.add-favorite-matrix {
+  top: $position-icons-top;
+  left: $position-icons-left;
+}
+
+.join-to-event-matrix {
+  top: $position-icons-top;
+  left: calc($position-icons-left + $position-left-from-heart-icon);
+}
+
+.add-favorite-list {
+  top: $postition-icons-list-top;
+  right: $postition-icons-list-right;
+}
+
+.join-to-event-list {
+  top: $postition-icons-list-top;
+  right: calc($postition-icons-list-right - $position-left-from-heart-icon);
+}
