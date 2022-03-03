@@ -1,0 +1,44 @@
+@import "../../../styles/main.scss";
+
+.logo {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  font-size: $fontsize-24;
+
+  &:active,
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+
+  &__textEvents {
+    color: $lightThemeAccept;
+    text-shadow: 0 0 3px $gray, 0 0 2px $white;
+    font-size: $fontsize-24;
+    font-weight: $bold;
+  }
+
+  &__textExpress {
+    color: $white;
+    text-shadow: 0 0 3px $gray , 0 0 5px $lightThemeAccept;
+    font-size: $fontsize-24;
+    font-weight: $bold;
+  }
+
+  &__image {
+    height: 25px;
+  }
+}
+@media (max-width: $mobile-breakpoint) {
+  .logo__textExpress,
+  .logo__textEvents {
+    font-size: $fontsize-14;
+  }
+
+  .logo__image {
+    height: 15px;
+  }
+}
