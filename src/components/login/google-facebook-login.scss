@@ -1,0 +1,21 @@
+@import "../../styles/main.scss";
+
+.btn-google,
+.btn-facebook {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  cursor: pointer;
+}
+
+.icon {
+  height: 25px;
+}
+
+.text {
+  font-weight: $bold;
+  font-size: $fontsize-12;
+  text-align: center;
+  text-decoration-line: underline;
+  color: $lightThemeAccept;
+}

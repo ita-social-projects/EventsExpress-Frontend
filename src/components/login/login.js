@@ -53,7 +53,7 @@ const Login = ({ pristine, reset, submitting, error, handleSubmit }) => {
           </DialogActions>
         </div>
       </form>
-      <div className="d-flex justify-content-around mb-3">
+      <div className="d-flex">
         <LoginFacebook />
         <GoogleLogin />
       </div>
