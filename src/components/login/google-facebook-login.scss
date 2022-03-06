@@ -4,18 +4,19 @@
 .btn-facebook {
   display: flex;
   flex-direction: row;
-  justify-content: baseline;
   cursor: pointer;
 }
 
 .icon {
-  height: 25px;
+  color: #0b5394;
+  height: 28px;
+  width: 26px;
 }
 
 .text {
   font-weight: $bold;
   font-size: $fontsize-12;
-  text-align: center;
   text-decoration-line: underline;
   color: $lightThemeAccept;
+  margin-top: 10px;
 }
