@@ -1,11 +1,16 @@
+@import "../../styles/main.scss";
 .custom-footer {
     margin-top: 30px;
+    height: 225px;
     z-index: 500;
-    background-color: rgb(184, 184, 184);
+    background-color: $lightThemeAccept;
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 5px;
+    // $__logo-block {
+
+    // }
 }
 
 .custom-footer .links-to-pages {
