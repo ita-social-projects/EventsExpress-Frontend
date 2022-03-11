@@ -3,8 +3,8 @@ import Split from "react-split";
 import PropTypes from "prop-types";
 import "./SplitPanels.scss";
 import {
-  IoIosArrowDroprightCircle,
-  IoIosArrowDropleftCircle,
+  IoIosArrowForward,
+  IoIosArrowBack,
   IoIosArrowRoundBack,
   IoIosArrowRoundForward,
 } from "react-icons/io";
@@ -20,75 +20,106 @@ const SplitPanels = () => {
     INTO,
     INSPIRED,
     COMMUNITIES,
-    MAIN_TEXT_SECOND,
+    RIGTH_HEADER,
+    RIGTH_TEXT,
     DISCOVER_MORE,
   } = constantsSplitScreens;
 
-  const [collapsedIndex, setCollapsedIndex] = useState(false);
+  const [collapsedIndex, setCollapsedIndex] = useState(null);
 
   return (
     <Split
-      direction="vertical"
-      // sizes={[80, 50]}
-      style={{ width: "100%", height: "100%" }}
+      direction="horizontal"
+      collapsed={collapsedIndex}
+      sizes={[50, 50]}
+      className="split-panels"
+      style={{ height: "700px" }}
     >
-      <Split
-        collapsed={collapsedIndex}
-        className="firstScreen"
-        // sizes={[80, 50]}
-        maxSize={[100, 100]}
+      <div
+        className={["left-side", collapsedIndex === 0 ? "collapsed" : "", collapsedIndex === 1 ? "full-size" : ""].join(
+          " "
+        )}
       >
-        <div className="firstSplit">
-          <div className="firstSplit__text">
-            <div className="main__text">
-              {CREATE_PART}
-              <span className="back-shape">{RESHAPE}</span>
-              <span className="back-shape">{INDUSTRIES}</span>
-              {INTO}
-              <span className="back-shape">{INSPIRED}</span>
-              <span className="back-shape">{COMMUNITIES}</span>
-            </div>
-            <Link className="discover__button" to="/about">
-              <button className="about-us" type="button">
-                {DISCOVER_MORE}
-                <IoIosArrowRoundForward className="icon" />
-              </button>
-            </Link>
-          </div>
-          <div className="firstSplit__button">
-            <Options className="option-icon__left">
-              <CollapseButton
-                onClick={() => setCollapsedIndex(1)}
-                icon={<IoIosArrowDropleftCircle />}
-              />
-            </Options>
+        <div className="left-side__text header-text">
+          <span>{CREATE_PART}</span>
+          <span className="left-side__text__highlights first-square">
+            {RESHAPE}
+          </span>
+          <span className="left-side__text__highlights second-square">
+            {INDUSTRIES}&nbsp;
+          </span>
+          <span>{INTO}</span>
+          <span className="left-side__text__highlights third-square">
+            {INSPIRED}
+          </span>
+          <span className="left-side__text__highlights fourth-square">
+            {COMMUNITIES}
+          </span>
+        </div>
+        <div className="discover-button-container">
+          <Link className="discover-button" to="/about">
+            <button type="button" className="discover-button__about">
+              {DISCOVER_MORE}
+              <IoIosArrowRoundForward className="discover-button__icon" />
+            </button>
+          </Link>
+        </div>
+        <div className="option-button">
+          <Options>
+            <CollapseButton
+              onClick={() => setCollapsedIndex(1)}
+              icon={collapsedIndex === 0 ?
+                <IoIosArrowForward
+                    className="collapse-button-icon"
+                  />
+              :<IoIosArrowBack className="collapse-button-icon" />}
+            />
+          </Options>
+        </div>
+      </div>
+      <div
+        className={["right-side", collapsedIndex === 1 ? "collapsed" : ""].join(
+          " "
+        )}
+      >
+        <div className="option-button">
+          <Options>
+            <CollapseButton
+              onClick={() => setCollapsedIndex(0)}
+              icon={
+                collapsedIndex === 1 ? (
+                  <IoIosArrowBack
+                    className="collapse-button-icon"
+                    style={{ color: "white" }}
+                  />
+                ) : (
+                  <IoIosArrowForward
+                    className="collapse-button-icon"
+                    style={{ color: "white" }}
+                  />
+                )
+              }
+            />
+          </Options>
+        </div>
+        <div className="right-side__text header-text">
+          <div>
+            {RIGTH_HEADER}
+            <br />
+            <br />
+            {RIGTH_TEXT}
           </div>
         </div>
-        {/* <div><AboutUs /></div> */}
-        {/* </Split> */}
-        <div className="secondSplit">
-          <div className="second__text">
-            <div>
-              <Options>
-                <CollapseButton
-                  onClick={() => setCollapsedIndex(0)}
-                  icon={
-                    <IoIosArrowDroprightCircle style={{ color: "white" }} />
-                  }
-                />
-              </Options>
-            </div>
-            <h1 className="header__text">{MAIN_TEXT_SECOND}</h1>
-            <Link className="discover__button" to="/landing">
-              <button type="button">
-                <IoIosArrowRoundBack className="icon" />
-                {DISCOVER_MORE}
-              </button>
-            </Link>
-          </div>
+        <div className="discover-button-container">
+          <Link className="discover-button" to="/landing">
+            <button type="button" className="discover-button__events">
+              <IoIosArrowRoundBack className="discover-button__icon" />
+              {DISCOVER_MORE}
+            </button>
+          </Link>
         </div>
-        {/* </Split> */}
-      </Split>
+      </div>
+      {/* </Split> */}
     </Split>
   );
 };
