@@ -1,0 +1,14 @@
+@import "../../../styles/main.scss";
+
+.dropdown-toggle {
+  align-items: center;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  color: $white;
+
+  @media (max-width: $mobile-breakpoint) {
+    margin-bottom: 2px;
+  }
+}
