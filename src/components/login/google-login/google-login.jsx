@@ -1,9 +1,9 @@
 ﻿import React from "react";
 import { GoogleLogin as Login } from "react-google-login";
 import PropTypes from "prop-types";
-import "../google-facebook-login.scss";
 import { FcGoogle } from "react-icons/fc";
 import ButtonNames from "../../../constants/ButtonNamesConstants";
+import "../google-facebook-login.scss";
 
 const { GOOGLE_LOGIN } = ButtonNames;
 
@@ -23,8 +23,8 @@ const GoogleLogin = ({
             onClick={renderProps.onClick}
             disabled={renderProps.disabled}
           >
-            <FcGoogle className="icon" />
-            <span className="text">{GOOGLE_LOGIN}</span>
+            <FcGoogle className="btn-google__icon" />
+            <span className="btn-google__text">{GOOGLE_LOGIN}</span>
           </button>
         )}
         onSuccess={googleResponseHandler}

@@ -1,19 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FacebookLogin from "react-facebook-login";
-import "../google-facebook-login.scss";
 import { FaFacebook } from "react-icons/fa";
 import ButtonNames from "../../../constants/ButtonNamesConstants";
+import "../google-facebook-login.scss";
 
 const { FACEBOOK_LOGIN } = ButtonNames;
 
-const LoginFacebook = ({ config }, props) => {
+const LoginFacebook = ({ config, setErrorAlert, loginFacebook }) => {
   const responseFacebook = response => {
     if (!response.email) {
-      props.setErrorAlert("Please add email to your facebook account!");
+      setErrorAlert("Please add email to your facebook account!");
     }
 
-    props.loginFacebook(response);
+    loginFacebook(response);
   };
 
   return (
@@ -24,8 +24,10 @@ const LoginFacebook = ({ config }, props) => {
         fields="name,email,picture"
         callback={responseFacebook}
         cssClass="btn-facebook"
-        icon={<FaFacebook className="icon" />}
-        textButton={<span className="text"> {FACEBOOK_LOGIN} </span>}
+        icon={<FaFacebook className="btn-facebook__icon" />}
+        textButton={
+          <span className="btn-facebook__text"> {FACEBOOK_LOGIN} </span>
+        }
         version="3.1"
       />
     </div>
