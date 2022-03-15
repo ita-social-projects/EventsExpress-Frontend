@@ -1,0 +1,24 @@
+@import "../../styles/main.scss";
+
+.btn-google,
+.btn-facebook {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.btn-google__icon,
+.btn-facebook__icon {
+  color: #0b5394;
+  height: 28px;
+  width: 26px;
+}
+
+.btn-google__text,
+.btn-facebook__text {
+  font-weight: $bold;
+  font-size: $fontsize-12;
+  text-decoration-line: underline;
+  color: $lightThemeAccept;
+  margin-top: 10px;
+}
