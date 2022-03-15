@@ -15,8 +15,10 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
 
   useEffect(() => {
     getUpcomingEventsDispatch();
-  }, [getUpcomingEventsDispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
+  // TODO: NOWHERE USED BUT PROBABLY IT NEED
   // nowhere used
   // const handleClick = () => {
   //   onSubmit();
@@ -35,7 +37,7 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
           </section>
           <div className="container">
             <EventsViewMode setViewMode={setEventsViewMode} />
-            {viewModeSwitcher(items, eventsViewMode, setEventsViewMode)}
+            {viewModeSwitcher(items, eventsViewMode)}
           </div>
         </>
       )}

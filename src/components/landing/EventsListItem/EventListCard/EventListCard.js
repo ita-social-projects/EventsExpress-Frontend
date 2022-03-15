@@ -17,7 +17,7 @@ const EventListCard = ({ event }) => {
 
   useEffect(() => {
     photoService.getFullEventPhoto(data?.id).then(eventFullImage => {
-      if (eventFullImage !== null) {
+      if (eventFullImage !== null && eventFullImage !== undefined) {
         setEventImage(URL.createObjectURL(eventFullImage));
       }
     });
@@ -27,14 +27,12 @@ const EventListCard = ({ event }) => {
 
   return (
     <div className="card__item">
-      <div className="card__item_photo">
-        <img src={eventImage} alt="Event_photo" />
-      </div>
+      <img src={eventImage} alt="Event_photo" />
       <div className="card__item_content">
         <h2 className="card__item_header">{title}</h2>
-        <div className="card__item_description">
+        <p className="card__item_description">
           {`${description.slice(0, 150)}...`}
-        </div>
+        </p>
         <div className="card__item_bottom-row">
           <span className="card__item_footer">{location}</span>
           <span className="card__item_footer">{parseDate(dateFrom)}</span>
