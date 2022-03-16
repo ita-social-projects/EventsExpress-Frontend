@@ -1,52 +1,49 @@
-﻿import React, { Component } from "react";
+﻿import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import SliderForEvents from "./SliderForEvents/SliderForEvents";
-import EventsListItem from "./EventsListItem/EventsListItem";
 import "./landing.css";
 import { getUpcomingEvents } from "../../actions/event/event-list-action";
 import HeadArticle from "./HeadArticle";
-import EventMatrix from "./EventMatrix/EventMatrix";
 import landingConstants from "../../constants/landingConstants";
+import EventsViewMode from "./EventsViewMode/EventsViewMode";
+import viewModeSwitcher from "../helpers/landingUtils";
 
 const { UPCOMING_EVENTS } = landingConstants;
-class Landing extends Component {
-  componentDidMount() {
-    this.props.getUpcomingEvents();
-  }
 
-  handleClick = () => {
-    this.props.onSubmit();
-  };
+const Landing = ({ getUpcomingEventsDispatch, events }) => {
+  const [eventsViewMode, setEventsViewMode] = useState("slider");
 
-  render() {
-    const { items } = this.props.events.data;
-    return (
-      <div className="main">
-        <HeadArticle />
-        {items.length !== 0 && (
-          <>
-            {/* TODO: I think this is a temporary solution. Work on this landing page still needs to be done and will be done in the future */}
-            <section className="main__upcoming">
-              <h3>{UPCOMING_EVENTS}</h3>
-            </section>
-            <div className="container">
-              <SliderForEvents events={items} />
-            </div>
-            <div className="container">
-              {items.length !== 0 && <EventMatrix events={items} />}
-            </div>
-            <div className="container">
-              {items.map(event => (
-                <EventsListItem key={event.id} event={event} />
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    getUpcomingEventsDispatch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // TODO: NOWHERE USED BUT PROBABLY IT NEED
+  // nowhere used
+  // const handleClick = () => {
+  //   onSubmit();
+  // };
+
+  const { items } = events.data;
+
+  return (
+    <div className="main">
+      <HeadArticle />
+      {items.length !== 0 && (
+        <>
+          {/* TODO: I think this is a temporary solution. Work on this landing page still needs to be done and will be done in the future */}
+          <section className="main__upcoming">
+            <h3>{UPCOMING_EVENTS}</h3>
+          </section>
+          <div className="container">
+            <EventsViewMode setViewMode={setEventsViewMode} />
+            {viewModeSwitcher(items, eventsViewMode)}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 const mapStateToProps = state => {
   return {
@@ -57,20 +54,20 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUpcomingEvents: () => dispatch(getUpcomingEvents()),
+    getUpcomingEventsDispatch: () => dispatch(getUpcomingEvents()),
   };
 };
 
 Landing.defaultProps = {
   events: {},
-  getUpcomingEvents: () => {},
-  onSubmit: () => {},
+  getUpcomingEventsDispatch: () => {},
+  // onSubmit: () => {},
 };
 
 Landing.propTypes = {
   events: PropTypes.object,
-  getUpcomingEvents: PropTypes.func,
-  onSubmit: PropTypes.func,
+  getUpcomingEventsDispatch: PropTypes.func,
+  // onSubmit: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
