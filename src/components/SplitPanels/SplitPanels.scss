@@ -145,7 +145,7 @@
   }
 
   .right-side {
-    background-image: url("../../mockup-images/secondScrenPanel.jpg");
+    background-image: url("../../mockup-images/SecondScreenPanel.jpg");
     background-size: cover;
 
     .discover-button-container {
@@ -271,42 +271,43 @@
   }
 }
 
-@media screen and (max-width: $mediaMobileScreen) {
+@media screen and (max-width: $mediaFirstTabletScreen) {
   .split-panels {
+    height: calc(100vh - 78px) !important; //header footer
 
-    > div > div:not(.option-button) {
-      width: 100%;
+    > .left-side {
+        display: none;
     }
 
-    .discover-button-container {
-      .discover-button {
-        &__about {
-          font-size: 13px;
+    .option-button {
+        display: none;
+    }
+
+    > .right-side {
+        width: 100% !important;
+
+        & > .header-text {
+          width: auto; // todo remove after              removing all width 120%
+          padding: auto;
+         & > div {
+             width: calc(100% - 72px);
+          font-size: 38px;
+          line-height: 46px;
+          padding: 36px;
         }
       }
-    }
 
-    .right-side {
-      &__text {
-        & > div {
-          font-size: 25px;
-          line-height: 32px;
-          padding: 30px;
-        }
+      .discover-button-container {
+height: unset;
+margin: 32px auto 80px;
+width: 180px;
+padding: unset;
+.discover-button {
+    &__about {
+      font-size: 13px;
+    }
+  }
       }
-    }
-  }
-
-  .right-side {
-    width: 100%;
-  }
-
-  .left-side {
-    width: 0px;
-    height: 0px;
-    > div {
-    width: 0px;
-    height: 0px;
     }
   }
 }
