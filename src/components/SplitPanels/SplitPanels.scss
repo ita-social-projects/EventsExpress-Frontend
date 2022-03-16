@@ -33,12 +33,15 @@
     display: flex;
     padding: 0 128px;
 
+    .discover-button > button {
+      color: $white;
+    }
+
     .discover-button {
       height: 40px;
       width: 180px;
       font-weight: bold;
       font-size: inherit;
-      color: $lightThemeAccept;
       border: 2px solid $lightThemeAccept;
       border-radius: $buttonBorderRadius;
       padding: 8px 24px;
@@ -129,8 +132,11 @@
     .discover-button-container {
       justify-content: flex-end;
 
+      .discover-button > button {
+        color: $black;
+      }
+
       .discover-button {
-        color: $lightThemeAccept;
         border: 2px solid $lightThemeAccept;
         border-radius: $buttonBorderRadius;
 
@@ -149,6 +155,10 @@
     background-size: cover;
 
     .discover-button-container {
+      .discover-button > button {
+        color: $white;
+      }
+
       .discover-button {
         color: $white;
         border: 2px solid $white;
