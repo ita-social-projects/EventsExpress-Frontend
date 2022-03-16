@@ -201,7 +201,7 @@
       }
     }
 
-.right-side {
+    .right-side {
       &__text {
         & > div {
           font-size: 25px;
@@ -276,21 +276,21 @@
     height: calc(100vh - 78px) !important; //header footer
 
     > .left-side {
-        display: none;
+      display: none;
     }
 
     .option-button {
-        display: none;
+      display: none;
     }
 
     > .right-side {
-        width: 100% !important;
+      width: 100% !important;
 
-        & > .header-text {
-          width: auto; 
-          padding: auto;
-         & > div {
-             width: calc(100% - 72px);
+      & > .header-text {
+        width: auto;
+        padding: auto;
+        & > div {
+          width: calc(100% - 72px);
           font-size: 38px;
           line-height: 46px;
           padding: 36px;
@@ -298,15 +298,15 @@
       }
 
       .discover-button-container {
-height: unset;
-margin: 32px auto 80px;
-width: 180px;
-padding: unset;
-.discover-button {
-    &__about {
-      font-size: 13px;
-    }
-  }
+        height: unset;
+        margin: 32px auto 80px;
+        width: 180px;
+        padding: unset;
+        .discover-button {
+          &__about {
+            font-size: 13px;
+          }
+        }
       }
     }
   }
