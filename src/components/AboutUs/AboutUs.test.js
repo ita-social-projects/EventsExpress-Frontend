@@ -8,41 +8,41 @@ import AboutUs from "./AboutUs";
 
 const mockStore = configureStore([]);
 
-it("renders when user don`t registered", () => {
-  let store;
-  store = mockStore({
-    user: {},
+describe("Render AboutUs component", () => {
+  it("renders when user didn`t register", () => {
+    const store = mockStore({
+      user: {},
+    });
+    const tree = renderer
+      .create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <AboutUs />
+          </Provider>
+          ,
+        </BrowserRouter>,
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
-  const tree = renderer
-    .create(
-      <BrowserRouter>
-        <Provider store={store}>
-          <AboutUs />
-        </Provider>
-        ,
-      </BrowserRouter>,
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
-});
 
-it("renders when user registered", () => {
-  let store;
-  store = mockStore({
-    user: {
-      id: 1,
-      name: "Anton",
-    },
+  it("renders when user registered", () => {
+    const store = mockStore({
+      user: {
+        id: 1,
+        name: "Anton",
+      },
+    });
+    const tree = renderer
+      .create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <AboutUs user={store.user} />
+          </Provider>
+          ,
+        </BrowserRouter>,
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
-  const tree = renderer
-    .create(
-      <BrowserRouter>
-        <Provider store={store}>
-          <AboutUs user={store.user} />
-        </Provider>
-        ,
-      </BrowserRouter>,
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
 });
