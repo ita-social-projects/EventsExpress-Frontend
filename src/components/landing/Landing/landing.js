@@ -2,11 +2,11 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "./landing.css";
-import { getUpcomingEvents } from "../../actions/event/event-list-action";
-import HeadArticle from "./HeadArticle";
-import landingConstants from "../../constants/landingConstants";
-import EventsViewMode from "./EventsViewMode/EventsViewMode";
-import viewModeSwitcher from "../helpers/landingUtils";
+import { getUpcomingEvents } from "../../../actions/event/event-list-action";
+import HeadArticle from "../HeadArticle/HeadArticle";
+import landingConstants from "../../../constants/landingConstants";
+import EventsViewMode from "../EventsViewMode/EventsViewMode";
+import viewModeSwitcher from "../../helpers/landingUtils";
 
 const { UPCOMING_EVENTS } = landingConstants;
 
