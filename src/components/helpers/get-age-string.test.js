@@ -17,4 +17,12 @@ describe("test helper", () => {
     const result = getAge();
     expect(result).toBe(0);
   });
+  it("test with null", () => {
+    const result = getAge(null);
+    expect(result).toBe(NaN);
+  });
+  it("test with undefined", () => {
+    const result = getAge(undefined);
+    expect(result).toBe(0);
+  });
 });
