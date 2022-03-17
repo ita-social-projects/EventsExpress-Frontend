@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 import Logo from "../shared/Logo/logo";
 import "./footer.scss";
 
-
 const Footer = () => {
   const links = [
     { id: 0, name: "Home", path: "/home" },
     { id: 1, name: "Search Event", path: "/events" },
-    { id: 2, name: "Terms", path: "/terms" },
-    { id: 3, name: "About", path: "/about" },
-    { id: 4, name: "Contact us", path: "/contactAdmin" },
-    
+    { id: 2, name: "Create Event", path: "" },
+    { id: 3, name: "Terms", path: "/terms" },
+    { id: 4, name: "About", path: "/about" },
   ];
 
   const socialLinks = [
@@ -23,22 +21,37 @@ const Footer = () => {
   return (
     <footer className="custom-footer">
       <div className="custom-footer__logo">
-      <Logo />
+        <Logo className="custom-footer__logo__icon" />
       </div>
       <div className="links-to-pages">
         {links.map(link => (
           <Link key={link.id} to={link.path} className="nav-link link">
-            <i className="link-circle fas fa-circle" />
+            <i className="link-circle fas fa-circle link-text" />
             {link.name}
           </Link>
         ))}
       </div>
+      <div className="custom-footer__subscribe">
+        <h4>Subscribe us</h4>
+        <input
+          type="email"
+          value="Paste your email"
+          className="custom-footer__subscribe i"
+        ></input>
+        <button type="submit" className="btn-dark-theme">
+          Subscribe
+        </button>
+      </div>
       <div className="social-links">
-        {socialLinks.map(link => (
-          <Link key={link.id} to={link.link} className="nav-link social-link">
-            <i className={link.icon} />
-          </Link>
-        ))}
+        <h4>Contact us</h4>
+        <p>+(380) 98 56 234</p>
+        <div className="social-links__icons">
+          {socialLinks.map(link => (
+            <Link key={link.id} to={link.link} className="nav-link social-link">
+              <i className={link.icon} />
+            </Link>
+          ))}
+        </div>
       </div>
     </footer>
   );
