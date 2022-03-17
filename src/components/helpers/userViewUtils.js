@@ -1,25 +1,15 @@
-import USER_VIEW_LABELS from "../../constants/userViewConstants";
-
-const { LIKE, DISLIKE } = USER_VIEW_LABELS;
+import { like, dislike, def } from "../../constants/userViewAttitudeConstants";
 
 const userViewAttitude = attitude => {
   switch (attitude) {
     case 0: {
-      return {
-        likeDislike: LIKE,
-        upDown: "up",
-        attitudeLikeDislike: "attitude-like",
-      };
+      return like;
     }
     case 1: {
-      return {
-        likeDislike: DISLIKE,
-        upDown: "down",
-        attitudeLikeDislike: "attitude-dislike",
-      };
+      return dislike;
     }
     default: {
-      return { likeDislike: false, upDown: "", attitudeLikeDislike: "" };
+      return def;
     }
   }
 };
