@@ -9,9 +9,9 @@ describe("Users Data Reducer", () => {
 
   it("Should return new state if receiving type", () => {
     const users = [
-      { username: "Anna" },
-      { username: "Nina" },
-      { username: "Jane" },
+      { id:1, username: "Anna" },
+      { id:2, username: "Nina" },
+      { id:3, username: "Jane" },
     ];
     const newState = usersDataReducer(undefined, {
       type: SET_USERS,
