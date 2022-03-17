@@ -33,14 +33,16 @@ const Footer = () => {
       </div>
       <div className="custom-footer__subscribe">
         <h4>Subscribe us</h4>
-        <input
-          type="email"
-          value="Paste your email"
-          className="custom-footer__subscribe i"
-        ></input>
-        <button type="submit" className="btn-dark-theme">
-          Subscribe
-        </button>
+        <form>
+          <input
+            type="email"
+            value="Paste your email"
+            className="custom-footer__subscribe i"
+          ></input>
+          <button type="submit" className="btn-dark-theme">
+            Subscribe
+          </button>
+        </form>
       </div>
       <div className="social-links">
         <h4>Contact us</h4>
