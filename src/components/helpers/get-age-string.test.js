@@ -15,7 +15,7 @@ describe("test helper", () => {
   });
   it("test without prop", () => {
     const result = getAge();
-    expect(result).toBe(0);
+    expect(result).toBe(NaN);
   });
   it("test with null", () => {
     const result = getAge(null);
@@ -23,6 +23,6 @@ describe("test helper", () => {
   });
   it("test with undefined", () => {
     const result = getAge(undefined);
-    expect(result).toBe(0);
+    expect(result).toBe(NaN);
   });
 });
