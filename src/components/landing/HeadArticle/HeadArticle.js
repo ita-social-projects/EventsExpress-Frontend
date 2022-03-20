@@ -51,7 +51,6 @@ class HeadArticle extends Component {
           backgroundRepeat: "no-repeat",
         }}
       >
-        {/* TODO: this in menu <HeadArticleButtons /> */}
         <HeadArticleSearch />
       </article>
     );
