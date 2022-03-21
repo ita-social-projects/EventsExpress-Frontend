@@ -33,24 +33,6 @@ body {
   }
 }
 
-.section__header {
-  display: flex;
-  align-items: center;
-  color: $lightThemeHeader;
-  font-weight: 900;
-  font-size: 25px;
-  line-height: 30px;
-
-  &::before {
-    content: "";
-    height: 38px;
-    width: 12px;
-    background-color: $lightThemeAccept;
-    display: block;
-    margin-right: 5px;
-  }
-}
-
 .bttn {
   color: $lightThemeAccept;
   font-size: 14px;

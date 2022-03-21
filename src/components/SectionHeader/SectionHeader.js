@@ -1,5 +1,5 @@
 import React from "react";
-// import "SectionHeader.scss";
+import "./SectionHeader.scss";
 import PropTypes from "prop-types";
 
 const SectionHeader = ({ title }) => (

@@ -39,7 +39,7 @@ const AboutUs = ({ user }) => {
       <div className="about__info">
         <h1 className="about__header"> {ABOUT_US} </h1>
         <div className="about__info_text">{LOREM_IPSUM}</div>
-        {!user.id ? (
+        {user.id === null ? (
           <ModalWind
             renderButton={action => (
               <button
