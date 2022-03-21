@@ -3,18 +3,21 @@ import { reduxForm, Field } from "redux-form";
 import propTypes from "prop-types";
 import "./HeadArticleSearch.scss";
 import { AiOutlineSearch } from "react-icons/ai";
-import { placeholderInput } from "../../../constants/HeadArticleSearchConstants";
+import headArticleSearchConstants from "../../../constants/HeadArticleSearchConstants";
+
+const { placeholderInput } = headArticleSearchConstants;
 
 const HeadArticleSearchWithoutForm = ({ handleSubmit }) => {
   return (
     <div className="HeadArticleSearchDiv">
-      <form onSubmit={handleSubmit}>
+      <form className="HeadArticleSearchForm" onSubmit={handleSubmit}>
         <AiOutlineSearch />
         <Field
           name="search"
           component="input"
           type="text"
           placeholder={placeholderInput}
+          className="HeadArticleSearchInput"
         />
       </form>
     </div>

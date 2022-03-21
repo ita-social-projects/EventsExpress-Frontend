@@ -1,5 +1,5 @@
-const constants = {
+const headArticleSearchConstants = {
   placeholderInput: "Search",
 };
 
-export default constants;
+export default headArticleSearchConstants;

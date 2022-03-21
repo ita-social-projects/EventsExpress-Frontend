@@ -6,34 +6,34 @@
   justify-content: center;
   height: 100%;
   width: 100%;
+}
 
-  & form {
-    background: $mainSearchGrey;
-    width: 890px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.HeadArticleSearchForm {
+  background: $mainSearchGrey;
+  width: 890px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    & svg {
-      fill: $white;
-      width: 21px;
-      height: 19px;
-      margin-right: 10px;
-    }
+  & svg {
+    fill: $white;
+    width: 21px;
+    height: 19px;
+    margin-right: 10px;
+  }
+}
 
-    & input {
-      background-color: transparent;
-      border: none;
-      width: 800px;
+.HeadArticleSearchInput {
+  background-color: transparent;
+  border: none;
+  width: 800px;
 
-      & :placeholder-shown {
-        color: $white;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 31px;
-      }
-    }
+  & :placeholder-shown {
+    color: $white;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
   }
 }
