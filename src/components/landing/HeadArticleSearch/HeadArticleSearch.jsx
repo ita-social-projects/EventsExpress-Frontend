@@ -5,18 +5,18 @@ import "./HeadArticleSearch.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import headArticleSearchConstants from "../../../constants/HeadArticleSearchConstants";
 
-const { placeholderInput } = headArticleSearchConstants;
+const { PLACEHOLDER_INPUT } = headArticleSearchConstants;
 
 const HeadArticleSearchWithoutForm = ({ handleSubmit }) => {
   return (
-    <div className="HeadArticleSearchDiv">
+    <div className="HeadArticleSearchWrapper">
       <form className="HeadArticleSearchForm" onSubmit={handleSubmit}>
         <AiOutlineSearch />
         <Field
           name="search"
           component="input"
           type="text"
-          placeholder={placeholderInput}
+          placeholder={PLACEHOLDER_INPUT}
           className="HeadArticleSearchInput"
         />
       </form>

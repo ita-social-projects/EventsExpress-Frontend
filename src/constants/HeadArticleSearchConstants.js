@@ -1,5 +1,5 @@
 const headArticleSearchConstants = {
-  placeholderInput: "Search",
+  PLACEHOLDER_INPUT: "Search",
 };
 
 export default headArticleSearchConstants;

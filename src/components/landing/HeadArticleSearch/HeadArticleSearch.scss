@@ -1,6 +1,6 @@
 @import "../../../styles/variables";
 
-.HeadArticleSearchDiv {
+.HeadArticleSearchWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,7 +33,7 @@
     color: $white;
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: $fontsize-24;
     line-height: 31px;
   }
 }
