@@ -1,5 +1,3 @@
-const headArticleSearchConstants = {
-  PLACEHOLDER_INPUT: "Search",
-};
+const PLACEHOLDER_INPUT = "Search";
 
-export default headArticleSearchConstants;
+export default PLACEHOLDER_INPUT;

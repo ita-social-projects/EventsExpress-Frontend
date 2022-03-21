@@ -3,9 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import propTypes from "prop-types";
 import "./HeadArticleSearch.scss";
 import { AiOutlineSearch } from "react-icons/ai";
-import headArticleSearchConstants from "../../../constants/HeadArticleSearchConstants";
-
-const { PLACEHOLDER_INPUT } = headArticleSearchConstants;
+import PLACEHOLDER_INPUT from "../../../constants/HeadArticleSearchConstants";
 
 const HeadArticleSearchWithoutForm = ({ handleSubmit }) => {
   return (
