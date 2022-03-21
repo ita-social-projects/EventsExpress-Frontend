@@ -8,33 +8,8 @@ describe("Users Data Reducer", () => {
   });
 
   it("Should return new state if receiving type", () => {
-    const users = [
-      {
-        id: 1,
-        name: "Anna",
-        email: "annaa123@gmail.com",
-        phone: "380978637453",
-        birthday: "2000-08-23",
-        gender: "women",
-      },
-      {
-        id: 2,
-        name: "Nina",
-        email: "ninann123@gmail.com",
-        phone: "380978637453",
-        birthday: "2000-07-23",
-        gender: "women",
-      },
-      {
-        id: 3,
-        name: "Jack",
-        email: "jackcollin@gmail.com",
-        phone: "380978637453",
-        birthday: "2000-02-23",
-        gender: "women",
-      },
-    ];
-    const newState = usersDataReducer(undefined, {
+    const users = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    const newState = usersDataReducer({
       type: SET_USERS,
       payload: users,
     });
