@@ -4,12 +4,12 @@ import EventsListItem from "../landing/EventsListItem/EventsListItem";
 import EventMatrix from "../landing/EventMatrix/EventMatrix";
 
 const viewModeSwitcher = (events, viewModeType) => {
-  const viewMode = {
+  localStorage.setItem("viewModeEvents", viewModeType);
+  return {
     list: <EventsListItem events={events} />,
     matrix: <EventMatrix events={events} />,
-  };
-
-  return viewMode[viewModeType] || <SliderForEvents events={events} />;
+    slider: <SliderForEvents events={events} />,
+  }[viewModeType];
 };
 
 export default viewModeSwitcher;

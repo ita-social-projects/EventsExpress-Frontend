@@ -11,7 +11,8 @@ import viewModeSwitcher from "../helpers/landingUtils";
 const { UPCOMING_EVENTS } = landingConstants;
 
 const Landing = ({ getUpcomingEventsDispatch, events }) => {
-  const [eventsViewMode, setEventsViewMode] = useState("slider");
+  const viewMode = localStorage.getItem("viewModeEvents") || "slider";
+  const [eventsViewMode, setEventsViewMode] = useState(viewMode);
 
   useEffect(() => {
     getUpcomingEventsDispatch();

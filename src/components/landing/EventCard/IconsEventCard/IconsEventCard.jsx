@@ -22,7 +22,7 @@ const IconsEventCard = ({ styleForIcon, userId }) => {
 
   return MAPPER.map(
     ({ id, nameControl, styles, todo, visibility }) =>
-      visibility && (
+      visibility !== null && (
         <label key={id} htmlFor={nameControl} className={styles}>
           <button
             type="button"

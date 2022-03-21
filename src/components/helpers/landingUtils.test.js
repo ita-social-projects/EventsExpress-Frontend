@@ -152,15 +152,3 @@ describe("renders events in different view modes with events", () => {
     expect(tree).toMatchSnapshot();
   });
 });
-
-describe("renders events with incorect arguments", () => {
-  it("should return slider without events", () => {
-    const tree = renderer.create(viewModeSwitcher([], null)).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it("should return slider with events", () => {
-    const tree = treeWithEvents(undefined).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-});
