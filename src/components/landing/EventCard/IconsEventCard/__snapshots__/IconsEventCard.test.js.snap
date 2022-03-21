@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders icons in different view modes when user is not logged in should return list view mode with one icon 1`] = `
+Array [
+  <label
+    className="heart__icon add-favorite-list"
+    htmlFor="favorite"
+  >
+    <button
+      id="favorite"
+      name="favorite"
+      onClick={[Function]}
+      type="button"
+    >
+       
+    </button>
+  </label>,
+  ",",
+]
+`;
+
+exports[`renders icons in different view modes when user is not logged in should return matrix view mode with one icon 1`] = `
+Array [
+  <label
+    className="heart__icon add-favorite-matrix"
+    htmlFor="favorite"
+  >
+    <button
+      id="favorite"
+      name="favorite"
+      onClick={[Function]}
+      type="button"
+    >
+       
+    </button>
+  </label>,
+  ",",
+]
+`;
+
+exports[`renders icons in different view modes when user is not logged in should return slider view mode with one icon 1`] = `
+Array [
+  <label
+    className="heart__icon add-favorite-slider"
+    htmlFor="favorite"
+  >
+    <button
+      id="favorite"
+      name="favorite"
+      onClick={[Function]}
+      type="button"
+    >
+       
+    </button>
+  </label>,
+  ",",
+]
+`;
+
+exports[`renders icons in different view modes when user logged in should return list view mode with two icons 1`] = `
+Array [
+  <label
+    className="heart__icon add-favorite-list"
+    htmlFor="favorite"
+  >
+    <button
+      id="favorite"
+      name="favorite"
+      onClick={[Function]}
+      type="button"
+    >
+       
+    </button>
+  </label>,
+  <label
+    className="join-to-event__icon join-to-event-list"
+    htmlFor="joinToEvent"
+  >
+    <button
+      id="joinToEvent"
+      name="joinToEvent"
+      onClick={[Function]}
+      type="button"
+    >
+       
+    </button>
+  </label>,
+  ",",
+]
+`;
+
+exports[`renders icons in different view modes when user logged in should return matrix view mode with two icons 1`] = `
+Array [
+  <label
+    className="heart__icon add-favorite-matrix"
+    htmlFor="favorite"
+  >
+    <button
+      id="favorite"
+      name="favorite"
+      onClick={[Function]}
+      type="button"
+    >
+       
+    </button>
+  </label>,
+  <label
+    className="join-to-event__icon join-to-event-matrix"
+    htmlFor="joinToEvent"
+  >
+    <button
+      id="joinToEvent"
+      name="joinToEvent"
+      onClick={[Function]}
+      type="button"
+    >
+       
+    </button>
+  </label>,
+  ",",
+]
+`;
+
+exports[`renders icons in different view modes when user logged in should return slider view mode with two icons 1`] = `
+Array [
+  <label
+    className="heart__icon add-favorite-slider"
+    htmlFor="favorite"
+  >
+    <button
+      id="favorite"
+      name="favorite"
+      onClick={[Function]}
+      type="button"
+    >
+       
+    </button>
+  </label>,
+  <label
+    className="join-to-event__icon join-to-event-slider"
+    htmlFor="joinToEvent"
+  >
+    <button
+      id="joinToEvent"
+      name="joinToEvent"
+      onClick={[Function]}
+      type="button"
+    >
+       
+    </button>
+  </label>,
+  ",",
+]
+`;
