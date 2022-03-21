@@ -7,6 +7,7 @@ import HeadArticle from "./HeadArticle";
 import landingConstants from "../../constants/landingConstants";
 import EventsViewMode from "./EventsViewMode/EventsViewMode";
 import viewModeSwitcher from "../helpers/landingUtils";
+import SectionHeader from "../SectionHeader/SectionHeader";
 
 const { UPCOMING_EVENTS } = landingConstants;
 
@@ -33,7 +34,7 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
         <>
           {/* TODO: I think this is a temporary solution. Work on this landing page still needs to be done and will be done in the future */}
           <section className="main__upcoming">
-            <h3>{UPCOMING_EVENTS}</h3>
+            <SectionHeader title={UPCOMING_EVENTS} />
           </section>
           <div className="container">
             <EventsViewMode setViewMode={setEventsViewMode} />

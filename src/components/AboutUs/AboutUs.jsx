@@ -3,11 +3,13 @@ import "./AboutUs.scss";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import aboutImg1 from "../../assets/images/aboutUs/aboutImg-1.png";
-import aboutImg2 from "../../assets/images/aboutUs/aboutImg-2.png";
-import aboutImg3 from "../../assets/images/aboutUs/aboutImg-3.png";
-import aboutImg4 from "../../assets/images/aboutUs/aboutImg-4.png";
-import aboutImg5 from "../../assets/images/aboutUs/aboutImg-5.png";
+import {
+  aboutImg1,
+  aboutImg2,
+  aboutImg3,
+  aboutImg4,
+  aboutImg5,
+} from "../../assets/images/aboutUs/aboutUsImages";
 import constants from "../../constants/AboutUs";
 import ModalWind from "../modal-wind";
 
@@ -20,30 +22,23 @@ const {
   FIND_EVENTS,
   GET_CONNECTED,
   HAVE_FUN_TOGETHER,
+  LOREM_IPSUM,
 } = constants;
 
-const AboutUs = ({ user }) => {
-  const MAPPER = [
-    { img: aboutImg1, text: SEARCH_EVENTS },
-    { img: aboutImg2, text: CREATE_YOUR_EVENT },
-    { img: aboutImg3, text: FIND_EVENTS },
-    { img: aboutImg4, text: GET_CONNECTED },
-    { img: aboutImg5, text: HAVE_FUN_TOGETHER },
-  ];
+const MAPPER = [
+  { img: aboutImg1, text: SEARCH_EVENTS },
+  { img: aboutImg2, text: CREATE_YOUR_EVENT },
+  { img: aboutImg3, text: FIND_EVENTS },
+  { img: aboutImg4, text: GET_CONNECTED },
+  { img: aboutImg5, text: HAVE_FUN_TOGETHER },
+];
 
+const AboutUs = ({ user }) => {
   return (
     <div className="container about__container">
       <div className="about__info">
         <h1 className="about__header"> {ABOUT_US} </h1>
-        <div className="about__info_text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </div>
+        <div className="about__info_text">{LOREM_IPSUM}</div>
         {!user.id ? (
           <ModalWind
             renderButton={action => (
