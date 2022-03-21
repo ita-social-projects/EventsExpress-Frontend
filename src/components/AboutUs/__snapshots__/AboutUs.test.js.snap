@@ -1,0 +1,411 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render AboutUs component renders when user didn\`t register 1`] = `
+Array [
+  <div
+    className="container about__container"
+  >
+    <div
+      className="about__info"
+    >
+      <h1
+        className="about__header"
+      >
+         
+        About us
+         
+      </h1>
+      <div
+        className="about__info_text"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+      <button
+        className="about__info__button"
+        onClick={[Function]}
+        type="button"
+      >
+        Join us
+      </button>
+    </div>
+    <div
+      className="about__photos"
+    >
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Search events"
+          src="aboutImg-1.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Search events
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Create your event"
+          src="aboutImg-2.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Create your event
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Find events"
+          src="aboutImg-3.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Find events
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Get connected"
+          src="aboutImg-4.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Get connected
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Have fun together"
+          src="aboutImg-5.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Have fun together
+        </div>
+      </div>
+    </div>
+  </div>,
+  ",",
+]
+`;
+
+exports[`Render AboutUs component renders when user registered 1`] = `
+Array [
+  <div
+    className="container about__container"
+  >
+    <div
+      className="about__info"
+    >
+      <h1
+        className="about__header"
+      >
+         
+        About us
+         
+      </h1>
+      <div
+        className="about__info_text"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+      <a
+        aria-current={null}
+        className="about__info__button"
+        href="/contactAdmin"
+        onClick={[Function]}
+      >
+        Contact us
+      </a>
+    </div>
+    <div
+      className="about__photos"
+    >
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Search events"
+          src="aboutImg-1.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Search events
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Create your event"
+          src="aboutImg-2.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Create your event
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Find events"
+          src="aboutImg-3.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Find events
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Get connected"
+          src="aboutImg-4.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Get connected
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Have fun together"
+          src="aboutImg-5.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Have fun together
+        </div>
+      </div>
+    </div>
+  </div>,
+  ",",
+]
+`;
+
+exports[`renders when user don\`t registered 1`] = `
+Array [
+  <div
+    className="container about__container"
+  >
+    <div
+      className="about__info"
+    >
+      <h1
+        className="about__header"
+      >
+         
+        About us
+         
+      </h1>
+      <div
+        className="about__info_text"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+      <button
+        className="about__info__button"
+        onClick={[Function]}
+        type="button"
+      >
+        Join us
+      </button>
+    </div>
+    <div
+      className="about__photos"
+    >
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Search events"
+          src="aboutImg-1.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Search events
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Create your event"
+          src="aboutImg-2.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Create your event
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Find events"
+          src="aboutImg-3.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Find events
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Get connected"
+          src="aboutImg-4.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Get connected
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Have fun together"
+          src="aboutImg-5.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Have fun together
+        </div>
+      </div>
+    </div>
+  </div>,
+  ",",
+]
+`;
+
+exports[`renders when user registered 1`] = `
+Array [
+  <div
+    className="container about__container"
+  >
+    <div
+      className="about__info"
+    >
+      <h1
+        className="about__header"
+      >
+         
+        About us
+         
+      </h1>
+      <div
+        className="about__info_text"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+      <a
+        aria-current={null}
+        className="about__info__button"
+        href="/contactAdmin"
+        onClick={[Function]}
+      >
+        Contact us
+      </a>
+    </div>
+    <div
+      className="about__photos"
+    >
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Search events"
+          src="aboutImg-1.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Search events
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Create your event"
+          src="aboutImg-2.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Create your event
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Find events"
+          src="aboutImg-3.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Find events
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Get connected"
+          src="aboutImg-4.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Get connected
+        </div>
+      </div>
+      <div
+        className="about__photos_item"
+      >
+        <img
+          alt="Have fun together"
+          src="aboutImg-5.png"
+        />
+        <div
+          className="about__photos_text"
+        >
+          Have fun together
+        </div>
+      </div>
+    </div>
+  </div>,
+  ",",
+]
+`;
