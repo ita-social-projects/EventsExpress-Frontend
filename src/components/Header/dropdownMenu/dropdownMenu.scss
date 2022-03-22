@@ -1,4 +1,4 @@
-@import "../../styles/main.scss";
+@import "../../../styles/main.scss";
 
 .user-name {
   margin: 0 3px 0 5px;
@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   color: $white;
-  
+
   @media (max-width: $mobile-breakpoint) {
     font-size: $fontsize-10;
     margin: 0;
@@ -34,7 +34,11 @@
   background-color: $white;
   color: $lightThemeAccept;
   margin: 2px;
-  font-size: $fontsize-10;
+  font-size: $fontsize-12;
+   @media (max-width: $mobile-breakpoint) {
+    font-size: $fontsize-10;
+
+  }
 
   &:hover {
     padding-left: 50px;

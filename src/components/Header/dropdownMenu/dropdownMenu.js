@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import Roles from "../../constants/userRoles";
-import AuthComponent from "../../security/authComponent";
-import headerConstants from "../../constants/headerConstants";
+import Roles from "../../../constants/userRoles";
+// TODO import CustomAvatar from "../avatar/custom-avatar";  not desided if we need this element here
+import AuthComponent from "../../../security/authComponent";
+import headerConstants from "../../../constants/headerConstants";
+import ToggleButton from "../../shared/toggleButton/toggleButton";
 import "./dropdownMenu.scss";
 
 const { CREATE_EVENT, LOG_OUT, HELP, MY_PROFILE, MY_EVENTS } = headerConstants;
@@ -21,16 +23,10 @@ const DroprownMenu = ({ user, hub, logout, addEvent }) => {
     <AuthComponent>
       <div className="users-info">
         <div className="btn-group">
-          <button
-            type="button"
-            className="dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
+          <ToggleButton>
             <p className="user-name">{name}</p>
             {/* <CustomAvatar size="small" userId={id} name={name} /> */}
-          </button>
+          </ToggleButton>
           <div className="dropdown-menu dropdown-menu-right">
             <AuthComponent rolesMatch={Roles.User}>
               <Link className="removedecorations" to={`/user/${id}`}>

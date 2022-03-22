@@ -12,6 +12,10 @@
   align-items: center;
   justify-content: center;
   padding: 2px 5px;
+
+  @media (max-width: $mobile-breakpoint) {
+    height: 40px;
+  }
 }
 
 .header__menu {
@@ -20,95 +24,13 @@
   margin: 12px, 0px, 0px, 8px;
   cursor: pointer;
 
-  &:hover {
-    width: 60px;
-    height: 55px;
-  }
-}
-
-.header__right-block {
-  display: flex;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-  background: $transparentGreykBackground;
-  margin-right: 0px;
-  margin-left: auto;
-  border-radius: $buttonBorderRadius;
-}
-
-.language-toggle {
-  display: flex;
-  margin-right: 2px;
-  align-items: center;
-}
-
-.language-toggle__icon {
-  color: $white;
-  font-size: $fontsize-20;
-  font-weight: $bold;
-}
-
-.header-icons {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-}
-
-  .header-icons__item {
-    width: auto;
-    height: 20px;
-    margin-right: 2px;
-    color: $white;
-
-    &:hover {
-      height: 30px;
-    }
-  }
-
-.btn-light-theme {
-  font-size: $fontsize-14;
-  padding: 4px 2px;
-}
-
-@media (max-width: $mobile-breakpoint) {
-  .header {
-    height: 40px;
-  }
-  .header__menu {
+  @media (max-width: $mobile-breakpoint) {
     width: 35px;
     height: 30px;
   }
-  .header__right-block {
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: right;
-    height: 40px;
-    padding: 0;
-  }
 
-  .btn-light-theme {
-    font-size: $fontsize-10;
-    padding: 1px 1px;
-
-    margin-top: 2px;
-  }
-  .header-icons__item {
-    height: 12px;
-    margin-right: 1px;
-  }
-  .language-toggle__icon {
-    font-size: $fontsize-10;
-  }
-  .user-name {
-    font-size: $fontsize-10;
-    margin: 0;
-  }
-  .language-toggle {
-    height: 11px;
-    margin-right: 1px;
-  }
-  .dropdown-toggle {
-    margin-bottom: 2px;
+  &:hover {
+    width: 60px;
+    height: 55px;
   }
 }
