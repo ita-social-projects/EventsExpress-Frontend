@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Header from "../components/Header/header";
+import DropdownMenu from "../components/Header/dropdownMenu";
 import logout from "../actions/login/logout-action";
 import addEvent from "../actions/event/event-add-action";
 
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(DropdownMenu);
