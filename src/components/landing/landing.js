@@ -7,11 +7,17 @@ import HeadArticle from "./HeadArticle";
 import landingConstants from "../../constants/landingConstants";
 import EventsViewMode from "./EventsViewMode/EventsViewMode";
 import viewModeSwitcher from "../helpers/landingUtils";
+import {
+  viewModeTypes,
+  VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
+} from "../../constants/EventsViewModeConstants";
 
 const { UPCOMING_EVENTS } = landingConstants;
+const { SLIDER } = viewModeTypes;
 
 const Landing = ({ getUpcomingEventsDispatch, events }) => {
-  const viewMode = localStorage.getItem("viewModeEvents") || "slider";
+  const viewMode =
+    localStorage.getItem(VIEW_MODE_KEY_FOR_LOCAL_STORAGE) || SLIDER;
   const [eventsViewMode, setEventsViewMode] = useState(viewMode);
 
   useEffect(() => {

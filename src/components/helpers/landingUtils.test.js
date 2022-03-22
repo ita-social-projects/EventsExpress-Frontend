@@ -4,9 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import viewModeSwitcher from "./landingUtils";
-import { viewModes } from "../../constants/EventsViewModeConstants";
+import { viewModeTypes } from "../../constants/EventsViewModeConstants";
 
-const { matrix, slider, list } = viewModes;
+const { MATRIX, SLIDER, LIST } = viewModeTypes;
 
 const events = [
   {
@@ -106,17 +106,17 @@ const events = [
 
 describe("renders events in different view modes without events", () => {
   it("should return slider", () => {
-    const tree = renderer.create(viewModeSwitcher([], slider)).toJSON();
+    const tree = renderer.create(viewModeSwitcher([], SLIDER)).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should return matrix", () => {
-    const tree = renderer.create(viewModeSwitcher([], matrix)).toJSON();
+    const tree = renderer.create(viewModeSwitcher([], MATRIX)).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should return list", () => {
-    const tree = renderer.create(viewModeSwitcher([], list)).toJSON();
+    const tree = renderer.create(viewModeSwitcher([], LIST)).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
@@ -138,17 +138,17 @@ const treeWithEvents = viewMode =>
 
 describe("renders events in different view modes with events", () => {
   it("should return slider", () => {
-    const tree = treeWithEvents(slider).toJSON();
+    const tree = treeWithEvents(SLIDER).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should return matrix", () => {
-    const tree = treeWithEvents(matrix).toJSON();
+    const tree = treeWithEvents(MATRIX).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should return list", () => {
-    const tree = treeWithEvents(list).toJSON();
+    const tree = treeWithEvents(LIST).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
