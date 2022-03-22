@@ -17,10 +17,10 @@ const ToggleButton = ({ children }) => {
 };
 
 ToggleButton.defaultProps = {
-  children: [],
+  children: React.createElement("div"),
 };
 
 ToggleButton.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.element,
 };
 export default ToggleButton;
