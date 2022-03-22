@@ -98,6 +98,8 @@
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-react": "^7.26.1",
 		"eslint-plugin-sonarjs": "0.10.0",
+		"husky": "^7.0.0",
+		"lint-staged": "^12.3.7",
 		"prettier": "^2.5.1",
 		"react-error-overlay": "^6.0.10",
 		"rimraf": "2.6.2"
@@ -109,7 +111,14 @@
 		"eject": "react-scripts eject",
 		"lint": "eslint src --ext .js,.jsx",
 		"lint:fix": "eslint src --fix --ext .js,.jsx",
-		"commit": "cz"
+		"commit": "cz",
+		"prepare": "husky install"
+	},
+	"lint-staged": {
+		"*.{js,jsx}": [
+			"eslint --cache --fix",
+			"git diff --exit-code --stat"
+		]
 	},
 	"config": {
 		"commitizen": {
