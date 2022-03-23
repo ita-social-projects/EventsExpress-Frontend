@@ -17,7 +17,7 @@ const ToggleButton = ({ children }) => {
 };
 
 ToggleButton.defaultProps = {
-  children: React.createElement("div"),
+  children: <></>,
 };
 
 ToggleButton.propTypes = {

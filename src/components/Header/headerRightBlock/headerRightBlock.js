@@ -9,36 +9,34 @@ import "./headerRightBlock.scss";
 
 const { SIGN_IN } = headerConstants;
 
+const renderButton = action => (
+  <div
+    role="button"
+    tabIndex={0}
+    className="btn-light-theme"
+    onClick={action}
+    aria-hidden
+  >
+    {SIGN_IN}
+  </div>
+);
+
 const HeaderRightBlock = user => {
   const { id } = user.id ? user : {};
 
   return (
     <div className="header__right-block">
       <div className="header-icons">
-        <div className="language-toggle">
-          <ToggleButton>
-            <span className="language-toggle__icon">EN </span>
-          </ToggleButton>
-        </div>
+        <ToggleButton className="language-toggle">
+          <span className="language-toggle__icon">EN </span>
+        </ToggleButton>
         <FaSearch className="header-icons__item" />
         <FaStar className="header-icons__item" />
       </div>
       <div>
         {!id && (
           <AuthComponent onlyAnonymous>
-            <ModalWind
-              renderButton={action => (
-                <div
-                  role="button"
-                  tabIndex={0}
-                  className="btn-light-theme"
-                  onClick={action}
-                  aria-hidden
-                >
-                  {SIGN_IN}
-                </div>
-              )}
-            />
+            <ModalWind renderButton={renderButton} />
           </AuthComponent>
         )}
         <DropdownMenu />
