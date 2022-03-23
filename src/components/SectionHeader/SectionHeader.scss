@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.section__header {
+  display: flex;
+  align-items: center;
+  color: $lightThemeHeader;
+  font-weight: $bold;
+  font-size: $fontsize-24;
+  line-height: 30px;
+
+  &::before {
+    content: "";
+    height: 38px;
+    width: 12px;
+    background-color: $lightThemeAccept;
+    display: block;
+    margin-right: 5px;
+  }
+}

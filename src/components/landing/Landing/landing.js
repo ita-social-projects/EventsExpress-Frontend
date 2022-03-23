@@ -7,11 +7,19 @@ import HeadArticle from "../HeadArticle/HeadArticle";
 import landingConstants from "../../../constants/landingConstants";
 import EventsViewMode from "../EventsViewMode/EventsViewMode";
 import viewModeSwitcher from "../../helpers/landingUtils";
+import {
+  viewModeTypes,
+  VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
+} from "../../../constants/EventsViewModeConstants";
+import SectionHeader from "../../SectionHeader/SectionHeader";
 
 const { UPCOMING_EVENTS } = landingConstants;
+const { SLIDER } = viewModeTypes;
 
 const Landing = ({ getUpcomingEventsDispatch, events }) => {
-  const [eventsViewMode, setEventsViewMode] = useState("slider");
+  const viewMode =
+    localStorage.getItem(VIEW_MODE_KEY_FOR_LOCAL_STORAGE) || SLIDER;
+  const [eventsViewMode, setEventsViewMode] = useState(viewMode);
 
   useEffect(() => {
     getUpcomingEventsDispatch();
@@ -33,7 +41,7 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
         <>
           {/* TODO: I think this is a temporary solution. Work on this landing page still needs to be done and will be done in the future */}
           <section className="main__upcoming">
-            <h3>{UPCOMING_EVENTS}</h3>
+            <SectionHeader title={UPCOMING_EVENTS} />
           </section>
           <div className="container">
             <EventsViewMode setViewMode={setEventsViewMode} />
@@ -45,14 +53,14 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     events: state.events,
     user: state.user,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getUpcomingEventsDispatch: () => dispatch(getUpcomingEvents()),
   };

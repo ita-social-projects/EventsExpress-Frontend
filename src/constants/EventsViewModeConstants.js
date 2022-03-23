@@ -4,8 +4,10 @@ export const eventViewModeMapper = [
   { id: 3, control: `menu-view-mode__slider`, viewMode: "slider" },
 ];
 
-export const viewModes = {
-  matrix: "matrix",
-  list: "list",
-  slider: "slider",
+export const viewModeTypes = {
+  MATRIX: "matrix",
+  LIST: "list",
+  SLIDER: "slider",
 };
+
+export const VIEW_MODE_KEY_FOR_LOCAL_STORAGE = "viewModeEvents";
