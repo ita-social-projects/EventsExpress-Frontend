@@ -4,9 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import IconsEventCard from "./IconsEventCard";
-import { viewModes } from "../../../../constants/EventsViewModeConstants";
+import { viewModeTypes } from "../../../../constants/EventsViewModeConstants";
 
-const { matrix, slider, list } = viewModes;
+const { MATRIX, SLIDER, LIST } = viewModeTypes;
 
 const mockStore = configureStore([]);
 
@@ -28,17 +28,17 @@ describe("renders icons in different view modes when user logged in", () => {
   });
 
   it("should return matrix view mode with two icons", () => {
-    const tree = treeWithViewMode(store, matrix).toJSON();
+    const tree = treeWithViewMode(store, MATRIX).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should return list view mode with two icons", () => {
-    const tree = treeWithViewMode(store, list).toJSON();
+    const tree = treeWithViewMode(store, LIST).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should return slider view mode with two icons", () => {
-    const tree = treeWithViewMode(store, slider).toJSON();
+    const tree = treeWithViewMode(store, SLIDER).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
@@ -51,17 +51,17 @@ describe("renders icons in different view modes when user is not logged in", () 
   });
 
   it("should return matrix view mode with one icon", () => {
-    const tree = treeWithViewMode(store, matrix).toJSON();
+    const tree = treeWithViewMode(store, MATRIX).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should return list view mode with one icon", () => {
-    const tree = treeWithViewMode(store, list).toJSON();
+    const tree = treeWithViewMode(store, LIST).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should return slider view mode with one icon", () => {
-    const tree = treeWithViewMode(store, slider).toJSON();
+    const tree = treeWithViewMode(store, SLIDER).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
