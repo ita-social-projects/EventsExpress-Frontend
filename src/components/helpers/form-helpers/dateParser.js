@@ -1,7 +1,7 @@
 import moment from "moment";
 
-const parseEventDate = value => {
+const dateParser = value => {
   return moment(value).format("ddd, MMM D, Y, LT");
 };
 
-export default parseEventDate;
+export default dateParser;

@@ -1,17 +1,15 @@
 import React from "react";
-import "./AboutUs.scss";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import {
-  aboutImg1,
-  aboutImg2,
-  aboutImg3,
-  aboutImg4,
-  aboutImg5,
-} from "../../assets/images/aboutUs/aboutUsImages";
+import aboutImg1 from "../../assets/images/aboutUs/aboutImg-1.png";
+import aboutImg2 from "../../assets/images/aboutUs/aboutImg-2.png";
+import aboutImg3 from "../../assets/images/aboutUs/aboutImg-3.png";
+import aboutImg4 from "../../assets/images/aboutUs/aboutImg-4.png";
+import aboutImg5 from "../../assets/images/aboutUs/aboutImg-5.png";
 import constants from "../../constants/AboutUs";
 import ModalWind from "../modal-wind";
+import "./AboutUs.scss";
 
 const {
   JOIN_US,
@@ -22,7 +20,7 @@ const {
   FIND_EVENTS,
   GET_CONNECTED,
   HAVE_FUN_TOGETHER,
-  LOREM_IPSUM,
+  TEXT_INFO,
 } = constants;
 
 const MAPPER = [
@@ -38,7 +36,7 @@ const AboutUs = ({ user }) => {
     <div className="container about__container">
       <div className="about__info">
         <h1 className="about__header"> {ABOUT_US} </h1>
-        <div className="about__info_text">{LOREM_IPSUM}</div>
+        <div className="about__info_text">{TEXT_INFO}</div>
         {user.id === null ? (
           <ModalWind
             renderButton={action => (

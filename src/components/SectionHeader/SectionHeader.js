@@ -1,6 +1,6 @@
 import React from "react";
-import "./SectionHeader.scss";
 import PropTypes from "prop-types";
+import "./SectionHeader.scss";
 
 const SectionHeader = ({ title }) => (
   <h3 className="section__header">{title}</h3>
