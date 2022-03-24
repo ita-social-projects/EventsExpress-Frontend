@@ -2,16 +2,16 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "./landing.css";
-import { getUpcomingEvents } from "../../actions/event/event-list-action";
-import HeadArticle from "./HeadArticle";
-import landingConstants from "../../constants/landingConstants";
-import EventsViewMode from "./EventsViewMode/EventsViewMode";
-import viewModeSwitcher from "../helpers/landingUtils";
+import { getUpcomingEvents } from "../../../actions/event/event-list-action";
+import HeadArticle from "../HeadArticle/HeadArticle";
+import landingConstants from "../../../constants/landingConstants";
+import EventsViewMode from "../EventsViewMode/EventsViewMode";
+import viewModeSwitcher from "../../helpers/landingUtils";
 import {
   viewModeTypes,
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
-} from "../../constants/EventsViewModeConstants";
-import SectionHeader from "../SectionHeader/SectionHeader";
+} from "../../../constants/EventsViewModeConstants";
+import SectionHeader from "../../SectionHeader/SectionHeader";
 
 const { UPCOMING_EVENTS } = landingConstants;
 const { SLIDER } = viewModeTypes;
@@ -53,14 +53,14 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     events: state.events,
     user: state.user,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getUpcomingEventsDispatch: () => dispatch(getUpcomingEvents()),
   };
