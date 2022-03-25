@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./toggleButton.scss";
 
-const TogleButton = () => {
+const ToggleButton = ({ children }) => {
   return (
     <div
       type="button"
@@ -9,7 +10,17 @@ const TogleButton = () => {
       data-toggle="dropdown"
       aria-haspopup="true"
       aria-expanded="false"
-    ></div>
+    >
+      {children}
+    </div>
   );
 };
-export default TogleButton;
+
+ToggleButton.defaultProps = {
+  children: <></>,
+};
+
+ToggleButton.propTypes = {
+  children: PropTypes.element,
+};
+export default ToggleButton;

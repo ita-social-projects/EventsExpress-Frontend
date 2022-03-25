@@ -1,0 +1,51 @@
+@import "../../../styles/main.scss";
+
+.user-name {
+  margin: 0 3px 0 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: $white;
+
+  @media (max-width: $mobile-breakpoint) {
+    font-size: $fontsize-10;
+    margin: 0;
+  }
+}
+
+.dropdown-toggle {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: $white;
+}
+
+.dropdown-menu {
+  background-color: $white;
+  padding: 0;
+  margin-top: 10px;
+  border-radius: $buttonBorderRadius;
+}
+.dropdown-item {
+  background-color: $white;
+  color: $lightThemeAccept;
+  margin: 2px;
+  font-size: $fontsize-12;
+   @media (max-width: $mobile-breakpoint) {
+    font-size: $fontsize-10;
+
+  }
+
+  &:hover {
+    padding-left: 50px;
+    border-bottom: 3px solid $lightThemeAccept;
+  }
+}
+.removedecorations,
+.removedecorations:hover {
+  all: unset;
+}
