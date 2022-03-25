@@ -27,7 +27,7 @@ const HeaderRightBlock = user => {
   return (
     <div className="header__right-block">
       <div className="header-icons">
-        <ToggleButton className="language-toggle">
+        <ToggleButton>
           <span className="language-toggle__icon">EN </span>
         </ToggleButton>
         <FaSearch className="header-icons__item" />
