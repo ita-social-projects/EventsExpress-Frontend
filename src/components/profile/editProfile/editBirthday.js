@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
@@ -8,25 +7,12 @@ import ErrorMessages from "../../shared/errorMessage";
 import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
 
-const validate = values => {
-  const errors = {};
-  const requiredFields = ["birthday"];
-=======
-﻿import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import Button from '@material-ui/core/Button';
-import moment from 'moment';
-import ErrorMessages from '../../shared/errorMessage';
-import { renderDatePicker, parseEuDate } from '../../helpers/form-helpers';
-import { fieldIsRequired } from '../../helpers/validators/required-fields-validator';
-
-const today = () => moment().startOf('day');
->>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
+const today = () => moment().startOf("day");
 
 const MIN_AGE = 14;
 const MAX_AGE = 115;
-const MIN_DATE = today().subtract(MAX_AGE, 'years');
-const MAX_DATE = today().subtract(MIN_AGE, 'years');
+const MIN_DATE = today().subtract(MAX_AGE, "years");
+const MAX_DATE = today().subtract(MIN_AGE, "years");
 
 const validate = values => {
     const errors = {};
@@ -49,7 +35,6 @@ const validate = values => {
 };
 
 const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
-<<<<<<< HEAD
   const minValue = moment(new Date()).subtract(115, "years");
   const maxValue = moment(new Date()).subtract(14, "years");
   return (
@@ -80,45 +65,6 @@ const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
       </div>
     </form>
   );
-=======
-    return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <Field
-                    name="birthday"
-                    label="Birthday"
-                    minValue={MIN_DATE}
-                    maxValue={MAX_DATE}
-                    component={renderDatePicker}
-                    parse={parseEuDate}
-                />
-                {error && (
-                    <ErrorMessages
-                        error={error}
-                        className="text-center"
-                    />
-                )}
-            </div>
-            <div>
-                <Button
-                    type="submit"
-                    color="primary"
-                    disabled={pristine || submitting}
-                >
-                    Submit
-                </Button>
-                <Button
-                    type="button"
-                    color="primary"
-                    disabled={pristine || submitting}
-                    onClick={reset}
-                >
-                    Clear
-                </Button>
-            </div>
-        </form>
-    );
->>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 };
 
 EditBirthday.defaultProps = {

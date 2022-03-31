@@ -6,7 +6,6 @@ import { renderSelectField, renderTextField } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
 import validate from "./inventory-form-validator";
 
-<<<<<<< HEAD:src/components/inventory/ownerEditItem.js
 const OwnerEditItemForm = ({
   initialValues,
   unitOfMeasuringState,
@@ -61,9 +60,6 @@ const OwnerEditItemForm = ({
     </form>
   );
 };
-=======
-class OrganizerEditItemForm extends Component {
->>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2:src/components/inventory/organizerEditItemForm.js
 
 OwnerEditItemForm.defaultProps = {
   initialValues: {},
@@ -84,14 +80,7 @@ OwnerEditItemForm.propTypes = {
 };
 
 export default reduxForm({
-<<<<<<< HEAD:src/components/inventory/ownerEditItem.js
   form: "item-form",
   validate,
   enableReinitialize: true,
 })(OwnerEditItemForm);
-=======
-    form: 'item-form',
-    validate,
-    enableReinitialize: true
-})(OrganizerEditItemForm);
->>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2:src/components/inventory/organizerEditItemForm.js

@@ -68,7 +68,6 @@ class InventoryList extends Component {
           handleOnClickCaret={this.handleOnClickCaret}
         />
 
-<<<<<<< HEAD
         {this.state.isOpen && (
           <div>
             {isMyEvent && (
@@ -120,30 +119,6 @@ class InventoryList extends Component {
                   getInventories={this.props.getInventories}
                   eventId={this.props.eventId}
                   isNew
-=======
-    render() {
-        const { inventories, event, user, usersInventories } = this.props;
-        let isMyEvent = event.organizers.find(x => x.id === user.id) != undefined;
-        let updateList = [];
-        if (inventories.items) {
-            updateList = inventories.items.map(item => {
-                return {
-                    ...item,
-                    isTaken: usersInventories.data
-                        .filter(dataItem =>
-                            user.id === dataItem.userId &&
-                            item.id === dataItem.inventoryId)
-                        .length > 0
-                }
-            });
-        }
-        return (
-            <>
-
-                <InventoryHeaderButton
-                    isOpen={this.state.isOpen}
-                    handleOnClickCaret={this.handleOnClickCaret}
->>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
                 />
               )}
               {updateList.map(item => {

@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import OwnerSeeItem from "../components/inventory/ownerSeeItem";
-import OwnerEditItemForm from "../components/inventory/ownerEditItem";
+import OwnerSeeItem from "../components/inventory/organizerSeeItem";
+import OwnerEditItemForm from "../components/inventory/organizerEditItemForm";
 import VisitorSeeItem from "../components/inventory/VisitorSeeItem";
 import VisitorEditItemForm from "../components/inventory/visitorTakeItem";
 import { getInventoriesByEventId } from "../actions/inventory/inventory-list-action";
@@ -17,17 +16,6 @@ import {
   addItem,
   wantToTake,
 } from "../actions/inventory/inventar-action";
-=======
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import OrganizerSeeItem from '../components/inventory/organizerSeeItem';
-import OrganizerEditItemForm from '../components/inventory/organizerEditItemForm';
-import VisitorSeeItem from '../components/inventory/VisitorSeeItem';
-import VisitorEditItemForm from '../components/inventory/visitorTakeItem';
-import { get_inventories_by_event_id } from '../actions/inventory/inventory-list-action';
-import { delete_users_inventory, edit_users_inventory } from '../actions/users/users-inventories-action';
-import { delete_item, edit_item, add_item, want_to_take } from '../actions/inventory/inventar-action';
->>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 
 class InventoryItemWrapper extends Component {
   constructor(props) {
@@ -103,7 +91,6 @@ class InventoryItemWrapper extends Component {
       this.props.editUsersInventory(data);
     }
 
-<<<<<<< HEAD
     this.setState({
       isEdit: false,
     });
@@ -198,133 +185,6 @@ class InventoryItemWrapper extends Component {
       </div>
     );
   }
-=======
-    markItemAsEdit = () => {
-        this.setState({
-            isEdit: true
-        });
-        this.props.changeDisableEdit(true);
-    }
-    
-    onSubmit = values => {
-        this.setState({
-            isEdit: false
-        })
-        this.props.changeDisableEdit(false);
-
-        if (!values.id) {
-            return this.props.add_item(values, this.props.eventId);
-        }
-        else {
-            values.unitOfMeasuring = {
-                id: values.unitOfMeasuring.id
-            };
-            return this.props.edit_item(values, this.props.eventId);
-        }   
-    }
-
-    onCancel = inventar => {
-        this.setState({
-            isEdit: false
-        })
-        this.props.changeDisableEdit(false);
-    }
-
-    onWillTake = inventar => {
-        const data = {
-            eventId: this.props.eventId,
-            userId: this.props.user.id,
-            inventoryId: inventar.id,
-            quantity: Number(inventar.willTake)
-        }
-
-        if (!this.state.isWillTake) {
-            this.onAlreadyGet()
-            this.props.want_to_take(data);
-        } else {
-            this.props.edit_users_inventory(data);
-        }
-
-        this.setState({
-            isEdit: false
-        })
-        this.props.changeDisableEdit(false);
-    }
-
-    onWillNotTake = inventar => {
-        const data = {
-            eventId: this.props.eventId,
-            userId: this.props.user.id,
-            inventoryId: inventar.id
-        }
-
-        this.setState({
-            showAlreadyGetDetailed: false,
-            isWillTake: false
-        })
-        this.props.delete_users_inventory(data);
-    }
-
-    getItemsTakenByUserQuantity() {
-        const { item, user, usersInventories } = this.props
-        const itemsQuantity = usersInventories.data.find(e => e.userId === user.id && e.inventoryId === item.id)
-        return itemsQuantity === undefined
-            ? 0
-            : itemsQuantity.quantity
-    }
-
-    render() {
-        const { item, user, usersInventories, isMyEvent, disabledEdit } = this.props;
-        const alreadyGet = usersInventories.data.reduce((acc, cur) => {
-            return cur.inventoryId === item.id ? acc + cur.quantity : acc + 0
-        }, 0);
-        return(
-            <div className="row p-1 d-flex align-items-center" key={item.id}>
-            {this.state.isEdit && isMyEvent && 
-                <OrganizerEditItemForm
-                    onSubmit={this.onSubmit} 
-                    onCancel={this.onCancel}
-                    unitOfMeasuringState={this.props.unitOfMeasuringState}
-                    alreadyGet={alreadyGet}
-                    initialValues={item}/>
-            }
-
-            {this.state.isEdit && !isMyEvent &&
-                <VisitorEditItemForm
-                    onSubmit={this.onWillTake}
-                    onCancel={this.onCancel}
-                    alreadyGet={alreadyGet - this.getItemsTakenByUserQuantity()}
-                    initialValues={item}
-                />
-            }
-
-            {!this.state.isEdit && isMyEvent &&
-                <OrganizerSeeItem
-                    item={item}
-                    disabledEdit={disabledEdit}
-                    showAlreadyGetDetailed={this.state.showAlreadyGetDetailed}
-                    onAlreadyGet={this.onAlreadyGet}
-                    markItemAsEdit={this.markItemAsEdit}
-                    deleteItemFromList={this.deleteItemFromList}
-                    usersInventories={this.props.usersInventories}/>
-            }
-
-            {!this.state.isEdit && !isMyEvent && 
-                <VisitorSeeItem 
-                    item={item}
-                    disabledEdit={disabledEdit}
-                    showAlreadyGetDetailed={this.state.showAlreadyGetDetailed}
-                    alreadyGet={alreadyGet}
-                    onAlreadyGet={this.onAlreadyGet}
-                    onWillNotTake={this.onWillNotTake}
-                    markItemAsEdit={this.markItemAsEdit}
-                    usersInventories={this.props.usersInventories}
-                    user={user}/>
-            }
-        </div>
-        );
-    }
->>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 }
 
 const mapStateToProps = state => ({
@@ -380,11 +240,6 @@ InventoryItemWrapper.defaultProps = {
 };
 
 export default connect(
-<<<<<<< HEAD
   mapStateToProps,
   mapDispatchToProps,
-=======
-    mapStateToProps,
-    mapDispatchToProps
->>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
 )(InventoryItemWrapper);

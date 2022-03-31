@@ -33,9 +33,9 @@ class HeadArticle extends Component {
     };
   }
 
-  handleClick = () => {
-    this.props.onSubmit();
-  };
+  // handleClick = () => {
+  //   this.props.onSubmit();
+  // };
 
   async componentDidMount() {
     this.interval = setInterval(() => {

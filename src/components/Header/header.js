@@ -28,11 +28,7 @@ class Header extends Component {
         id="bgcolornav"
       >
         <div className="navbar-brand">
-<<<<<<< HEAD
           <Link to="/home" className="nav-link" id="EEButton">
-=======
-          <Link to={"/home"} className="nav-link" id="EEButton">
->>>>>>> 9f0202e6cb942d1752434bea98f2f1bb176395c2
             EVENTS EXPRESS
           </Link>
         </div>
