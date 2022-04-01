@@ -149,7 +149,7 @@ const mapDispatchToProps = dispatch => {
     logout: () => {
       dispatch(logout());
     },
-    add_event: () => dispatch(addEvent()),
+    addEvent: () => dispatch(addEvent()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
