@@ -1,17 +1,5 @@
 @import "../../styles/main.scss";
 
-@mixin flex($flex-d, $align-a, $justify-c) {
-  display: flex;
-  flex-direction: $flex-d;
-  align-items: $align-a;
-  justify-content: $justify-c;
-}
-
-@mixin flex-direction($flex-d) {
-  display: flex;
-  flex-direction: $flex-d;
-}
-
 .footer__container {
   height: 150px;
   width: 100%;
