@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { IoMdSend } from "react-icons/io";
 import LogoWhite from "../../assets/icons/LogoWhite.png";
 import "./footer.scss";
@@ -46,14 +46,14 @@ const Footer = () => {
   return (
     <footer className="footer__container">
       <div className="footer__links_container">
-        <Link to="/home">
+        <NavLink to={HOME}>
           <img src={LogoWhite} alt="Logo" className="footer__logo" />
-        </Link>
+        </NavLink>
         <div className="footer__links">
           {LiNKS.map(({ path, name }) => (
-            <Link to={path} key={name} className="footer__link_item">
+            <NavLink to={path} key={name} className="footer__link_item">
               {name}
-            </Link>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -73,9 +73,9 @@ const Footer = () => {
         <p>{PHONE_NUMBER}</p>
         <div className="footer__social_links_icons">
           {SOCIALLINKS.map(({ link, icon }) => (
-            <Link to={link} key={link} className="nav-link social-link">
+            <NavLink to={link} key={link} className="nav-link social-link">
               <i className={icon} />
-            </Link>
+            </NavLink>
           ))}
         </div>
       </div>

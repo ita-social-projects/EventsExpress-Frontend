@@ -11,7 +11,7 @@ const FOOTER = {
   ABOUT: "About",
   PATH_HOME: "/home",
   PATH_EVENTS: "/events",
-  PATH_CTEATE_EVENT: "/events",
+  PATH_CREATE_EVENT: "/events",
   PATH_SEARCH_EVENT: "/events",
   PATH_TERMS: "/terms",
   PATH_ABOUT: "/about",
