@@ -5,7 +5,10 @@
   justify-content: $justify-c;
 }
 
-@mixin flex-direction($flex-d) {
-  display: flex;
-  flex-direction: $flex-d;
+@mixin font_input($family, $style, $weight) {
+  font-family: $family;
+  font-style: $style;
+  font-weight: $weight;
+
+
 }

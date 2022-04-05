@@ -3,35 +3,56 @@ import { Link } from "react-router-dom";
 import { IoMdSend } from "react-icons/io";
 import LogoWhite from "../../assets/icons/LogoWhite.png";
 import "./footer.scss";
-import constants from "../../constants/Footer";
+import FOOTER from "../../constants/Footer";
 
-const { SUBSCRIBE_US, CONTACT_US, PHONE_NUMBER, PASTE_YOUR_EMAIL } = constants;
+const {
+  SUBSCRIBE_US,
+  CONTACT_US,
+  PHONE_NUMBER,
+  PASTE_YOUR_EMAIL,
+  HOME,
+  CREATE_EVENT,
+  SEARCH_EVENT,
+  TERMS,
+  ABOUT,
+  STYLE_ICON_FACEBOOK,
+  STYLE_ICON_INSTAGRAM,
+  STYLE_ICON_YOUTUBE,
+  PATH_HOME,
+  PATH_EVENTS,
+  PATH_CREATE_EVENT,
+  PATH_TERMS,
+  PATH_ABOUT,
+  LINK_FACEBOOK,
+  LINK_INSTAGRAM,
+  LINK_YOUTUBE,
+} = FOOTER;
 
-const links = [
-  { id: 0, name: "Home", path: "/home" },
-  { id: 1, name: "Search event", path: "/events" },
-  { id: 2, name: "Create event", path: "" },
-  { id: 3, name: "Terms", path: "/terms" },
-  { id: 4, name: "About", path: "/about" },
+const LiNKS = [
+  { path: PATH_HOME, name: HOME },
+  { path: PATH_EVENTS, name: SEARCH_EVENT },
+  { path: PATH_CREATE_EVENT, name: CREATE_EVENT },
+  { path: PATH_TERMS, name: TERMS },
+  { path: PATH_ABOUT, name: ABOUT },
 ];
 
-const socialLinks = [
-  { id: 0, icon: "fab fa-facebook-f", link: "https://uk-ua.facebook.com" },
-  { id: 1, icon: "fab fa-instagram", link: "https://www.instagram.com" },
-  { id: 2, icon: "fab fa-youtube", link: "https://www.instagram.com" },
+const SOCIALLINKS = [
+  { icon: STYLE_ICON_FACEBOOK, link: LINK_FACEBOOK },
+  { icon: STYLE_ICON_INSTAGRAM, link: LINK_INSTAGRAM },
+  { icon: STYLE_ICON_YOUTUBE, link: LINK_YOUTUBE },
 ];
 
 const Footer = () => {
   return (
     <footer className="footer__container">
-      <div className="footer__links_and_logo_container">
+      <div className="footer__links_container">
         <Link to="/home">
           <img src={LogoWhite} alt="Logo" className="footer__logo" />
         </Link>
-        <div className="footer__links_to_pages_container">
-          {links.map(link => (
-            <Link key={link.id} to={link.path} className="footer__link">
-              {link.name}
+        <div className="footer__links">
+          {LiNKS.map(({ path, name }) => (
+            <Link to={path} key={name} className="footer__link_item">
+              {name}
             </Link>
           ))}
         </div>
@@ -51,9 +72,9 @@ const Footer = () => {
         <h4>{CONTACT_US}</h4>
         <p>{PHONE_NUMBER}</p>
         <div className="footer__social_links_icons">
-          {socialLinks.map(link => (
-            <Link key={link.id} to={link.link} className="nav-link social-link">
-              <i className={link.icon} />
+          {SOCIALLINKS.map(({ link, icon }) => (
+            <Link to={link} key={link} className="nav-link social-link">
+              <i className={icon} />
             </Link>
           ))}
         </div>
