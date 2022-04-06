@@ -36,7 +36,7 @@ const LiNKS = [
   { path: PATH_ABOUT, name: ABOUT },
 ];
 
-const SOCIALLINKS = [
+const SOCIAL_LINKS = [
   { icon: STYLE_ICON_FACEBOOK, link: LINK_FACEBOOK },
   { icon: STYLE_ICON_INSTAGRAM, link: LINK_INSTAGRAM },
   { icon: STYLE_ICON_YOUTUBE, link: LINK_YOUTUBE },
@@ -72,7 +72,7 @@ const Footer = () => {
         <h4>{CONTACT_US}</h4>
         <p>{PHONE_NUMBER}</p>
         <div className="footer__social_links_icons">
-          {SOCIALLINKS.map(({ link, icon }) => (
+          {SOCIAL_LINKS.map(({ link, icon }) => (
             <NavLink to={link} key={link} className="nav-link social-link">
               <i className={icon} />
             </NavLink>

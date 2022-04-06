@@ -86,7 +86,6 @@
   .footer__links {
     margin-top: 5px;
     margin-left: 5px;
-    // font-size: $fontsize-14;
     @include flex(column, flex-start, flex-start);
   }
   .footer_link_item {
