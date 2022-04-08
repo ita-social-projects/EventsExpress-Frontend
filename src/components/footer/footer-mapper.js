@@ -21,7 +21,7 @@ const {
 const { STYLE_ICON_FACEBOOK, STYLE_ICON_INSTAGRAM, STYLE_ICON_YOUTUBE } =
   ALL_STYLE_ICON;
 
-const LiNKS = [
+const LINKS = [
   { path: PATH_HOME, name: HOME },
   { path: PATH_SEARCH_EVENT, name: SEARCH_EVENT },
   { path: PATH_CREATE_EVENT, name: CREATE_EVENT },
@@ -35,18 +35,14 @@ const SOCIAL_LINKS = [
   { icon: STYLE_ICON_YOUTUBE, link: LINK_YOUTUBE },
 ];
 
-export const MapperLink = classLink => {
-  return LiNKS.map(({ path, name }) => (
-    <NavLink to={path} key={name} className={classLink}>
-      {name}
-    </NavLink>
-  ));
-};
+export const NAV_LINKS = LINKS.map(({ path, name }) => (
+  <NavLink to={path} key={name} className="footer__link_item">
+    {name}
+  </NavLink>
+));
 
-export const MapperSocialLink = () => {
-  return SOCIAL_LINKS.map(({ link, icon }) => (
-    <NavLink to={link} key={link} className="nav-link social-link">
-      <i className={icon} />
-    </NavLink>
-  ));
-};
+export const SOCIAL_NAV_LINKS = SOCIAL_LINKS.map(({ link, icon }) => (
+  <NavLink to={link} key={link} className="nav-link social-link">
+    <i className={icon} />
+  </NavLink>
+));

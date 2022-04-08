@@ -4,7 +4,7 @@ import { IoMdSend } from "react-icons/io";
 import LogoWhite from "../../assets/icons/LogoWhite.png";
 import "./footer.scss";
 import { FOOTER_LABELS } from "../../constants/footerConstants";
-import { MapperSocialLink, MapperLink } from "./footer-mapper";
+import { SOCIAL_NAV_LINKS, NAV_LINKS } from "./footer-mapper";
 
 const { SUBSCRIBE_US, CONTACT_US, PHONE_NUMBER, PASTE_YOUR_EMAIL, HOME } =
   FOOTER_LABELS;
@@ -16,7 +16,7 @@ const Footer = () => {
         <NavLink to={HOME}>
           <img src={LogoWhite} alt="Logo" className="footer__logo" />
         </NavLink>
-        <div className="footer__links">{MapperLink("footer__link_item")}</div>
+        <div className="footer__links">{NAV_LINKS}</div>
       </div>
       <div className="footer__subscribe">
         <h4>{SUBSCRIBE_US}</h4>
@@ -32,7 +32,7 @@ const Footer = () => {
       <div className="footer__social_links">
         <h4>{CONTACT_US}</h4>
         <p>{PHONE_NUMBER}</p>
-        <div className="footer__social_links_icons">{MapperSocialLink()}</div>
+        <div className="footer__social_links_icons">{SOCIAL_NAV_LINKS}</div>
       </div>
     </footer>
   );
