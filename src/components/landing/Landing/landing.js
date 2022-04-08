@@ -53,14 +53,14 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     events: state.events,
     user: state.user,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     getUpcomingEventsDispatch: () => dispatch(getUpcomingEvents()),
   };

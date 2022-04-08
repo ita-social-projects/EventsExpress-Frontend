@@ -32,13 +32,13 @@
 }
 
 .custom-footer__subscribe input {
-    background-color: rgba(196, 196, 196, 0.38);
+    background-color: $mainSearchGrey;
     font-family:  $mainFont;
 font-style: normal;
 font-weight: 700;
 font-size: $fontsize-14;
 display: flex;
-color: rgba(255, 255, 255, 0.56);
+color: $headerBackground;
 } 
 
 .custom-footer .social-links {
