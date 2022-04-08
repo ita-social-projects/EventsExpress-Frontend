@@ -1,0 +1,14 @@
+@mixin flex($flex-d, $align-a, $justify-c) {
+  display: flex;
+  flex-direction: $flex-d;
+  align-items: $align-a;
+  justify-content: $justify-c;
+}
+
+@mixin font_input($family, $style, $weight) {
+  font-family: $family;
+  font-style: $style;
+  font-weight: $weight;
+
+
+}

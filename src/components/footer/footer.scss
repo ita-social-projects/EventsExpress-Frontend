@@ -1,118 +1,107 @@
 @import "../../styles/main.scss";
-.custom-footer {
-    height: 225px;
-    z-index: 500;
-    background-color: $lightThemeAccept;
-    position: relative;
-    display: flex;
-    justify-content: space-evenly;
-    font-family: $mainFont;
-    color: $gray;
+
+.footer__container {
+  height: 150px;
+  width: 100%;
+  z-index: 500;
+  background-color: $lightThemeAccept;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  font-family: $mainFont;
+  color: $gray;
+  margin-top: 30px;
 }
 
-.custom-footer .custom-footer__logo {
-    display: flex;
-    align-items: flex-start;
-    margin-top: 26px;
-    width: 193px;
-    position: relative;  
+.footer__links {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 70px;
+  margin-left: 100px;
 }
 
-.custom-footer .links-to-pages {
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 72px;
+.footer__logo {
+  width: 100px;
+  height: 50px;
+  margin-top: 30px;
 }
 
-.custom-footer .custom-footer__subscribe {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
+.footer__link_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 10px;
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+.footer__subscribe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.custom-footer__subscribe input {
-    background-color: rgba(196, 196, 196, 0.38);
-    font-family:  $mainFont;
-font-style: normal;
-font-weight: 700;
-font-size: $fontsize-14;
-display: flex;
-color: rgba(255, 255, 255, 0.56);
-} 
-
-.custom-footer .social-links {
-    display: flex;
-    flex-direction: column;
-align-items: center;
-justify-content: center;
-    gap: 5px;
+.footer__form {
+  display: flex;
+  flex-direction: row;
 }
 
-.social-links__icons {
+.footer__subscribe__icon {
+  margin: 10px;
+}
+
+.footer__input {
+  background-color: $mainSearchGrey;
+  @include font_input($mainFont, normal, 700);
+  font-size: $fontsize-14;
+  display: flex;
+  color: $white;
+  padding-left: 10px;
+}
+
+.footer__social_links {
+  margin-top: 40px;
+}
+
+.footer__social_links_icons {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: $mediaFirstTabletScreen) {
+  .footer__social_links p,
+  .footer__social_links h4,
+  .footer__subscribe h4,
+  .footer__link_item {
+    font-size: $fontsize-14;
+  }
+}
+
+@media screen and (max-width: $mediaSecondTabletScreen) {
+  .footer__container {
     display: flex;
     flex-direction: row;
+  }
+  .footer__links {
+    margin-top: 5px;
+    margin-left: 5px;
+    @include flex(column, flex-start, flex-start);
+  }
+  .footer_link_item {
+    padding-top: 10px;
+  }
 }
 
-.custom-footer .social-links .social-link {
-    font-size: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@media screen and (max-width: $mediaMobileScreen) {
+  .footer__logo {
+    display: none;
+  }
+  .footer__input {
+    width: 150px;
+  }
+  .footer__link_item {
+    font-size: 10px;
+    padding-top: 5px;
+  }
 }
-
-.custom-footer .social-links .social-link i {
-    color: $white;
-}
-
-.custom-footer .social-links .social-link:first-child {
-    margin-left: auto;
-}
-
-.custom-footer .links-to-pages .link {
-    font-size: 1.1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    gap: 3px;
-}
-
-.custom-footer .link-circle {
-    width: 0.3em;
-    height: 0.3em;
-}
-
-@media screen and (max-width: 705px) {
-    .custom-footer .links-to-pages .link {
-        font-size: 1em;
-    }
-}
-
-@media screen and (max-width: 655px) {
-    .custom-footer {
-        grid-template-columns: 1fr;
-        gap: 5px;
-    }
-
-    .custom-footer .links-to-pages, .custom-footer .social-links {
-        justify-content: center;
-    }
-
-    .custom-footer .social-links .social-link:first-child {
-        margin-left: 0;
-    }
-}
-
-@media screen and (max-width: 340px) {
-    .custom-footer .links-to-pages {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .custom-footer .links-to-pages .link {
-        width: 100%;
-        text-align: center;
-    }
-}
-
