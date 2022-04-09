@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 5px 4px $transparentBlackBackground;
   border-radius: $defaultBorderRadius;
   margin-bottom: 20px;
 

@@ -69,7 +69,7 @@ class App extends Component {
                   <Route
                     path="/registerComplete"
                     component={this.AdminAndUserRoleSecurity(
-                      RegisterCompleteWrapper
+                      RegisterCompleteWrapper,
                     )}
                   />
                   <Route
@@ -91,7 +91,7 @@ class App extends Component {
                   <Route
                     path="/user/:id"
                     component={this.AdminAndUserRoleSecurity(
-                      UserItemViewWrapper
+                      UserItemViewWrapper,
                     )}
                   />
                   <Route
@@ -114,7 +114,7 @@ class App extends Component {
                   <Route
                     path="/notification_events"
                     component={this.AdminAndUserRoleSecurity(
-                      NotificationEvents
+                      NotificationEvents,
                     )}
                   />
                   <Route
@@ -158,7 +158,7 @@ App.defaultProps = {
   getConfig: () => {},
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     authUser: () => dispatch(AuthUser()),
     getConfig: () => dispatch(getConfig()),
