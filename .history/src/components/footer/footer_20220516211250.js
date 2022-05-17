@@ -4,13 +4,8 @@ import "./footer.scss";
 import { FOOTER_LABELS } from "../../constants/footerConstants";
 import { SOCIAL_NAV_LINKS } from "./footer-mapper";
 
-const {
-  SUBSCRIBE_US,
-  CONTACT_US,
-  PHONE_NUMBER,
-  PASTE_YOUR_EMAIL,
-  OUR_SOCIALS,
-} = FOOTER_LABELS;
+const { SUBSCRIBE_US, CONTACT_US, PHONE_NUMBER, PASTE_YOUR_EMAIL } =
+  FOOTER_LABELS;
 
 const Footer = () => {
   return (
@@ -31,13 +26,13 @@ const Footer = () => {
                 type="email"
                 placeholder={PASTE_YOUR_EMAIL}
                 className="footer__input"
-                maxLength={50}
               />
               <IoMdSend className="footer__subscribe__icon" />
             </form>
           </div>
           <div className="footer__social_links">
-            <h4 className="our__socials">{OUR_SOCIALS}</h4>
+            <h4>{CONTACT_US}</h4>
+            <p>{PHONE_NUMBER}</p>
             <div className="footer__social_links_icons">{SOCIAL_NAV_LINKS}</div>
           </div>
         </div>

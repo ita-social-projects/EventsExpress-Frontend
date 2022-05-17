@@ -42,7 +42,7 @@ export const NAV_LINKS = LINKS.map(({ path, name }) => (
 ));
 
 export const SOCIAL_NAV_LINKS = SOCIAL_LINKS.map(({ link, icon }) => (
-  <NavLink to={link} key={link} className="link__icon">
+  <NavLink to={link} key={link} className="social-link">
     <i className={`${icon} social__icon`} />
   </NavLink>
 ));

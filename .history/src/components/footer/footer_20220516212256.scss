@@ -17,7 +17,7 @@
       }
     }
     .footer__interact{
-      padding: 50px 0;
+      margin-top: 70px;
       background-color: #FFFFFF;
       display: flex;
       justify-content: space-around;
@@ -39,7 +39,6 @@
         .footer__form{
           width: 100%;
           margin-top: 25px;
-          position: relative;
           .footer__input{
             width: 270px;
             height: 40px;
@@ -50,28 +49,7 @@
             outline: none;
           }
           .footer__subscribe__icon{
-            position: absolute;
-            top: 13px;
-            right: 10px;
-            cursor: pointer;
-          }
-        }
-      }
-      .footer__social_links{
-        .our__socials{
-          font-size: 24px;
-          font-weight: 700;
-        }
-        .footer__social_links_icons{
-          display: flex;
-          justify-content: center;
-          .link__icon{
-            text-decoration: none;
-            .social__icon{
-              margin: 10px;
-              font-size: 20px;
-              cursor: pointer;
-            }
+
           }
         }
       }

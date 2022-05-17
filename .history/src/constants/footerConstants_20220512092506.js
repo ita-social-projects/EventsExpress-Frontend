@@ -5,7 +5,6 @@ export const FOOTER_LABELS = {
   PHONE_NUMBER: "+(380) 98 56 234",
   PASTE_YOUR_EMAIL: "Paste your email",
   SEARCH_EVENT: "Search event",
-  OUR_SOCIALS: "Our socials",
   HOME: "Home",
   CREATE_EVENT: "Create event",
   TERMS: "Terms",

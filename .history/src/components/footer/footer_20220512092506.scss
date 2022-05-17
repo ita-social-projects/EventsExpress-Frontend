@@ -1,0 +1,120 @@
+@import "../../styles/main.scss";
+
+.footer__container {
+  height: 150px;
+  width: 100%;
+  z-index: 500;
+  background-color: $lightThemeAccept;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  font-family: $mainFont;
+  color: $gray;
+  margin-top: 30px;
+}
+
+.footer__links {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 70px;
+  margin-left: 100px;
+}
+
+.footer__logo {
+  width: 100px;
+  height: 50px;
+  margin-top: 30px;
+}
+
+.footer__link_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 10px;
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+.footer__subscribe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.custom-footer__subscribe input {
+    background-color: $mainSearchGrey;
+    font-family:  $mainFont;
+font-style: normal;
+font-weight: 700;
+font-size: $fontsize-14;
+display: flex;
+color: $headerBackground;
+} 
+
+.custom-footer .social-links {
+    display: flex;
+    flex-direction: column;
+align-items: center;
+justify-content: center;
+    gap: 5px;
+}
+
+.footer__subscribe__icon {
+  margin: 10px;
+}
+
+.footer__input {
+  background-color: $mainSearchGrey;
+  @include font_input($mainFont, normal, 700);
+  font-size: $fontsize-14;
+  display: flex;
+  color: $white;
+  padding-left: 10px;
+}
+
+.footer__social_links {
+  margin-top: 40px;
+}
+
+.footer__social_links_icons {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: $mediaFirstTabletScreen) {
+  .footer__social_links p,
+  .footer__social_links h4,
+  .footer__subscribe h4,
+  .footer__link_item {
+    font-size: $fontsize-14;
+  }
+}
+
+@media screen and (max-width: $mediaSecondTabletScreen) {
+  .footer__container {
+    display: flex;
+    flex-direction: row;
+  }
+  .footer__links {
+    margin-top: 5px;
+    margin-left: 5px;
+    @include flex(column, flex-start, flex-start);
+  }
+  .footer_link_item {
+    padding-top: 10px;
+  }
+}
+
+@media screen and (max-width: $mediaMobileScreen) {
+  .footer__logo {
+    display: none;
+  }
+  .footer__input {
+    width: 150px;
+  }
+  .footer__link_item {
+    font-size: 10px;
+    padding-top: 5px;
+  }
+}
