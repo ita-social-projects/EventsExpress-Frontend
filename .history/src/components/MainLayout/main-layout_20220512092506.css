@@ -1,0 +1,6 @@
+.page-wrapper {
+  min-height: 100vh;
+  /* TODO: CHANGED FOR SLIDER */
+  /* display: grid;
+    grid-template-rows: auto 1fr auto; */
+}
