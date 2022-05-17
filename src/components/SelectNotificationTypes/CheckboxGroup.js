@@ -4,7 +4,7 @@ import propTypes from "prop-types";
 class CheckboxGroup extends React.Component {
   checkboxGroup() {
     const { options, input } = this.props;
-    input.value = input.value.notificationTypes || input.value;
+    input.value = input.value.notificationTypes || input.value || [];
     return options.map((option, index) => {
       return (
         <div className="checkbox" key={option.id}>

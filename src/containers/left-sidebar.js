@@ -5,9 +5,7 @@ import LeftSidebar from "../components/left-sidebar";
 
 class LeftSidebarWrapper extends Component {
   searchUnreadMsg = () => {
-    return this.props.notification.messages.filter(
-      x => x.senderId !== this.props.user.id,
-    );
+    return true;
   };
 
   render() {
@@ -15,7 +13,7 @@ class LeftSidebarWrapper extends Component {
       <LeftSidebar
         user={this.props.user}
         msgForRead={this.searchUnreadMsg}
-        filter={this.props.filter}
+        filter={() => {}}
       />
     );
   }
@@ -28,15 +26,15 @@ const mapStateToProps = state => ({
 });
 
 LeftSidebarWrapper.propTypes = {
-  notification: PropTypes.object,
+  // notification: PropTypes.object,
   user: PropTypes.object,
-  filter: PropTypes.object,
+  // filter: PropTypes.object,
 };
 
 LeftSidebarWrapper.defaultProps = {
-  notification: {},
+  // notification: {},
   user: {},
-  filter: {},
+  // filter: () => { },
 };
 
 export default connect(mapStateToProps)(LeftSidebarWrapper);

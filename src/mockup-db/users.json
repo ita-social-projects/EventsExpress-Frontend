@@ -1,4 +1,5 @@
-[
+{
+  "users":[
   {
     "email": "dev@gmail.com",
     "password": "devPassword",
@@ -19,4 +20,5 @@
     "phone": "+380990123033",
     "accountId": "sadasda-213-sadasd-123"
   }
-]
+] 
+}

@@ -3,8 +3,8 @@ import { createBrowserHistory } from "history";
 import { AuthenticationService } from "../../services";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { setErrorAllertFromResponse } from "../alert-action";
-import filterHelper from "../../components/helpers/filterHelper";
-import { updateEventsFilters } from "../event/event-list-action";
+// import filterHelper from "../../components/helpers/filterHelper";
+// import { updateEventsFilters } from "../event/event-list-action";
 import { initialConnection } from "../chat/chat-action";
 import { getUnreadMessages } from "../chat/chats-action";
 import { jwtStorageKey } from "../../constants/constants";
@@ -41,12 +41,12 @@ export function getUserInfo(profile) {
     }
 
     const userInfo = await response.json();
-    const eventFilter = {
-      ...filterHelper.getDefaultEventFilter(),
-      categories: userInfo.categories.map(item => item.id),
-    };
+    // const eventFilter = {
+    //   ...filterHelper.getDefaultEventFilter(),
+    //   categories: userInfo.categories.map(item => item.id),
+    // };
     dispatch(setUser(userInfo));
-    dispatch(updateEventsFilters(eventFilter));
+    // dispatch(updateEventsFilters(eventFilter));
     localStorage.setItem("id", userInfo.id);
     dispatch(initialConnection());
     dispatch(getUnreadMessages(userInfo.id));

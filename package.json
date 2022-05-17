@@ -22,6 +22,7 @@
 		"globalize": "1.4.2",
 		"history": "^5.2.0",
 		"jquery": "3.5.1",
+		"json-server": "^0.17.0",
 		"jsonwebtoken": "8.5.1",
 		"leaflet": "1.7.1",
 		"luxon": "^2.3.0",
@@ -82,7 +83,8 @@
 		"slick-carousel": "^1.8.1",
 		"styled-components": "4.3.2",
 		"tiny-custom-pagination": "1.0.5",
-		"ui": "0.2.4"
+		"ui": "0.2.4",
+		"webpack": "^4.44.2"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^16.2.3",
@@ -142,5 +144,5 @@
 			"last 1 safari version"
 		]
 	},
-	"proxy": "https://eventsexpress-test.azurewebsites.net/"
+	"proxy": "http://localhost:5000/"
 }
