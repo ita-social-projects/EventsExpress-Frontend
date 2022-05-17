@@ -1,0 +1,95 @@
+.banner {
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .lazy-load-image-background {
+        width: 100%;
+        height: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+    .banner-text {
+        position: absolute;
+        top: 100px;
+        left: 75px;
+        h3 {
+            font-size: 50px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        h4 {
+            font-size: 25px;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 0;
+        }
+    }
+
+    .banner-button {
+        text-decoration: none;
+        position: absolute;
+        bottom: 100px;
+        right: 100px;
+        background: #FFFFFF;
+        border: 1 solid #FFFFFF;
+        box-shadow: 0px 5px 45px #BDAFC9;
+        border-radius: 15px;
+        color: #000000;
+        padding: 20px 40px;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+}
+
+
+//mobile 
+@media only screen and (max-width: 768px) {
+    .banner {
+        height: 50vh;
+        .banner-text {
+            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            h3 {
+                font-size: 50px;
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 20px;
+            }
+            h4 {
+                font-size: 15px;
+                font-weight: 400;
+                color: #fff;
+                margin-bottom: 0;
+            }
+        }
+        .banner-button {
+            right: 50%;
+            transform: translateX(50%);
+            font-size: 15px;
+            font-weight: 700;
+        }
+    }
+}
