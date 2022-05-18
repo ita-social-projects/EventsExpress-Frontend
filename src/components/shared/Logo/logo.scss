@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   position: absolute;
-  left: 50%;
+  left: 160px;
   transform: translate(-50%, 0%);
   font-size: $fontsize-24;
 
@@ -29,7 +29,8 @@
   }
 
   .logo__image {
-    height: 25px;
+    width: 58px;
+    height: 29px;
   }
 }
 @media (max-width: $mobile-breakpoint) {
