@@ -1,25 +1,5 @@
-@import "https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700";
-@import 'https://fonts.googleapis.com/css2?family=Norican&display=swap';
-
-$mainFont: "Montserrat", sans-serif;
-$quoteFont: "Norican", cursive;
- 
-$text: #000000; 
-$secondaryColor : #180C30;
-$purpleHeading: #581184;
-$lightPinkBackground: #F0EAF4; 
-$mainColor: #FFFFFF;
-$deleteColor: #C91212;
-
-
-$black: #000;
-$white: #fff;
-$gray: #f2f2f2;
-$lightThemeBackground: #fff;
-$lightThemeAccept: #6c488a;
-$lightThemeHeader: #696969;
-  
-$darkThemeBackground: #180c30;
+@import '_colors.scss';
+@import '_fonts.scss';
 
 //screens
 $mediaPcScreen: 1180px;
@@ -29,20 +9,9 @@ $mediaMobileScreen: 575px;
 $widthForContentPcScreen: 930px;
 $widthForContentFirstTabletScreen: 730px;
 $widthForContentSecondTabletScreen: 560px;
+$mobile-breakpoint: 426px;
 
-$transparentBlackBackground: #00000054;
-$headerBackground: #f7f4f466;
-$mainSearchGrey: #c4c4c475;
-$transparentGreyBackground: #74747466;
-
+//border
 $defaultBorderRadius: 20px;
 $buttonBorderRadius: 10px;
 
-$mobile-breakpoint: 426px;
-
-$fontsize-10: 10px;
-$fontsize-12: 12px;
-$fontsize-14: 14px;
-$fontsize-20: 20px;
-$fontsize-24: 24px;
-$bold: 900;
