@@ -42,18 +42,22 @@ const HeadArticle = () => {
 
   return (
     <article className="banner">
-      <LazyLoadImage
-        alt="background"
-        effect="blur"
-        src={imagesPreload[currentImage]}
-      />
-      <div className="banner-text">
-        <h3>Don’t stay at home! </h3>
-        <h4>Join Us To Have Fun And Improve Yourself</h4>
+      <div className="banner-content">
+        <div className="banner-text">
+          <h3>Don’t stay at home! </h3>
+          <h4>Join Us To Have Fun And Improve Yourself</h4>
+        </div>
+        <Link to="/home/events" className="banner-button" type="button">
+          Look For Events
+        </Link>
       </div>
-      <Link to="/home/events" className="banner-button" type="button">
-        Look For Events
-      </Link>
+      <div className="banner-img">
+        <LazyLoadImage
+          alt="background"
+          effect="blur"
+          src={imagesPreload[currentImage]}
+        />
+      </div>
     </article>
   );
 };

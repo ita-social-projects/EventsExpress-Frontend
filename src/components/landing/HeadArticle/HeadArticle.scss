@@ -1,77 +1,22 @@
 .banner {
-    position: relative;
-    height: 60vh;
     width: 100%;
+    height: 60vh;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),url("https://i.pinimg.com/originals/4c/41/75/4c4175fc9f1274b6d732d5b5038f168d.jpg");
     display: flex;
-    flex-direction: column;
     align-items: center;
-    .lazy-load-image-background {
-        width: 100%;
+    justify-content: space-between;
+    padding: 100px;
+    .banner-content {
         height: 100%;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-    }
-    .banner-text {
-        position: absolute;
-        top: 100px;
-        left: 75px;
-        h3 {
-            font-size: 50px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-        h4 {
-            font-size: 25px;
-            font-weight: 400;
-            color: #fff;
-            margin-bottom: 0;
-        }
-    }
-
-    .banner-button {
-        text-decoration: none;
-        position: absolute;
-        bottom: 100px;
-        right: 100px;
-        background: #FFFFFF;
-        border: 1 solid #FFFFFF;
-        box-shadow: 0px 5px 45px #BDAFC9;
-        border-radius: 15px;
-        color: #000000;
-        padding: 20px 40px;
-        font-size: 20px;
-        font-weight: 700;
-        cursor: pointer;
-    }
-}
-
-
-//mobile 
-@media only screen and (max-width: 768px) {
-    .banner {
-        height: 50vh;
-        .banner-text {
-            width: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
+        flex: 1 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0;
+        align-items: flex-start;
+        text-align: left;
+        align-content: flex-start;
+         .banner-text {
             h3 {
                 font-size: 50px;
                 font-weight: 700;
@@ -79,17 +24,104 @@
                 margin-bottom: 20px;
             }
             h4 {
-                font-size: 15px;
+                font-size: 25px;
                 font-weight: 400;
                 color: #fff;
                 margin-bottom: 0;
             }
         }
         .banner-button {
-            right: 50%;
-            transform: translateX(50%);
-            font-size: 15px;
+            text-decoration: none;
+            background: #FFFFFF;
+            border: 1 solid #FFFFFF;
+            box-shadow: 0px 5px 45px #BDAFC9;
+            border-radius: 15px;
+            color: #000000;
+            padding: 20px 40px;
+            font-size: 20px;
             font-weight: 700;
+            cursor: pointer;
         }
+    }
+
+    .banner-img {
+        height: 100%;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .lazy-load-image-background {
+            border: 5px solid #F0EAF4;
+            border-radius: 10px; 
+            height: 100%;
+            width: 100%;
+            img {
+                max-width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+
+    
+
+  
+}
+
+
+//mobile 
+@media only screen and (max-width: 1200px) {
+    .banner {
+        padding: 50px;
+        flex-direction: column;
+        .banner-content {
+            order: 2;
+            height: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: space-evenly;
+             .banner-text {
+                 margin: 25px 0;
+                h3 {
+                    font-size: 50px;
+                    font-weight: 700;
+                    color: #fff;
+                    margin-bottom: 20px;
+                }
+                h4 {
+                    font-size: 15px;
+                    font-weight: 400;
+                    color: #fff;
+                    margin-bottom: 0;
+                }
+            }
+            .banner-button {
+                
+                font-size: 15px;
+                font-weight: 700;
+            }
+        }
+       .banner-img {
+           order: 1;
+           height: 70%;
+           width: 100%;
+            .lazy-load-image-background {
+                width: 80%;
+                img {
+                    width: 100%;
+                }
+            }
+       }
     }
 }
