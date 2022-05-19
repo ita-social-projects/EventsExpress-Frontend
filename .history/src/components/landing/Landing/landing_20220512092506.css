@@ -1,9 +1,3 @@
-.upcoming__events__navigation {
-  margin: 80px 0px 50px 0px;
-  display: flex;
-  justify-content: space-between;
-}
-
 article {
   height: 100vh;
 }
@@ -45,7 +39,7 @@ a {
   transform: translate(-50%, -50%);
 }
 
-.button-container>h2 {
+.button-container > h2 {
   color: white;
   text-align: center;
   filter: drop-shadow(0.05em 0.05em orange);

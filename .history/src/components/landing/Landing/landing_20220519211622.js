@@ -12,7 +12,6 @@ import {
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
 } from "../../../constants/EventsViewModeConstants";
 import SectionHeader from "../../SectionHeader/SectionHeader";
-import HeadArticleSearch from "../HeadArticleSearch/HeadArticleSearch";
 
 const { UPCOMING_EVENTS } = landingConstants;
 const { SLIDER } = viewModeTypes;
@@ -46,8 +45,8 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
           </section>
           <div className="container">
             <div className="upcoming__events__navigation">
-              <HeadArticleSearch />
-              <EventsViewMode setViewMode={setEventsViewMode} />
+            <HeadArticleSearch />
+            <EventsViewMode setViewMode={setEventsViewMode} />
             </div>
             {viewModeSwitcher(items, eventsViewMode)}
           </div>

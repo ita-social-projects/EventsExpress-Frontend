@@ -9,6 +9,7 @@ const HeadArticleSearchWithoutForm = ({ handleSubmit }) => {
   return (
     <div className="HeadArticleSearchWrapper">
       <form className="HeadArticleSearchForm" onSubmit={handleSubmit}>
+        <Search className="search__icon" fontSize="36px" />
         <Field
           name="search"
           component="input"
@@ -16,7 +17,6 @@ const HeadArticleSearchWithoutForm = ({ handleSubmit }) => {
           placeholder={PLACEHOLDER_INPUT}
           className="HeadArticleSearchInput"
         />
-        <Search className="search__icon" />
       </form>
     </div>
   );

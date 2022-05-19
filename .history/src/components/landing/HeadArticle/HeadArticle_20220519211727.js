@@ -30,7 +30,7 @@ class HeadArticle extends Component {
 
   async componentDidMount() {
     this.interval = setInterval(() => {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         currentImageCounter:
           (prevState.currentImageCounter + 1) % imagesPreload.length,
         currentImage: imagesPreload[prevState.currentImageCounter],
@@ -48,7 +48,7 @@ class HeadArticle extends Component {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
-      />
+      ></article>
     );
   }
 }

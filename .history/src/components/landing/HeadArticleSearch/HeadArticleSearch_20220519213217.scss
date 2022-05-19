@@ -1,0 +1,41 @@
+@import "../../../styles/variables";
+
+.HeadArticleSearchWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.HeadArticleSearchForm {
+  width: 100%;
+  position: relative;
+  background: $mainSearchGrey;
+
+  max-width: 950px;
+  height: 55px;
+
+  .search__icon {
+    position: absolute;
+    transform: rotateX(200deg);
+    top: 25%;
+    right: 30px;
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.HeadArticleSearchInput {
+  background-color: transparent;
+  border: none;
+  width: 800px;
+
+  & :placeholder-shown {
+    color: $white;
+    font-style: normal;
+    font-weight: 400;
+    font-size: $fontsize-24;
+    line-height: 31px;
+  }
+}

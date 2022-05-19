@@ -2,13 +2,15 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import propTypes from "prop-types";
 import "./HeadArticleSearch.scss";
-import { Search } from "@material-ui/icons";
+import { AiOutlineSearch } from "react-icons/ai";
 import PLACEHOLDER_INPUT from "../../../constants/HeadArticleSearchConstants";
 
 const HeadArticleSearchWithoutForm = ({ handleSubmit }) => {
+  console.log('HANDLE',handleSubmit);
   return (
     <div className="HeadArticleSearchWrapper">
       <form className="HeadArticleSearchForm" onSubmit={handleSubmit}>
+        <AiOutlineSearch />
         <Field
           name="search"
           component="input"
@@ -16,7 +18,7 @@ const HeadArticleSearchWithoutForm = ({ handleSubmit }) => {
           placeholder={PLACEHOLDER_INPUT}
           className="HeadArticleSearchInput"
         />
-        <Search className="search__icon" />
+        <button type="submit">Seacrh</button>
       </form>
     </div>
   );
