@@ -11,7 +11,6 @@ const {
   PASTE_YOUR_EMAIL,
   OUR_SOCIALS,
   MAIN_TEXT,
-  CALL_PHONE_HREF,
 } = FOOTER_LABELS;
 
 const Footer = () => {
@@ -23,10 +22,10 @@ const Footer = () => {
         </div>
         <div className="footer__interact">
           <div className="footer__contacts">
-            <h2 className="contact__us">{CONTACT_US}</h2>
-            <a href={CALL_PHONE_HREF} className="contact__number">
-              {PHONE_NUMBER}
+            <a href="tel:3809856234" className="contact__us">
+              {CONTACT_US}
             </a>
+            <p className="contact__number">{PHONE_NUMBER}</p>
           </div>
           <div className="footer__subscribe">
             <h4 className="subscibe__us">{SUBSCRIBE_US}</h4>
