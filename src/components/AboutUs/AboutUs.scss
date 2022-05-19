@@ -1,95 +1,156 @@
-@import "../../styles/variables";
+$black: #000000;
+$purple: #180C30;
+$white: #FFFFFF;
+$lightPink: #F0EAF4; 
 
-.about__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 50px;
+
+@mixin info-text($textAlign) {
+    .info-text__#{$textAlign} {
+        max-width: 50%;
+        text-align: $textAlign;
+        margin-#{$textAlign}: 50px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        .info-text__header {
+            font-size: 46px;
+            font-weight: bold;
+            color: $black;
+        }
+        .info-text__body {
+            font-size: 28px;
+            color: $black;
+        }
+    }
 }
 
-.about__info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-basis: 50%;
-}
 
-.about__info_text {
-  width: 515px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
 
-.about__info__button {
-  display: flex;
-  justify-content: flex-end;
-  align-self: flex-end;
-  font-weight: bold;
-  font-size: 14px;
-  color: $lightThemeAccept;
-  border: 2px solid $lightThemeAccept;
-  border-radius: $buttonBorderRadius;
-  padding: 5px 25px;
-  cursor: pointer;
-  transition: 0.5s all;
+.about {
+    .about-banner {
+        position: relative;
+        background:  linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170');
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 80vh;
+        .banner-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            position:absolute;
+            bottom: 50px;
+            right: 50px;
+            .banner-content__quote {
+                font-size: 60px;
+                margin-bottom: 0;
+                color: $white;
+            }
+            .btn-events {
+                text-decoration: none;
+                padding: 20px 100px;
+                margin-top: 20px;
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+                color: $black;
+                background: $white;
+                border-radius: 20px;
+                &:hover {
+                    box-shadow: 0px 5px 55px $lightPink;
+                }
+            }
+        }
+    }
 
-  &:hover {
-    color: darken($color: $lightThemeAccept, $amount: 15%);
-    border-color: darken($color: $lightThemeAccept, $amount: 15%);
-    background-color: #e6e6e6;
-    text-decoration: none;
-  }
-}
+    .about-info {
+        width: 100%;
+        padding-top: 100px;
+        @include info-text(left);
+        .info-images {
+            padding: 0 50px;
+            display: flex;
+            border-radius: 20px;
+            overflow:hidden;
+            height: 500px;
+            width: 100%;
+    
+            .info-images__item{
+                position: relative;
+                width: calc(100% / 4);
+                img {
+                    filter: brightness(40%);
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    transition: 0.5s ease-in-out;
+                }
+                &:hover img {
+                        filter: brightness(70%);
+                    }
+                .info-images__text {
+                    z-index: 1;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    color: $white;
+                    font-size: 2.5rem;
+                }
+            }
+        }
+        .right-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            @include info-text(right);
+        }
+    }
 
-.about__header {
-  position: relative;
-  display: flex;
-  color: $black;
-  font-weight: bold;
-  font-size: 72px;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 20px;
-  user-select: none;
+    .about-members {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px;
+            box-sizing: border-box;
 
-  &::before {
-    content: "";
-    position: absolute;
-    left: 65px;
-    top: 3px;
-    height: 75px;
-    width: 150px;
-    background-color: $lightThemeAccept;
-    z-index: -1;
-  }
-}
+            .member__image {
+                width: 80%;
+                height: 500px;
+                border-radius: 100%;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .member__info {
+                width: 100%;
+                padding: 50px;
+                box-sizing: border-box;
+                .member__name {
+                    font-size: 46px;
+                    font-weight: bold;
+                    color: $black;
+                }
+               
+                .member__description {
+                    font-size: 18px;
+                    color: $black;
+                }
+            }
+        }
+    }
 
-.about__photos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.about__photos_item {
-  position: relative;
-  overflow: hidden;
-  width: 30%;
-  height: 150px;
-  margin: 0 10px;
-  margin-bottom: 20px;
-}
-
-.about__photos_text {
-  position: absolute;
-  font-weight: bold;
-  font-size: 24px;
-  bottom: 7px;
-  right: 0px;
-  color: $white;
-  background: $transparentBlackBackground;
-  padding: 5px;
-  width: 150px;
-  user-select: none;
 }
