@@ -12,21 +12,20 @@ $textShadowNeon: 0 0 5px $white,
                 0 0 40px $purple;  
 
 $boxShadowImage: 0 0 5px $white,
-                0 0 5px $white,
-                0 0 20px $purple,
-                0 0 25px $purple,
-                0 0 40px $purple; 
+                0 0 10px $white,
+                0 0 20px $white,
+                0 0 10px $purple;  
 
 
 .banner {
     @include mixins.flex(row, center, space-between);
     background: $bannerBackground;
-    padding: 100px;
+    padding: 150px;
     width: 100%;
     height: 70vh;
     .banner-content {
         @include mixins.flex(column, flex-start, space-between);
-        flex: 1;
+        flex: 2;
         height: 100%;
         padding: 20px 0;
         text-align: left;
@@ -64,12 +63,13 @@ $boxShadowImage: 0 0 5px $white,
 
     .banner-img {
         @include mixins.flex(row, center, center);
-        flex: 1;
+        flex: 5;
         height: 100%;
         .lazy-load-image-background {
             box-shadow:  $boxShadowImage;            
             width: 100%;
             max-width: 1000px;
+            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
             img {
                 width: 100%;
                 height: 600px;
