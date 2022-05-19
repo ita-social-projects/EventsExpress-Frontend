@@ -1,4 +1,7 @@
-@import "../../styles/main.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .footer__container {
   height: 150px;
@@ -45,11 +48,11 @@
 .custom-footer__subscribe input {
     background-color: $mainSearchGrey;
     font-family:  $mainFont;
-font-style: normal;
-font-weight: 700;
-font-size: $fontsize-14;
-display: flex;
-color: $headerBackground;
+    font-style: normal;
+    font-weight: 700;
+    font-size: $fontsize-14;
+    display: flex;
+    color: $headerBackground;
 } 
 
 .custom-footer .social-links {

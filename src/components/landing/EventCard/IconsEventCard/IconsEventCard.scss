@@ -1,4 +1,4 @@
-@import "../../../../styles/main.scss";
+@import "../../../../styles/colors.scss";
 
 $position-icons-top: 205px;
 $position-icons-left: 30px;
@@ -22,7 +22,7 @@ $postition-icons-list-right: 75px;
   height: 40px;
   width: 40px;
   background-color: $lightThemeAccept;
-  box-shadow: 0px 4px 4px $transparentBlackBackground;
+  box-shadow: 0px 4px 4px  $transparentBlackBackground;
   z-index: 1;
   cursor: pointer;
 }
