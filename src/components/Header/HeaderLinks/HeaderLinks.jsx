@@ -11,7 +11,7 @@ import union from "./icons/union.png";
 import planet from "./icons/planet.png";
 import "./HeaderLinks.scss";
 
-const HeaderLinks = () => {
+const HeaderLinks = (/* { setIsMobileHeaderOpen } */) => {
   return (
     <nav>
       <ul className="header-links-wrapper">
@@ -27,17 +27,26 @@ const HeaderLinks = () => {
 
         <li>
           <Link className="login-link-wrapper" to="/#">
-            <div>{`${LOGIN}`}</div>
+            <div className="login-link">{`${LOGIN}`}</div>
             <img src={union} alt="" />
           </Link>
         </li>
 
         <li>
           <Link className="eng-link-wrapper" to="/#">
-            <div to="/#">{`${ENG}`}</div>
+            <div className="eng-link" to="/#">{`${ENG}`}</div>
             <img src={planet} alt="" />
           </Link>
         </li>
+        <button
+          type="button"
+          /* onClick={() => setIsMobileHeaderOpen(true)} */
+          className="header-burger"
+        >
+          <div className="burger-line"></div>
+          <div className="burger-line"></div>
+          <div className="burger-line"></div>
+        </button>
       </ul>
     </nav>
   );

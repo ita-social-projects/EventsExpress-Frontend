@@ -1,3 +1,5 @@
+@import "../../../styles/main.scss";
+
 .header-links-wrapper {
   display: flex;
   align-items: center;
@@ -12,7 +14,7 @@
     font-family: "Montserrat";
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
+    font-size: $fontsize-14;
     text-decoration: none;
     margin-top: 10px;
   }
@@ -42,6 +44,56 @@
       height: 16px;
       margin-top: 5px;
       margin-left: 5px;
+    }
+  }
+  .header-burger{
+    cursor: pointer;
+    display: none;
+    .burger-line{
+      width: 30px;
+      height: 5px;
+      background-color: black;
+      margin-bottom: 2px;
+      border-radius: 10px;
+    }
+  }
+}
+
+@media (max-width: $laptop-breakpoint) {
+  .header-links-wrapper {
+    right: 20px;
+    li {
+      margin-left: 30px;
+    }
+    .link-wrapper {
+      font-size: $fontsize-12;
+    }
+    .login-link-wrapper {
+      .login-link{
+        font-size: $fontsize-12;
+      }
+    }
+    .eng-link-wrapper {
+      .eng-link{
+        font-size: $fontsize-12;
+      }
+    }
+  }
+}
+
+@media (max-width: 591px) {
+  .header-links-wrapper {
+    .link-wrapper{
+      display: none;
+    }
+    .login-link-wrapper {
+      display: none;
+    }
+    .eng-link-wrapper {
+      display: none;
+    }
+    .header-burger{
+      display: block;
     }
   }
 }

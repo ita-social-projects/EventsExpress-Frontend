@@ -7,8 +7,6 @@ import image5 from "../landing-images/5.jpg";
 import image6 from "../landing-images/6.jpg";
 import image7 from "../landing-images/7.jpg";
 import image8 from "../landing-images/8.jpg";
-// import HeadArticleButtons from "../HeadArticleButtons/HeadArticleButtons";
-import HeadArticleSearch from "../HeadArticleSearch/HeadArticleSearch";
 
 const imagesPreload = [
   image1,
@@ -32,7 +30,7 @@ class HeadArticle extends Component {
 
   async componentDidMount() {
     this.interval = setInterval(() => {
-      this.setState((prevState) => ({
+      this.setState(prevState => ({
         currentImageCounter:
           (prevState.currentImageCounter + 1) % imagesPreload.length,
         currentImage: imagesPreload[prevState.currentImageCounter],
@@ -50,9 +48,7 @@ class HeadArticle extends Component {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
-      >
-        <HeadArticleSearch />
-      </article>
+      ></article>
     );
   }
 }

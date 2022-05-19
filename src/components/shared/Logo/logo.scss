@@ -23,7 +23,7 @@
 
   .logo__textExpress {
     color: $white;
-    text-shadow: 0 0 3px $gray , 0 0 5px $lightThemeAccept;
+    text-shadow: 0 0 3px $gray, 0 0 5px $lightThemeAccept;
     font-size: $fontsize-24;
     font-weight: $bold;
   }
@@ -31,6 +31,22 @@
   .logo__image {
     width: 58px;
     height: 29px;
+  }
+}
+@media (max-width: $laptop-breakpoint) {
+  .logo {
+    left: 100px;
+    .logo__textEvents {
+      font-size: $fontsize-14;
+    }
+
+    .logo__textExpress {
+      font-size: $fontsize-14;
+    }
+    .logo__image {
+      width: 48px;
+      height: 24px;
+    }
   }
 }
 @media (max-width: $mobile-breakpoint) {
