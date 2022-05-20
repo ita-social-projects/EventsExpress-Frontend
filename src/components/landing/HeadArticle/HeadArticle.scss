@@ -85,7 +85,13 @@ $boxShadowImage: 0 0 5px $white, 0 0 10px $white, 0 0 20px $white,
       width: 100%;
       max-width: 800px;
       transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
-
+      
+      &.blur.lazy-load-image-loaded {
+        transition: 2s ease-in-out;
+      }
+      &:hover{
+        transform: none;
+      }
       img {
         width: 100%;
         height: 500px;
