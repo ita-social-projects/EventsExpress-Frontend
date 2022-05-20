@@ -1,6 +1,5 @@
 @import '../../styles/colors.scss';
 @import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
 
 .footer__container {
   width: 100%;
@@ -9,13 +8,13 @@
   z-index: 101;
 
   .footer__inner {
+
     .footer__head {
       background-color: $purpleDark;
       padding: 10px;
 
       .head__text {
-        color: $lightPink;
-        font-family: $quoteFont;
+        color: #F0EAF4;
         font-size: 40px;
         font-weight: 400;
         margin: 0;
@@ -30,14 +29,12 @@
 
       .footer__contacts {
         .contact__us {
-          font-family: $mainFont;
           font-size: 24px;
           font-weight: 700;
           margin: 0;
         }
 
         .contact__number {
-          font-family: $mainFont;
           font-size: 18px;
           font-weight: 700;
           margin-top: 10px;
@@ -46,7 +43,6 @@
 
       .footer__subscribe {
         .subscibe__us {
-          font-family: $mainFont;
           font-size: 24px;
           font-weight: 700;
         }
@@ -57,6 +53,7 @@
           position: relative;
 
           .footer__input {
+
             width: 270px;
             height: 40px;
             padding: 8px 25px;
@@ -77,7 +74,6 @@
 
       .footer__social_links {
         .our__socials {
-          font-family: $mainFont;
           font-size: 24px;
           font-weight: 700;
           margin: 0;
@@ -208,6 +204,7 @@
 
           .footer__social_links_icons {
             .link__icon {
+
               .social__icon {
                 font-size: 20px;
               }
@@ -278,6 +275,7 @@
             margin: 0;
 
             .link__icon {
+
               .social__icon {
                 font-size: 16px;
               }
