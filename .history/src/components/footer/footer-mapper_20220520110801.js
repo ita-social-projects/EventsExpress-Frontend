@@ -13,7 +13,7 @@ const SOCIAL_LINKS = [
   { icon: STYLE_ICON_YOUTUBE, link: LINK_YOUTUBE },
 ];
 
-const SOCIAL_NAV_LINKS = SOCIAL_LINKS.map(({ link, icon }) => (
+ const SOCIAL_NAV_LINKS = SOCIAL_LINKS.map(({ link, icon }) => (
   <a
     target="_blank"
     rel="noreferrer"

@@ -15,6 +15,7 @@ const {
 } = FOOTER_LABELS;
 
 const Footer = () => {
+  console.log(SOCIAL_NAV_LINKS);
   return (
     <footer className="footer__container">
       <div className="footer__inner">
