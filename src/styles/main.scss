@@ -1,6 +1,5 @@
 @import 'normalize.css';
-@import "./variables";
-@import "./generalSettings";
-@import "./resetStyles";
-@import "./buttons";
-@import "./mixins";
+@import "./generalSettings.scss";
+@import "./resetStyles.scss";
+@import "./buttons.scss";
+@import "./colors.scss"

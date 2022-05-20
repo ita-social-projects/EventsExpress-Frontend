@@ -1,4 +1,5 @@
-@import "../../styles/main.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
 
 .header {
   background: $headerBackground;
@@ -6,7 +7,7 @@
   width: 100%;
   text-align: center;
   z-index: 50;
-  position: sticky;
+  position: fixed;
   top: 0;
   display: flex;
   align-items: center;
