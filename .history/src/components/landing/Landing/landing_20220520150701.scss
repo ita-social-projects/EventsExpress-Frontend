@@ -1,3 +1,5 @@
+@import "../../../styles/main.scss.scss";
+
 .upcoming__events__navigation {
   margin: 80px 0px 50px 0px;
   display: flex;
@@ -107,4 +109,10 @@ a {
 /* TODO: I think this is a temporary solution. Work on this landing page still needs to be done and will be done in the future */
 .main__upcoming {
   padding: 10px 5px;
+}
+
+@media screen and (max-width: $mediaMobileScreen ) {
+  .upcoming__events__navigation {
+    flex-direction: column;
+  }
 }

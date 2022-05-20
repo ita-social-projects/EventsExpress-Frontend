@@ -36,13 +36,13 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
     <div className="main">
       <HeadArticle />
       {items.length !== 0 && (
-        <div className="container">
-          <div className="upcoming__events__navigation">
-            <HeadArticleSearch />
-            <EventsViewMode setViewMode={setEventsViewMode} />
+          <div className="container">
+            <div className="upcoming__events__navigation">
+              <HeadArticleSearch />
+              <EventsViewMode setViewMode={setEventsViewMode} />
+            </div>
+            {viewModeSwitcher(items, eventsViewMode)}
           </div>
-          {viewModeSwitcher(items, eventsViewMode)}
-        </div>
       )}
     </div>
   );

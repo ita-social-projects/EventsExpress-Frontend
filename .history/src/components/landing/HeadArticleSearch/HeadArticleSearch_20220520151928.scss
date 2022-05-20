@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .HeadArticleSearchForm {
@@ -33,20 +34,4 @@
   font-size: 18px;
   background-color: transparent;
   border: none;
-}
-
-@media screen and (max-width: $mediaMobileScreen) {
-  .HeadArticleSearchForm {
-    height: 45px;
-    padding: 0px 20px;
-
-    .search__icon {
-      width: 20px;
-      height: 30px;
-    }
-  }
-
-  .HeadArticleSearchInput {
-    font-size: 16px;
-  }
 }

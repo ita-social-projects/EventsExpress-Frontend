@@ -4,14 +4,17 @@ import { connect } from "react-redux";
 import "./landing.scss";
 import { getUpcomingEvents } from "../../../actions/event/event-list-action";
 import HeadArticle from "../HeadArticle/HeadArticle";
+import landingConstants from "../../../constants/landingConstants";
 import EventsViewMode from "../EventsViewMode/EventsViewMode";
 import viewModeSwitcher from "../../helpers/landingUtils";
 import {
   viewModeTypes,
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
 } from "../../../constants/EventsViewModeConstants";
+import SectionHeader from "../../SectionHeader/SectionHeader";
 import HeadArticleSearch from "../HeadArticleSearch/HeadArticleSearch";
 
+const { UPCOMING_EVENTS } = landingConstants;
 const { SLIDER } = viewModeTypes;
 
 const Landing = ({ getUpcomingEventsDispatch, events }) => {
@@ -36,13 +39,19 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
     <div className="main">
       <HeadArticle />
       {items.length !== 0 && (
-        <div className="container">
-          <div className="upcoming__events__navigation">
-            <HeadArticleSearch />
-            <EventsViewMode setViewMode={setEventsViewMode} />
+        <>
+          {/* TODO: I think this is a temporary solution. Work on this landing page still needs to be done and will be done in the future */}
+          <section className="main__upcoming">
+            <SectionHeader title={UPCOMING_EVENTS} />
+          </section>
+          <div className="container">
+            <div className="upcoming__events__navigation">
+              <HeadArticleSearch />
+              <EventsViewMode setViewMode={setEventsViewMode} />
+            </div>
+            {viewModeSwitcher(items, eventsViewMode)}
           </div>
-          {viewModeSwitcher(items, eventsViewMode)}
-        </div>
+        </>
       )}
     </div>
   );

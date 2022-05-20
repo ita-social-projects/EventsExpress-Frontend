@@ -1,0 +1,119 @@
+@import "../../../styles/main.scss";
+
+.upcoming__events__navigation {
+  margin: 80px 0px 50px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+article {
+  height: 100vh;
+}
+
+a {
+  font-size: 1.5em;
+}
+
+.row {
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center;
+}
+
+.col-md-1 {
+  margin: 0;
+  padding: 0;
+}
+
+.col-md-2 {
+  margin: 0;
+  padding: 0;
+}
+
+.col-md-10 {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  color: #212529 !important;
+}
+
+.button-container {
+  width: fit-content;
+  position: relative;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button-container>h2 {
+  color: white;
+  text-align: center;
+  filter: drop-shadow(0.05em 0.05em orange);
+}
+
+.btn {
+  width: fit-content;
+  font-size: 1.3em;
+  margin: 0 !important;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.works-article {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.icons-wrapper {
+  font-size: 4em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.events-article {
+  padding: 2.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.events-article .row {
+  flex-wrap: nowrap;
+}
+
+.carousel-block {
+  padding: 5vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.card {
+  height: 22.5vw !important;
+  width: 20vw;
+  max-width: 20vw;
+}
+
+/* TODO: I think this is a temporary solution. Work on this landing page still needs to be done and will be done in the future */
+.main__upcoming {
+  padding: 10px 5px;
+}
+
+@media screen and (max-width: $mediaMobileScreen ) {
+  .upcoming__events__navigation {
+    margin: 40px 0px 30px 0px;
+    flex-direction: column-reverse;
+  }
+}
