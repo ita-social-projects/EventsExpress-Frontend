@@ -1,9 +1,9 @@
-@use '../../../styles/mixins';
+@import '../../../styles/mixins';
 
 $white: #ffffff;
 $black: #000000;
 $purple: #9505b2;
-$bannerBgGradient: linear-gradient(0deg, #00000080, #000000e6);
+$bannerBgGradient: linear-gradient(0deg, $black, $black);
 $bannerBackground: $bannerBgGradient ,url("https://i.pinimg.com/originals/4c/41/75/4c4175fc9f1274b6d732d5b5038f168d.jpg");
 
 $textShadowNeon: 0 0 5px $white,
@@ -18,13 +18,13 @@ $boxShadowImage: 0 0 5px $white,
 
 
 .banner {
-    @include mixins.flex(row, center, space-between);
+    @include flex(row, center, space-between);
     background: $bannerBackground;
     padding: 150px;
     width: 100%;
     height: 70vh;
     .banner-content {
-        @include mixins.flex(column, flex-start, space-between);
+        @include flex(column, flex-start, space-between);
         flex: 2;
         height: 100%;
         padding: 20px 0;
@@ -62,7 +62,7 @@ $boxShadowImage: 0 0 5px $white,
     }
 
     .banner-img {
-        @include mixins.flex(row, center, center);
+        @include flex(row, center, center);
         flex: 5;
         height: 100%;
         .lazy-load-image-background {
@@ -94,7 +94,7 @@ $boxShadowImage: 0 0 5px $white,
         padding: 50px;
         flex-direction: column;
         .banner-content {
-            @include mixins.flex(column, center, space-evenly);
+            @include flex(column, center, space-evenly);
             order: 2;
             height: 30%;
             text-align: center;
