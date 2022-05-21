@@ -51,9 +51,9 @@
     display: none;
     .burger-line{
       width: 30px;
-      height: 5px;
+      height: 3px;
       background-color: black;
-      margin-bottom: 2px;
+      margin-bottom: 5px;
       border-radius: 10px;
     }
   }
@@ -81,7 +81,7 @@
   }
 }
 
-@media (max-width: 591px) {
+@media screen and (max-width: $tablet-breakpoint) {
   .header-links-wrapper {
     .link-wrapper{
       display: none;

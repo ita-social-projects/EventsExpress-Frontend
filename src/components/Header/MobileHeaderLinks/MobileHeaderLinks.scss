@@ -1,0 +1,23 @@
+@import "../../../styles/main.scss";
+
+.mobile-header-links-wrapperr{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color:#FFFFFF;
+    width: 100vw;
+    height: 100vh;
+    padding-top:100px;
+    text-decoration-color: green;
+    .link-wrapper{
+        font-size: 20px;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+}
+
+@media (min-width: $tablet-breakpoint) {
+    .mobile-header-links-wrapperr{
+        display: none;
+    }
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import {
   ABOUT_US,
   CREATE,
@@ -11,7 +12,7 @@ import union from "./icons/union.png";
 import planet from "./icons/planet.png";
 import "./HeaderLinks.scss";
 
-const HeaderLinks = (/* { setIsMobileHeaderOpen } */) => {
+const HeaderLinks = ({ setIsMobileHeaderOpen }) => {
   return (
     <nav>
       <ul className="header-links-wrapper">
@@ -24,14 +25,12 @@ const HeaderLinks = (/* { setIsMobileHeaderOpen } */) => {
         <li>
           <Link className="link-wrapper" to="/#">{`${CREATE}`}</Link>
         </li>
-
         <li>
           <Link className="login-link-wrapper" to="/#">
             <div className="login-link">{`${LOGIN}`}</div>
             <img src={union} alt="" />
           </Link>
         </li>
-
         <li>
           <Link className="eng-link-wrapper" to="/#">
             <div className="eng-link" to="/#">{`${ENG}`}</div>
@@ -40,7 +39,7 @@ const HeaderLinks = (/* { setIsMobileHeaderOpen } */) => {
         </li>
         <button
           type="button"
-          /* onClick={() => setIsMobileHeaderOpen(true)} */
+          onClick={() => setIsMobileHeaderOpen(true)}
           className="header-burger"
         >
           <div className="burger-line"></div>
@@ -50,6 +49,14 @@ const HeaderLinks = (/* { setIsMobileHeaderOpen } */) => {
       </ul>
     </nav>
   );
+};
+
+HeaderLinks.propTypes = {
+  setIsMobileHeaderOpen: PropTypes.func,
+};
+
+HeaderLinks.defaultProps = {
+  setIsMobileHeaderOpen: () => {},
 };
 
 export default HeaderLinks;
