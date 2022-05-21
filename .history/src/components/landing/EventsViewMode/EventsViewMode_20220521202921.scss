@@ -1,10 +1,5 @@
-@import '../../../styles/variables.scss';
-
 .menu-view-mode {
   margin: 20px 0px;
-  display: flex;
-  justify-content: end;
-  align-items: center;
 }
 
 .menu-view-mode__button {
@@ -23,11 +18,4 @@
 
 .menu-view-mode__button_slider {
   background: url("../../../assets/icons/ImgEventsViewModeSlider.svg") no-repeat center;
-}
-
-@media screen and (max-width: $mediaMobileScreen) {
-  .menu-view-mode__button {
-    width: 32px;
-    height: 32px;
-  }
 }
