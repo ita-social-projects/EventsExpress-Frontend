@@ -24,14 +24,7 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // TODO: NOWHERE USED BUT PROBABLY IT NEED
-  // nowhere used
-  // const handleClick = () => {
-  //   onSubmit();
-  // };
-
   const { items } = events.data;
-
   return (
     <div className="main">
       <HeadArticle />
