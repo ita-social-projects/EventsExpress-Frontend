@@ -142,5 +142,5 @@
 			"last 1 safari version"
 		]
 	},
-	"proxy": "https://eventsexpress-test.azurewebsites.net/"
+	"proxy": "http://localhost:5000/"
 }
