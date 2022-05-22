@@ -23,6 +23,7 @@ const {
   MEMBER1,
   MEMBER2,
   MEMBER3,
+  MEMBERS_TITLE,
 } = constants;
 
 const INFO_CARDS = [
@@ -68,17 +69,20 @@ const AboutUs = () => {
       </div>
 
       <div className="about-members">
-        {MEMBERS.map(({ name, description, img }) => (
-          <div className="member" key={name}>
-            <div className="member__image">
-              <img src={img} alt={name} />
+        <h3 className="members-title">{MEMBERS_TITLE}</h3>
+        <div className="members-container">
+          {MEMBERS.map(({ name, description, img }) => (
+            <div className="member" key={name}>
+              <div className="member__image">
+                <img src={img} alt={name} />
+              </div>
+              <div className="member__info">
+                <h2 className="member__name">{name}</h2>
+                <p className="member__description">{description}</p>
+              </div>
             </div>
-            <div className="member__info">
-              <h1 className="member__name">{name}</h1>
-              <p className="member__description">{description}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
