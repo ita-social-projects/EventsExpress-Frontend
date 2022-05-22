@@ -14,6 +14,10 @@ import image8 from "../landing-images/8.jpg";
 import "./HeadArticle.scss";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
+import constants from "../../../constants/HeadArticle";
+
+const { BANNER_TEXT_1, BANNER_TEXT_2, BANNER_BUTTON_TEXT } = constants;
+
 const imagesPreload = [
   image1,
   image2,
@@ -44,11 +48,11 @@ const HeadArticle = () => {
     <article className="banner">
       <div className="banner-content">
         <div className="banner-text">
-          <h3>Don’t stay at home! </h3>
-          <h4>Join Us To Have Fun And Improve Yourself</h4>
+          <h3>{BANNER_TEXT_1}</h3>
+          <h4>{BANNER_TEXT_2}</h4>
         </div>
         <Link to="/home/events" className="banner-button" type="button">
-          Look For Events
+          {BANNER_BUTTON_TEXT}
         </Link>
       </div>
       <div className="banner-img">
