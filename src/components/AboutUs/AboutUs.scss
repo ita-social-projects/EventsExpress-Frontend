@@ -1,7 +1,6 @@
-$black: #000000;
-$purple: #180C30;
-$white: #FFFFFF;
-$lightPink: #F0EAF4; 
+@import "../../styles/variables.scss";
+@import "../../styles/colors.scss";
+
 
 
 @mixin info-text($textAlign) {

@@ -1,0 +1,323 @@
+@import "../../styles/variables";
+
+.split-panels {
+  display: flex;
+
+  .gutter.gutter-vertical {
+    background-color: #f7f2ff;
+    cursor: row-resize;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+
+    &.collapsed {
+      opacity: 0.6;
+
+      & > *:not(.option-button) {
+        display: none;
+      }
+    }
+
+    & > div:not(.option-button) {
+      width: 100%;
+    }
+  }
+
+  .discover-button-container {
+    height: 132px;
+    display: flex;
+    padding: 0 128px;
+
+    .discover-button > button {
+      color: $white;
+    }
+
+    .discover-button {
+      height: 40px;
+      width: 180px;
+      font-weight: bold;
+      font-size: inherit;
+      border: 2px solid $lightThemeAccept;
+      border-radius: $buttonBorderRadius;
+      padding: 8px 24px;
+      cursor: pointer;
+      transition: 0.5s all;
+
+      & > button {
+        display: flex;
+      }
+
+      &__icon {
+        font-size: 20px;
+      }
+
+      &:hover {
+        color: darken($color: $lightThemeAccept, $amount: 15%);
+        border-color: darken($color: $lightThemeAccept, $amount: 15%);
+        background-color: #e6e6e6;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .collapse-button-icon {
+    font-size: 40px;
+  }
+
+  .option-button {
+    height: 40px;
+    width: 40px;
+    top: calc(50% - 20px);
+    position: absolute;
+  }
+
+  .left-side {
+    background-color: #f7f2ff;
+    z-index: 1;
+
+    &.full-size > .left-side__text {
+      font-size: 96px;
+    }
+
+    &__text {
+      padding: 16px 40px 68px 80px;
+      color: $black;
+      font-weight: bold;
+      font-size: 80px;
+      line-height: 92px;
+      user-select: none;
+
+      span {
+        font-size: inherit;
+      }
+
+      &__highlights {
+        position: relative;
+        display: inline-block;
+
+        &:before {
+          content: "";
+          position: absolute;
+          background-color: $lightThemeAccept;
+          z-index: -1;
+          height: 80px;
+          width: 152px;
+          top: 12px;
+        }
+
+        &.first-square:before {
+          right: -8px;
+        }
+        &.second-square:before {
+          left: -11px;
+        }
+        &.third-square:before {
+          right: -12px;
+        }
+        &.fourth-square:before {
+          left: 44px;
+        }
+      }
+    }
+
+    .option-button {
+      right: 32px;
+    }
+
+    .discover-button-container {
+      justify-content: flex-end;
+
+      .discover-button > button {
+        color: $black;
+      }
+
+      .discover-button {
+        border: 2px solid $lightThemeAccept;
+        border-radius: $buttonBorderRadius;
+
+        &:hover {
+          color: darken($color: $lightThemeAccept, $amount: 15%);
+          border-color: darken($color: $lightThemeAccept, $amount: 15%);
+          background-color: #e6e6e6;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .right-side {
+    background-image: url("../../mockup-images/SecondScreenPanel.jpg");
+    background-size: cover;
+
+    .discover-button-container {
+      .discover-button > button {
+        color: $white;
+      }
+
+      .discover-button {
+        color: $white;
+        border: 2px solid $white;
+        border-radius: $buttonBorderRadius;
+
+        &:hover {
+          color: darken($color: $lightThemeAccept, $amount: 15%);
+          border-color: darken($color: $lightThemeAccept, $amount: 15%);
+          background-color: $lightThemeAccept;
+          text-decoration: none;
+        }
+      }
+    }
+
+    &__text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+
+      & > div {
+        font-weight: 900;
+        font-size: 48px;
+        color: $white;
+        background: $transparentBlackBackground;
+        padding: 20px;
+        width: calc(100% - 112px - 100px);
+        user-select: none;
+        // z-index: ;
+      }
+    }
+
+    .option-button {
+      left: 32px;
+    }
+  }
+}
+
+@media screen and (max-width: $mediaFirstTabletScreen) {
+  .split-panels {
+    > div > div:not(.option-button) {
+      width: 120%;
+    }
+
+    .discover-button-container {
+      .discover-button {
+        &__about {
+          font-size: 13px;
+        }
+      }
+    }
+
+    .right-side {
+      &__text {
+        & > div {
+          font-size: 25px;
+          line-height: 32px;
+          padding: 30px;
+        }
+      }
+    }
+  }
+
+  .split-panels .left-side {
+    &__text {
+      font-size: 45px;
+      line-height: 82px;
+      padding-left: 70px;
+      padding-top: 93px;
+
+      &__highlights {
+        &:before {
+          height: 50px;
+          width: 92px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mediaSecondTabletScreen) {
+  .split-panels {
+    > div > div:not(.option-button) {
+      width: 120%;
+    }
+
+    .discover-button-container {
+      .discover-button {
+        &__about {
+          font-size: 13px;
+        }
+      }
+    }
+
+    .right-side {
+      &__text {
+        & > div {
+          font-size: 25px;
+          line-height: 32px;
+          padding: 30px;
+        }
+      }
+    }
+  }
+
+  .split-panels .left-side {
+    &__text {
+      font-size: 45px;
+      line-height: 82px;
+      padding-left: 70px;
+      padding-top: 93px;
+
+      &__highlights {
+        &:before {
+          height: 50px;
+          width: 92px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mediaFirstTabletScreen) {
+  .split-panels {
+    height: calc(100vh - 78px) !important; //header footer
+
+    > .left-side {
+      display: none;
+    }
+
+    .option-button {
+      display: none;
+    }
+
+    > .right-side {
+      width: 100% !important;
+
+      & > .header-text {
+        width: auto;
+        padding: auto;
+        & > div {
+          width: calc(100% - 72px);
+          font-size: 38px;
+          line-height: 46px;
+          padding: 36px;
+        }
+      }
+
+      .discover-button-container {
+        height: unset;
+        margin: 32px auto 80px;
+        width: 180px;
+        padding: unset;
+        .discover-button {
+          &__about {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

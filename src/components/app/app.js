@@ -34,6 +34,7 @@ import getConfig from "../../actions/config/get-config-action";
 import RegistrationForm from "../RegistrationForm";
 import MainLayout from "../MainLayout";
 import AboutUs from "../AboutUs/AboutUs";
+import SplitPanels from "../SplitPanels/SplitPanels";
 
 class App extends Component {
   UserRoleSecurity = withAuthRedirect(["User"]);
@@ -54,7 +55,7 @@ class App extends Component {
         <MainLayout>
           <Switch>
             <Route path="/landing" component={LandingWrapper} />
-            <Route exact path="/" render={() => <Redirect to="/landing" />} />
+            <Route exact path="/" component={SplitPanels} />
             <Route path="/registrationForm" component={RegistrationForm} />
             <Route path="/about" component={AboutUs} />
             <Route>
