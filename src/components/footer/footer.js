@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoMdSend } from "react-icons/io";
 import "./footer.scss";
+import emailjs from "@emailjs/browser";
 import { FOOTER_LABELS } from "../../constants/footerConstants";
 import SOCIAL_NAV_LINKS from "./footer-mapper";
 
@@ -15,6 +16,24 @@ const {
 } = FOOTER_LABELS;
 
 const Footer = () => {
+  const [values, setValues] = useState({
+    email: "",
+  });
+  const subscribeWithEmail = e => {
+    e.preventDefault();
+    emailjs
+      .send("service_hxod138", "template_1k257d8", values, "hIa6EbQItOhL_Sxmg")
+      .then(
+        result => {
+          // eslint-disable-next-line no-console
+          console.log(result.text);
+        },
+        error => {
+          // eslint-disable-next-line no-console
+          console.log(error.text);
+        },
+      );
+  };
   return (
     <footer className="footer__container">
       <div className="footer__inner">
@@ -33,10 +52,21 @@ const Footer = () => {
             <form className="footer__form">
               <input
                 type="email"
+                name="email"
+                onChange={e =>
+                  // eslint-disable-next-line no-shadow
+                  setValues(values => ({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  }))
+                }
                 placeholder={PASTE_YOUR_EMAIL}
                 className="footer__input"
               />
-              <IoMdSend className="footer__subscribe__icon" />
+              <IoMdSend
+                onClick={subscribeWithEmail}
+                className="footer__subscribe__icon"
+              />
             </form>
           </div>
           <div className="footer__social_links">
