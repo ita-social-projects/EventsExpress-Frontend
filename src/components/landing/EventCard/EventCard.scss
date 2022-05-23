@@ -1,29 +1,101 @@
 @import "../../../styles/main.scss";
 
 .event-card {
-  position: relative;
-  display: inline-block;
-  max-width: 350px;
-  margin: 10px;
-
-  &__poster {
-    border-radius: 20px;
+  width: 300px;
+  margin: 15px;
+  box-shadow: 10px 10px 22px 0 rgba(0, 0, 0, 0.75);
+  background-color: $white;
+  .card-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    .card-image{
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:300px;
+      height: 150px;
+      object-fit:cover;
+    }
   }
-
-  &__inner-container {
-    max-width: 320px;
-    position: absolute;
-    top: 70px;
-    left: 10px;
-    border-radius: 20px;
-    background-color: $transparentBlackBackground;
+  .card-content {
+    width: 100%;
+    height: 150px;
+    padding: $minPadding;
+    display: flex;
+    .card-date {
+      width: 150px;
+      position: relative;
+      padding: $minPadding;
+      .date-container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .day {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: $lightThemeAccept;
+          font-family: 'Robinson', sans-serif;
+          height: 100px;
+          text-shadow: 0 0 20px $white;
+          margin-bottom: 15px;
+          font-weight: bold;
+          font-size: 80px;
+        }
+      }
+    }
+    .card-info {
+      padding: $minPadding;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .card-info-header {
+        padding: $minPadding;
+        height: 100%;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 14px;
+        color: $black;
+        align-items: center;
+      }
+      .card-buttons {
+        padding: $minPadding;
+        height: 40px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .like, .more {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 40px;
+          padding: $minPadding;
+        }
+        .more {
+          margin-left: 15px;
+          background-color: $lightThemeAccept;
+          color: $white;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
   }
-
-  &__inner-text {
-    margin: 10px 6px 10px 15px;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 127.9%;
-    color: $white;
+  .month {
+    padding: $minPadding;
+    color: $lightThemeAccept;
+    font-family: 'Robinson', sans-serif;
+    height: 40px;
+    text-transform: uppercase;
+    font-size: 45px;
   }
 }

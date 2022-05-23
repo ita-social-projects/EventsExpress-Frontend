@@ -4,6 +4,7 @@ $mainFont: "Montserrat", sans-serif;
 
 $black: #000;
 $white: #fff;
+$red: #cd2121;
 $gray: #f2f2f2;
 $lightThemeBackground: #fff;
 $lightThemeAccept: #6c488a;
@@ -19,6 +20,9 @@ $mediaMobileScreen: 575px;
 $widthForContentPcScreen: 930px;
 $widthForContentFirstTabletScreen: 730px;
 $widthForContentSecondTabletScreen: 560px;
+$widthForContentThirdTabletScreen: 490px;
+$usualMobile: 490px;
+$iphoneSE: 376px;
 
 $transparentBlackBackground: #00000054;
 $headerBackground: #f7f4f466;
@@ -27,6 +31,7 @@ $transparentGreyBackground: #74747466;
 
 $defaultBorderRadius: 20px;
 $buttonBorderRadius: 10px;
+$minPadding: 5px;
 
 $mobile-breakpoint: 426px;
 
