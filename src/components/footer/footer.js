@@ -33,6 +33,15 @@ const Footer = () => {
           console.log(error.text);
         },
       );
+    setValues({ email: "" });
+  };
+  const handleChange = e => {
+    e.persist();
+    // eslint-disable-next-line no-shadow
+    setValues(values => ({
+      ...values,
+      [e.target.name]: e.target.value,
+    }));
   };
   return (
     <footer className="footer__container">
@@ -53,13 +62,8 @@ const Footer = () => {
               <input
                 type="email"
                 name="email"
-                onChange={e =>
-                  // eslint-disable-next-line no-shadow
-                  setValues(values => ({
-                    ...values,
-                    [e.target.name]: e.target.value,
-                  }))
-                }
+                onChange={e => handleChange(e)}
+                value={values.email}
                 placeholder={PASTE_YOUR_EMAIL}
                 className="footer__input"
               />
