@@ -19,7 +19,6 @@ import Authentication from "../Authentication/authentication";
 import Chat from "../chat";
 import UserChats from "../chat/user_chats";
 import NotificationEvents from "../notification_events";
-import ContactAdminWrapper from "../../containers/contactAdmin/contactAdmin-container";
 import ContactAdminDetails from "../../containers/contactAdmin/contactAdmin-details-container";
 import RegisterCompleteWrapper from "../../containers/register-complete-wrapper";
 import Admin from "../admin";
@@ -35,6 +34,7 @@ import RegistrationForm from "../RegistrationForm";
 import MainLayout from "../MainLayout";
 import AboutUs from "../AboutUs/AboutUs";
 import SplitPanels from "../SplitPanels/SplitPanels";
+import ReportForm from "../contactAdmin/ReportForm";
 
 class App extends Component {
   UserRoleSecurity = withAuthRedirect(["User"]);
@@ -126,7 +126,7 @@ class App extends Component {
                     path="/chat/:chatId"
                     component={this.AdminAndUserRoleSecurity(Chat)}
                   />
-                  <Route path="/contactAdmin" component={ContactAdminWrapper} />
+                  <Route path="/contactAdmin" component={ReportForm} />
                   <Route path="/registerSuccess" component={RegisterSuccess} />
                   <Route
                     path="/editEvent/:id"
