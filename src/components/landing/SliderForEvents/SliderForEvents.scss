@@ -1,3 +1,5 @@
+@import "../../../../src/styles/variables";
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -22,14 +24,14 @@
 }
 .slick-dots li button:before {
   content: " ";
-  background: #D8D8D8;
+  background: $gray;
   opacity: 1;
   height: 4px;
   width: 40px;
 }
 .slick-dots li.slick-active button:before {
-  content: " ";
-  background: #0080AD;
+  content: "";
+  background: $lightThemeAccept;
   opacity: 1;
   height: 4px;
   width: 40px;

@@ -2,12 +2,27 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { BiRightArrowAlt } from "react-icons/bi";
+import moment from "moment";
 import IconsEventCard from "./IconsEventCard/IconsEventCard";
-
 import "./EventCard.scss";
 
 const EventCard = ({ event }) => {
-  const { id, title, photo } = event;
+  const { id, title, photo, dateFrom } = event;
+  const monthes = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const monthIndex = moment(dateFrom).format("M") - 1;
 
   return (
     <div className="event-card">
@@ -17,7 +32,7 @@ const EventCard = ({ event }) => {
       <div className="card-content">
         <div className="card-date">
           <div className="date-container">
-            <span className="day">12</span>
+            <span className="day">{moment(dateFrom).format("DD")}</span>
           </div>
         </div>
         <div className="card-info">
@@ -32,7 +47,7 @@ const EventCard = ({ event }) => {
           </div>
         </div>
       </div>
-      <span className="month">september</span>
+      <span className="month">{monthes[monthIndex]}</span>
     </div>
   );
 };

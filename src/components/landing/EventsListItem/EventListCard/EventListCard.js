@@ -1,29 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { BiRightArrowAlt } from "react-icons/bi";
-import PhotoService from "../../../../services/PhotoService";
-import eventDefaultImage from "../../../../constants/eventDefaultImage";
+import moment from "moment";
+// import PhotoService from "../../../../services/PhotoService";
+// import eventDefaultImage from "../../../../constants/eventDefaultImage";
 import IconsEventCard from "../../EventCard/IconsEventCard/IconsEventCard";
 import "./EventListCard.scss";
 
-const photoService = new PhotoService();
-
 const EventListCard = ({ event }) => {
-  const { id, photo, title, description, location } = event;
+  const { id, photo, title, description, location, dateFrom } = event;
   const ovner = event.organizers[0].username;
-
-  const [eventImage, setEventImage] = useState(eventDefaultImage);
-
-  useEffect(() => {
-    photoService.getFullEventPhoto(photo?.id).then(eventFullImage => {
-      if (eventFullImage !== null && eventFullImage !== undefined) {
-        setEventImage(URL.createObjectURL(eventFullImage));
-      }
-    });
-
-    return () => URL.revokeObjectURL(eventImage);
-  }, [photo?.id, eventImage]);
+  const monthes = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const monthIndex = moment(dateFrom).format("M") - 1;
 
   return (
     <div className="card__item_container">
@@ -44,8 +46,8 @@ const EventListCard = ({ event }) => {
         </div>
         <div className="card__item_bottom-row">
           <div className="event-date">
-            <span className="day">01</span>
-            <span className="month">March</span>
+            <span className="day">{moment(dateFrom).format("DD")}</span>
+            <span className="month">{monthes[monthIndex]}</span>
           </div>
           <span className="card__item_footer event-location">{location}</span>
           <IconsEventCard className="card__item_footer" styleForIcon="list" />
