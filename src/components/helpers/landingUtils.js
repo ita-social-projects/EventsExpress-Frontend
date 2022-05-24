@@ -9,15 +9,18 @@ import {
 
 const { SLIDER, LIST, MATRIX } = viewModeTypes;
 
-const viewModeSwitcher = (events, viewModeType) => {
+const viewModeSwitcher = (events, viewModeType, filterTitle) => {
+  const eventsFiltered = events.filter(event =>
+    event.title.includes(filterTitle),
+  );
   localStorage.setItem(VIEW_MODE_KEY_FOR_LOCAL_STORAGE, viewModeType);
   switch (viewModeType) {
     case SLIDER:
-      return <SliderForEvents events={events} />;
+      return <SliderForEvents events={eventsFiltered} />;
     case LIST:
-      return <EventsListItem events={events} />;
+      return <EventsListItem events={eventsFiltered} />;
     case MATRIX:
-      return <EventMatrix events={events} />;
+      return <EventMatrix events={eventsFiltered} />;
     default:
       return <></>;
   }

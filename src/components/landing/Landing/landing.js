@@ -15,6 +15,7 @@ import HeadArticleSearch from "../HeadArticleSearch/HeadArticleSearch";
 const { SLIDER } = viewModeTypes;
 
 const Landing = ({ getUpcomingEventsDispatch, events }) => {
+  const [filterTitle, setFilterTitle] = useState("");
   const viewMode =
     localStorage.getItem(VIEW_MODE_KEY_FOR_LOCAL_STORAGE) || SLIDER;
   const [eventsViewMode, setEventsViewMode] = useState(viewMode);
@@ -31,10 +32,10 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
       {items.length !== 0 && (
         <div className="container">
           <div className="upcoming__events__navigation">
-            <HeadArticleSearch />
+            <HeadArticleSearch setFilter={setFilterTitle} />
             <EventsViewMode setViewMode={setEventsViewMode} />
           </div>
-          {viewModeSwitcher(items, eventsViewMode)}
+          {viewModeSwitcher(items, eventsViewMode, filterTitle)}
         </div>
       )}
     </div>
