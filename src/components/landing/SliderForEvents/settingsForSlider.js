@@ -5,12 +5,17 @@ const settingsForSlider = {
   slidesToShow: 3,
   slidesToScroll: 3,
   swapToSlide: true,
-  arrows: false,
+  arrows: true,
   centerPadding: "0px",
   responsive: [
     {
       breakpoint: 767,
-      settings: { slidesToShow: 1, slidesToScroll: 1, infinite: false },
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: false,
+        arrows: false,
+      },
     },
     {
       breakpoint: 1180,

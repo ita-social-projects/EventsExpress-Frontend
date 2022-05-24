@@ -1,5 +1,46 @@
 @import "../../../../src/styles/variables";
 
+$slick-before-transform-origin: 100% 100%;
+$slick-after-transform-origin: 100% 0%;
+$slick-translate: translate(-75%, -50%);
+$slick-prev-after-translate: translate(-75%, 50%);
+$slick-prev-rotate: 135deg;
+$slick-next-rotate: 45deg;
+
+.slick-prev:before,
+.slick-prev:after,
+.slick-next:before,
+.slick-next:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 25px;
+  background-color: $black;
+  border-radius: 2px;
+}
+
+.slick-prev:before {
+  transform-origin: $slick-before-transform-origin;
+  transform: $slick-translate rotate($slick-prev-rotate);
+}
+.slick-prev:after {
+  transform-origin: $slick-after-transform-origin;
+  transform: $slick-prev-after-translate rotate(calc($slick-prev-rotate * -1));
+}
+
+.slick-next:before {
+  transform-origin: $slick-before-transform-origin;
+  transform: $slick-translate rotate($slick-next-rotate);
+}
+.slick-next:after {
+  transform-origin: $slick-after-transform-origin;
+  transform: $slick-translate rotate(calc($slick-next-rotate * -1));
+}
+
+.slick-prev {
+  left: -40px;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -12,13 +53,7 @@
   display: flex;
   justify-content: center;
 }
-.slick-prev {
-  background: black;
-}
 
-.slick-next {
-  background: black;
-}
 .slick-dots li {
   margin: 0 16px;
 }
