@@ -12,6 +12,7 @@ const UserSearchFilterWrapper = ({ changeFilterDispatch, onReset }) => {
   };
   return (
     <>
+      {/* eslint-disable-next-line */}
       <UserSearchFilter onSubmit={onSubmit} onReset={onReset} />
     </>
   );

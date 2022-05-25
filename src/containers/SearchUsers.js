@@ -41,7 +41,10 @@ class SearchUsers extends Component {
     const { data } = this.props.users;
 
     return (
-      <div className="row">
+      <div
+        className="row"
+        // style={{paddingTop: "50px" }}
+      >
         <div className="col-12">
           <UserSearchFilterWrapper onReset={this.onReset} />
           <SpinnerWrapper showContent={data}>

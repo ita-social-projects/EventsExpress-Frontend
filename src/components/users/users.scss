@@ -1,0 +1,75 @@
+@import "../../styles/main.scss";
+
+.box.card {
+  border-radius: 0.75rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.search_users_form {
+  margin-top: 50px !important;
+  border-radius: 15px;
+  padding: 10px;
+  overflow: hidden;
+  border: 1px solid green;
+
+  .users_search_input {
+ 
+    margin: 10px 0px;
+
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    padding: 5px 15px;
+    // border: 1px solid red;
+    font-size: 18px;
+    line-height: 31px;
+    overflow: hidden;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .users_search_container {
+    .users_search_btns {
+      // width: 250px;
+      width: 100%;
+      border-radius: 15px;
+      padding: 10px, 50px, 10px, 50px;
+
+      color: #ffffff;
+      transition: 0.2s ease-in-out;
+
+      > span {
+        color: #ffffff;
+        text-transform: capitalize;
+      }
+
+      &:disabled,
+      &[disabled] {
+        opacity: 0.5;
+      }
+    }
+
+    > :first-child {
+      margin-right: 10px;
+      background-color: #180c30;
+      border: 1px solid #180c30;
+      &:hover {
+        border: 1px solid #180c30;
+        background-color: #ffffff;
+        > span {
+          color: #180c30;
+        }
+      }
+    }
+
+    > :last-child {
+      background-color: #c91212;
+      border: 1px solid #c91212;
+
+      color: #ffffff;
+      opacity: 0.9;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -2,42 +2,49 @@
 import { reduxForm, Field } from "redux-form";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
-import DialogActions from "@material-ui/core/DialogActions";
-import { renderTextField } from "../helpers/form-helpers";
+import styled from "styled-components";
+import "./users.scss";
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: ${props => props.direction || "row"};
+  justify-content: center;
+`;
 
 const UserSearchFilter = ({ handleSubmit, pristine, submitting, onReset }) => {
   return (
     <>
       <form
         onSubmit={handleSubmit}
-        className="shadow bg-white rounded mt-2 p-2"
+        className="shadow bg-white search_users_form"
       >
         <Field
           name="keyWord"
-          component={renderTextField}
-          type="input"
-          label="Search:"
+          component="input"
+          type="text"
+          placeholder="Search"
+          className="users_search_input"
         />
 
-        <DialogActions>
+        <FlexContainer className="users_search_container">
           <Button
-            fullWidth
+            type="submit"
+            color="primary"
+            disabled={pristine || submitting}
+            className="users_search_btns"
+          >
+            Search
+          </Button>
+          <Button
             type="button"
             color="primary"
             disabled={pristine || submitting}
             onClick={onReset}
+            className="users_search_btns"
           >
-            CLEAR
+            Clear
           </Button>
-          <Button
-            fullWidth
-            type="submit"
-            color="primary"
-            disabled={pristine || submitting}
-          >
-            Search
-          </Button>
-        </DialogActions>
+        </FlexContainer>
       </form>
     </>
   );

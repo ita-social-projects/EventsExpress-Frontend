@@ -83,7 +83,7 @@ const SplitPanels = () => {
       </div>
       <div
         className={["right-side", collapsedIndex === 1 ? "collapsed" : ""].join(
-          " "
+          " ",
         )}
       >
         <div className="option-button">
