@@ -34,7 +34,6 @@ import getConfig from "../../actions/config/get-config-action";
 import RegistrationForm from "../RegistrationForm";
 import MainLayout from "../MainLayout";
 import AboutUs from "../AboutUs/AboutUs";
-import Footer from "../footer/footer";
 import SplitPanels from "../SplitPanels/SplitPanels";
 
 class App extends Component {
@@ -145,7 +144,6 @@ class App extends Component {
             </Route>
           </Switch>
         </MainLayout>
-        <Footer />
       </BrowserRouter>
     );
   }

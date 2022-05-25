@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "../Header/header";
+import Footer from "../footer/footer";
 import AlertContainer from "../../containers/alert";
 import "./main-layout.css";
 
@@ -9,7 +10,7 @@ const MainLayout = ({ children }) => {
     <div className="page-wrapper">
       <Header />
       {children}
-      {/* <Footer /> */}
+      <Footer />
       <AlertContainer />
     </div>
   );
