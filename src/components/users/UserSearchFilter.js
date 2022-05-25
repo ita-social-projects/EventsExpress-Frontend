@@ -8,7 +8,7 @@ import "./users.scss";
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: ${props => props.direction || "row"};
-  justify-content: center;
+  justify-content: ${props => props.justify || "center"};
 `;
 
 const UserSearchFilter = ({ handleSubmit, pristine, submitting, onReset }) => {
