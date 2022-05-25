@@ -11,7 +11,7 @@ const { SLIDER, LIST, MATRIX } = viewModeTypes;
 
 const viewModeSwitcher = (events, viewModeType, filterTitle) => {
   const eventsFiltered = events.filter(event =>
-    event.title.includes(filterTitle),
+    event.title.toLowerCase().includes(filterTitle.toLowerCase()),
   );
   localStorage.setItem(VIEW_MODE_KEY_FOR_LOCAL_STORAGE, viewModeType);
   switch (viewModeType) {
