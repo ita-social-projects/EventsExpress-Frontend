@@ -1,6 +1,6 @@
 const headerConstants = {
   CREATE_EVENT: "Create event",
-  SIGN_IN: "LogIn /SignUp",
+  SIGN_IN: "LogIn",
   LOG_OUT: "Log out",
   HELP: "Help and feedback",
   MY_PROFILE: "My profile",

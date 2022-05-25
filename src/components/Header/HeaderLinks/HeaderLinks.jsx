@@ -1,18 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import {
-  ABOUT_US,
-  CREATE,
-  ENG,
-  EVENTS,
-  LOGIN,
-} from "../../../constants/Header";
-import union from "./icons/union.png";
+import { ABOUT_US, CREATE, ENG, EVENTS } from "../../../constants/Header";
+import BurgerMenuLink from "../BurgerMenu/BurgerMenuLink";
+import HeaderRightBlock from "../headerRightBlock/headerRightBlock";
 import planet from "./icons/planet.png";
 import "./HeaderLinks.scss";
 
-const HeaderLinks = ({ setIsMobileHeaderOpen }) => {
+const HeaderLinks = ({ setIsMobileHeaderOpen, isMobileHeaderOpen }) => {
   return (
     <nav>
       <ul className="header-links-wrapper">
@@ -26,26 +21,13 @@ const HeaderLinks = ({ setIsMobileHeaderOpen }) => {
           <Link className="link-wrapper" to="/#">{`${CREATE}`}</Link>
         </li>
         <li>
-          <Link className="login-link-wrapper" to="/#">
-            <div className="login-link">{`${LOGIN}`}</div>
-            <img src={union} alt="" />
-          </Link>
-        </li>
-        <li>
           <Link className="eng-link-wrapper" to="/#">
             <div className="eng-link" to="/#">{`${ENG}`}</div>
             <img src={planet} alt="" />
           </Link>
         </li>
-        <button
-          type="button"
-          onClick={() => setIsMobileHeaderOpen(true)}
-          className="header-burger"
-        >
-          <div className="burger-line"></div>
-          <div className="burger-line"></div>
-          <div className="burger-line"></div>
-        </button>
+        <HeaderRightBlock isMobileHeaderOpen={isMobileHeaderOpen} />
+        <BurgerMenuLink setIsMobileHeaderOpen={setIsMobileHeaderOpen} />
       </ul>
     </nav>
   );
@@ -53,10 +35,12 @@ const HeaderLinks = ({ setIsMobileHeaderOpen }) => {
 
 HeaderLinks.propTypes = {
   setIsMobileHeaderOpen: PropTypes.func,
+  isMobileHeaderOpen: PropTypes.any,
 };
 
 HeaderLinks.defaultProps = {
   setIsMobileHeaderOpen: () => {},
+  isMobileHeaderOpen: PropTypes.any,
 };
 
 export default HeaderLinks;

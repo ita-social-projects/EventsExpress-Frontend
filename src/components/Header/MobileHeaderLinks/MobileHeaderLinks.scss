@@ -4,14 +4,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color:#FFFFFF;
+    background-color:$white;
     width: 100vw;
     height: 100vh;
     padding-top:100px;
-    text-decoration-color: green;
     .link-wrapper{
-        font-size: 20px;
-        margin-bottom: 25px;
+        font-size: $fontsize-20;
+        margin-bottom: $fontsize-24;
         font-weight: 700;
     }
 }

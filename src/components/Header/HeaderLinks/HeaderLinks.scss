@@ -4,14 +4,13 @@
   display: flex;
   align-items: center;
   position: absolute;
-  right: 50px;
   bottom: 2px;
   top: 10px;
   li {
     margin-left: 50px;
   }
   .link-wrapper {
-    font-family: "Montserrat";
+    font-family: $mainFont;
     font-style: normal;
     font-weight: 700;
     font-size: $fontsize-14;
@@ -46,22 +45,11 @@
       margin-left: 5px;
     }
   }
-  .header-burger{
-    cursor: pointer;
-    display: none;
-    .burger-line{
-      width: 30px;
-      height: 3px;
-      background-color: black;
-      margin-bottom: 5px;
-      border-radius: 10px;
-    }
-  }
 }
 
 @media (max-width: $laptop-breakpoint) {
   .header-links-wrapper {
-    right: 20px;
+    right: 15px;
     li {
       margin-left: 30px;
     }
@@ -83,6 +71,7 @@
 
 @media screen and (max-width: $tablet-breakpoint) {
   .header-links-wrapper {
+
     .link-wrapper{
       display: none;
     }

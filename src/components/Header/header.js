@@ -13,7 +13,10 @@ const Header = () => {
       {isMobileHeaderOpen ? (
         <MobileHeaderLinks setIsMobileHeaderOpen={setIsMobileHeaderOpen} />
       ) : (
-        <HeaderLinks setIsMobileHeaderOpen={setIsMobileHeaderOpen} />
+        <HeaderLinks
+          setIsMobileHeaderOpen={setIsMobileHeaderOpen}
+          isMobileHeaderOpen={isMobileHeaderOpen}
+        />
       )}
     </nav>
   );

@@ -1,73 +1,22 @@
 @import "../../../styles/main.scss";
 
-.header__right-block {
-  display: flex;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-  background: $transparentGreyBackground;
-  margin-right: 0px;
-  margin-left: auto;
-  border-radius: $buttonBorderRadius;
-  padding: 2px 4px;
-}
-
-.language-toggle__icon {
-  color: $white;
-  font-size: $fontsize-20;
-  font-weight: $bold;
- }
-
-.header-icons {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-}
-
-.header-icons__item {
-  width: auto;
-  height: 20px;
-  margin: 3px;
-  color: $white;
-
-  &:hover {
-    height: 30px;
-  }
-}
-
-.btn-light-theme {
+.login-link {
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 700;
   font-size: $fontsize-14;
-  padding: 4px 2px;
+  text-decoration: none;
+  cursor: pointer;
 }
-@media (max-width: $mobile-breakpoint) {
-  .header__right-block {
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: right;
-    height: 40px;
-    padding: 0;
-  }
-  .btn-light-theme {
-    font-size: $fontsize-10;
-    padding: 1px 1px;
-    margin-top: 2px;
-  }
-  .header-icons__item {
-    height: 12px;
-    margin-right: 1px;
-  }
-  .language-toggle__icon {
-    font-size: $fontsize-10;
-  }
-  .user-name {
-    font-size: $fontsize-10;
-    margin: 0;
-  }
-  .language-toggle {
-    height: 11px;
-    margin-right: 1px;
-  }
-  .dropdown-toggle {
-    margin-bottom: 2px;
+
+.disappear-login{
+  display: none;
+}
+
+
+@media screen and (max-width: $tablet-breakpoint) {
+  .login-link{
+    margin-bottom: 10px;
+    font-size: $fontsize-20;
   }
 }

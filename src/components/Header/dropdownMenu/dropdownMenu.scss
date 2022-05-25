@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: $white;
+  color: black;
 
   @media (max-width: $mobile-breakpoint) {
     font-size: $fontsize-10;
@@ -21,7 +21,7 @@
   padding: 0;
   box-sizing: border-box;
   cursor: pointer;
-  color: $white;
+  color: black;
 }
 
 .dropdown-menu {

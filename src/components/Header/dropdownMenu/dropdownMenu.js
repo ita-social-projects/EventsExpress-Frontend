@@ -18,13 +18,14 @@ const DroprownMenu = ({ user, hub, logout, addEvent }) => {
     logout();
   };
 
-  const { id, name } = user.id ? user : {};
+  const { id } = user.id ? user : {};
+
   return (
     <AuthComponent>
       <div className="users-info">
         <div className="btn-group">
           <ToggleButton>
-            <p className="user-name">{name}</p>
+            <p className="user-name">{user.name}</p>
             {/* <CustomAvatar size="small" userId={id} name={name} /> */}
           </ToggleButton>
           <div className="dropdown-menu dropdown-menu-right">
