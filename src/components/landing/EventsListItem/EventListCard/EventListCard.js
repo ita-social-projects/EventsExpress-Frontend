@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { BiRightArrowAlt } from "react-icons/bi";
 import moment from "moment";
-// import PhotoService from "../../../../services/PhotoService";
-// import eventDefaultImage from "../../../../constants/eventDefaultImage";
 import IconsEventCard from "../../EventCard/IconsEventCard/IconsEventCard";
 import "./EventListCard.scss";
 
