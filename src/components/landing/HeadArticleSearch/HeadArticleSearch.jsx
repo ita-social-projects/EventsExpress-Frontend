@@ -5,17 +5,23 @@ import "./HeadArticleSearch.scss";
 import { Search } from "@material-ui/icons";
 import PLACEHOLDER_INPUT from "../../../constants/HeadArticleSearchConstants";
 
-const HeadArticleSearchWithoutForm = ({ handleSubmit, setFilter }) => {
+const HeadArticleSearchWithoutForm = ({ setFilter }) => {
   const [title, setTitle] = useState("");
   const onTitleChange = value => {
     setTitle(value);
   };
+  const handleKeyPress = event => {
+    if (event.key === "Enter") {
+      setFilter(title);
+    }
+  };
   const filter = () => {
     setFilter(title);
   };
+  // debaune, trotling
   return (
     <div className="HeadArticleSearchWrapper">
-      <form className="HeadArticleSearchForm" onSubmit={handleSubmit}>
+      <div className="HeadArticleSearchForm">
         <Field
           name="search"
           component="input"
@@ -23,20 +29,19 @@ const HeadArticleSearchWithoutForm = ({ handleSubmit, setFilter }) => {
           placeholder={PLACEHOLDER_INPUT}
           className="HeadArticleSearchInput"
           onChange={e => onTitleChange(e.target.value)}
+          onKeyDown={handleKeyPress}
         />
         <Search onClick={filter} className="search__icon" />
-      </form>
+      </div>
     </div>
   );
 };
 
 HeadArticleSearchWithoutForm.defaultProps = {
-  handleSubmit: () => {},
   setFilter: () => {},
 };
 
 HeadArticleSearchWithoutForm.propTypes = {
-  handleSubmit: propTypes.func,
   setFilter: propTypes.func,
 };
 
