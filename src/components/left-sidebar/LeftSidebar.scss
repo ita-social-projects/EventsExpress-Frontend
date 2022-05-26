@@ -1,0 +1,194 @@
+@import '../../styles/colors.scss';
+@import '../../styles/variables.scss';
+
+ul {
+    margin: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rotateAndScale {
+    0% {
+        transform: scale(0.9) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(180deg);
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+.left-sidebar {
+    position: fixed;
+    z-index: 9999;
+    height: 100vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    nav {
+        width: 55px;
+        display: flex;
+        flex-direction: row;
+        height: fit-content;
+        background-color: $purpleDark;
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 5px;
+        margin-left: 5px;
+        position: relative;
+        transition: 0.5s ease-in-out;
+        &.exiting,
+        &.closed {
+            margin-left: -50px
+        }
+        
+        .open-close-btn {
+            width: 100%;
+            border-radius: 5px;
+            position: absolute;
+            top: -60px;
+            background-color: #180C30;
+            font-size: 30px;
+            left: 0;
+            font-weight: bold;
+            color: #FFFFFF;
+            padding: 0px 15px;
+            box-sizing: border-box;
+        }
+        
+        &.closed {
+            .open-close-btn {
+                transition: 0.3s ease-in-out;
+                left: 55px;
+            }
+        }
+
+        .sidebar-pages {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .left-sidebar__item {
+                margin: 10px 0px;
+                .left-sidebar__link {
+                    display: flex;
+                    position: relative;
+                    text-decoration: none;
+                    color: white;
+                    .item__icon {
+                        transition: 0.7s ease-in-out;
+                        font-size: 26px;
+                    }
+                    .item__page-name {
+                        color: $black;
+                        transition: 0.7s ease-in-out;
+                        position: absolute;
+                        width: max-content;
+                        left: 60px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        display: none;
+                        animation: fadeIn 0.7s ease-in-out;
+                    }
+                    &:hover {
+                        .item__page-name {
+                            display: block;
+                            background-color: $lightPink;
+                            color: $black;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $widthForContentSecondTabletScreen) {
+    .left-sidebar { 
+        nav {
+            
+            height: 100%;
+            background-color: transparent;
+            padding: 0;
+            .open-close-btn {
+              position: absolute;
+                width: 50px;
+                height: 50px;
+                z-index: 99999;
+                top: auto;
+                bottom: 30px;
+            }
+
+            &.closed {
+                .open-close-btn {
+                    left: 0;
+                }
+            }
+            
+            
+            &.exiting {
+                .open-close-btn {
+                    animation: rotateAndScale 0.5s ease-in-out;
+                }
+            }
+            &.exiting,
+            &.closed {
+                margin-left: 5px;
+            }
+
+            &.closed {
+                .sidebar-pages {
+                    display: none;
+                }
+            }
+
+            .sidebar-pages {
+                justify-content: center;
+                position: absolute;
+                background-color: $white;
+                min-width: 100vw;
+                width: 100%;
+                min-height: 100vh;
+                overflow: hidden;
+                height: 100%;
+                .left-sidebar__item {
+                    text-align: left;
+                    width: max-content;
+                    margin: 0;
+                    .left-sidebar__link {
+                        width: 100%;
+                        display: flex;
+                        margin-bottom: 20px;
+                        width: 100%;
+                        height: 100%;
+                        .item__icon {
+                            display: none;
+                        }
+                        .item__page-name {
+                            position: static;
+                            display: block;
+                            color: $black;
+                            font-size: 24px;
+                            
+                            text-align: left;
+                        }
+                        &:hover {
+                            .item__page-name {
+                               background-color: transparent;
+                            }
+                        }
+                    }
+                }
+            }
+           
+        }
+    }
+}

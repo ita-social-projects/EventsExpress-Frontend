@@ -1,3 +1,3 @@
-import LeftSidebar from "./left-sidebar";
+import LeftSidebar from "./LeftSidebar";
 
 export default LeftSidebar;
