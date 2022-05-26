@@ -5,7 +5,7 @@ import "./HeadArticleSearch.scss";
 import { Search } from "@material-ui/icons";
 import PLACEHOLDER_INPUT from "../../../constants/HeadArticleSearchConstants";
 
-function debounce(callBackFunc, delay = 700) {
+function debounce(callBackFunc, delay) {
   let timeout;
   return (...args) => {
     clearTimeout(timeout);
@@ -17,20 +17,11 @@ function debounce(callBackFunc, delay = 700) {
 
 const HeadArticleSearchWithoutForm = ({ setFilter }) => {
   const onTitleChange = value => {
-    debounce(() => setFilter(value), 700)();
+    debounce(() => setFilter(value), 800)();
   };
-  // const handleKeyPress = event => {
-  //   if (event.key === "Enter") {
-  //     setFilter(title);
-  //   }
-  // };
-  // const filter = () => {
-  //   setFilter(title);
-  // };
-  // debaune, trotling
   return (
     <div className="HeadArticleSearchWrapper">
-      <div className="HeadArticleSearchForm">
+      <form className="HeadArticleSearchForm">
         <Field
           name="search"
           component="input"
@@ -38,10 +29,9 @@ const HeadArticleSearchWithoutForm = ({ setFilter }) => {
           placeholder={PLACEHOLDER_INPUT}
           className="HeadArticleSearchInput"
           onChange={e => onTitleChange(e.target.value)}
-          // onKeyDown={handleKeyPress}
         />
         <Search className="search__icon" />
-      </div>
+      </form>
     </div>
   );
 };
