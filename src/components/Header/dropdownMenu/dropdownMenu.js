@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import EventIcon from "@material-ui/icons/Event";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import FeedbackIcon from "@material-ui/icons/Feedback";
 import Roles from "../../../constants/userRoles";
 // TODO import CustomAvatar from "../avatar/custom-avatar";  not desided if we need this element here
 import AuthComponent from "../../../security/authComponent";
@@ -8,7 +13,8 @@ import headerConstants from "../../../constants/headerConstants";
 import ToggleButton from "../../shared/toggleButton/toggleButton";
 import "./dropdownMenu.scss";
 
-const { CREATE_EVENT, LOG_OUT, HELP, MY_PROFILE, MY_EVENTS } = headerConstants;
+const { CREATE_EVENT, LOG_OUT, FEEDBACK, MY_PROFILE, MY_EVENTS } =
+  headerConstants;
 
 const DroprownMenu = ({ user, hub, logout, addEvent }) => {
   const logoutReset = () => {
@@ -32,7 +38,8 @@ const DroprownMenu = ({ user, hub, logout, addEvent }) => {
             <AuthComponent rolesMatch={Roles.User}>
               <Link className="removedecorations" to={`/user/${id}`}>
                 <button className="dropdown-item" type="button">
-                  {MY_EVENTS}
+                  <EventIcon />
+                  <div> {MY_EVENTS}</div>
                 </button>
               </Link>
             </AuthComponent>
@@ -44,13 +51,15 @@ const DroprownMenu = ({ user, hub, logout, addEvent }) => {
                 onClick={addEvent}
                 aria-hidden
               >
-                {CREATE_EVENT}
+                <AddCircleOutlineIcon />
+                <div> {CREATE_EVENT}</div>
               </button>
             </AuthComponent>
             <AuthComponent>
               <Link className="removedecorations" to="/editProfile">
                 <button className="dropdown-item" type="button">
-                  {MY_PROFILE}
+                  <AccountCircleIcon />
+                  <div>{MY_PROFILE}</div>
                 </button>
               </Link>
             </AuthComponent>
@@ -59,10 +68,12 @@ const DroprownMenu = ({ user, hub, logout, addEvent }) => {
               type="button"
               onClick={logoutReset}
             >
-              {LOG_OUT}
+              <ExitToAppIcon />
+              <div>{LOG_OUT}</div>
             </button>
             <button className="dropdown-item" type="button">
-              {HELP}
+              <FeedbackIcon />
+              <div>{FEEDBACK}</div>
             </button>
           </div>
         </div>
