@@ -1,7 +1,14 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import UserInfoCard from "../user-info/User-info-card";
 import PagePagination from "../shared/pagePagination";
+
+const GridLayout = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+`;
 
 const UserItemList = ({ page, totalPages, users, callback }) => {
   const handlePageChange = pageEl => {
@@ -10,13 +17,14 @@ const UserItemList = ({ page, totalPages, users, callback }) => {
     );
   };
 
-  const renderUsers = arr => {
-    return arr.map(user => <UserInfoCard key={user.id} user={user} />);
-  };
-
   return (
     <>
-      {renderUsers(users)}
+      <GridLayout>
+        {users.map(user => (
+          <UserInfoCard key={user.id} user={user} />
+        ))}
+      </GridLayout>
+
       {totalPages > 1 && (
         <PagePagination
           currentPage={page}

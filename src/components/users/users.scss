@@ -10,16 +10,14 @@
   border-radius: 15px;
   padding: 10px;
   overflow: hidden;
-  border: 1px solid green;
 
   .users_search_input {
- 
     margin: 10px 0px;
-
     width: 100%;
+
     border-radius: 15px;
     border: none;
-    padding: 5px 15px;
+    padding: 10px 25px;
     // border: 1px solid red;
     font-size: 18px;
     line-height: 31px;
@@ -30,7 +28,8 @@
   .users_search_container {
     .users_search_btns {
       // width: 250px;
-      width: 100%;
+      width: 250px;
+
       border-radius: 15px;
       padding: 10px, 50px, 10px, 50px;
 
