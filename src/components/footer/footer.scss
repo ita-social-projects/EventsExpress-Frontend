@@ -6,149 +6,150 @@
 .footer__container {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: $fullWidth;
   text-align: center;
   margin-top: 30px;
+}
 
-  .footer__head {
-    background-color: $purpleDark;
-    padding: 10px;
+.footer__head {
+  background-color: $purpleDark;
+  padding: 10px;
 
-    .head__text {
-      color: $lightPink;
-      font-family: $quoteFont;
-      font-size: $fontsize-40;
-      font-weight: $headText;
-      margin: 0;
+  .head__text {
+    color: $lightPink;
+    font-family: $quoteFont;
+    font-size: $fontsize-40;
+    font-weight: $headText;
+    margin: 0;
+  }
+}
+
+.footer__interact {
+  padding: 50px 0;
+  background-color: $white;
+  display: flex;
+  justify-content: space-around;
+
+  .footer__contacts {
+    .contact__us {
+      font-family: $mainFont;
+      font-size: $fontsize-24;
+      font-weight: $semiBold;
+      margin: 0px;
+      margin-bottom: 10px;
+    }
+
+    .contact__number {
+      font-family: $mainFont;
+      font-size: $fontsize-18;
+      font-weight: $semiBold;
     }
   }
 
-  .footer__interact {
-    padding: 50px 0;
-    background-color: $white;
-    display: flex;
-    justify-content: space-around;
-
-    .footer__contacts {
-      .contact__us {
-        font-family: $mainFont;
-        font-size: $fontsize-24;
-        font-weight: $semiBold;
-        margin: 0px;
-        margin-bottom: 10px;
-      }
-
-      .contact__number {
-        font-family: $mainFont;
-        font-size: $fontsize-18;
-        font-weight: $semiBold;
-      }
+  .footer__subscribe {
+    .subscibe__us {
+      font-family: $mainFont;
+      font-size: $fontsize-24;
+      font-weight: $semiBold;
     }
 
-    .footer__subscribe {
-      .subscibe__us {
-        font-family: $mainFont;
-        font-size: $fontsize-24;
-        font-weight: $semiBold;
+    .footer__form {
+      width: $fullWidth;
+      margin-top: 10px;
+      position: relative;
+
+      .footer__input {
+        @include form_input;
       }
 
-      .footer__form {
-        width: $fullWidth;
-        margin-top: 10px;
-        position: relative;
+      .footer__subscribe__icon {
+        position: absolute;
+        top: 13px;
+        right: 10px;
+        cursor: pointer;
+      }
+    }
+  }
 
-        .footer__input {
-          @include form_input;
+  .footer__social_links {
+    .our__socials {
+      font-family: $mainFont;
+      font-size: $fontsize-24;
+      font-weight: $semiBold;
+      margin: 0;
+    }
+
+    .footer__social_links_icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+
+      .link__icon {
+        margin-right: 15px;
+        text-decoration: none;
+        color: inherit;
+
+        &:last-child {
+          margin-right: 0px;
         }
 
-        .footer__subscribe__icon {
-          position: absolute;
-          top: 13px;
-          right: 10px;
+        .social__icon {
+          font-size: $fontsize-24;
           cursor: pointer;
-        }
-      }
-    }
-
-    .footer__social_links {
-      .our__socials {
-        font-family: $mainFont;
-        font-size: $fontsize-24;
-        font-weight: $semiBold;
-        margin: 0;
-      }
-
-      .footer__social_links_icons {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-
-        .link__icon {
-          margin-right: 15px;
-          text-decoration: none;
-          color: inherit;
-
-          &:last-child {
-            margin-right: 0px;
-          }
-
-          .social__icon {
-            font-size: $fontsize-24;
-            cursor: pointer;
-          }
         }
       }
     }
   }
 }
 
+
 @media screen and (max-width: $mediaFirstTabletScreen) {
   .footer__container {
     margin-top: 25px;
+  }
 
-    .footer__head {
-      .head__text {
-        font-size: 32px;
+  .footer__head {
+    .head__text {
+      font-size: $fontsize-32;
+    }
+  }
+
+  .footer__interact {
+    padding: 40px 0;
+
+    .footer__contacts {
+      .contact__us {
+        font-size: $fontsize-20;
+      }
+
+      .contact__number {
+        font-size: $fontsize-16;
+        margin-top: 8px;
       }
     }
 
-    .footer__interact {
-      padding: 40px 0;
-
-      .footer__contacts {
-        .contact__us {
-          font-size: $fontsize-20;
-        }
-
-        .contact__number {
-          font-size: $fontsize-16;
-          margin-top: 8px;
-        }
+    .footer__subscribe {
+      .subscibe__us {
+        font-size: $fontsize-20;
       }
 
-      .footer__subscribe {
-        .subscibe__us {
-          font-size: $fontsize-20;
-        }
-
-        .footer__form {
-          .footer__input {
-            @include form_input;
-          }
+      .footer__form {
+        .footer__input {
+          @include form_input;
         }
       }
+    }
 
-      .footer__social_links {
-        .our__socials {
-          font-size: $fontsize-20;
-        }
+    .footer__social_links {
+      .our__socials {
+        font-size: $fontsize-20;
+      }
 
-        .footer__social_links_icons {
-          .link__icon {
+      .footer__social_links_icons {
+        .link__icon {
 
-            .social__icon {
-              font-size: $fontsize-24;
-            }
+          .social__icon {
+            font-size: $fontsize-24;
           }
         }
       }
@@ -159,121 +160,119 @@
 @media screen and (max-width: $mediaSecondTabletScreen) {
   .footer__container {
     margin-top: $fontsize-20;
+  }
 
-    .footer__head {
-      .head__text {
-        font-size: $fontsize-24;
+  .footer__head {
+    .head__text {
+      font-size: $fontsize-24;
+    }
+  }
+
+  .footer__interact {
+    padding: 30px 0;
+
+    .footer__contacts {
+      .contact__us {
+        font-size: $fontsize-16;
+      }
+
+      .contact__number {
+        font-size: $fontsize-14;
+        margin-top: 5px;
       }
     }
 
-    .footer__interact {
-      padding: 30px 0;
-
-      .footer__contacts {
-        .contact__us {
-          font-size: $fontsize-16;
-        }
-
-        .contact__number {
-          font-size: 14px;
-          margin-top: 5px;
-        }
+    .footer__subscribe {
+      .subscibe__us {
+        font-size: $fontsize-16;
       }
 
-      .footer__subscribe {
-        .subscibe__us {
-          font-size: $fontsize-16;
-        }
-
-        .footer__form {
-          .footer__input {
-            @include form_input;
-          }
-        }
-      }
-
-      .footer__social_links {
-        .our__socials {
-          font-size: $fontsize-16;
-        }
-
-        .footer__social_links_icons {
-          .link__icon {
-            .social__icon {
-              font-size: $fontsize-20;
-            }
-          }
+      .footer__form {
+        .footer__input {
+          @include form_input;
         }
       }
     }
 
+    .footer__social_links {
+      .our__socials {
+        font-size: $fontsize-16;
+      }
+
+      .footer__social_links_icons {
+        .link__icon {
+          .social__icon {
+            font-size: $fontsize-20;
+          }
+        }
+      }
+    }
   }
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
   .footer__container {
     margin-top: 15px;
+  }
 
-    .footer__head {
-      .head__text {
-        font-size: $fontsize-20;
+  .footer__head {
+    .head__text {
+      font-size: $fontsize-20;
+    }
+  }
+
+  .footer__interact {
+    padding: 15px 0;
+    flex-direction: column;
+
+    .footer__contacts {
+      .contact__us {
+        font-size: $fontsize-14;
+      }
+
+      .contact__number {
+        font-size: $fontsize-12;
+        margin-top: 5px;
       }
     }
 
-    .footer__interact {
-      padding: 15px 0;
-      flex-direction: column;
+    .footer__subscribe {
+      margin-top: 20px;
 
-      .footer__contacts {
-        .contact__us {
-          font-size: 14px;
-        }
-
-        .contact__number {
-          font-size: 12px;
-          margin-top: 5px;
-        }
+      .subscibe__us {
+        font-size: $fontsize-14;
+        margin: 0;
       }
 
-      .footer__subscribe {
-        margin-top: 20px;
+      .footer__form {
+        margin: 0;
 
-        .subscibe__us {
-          font-size: 14px;
-          margin: 0;
+        .footer__input {
+          @include form_input;
         }
 
-        .footer__form {
-          margin: 0;
-
-          .footer__input {
-            @include form_input;
-          }
-
-          .footer__subscribe__icon {
-            right: 12%;
-          }
-        }
-      }
-
-      .footer__social_links {
-        margin-top: 20px;
-
-        .our__socials {
-          font-size: 14px;
-        }
-
-        .footer__social_links_icons {
-          margin: 0;
-
-          .link__icon {
-            .social__icon {
-              font-size: $fontsize-16;
-            }
-          }
+        .footer__subscribe__icon {
+          right: 12%;
         }
       }
     }
 
+    .footer__social_links {
+      margin-top: 20px;
+
+      .our__socials {
+        font-size: $fontsize-14;
+      }
+
+      .footer__social_links_icons {
+        margin: 0;
+
+        .link__icon {
+          .social__icon {
+            font-size: $fontsize-16;
+          }
+        }
+      }
+    }
   }
 }
