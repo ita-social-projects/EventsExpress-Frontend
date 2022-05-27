@@ -35,6 +35,7 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
             <MainSearchInput
               searchText={filterTitle}
               searchFunc={setFilterTitle}
+              name="search"
             />
             <EventsViewMode setViewMode={setEventsViewMode} />
           </div>

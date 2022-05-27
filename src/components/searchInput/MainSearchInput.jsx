@@ -16,7 +16,7 @@ function debounce(callBackFunc, delay) {
   };
 }
 
-const SearchInput = ({ searchFunc, searchText, clear }) => {
+const SearchInput = ({ searchFunc, searchText, name, clear }) => {
   const onTitleChange = value => {
     debounce(() => searchFunc(value), 800)();
   };
@@ -30,7 +30,7 @@ const SearchInput = ({ searchFunc, searchText, clear }) => {
     <div className="MainSearchWrapper">
       <form className="MainSearchForm">
         <Field
-          name="search"
+          name={name}
           type="text"
           component="input"
           placeholder={PLACEHOLDER_INPUT}
@@ -52,12 +52,14 @@ SearchInput.defaultProps = {
   searchFunc: () => {},
   clear: () => {},
   searchText: "",
+  name: "",
 };
 
 SearchInput.propTypes = {
   searchFunc: propTypes.func,
   clear: propTypes.func,
   searchText: propTypes.string,
+  name: propTypes.string,
 };
 
 const mapDispatchToProps = dispatch => ({
