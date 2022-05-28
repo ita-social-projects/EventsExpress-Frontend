@@ -5,16 +5,7 @@ import "./MainSearchInput.scss";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
 import PLACEHOLDER_INPUT from "../../constants/HeadArticleSearchConstants";
-
-function debounce(callBackFunc, delay) {
-  let timeout;
-  return (...args) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      callBackFunc(...args);
-    }, delay);
-  };
-}
+import debounce from "../../services/Debaunce";
 
 const SearchInput = ({ searchFunc, searchText, name, clear }) => {
   const onTitleChange = value => {
