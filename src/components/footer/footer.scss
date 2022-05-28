@@ -83,21 +83,6 @@
       display: flex;
       justify-content: center;
       margin-top: 10px;
-
-      .link__icon {
-        margin-right: 15px;
-        text-decoration: none;
-        color: inherit;
-
-        &:last-child {
-          margin-right: 0px;
-        }
-
-        .social__icon {
-          font-size: $fontsize-24;
-          cursor: pointer;
-        }
-      }
     }
   }
 }
@@ -144,15 +129,6 @@
       .our__socials {
         font-size: $fontsize-20;
       }
-
-      .footer__social_links_icons {
-        .link__icon {
-
-          .social__icon {
-            font-size: $fontsize-24;
-          }
-        }
-      }
     }
   }
 }
@@ -197,14 +173,6 @@
     .footer__social_links {
       .our__socials {
         font-size: $fontsize-16;
-      }
-
-      .footer__social_links_icons {
-        .link__icon {
-          .social__icon {
-            font-size: $fontsize-20;
-          }
-        }
       }
     }
   }
@@ -266,12 +234,6 @@
 
       .footer__social_links_icons {
         margin: 0;
-
-        .link__icon {
-          .social__icon {
-            font-size: $fontsize-16;
-          }
-        }
       }
     }
   }

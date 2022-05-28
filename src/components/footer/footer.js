@@ -3,7 +3,7 @@ import { IoMdSend } from "react-icons/io";
 import "./footer.scss";
 import { FOOTER_LABELS } from "../../constants/footerConstants";
 import SOCIAL_NAV_LINKS from "./footer-mapper";
-import emailSender from "./emailSender";
+import emailService from "../../services/EmailService";
 
 const {
   SUBSCRIBE_US,
@@ -21,7 +21,7 @@ const Footer = () => {
   });
   const subscribeWithEmail = e => {
     e.preventDefault();
-    emailSender(values);
+    emailService(values);
     setValues({ email: "" });
   };
   const handleChange = e => {

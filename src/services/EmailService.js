@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser";
 
-const emailSender = values => {
+const emailService = values => {
   emailjs.send(
     "service_hxod138",
     "template_1k257d8",
@@ -9,4 +9,4 @@ const emailSender = values => {
   );
 };
 
-export default emailSender;
+export default emailService;

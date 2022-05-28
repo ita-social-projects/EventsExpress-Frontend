@@ -1,6 +1,6 @@
 import React from "react";
 import { ALL_STYLE_ICON, ALL_LINK } from "../../constants/footerConstants";
-import LinkItem from "./LinkItem";
+import LinkItem from "../shared/LinkItem/LinkItem";
 
 const { LINK_FACEBOOK, LINK_INSTAGRAM, LINK_YOUTUBE } = ALL_LINK;
 
