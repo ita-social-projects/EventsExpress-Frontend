@@ -1,0 +1,13 @@
+@keyframes btn-shadow {
+    0% {
+        box-shadow: $textShadowNeon;
+    }
+
+    50% {
+        box-shadow: $boxShadowImage;
+    }
+
+    100% {
+        box-shadow: $textShadowNeon;
+    }
+}
