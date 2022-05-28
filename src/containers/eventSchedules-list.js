@@ -1,52 +1,51 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import EventSchedulesList from "../components/eventSchedule/eventSchedule-list";
 import SpinnerWrapper from "./spinner";
 import { getEventSchedules } from "../actions/eventSchedule/eventSchedule-list-action";
 
-class EventSchedulesListWrapper extends Component {
-  constructor(props) {
-    super(props);
-    this.props.getEventSchedules();
-  }
+const EventSchedulesListWrapper = ({
+  getEvents,
+  eventSchedules,
+  currentUser,
+}) => {
+  const { data } = eventSchedules;
+  const user = currentUser.id !== null ? currentUser : {};
 
-  render() {
-    const currentUser =
-      this.props.current_user.id !== null ? this.props.current_user : {};
-    const { data } = this.props.eventSchedules;
-
-    return (
-      <SpinnerWrapper showContent={data !== undefined}>
-        <EventSchedulesList current_user={currentUser} data_list={data.items} />
-      </SpinnerWrapper>
-    );
-  }
-}
+  useEffect(() => {
+    getEvents();
+  }, []);
+  return (
+    <SpinnerWrapper showContent={data !== undefined}>
+      <EventSchedulesList currentUser={user} dataList={data.items} />
+    </SpinnerWrapper>
+  );
+};
 
 const mapStateToProps = state => {
   return {
     eventSchedules: state.eventSchedules,
-    current_user: state.user,
+    currentUser: state.user,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getEventSchedules: () => dispatch(getEventSchedules()),
+    getEvents: () => dispatch(getEventSchedules()),
   };
 };
 
 EventSchedulesListWrapper.propTypes = {
-  getEventSchedules: PropTypes.func,
-  current_user: PropTypes.object,
+  getEvents: PropTypes.func,
   eventSchedules: PropTypes.object,
+  currentUser: PropTypes.object,
 };
 
 EventSchedulesListWrapper.defaultProps = {
-  getEventSchedules: () => {},
-  current_user: {},
+  getEvents: () => {},
   eventSchedules: {},
+  currentUser: {},
 };
 
 export default connect(
