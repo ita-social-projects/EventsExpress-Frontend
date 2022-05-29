@@ -41,9 +41,6 @@
   display: flex;
   justify-content: space-between;
   align-items:center;
-  div {
-    word-break: break-word;
-  }
    @media (max-width: $mobile-breakpoint) {
     font-size: $fontsize-10;
 
