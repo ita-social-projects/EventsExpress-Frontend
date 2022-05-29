@@ -41,7 +41,7 @@ class CustomAvatar extends Component {
   render() {
     const { name } = this.props;
 
-    const size = `${this.props.size}_avatar`;
+    const size = `${this.props.size}Avatar`;
 
     return (
       <>

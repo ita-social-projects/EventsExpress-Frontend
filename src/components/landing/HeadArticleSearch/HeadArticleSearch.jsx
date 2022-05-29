@@ -2,32 +2,46 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import propTypes from "prop-types";
 import "./HeadArticleSearch.scss";
-import { AiOutlineSearch } from "react-icons/ai";
+import { Search } from "@material-ui/icons";
 import PLACEHOLDER_INPUT from "../../../constants/HeadArticleSearchConstants";
 
-const HeadArticleSearchWithoutForm = ({ handleSubmit }) => {
+function debounce(callBackFunc, delay) {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      callBackFunc(...args);
+    }, delay);
+  };
+}
+
+const HeadArticleSearchWithoutForm = ({ setFilter }) => {
+  const onTitleChange = value => {
+    debounce(() => setFilter(value), 800)();
+  };
   return (
     <div className="HeadArticleSearchWrapper">
-      <form className="HeadArticleSearchForm" onSubmit={handleSubmit}>
-        <AiOutlineSearch />
+      <form className="HeadArticleSearchForm">
         <Field
           name="search"
           component="input"
           type="text"
           placeholder={PLACEHOLDER_INPUT}
           className="HeadArticleSearchInput"
+          onChange={e => onTitleChange(e.target.value)}
         />
+        <Search className="search__icon" />
       </form>
     </div>
   );
 };
 
 HeadArticleSearchWithoutForm.defaultProps = {
-  handleSubmit: () => {},
+  setFilter: () => {},
 };
 
 HeadArticleSearchWithoutForm.propTypes = {
-  handleSubmit: propTypes.func,
+  setFilter: propTypes.func,
 };
 
 const HeadArticleSearch = reduxForm({

@@ -15,7 +15,6 @@ class EventSchedulesList extends Component {
   render() {
     const items = this.renderItems(this.props.dataList);
     const { dataList } = this.props;
-
     return (
       <>
         <div className="row">
