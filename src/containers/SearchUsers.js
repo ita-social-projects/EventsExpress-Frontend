@@ -27,6 +27,21 @@ const SearchContainer = styled.div`
   margin-bottom: 20px;
 `;
 
+const PaginationButtonsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  > div {
+    margin: 0px 15px;
+    font-size: 32px;
+    border: none;
+  }
+  > svg {
+    margin-top: 5px;
+  }
+`;
+
 const SearchUsers = ({
   users,
   getSearchUsersDispatch,
@@ -37,13 +52,14 @@ const SearchUsers = ({
 }) => {
   const [search, setSearch] = useState("");
   const { push } = useHistory();
-  const location = useLocation();
+  const { pathname } = useLocation();
+
+  const { pageNumber, hasPreviousPage, hasNextPage } = users.data.pageViewModel;
 
   const getUsers = page => getSearchUsersDispatch(page);
 
   const resetUrlQuery = () => {
-    console.log(location.pathname);
-    push(location.pathname);
+    push(pathname);
   };
 
   const runSearch = value => {
@@ -53,9 +69,8 @@ const SearchUsers = ({
   };
 
   useEffect(() => {
-    push(`${location.pathname}?keyWord=${search}`);
+    push(`${pathname}?keyWord=${search}`);
     changeFilterDispatch(search);
-    console.log("Search ----> ", search);
   }, [search]);
 
   useEffect(() => {
@@ -73,16 +88,16 @@ const SearchUsers = ({
   console.log(onReset);
 
   const goPrevPage = () => {
-    console.log("prev page");
+    if (hasPreviousPage) {
+      push(`${pathname}?keyWord=${search}&page=${pageNumber - 1}`);
+    }
   };
 
   const goNextPage = () => {
-    console.log("next page");
+    if (hasNextPage) {
+      push(`${pathname}?keyWord=${search}&page=${pageNumber + 1}`);
+    }
   };
-
-  // const filterdUsers = users.data.items.filter(user =>
-  //   user.username.toLowerCase().includes(search.toLowerCase())
-  // );
 
   return (
     <div className="row">
@@ -103,11 +118,18 @@ const SearchUsers = ({
             callback={getUsers}
           />
         </SpinnerWrapper>
-        <div className="row">
-          <KeyboardArrowLeftIcon onClick={goPrevPage} />
-          <div>page</div>
-          <KeyboardArrowRightIcon onClick={goNextPage} />
-        </div>
+
+        <PaginationButtonsContainer>
+          <KeyboardArrowLeftIcon
+            onClick={goPrevPage}
+            style={{ fontSize: 32 }}
+          />
+          <div>{pageNumber}</div>
+          <KeyboardArrowRightIcon
+            onClick={goNextPage}
+            style={{ fontSize: 32 }}
+          />
+        </PaginationButtonsContainer>
       </div>
     </div>
   );
