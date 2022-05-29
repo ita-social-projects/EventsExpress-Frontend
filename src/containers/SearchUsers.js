@@ -41,12 +41,19 @@ const SearchUsers = ({
 
   const getUsers = page => getSearchUsersDispatch(page);
 
+  const resetUrlQuery = () => {
+    console.log(location.pathname);
+    push(location.pathname);
+  };
+
   const runSearch = value => {
-    push(`${location.pathname}?keyWord=${search}`);
     setSearch(value);
+    // push(`${location.pathname}?keyWord=${search}`);
+    // changeFilterDispatch(search);
   };
 
   useEffect(() => {
+    push(`${location.pathname}?keyWord=${search}`);
     changeFilterDispatch(search);
     console.log("Search ----> ", search);
   }, [search]);
@@ -85,6 +92,7 @@ const SearchUsers = ({
             searchText={search}
             searchFunc={runSearch}
             name="keyWord"
+            resetForm={resetUrlQuery}
           />
         </SearchContainer>
         <SpinnerWrapper showContent={users.data}>
