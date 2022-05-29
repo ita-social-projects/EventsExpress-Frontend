@@ -2,22 +2,30 @@ import React from "react";
 import PropTypes from "prop-types";
 import EventSchedule from "./eventSchedule-item";
 import EventScheduleConstants from "../../constants/EventScheduleConstants";
+import "./eventSchedule.scss";
 
 const { NoResult } = EventScheduleConstants;
 
 const EventSchedulesList = ({ currentUser, dataList }) => {
-  const renderItems = arr =>
-    arr.map(item => (
-      <EventSchedule key={item.id} item={item} currentUser={currentUser} />
-    ));
+  // const renderItems = arr =>
+  //   arr.map(item => (
+  //     <EventSchedule key={item.id} item={item} currentUser={currentUser} />
+  //   ));
 
-  const items = renderItems(dataList);
+  // const items = renderItems(dataList);
   return (
     <>
-      <div className="row">
+      <div className="container">
         {dataList.length > 0 ? (
-          // map func.?
-          items
+          <div className="eventsBlock">
+            {dataList.map(item => (
+              <EventSchedule
+                key={item.id}
+                item={item}
+                currentUser={currentUser}
+              />
+            ))}
+          </div>
         ) : (
           <div id="notfound" className="w-100">
             <div className="notfound">

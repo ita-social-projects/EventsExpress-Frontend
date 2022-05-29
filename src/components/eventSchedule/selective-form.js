@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import "./eventSchedule.css";
+import "./eventSchedule.scss";
 import AddFromParentEventWrapper from "../../containers/add-event-from-parent";
 import EditFromParentEventWrapper from "../../containers/edit-event-from-parent";
 import CancelNextEventWrapper from "../../containers/cancel-next-event";
