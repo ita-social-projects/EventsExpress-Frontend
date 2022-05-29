@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import PLACEHOLDER_INPUT from "../../constants/HeadArticleSearchConstants";
 import debounce from "../../services/Debaunce";
 
-const SearchInput = ({ searchFunc, searchText, name, clear }) => {
+const SearchInput = ({ searchFunc, searchText, name, clear, resetForm }) => {
   const onTitleChange = value => {
     debounce(() => searchFunc(value), 800)();
   };
@@ -15,6 +15,7 @@ const SearchInput = ({ searchFunc, searchText, name, clear }) => {
   const clearInput = () => {
     searchFunc("");
     clear();
+    resetForm(); // added universality for others funcs
   };
 
   return (
@@ -44,6 +45,7 @@ SearchInput.defaultProps = {
   clear: () => {},
   searchText: "",
   name: "",
+  resetForm: () => {},
 };
 
 SearchInput.propTypes = {
@@ -51,6 +53,7 @@ SearchInput.propTypes = {
   clear: propTypes.func,
   searchText: propTypes.string,
   name: propTypes.string,
+  resetForm: propTypes.func,
 };
 
 const mapDispatchToProps = dispatch => ({
