@@ -5,18 +5,9 @@ import "./MainSearchInput.scss";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
 import PLACEHOLDER_INPUT from "../../constants/HeadArticleSearchConstants";
+import debounce from "../../services/Debaunce";
 
-function debounce(callBackFunc, delay) {
-  let timeout;
-  return (...args) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      callBackFunc(...args);
-    }, delay);
-  };
-}
-
-const SearchInput = ({ searchFunc, searchText, clear, inputName }) => {
+const SearchInput = ({ searchFunc, searchText, name, clear }) => {
   const onTitleChange = value => {
     debounce(() => searchFunc(value), 800)();
   };
@@ -30,7 +21,7 @@ const SearchInput = ({ searchFunc, searchText, clear, inputName }) => {
     <div className="MainSearchWrapper">
       <form className="MainSearchForm">
         <Field
-          name={inputName}
+          name={name}
           type="text"
           component="input"
           placeholder={PLACEHOLDER_INPUT}
@@ -52,14 +43,14 @@ SearchInput.defaultProps = {
   searchFunc: () => {},
   clear: () => {},
   searchText: "",
-  inputName: "search",
+  name: "",
 };
 
 SearchInput.propTypes = {
   searchFunc: propTypes.func,
   clear: propTypes.func,
   searchText: propTypes.string,
-  inputName: propTypes.string,
+  name: propTypes.string,
 };
 
 const mapDispatchToProps = dispatch => ({
