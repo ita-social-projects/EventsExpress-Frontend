@@ -34,7 +34,7 @@ import RegistrationForm from "../RegistrationForm";
 import MainLayout from "../MainLayout";
 import AboutUs from "../AboutUs/AboutUs";
 import SplitPanels from "../SplitPanels/SplitPanels";
-import ReportForm from "../contactAdmin/ReportForm";
+import ReportForm from "../ReportForm/ReportForm";
 
 class App extends Component {
   UserRoleSecurity = withAuthRedirect(["User"]);

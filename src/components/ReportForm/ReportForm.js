@@ -2,15 +2,24 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
-
 import contactAdmin from "../../actions/contactAdmin/contact-admin-add-action";
-
 import isValidEmail from "../helpers/validators/email-address-validator";
 import { maxLength30 } from "../helpers/validators/min-max-length-validators";
 import fieldIsRequired from "../helpers/validators/required-fields-validator";
-
-import issueTypeEnum from "../../constants/issue-type-enum";
-
+import FormInput from "../helpers/form-helpers/FormInput/FormInput";
+import FormSelect from "../helpers/form-helpers/FormSelect/FormSelect";
+import FormTextarea from "../helpers/form-helpers/FormTextarea/FormTextarea";
+import {
+  ISSUES_TYPES_ENUM,
+  ISSUES_TYPES,
+  REPORT_FORM_CLEAR_BUTTON_TEXT,
+  REPORT_FORM_DESCRIPTION_PLACEHOLDER,
+  REPORT_FORM_EMAIL_PLACEHOLDER,
+  REPORT_FORM_PROBLEM_TYPE_PLACEHOLDER,
+  REPORT_FORM_PROBLEM_TYPE_TITLE,
+  REPORT_FORM_TITLE,
+  REPORT_FORM_SUBMIT_BUTTON_TEXT,
+} from "../../constants/ReportForm";
 import "./ReportForm.scss";
 
 const ReportForm = ({ handleReportFormSubmit }) => {
@@ -31,50 +40,51 @@ const ReportForm = ({ handleReportFormSubmit }) => {
   return (
     <div className="report__wrapper">
       <div className="report__container">
-        <h3 className="report-container__title">Something Wrong? Tell Us!</h3>
+        <h3 className="report-container__title">{REPORT_FORM_TITLE}</h3>
         <Form
           onSubmit={values => handleReportFormSubmit(values)}
           validate={validate}
         >
-          {({ handleSubmit, pristine, submitting, form }) => (
+          {({ handleSubmit, pristine, submitting, form, values }) => (
             <form className="report-form" onSubmit={handleSubmit}>
               <Field
                 name="email"
                 className="email"
-                placeholder="Enter Email"
+                placeholder={REPORT_FORM_EMAIL_PLACEHOLDER}
                 value="test@gmail.com"
-                component="input"
+                component={FormInput}
               />
               <div className="problem-types">
-                <h5 className="problem-types__title">Problem Type</h5>
+                <h5 className="problem-types__title">
+                  {REPORT_FORM_PROBLEM_TYPE_TITLE}
+                </h5>
                 <Field
                   name="subject"
                   className="problem-types__select"
-                  component="select"
+                  component={FormSelect}
                   parse={value => Number(value)}
                 >
-                  <option value={issueTypeEnum.NewCategory}>
-                    New Category
-                  </option>
-                  <option value={issueTypeEnum.BugReport}>Bug Report</option>
-                  <option value={issueTypeEnum.BadEvent}>Bad Event</option>
-                  <option value={issueTypeEnum.BadUser}>Bad User</option>
-                  <option value={issueTypeEnum.Other}>Other</option>
+                  {ISSUES_TYPES.map(({ label, value }) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
                 </Field>
-
-                <Field
-                  name="title"
-                  className="other-problem"
-                  component="input"
-                  placeholder="Enter Problem Type"
-                />
+                {values.subject === ISSUES_TYPES_ENUM.Other && (
+                  <Field
+                    name="title"
+                    className="other-problem"
+                    component={FormInput}
+                    placeholder={REPORT_FORM_PROBLEM_TYPE_PLACEHOLDER}
+                  />
+                )}
               </div>
 
               <Field
                 name="description"
-                placeholder="Problem Description..."
+                placeholder={REPORT_FORM_DESCRIPTION_PLACEHOLDER}
                 className="problem-description"
-                component="textarea"
+                component={FormTextarea}
               />
 
               <div className="buttons">
@@ -83,7 +93,7 @@ const ReportForm = ({ handleReportFormSubmit }) => {
                   className="btn-submit"
                   disabled={submitting}
                 >
-                  Submit
+                  {REPORT_FORM_SUBMIT_BUTTON_TEXT}
                 </button>
                 <button
                   disabled={submitting || pristine}
@@ -91,7 +101,7 @@ const ReportForm = ({ handleReportFormSubmit }) => {
                   type="button"
                   className="btn-reset"
                 >
-                  Clear
+                  {REPORT_FORM_CLEAR_BUTTON_TEXT}
                 </button>
               </div>
             </form>
