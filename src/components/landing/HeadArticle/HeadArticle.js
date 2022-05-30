@@ -4,7 +4,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./HeadArticle.scss";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import constants from "../../../constants/HeadArticle";
-import slideShowimages, { SLIDES_INTERVAL } from "./HeadArticleSlideShow";
+import {
+  slideShowImages,
+  SLIDES_INTERVAL,
+} from "./HeadArticleSlideShowContent";
 
 const { BANNER_TEXT_1, BANNER_TEXT_2, BANNER_BUTTON_TEXT } = constants;
 
@@ -14,7 +17,7 @@ const HeadArticle = () => {
   useEffect(() => {
     const imageChange = setInterval(() => {
       setCurrentImage(current =>
-        current === slideShowimages.length - 1 ? 0 : current + 1,
+        current === slideShowImages.length - 1 ? 0 : current + 1,
       );
     }, SLIDES_INTERVAL);
 
@@ -38,7 +41,7 @@ const HeadArticle = () => {
         <LazyLoadImage
           alt="background"
           effect="blur"
-          src={slideShowimages[currentImage]}
+          src={slideShowImages[currentImage]}
           wrapperClassName="banner-img__wrapper"
         />
       </div>

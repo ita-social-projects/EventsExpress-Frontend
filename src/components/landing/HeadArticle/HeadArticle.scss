@@ -70,7 +70,8 @@
       &:hover{
         transform: none;
       }
-      .banner-img__wrapper > img {
+
+      &.banner-img__wrapper > img {
         width: $fullWidth;
         height: 500px;
         object-fit: cover;
@@ -119,7 +120,7 @@
         width: $fullWidth;
         max-width: 600px;
 
-        .banner-img__wrapper > img {
+        &.banner-img__wrapper>img {
           height: 400px;
         }
       }
@@ -154,7 +155,7 @@
       .lazy-load-image-background {
         max-width: 450px;
 
-        .banner-img__wrapper > img {
+        &.banner-img__wrapper>img {
           height: 350px;
         }
       }
@@ -193,7 +194,7 @@
       .lazy-load-image-background {
         max-width: 400px;
 
-        .banner-img__wrapper > img {
+        &.banner-img__wrapper>img {
           height: 300px;
         }
       }
