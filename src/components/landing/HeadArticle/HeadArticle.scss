@@ -45,7 +45,7 @@
       font-weight: $bold;
       cursor: pointer;
       transition: $defaultTransition;
-      animation: btn-shadow 1s infinite;
+      animation: $landingBannerAnimation;
       &:hover {
         box-shadow: $textShadowNeon;
         animation: none;
@@ -119,7 +119,7 @@
         width: $fullWidth;
         max-width: 600px;
 
-        img {
+        .banner-img__wrapper > img {
           height: 400px;
         }
       }
@@ -154,7 +154,7 @@
       .lazy-load-image-background {
         max-width: 450px;
 
-        img {
+        .banner-img__wrapper > img {
           height: 350px;
         }
       }
@@ -193,7 +193,7 @@
       .lazy-load-image-background {
         max-width: 400px;
 
-        img {
+        .banner-img__wrapper > img {
           height: 300px;
         }
       }
