@@ -9,7 +9,7 @@
     cursor: row-resize;
   }
 
-  & > div {
+  &>div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,12 +19,12 @@
     &.collapsed {
       opacity: 0.6;
 
-      & > *:not(.option-button) {
+      &>*:not(.option-button) {
         display: none;
       }
     }
 
-    & > div:not(.option-button) {
+    &>div:not(.option-button) {
       width: 100%;
     }
   }
@@ -34,7 +34,7 @@
     display: flex;
     padding: 0 128px;
 
-    .discover-button > button {
+    .discover-button>button {
       color: $white;
     }
 
@@ -49,7 +49,7 @@
       cursor: pointer;
       transition: 0.5s all;
 
-      & > button {
+      &>button {
         display: flex;
       }
 
@@ -81,7 +81,7 @@
     background-color: #f7f2ff;
     z-index: 1;
 
-    &.full-size > .left-side__text {
+    &.full-size>.left-side__text {
       font-size: 96px;
     }
 
@@ -114,12 +114,15 @@
         &.first-square:before {
           right: -8px;
         }
+
         &.second-square:before {
           left: -11px;
         }
+
         &.third-square:before {
           right: -12px;
         }
+
         &.fourth-square:before {
           left: 44px;
         }
@@ -133,7 +136,7 @@
     .discover-button-container {
       justify-content: flex-end;
 
-      .discover-button > button {
+      .discover-button>button {
         color: $black;
       }
 
@@ -156,7 +159,7 @@
     background-size: cover;
 
     .discover-button-container {
-      .discover-button > button {
+      .discover-button>button {
         color: $white;
       }
 
@@ -180,7 +183,7 @@
       align-items: center;
       margin: auto;
 
-      & > div {
+      &>div {
         font-weight: 900;
         font-size: 48px;
         color: $white;
@@ -200,7 +203,7 @@
 
 @media screen and (max-width: $mediaFirstTabletScreen) {
   .split-panels {
-    > div > div:not(.option-button) {
+    >div>div:not(.option-button) {
       width: 120%;
     }
 
@@ -214,7 +217,7 @@
 
     .right-side {
       &__text {
-        & > div {
+        &>div {
           font-size: 25px;
           line-height: 32px;
           padding: 30px;
@@ -242,7 +245,7 @@
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
   .split-panels {
-    > div > div:not(.option-button) {
+    >div>div:not(.option-button) {
       width: 120%;
     }
 
@@ -256,7 +259,7 @@
 
     .right-side {
       &__text {
-        & > div {
+        &>div {
           font-size: 25px;
           line-height: 32px;
           padding: 30px;
@@ -286,7 +289,7 @@
   .split-panels {
     height: calc(100vh - 78px) !important; //header footer
 
-    > .left-side {
+    >.left-side {
       display: none;
     }
 
@@ -294,13 +297,14 @@
       display: none;
     }
 
-    > .right-side {
+    >.right-side {
       width: 100% !important;
 
-      & > .header-text {
+      &>.header-text {
         width: auto;
         padding: auto;
-        & > div {
+
+        &>div {
           width: calc(100% - 72px);
           font-size: 38px;
           line-height: 46px;
@@ -313,6 +317,7 @@
         margin: 32px auto 80px;
         width: 180px;
         padding: unset;
+
         .discover-button {
           &__about {
             font-size: 13px;

@@ -1,0 +1,41 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/fonts.scss";
+
+.link__icon {
+    margin-right: 15px;
+    text-decoration: none;
+    color: inherit;
+
+    &:last-child {
+        margin-right: 0px;
+    }
+
+    .social__icon {
+        font-size: $fontsize-24;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: $mediaFirstTabletScreen) {
+    .link__icon {
+        .social__icon {
+            font-size: $fontsize-24;
+        }
+    }
+}
+
+@media screen and (max-width: $mediaSecondTabletScreen) {
+    .link__icon {
+        .social__icon {
+            font-size: $fontsize-20;
+        }
+    }
+}
+
+@media screen and (max-width: $mediaMobileScreen) {
+    .link__icon {
+        .social__icon {
+            font-size: $fontsize-16;
+        }
+    }
+}
