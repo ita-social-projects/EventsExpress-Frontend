@@ -1,3 +1,3 @@
-﻿const genders = ["Undefined", "Male", "Female", "Other"];
+﻿const genders = ["Not specified", "Male", "Female", "Other"];
 
 export default genders;

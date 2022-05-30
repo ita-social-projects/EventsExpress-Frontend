@@ -1,13 +1,18 @@
-﻿.user_info_card {
+﻿@import "../../styles/variables.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/fonts.scss";
+
+.user_info_card {
   display: flex;
   flex-direction: column;
   min-width: 300px;
   height: 170px;
-  width: 100%;
+  width: $fullWidth;
   margin: 10px;
   padding: 10px;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: $r16;
+  box-shadow: 0 0 10px $transparentGreyBackground;
 
   .user_avatar {
     margin: 10px;
@@ -16,22 +21,21 @@
     height: 60px;
   }
   .user_main_info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include flex(column, center, center);
+
     > :first-child {
       text-align: center;
-      font-size: 26px;
+      font-size: $fontsize-24;
       font-weight: 500;
     }
     .user_info_item {
       text-align: center;
-      font-size: 16px;
+      font-size: $fontsize-16;
     }
   }
   .user_rating {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     position: relative;
     z-index: 10;
     top: -40px;

@@ -123,7 +123,6 @@ const SplitPanels = () => {
           </Link>
         </div>
       </div>
-      {/* </Split> */}
     </Split>
   );
 };

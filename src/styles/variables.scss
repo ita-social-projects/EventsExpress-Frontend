@@ -8,10 +8,6 @@ $widthForContentFirstTabletScreen: 730px;
 $widthForContentSecondTabletScreen: 560px;
 $mobile-breakpoint: 426px;
 
-//border
-$defaultBorderRadius: 20px;
-$buttonBorderRadius: 10px;
-
 //width
 $fullWidth: 100%;
 
@@ -20,7 +16,6 @@ $r16: 16px;
 
 //input
 $inputHeight: 40px;
-$inputGeneralHeight: 55px;
 $inputWidth: 270px;
 $inputLaptopWidth: 250px;
 $inputTabletWidth: 220px;
@@ -30,3 +25,7 @@ $inputMobilePadding: 0px 20px;
 $inputShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 $noBord: none;
 $Unoutline: none;
+
+//border
+$defaultBorderRadius: 20px;
+$buttonBorderRadius: 10px;

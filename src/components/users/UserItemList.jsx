@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import UserInfoCard from "../user-info/UserInfoCard";
+import UserInfoCard from "../UserInfoCard/UserInfoCard";
 import PagePagination from "../shared/pagePagination";
 
 const GridLayout = styled.div`
