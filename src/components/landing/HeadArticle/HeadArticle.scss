@@ -70,7 +70,7 @@
       &:hover{
         transform: none;
       }
-      img {
+      .banner-img__wrapper > img {
         width: $fullWidth;
         height: 500px;
         object-fit: cover;

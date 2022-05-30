@@ -56,6 +56,7 @@ const HeadArticle = () => {
           alt="background"
           effect="blur"
           src={imagesPreload[currentImage]}
+          wrapperClassName="banner-img__wrapper"
         />
       </div>
     </article>
