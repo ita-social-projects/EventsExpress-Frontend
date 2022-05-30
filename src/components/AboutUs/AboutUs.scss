@@ -29,7 +29,7 @@
     font-weight: $bold;
     color: $black;
     background: $white;
-    border-radius: 20px;
+    border-radius: $defaultBorderRadius;
     &:hover {
       box-shadow: $aboutUsBannerBtnShadow;
     }
