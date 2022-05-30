@@ -5,10 +5,9 @@ import PropTypes from "prop-types";
 import genders from "../../constants/GenderConstants";
 import CustomAvatar from "../avatar/custom-avatar";
 import RatingAverage from "../rating/rating-average";
-import getAge from "../helpers/get-age-string";
-
+import defineUserAge from "../helpers/defineUserAge";
+import getAttitudeToUser from "../helpers/getAttitudeToUser";
 import AttitudeToolTip from "./AttitudeToolTip/AttitudeToolTip";
-import getAttitudeToUser from "./getUserAttitude";
 
 import "./UserInfoCard.scss";
 
@@ -17,7 +16,8 @@ const UserInfoCard = ({
 }) => {
   const attitudeToUser = getAttitudeToUser(attitude);
   const linkToUser = `/user/${id}`;
-  const userAge = `Age: ${getAge(birthday)}` || "Not Specified";
+  const userAge = defineUserAge(birthday);
+  const userGender = genders[gender] || "Not Specified";
 
   return (
     <div
@@ -30,7 +30,7 @@ const UserInfoCard = ({
 
       <div className="user_main_info">
         <Link to={linkToUser}>{username}</Link>
-        <div className="user_info_item">{genders[gender]}</div>
+        <div className="user_info_item">{userGender}</div>
         <div className="user_info_item">{userAge}</div>
       </div>
 

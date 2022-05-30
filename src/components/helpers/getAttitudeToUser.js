@@ -17,7 +17,7 @@ const getAttitudeToUser = attitude => {
       };
       break;
     default:
-      attitudeToUser = { color: "", message: "", thumb: "" };
+      attitudeToUser = { color: null, message: null, thumb: null };
   }
   return attitudeToUser;
 };
