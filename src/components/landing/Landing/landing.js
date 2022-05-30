@@ -29,7 +29,7 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
   return (
     <div className="main">
       <HeadArticle />
-      {items.length !== 0 && (
+      {!!items.length && (
         <div className="container">
           <div className="upcoming__events__navigation">
             <MainSearchInput

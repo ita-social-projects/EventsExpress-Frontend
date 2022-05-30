@@ -8,8 +8,8 @@ import PLACEHOLDER_INPUT from "../../constants/HeadArticleSearchConstants";
 import debounce from "../../services/Debaunce";
 
 const SearchInput = ({ searchFunc, searchText, name, clear, resetForm }) => {
-  const onTitleChange = value => {
-    debounce(() => searchFunc(value), 800)();
+  const onTitleChange = e => {
+    debounce(() => searchFunc(e.target.value))();
   };
 
   const clearInput = () => {
@@ -27,7 +27,7 @@ const SearchInput = ({ searchFunc, searchText, name, clear, resetForm }) => {
           component="input"
           placeholder={PLACEHOLDER_INPUT}
           className="MainSearchInput"
-          onChange={e => onTitleChange(e.target.value)}
+          onChange={onTitleChange}
           value={searchText}
         />
         {searchText ? (
