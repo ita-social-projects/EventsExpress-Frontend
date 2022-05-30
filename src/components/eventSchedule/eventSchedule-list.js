@@ -7,12 +7,6 @@ import "./eventSchedule.scss";
 const { NoResult } = EventScheduleConstants;
 
 const EventSchedulesList = ({ currentUser, dataList }) => {
-  // const renderItems = arr =>
-  //   arr.map(item => (
-  //     <EventSchedule key={item.id} item={item} currentUser={currentUser} />
-  //   ));
-
-  // const items = renderItems(dataList);
   return (
     <>
       <div className="container">

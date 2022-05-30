@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import "moment-timezone";
@@ -17,83 +17,84 @@ import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();
 
-class EventSchedule extends Component {
-  constructor(props) {
-    super(props);
+const EventSchedule = ({ item }) => {
+  const [eventImage, setEventImage] = useState(eventDefaultImage);
 
-    this.state = {
-      eventImage: eventDefaultImage,
-    };
-  }
+  useEffect(() => {
+    photoService.getPreviewEventPhoto(item.eventId).then(eventPreviewImage => {
+      if (eventPreviewImage != null) {
+        setEventImage({ eventImage: URL.createObjectURL(eventPreviewImage) });
+      }
+    });
 
-  componentDidMount() {
-    photoService
-      .getPreviewEventPhoto(this.props.item.eventId)
-      .then(eventPreviewImage => {
-        if (eventPreviewImage != null) {
-          this.setState({ eventImage: URL.createObjectURL(eventPreviewImage) });
-        }
-      });
-  }
+    return () => URL.revokeObjectURL(eventImage);
+  }, []);
 
-  componentWillUnmount() {
-    URL.revokeObjectURL(this.state.eventImage);
-  }
+  // componentDidMount() {
+  //   photoService
+  //     .getPreviewEventPhoto(this.props.item.eventId)
+  //     .then(eventPreviewImage => {
+  //       if (eventPreviewImage != null) {
+  //         this.setState({ eventImage: URL.createObjectURL(eventPreviewImage) });
+  //       }
+  //     });
+  // }
 
-  render() {
-    const classes = useStyles;
-    const { id, frequency, periodicity, lastRun, nextRun, title, eventId } =
-      this.props.item;
-    const period = renderPeriod(periodicity, frequency);
-    return (
-      <div className="col-12 col-sm-8 col-md-6 col-xl-4 mt-3">
-        <Card className={classes.card}>
-          <CardHeader
-            title={title}
-            subheader={
-              <Moment format="D MMM YYYY" withTitle>
-                {lastRun}
-              </Moment>
-            }
-          />
-          <CardMedia className={classes.media} title={title}>
-            <Link to={`/eventSchedule/${id}`}>
-              <img
-                src={this.state.eventImage}
-                id={`eventPreviewPhotoImg${eventId}`}
-                alt="EventSchedule"
-                className="w-100"
-              />
-            </Link>
-          </CardMedia>
-          <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {period}
-            </Typography>
+  // componentWillUnmount() {
+  //   URL.revokeObjectURL(this.state.eventImage);
+  // }
+
+  const classes = useStyles;
+  const { id, frequency, periodicity, lastRun, nextRun, title, eventId } = item;
+  const period = renderPeriod(periodicity, frequency);
+  return (
+    <div className="col-12 col-sm-8 col-md-6 col-xl-4 mt-3">
+      <Card className={classes.card}>
+        <CardHeader
+          title={title}
+          subheader={
             <Moment format="D MMM YYYY" withTitle>
-              {nextRun}
+              {lastRun}
             </Moment>
-            <div className="mb-3 float-right">
-              <Link to={`/event/${eventId}/1`}>
-                <Button
-                  className="ml-2"
-                  style={{ background: "#3f51b50a" }}
-                  fullWidth={false}
-                  color="primary"
-                  type="submit"
-                  onClick={this.disableCreateButton}
-                >
-                  Go to Parent Event
-                </Button>
-              </Link>
-            </div>
-          </CardContent>
-          <CardActions disableSpacing></CardActions>
-        </Card>
-      </div>
-    );
-  }
-}
+          }
+        />
+        <CardMedia className={classes.media} title={title}>
+          <Link to={`/eventSchedule/${id}`}>
+            <img
+              src={eventImage}
+              id={`eventPreviewPhotoImg${eventId}`}
+              alt="EventSchedule"
+              className="w-100"
+            />
+          </Link>
+        </CardMedia>
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {period}
+          </Typography>
+          <Moment format="D MMM YYYY" withTitle>
+            {nextRun}
+          </Moment>
+          <div className="mb-3 float-right">
+            <Link to={`/event/${eventId}/1`}>
+              <Button
+                className="ml-2"
+                style={{ background: "#3f51b50a" }}
+                fullWidth={false}
+                color="primary"
+                type="submit"
+                // onClick={disableCreateButton}
+              >
+                Go to Parent Event
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+        <CardActions disableSpacing></CardActions>
+      </Card>
+    </div>
+  );
+};
 
 EventSchedule.propTypes = {
   item: PropTypes.object,
