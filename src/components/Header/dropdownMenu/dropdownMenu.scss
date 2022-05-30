@@ -35,18 +35,22 @@
   margin: 2px;
   font-size: $fontsize-14;
   text-align: center;
-  border-radius:10px;
+  border-radius:$mediumBorderRadius;
   margin: auto;
   margin-bottom: 7px;
   display: flex;
   justify-content: space-between;
   align-items:center;
+  
    @media (max-width: $mobile-breakpoint) {
     font-size: $fontsize-10;
-
   }
 }
-.removedecorations,
-.removedecorations:hover {
-  all: unset;
+
+.removedecorations {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 20px;
+  margin-left: 10px;
 }

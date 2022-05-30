@@ -3,7 +3,7 @@
 .header {
   background: $headerBackground;
   height: 60px;
-  width: 100%;
+  width: $hundredPersent;
   text-align: center;
   z-index: 50;
   position: fixed;

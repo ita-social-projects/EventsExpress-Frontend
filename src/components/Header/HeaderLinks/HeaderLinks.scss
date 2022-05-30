@@ -6,43 +6,34 @@
   position: absolute;
   bottom: 2px;
   top: 10px;
-  li {
-    margin-left: 50px;
+  .header-link-item{
+    margin-left: $margin-50;
   }
-  .link-wrapper {
-    font-family: $mainFont;
-    font-style: normal;
-    font-weight: 700;
-    font-size: $fontsize-14;
-    text-decoration: none;
-    margin-top: 10px;
-  }
-  .login-link-wrapper {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 18px;
-    img {
-      display: block;
-      width: 13px;
-      height: 19px;
-      margin-top: 5px;
-      margin-left: 5px;
+  .header-link-item{
+    .link-wrapper {
+      font-family: $mainFont;
+      font-style: normal;
+      font-weight: $bold;
+      font-size: $fontsize-14;
+      text-decoration: none;
+      margin-top: 10px;
     }
   }
-  .eng-link-wrapper {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 18px;
-    img {
-      display: block;
-      width: 16px;
-      height: 16px;
-      margin-top: 5px;
-      margin-left: 5px;
+  .header-link-item{
+    .eng-link-wrapper {
+      margin-right: $margin-50;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-weight: $bold;
+      font-size: $fontsize-20;
+      .eng-link-icon {
+        display: block;
+        width: 16px;
+        height: 16px;
+        margin-top: 5px;
+        margin-left: 5px;
+      }
     }
   }
 }
@@ -50,37 +41,29 @@
 @media (max-width: $laptop-breakpoint) {
   .header-links-wrapper {
     right: 15px;
-    li {
-      margin-left: 30px;
+    .header-link-item{
+      margin-left: 20px;
     }
     .link-wrapper {
       font-size: $fontsize-12;
     }
-    .login-link-wrapper {
-      .login-link{
+    .login-link-wrapper,.eng-link-wrapper {
+      .login-link,.eng-link{
         font-size: $fontsize-12;
       }
     }
-    .eng-link-wrapper {
-      .eng-link{
-        font-size: $fontsize-12;
-      }
-    }
+
   }
 }
 
-@media screen and (max-width: $tablet-breakpoint) {
+@media screen and (max-width: $mediaMobileScreen) {
   .header-links-wrapper {
+    .header-link-item{
+      .link-wrapper,.eng-link-wrapper{
+        display: none;
+      }
+    }
 
-    .link-wrapper{
-      display: none;
-    }
-    .login-link-wrapper {
-      display: none;
-    }
-    .eng-link-wrapper {
-      display: none;
-    }
     .header-burger{
       display: block;
     }

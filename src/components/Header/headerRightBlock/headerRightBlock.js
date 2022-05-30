@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ModalWind from "../../modal-wind";
@@ -10,29 +10,15 @@ import "./headerRightBlock.scss";
 
 const { SIGN_IN } = headerConstants;
 
-const HeaderRightBlock = ({ user, openModal, isMobileHeaderOpen }) => {
+const HeaderRightBlock = ({ user, openModal }) => {
   const { id } = user.id ? user : {};
-  const countOfPixelsForTabletBrainpoint = 768;
-  const [countOfPixelsForDisappearLogin, setCountOfPixelsForDisappearLogin] =
-    useState(0);
-
-  window.addEventListener("resize", () => {
-    setCountOfPixelsForDisappearLogin(window.screen.availWidth);
-  });
 
   return (
     <li>
       {!id && (
         <AuthComponent onlyAnonymous>
           <button
-            className={`${
-              countOfPixelsForDisappearLogin <=
-                countOfPixelsForTabletBrainpoint &&
-              isMobileHeaderOpen === false &&
-              countOfPixelsForDisappearLogin !== 0
-                ? "disappear-login"
-                : "login-link"
-            }`}
+            className="login-link"
             type="button"
             onClick={() => openModal(true)}
           >
@@ -49,13 +35,11 @@ const HeaderRightBlock = ({ user, openModal, isMobileHeaderOpen }) => {
 HeaderRightBlock.defaultProps = {
   user: {},
   openModal: () => ({}),
-  isMobileHeaderOpen: PropTypes.any,
 };
 
 HeaderRightBlock.propTypes = {
   user: PropTypes.object,
   openModal: PropTypes.func,
-  isMobileHeaderOpen: PropTypes.any,
 };
 
 const mapDispatchToProps = dispatch => {
