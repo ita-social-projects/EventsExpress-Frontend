@@ -1,6 +1,7 @@
 @import "../../../../styles/variables.scss";
 @import "../../../../styles/colors.scss";
 @import "../../../../styles/mixins.scss";
+@import "../../../../styles/fonts.scss";
 
 .card-item-container {
   @include flex(row, start, center);
@@ -84,7 +85,7 @@
         bottom: 25px;
         .day, .month {
           color: $lightThemeAccept;
-          font-family: 'Robinson', sans-serif;
+          font-family: $robinson;
           height: 40px;
         }
         .day {
@@ -155,7 +156,7 @@
           
           .day, .month {
             color: $lightThemeAccept;
-            font-family: 'Robinson', sans-serif;
+            font-family: $robinson;
             height: 40px;
           }
           .day {
