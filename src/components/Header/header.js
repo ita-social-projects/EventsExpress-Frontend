@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../shared/Logo/logo";
-import HeaderRightBlock from "./headerRightBlock/headerRightBlock";
-import MenuIcon from "../../assets/icons/header/Menu.png";
+import HeaderLinks from "./HeaderLinks/HeaderLinks";
+import MobileHeaderLinks from "./MobileHeaderLinks/MobileHeaderLinks";
 import "./header.scss";
 
 const Header = () => {
+  const [isMobileHeaderOpen, setIsMobileHeaderOpen] = useState(false);
+
   return (
     <nav className="header">
-      <button type="button" tabIndex={0} className="header__menu">
-        <img src={MenuIcon} alt="Menu" />
-      </button>
       <Logo />
-      <HeaderRightBlock />
+      {isMobileHeaderOpen ? (
+        <MobileHeaderLinks setIsMobileHeaderOpen={setIsMobileHeaderOpen} />
+      ) : (
+        <HeaderLinks setIsMobileHeaderOpen={setIsMobileHeaderOpen} />
+      )}
     </nav>
   );
 };

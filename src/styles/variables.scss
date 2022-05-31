@@ -10,6 +10,10 @@ $mobile-breakpoint: 426px;
 
 //width & height
 $fullWidth: 100%;
+
+$maxDisplayWidth:100vw;
+$maxDisplayHeight:100vh;
+
 $fullHeight: 100%;
 
 //radius
@@ -32,6 +36,12 @@ $Unoutline: none;
 $defaultBorderRadius: 20px;
 $buttonBorderRadius: 10px;
 
+
+//margins
+$margin-50:50px;
+$left-160:160px;
+//
+$mediumPaddingTop:50px;
 
 $borderRound: 100%;
 

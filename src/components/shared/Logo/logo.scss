@@ -6,8 +6,7 @@
   display: flex;
   align-items: center;
   position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  left: $left-160;
   font-size: $fontsize-24;
 
   &:active,
@@ -25,16 +24,33 @@
 
   .logo__textExpress {
     color: $white;
-    text-shadow: 0 0 3px $gray , 0 0 5px $lightThemeAccept;
+    text-shadow: $logoTextShadow;
     font-size: $fontsize-24;
     font-weight: $bold;
   }
 
   .logo__image {
-    height: 25px;
+    width: 58px;
+    height: 29px;
   }
 }
-@media (max-width: $mobile-breakpoint) {
+@media (max-width: $mediaFirstTabletScreen) {
+  .logo {
+    left: 100px;
+    .logo__textEvents {
+      font-size: $fontsize-14;
+    }
+
+    .logo__textExpress {
+      font-size: $fontsize-14;
+    }
+    .logo__image {
+      width: 48px;
+      height: 24px;
+    }
+  }
+}
+@media (max-width: $mediaMobileScreen) {
   .logo__textExpress,
   .logo__textEvents {
     font-size: $fontsize-14;
