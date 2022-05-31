@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./users.css";
+import "./users.scss";
 import UserInfoWrapper from "../../containers/user-info";
 import PagePagination from "../shared/pagePagination";
 
