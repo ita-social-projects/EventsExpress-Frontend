@@ -10,35 +10,29 @@ import "./headerRightBlock.scss";
 
 const { SIGN_IN } = headerConstants;
 
-const HeaderRightBlock = ({ user, openModal }) => {
-  const { id } = user.id ? user : {};
-
+const HeaderRightBlock = ({ openModal }) => {
   return (
     <li>
-      {!id && (
-        <AuthComponent onlyAnonymous>
-          <button
-            className="login-link"
-            type="button"
-            onClick={() => openModal(true)}
-          >
-            {SIGN_IN}
-          </button>
-          <ModalWind />
-        </AuthComponent>
-      )}
+      <AuthComponent onlyAnonymous>
+        <button
+          className="login-link"
+          type="button"
+          onClick={() => openModal(true)}
+        >
+          {SIGN_IN}
+        </button>
+        <ModalWind />
+      </AuthComponent>
       <DropdownMenu />
     </li>
   );
 };
 
 HeaderRightBlock.defaultProps = {
-  user: {},
   openModal: () => ({}),
 };
 
 HeaderRightBlock.propTypes = {
-  user: PropTypes.object,
   openModal: PropTypes.func,
 };
 
