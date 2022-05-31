@@ -41,6 +41,10 @@ $slick-next-rotate: 45deg;
 
 .slick-prev {
   left: -40px;
+  transform: translate(150%, -50%);
+}
+.slick-next {
+  transform: translate(-150%, -50%);
 }
 
 .container {
