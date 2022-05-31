@@ -9,7 +9,7 @@ import {
   BANNER_BUTTON_TEXT,
   slideShowImages,
   SLIDES_INTERVAL,
-} from "../../../constants/HeadArticle";
+} from "../../../constants/HeadArticleConstant";
 
 const HeadArticle = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -37,14 +37,12 @@ const HeadArticle = () => {
           {BANNER_BUTTON_TEXT}
         </Link>
       </div>
-      <div className="banner-img">
-        <LazyLoadImage
-          alt="background"
-          effect="blur"
-          src={slideShowImages[currentImage]}
-          wrapperClassName="banner-img__wrapper"
-        />
-      </div>
+      <LazyLoadImage
+        alt="background"
+        effect="blur"
+        src={slideShowImages[currentImage]}
+        wrapperClassName="banner-img__wrapper"
+      />
     </article>
   );
 };

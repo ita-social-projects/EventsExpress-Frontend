@@ -3,7 +3,7 @@
 @import "../../../styles/fonts.scss";
 @import "../../../styles/colors.scss";
 @import "../../../styles/animations.scss";
-  
+
 .banner {
   @include flex(row, center, space-between);
   background: $bannerBgGradient, url($landingBannerBgPattern);
@@ -53,39 +53,36 @@
     }
   }
 
-  .banner-img {
+  .lazy-load-image-background {
     @include flex(row, center, center);
     flex: 5;
     height: $fullHeight;
+    box-shadow: $boxShadowImage;
+    width: $fullWidth;
+    max-width: 800px;
+    transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+    height: 500px;
+    &.blur.lazy-load-image-loaded {
+      transition: $defaultTransition;
+    }
+    &:hover {
+      transform: none;
+    }
 
-    .lazy-load-image-background {
-      box-shadow: $boxShadowImage;
+    &.banner-img__wrapper > img {
       width: $fullWidth;
-      max-width: 800px;
-      transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
-      
-      &.blur.lazy-load-image-loaded {
-        transition: $defaultTransition;
-      }
-      &:hover{
-        transform: none;
-      }
+      height: $fullHeight;
+      object-fit: cover;
+    }
 
-      &.banner-img__wrapper > img {
-        width: $fullWidth;
-        height: 500px;
-        object-fit: cover;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: $fullWidth;
-        height: $fullHeight;
-        background-color: $bannerImageGradient;
-      }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: $fullWidth;
+      height: $fullHeight;
+      background-color: $bannerImageGradient;
     }
   }
 }
@@ -112,18 +109,12 @@
       }
     }
 
-    .banner-img {
+    .lazy-load-image-background {
       order: 1;
       width: $fullWidth;
-
-      .lazy-load-image-background {
-        width: $fullWidth;
-        max-width: 600px;
-
-        &.banner-img__wrapper>img {
-          height: 400px;
-        }
-      }
+      width: $fullWidth;
+      max-width: 600px;
+      height: 400px;
     }
   }
 }
@@ -151,14 +142,9 @@
       }
     }
 
-    .banner-img {
-      .lazy-load-image-background {
-        max-width: 450px;
-
-        &.banner-img__wrapper>img {
-          height: 350px;
-        }
-      }
+    .lazy-load-image-background {
+      max-width: 450px;
+      height: 350px;
     }
   }
 }
@@ -188,25 +174,19 @@
       }
     }
 
-    .banner-img {
+    .lazy-load-image-background {
       flex: 3;
-
-      .lazy-load-image-background {
-        max-width: 400px;
-
-        &.banner-img__wrapper>img {
-          height: 300px;
-        }
-      }
+      max-width: 400px;
+      height: 300px;
     }
   }
 }
 
 @media only screen and (max-width: $mobile-breakpoint) {
   .banner {
-    padding: 50px 20px 0 20px;
+    padding: 50px 0 0 0;
     .banner-content {
-        margin-bottom: 30px;
+      margin-bottom: 30px;
       .banner-text {
         .banner-text__quote1 {
           font-size: $headerTextMobile;
@@ -214,8 +194,8 @@
       }
     }
 
-    .banner-img {
-      padding: 0 20px;
+    .lazy-load-image-background {
+      width: 85%;
       flex: 3;
     }
   }
