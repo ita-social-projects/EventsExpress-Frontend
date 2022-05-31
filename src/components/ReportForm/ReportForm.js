@@ -17,13 +17,7 @@ import {
 import "./ReportForm.scss";
 
 const ReportForm = ({ handleSubmit, pristine, submitting, form, values }) => (
-  <form
-    className="report-form"
-    onSubmit={() => {
-      handleSubmit();
-      form.reset();
-    }}
-  >
+  <form className="report-form" onSubmit={handleSubmit}>
     <Field
       name="email"
       className="email"
