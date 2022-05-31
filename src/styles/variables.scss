@@ -8,8 +8,13 @@ $widthForContentFirstTabletScreen: 730px;
 $widthForContentSecondTabletScreen: 560px;
 $mobile-breakpoint: 426px;
 
-//width
+//width & height
 $fullWidth: 100%;
+
+$maxDisplayWidth:100vw;
+$maxDisplayHeight:100vh;
+
+$fullHeight: 100%;
 
 //radius
 $r16: 16px;
@@ -30,6 +35,14 @@ $Unoutline: none;
 //border
 $defaultBorderRadius: 20px;
 $buttonBorderRadius: 10px;
+
+
+//margins
+$margin-50:50px;
+$left-160:160px;
+//
+$mediumPaddingTop:50px;
+
 $borderRound: 100%;
 
 $absoluteHeight100: 100vh;
@@ -42,4 +55,5 @@ $width25: 25%;
 $defaultTransition: 0.5s ease-in-out;
 
 $landingBannerBgPattern: "https://i.pinimg.com/originals/4c/41/75/4c4175fc9f1274b6d732d5b5038f168d.jpg";
+$infoTextMaxWidth: $width50;
 $infoTextMaxWidth: $width50;

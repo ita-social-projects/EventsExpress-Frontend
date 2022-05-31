@@ -5,6 +5,7 @@ $purple: #581184;
 $purpleDark: #180c30;
 $lightPink: #f0eaf4;
 $deleteColor: #c91212;
+$green: #0eff7c;
 
 $text: $black;
 $mainColor: $white;
@@ -33,3 +34,10 @@ $transparentBlackBackground: #00000054;
 $headerBackground: #f7f4f466;
 $mainSearchGrey: #c4c4c475;
 $transparentGreyBackground: #74747466;
+
+$dropDownGradient:linear-gradient(to right top,#4C5584,#DD6085);
+$dropDownItemBackground:#CFBDD8;
+$dropDownItemColor:#535684;
+
+$logoTextShadow:0 0 3px $gray, 0 0 5px $lightThemeAccept;
+
