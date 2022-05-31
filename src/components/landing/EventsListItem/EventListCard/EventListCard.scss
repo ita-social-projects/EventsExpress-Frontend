@@ -1,40 +1,41 @@
 @import "../../../../styles/variables.scss";
 @import "../../../../styles/colors.scss";
+@import "../../../../styles/mixins.scss";
 
 .card-item-container {
   @include flex(row, start, center);
   .card-item {
     @include flex(column, center, center);
-    height: $distance280px;
+    height: 280px;
     position: relative;
     width: 700px;
     max-width: 700px;
-    box-shadow: 0 0 $distance10px $transparentBlackBackground;
-    margin-bottom: $distance50px;
+    box-shadow: $boxshadow;
+    margin-bottom: 50px;
     .content {
       @include flex(row, start, flex-end);
-      width: $percent100;
-      height: $distance200px;
+      width: $fullWidth;
+      height: 200px;
       position: relative;
-      padding: $distance15px;
+      padding: 15px;
       padding-bottom: 0;
       .image-container {
         @include flex(row, center, center);
         top: -25px;
-        left: $distance25px;
-        width: $distance370px;
-        height: $distance200px;
+        left: 25px;
+        width: 370px;
+        height: 200px;
         overflow: hidden;
         position: absolute;
-        box-shadow: $distance10px $distance10px $distance40px 0 $lightThemeHeader;
+        box-shadow: $imageshadow;
       }
       .card-image {
         position: absolute;
-        top: $percent50;
-        left: $percent50;
-        transform:translate($-percent50, $-percent50);
-        width: $distance370px;
-        height: $distance200px;
+        top: $halfWidth;
+        left: $halfWidth;
+        transform:translate($minusHalfWidth, $minusHalfWidth);
+        width: 370px;
+        height: 200px;
         object-fit:cover;
       }
       .card-item-content {
@@ -42,36 +43,36 @@
         width: 40%;
         .card-item-header {
           text-transform: uppercase;
-          font-weight: bold;
+          font-weight: $bold;
           font-size: $fontsize-20;
           color: $lightThemeAccept;
           position: relative;
         }
         .card-item-ovner {
           @include flex(row, center, center);
-          width: $percent100;
+          width: $fullWidth;
           color: $black;
           background-color: $lightPink;
           border-radius: 3px;
-          font-weight: bold;
-          padding: $minPadding;
+          font-weight: $bold;
+          padding: 5px;
         }
         .card-item-description {
           font-size: $fontsize-14;
           color: $lightThemeHeader;
-          padding-bottom: $distance15px;
+          padding-bottom: 15px;
         }
       }
     }
     .card-item-bottom-row {
       @include flex(row, center, flex-end);
-      width: $percent100;
-      padding-bottom: $distance15px;
+      width: $fullWidth;
+      padding-bottom: 15px;
       .card-item-footer {
-        margin: 0 $distance60px;
+        margin: 0 60px;
       }
       .card-item-footer:last-child {
-        margin: 0 $distance15px 0 $distance60px;
+        margin: 0 15px 0 60px;
       }
       .heart-icon {
         margin-bottom: 0;
@@ -79,23 +80,23 @@
       .event-date {
         @include flex(column, start, start);
         position: absolute;
-        left: $distance30px;
-        bottom: $distance25px;
+        left: 30px;
+        bottom: 25px;
         .day, .month {
           color: $lightThemeAccept;
           font-family: 'Robinson', sans-serif;
-          height: $distance40px;
+          height: 40px;
         }
         .day {
-          text-shadow: 0 0 $distance20px $white;
-          margin-bottom: $distance15px;
-          font-weight: bold;
-          font-size: $distance100px;
-          line-height: $distance30px;
+          text-shadow: 0 0 20px $white;
+          margin-bottom: 15px;
+          font-weight: $bold;
+          font-size: 100px;
+          line-height: 30px;
         }
         .month {
           text-transform: uppercase;
-          font-size: $distance45px;
+          font-size: 45px;
         }
       }
       .event-details-btn {
@@ -113,56 +114,56 @@
       height: 235px;
       justify-content: space-between;
       .content {
-        margin-top: $distance10px;
+        margin-top: 10px;
         padding-top: 0;
         height: 130px;
         .image-container {
-          width: $distance280px;
-          max-height: $distance150px;
+          width: 280px;
+          max-height: 150px;
           top: -25px;
-          left: $distance20px;
+          left: 20px;
           .card-image {
-            min-width: $distance280px;
-            max-height: $distance150px;
+            min-width: 280px;
+            max-height: 150px;
           }
         }
         .card-item-content {    
-          height: $distance200px;
+          height: 200px;
           justify-content: flex-start;
           .card-item-header {
             font-size: 12px;
-            padding-bottom: $distance10px;
+            padding-bottom: 10px;
           }
           .card-item-description {
             font-size: 12px;
-            padding-bottom: $distance10px;
+            padding-bottom: 10px;
           }
         }
       }
       .card-item-bottom-row {
-        padding-bottom: $distance10px;
+        padding-bottom: 10px;
         .event-date {
-          left: $distance20px;
+          left: 20px;
         }
 
         .event-date {
           position: absolute;
-          left: $distance30px;
-          bottom: $distance25px;
+          left: 30px;
+          bottom: 25px;
           display: flex;
           flex-direction: column;
           
           .day, .month {
             color: $lightThemeAccept;
             font-family: 'Robinson', sans-serif;
-            height: $distance40px;
+            height: 40px;
           }
           .day {
-            text-shadow: 0 0 $distance20px $white;
-            margin-bottom: $distance10px;
-            font-weight: bold;
-            font-size: $distance80px;
-            line-height: $distance30px;
+            text-shadow: 0 0 20px $white;
+            margin-bottom: 10px;
+            font-weight: $bold;
+            font-size: 80px;
+            line-height: 30px;
           }
           .month {
             text-transform: uppercase;
@@ -170,10 +171,10 @@
           }
         }
         .card-item-footer {
-          margin: 0 $distance30px;
+          margin: 0 30px;
         }
         .card-item-footer:last-child {
-          margin: 0 $distance15px 0 $distance30px;
+          margin: 0 15px 0 30px;
         }
       }
     }
@@ -183,33 +184,33 @@
 @media screen and (max-width: $mediaMobileScreen) {
   .card-item-container {
     .card-item {
-      height: $distance220px;
+      height: 220px;
       width: 450px;
       .content {
         padding-top: 0;
         @include flex(row, center, start);
-        height: $distance220px;
+        height: 220px;
         .image-container {
           position: relative;
-          width: $percent100;
+          width: $fullWidth;
           top: -20px;
           left: 0;
           padding-bottom: 0;
           margin-bottom: 0;
           .card-image {
-            width: $percent100;
+            width: $fullWidth;
           }
         }
         .card-item-content {   
-          width: $distance150px;
-          height: $distance70px;
+          width: 150px;
+          height: 70px;
           @include flex(column, start, center);
           .card-item-header {
             font-size: $fontsize-12;
-            padding: $distance10px;
+            padding: 10px;
           }
           .card-item-ovner {
-            margin-left: $distance10px;
+            margin-left: 10px;
           }
           .card-item-description {
             display: none;
@@ -217,26 +218,26 @@
         }
       }
       .card-item-bottom-row {
-        padding-bottom: $distance10px;
+        padding-bottom: 10px;
         .event-date {
-          left: $distance20px;
+          left: 20px;
           .day {
-            text-shadow: 0 0 $distance10px $lightThemeHeader;
-            margin-bottom: $distance10px;
-            font-weight: bold;
-            font-size: $distance70px;
-            line-height: $distance70px;
+            text-shadow: 0 0 10px $lightThemeHeader;
+            margin-bottom: 10px;
+            font-weight: $bold;
+            font-size: 70px;
+            line-height: 70px;
           }
           .month {
             text-transform: uppercase;
-            font-size: $distance40px;
+            font-size: 40px;
           }
         }
         .card-item-footer {
-          margin: 0 $distance35px;
+          margin: 0 35px;
         }
         .card-item-footer:last-child {
-          margin: 0 $distance35px 0 $distance35px;
+          margin: 0 35px 0 35px;
         }
       }
     }

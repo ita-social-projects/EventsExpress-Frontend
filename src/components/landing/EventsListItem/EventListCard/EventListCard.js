@@ -11,21 +11,6 @@ import eventDefaultImage from "../../../../constants/eventDefaultImage";
 const EventListCard = ({ event }) => {
   const { id, title, description, location, dateFrom } = event;
   const ovner = event.organizers[0].username;
-  const monthes = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const monthIndex = moment(dateFrom).format("M") - 1;
   const photoService = new PhotoService();
   const [eventImage, setEventImage] = useState(eventDefaultImage);
 
@@ -61,7 +46,7 @@ const EventListCard = ({ event }) => {
         <div className="card-item-bottom-row">
           <div className="event-date">
             <span className="day">{moment(dateFrom).format("DD")}</span>
-            <span className="month">{monthes[monthIndex]}</span>
+            <span className="month">{moment(dateFrom).format("MMMM")}</span>
           </div>
           <span className="card-item-footer event-location">
             {location.latitude ? "Map" : "Online"}

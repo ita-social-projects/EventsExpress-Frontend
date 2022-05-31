@@ -1,4 +1,5 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
 
 
 $slick-before-transform-origin: 100% 100%;
@@ -47,7 +48,7 @@ $slick-next-rotate: 45deg;
   margin: 0 auto;
 }
 .slick-slider {
-    margin: $distance30px auto $distance50px;
+    margin: 30px auto 50px;
     width: auto;
 }
 .slick-initialized .slick-slide {
@@ -55,25 +56,25 @@ $slick-next-rotate: 45deg;
 }
 
 .slick-dots li {
-  margin: 0 $distance15px;
+  margin: 0 15px;
 }
 .slick-dots li button:before {
   content: "";
   background: $gray;
   opacity: 1;
   height: 4px;
-  width: $distance40px;
+  width: 40px;
 }
 .slick-dots li.slick-active button:before {
   content: "";
   background: $lightThemeAccept;
   opacity: 1;
   height: 4px;
-  width: $distance40px;
+  width: 40px;
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen){
   .slick-slide {
-    margin-bottom: $distance35px;
+    margin-bottom: 35px;
   }
 }

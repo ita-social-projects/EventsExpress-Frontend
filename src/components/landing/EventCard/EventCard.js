@@ -7,24 +7,10 @@ import IconsEventCard from "./IconsEventCard/IconsEventCard";
 import "./EventCard.scss";
 import PhotoService from "../../../services/PhotoService";
 import eventDefaultImage from "../../../constants/eventDefaultImage";
+import FORMATS from "../../../constants/EventCardConstants";
 
 const EventCard = ({ event }) => {
   const { id, title, dateFrom } = event;
-  const monthes = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const monthIndex = moment(dateFrom).format("M") - 1;
   const photoService = new PhotoService();
   const [eventImage, setEventImage] = useState(eventDefaultImage);
 
@@ -49,7 +35,9 @@ const EventCard = ({ event }) => {
       />
       <div className="card-content">
         <div className="card-date date-container">
-          <span className="day">{moment(dateFrom).format("DD")}</span>
+          <span className="day">
+            {moment(dateFrom).format(FORMATS.dayFormat)}
+          </span>
         </div>
         <div className="card-info">
           <span className="card-info-header">
@@ -63,7 +51,9 @@ const EventCard = ({ event }) => {
           </div>
         </div>
       </div>
-      <span className="month">{monthes[monthIndex]}</span>
+      <span className="month">
+        {moment(dateFrom).format(FORMATS.monthFormat)}
+      </span>
     </div>
   );
 };

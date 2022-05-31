@@ -1,73 +1,75 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
+@import "../../../styles/fonts.scss";
 
 .event-card {
-  width: $distance300px;
+  width: 300px;
   margin: 15px;
-  box-shadow: $distance10px $distance10px $distance20px 0 $lightThemeHeader;
+  box-shadow: 10px 10px 20px 0 $lightThemeHeader;
   background-color: $white;
   .card-image-container {
     @include flex(row, center, center);
-    width: $percent100;
-    height: $distance150px;
+    width: $fullWidth;
+    height: 150px;
     overflow: hidden;
     position: relative;
   }
   .card-image{
-    width: $distance300px;
-    height: $distance150px;
+    width: 300px;
+    height: 150px;
     object-fit:cover;
   }
   .card-content {
     @include flex(row, start, start);
-    width: $percent100;
-    height: $distance150px;
-    padding: $minPadding;
+    width: $fullWidth;
+    height: 150px;
+    padding: 5px;
     .card-date {
-      width: $distance150px;
+      width: 150px;
       position: relative;
-      padding: $minPadding;
+      padding: 5px;
     }
     .date-container {
       @include flex(row, center, center);
-      height: $percent100;
+      height: $fullWidth;
       .day {
         @include flex(row, center, center);
         color: $lightThemeAccept;
         font-family: 'Robinson', sans-serif;
-        height: $distance100px;
-        text-shadow: 0 0 $distance20px $white;
-        margin-bottom: $distance15px;
-        font-weight: bold;
-        font-size: $distance80px;
+        height: 100px;
+        text-shadow: 0 0 20px $white;
+        margin-bottom: 15px;
+        font-weight: $bold;
+        font-size: 80px;
       }
     }
     .card-info {
       @include flex(column, start, space-between);
-      padding: $minPadding;
-      width: $percent100;
+      padding: 5px;
+      width: $fullWidth;
       .card-info-header {
         @include flex(row, center, center);
-        width: $percent100;
-        padding: $minPadding;
-        height: $distance100px;
+        width: $fullWidth;
+        padding: 5px;
+        height: 100px;
         text-transform: uppercase;
-        font-weight: bold;
+        font-weight: $bold;
         font-size: $fontsize-20;
         color: $black;
       }
       .card-buttons {
         @include flex(row, center, flex-end);
-        width: $percent100;
-        padding: $minPadding;
-        height: $distance40px;
+        width: $fullWidth;
+        padding: 5px;
+        height: 40px;
         .like, .more {
           @include flex(row, center, center);
-          width: $distance40px;
-          height: $distance40px;
-          padding: $minPadding;
+          width: 40px;
+          height: 40px;
+          padding: 5px;
         }
         .more {
-          margin-left: $distance15px;
+          margin-left: 15px;
           background-color: $lightThemeAccept;
           color: $white;
           @include flex(row, center, start);
@@ -76,13 +78,13 @@
     }
   }
   .month {
-    padding: $minPadding;
+    padding: 5px;
     color: $lightThemeAccept;
     font-family: 'Robinson', sans-serif;
-    height: $distance40px;
+    height: 40px;
     text-transform: uppercase;
-    font-size: $distance45px;
-    width: $percent100;
+    font-size: 45px;
+    width: $fullWidth;
     margin: 0 auto;
   }
 }

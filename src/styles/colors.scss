@@ -5,6 +5,8 @@ $purple: #581184;
 $purpleDark : #180C30;
 $lightPink: #F0EAF4; 
 $deleteColor: #C91212;
+$lightPink: #E4D5EE;
+$gray: #c3c3c3;
 
 $text: $black; 
 $mainColor: $white;
@@ -20,3 +22,7 @@ $transparentBlackBackground: #00000054;
 $headerBackground: #f7f4f466;
 $mainSearchGrey: #c4c4c475;
 $transparentGreyBackground: #74747466;
+
+//shadows
+$boxshadow: 0 0 10px $transparentBlackBackground;
+$imageshadow: 10px 10px 40px 0 $lightThemeHeader;
