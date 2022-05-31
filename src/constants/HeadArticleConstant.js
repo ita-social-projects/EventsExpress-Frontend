@@ -7,11 +7,11 @@ import image6 from "../assets/landing/bannerSlides/6.jpg";
 import image7 from "../assets/landing/bannerSlides/7.jpg";
 import image8 from "../assets/landing/bannerSlides/8.jpg";
 
-export const BANNER_TEXT_1 = "Don’t stay at home!";
-export const BANNER_TEXT_2 = "Join Us To Have Fun And Improve Yourself";
+export const BANNER_TITLE = "Don’t stay at home!";
+export const BANNER_SUBTITLE = "Join Us To Have Fun And Improve Yourself";
 export const BANNER_BUTTON_TEXT = "Look For Events";
 export const SLIDES_INTERVAL = 5000;
-export const slideShowImages = [
+export const SLIDES = [
   image1,
   image2,
   image3,

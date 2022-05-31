@@ -36,8 +36,8 @@ const SplitPanels = () => {
       style={{ height: "780px" }}
     >
       <div
-        className={`left-side ${collapsedIndex === 0 ? "collapsed" : ""} ${
-          collapsedIndex === 1 ? "full-size" : ""
+        className={`left-side ${
+          collapsedIndex === 0 ? "collapsed" : "full-size"
         }`}
       >
         <div className="left-side__text header-text">
