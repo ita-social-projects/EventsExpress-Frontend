@@ -7,11 +7,11 @@ export const REPORT_FORM_PROBLEM_TYPE_PLACEHOLDER = "Enter Problem Type";
 export const REPORT_FORM_DESCRIPTION_PLACEHOLDER = "Problem Description...";
 
 export const ISSUES_TYPES_ENUM = {
-  NewCategory: 0,
-  BugReport: 1,
-  BadEvent: 2,
-  BadUser: 3,
-  Other: 4,
+  NewCategory: "0",
+  BugReport: "1",
+  BadEvent: "2",
+  BadUser: "3",
+  Other: "4",
 };
 
 export const ISSUES_TYPES = [

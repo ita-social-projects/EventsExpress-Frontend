@@ -25,7 +25,7 @@ import "./ReportForm.scss";
 const ReportForm = ({ handleReportFormSubmit }) => {
   const validate = values => {
     const errors = {};
-    const requiredFields = ["title", "email", "description"];
+    const requiredFields = ["email", "description"];
     if (maxLength30(values.title)) {
       errors.title = "Title should be less 30 symbols";
     }
@@ -37,16 +37,27 @@ const ReportForm = ({ handleReportFormSubmit }) => {
     };
   };
 
+  const onHandleReportFormSubmit = values => {
+    const validatedValues = {
+      ...values,
+      subject: +values.subject,
+    };
+    handleReportFormSubmit(validatedValues);
+  };
+
   return (
     <div className="report__wrapper">
       <div className="report__container">
         <h3 className="report-container__title">{REPORT_FORM_TITLE}</h3>
-        <Form
-          onSubmit={values => handleReportFormSubmit(values)}
-          validate={validate}
-        >
+        <Form onSubmit={onHandleReportFormSubmit} validate={validate}>
           {({ handleSubmit, pristine, submitting, form, values }) => (
-            <form className="report-form" onSubmit={handleSubmit}>
+            <form
+              className="report-form"
+              onSubmit={() => {
+                handleSubmit();
+                form.reset();
+              }}
+            >
               <Field
                 name="email"
                 className="email"
@@ -62,7 +73,6 @@ const ReportForm = ({ handleReportFormSubmit }) => {
                   name="subject"
                   className="problem-types__select"
                   component={FormSelect}
-                  parse={value => Number(value)}
                 >
                   {ISSUES_TYPES.map(({ label, value }) => (
                     <option key={value} value={value}>
@@ -76,6 +86,7 @@ const ReportForm = ({ handleReportFormSubmit }) => {
                     className="other-problem"
                     component={FormInput}
                     placeholder={REPORT_FORM_PROBLEM_TYPE_PLACEHOLDER}
+                    allowNull
                   />
                 )}
               </div>
