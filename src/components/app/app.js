@@ -34,7 +34,7 @@ import RegistrationForm from "../RegistrationForm";
 import MainLayout from "../MainLayout";
 import AboutUs from "../AboutUs/AboutUs";
 import SplitPanels from "../SplitPanels/SplitPanels";
-import ReportForm from "../ReportForm/ReportForm";
+import ReportPage from "../ReportPage/ReportPage";
 
 class App extends Component {
   UserRoleSecurity = withAuthRedirect(["User"]);
@@ -126,7 +126,7 @@ class App extends Component {
                     path="/chat/:chatId"
                     component={this.AdminAndUserRoleSecurity(Chat)}
                   />
-                  <Route path="/contactAdmin" component={ReportForm} />
+                  <Route path="/contactAdmin" component={ReportPage} />
                   <Route path="/registerSuccess" component={RegisterSuccess} />
                   <Route
                     path="/editEvent/:id"
