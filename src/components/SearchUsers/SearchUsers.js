@@ -6,7 +6,8 @@ import PropTypes from "prop-types";
 import { useHistory, useLocation } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 
-import MainSearchInput from "../searchInput/MainSearchInput";
+// import MainSearchInput from "../searchInput/MainSearchInput";
+import SearchInput from "../searchInput/SearchInput";
 import { getSearchUsers, changeFilter } from "../../actions/users/users-action";
 import SpinnerWrapper from "../../containers/spinner";
 import UserItemList from "../users/UserItemList";
@@ -56,7 +57,7 @@ const SearchUsers = ({
   return (
     <div className="search_users_container">
       <div className="search_users_input">
-        <MainSearchInput
+        <SearchInput
           searchText={search}
           searchFunc={runSearch}
           name="keyWord"

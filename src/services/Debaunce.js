@@ -1,4 +1,6 @@
-const debounce = (callBackFunc, delay) => {
+import DEBOUNCE_DELAYS from "../constants/DebounceDelays";
+
+const debounce = (callBackFunc, delay = DEBOUNCE_DELAYS.standartDelay) => {
   let timeout;
   return (...args) => {
     clearTimeout(timeout);

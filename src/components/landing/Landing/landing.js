@@ -10,7 +10,7 @@ import {
   viewModeTypes,
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
 } from "../../../constants/EventsViewModeConstants";
-import MainSearchInput from "../../searchInput/MainSearchInput";
+import SearchInput from "../../searchInput/SearchInput";
 
 const { SLIDER } = viewModeTypes;
 
@@ -29,10 +29,10 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
   return (
     <div className="main">
       <HeadArticle />
-      {items.length !== 0 && (
+      {!!items.length && (
         <div className="container">
           <div className="upcoming__events__navigation">
-            <MainSearchInput
+            <SearchInput
               searchText={filterTitle}
               searchFunc={setFilterTitle}
               name="search"
