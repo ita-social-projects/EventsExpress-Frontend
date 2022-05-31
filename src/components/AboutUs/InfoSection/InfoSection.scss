@@ -1,0 +1,143 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
+@import "../../../styles/mixins.scss";
+@import "../../../styles/pages/about.scss";
+
+.about-info {
+    width: $fullWidth;
+    padding: 50px;
+
+    .info-text__left {
+        .info-text__header {
+            font-size: $aboutUsHeadingText;
+            font-weight: $bold;
+            color: $black;
+        }
+
+        .info-text__body {
+            max-width: $infoTextMaxWidth;
+            font-size: $aboutUsBodyText;
+            color: $black;
+        }
+    }
+
+    .info-images {
+        display: flex;
+        height: 400px;
+        width: $fullWidth;
+
+        .info-images__item {
+            position: relative;
+            width: $width25;
+
+            .info-images__item-img {
+                filter: brightness($infoImagesBrightness);
+                width: $fullWidth;
+                height: $fullHeight;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: $defaultTransition;
+            }
+
+            &:hover .info-images__item-img {
+                filter: brightness($infoImagesHoverBrightness);
+            }
+
+            .info-images__text {
+                z-index: 1;
+                @include centerAbsolute;
+                text-align: center;
+                color: $white;
+                font-size: $aboutUsBodyText;
+            }
+        }
+
+        @include adaptiveStyles($mediaPcScreen) {
+            height: 350px;
+        }
+
+        @include adaptiveStyles($mediaFirstTabletScreen) {
+            height: 300px;
+            margin: 50px 0;
+        }
+
+        @include adaptiveStyles($mediaSecondTabletScreen) {
+            height: 400px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+
+            .info-images__item {
+                width: auto;
+            }
+        }
+
+        @include adaptiveStyles($mediaMobileScreen) {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            padding: 20px;
+
+            .info-images__item {
+                width: auto;
+                height: 300px;
+            }
+        }
+    }
+
+    .info-text__right {
+        @include flex(column, flex-end, center);
+        width: $fullWidth;
+        text-align: right;
+
+        .info-text__header {
+            font-size: $aboutUsHeadingText;
+            font-weight: $bold;
+            color: $black;
+        }
+
+        .info-text__body {
+            max-width: $infoTextMaxWidth;
+            font-size: $aboutUsBodyText;
+            color: $black;
+        }
+    }
+
+    .info-text__right,
+    .info-text__left {
+        @include adaptiveStyles($mediaFirstTabletScreen) {
+            align-items: center;
+            text-align: center;
+            margin-left: 0;
+            padding: 0 50px;
+
+            .info-text__header {
+                font-size: $aboutUsSecondaryHeading;
+            }
+
+            .info-text__body {
+                max-width: $fullWidth;
+            }
+        }
+
+        @include adaptiveStyles($mediaMobileScreen) {
+            .info-text__body {
+                font-size: $aboutUsBodyTextMobile;
+                max-width: $fullWidth;
+            }
+
+            .info-text__header {
+                font-size: $aboutUsHeaderTextMobile;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    @include adaptiveStyles($mediaMobileScreen) {
+        padding: 50px 0;
+    }
+}

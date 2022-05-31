@@ -30,14 +30,17 @@ $Unoutline: none;
 //border
 $defaultBorderRadius: 20px;
 $buttonBorderRadius: 10px;
+$borderRound: 100%;
 
-
+$absoluteHeight100: 100vh;
 $fullWidth: 100%;
 $fullHeight: 100%;
-$absoluteHeight100: 100vh;
 $width50: 50%;
+$height50: 50%;
 $width25: 25%;
 
 $defaultTransition: 0.5s ease-in-out;
 
 $landingBannerBgPattern: "https://i.pinimg.com/originals/4c/41/75/4c4175fc9f1274b6d732d5b5038f168d.jpg";
+$infoTextMaxWidth: $width50;
+
