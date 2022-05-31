@@ -1,0 +1,94 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
+@import "../../../styles/mixins.scss";
+@import "../../../styles/pages/about.scss";
+
+.about-members {
+    @include flex(column, center, center);
+
+    .members-title {
+        text-align: center;
+        font-size: $aboutUsHeadingText;
+        font-weight: $bold;
+        color: $black;
+        margin-bottom: 50px;
+
+        @include adaptiveStyles($mediaFirstTabletScreen) {
+            font-size: $aboutUsSecondaryHeading;
+        }
+    }
+
+    .members-container {
+        @include flex(row, center, center);
+        padding: 0 50px;
+
+        @include adaptiveStyles($mediaSecondTabletScreen) {
+            flex-direction: column;
+        }
+
+        @include adaptiveStyles($mediaMobileScreen) {
+            padding: 0;
+        }
+    }
+
+    .member {
+        @include flex(column, center, center);
+        text-align: center;
+        box-sizing: border-box;
+        width: $fullWidth;
+
+        @include adaptiveStyles($mediaFirstTabletScreen) {
+            padding: 20px;
+
+            .member__info {
+                padding: 0px;
+                margin-top: 10px;
+
+                .member__name {
+                    font-size: $aboutUsSecondaryHeading;
+                    margin-bottom: 15px;
+                }
+
+                .member__description {
+                    font-size: $aboutUsBodyTextMobile;
+                }
+            }
+        }
+
+        @include adaptiveStyles($mediaSecondTabletScreen) {
+            max-width: 80%;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+    }
+
+    .member__image-container {
+        @include flex(row, center, center);
+        width: 80%;
+
+        .member__image {
+            width: 80%;
+            height: 80%;
+            border-radius: $borderRound;
+            object-fit: cover;
+        }
+    }
+
+    .member__info {
+        width: $fullWidth;
+        padding: 10px;
+        box-sizing: border-box;
+
+        .member__name {
+            font-size: $aboutUsSecondaryHeading;
+            font-weight: $bold;
+            color: $black;
+        }
+
+        .member__description {
+            font-size: $aboutUsBodyText;
+            color: $black;
+        }
+    }
+}
