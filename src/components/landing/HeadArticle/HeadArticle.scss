@@ -6,7 +6,7 @@
   
 .banner {
   @include flex(row, center, space-between);
-  background: $bannerBgGradient, url("https://i.pinimg.com/originals/4c/41/75/4c4175fc9f1274b6d732d5b5038f168d.jpg");
+  background: $bannerBgGradient, url($landingBannerBgPattern);
   padding: 100px;
   width: $fullWidth;
   height: 80vh;

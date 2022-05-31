@@ -1,7 +1,7 @@
 ﻿import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import "./landing.css";
+import "./Landing.scss";
 import { getUpcomingEvents } from "../../../actions/event/event-list-action";
 import HeadArticle from "../HeadArticle/HeadArticle";
 import landingConstants from "../../../constants/landingConstants";

@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./HeadArticle.scss";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import constants from "../../../constants/HeadArticle";
 import {
+  BANNER_TEXT_1,
+  BANNER_TEXT_2,
+  BANNER_BUTTON_TEXT,
   slideShowImages,
   SLIDES_INTERVAL,
-} from "./HeadArticleSlideShowContent";
-
-const { BANNER_TEXT_1, BANNER_TEXT_2, BANNER_BUTTON_TEXT } = constants;
+} from "../../../constants/HeadArticle";
 
 const HeadArticle = () => {
   const [currentImage, setCurrentImage] = useState(0);
