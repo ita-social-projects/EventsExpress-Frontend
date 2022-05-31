@@ -1,22 +1,25 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import UserInfoCard from "../user-info/User-info-card";
+import UserInfoCard from "../UserInfoCard/UserInfoCard";
 import PagePagination from "../shared/pagePagination";
+import "./users.scss";
 
 const UserItemList = ({ page, totalPages, users, callback }) => {
   const handlePageChange = pageEl => {
     callback(
-      window.location.search.replace(/(page=)[0-9]+/gm, `page=${pageEl}`),
+      // eslint-disable-next-line
+      window.location.search.replace(/(page=)[0-9]+/gm, `page=${pageEl}`)
     );
-  };
-
-  const renderUsers = arr => {
-    return arr.map(user => <UserInfoCard key={user.id} user={user} />);
   };
 
   return (
     <>
-      {renderUsers(users)}
+      <div className="user_item_list">
+        {users.map(user => (
+          <UserInfoCard key={user.id} {...user} />
+        ))}
+      </div>
+
       {totalPages > 1 && (
         <PagePagination
           currentPage={page}

@@ -1,17 +1,17 @@
 $black: #000000;
-$white: #FFFFFF;
-$gray: #F2F2F2;
+$white: #ffffff;
+$gray: #f2f2f2;
 $purple: #581184;
-$purpleDark : #180C30;
-$lightPink: #F0EAF4; 
-$deleteColor: #C91212;
-$lightPink: #E4D5EE;
+$purpleDark: #180c30;
+$lightPink: #f0eaf4;
+$deleteColor: #c91212;
+$green: #0eff7c;
 
-$text: $black; 
+$text: $black;
 $mainColor: $white;
 $secondaryColor: $purpleDark;
 
-//Old Variables 
+//Old Variables
 $lightThemeBackground: $white;
 $lightThemeAccept: #6c488a;
 $lightThemeHeader: #696969;
@@ -25,3 +25,9 @@ $transparentGreyBackground: #74747466;
 //shadows
 $boxshadow: 0 0 10px $transparentBlackBackground;
 $imageshadow: 10px 10px 40px 0 $lightThemeHeader;
+$dropDownGradient:linear-gradient(to right top,#4C5584,#DD6085);
+$dropDownItemBackground:#CFBDD8;
+$dropDownItemColor:#535684;
+
+$logoTextShadow:0 0 3px $gray, 0 0 5px $lightThemeAccept;
+

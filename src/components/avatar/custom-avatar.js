@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import propTypes from "prop-types";
 import userDefaultImage from "../../constants/userDefaultImage";
 import PhotoService from "../../services/PhotoService";
+import "./CustomAvatar.scss";
 
 const photoService = new PhotoService();
 
@@ -71,7 +72,7 @@ CustomAvatar.propTypes = {
 CustomAvatar.defaultProps = {
   userId: "",
   name: "",
-  size: "change this",
+  size: "",
   changeAvatarCounter: "change this",
 };
 

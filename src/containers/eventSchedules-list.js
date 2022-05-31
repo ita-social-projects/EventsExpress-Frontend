@@ -17,7 +17,7 @@ class EventSchedulesListWrapper extends Component {
     const { data } = this.props.eventSchedules;
     return (
       <SpinnerWrapper showContent={data !== undefined}>
-        <EventSchedulesList current_user={currentUser} data_list={data.items} />
+        <EventSchedulesList currentUser={currentUser} dataList={data.items} />
       </SpinnerWrapper>
     );
   }
