@@ -9,9 +9,9 @@ $red: #cd2121;
 $gray: #f2f2f2;
 $lightThemeBackground: #fff;
 $lightThemeAccept: #6c488a;
+$lightPink: #E4D5EE;
 $lightThemeHeader: #696969;
 $gray: #c3c3c3;
-
 $darkThemeBackground: #180c30;
 
 //screens
@@ -23,8 +23,7 @@ $widthForContentPcScreen: 930px;
 $widthForContentFirstTabletScreen: 730px;
 $widthForContentSecondTabletScreen: 560px;
 $widthForContentThirdTabletScreen: 490px;
-$usualMobile: 490px;
-$iphoneSE: 376px;
+$mobile-breakpoint: 426px;
 
 $transparentBlackBackground: #00000054;
 $headerBackground: #f7f4f466;
@@ -35,7 +34,31 @@ $defaultBorderRadius: 20px;
 $buttonBorderRadius: 10px;
 $minPadding: 5px;
 
-$mobile-breakpoint: 426px;
+// padding and margin
+$distance10px: 10px;
+$distance15px: 15px;
+$distance20px: 20px;
+$distance25px: 25px;
+$distance30px: 30px;
+$distance35px: 35px;
+$distance40px: 40px;
+$distance45px: 45px;
+$distance50px: 50px;
+$distance60px: 60px;
+$distance70px: 70px;
+$distance80px: 80px;
+$distance100px: 100px;
+$distance150px: 150px;
+$distance200px: 200px;
+$distance220px: 220px;
+$distance280px: 280px;
+$distance300px: 300px;
+$distance370px: 370px;
+
+// per cent
+$percent100: 100%;
+$percent50: 50%;
+$-percent50: -50%;
 
 $fontsize-10: 10px;
 $fontsize-12: 12px;

@@ -1,4 +1,4 @@
-@import "../../../../src/styles/variables";
+@import "../../../../src/styles/main.scss";
 
 $slick-before-transform-origin: 100% 100%;
 $slick-after-transform-origin: 100% 0%;
@@ -14,7 +14,7 @@ $slick-next-rotate: 45deg;
   content: "";
   position: absolute;
   height: 2px;
-  width: 25px;
+  width: $distance25px;
   background-color: $black;
   border-radius: 2px;
 }
@@ -46,34 +46,33 @@ $slick-next-rotate: 45deg;
   margin: 0 auto;
 }
 .slick-slider {
-    margin: 30px auto 50px;
+    margin: $distance30px auto $distance50px;
     width: auto;
 }
 .slick-initialized .slick-slide {
-  display: flex;
-  justify-content: center;
+  @include flex(row, start, center);
 }
 
 .slick-dots li {
-  margin: 0 16px;
+  margin: 0 $distance15px;
 }
 .slick-dots li button:before {
-  content: " ";
+  content: "";
   background: $gray;
   opacity: 1;
   height: 4px;
-  width: 40px;
+  width: $distance40px;
 }
 .slick-dots li.slick-active button:before {
   content: "";
   background: $lightThemeAccept;
   opacity: 1;
   height: 4px;
-  width: 40px;
+  width: $distance40px;
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: $mediaSecondTabletScreen){
   .slick-slide {
-    margin-bottom: 35px;
+    margin-bottom: $distance35px;
   }
 }

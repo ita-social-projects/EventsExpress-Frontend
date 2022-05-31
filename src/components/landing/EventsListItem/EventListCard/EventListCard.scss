@@ -1,187 +1,178 @@
-@import "../../../../styles/variables";
+@import "../../../../styles/main.scss";
 
-.card__item_container {
-  display: flex;
-  justify-content: center;
-  .card__item {
-    height: 280px;
+.card-item-container {
+  @include flex(row, start, center);
+  .card-item {
+    @include flex(column, center, center);
+    height: $distance280px;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 700px;
     max-width: 700px;
-    box-shadow: 0 0 10px $transparentBlackBackground;
-    margin-bottom: 50px;
+    box-shadow: 0 0 $distance10px $transparentBlackBackground;
+    margin-bottom: $distance50px;
     .content {
-      display: flex;
-      justify-content: flex-end;
+      @include flex(row, start, flex-end);
+      width: $percent100;
+      height: $distance200px;
       position: relative;
-      padding: 15px;
+      padding: $distance15px;
       padding-bottom: 0;
       .image-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex(row, center, center);
         top: -25px;
-        left: 25px;
-        width: 370px;
-        height: 200px;
+        left: $distance25px;
+        width: $distance370px;
+        height: $distance200px;
         overflow: hidden;
         position: absolute;
-        box-shadow: 10px 10px 40px 0 rgba(0, 0, 0, 0.75);
-        .card-image {
-          position: absolute;
-          top:50%;
-          left:50%;
-          transform:translate(-50%,-50%);
-          width:370px;
-          height: 200px;
-          object-fit:cover;
-        }
+        box-shadow: $distance10px $distance10px $distance40px 0 $lightThemeHeader;
       }
-      .card__item_content {
+      .card-image {
+        position: absolute;
+        top: $percent50;
+        left: $percent50;
+        transform:translate($-percent50, $-percent50);
+        width: $distance370px;
+        height: $distance200px;
+        object-fit:cover;
+      }
+      .card-item-content {
+        @include flex(column, start, space-between);
         width: 40%;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        .card__item_header {
+        .card-item-header {
           text-transform: uppercase;
           font-weight: bold;
-          font-size: 18px;
+          font-size: $fontsize-20;
           color: $lightThemeAccept;
           position: relative;
         }
-        .card__item-ovner {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          color: #000;
-          background-color: #E4D5EE;
+        .card-item-ovner {
+          @include flex(row, center, center);
+          width: $percent100;
+          color: $black;
+          background-color: $lightPink;
           border-radius: 3px;
           font-weight: bold;
-          padding: 5px;
+          padding: $minPadding;
         }
-        .card__item_description {
-          font-size: 14px;
-          color: #848484;
-          padding-bottom: 15px;
+        .card-item-description {
+          font-size: $fontsize-14;
+          color: $lightThemeHeader;
+          padding-bottom: $distance15px;
         }
       }
     }
-    .card__item_bottom-row {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding-bottom: 15px;
-      .card__item_footer {
-        margin: 0px 60px;
+    .card-item-bottom-row {
+      @include flex(row, center, flex-end);
+      width: $percent100;
+      padding-bottom: $distance15px;
+      .card-item-footer {
+        margin: 0 $distance60px;
       }
-      .card__item_footer:last-child {
-        margin: 0px 15px 0px 60px;
+      .card-item-footer:last-child {
+        margin: 0 $distance15px 0 $distance60px;
       }
-      .heart__icon {
+      .heart-icon {
         margin-bottom: 0;
       }
       .event-date {
+        @include flex(column, start, start);
         position: absolute;
-        left: 30px;
-        bottom: 25px;
-        display: flex;
-        flex-direction: column;
+        left: $distance30px;
+        bottom: $distance25px;
         .day, .month {
           color: $lightThemeAccept;
           font-family: 'Robinson', sans-serif;
-          height: 40px;
+          height: $distance40px;
         }
         .day {
-          text-shadow: 0 0 20px $white;
-          margin-bottom: 15px;
+          text-shadow: 0 0 $distance20px $white;
+          margin-bottom: $distance15px;
           font-weight: bold;
-          font-size: 100px;
-          line-height: 30px;
+          font-size: $distance100px;
+          line-height: $distance30px;
         }
         .month {
           text-transform: uppercase;
-          font-size: 45px;
+          font-size: $distance45px;
         }
       }
       .event-details-btn {
+        @include flex(row, center, start);
         background-color: $lightThemeAccept;
         color: $white;
-        display: flex;
-        align-items: center;
       }
     }
   }
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
-  .card__item_container {
-    .card__item {
+    .card-item-container {
+    .card-item {
       height: 235px;
       justify-content: space-between;
       .content {
-        margin-top: 10px;
+        margin-top: $distance10px;
         padding-top: 0;
         height: 130px;
         .image-container {
-          width: 280px;
-          max-height: 150px;
+          width: $distance280px;
+          max-height: $distance150px;
           top: -25px;
-          left: 20px;
+          left: $distance20px;
           .card-image {
-            min-width: 280px;
-            max-height: 150px;
+            min-width: $distance280px;
+            max-height: $distance150px;
           }
         }
-        .card__item_content {    
-          height: 200px;
+        .card-item-content {    
+          height: $distance200px;
           justify-content: flex-start;
-          .card__item_header {
-            font-size: 13px;
-            padding-bottom: 10px;
-          }
-          .card__item_description {
+          .card-item-header {
             font-size: 12px;
-            padding-bottom: 10px;
+            padding-bottom: $distance10px;
+          }
+          .card-item-description {
+            font-size: 12px;
+            padding-bottom: $distance10px;
           }
         }
       }
-      .card__item_bottom-row {
-        padding-bottom: 10px;
+      .card-item-bottom-row {
+        padding-bottom: $distance10px;
         .event-date {
-          left: 20px;
+          left: $distance20px;
         }
 
         .event-date {
           position: absolute;
-          left: 30px;
-          bottom: 25px;
+          left: $distance30px;
+          bottom: $distance25px;
           display: flex;
           flex-direction: column;
           
           .day, .month {
             color: $lightThemeAccept;
             font-family: 'Robinson', sans-serif;
-            height: 40px;
+            height: $distance40px;
           }
           .day {
-            text-shadow: 0 0 20px $white;
-            margin-bottom: 10px;
+            text-shadow: 0 0 $distance20px $white;
+            margin-bottom: $distance10px;
             font-weight: bold;
-            font-size: 80px;
-            line-height: 30px;
+            font-size: $distance80px;
+            line-height: $distance30px;
           }
           .month {
             text-transform: uppercase;
             font-size: 40px;
           }
         }
-        .card__item_footer {
-          margin: 0px 30px;
+        .card-item-footer {
+          margin: 0 $distance30px;
         }
-        .card__item_footer:last-child {
-          margin: 0px 15px 0px 30px;
+        .card-item-footer:last-child {
+          margin: 0 $distance15px 0 $distance30px;
         }
       }
     }
@@ -189,73 +180,69 @@
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
-  .card__item_container {
-    .card__item {
-      height: 220px;
+  .card-item-container {
+    .card-item {
+      height: $distance220px;
       width: 450px;
       .content {
         padding-top: 0;
-        display: flex;
-        align-items: center;
-        height: 225px;
+        @include flex(row, center, start);
+        height: $distance220px;
         .image-container {
           position: relative;
-          width: 100%;
+          width: $percent100;
           top: -20px;
           left: 0;
           padding-bottom: 0;
           margin-bottom: 0;
           .card-image {
-            width: 100%;
+            width: $percent100;
           }
         }
-        .card__item_content {   
-          width: 150px;
-          height: 70px;
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-          .card__item_header {
-            width: 170px;
-            display: flex;
-            justify-content: flex-end; 
-            font-size: 13px;
-            padding: 10px 10px ;
+        .card-item-content {   
+          width: $distance150px;
+          height: $distance70px;
+          @include flex(column, start, center);
+          .card-item-header {
+            font-size: $fontsize-12;
+            padding: $distance10px;
           }
-          .card__item-ovner {
-            margin-left: 10px;
+          .card-item-ovner {
+            margin-left: $distance10px;
           }
-          .card__item_description {
+          .card-item-description {
             display: none;
           }
         }
       }
-      .card__item_bottom-row {
-        padding-bottom: 10px;
+      .card-item-bottom-row {
+        padding-bottom: $distance10px;
         .event-date {
-          left: 20px;
+          left: $distance20px;
           .day {
-            text-shadow: 0 0 10px #868686;
-            margin-bottom: 10px;
+            text-shadow: 0 0 $distance10px $lightThemeHeader;
+            margin-bottom: $distance10px;
             font-weight: bold;
-            font-size: 70px;
-            line-height: 70px;
+            font-size: $distance70px;
+            line-height: $distance70px;
           }
           .month {
             text-transform: uppercase;
-            font-size: 40px;
+            font-size: $distance40px;
           }
         }
-        .event-location {
-          display: none;
+        .card-item-footer {
+          margin: 0 $distance35px;
         }
-        .card__item_footer {
-          margin: 0px 35px;
-        }
-        .card__item_footer:last-child {
-          margin: 0px 35px 0px 35px;
+        .card-item-footer:last-child {
+          margin: 0 $distance35px 0 $distance35px;
         }
       }
     }
+  }
+}
+@media screen and (max-width: $mobile-breakpoint) {
+  .event-location {
+    display: none;
   }
 }
