@@ -47,7 +47,7 @@ const SearchUsers = ({
   };
 
   const resetFilter = () => {
-    // push(pathname);
+    push(pathname);
     resetFiltersDispatch();
   };
 
@@ -116,7 +116,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getSearchUsersDispatch: page => dispatch(getSearchUsers(page)),
     changeFilterDispatch: values => dispatch(changeFilter(values)),
-    resetFiltersDispatch: () => dispatch(reset("user-search-filter-form")),
+    resetFiltersDispatch: () => dispatch(reset("main-search-form")),
   };
 };
 
