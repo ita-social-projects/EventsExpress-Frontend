@@ -1,29 +1,24 @@
 ﻿import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-
 import genders from "../../constants/GenderConstants";
+import LABELS from "../../constants/LabelsConstants";
+import { ATTITUDE_TYPES } from "../../constants/UserAttitudeConstants";
 import CustomAvatar from "../avatar/custom-avatar";
 import RatingAverage from "../rating/rating-average";
 import defineUserAge from "../helpers/defineUserAge";
 import getAttitudeToUser from "../helpers/getAttitudeToUser";
 import AttitudeToolTip from "./AttitudeToolTip/AttitudeToolTip";
-
 import "./UserInfoCard.scss";
 
-const UserInfoCard = ({
-  user: { id, username, gender, birthday, rating, attitude },
-}) => {
+const UserInfoCard = ({ id, username, gender, birthday, rating, attitude }) => {
   const attitudeToUser = getAttitudeToUser(attitude);
   const linkToUser = `/user/${id}`;
   const userAge = defineUserAge(birthday);
-  const userGender = genders[gender] || "Not Specified";
+  const userGender = genders[gender] || LABELS.NOT_SPECIFIED;
 
   return (
-    <div
-      className="user_info_card"
-      style={{ backgroundColor: attitudeToUser.color }}
-    >
+    <div className={`user_info_card ${attitudeToUser.bg}`}>
       <Link to={linkToUser} className="user_avatar">
         <CustomAvatar size="medium" userId={id} name={username} />
       </Link>
@@ -36,8 +31,7 @@ const UserInfoCard = ({
 
       <div className="user_rating">
         <RatingAverage value={rating} direction="col" />
-
-        {[0, 1].includes(attitude) && (
+        {ATTITUDE_TYPES.includes(attitude) && (
           <AttitudeToolTip
             message={attitudeToUser.message}
             thumb={attitudeToUser.thumb}
@@ -49,11 +43,21 @@ const UserInfoCard = ({
 };
 
 UserInfoCard.defaultProps = {
-  user: {},
+  id: null,
+  username: null,
+  birthday: "",
+  attitude: 2,
+  rating: 0,
+  gender: null,
 };
 
 UserInfoCard.propTypes = {
-  user: PropTypes.object,
+  id: PropTypes.string,
+  username: PropTypes.string,
+  birthday: PropTypes.string,
+  attitude: PropTypes.number,
+  rating: PropTypes.number,
+  gender: PropTypes.string,
 };
 
 export default UserInfoCard;

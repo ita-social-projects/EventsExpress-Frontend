@@ -1,19 +1,24 @@
+import {
+  ATTITUDE_MESSAGES,
+  ATTITUDE_ICONS,
+} from "../../constants/UserAttitudeConstants";
+
 const getAttitudeToUser = attitude => {
   let attitudeToUser = {};
 
   switch (attitude) {
     case 0:
       attitudeToUser = {
-        color: "#c2ffc2",
-        message: "You like this user",
-        thumb: "fa-thumbs-up",
+        bg: "attitude_bg_green",
+        message: ATTITUDE_MESSAGES.LIKE,
+        thumb: ATTITUDE_ICONS.THUMB_UP,
       };
       break;
     case 1:
       attitudeToUser = {
-        color: "#ffc6c2",
-        message: "You dislike this user",
-        thumb: "fa-thumbs-down",
+        bg: "attitude_bg_red",
+        message: ATTITUDE_MESSAGES.DISLIKE,
+        thumb: ATTITUDE_ICONS.THUMB_DOWN,
       };
       break;
     default:

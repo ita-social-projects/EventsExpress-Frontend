@@ -12,7 +12,7 @@
   margin: 10px;
   padding: 10px;
   border-radius: $r16;
-  box-shadow: 0 0 10px $transparentGreyBackground;
+  box-shadow: $inputShadow;
 
   .user_avatar {
     margin: 10px;
@@ -26,7 +26,11 @@
     > :first-child {
       text-align: center;
       font-size: $fontsize-24;
-      font-weight: 500;
+      font-weight: $thick;
+      &:hover {
+        color: $black;
+        text-decoration: underline 2px solid $black;
+      }
     }
     .user_info_item {
       text-align: center;
@@ -41,4 +45,20 @@
     top: -40px;
     left: -10px;
   }
+}
+
+@media screen and (max-width: $mediaMobileScreen) {
+  .user_info_card {
+    max-width: 100%;
+    margin: 5px;
+    // margin-right: 20px;
+  }
+}
+
+.attitude_bg_green {
+  background-color: $green;
+}
+
+.attitude_bg_red {
+  background-color: lighten($deleteColor, 30%);
 }

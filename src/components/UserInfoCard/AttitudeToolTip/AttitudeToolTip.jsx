@@ -6,10 +6,13 @@ import "./AttitudeToolTip.scss";
 
 const AttitudeToolTip = ({ message, thumb }) => {
   return (
-    <Tooltip title={message} placement="bottom" TransitionComponent={Zoom}>
-      <div className="retreat">
-        <i className={`far ${thumb} thumb_size thumb_bg`} />
-      </div>
+    <Tooltip
+      title={message}
+      placement="bottom"
+      TransitionComponent={Zoom}
+      className="retreat"
+    >
+      <i className={`far ${thumb} thumb_size thumb_bg`} />
     </Tooltip>
   );
 };

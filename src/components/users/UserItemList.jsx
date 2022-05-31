@@ -1,29 +1,24 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import UserInfoCard from "../UserInfoCard/UserInfoCard";
 import PagePagination from "../shared/pagePagination";
-
-const GridLayout = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 10px;
-`;
+import "./users.scss";
 
 const UserItemList = ({ page, totalPages, users, callback }) => {
   const handlePageChange = pageEl => {
     callback(
-      window.location.search.replace(/(page=)[0-9]+/gm, `page=${pageEl}`),
+      // eslint-disable-next-line
+      window.location.search.replace(/(page=)[0-9]+/gm, `page=${pageEl}`)
     );
   };
 
   return (
     <>
-      <GridLayout>
+      <div className="user_item_list">
         {users.map(user => (
-          <UserInfoCard key={user.id} user={user} />
+          <UserInfoCard key={user.id} {...user} />
         ))}
-      </GridLayout>
+      </div>
 
       {totalPages > 1 && (
         <PagePagination

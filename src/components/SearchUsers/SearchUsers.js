@@ -5,13 +5,12 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { useHistory, useLocation } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
+import { reset } from "redux-form";
 
-// import MainSearchInput from "../searchInput/MainSearchInput";
 import SearchInput from "../searchInput/SearchInput";
 import { getSearchUsers, changeFilter } from "../../actions/users/users-action";
 import SpinnerWrapper from "../../containers/spinner";
 import UserItemList from "../users/UserItemList";
-
 import "./SearchUsers.scss";
 
 const SearchUsers = ({
@@ -19,6 +18,7 @@ const SearchUsers = ({
   params,
   getSearchUsersDispatch,
   changeFilterDispatch,
+  resetFiltersDispatch,
 }) => {
   const [search, setSearch] = useState("");
   const { push } = useHistory();
@@ -46,8 +46,9 @@ const SearchUsers = ({
     setSearch(value);
   };
 
-  const resetUrlQuery = () => {
-    push(pathname);
+  const resetFilter = () => {
+    // push(pathname);
+    resetFiltersDispatch();
   };
 
   const handleChangePage = (event, value) => {
@@ -55,13 +56,17 @@ const SearchUsers = ({
   };
 
   return (
-    <div className="search_users_container">
+    <div
+      className={`search_users_container ${
+        users.data.items.length < 12 ? "small_container" : null
+      }`}
+    >
       <div className="search_users_input">
         <SearchInput
           searchText={search}
           searchFunc={runSearch}
           name="keyWord"
-          resetForm={resetUrlQuery}
+          resetForm={resetFilter}
         />
       </div>
 
@@ -90,8 +95,9 @@ const SearchUsers = ({
 SearchUsers.defaultProps = {
   users: {},
   getSearchUsersDispatch: () => {},
-  params: "",
   changeFilterDispatch: () => {},
+  resetFiltersDispatch: () => {},
+  params: "",
 };
 
 SearchUsers.propTypes = {
@@ -99,6 +105,7 @@ SearchUsers.propTypes = {
   getSearchUsersDispatch: PropTypes.func,
   params: PropTypes.string,
   changeFilterDispatch: PropTypes.func,
+  resetFiltersDispatch: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -109,6 +116,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getSearchUsersDispatch: page => dispatch(getSearchUsers(page)),
     changeFilterDispatch: values => dispatch(changeFilter(values)),
+    resetFiltersDispatch: () => dispatch(reset("user-search-filter-form")),
   };
 };
 
