@@ -12,11 +12,29 @@ $fontsize-16: 16px;
 $fontsize-18: 18px;
 $fontsize-20: 20px;
 $fontsize-24: 24px;
+$fontsize-30: 30px;
 $fontsize-32: 32px;
+$fontsize-36: 36px;
 $fontsize-40: 40px;
+
 $bold: 800;
+$fontsize-46: 46px;
+$fontsize-50: 50px;
+$thick: 500;
 $semiBold: 700;
 $headText: 400;
 
-$thick: 500;
+$quote: $fontsize-50;
+$headingText: $fontsize-46;
+$secondaryHeading: $fontsize-36;
+$bodyText: $fontsize-18;
+
+$quoteMobile: $fontsize-36;
+$headerTextMobile: $fontsize-30;
+$secondaryHeadingMobile: $fontsize-24;
+$bodyTextMobile: $fontsize-16;
+$bodyTextMobileSmall: $fontsize-14;
+
+$bannerButtonText: $bodyText;
+$bannerButtonTextMobile: $bodyTextMobileSmall;
 
