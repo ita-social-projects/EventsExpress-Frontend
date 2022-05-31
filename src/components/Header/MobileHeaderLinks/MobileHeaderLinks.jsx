@@ -12,6 +12,8 @@ import "./MobileHeaderLinks.scss";
 
 const MobileHeaderLinks = ({ setIsMobileHeaderOpen }) => {
   const countOfPixelsForTabletBrainpoint = 768;
+  const headerLinks = [ABOUT_US, EVENTS, CREATE, ENG, LOGIN];
+  const headerLinksUlr = ["/about", "/home/events"];
 
   window.addEventListener("resize", () => {
     if (window.screen.availWidth > countOfPixelsForTabletBrainpoint) {
@@ -29,21 +31,11 @@ const MobileHeaderLinks = ({ setIsMobileHeaderOpen }) => {
     >
       <nav>
         <ul>
-          <Link to="/about">
-            <div className="link-wrapper">{`${ABOUT_US}`}</div>
-          </Link>
-          <Link to="/home/events">
-            <div className="link-wrapper">{`${EVENTS}`}</div>
-          </Link>
-          <Link to="/#">
-            <div className="link-wrapper">{`${CREATE}`}</div>
-          </Link>
-          <Link to="/#">
-            <div className="link-wrapper" to="/#">{`${ENG}`}</div>
-          </Link>
-          <Link to="/#">
-            <div className="link-wrapper" to="/#">{`${LOGIN}`}</div>
-          </Link>
+          {headerLinks.map((link, index) => (
+            <Link to={headerLinksUlr[index]} key={1}>
+              <div className="link-wrapper">{`${link}`}</div>
+            </Link>
+          ))}
         </ul>
       </nav>
     </div>

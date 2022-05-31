@@ -5,9 +5,9 @@
     top: 0;
     left: 0;
     background-color:$white;
-    width: $maxWidth;
-    height: $maxHeight;
-    padding-top:$mediumPaddingTop;
+    width: $maxDisplayWidth;
+    height: $maxDisplayHeight;
+    padding-top: $mediumPaddingTop;
     .link-wrapper{
         font-size: $fontsize-20;
         margin-bottom: $fontsize-24;
@@ -15,7 +15,7 @@
     }
 }
 
-@media (min-width: $tablet-breakpoint) {
+@media (min-width: $mediaFirstTabletScreen) {
     .mobile-header-links-wrapperr{
         display: none;
     }

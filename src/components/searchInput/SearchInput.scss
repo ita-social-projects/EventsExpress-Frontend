@@ -1,0 +1,55 @@
+@import "../../styles/variables.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/fonts.scss";
+
+
+.MainSearchWrapper {
+    width: $fullWidth;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MainSearchForm {
+    width: $fullWidth;
+    max-width: 950px;
+    height: $inputGeneralHeight;
+    display: flex;
+    justify-content: space-between;
+    padding: $inputPadding;
+    background: $white;
+    align-items: center;
+    box-shadow: $inputShadow;
+    border-radius: $r16;
+
+    .search__icon {
+        transform: rotateY(180deg);
+        width: 24px;
+        height: 34px;
+        cursor: pointer;
+    }
+}
+
+.MainSearchInput {
+    width: $fullWidth;
+    font-size: $fontsize-18;
+    background-color: transparent;
+    border: $noBord;
+    margin: 0;
+}
+
+@media screen and (max-width: $mediaMobileScreen) {
+    .MainSearchForm {
+        height: $inputHeight;
+        padding: $inputMobilePadding;
+
+        .search__icon {
+            width: 20px;
+            height: 30px;
+        }
+    }
+
+    .MainSearchInput {
+        font-size: $fontsize-16;
+    }
+}

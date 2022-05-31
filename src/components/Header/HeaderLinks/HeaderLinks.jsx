@@ -7,31 +7,29 @@ import HeaderRightBlock from "../headerRightBlock/headerRightBlock";
 import planet from "./icons/planet.png";
 import "./HeaderLinks.scss";
 
-const HeaderLinks = ({ setIsMobileHeaderOpen }) => {
-  return (
-    <nav>
-      <ul className="header-links-wrapper">
-        <li className="header-link-item">
-          <Link className="link-wrapper" to="/about">{`${ABOUT_US}`}</Link>
-        </li>
-        <li className="header-link-item">
-          <Link className="link-wrapper" to="/home/events">{`${EVENTS}`}</Link>
-        </li>
-        <li className="header-link-item">
-          <Link className="link-wrapper" to="/#">{`${CREATE}`}</Link>
-        </li>
-        <li className="header-link-item">
-          <Link className="eng-link-wrapper" to="/#">
-            <div className="eng-link" to="/#">{`${ENG}`}</div>
-            <img className="eng-link-icon" src={planet} alt="" />
-          </Link>
-        </li>
-        <HeaderRightBlock />
-        <BurgerMenuLink setIsMobileHeaderOpen={setIsMobileHeaderOpen} />
-      </ul>
-    </nav>
-  );
-};
+const HeaderLinks = ({ setIsMobileHeaderOpen }) => (
+  <nav>
+    <ul className="header-links-wrapper">
+      <li className="header-link-item">
+        <Link className="link-wrapper" to="/about">{`${ABOUT_US}`}</Link>
+      </li>
+      <li className="header-link-item">
+        <Link className="link-wrapper" to="/home/events">{`${EVENTS}`}</Link>
+      </li>
+      <li className="header-link-item">
+        <Link className="link-wrapper" to="/#">{`${CREATE}`}</Link>
+      </li>
+      <li className="header-link-item">
+        <Link className="eng-link-wrapper" to="/#">
+          <div className="eng-link" to="/#">{`${ENG}`}</div>
+          <img className="eng-link-icon" src={planet} alt="" />
+        </Link>
+      </li>
+      <HeaderRightBlock />
+      <BurgerMenuLink setIsMobileHeaderOpen={setIsMobileHeaderOpen} />
+    </ul>
+  </nav>
+);
 
 HeaderLinks.propTypes = {
   setIsMobileHeaderOpen: PropTypes.func,

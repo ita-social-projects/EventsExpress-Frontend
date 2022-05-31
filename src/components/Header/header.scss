@@ -1,9 +1,10 @@
-@import "../../styles/main.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
 
 .header {
   background: $headerBackground;
   height: 60px;
-  width: $hundredPersent;
+  width: $fullWidth;
   text-align: center;
   z-index: 50;
   position: fixed;

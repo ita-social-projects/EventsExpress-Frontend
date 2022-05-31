@@ -1,4 +1,6 @@
-@import "../../../styles/main.scss";
+@import "../../../styles/variables.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
 
 .user-name {
   margin: 0 3px 0 5px;
@@ -28,21 +30,21 @@
   border-radius: $buttonBorderRadius;
 }
 .dropdown-item {
-  background-color: $dropdownItemBackground;
+  background-color: $dropDownItemBackground;
   width: 190px;
   height: 40px;
-  color: $dropdownItemColor;
+  color: $dropDownItemColor;
   margin: 2px;
   font-size: $fontsize-14;
   text-align: center;
-  border-radius:$mediumBorderRadius;
+  border-radius:$r16;
   margin: auto;
   margin-bottom: 7px;
   display: flex;
   justify-content: space-between;
   align-items:center;
   
-   @media (max-width: $mobile-breakpoint) {
+   @media (max-width: $mediaMobileScreen) {
     font-size: $fontsize-10;
   }
 }

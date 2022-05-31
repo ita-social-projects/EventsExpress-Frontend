@@ -38,7 +38,7 @@
   }
 }
 
-@media (max-width: $laptop-breakpoint) {
+@media (max-width: $mediaFirstTabletScreen) {
   .header-links-wrapper {
     right: 15px;
     .header-link-item{

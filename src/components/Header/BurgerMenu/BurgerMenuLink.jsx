@@ -2,19 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./BurgerMenuLink.scss";
 
-const BurgerMenuLink = ({ setIsMobileHeaderOpen }) => {
-  return (
-    <button
-      type="button"
-      onClick={() => setIsMobileHeaderOpen(true)}
-      className="header-burger"
-    >
-      <div className="burger-line"></div>
-      <div className="burger-line"></div>
-      <div className="burger-line"></div>
-    </button>
-  );
-};
+const burgerLine = <div className="burger-line"></div>;
+
+const BurgerMenuLink = ({ setIsMobileHeaderOpen }) => (
+  <button
+    type="button"
+    onClick={() => setIsMobileHeaderOpen(true)}
+    className="header-burger"
+  >
+    {burgerLine}
+    {burgerLine}
+    {burgerLine}
+  </button>
+);
 
 BurgerMenuLink.propTypes = {
   setIsMobileHeaderOpen: PropTypes.func,

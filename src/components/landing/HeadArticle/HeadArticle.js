@@ -48,7 +48,7 @@ class HeadArticle extends Component {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
-      ></article>
+      />
     );
   }
 }

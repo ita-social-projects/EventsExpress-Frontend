@@ -5,7 +5,6 @@ body {
 }
 
 .left-sidebar {
-    height: 100%;
     position: fixed;
     z-index: 101;
     top: 55px;
@@ -15,31 +14,32 @@ body {
     transition: 0.5s;
 }
 
-.left-sidebar-opened{
+.left-sidebar-opened {
     width: 15em;
 }
 
-.left-sidebar-closed{
+.left-sidebar-closed {
     width: 0;
 }
 
-#open-close-zone{
-    position: fixed;
+#open-close-zone {
+    display: none;
+    /* position: fixed;
     height: 100%;
     z-index: 100;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.5s; */
 }
 
-    #open-close-zone.left-sidebar-opened {
-        width: 100%;
-        padding-left: 15em;
-        background-color: rgba(0, 0, 0, 0.75);
-    }
+#open-close-zone.left-sidebar-opened {
+    width: 100%;
+    padding-left: 15em;
+    background-color: rgba(0, 0, 0, 0.75);
+}
 
-    #open-close-zone.left-sidebar-closed {
-        width: auto;
-    }
+#open-close-zone.left-sidebar-closed {
+    width: auto;
+}
 
 .open-close-btn {
     font-size: 20px;
@@ -49,28 +49,27 @@ body {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-    .open-close-btn:hover{
-        color: white;
-    }
- 
+.open-close-btn:hover {
+    color: white;
+}
 
-    .left-sidebar ul li .link {
-        padding: 10px;
-        font-size: 1.1em;
-        color: rgba(0, 0, 0, 0.75);
-        display: block;
-    }
 
-    .left-sidebar ul li .link:hover {
-        color: rgb(0, 0, 0);
-        background: #fff;
-        font-weight: 550;
-        border-bottom: 3px solid rgb(63, 81, 181);
-        transition: 0.1s;
-    }
+.left-sidebar ul li .link {
+    padding: 10px;
+    font-size: 1.1em;
+    color: rgba(0, 0, 0, 0.75);
+    display: block;
+}
 
-.list-unstyled li a 
-{
+.left-sidebar ul li .link:hover {
+    color: rgb(0, 0, 0);
+    background: #fff;
+    font-weight: 550;
+    border-bottom: 3px solid rgb(63, 81, 181);
+    transition: 0.1s;
+}
+
+.list-unstyled li a {
     width: 100%;
 }
 
@@ -79,11 +78,7 @@ body {
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) {
-    
-}
-
-@media (min-width: 768px) {
+@media screen and (min-width:575px) {
     #open-close-zone {
         display: none !important;
     }

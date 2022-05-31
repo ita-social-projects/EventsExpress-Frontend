@@ -1,3 +1,11 @@
+@import "../../../styles/main.scss";
+
+.upcoming__events__navigation {
+  margin: 50px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
 article {
   height: 100vh;
 }
@@ -39,7 +47,8 @@ a {
   transform: translate(-50%, -50%);
 }
 
-.button-container > h2 {
+// TODO: move this style to HeadArticleButton
+.button-container>h2 {
   color: white;
   text-align: center;
   filter: drop-shadow(0.05em 0.05em orange);
@@ -101,4 +110,11 @@ a {
 /* TODO: I think this is a temporary solution. Work on this landing page still needs to be done and will be done in the future */
 .main__upcoming {
   padding: 10px 5px;
+}
+
+@media screen and (max-width: $mediaMobileScreen ) {
+  .upcoming__events__navigation {
+    margin: 30px 0px 30px 0px;
+    flex-direction: column-reverse;
+  }
 }

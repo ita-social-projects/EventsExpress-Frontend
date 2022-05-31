@@ -1,0 +1,29 @@
+$black: #000000;
+$white: #FFFFFF;
+$gray: #F2F2F2;
+$purple: #581184;
+$purpleDark : #180C30;
+$lightPink: #F0EAF4; 
+$deleteColor: #C91212;
+
+$text: $black; 
+$mainColor: $white;
+$secondaryColor: $purpleDark;
+
+//Old Variables 
+$lightThemeBackground: $white;
+$lightThemeAccept: #6c488a;
+$lightThemeHeader: #696969;
+$darkThemeBackground: #180c30;
+
+$transparentBlackBackground: #00000054;
+$headerBackground: #f7f4f466;
+$mainSearchGrey: #c4c4c475;
+$transparentGreyBackground: #74747466;
+
+//dropDownColors/gradient
+$dropDownGradient:linear-gradient(to right top,#4C5584,#DD6085);
+$dropDownItemBackground:#CFBDD8;
+$dropDownItemColor:#535684;
+
+$logoTextShadow:0 0 3px $gray, 0 0 5px $lightThemeAccept;

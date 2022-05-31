@@ -1,11 +1,12 @@
-@import "../../../styles/main.scss";
+@import"../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/variables.scss";
 
 .logo {
   display: flex;
   align-items: center;
   position: absolute;
-  left: 160px;
-  transform: translate(-50%, 0%);
+  left: $left-160;
   font-size: $fontsize-24;
 
   &:active,
@@ -23,7 +24,7 @@
 
   .logo__textExpress {
     color: $white;
-    text-shadow: 0 0 3px $gray, 0 0 5px $lightThemeAccept;
+    text-shadow: $logoTextShadow;
     font-size: $fontsize-24;
     font-weight: $bold;
   }
@@ -33,7 +34,7 @@
     height: 29px;
   }
 }
-@media (max-width: $laptop-breakpoint) {
+@media (max-width: $mediaFirstTabletScreen) {
   .logo {
     left: 100px;
     .logo__textEvents {
@@ -49,7 +50,7 @@
     }
   }
 }
-@media (max-width: $mobile-breakpoint) {
+@media (max-width: $mediaMobileScreen) {
   .logo__textExpress,
   .logo__textEvents {
     font-size: $fontsize-14;
