@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { ABOUT_US, CREATE, ENG, EVENTS } from "../../../constants/Header";
-import HeaderRightBlock from "../headerRightBlock/headerRightBlock";
+import {
+  ABOUT_US,
+  CREATE,
+  ENG,
+  EVENTS,
+  LOGIN,
+} from "../../../constants/Header";
 import "./MobileHeaderLinks.scss";
 
 const MobileHeaderLinks = ({ setIsMobileHeaderOpen }) => {
@@ -36,7 +41,9 @@ const MobileHeaderLinks = ({ setIsMobileHeaderOpen }) => {
           <Link to="/#">
             <div className="link-wrapper" to="/#">{`${ENG}`}</div>
           </Link>
-          <HeaderRightBlock />
+          <Link to="/#">
+            <div className="link-wrapper" to="/#">{`${LOGIN}`}</div>
+          </Link>
         </ul>
       </nav>
     </div>

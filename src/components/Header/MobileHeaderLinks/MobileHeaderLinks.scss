@@ -5,13 +5,13 @@
     top: 0;
     left: 0;
     background-color:$white;
-    width: 100vw;
-    height: 100vh;
-    padding-top:100px;
+    width: $maxWidth;
+    height: $maxHeight;
+    padding-top:$mediumPaddingTop;
     .link-wrapper{
         font-size: $fontsize-20;
         margin-bottom: $fontsize-24;
-        font-weight: 700;
+        font-weight: $bold;
     }
 }
 

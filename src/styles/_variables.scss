@@ -24,6 +24,10 @@ $transparentBlackBackground: #00000054;
 $headerBackground: #FFFFFF;
 $mainSearchGrey: #c4c4c475;
 $transparentGreyBackground: #74747466;
+$dropdownItemBackground:#CFBDD8;
+$dropdownItemColor:#535684;
+
+$dropDownGradient:linear-gradient(to right top,#4C5584,#DD6085);
 
 $defaultBorderRadius: 20px;
 $buttonBorderRadius: 10px;
@@ -36,4 +40,14 @@ $fontsize-12: 12px;
 $fontsize-14: 14px;
 $fontsize-20: 20px;
 $fontsize-24: 24px;
+
+$mediumPaddingTop:100px;
+$maxWidth:100vw;
+$maxHeight:100vh;
+
+$hundredPersent:100%;
+
+$mediumBorderRadius:10px;
+
+$margin-50:50px;
 $bold: 900;

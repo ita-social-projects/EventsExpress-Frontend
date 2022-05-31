@@ -3,20 +3,14 @@
 .login-link {
   font-family: $mainFont;
   font-style: normal;
-  font-weight: 700;
+  font-weight: $bold;
   font-size: $fontsize-14;
   text-decoration: none;
   cursor: pointer;
 }
 
-.disappear-login{
-  display: none;
-}
-
-
-@media screen and (max-width: $tablet-breakpoint) {
+@media screen and (max-width: $mediaMobileScreen) {
   .login-link{
-    margin-bottom: 10px;
-    font-size: $fontsize-20;
+    display: none;
   }
 }

@@ -7,26 +7,26 @@ import HeaderRightBlock from "../headerRightBlock/headerRightBlock";
 import planet from "./icons/planet.png";
 import "./HeaderLinks.scss";
 
-const HeaderLinks = ({ setIsMobileHeaderOpen, isMobileHeaderOpen }) => {
+const HeaderLinks = ({ setIsMobileHeaderOpen }) => {
   return (
     <nav>
       <ul className="header-links-wrapper">
-        <li>
+        <li className="header-link-item">
           <Link className="link-wrapper" to="/about">{`${ABOUT_US}`}</Link>
         </li>
-        <li>
+        <li className="header-link-item">
           <Link className="link-wrapper" to="/home/events">{`${EVENTS}`}</Link>
         </li>
-        <li>
+        <li className="header-link-item">
           <Link className="link-wrapper" to="/#">{`${CREATE}`}</Link>
         </li>
-        <li>
+        <li className="header-link-item">
           <Link className="eng-link-wrapper" to="/#">
             <div className="eng-link" to="/#">{`${ENG}`}</div>
-            <img src={planet} alt="" />
+            <img className="eng-link-icon" src={planet} alt="" />
           </Link>
         </li>
-        <HeaderRightBlock isMobileHeaderOpen={isMobileHeaderOpen} />
+        <HeaderRightBlock />
         <BurgerMenuLink setIsMobileHeaderOpen={setIsMobileHeaderOpen} />
       </ul>
     </nav>
@@ -35,12 +35,10 @@ const HeaderLinks = ({ setIsMobileHeaderOpen, isMobileHeaderOpen }) => {
 
 HeaderLinks.propTypes = {
   setIsMobileHeaderOpen: PropTypes.func,
-  isMobileHeaderOpen: PropTypes.any,
 };
 
 HeaderLinks.defaultProps = {
   setIsMobileHeaderOpen: () => {},
-  isMobileHeaderOpen: PropTypes.any,
 };
 
 export default HeaderLinks;
