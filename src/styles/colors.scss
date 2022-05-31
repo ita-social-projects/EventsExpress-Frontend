@@ -11,6 +11,19 @@ $text: $black;
 $mainColor: $white;
 $secondaryColor: $purpleDark;
 
+$gradientColor: #000000cc;
+$bannerImageGradient: #00000080;
+$bannerBgGradient: linear-gradient(0deg, $gradientColor, $gradientColor);
+$textShadowNeon: 0 0 5px $white,
+0 0 10px $white,
+0 0 20px $white,
+0 0 40px $purple;
+$boxShadowImage: 0 0 5px $white,
+0 0 10px $white,
+0 0 20px $white,
+0 0 10px $purple;
+
+
 //Old Variables
 $lightThemeBackground: $white;
 $lightThemeAccept: #6c488a;
