@@ -8,8 +8,9 @@ $widthForContentFirstTabletScreen: 730px;
 $widthForContentSecondTabletScreen: 560px;
 $mobile-breakpoint: 426px;
 
-//width
+//width & height
 $fullWidth: 100%;
+$fullHeight: 100%;
 
 //radius
 $r16: 16px;
@@ -30,6 +31,8 @@ $Unoutline: none;
 //border
 $defaultBorderRadius: 20px;
 $buttonBorderRadius: 10px;
+
+
 $borderRound: 100%;
 
 $fullWidth: 100%;
@@ -42,3 +45,4 @@ $defaultTransition: 0.5s ease-in-out;
 
 $infoTextMaxWidth: $width50;
 $buttonBorderRadius: 10px;
+
