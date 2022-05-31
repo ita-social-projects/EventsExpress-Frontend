@@ -35,6 +35,9 @@ $headerBackground: #f7f4f466;
 $mainSearchGrey: #c4c4c475;
 $transparentGreyBackground: #74747466;
 
+//shadows
+$imageshadow: 10px 10px 40px 0 $lightThemeHeader;
+$boxshadow: 0 0 10px $transparentBlackBackground;
 $dropDownGradient:linear-gradient(to right top,#4C5584,#DD6085);
 $dropDownItemBackground:#CFBDD8;
 $dropDownItemColor:#535684;
