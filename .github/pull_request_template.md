@@ -1,30 +1,20 @@
-dev
-## GitHub Project
+### Jira
 
-* [Main GitHub Project ticket](https://github.com/ita-social-projects/EventsExpress-Frontend/projects/1)
+* [EV-NUM](https://chita.atlassian.net/browse/EV-NUM)
+
+### Description
 
 
-## Code reviewers
+### Summary of change
 
-- [ ] @github_username
 
-### Second Level Review
+### Checklist
 
-- [ ] @github_username
-
-## Summary of issue
-
-ToDo
-
-## Summary of change
-
-ToDo
-
-## Testing approach
-
-ToDo
-
-## CHECK LIST
-- [ ]  PR is reviewed manually again (to make sure you have 100% ready code)
-- [ ]  I've checked new feature as logged in and logged out user if needed
-- [ ]  PR meets all conventions
+- [x] Includes a link to JIRA ticket and all related PR (API dependencies etc.)
+- [x] Includes a brief description of what has been changed
+- [x] Test coverage for **new** code doesn't decrease the existing test coverage
+- [x] Lint errors/warnings fixed
+- [x] New code is documented if necessary
+- [x] Dev Testing has been successfully finished
+- [x] Reviewed by 2 developer on your team
+- [x] Reviewed by 1 expert
