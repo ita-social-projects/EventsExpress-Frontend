@@ -81,11 +81,7 @@ const SplitPanels = () => {
           </Options>
         </div>
       </div>
-      <div
-        className={["right-side", collapsedIndex === 1 ? "collapsed" : ""].join(
-          ` `,
-        )}
-      >
+      <div className={`right-side ${collapsedIndex === 1 ? "collapsed" : ""}`}>
         <div className="option-button">
           <Options>
             <CollapseButton
@@ -123,7 +119,6 @@ const SplitPanels = () => {
           </Link>
         </div>
       </div>
-      {/* </Split> */}
     </Split>
   );
 };
