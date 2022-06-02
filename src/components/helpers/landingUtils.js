@@ -5,7 +5,7 @@ import EventMatrix from "../landing/EventMatrix/EventMatrix";
 import {
   viewModeTypes,
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
-} from "../../constants/eventsViewModeConstants";
+} from "../../constants/eventsViewConstants";
 
 const { SLIDER, LIST, MATRIX } = viewModeTypes;
 

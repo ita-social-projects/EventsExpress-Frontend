@@ -9,7 +9,7 @@ import viewModeSwitcher from "../../helpers/landingUtils";
 import {
   viewModeTypes,
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
-} from "../../../constants/eventsViewModeConstants";
+} from "../../../constants/eventsViewConstants";
 import SearchInput from "../../searchInput/SearchInput";
 
 const { SLIDER } = viewModeTypes;

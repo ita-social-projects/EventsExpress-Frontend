@@ -8,7 +8,7 @@ import Tab from "@material-ui/core/Tab";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
-import genders from "../../constants/genderConstants";
+import GENDERS from "../../constants/gendersVarietyConstants";
 import Event from "../event/EventItem/Event-item";
 import CustomAvatar from "../avatar/custom-avatar";
 import RatingAverage from "../rating/rating-average";
@@ -146,7 +146,7 @@ class UserItemView extends Component {
           <div className="col-sm-12  col-md-6">
             {renderProp("User Name", name)}
             {renderProp("Age", getAge(birthday))}
-            {renderProp("Gender", genders[gender])}
+            {renderProp("Gender", GENDERS[gender])}
             {renderProp("Email", email)}
             {renderProp("Interests", categoriesList)}
           </div>
