@@ -1,0 +1,15 @@
+{
+    "extends": [
+        "stylelint-config-standard-scss",
+        "stylelint-config-standard",
+        "stylelint-order-config-standard"
+    ],
+    "plugins": [
+        "stylelint-order"
+    ],
+    "rules": {
+        "indentation": "2|tab",
+        "color-hex-case": "lower",
+        "scss/at-import-partial-extension": "always"
+    }
+}
