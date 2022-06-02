@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import RenderList from "../RenderList/RenderList";
 import EventCard from "../EventItem/Event-item";
 import getQueryStringByFilter from "../../helpers/filterHelper";
-import eventStatusEnum from "../../../constants/eventStatusEnum";
+import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
 import {
   resetEvents,
   updateEventsFilters,

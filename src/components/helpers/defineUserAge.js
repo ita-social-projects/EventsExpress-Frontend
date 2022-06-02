@@ -1,5 +1,5 @@
 import getAge from "./get-age-string";
-import LABELS from "../../constants/LabelsConstants";
+import LABELS from "../../constants/labelsConstants";
 
 const defineUserAge = birthday => {
   return Number.isNaN(getAge(birthday)) || !getAge(birthday)

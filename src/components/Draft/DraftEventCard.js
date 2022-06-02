@@ -18,7 +18,7 @@ import "./event-item.css";
 import useStyle from "../event/CardStyle/CardStyle";
 import SimpleModalWithDetails from "../helpers/simple-modal-with-details";
 import PhotoService from "../../services/PhotoService";
-import eventDefaultImage from "../../constants/eventDefaultImage";
+import eventDefaultImage from "../../constants/eventDefaultImageConstants";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();

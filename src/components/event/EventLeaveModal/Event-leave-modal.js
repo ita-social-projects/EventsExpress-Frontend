@@ -7,7 +7,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import PropTypes from "prop-types";
-import leaveModal from "../../../constants/EventLeaveModal";
+import leaveModal from "../../../constants/eventLeaveModalConstants";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;

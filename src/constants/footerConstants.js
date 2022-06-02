@@ -3,7 +3,7 @@ export const FOOTER_LABELS = {
   SUBSCRIBE: "Subscribe",
   CONTACT_US: "Contact us",
   MAIN_TEXT: "Life is an event. Make it memorable...",
-  PHONE_NUMBER: "+(380) 98 56 234",
+  PHONE_NUMBER: "+380 (98) 566 23 41",
   CALL_PHONE_HREF: "tel:+3809856234",
   PASTE_YOUR_EMAIL: "Paste your email",
   SEARCH_EVENT: "Search event",
@@ -13,7 +13,6 @@ export const FOOTER_LABELS = {
   TERMS: "Terms",
   ABOUT: "About",
 };
-
 export const ALL_PATH = {
   PATH_HOME: "/home",
   PATH_EVENTS: "/events",
@@ -22,13 +21,11 @@ export const ALL_PATH = {
   PATH_TERMS: "/terms",
   PATH_ABOUT: "/about",
 };
-
 export const ALL_LINK = {
   LINK_FACEBOOK: "https://uk-ua.facebook.com",
   LINK_INSTAGRAM: "https://www.instagram.com",
   LINK_YOUTUBE: "https://www.youtube.com",
 };
-
 export const ALL_STYLE_ICON = {
   STYLE_ICON_FACEBOOK: "fab fa-facebook-f",
   STYLE_ICON_INSTAGRAM: "fab fa-instagram",

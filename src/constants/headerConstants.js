@@ -1,4 +1,9 @@
-const headerConstants = {
+const HEADER_CONSTS = {
+  ABOUT_US: "About Us",
+  EVENTS: "Events",
+  CREATE: "Create",
+  LOGIN: "Login",
+  ENG: "Eng",
   CREATE_EVENT: "Create event",
   SIGN_IN: "LogIn",
   LOG_OUT: "Log out",
@@ -6,4 +11,4 @@ const headerConstants = {
   MY_PROFILE: "My profile",
   MY_EVENTS: "My events",
 };
-export default headerConstants;
+export default HEADER_CONSTS;

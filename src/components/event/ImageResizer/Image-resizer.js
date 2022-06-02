@@ -4,7 +4,7 @@ import Cropper from "react-easy-crop";
 import PropTypes from "prop-types";
 import "./image-resizer.css";
 import Button from "@material-ui/core/Button";
-import imageConstants from "../../../constants/ImageResizer";
+import imageConstants from "../../../constants/imageResizerConstants";
 import {
   cropImage,
   onCropChange,

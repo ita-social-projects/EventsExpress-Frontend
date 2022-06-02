@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
 import { renderTextField, renderTextArea } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
-import issueTypeEnum from "../../constants/issue-type-enum";
+import issueTypeEnum from "../../constants/issueTypeEnumConstants";
 import isValidEmail from "../helpers/validators/email-address-validator";
 import { maxLength30 } from "../helpers/validators/min-max-length-validators";
 import fieldIsRequired from "../helpers/validators/required-fields-validator";

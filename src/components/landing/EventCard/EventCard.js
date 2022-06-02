@@ -6,8 +6,8 @@ import moment from "moment";
 import IconsEventCard from "./IconsEventCard/IconsEventCard";
 import "./EventCard.scss";
 import PhotoService from "../../../services/PhotoService";
-import eventDefaultImage from "../../../constants/eventDefaultImage";
-import FORMATS from "../../../constants/EventCardConstants";
+import eventDefaultImage from "../../../constants/eventDefaultImageConstants";
+import FORMATS from "../../../constants/eventCardConstants";
 
 const EventCard = ({ event }) => {
   const { id, title, dateFrom } = event;
@@ -24,6 +24,7 @@ const EventCard = ({ event }) => {
     return () => {
       URL.revokeObjectURL(eventImage);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

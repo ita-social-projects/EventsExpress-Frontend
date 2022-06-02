@@ -14,7 +14,7 @@ import EditGenderContainer from "../../containers/editProfileContainers/editGend
 import EditBirthdayContainer from "../../containers/editProfileContainers/editBirthdayContainer";
 import ChangePasswordContainer from "../../containers/editProfileContainers/changePasswordContainer";
 import SelectCategoriesWrapper from "../../containers/categories/SelectCategories";
-import genders from "../../constants/GenderConstants";
+import genders from "../../constants/genderConstants";
 import ChangeAvatarWrapper from "../../containers/editProfileContainers/change-avatar";
 import "./profile.css";
 import SelectNotificationTypesWrapper from "../../containers/notificationTypes/SelectNotificationTypes";

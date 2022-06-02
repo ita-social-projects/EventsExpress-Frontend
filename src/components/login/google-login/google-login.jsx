@@ -2,7 +2,7 @@
 import { GoogleLogin as Login } from "react-google-login";
 import PropTypes from "prop-types";
 import { FcGoogle } from "react-icons/fc";
-import ButtonNames from "../../../constants/ButtonNamesConstants";
+import ButtonNames from "../../../constants/buttonNamesConstants";
 import "../google-facebook-login.scss";
 
 const { GOOGLE_LOGIN } = ButtonNames;

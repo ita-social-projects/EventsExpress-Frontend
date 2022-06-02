@@ -1,6 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { BANNER_QUOTE, EVENTS_BTN_TEXT } from "../../../constants/AboutUs";
+import {
+  BANNER_QUOTE,
+  EVENTS_BTN_TEXT,
+} from "../../../constants/aboutUsConstants";
 import "./Banner.scss";
 
 const Banner = () => (

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import FacebookLogin from "react-facebook-login";
 import { FaFacebook } from "react-icons/fa";
-import ButtonNames from "../../../constants/ButtonNamesConstants";
+import ButtonNames from "../../../constants/buttonNamesConstants";
 import "../google-facebook-login.scss";
 
 const { FACEBOOK_LOGIN } = ButtonNames;

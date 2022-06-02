@@ -12,10 +12,10 @@ import EventVisitors from "../EventVisitors/EventVisitors";
 import EventLeaveModal from "../EventLeaveModal/Event-leave-modal";
 import InventoryList from "../../inventory/InventoryList";
 import DisplayLocation from "../map/display-location";
-import userStatusEnum from "../../../constants/userStatusEnum";
-import eventStatusEnum from "../../../constants/eventStatusEnum";
+import userStatusEnum from "../../../constants/userStatusEnumConstants";
+import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
-import eventDefaultImage from "../../../constants/eventDefaultImage";
+import eventDefaultImage from "../../../constants/eventDefaultImageConstants";
 import PhotoService from "../../../services/PhotoService";
 
 const photoService = new PhotoService();

@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import PagePagination from "../../shared/pagePagination";
-import renderListConstants from "../../../constants/RenderListConstants";
+import renderListConstants from "../../../constants/renderListConstants";
 
 const { NO_RESULTS } = renderListConstants;
 

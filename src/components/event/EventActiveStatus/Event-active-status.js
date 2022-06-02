@@ -1,9 +1,9 @@
 import React from "react";
 import propTypes from "prop-types";
-import eventStatusEnum from "../../../constants/eventStatusEnum";
-import eventStatusTitle from "../../../constants/eventStatusTitle";
-import eventStatusButton from "../../../constants/eventStatusButton";
-import eventStatusIcon from "../../../constants/eventStatusIcon";
+import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
+import eventStatusTitle from "../../../constants/eventStatusTitleConstants";
+import eventStatusButton from "../../../constants/eventStatusButtonConstants";
+import eventStatusIcon from "../../../constants/eventStatusIconConstants";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
 import RenderEventButton from "./RenderEventButton";
 

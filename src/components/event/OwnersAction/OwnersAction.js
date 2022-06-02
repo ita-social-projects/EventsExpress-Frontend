@@ -3,7 +3,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 import PropTypes from "prop-types";
 import SimpleModal from "../SimpleModal/Simple-modal";
-import constants from "../../../constants/ConstantsOwnersAction";
+import constants from "../../../constants/ownersActionConstants";
 
 function OwnersActions({
   user,

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import EventsForProfile from "../event/EventsForProfile/EventsForProfile";
 import "moment-timezone";
 import "./User-profile.css";
-import eventsProfile from "../../constants/profileEvents";
+import eventsProfile from "../../constants/profileEventsConstants";
 
 const Events = ({ events, currentUser, typeOfEvents }) => {
   const { data } = events;

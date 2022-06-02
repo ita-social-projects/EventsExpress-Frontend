@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { eventViewModeMapper } from "../../../constants/EventsViewModeConstants";
+import { eventViewModeMapper } from "../../../constants/eventsViewModeConstants";
 import "./EventsViewMode.scss";
 
 const EventsViewMode = ({ setViewMode }) => (

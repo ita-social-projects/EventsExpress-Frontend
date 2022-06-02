@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { stringify, exclude } from "query-string";
 import { getEvents } from "../../event/event-list-action";
-import enumLocationType from "../../../constants/EventLocationType";
+import enumLocationType from "../../../constants/eventLocationTypeConstants";
 
 const { map } = enumLocationType;
 

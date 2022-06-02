@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { LocationMapWithCircle } from "../../helpers/form-helpers/location";
 import "../slider.css";
 import DisplayMap from "../map/display-map";
-import constants from "../../../constants/mapModal";
+import constants from "../../../constants/mapModalConstants";
 
 const {
   FILTER_BY_LOCATION,

@@ -7,7 +7,7 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FeedbackIcon from "@material-ui/icons/Feedback";
-import Roles from "../../../constants/userRoles";
+import Roles from "../../../constants/userRolesConstants";
 import AuthComponent from "../../../security/authComponent";
 import headerConstants from "../../../constants/headerConstants";
 import ToggleButton from "../../shared/toggleButton/toggleButton";

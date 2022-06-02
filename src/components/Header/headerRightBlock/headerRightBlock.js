@@ -4,11 +4,9 @@ import { connect } from "react-redux";
 import ModalWind from "../../modal-wind";
 import AuthComponent from "../../../security/authComponent";
 import DropdownMenu from "../../../containers/dropdownMenuContainer";
-import headerConstants from "../../../constants/headerConstants";
 import { TogleOpenWind } from "../../../actions/modalWind-action";
 import "./headerRightBlock.scss";
-
-const { SIGN_IN } = headerConstants;
+import HEADER_CONSTS from "../../../constants/headerConstants";
 
 const HeaderRightBlock = ({ openModal }) => {
   return (
@@ -19,7 +17,7 @@ const HeaderRightBlock = ({ openModal }) => {
           type="button"
           onClick={() => openModal(true)}
         >
-          {SIGN_IN}
+          {HEADER_CONSTS.SIGN_IN}
         </button>
         <ModalWind />
       </AuthComponent>

@@ -12,8 +12,8 @@ import {
 import filterHelper from "../../helpers/filterHelper";
 import EventMapModal from "../MapModal/Map-modal";
 import DisplayMap from "../map/display-map";
-import eventStatusEnum from "../../../constants/eventStatusEnum";
-import constants from "../../../constants/EventFilterConstants";
+import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
+import constants from "../../../constants/eventFilterConstants";
 import "./event-filter.css";
 
 const {
