@@ -70,8 +70,6 @@ export function getUpcomingEvents(filters) {
       dispatch(setErrorAllertFromResponse(response));
       return Promise.reject();
     }
-    // TODO: MOCKUP
-    // const jsonRes = await response.json();
     const jsonRes = await response.json();
 
     dispatch(getEventsData({ ...jsonRes, items: jsonRes.items }));

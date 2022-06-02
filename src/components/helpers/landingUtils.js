@@ -7,7 +7,7 @@ import {
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
 } from "../../constants/EventsViewModeConstants";
 
-const { SLIDER, LIST, MATRIX } = viewModeTypes;
+const { SLIDER, LIST } = viewModeTypes;
 
 const viewModeSwitcher = (events, viewModeType, filterTitle) => {
   const eventsFiltered = events.filter(event =>
@@ -19,10 +19,8 @@ const viewModeSwitcher = (events, viewModeType, filterTitle) => {
       return <SliderForEvents events={eventsFiltered} />;
     case LIST:
       return <EventsListItem events={eventsFiltered} />;
-    case MATRIX:
-      return <EventMatrix events={eventsFiltered} />;
     default:
-      return <></>;
+      return <EventMatrix events={eventsFiltered} />;
   }
 };
 

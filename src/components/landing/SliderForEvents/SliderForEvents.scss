@@ -40,6 +40,7 @@ $slick-next-rotate: 45deg;
 }
 
 .slick-prev {
+  z-index: 10;
   left: -40px;
   transform: translate(150%, -50%);
 }

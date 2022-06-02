@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: $mediaMobileScreen) {
+@media screen and (max-width: $mediaSecondTabletScreen) {
   .login-link{
     display: none;
   }
