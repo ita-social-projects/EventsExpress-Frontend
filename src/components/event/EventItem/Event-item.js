@@ -20,7 +20,7 @@ import EventHeader from "../EventItemHeader/Event-item-header";
 import Roles from "../../../constants/userRolesConstants";
 import PhotoService from "../../../services/PhotoService";
 import eventDefaultImage from "../../../constants/eventDefaultImageConstants";
-import EventItemConstants from "../../../constants/eventItemConstants";
+import EventItemConstants from "../../../constants/eventsItemConstants";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();

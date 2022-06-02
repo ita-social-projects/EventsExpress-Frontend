@@ -2,8 +2,8 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import genders from "../../constants/genderConstants";
-import LABELS from "../../constants/labelsConstants";
-import { ATTITUDE_TYPES } from "../../constants/userAttitudeConstants";
+import LABELS from "../../constants/labelConstants";
+import { ATTITUDE_TYPES } from "../../constants/userAttitudesConstants";
 import CustomAvatar from "../avatar/custom-avatar";
 import RatingAverage from "../rating/rating-average";
 import defineUserAge from "../helpers/defineUserAge";

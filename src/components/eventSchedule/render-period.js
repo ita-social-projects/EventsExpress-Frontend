@@ -1,5 +1,5 @@
 import "moment-timezone";
-import { enumPeriodicity } from "../../constants/periodicityConstants";
+import { enumPeriodicity } from "../../constants/peridiocitConstants";
 
 const renderPeriod = (periodicity, frequency) => {
   const periods = ["Day", "Week", "Month", "Year"];

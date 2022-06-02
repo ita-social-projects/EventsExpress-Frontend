@@ -6,7 +6,7 @@ import momentLocaliser from "react-widgets-moment";
 import propTypes from "prop-types";
 import DropZoneField from "../../helpers/DropZoneField";
 import PhotoService from "../../../services/PhotoService";
-import periodicity from "../../../constants/periodicityConstants";
+import periodicity from "../../../constants/peridiocitConstants";
 import {
   renderDatePicker,
   renderCheckbox,

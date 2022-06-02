@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import FacebookLogin from "react-facebook-login";
 import { FaFacebook } from "react-icons/fa";
-import BUTTON_NAMES from "../../../constants/buttonNamesConstants";
 import "../google-facebook-login.scss";
+import BUTTON_NAMES from "../../../constants/buttonConsts";
 
 const LoginFacebook = ({ config, setErrorAlert, loginFacebook }) => {
   const responseFacebook = response => {

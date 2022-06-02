@@ -1,7 +1,7 @@
 import {
   ATTITUDE_MESSAGES,
   ATTITUDE_ICONS,
-} from "../../constants/userAttitudeConstants";
+} from "../../constants/userAttitudesConstants";
 
 const getAttitudeToUser = attitude => {
   let attitudeToUser = {};

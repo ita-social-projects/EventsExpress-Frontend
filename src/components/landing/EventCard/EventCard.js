@@ -7,7 +7,7 @@ import IconsEventCard from "./IconsEventCard/IconsEventCard";
 import "./EventCard.scss";
 import PhotoService from "../../../services/PhotoService";
 import eventDefaultImage from "../../../constants/eventDefaultImageConstants";
-import FORMATS from "../../../constants/eventCardConstants";
+import FORMATS from "../../../constants/eventsCardConstants";
 
 const EventCard = ({ event }) => {
   const { id, title, dateFrom } = event;
