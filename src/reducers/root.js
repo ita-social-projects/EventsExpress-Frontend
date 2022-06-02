@@ -39,8 +39,10 @@ import RequestCount from "./request-index-count";
 import RequestLocalCount from "./request-index-local-count";
 import CategoriesOfMeasuring from "./categoryOfMeasuring-list";
 import EventsFilter from "./events-filter/index";
+import aboutUsReducer from "./aboutUs/aboutUsReducer";
 
 const rootReducers = {
+  aboutUs: aboutUsReducer,
   requestLocalCount: RequestLocalCount,
   requestCount: RequestCount,
   account: Account,
