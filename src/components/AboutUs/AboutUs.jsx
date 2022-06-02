@@ -1,13 +1,13 @@
 import React from "react";
 import InfoSection from "./InfoSection/InfoSection";
 import Banner from "./Banner/Banner";
-import MembersConainer from "../../containers/AboutUsContainer/MembersConainer";
+import MembersContainer from "../../containers/AboutUsContainer/MembersContainer";
 
 const AboutUs = () => (
   <div className="about">
     <Banner />
     <InfoSection />
-    <MembersConainer />
+    <MembersContainer />
   </div>
 );
 

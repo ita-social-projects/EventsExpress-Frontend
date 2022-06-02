@@ -1,3 +1,7 @@
+import AboutUsService from "../../services/AboutUsService";
+
+const aboutService = new AboutUsService();
+
 export const GET_MEMBERS_PENDING = "GET_MEMBERS_PENDING";
 export const GET_MEMBERS_SUCCESS = "GET_MEMBERS_SUCCESS";
 export const GET_MEMBERS_ERROR = "GET_MEMBERS_ERROR";
@@ -20,11 +24,10 @@ export const getMembersAction = () => {
   return async dispatch => {
     dispatch(getMembersPending());
     try {
-      const response = await fetch(`http://localhost:8000/members`);
-      const members = await response.json();
+      const members = await aboutService.getMembers();
       dispatch(getMembersSuccess(members));
     } catch (error) {
-      dispatch(getMembersError(error));
+      dispatch(getMembersError(error.message));
     }
   };
 };
