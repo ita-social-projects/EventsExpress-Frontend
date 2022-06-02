@@ -18,8 +18,8 @@ const Members = ({ aboutUs: { members, loading, error }, getMembers }) => {
     <div className="about-members">
       <h3 className="members-title">{MEMBERS_TITLE}</h3>
       <div className="members-container">
-        {members.map(({ name, description, img }) => (
-          <Member key={name} name={name} description={description} img={img} />
+        {members.map(({ id, name, description, img }) => (
+          <Member key={id} name={name} description={description} img={img} />
         ))}
       </div>
     </div>

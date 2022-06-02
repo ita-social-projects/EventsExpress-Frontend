@@ -1,3 +1,6 @@
 export default class AboutUsService {
-  getMembers = () => fetch(`http://localhost:8000/members`).json();
+  getMembers = async () => {
+    const members = await fetch(`http://localhost:8000/members`);
+    return members.json();
+  };
 }
