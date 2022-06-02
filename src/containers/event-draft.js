@@ -5,7 +5,7 @@ import { getFormValues, isPristine, SubmissionError } from "redux-form";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import EventForm from "../components/event/EventForm/Event-form";
+import EventForm from "../components/event/EventForm/EventForm";
 import SimpleModalWithDetails from "../components/helpers/simple-modal-with-details";
 import eventStatusEnum from "../constants/eventStatusEnum";
 import getСategoriesList from "../actions/category/category-list-action";

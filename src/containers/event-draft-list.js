@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import DraftList from "../components/Draft/Draft-list";
+import DraftList from "../components/Draft/DraftList";
 import SpinnerWrapper from "./spinner";
 import { getDrafts, resetEvents } from "../actions/event/event-list-action";
 import filterHelper from "../components/helpers/filterHelper";

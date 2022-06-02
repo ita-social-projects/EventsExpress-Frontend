@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { ABOUT_US, CREATE, ENG, EVENTS } from "../../../constants/Header";
 import BurgerMenuLink from "../BurgerMenu/BurgerMenuLink";
-import HeaderRightBlock from "../headerRightBlock/headerRightBlock";
+import HeaderRightBlock from "../headerRightBlock/HeaderRightBlock";
 import planet from "./icons/planet.png";
 import "./HeaderLinks.scss";
 

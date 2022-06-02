@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import addCategory, {
   setCategoryEdited,
 } from "../../actions/category/category-add-action";
-import CategoryEdit from "../../components/category/category-edit";
+import CategoryEdit from "../../components/Category/CategoryEdit";
 
 const CategoryAddWrapper = ({
   add,

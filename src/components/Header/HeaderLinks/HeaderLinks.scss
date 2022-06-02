@@ -56,7 +56,7 @@
   }
 }
 
-@media screen and (max-width: $mediaMobileScreen) {
+@media screen and (max-width: $widthForContentFirstTabletScreen) {
   .header-links-wrapper {
     .header-link-item{
       .link-wrapper,.eng-link-wrapper{

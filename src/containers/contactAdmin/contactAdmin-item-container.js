@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import ContactAdminItem from "../../components/contactAdmin/contactAdmin-item-component";
+import ContactAdminItem from "../../components/ContactAdmin/ContactAdminItemComponent";
 
 const ContactAdminItemWrapper = ({ item }) => (
   <tr>

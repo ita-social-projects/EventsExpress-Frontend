@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import EventItemView from "../components/event/EventItemView/Event-item-view";
+import EventItemView from "../components/event/EventItemView/EventItemView";
 import eventStatusEnum from "../constants/eventStatusEnum";
 import SpinnerWrapper from "./spinner";
 import getEvent, {

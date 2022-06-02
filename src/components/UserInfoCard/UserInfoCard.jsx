@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import genders from "../../constants/GenderConstants";
 import LABELS from "../../constants/LabelsConstants";
 import { ATTITUDE_TYPES } from "../../constants/UserAttitudeConstants";
-import CustomAvatar from "../avatar/custom-avatar";
+import CustomAvatar from "../Avatar/CustomAvatar";
 import RatingAverage from "../rating/rating-average";
 import defineUserAge from "../helpers/defineUserAge";
 import getAttitudeToUser from "../helpers/getAttitudeToUser";

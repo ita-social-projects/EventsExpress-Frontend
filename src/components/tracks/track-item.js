@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
-import SimpleModal from "../event/SimpleModal/Simple-modal";
+import SimpleModal from "../event/SimpleModal/SimpleModal";
 
 export default class TrackItem extends Component {
   getChangesType = changesType => {

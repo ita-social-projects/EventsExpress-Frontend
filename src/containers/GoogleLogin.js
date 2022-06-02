@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import GoogleLogin from "../components/login/google-login/google-login";
+import GoogleLogin from "../components/login/GoogleLogin/GoogleLogin";
 import { loginGoogle } from "../actions/login/login-action";
 import { setErrorAlert } from "../actions/alert-action";
 import "./css/Auth.css";

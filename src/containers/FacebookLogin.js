@@ -1,7 +1,7 @@
 ﻿import { connect } from "react-redux";
 import { loginFacebook } from "../actions/login/login-action";
 import { setErrorAlert } from "../actions/alert-action";
-import LoginFacebook from "../components/login/facebook-login/facebook-login";
+import LoginFacebook from "../components/login/FacebookLogin/FacebookLogin";
 
 const mapStateToProps = state => {
   return {

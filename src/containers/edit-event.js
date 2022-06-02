@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getFormValues, SubmissionError } from "redux-form";
 import Button from "@material-ui/core/Button";
-import EventForm from "../components/event/EventForm/Event-form";
+import EventForm from "../components/event/EventForm/EventForm";
 import { editEvent } from "../actions/event/event-add-action";
 import { setSuccessAllert } from "../actions/alert-action";
 import validate from "./event-edit-validate-form ";

@@ -1,0 +1,18 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/variables.scss";
+@import "../../../styles/fonts.scss";
+
+.login-link {
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: $bold;
+  font-size: $fontsize-14;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: $widthForContentFirstTabletScreen) {
+  .login-link{
+    display: none;
+  }
+}

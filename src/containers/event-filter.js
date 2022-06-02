@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getFormValues, reset } from "redux-form";
 import { withRouter } from "react-router-dom";
-import EventFilter from "../components/event/EventFilter/Event-filter";
+import EventFilter from "../components/event/EventFilter/EventFilter";
 import getСategoriesList from "../actions/category/category-list-action";
 import filterHelper from "../components/helpers/filterHelper";
 import EventFilterConstants from "../constants/EventFilterConstants";

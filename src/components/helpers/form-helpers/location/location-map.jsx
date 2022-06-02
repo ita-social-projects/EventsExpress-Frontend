@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Map, TileLayer } from "react-leaflet";
 import PropTypes from "prop-types";
-import "../../../event/map/map.css";
+import "../../../event/Map/Map.css";
 
 class LocationMap extends Component {
   constructor(props) {

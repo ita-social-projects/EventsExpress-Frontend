@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import CommentForm from "../components/comment/comment-form";
+import CommentForm from "../components/Comment/CommentForm";
 import addComment from "../actions/comment/comment-add-action";
 
 const CommentWrapper = ({ add, userId, eventId, parentId }) => {
