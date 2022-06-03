@@ -123,12 +123,12 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-push": "lint-staged"
+			"pre-commit": "lint-staged"
 		}
 	},
 	"lint-staged": {
 		"./src/*.{js,jsx}": [
-			"npm run lint"
+			"eslint src --fix --ext .js,.jsx"
 		]
 	},
 	"config": {
