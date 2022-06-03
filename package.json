@@ -104,7 +104,7 @@
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-react": "^7.26.1",
 		"eslint-plugin-sonarjs": "0.10.0",
-		"husky": "^7.0.4",
+		"husky": "^8.0.0",
 		"lint-staged": "^12.3.7",
 		"prettier": "^2.6.0",
 		"react-error-overlay": "^6.0.10",
@@ -119,18 +119,16 @@
 		"eject": "react-scripts eject",
 		"lint": "eslint src --ext .js,.jsx",
 		"lint:fix": "eslint src --fix --ext .js,.jsx",
-		"prepare": "husky install",
-		"husky:pre-commit": "lint-staged"
+		"prepare": "husky install"
 	},
 	"husky": {
 		"hooks": {
-		  "pre-commit": "lint-staged",
-		  "pre-push": "npm run lint"
+			"pre-push": "lint-staged"
 		}
 	},
 	"lint-staged": {
 		"./src/*.{js,jsx}": [
-		  "npm run lint"
+			"npm run lint"
 		]
 	},
 	"config": {
