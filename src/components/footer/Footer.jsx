@@ -24,7 +24,7 @@ const Footer = () => {
     emailService(values);
     setValues({ email: "" });
   };
-  const handleChange = e => {
+  const handleChange = (e) => {
     e.persist();
     // eslint-disable-next-line no-shadow
     setValues(values => ({
