@@ -128,7 +128,8 @@
 	},
 	"lint-staged": {
 		"./src/*.{js,jsx}": [
-			"eslint src --fix --ext .js,.jsx"
+			"eslint src --fix --ext .js,.jsx",
+			"git diff --exit-code --stat"
 		]
 	},
 	"config": {
