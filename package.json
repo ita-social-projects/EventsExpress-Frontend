@@ -119,12 +119,8 @@
 		"eject": "react-scripts eject",
 		"lint": "eslint src --ext .js,.jsx",
 		"lint:fix": "eslint src --fix --ext .js,.jsx",
-		"prepare": "husky install"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
+		"prepare": "husky install",
+		"husky:pre-commit": "lint-staged"
 	},
 	"lint-staged": {
 		"./src/*.{js,jsx}": [

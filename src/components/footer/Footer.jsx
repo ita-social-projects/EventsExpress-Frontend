@@ -19,7 +19,7 @@ const Footer = () => {
   const [values, setValues] = useState({
     email: "",
   });
-  const subscribeWithEmail = e => {
+  const subscribeWithEmail = (e) => {
     e.preventDefault();
     emailService(values);
     setValues({ email: "" });
