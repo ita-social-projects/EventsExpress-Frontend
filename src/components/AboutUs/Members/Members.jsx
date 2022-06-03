@@ -3,41 +3,41 @@ import PropTypes from "prop-types";
 import Member from "./Member";
 import { MEMBERS_TITLE } from "../../../constants/AboutUs";
 import "./Members.scss";
+import SpinnerWrapper from "../../../containers/spinner";
 
-const Members = ({ aboutUs: { members, loading, error }, getMembers }) => {
+const Members = ({ members, loading, error, getMembers }) => {
   useEffect(() => {
     if (members.length === 0) {
       getMembers();
     }
   }, [members, getMembers]);
 
-  if (loading || error) {
-    return null;
-  }
   return (
-    <div className="about-members">
-      <h3 className="members-title">{MEMBERS_TITLE}</h3>
-      <div className="members-container">
-        {members.map(({ id, name, description, img }) => (
-          <Member key={id} name={name} description={description} img={img} />
-        ))}
+    <SpinnerWrapper showContent={!loading || !error}>
+      <div className="about-members">
+        <h3 className="members-title">{MEMBERS_TITLE}</h3>
+        <div className="members-container">
+          {members.map(member => (
+            <Member key={member.id} {...member} />
+          ))}
+        </div>
       </div>
-    </div>
+    </SpinnerWrapper>
   );
 };
 
 Members.defaultProps = {
-  aboutUs: {
-    members: [],
-    loading: false,
-    error: null,
-  },
+  members: [],
+  loading: false,
+  error: null,
   getMembers: () => {},
 };
 
 Members.propTypes = {
   getMembers: PropTypes.func,
-  aboutUs: PropTypes.object,
+  members: PropTypes.array,
+  loading: PropTypes.bool,
+  error: PropTypes.string,
 };
 
 export default Members;

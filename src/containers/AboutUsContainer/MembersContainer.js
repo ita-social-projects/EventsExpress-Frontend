@@ -3,7 +3,7 @@ import Members from "../../components/AboutUs/Members/Members";
 import { getMembersAction } from "../../actions/aboutUs/membersActions";
 
 const mapStateToProps = state => ({
-  aboutUs: state.aboutUs,
+  ...state.aboutUs,
 });
 
 const mapDispatchToProps = dispatch => ({
