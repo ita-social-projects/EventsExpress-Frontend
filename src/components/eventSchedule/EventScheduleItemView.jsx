@@ -12,7 +12,7 @@ import useStyles from "./CardStyleConst";
 import SelectiveForm from "./SelectiveForm";
 import "../Layout/Colorlib.css";
 import getEvent from "../../actions/event/event-item-view-action";
-import eventDefaultImage from "../../constants/eventDefaultImage";
+import eventDefaultImage from "../../constants/eventDefaultImageConstants";
 import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();

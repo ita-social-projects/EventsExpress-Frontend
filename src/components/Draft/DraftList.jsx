@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import DraftEventCard from "./DraftEventCard";
 import RenderList from "../event/RenderList/RenderList";
 import { changeEventStatus } from "../../actions/event/event-item-view-action";
-import eventStatusEnum from "../../constants/eventStatusEnum";
+import eventStatusEnum from "../../constants/eventStatusEnumConstants";
 import { setSuccessAllert } from "../../actions/alert-action";
 
 const history = createBrowserHistory({ forceRefresh: true });

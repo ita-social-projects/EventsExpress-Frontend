@@ -13,14 +13,14 @@ import Badge from "@material-ui/core/Badge";
 import SocialShareMenu from "../Share/SocialShareMenu";
 import EventActiveStatus from "../EventActiveStatus/EventActiveStatus";
 import DisplayLocation from "../Map/DisplayLocation";
-import eventStatusEnum from "../../../constants/eventStatusEnum";
+import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
 import useStyle from "../CardStyle/CardStyle";
 import AuthComponent from "../../../security/authComponent";
 import EventHeader from "../EventItemHeader/EventItemHeader";
-import Roles from "../../../constants/userRoles";
+import Roles from "../../../constants/userRolesConstants";
 import PhotoService from "../../../services/PhotoService";
-import eventDefaultImage from "../../../constants/eventDefaultImage";
-import EventItemConstants from "../../../constants/EventItemConstants";
+import eventDefaultImage from "../../../constants/eventDefaultImageConstants";
+import EventItemConstants from "../../../constants/eventsItemConstants";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();

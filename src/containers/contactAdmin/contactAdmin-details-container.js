@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import ContactAdminDetails from "../../components/ContactAdmin/ContactAdminDetailsComponent";
 import changeIssueStatus from "../../actions/contactAdmin/contact-admin-issue-status-action";
 import getMessageById from "../../actions/contactAdmin/contact-admin-item-action";
-import issueStatusEnum from "../../constants/issue-status-enum";
+import issueStatusEnum from "../../constants/issueStatusEnumConstants";
 
 class ContactAdminDetailsContainer extends React.Component {
   componentWillMount = () => {

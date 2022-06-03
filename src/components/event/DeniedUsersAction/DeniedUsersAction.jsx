@@ -9,7 +9,7 @@ import {
   approveUser,
 } from "../../../actions/event/event-item-view-action";
 
-import constants from "../../../constants/deniedUsersAction";
+import constants from "../../../constants/deniedUsersActionConstants";
 
 const DeniedUsersAction = ({
   user,

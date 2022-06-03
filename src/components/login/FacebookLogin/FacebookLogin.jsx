@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import FacebookLogin from "react-facebook-login";
 import { FaFacebook } from "react-icons/fa";
-import ButtonNames from "../../../constants/ButtonNamesConstants";
+import BUTTON_NAMES from "../../../constants/buttonConsts";
 import "../GoogleFacebookLogin.scss";
 
-const { FACEBOOK_LOGIN } = ButtonNames;
+const { FACEBOOK_LOGIN } = BUTTON_NAMES;
 
 const LoginFacebook = ({ config, setErrorAlert, loginFacebook }) => {
   const responseFacebook = response => {
@@ -26,7 +26,7 @@ const LoginFacebook = ({ config, setErrorAlert, loginFacebook }) => {
         cssClass="btn-facebook"
         icon={<FaFacebook className="btn-facebook__icon" />}
         textButton={
-          <span className="btn-facebook__text"> {FACEBOOK_LOGIN} </span>
+          <span className="btn-facebook__text">{FACEBOOK_LOGIN}</span>
         }
         version="3.1"
       />

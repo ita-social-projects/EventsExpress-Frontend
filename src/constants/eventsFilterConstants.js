@@ -1,4 +1,4 @@
-export default {
+const EVENTS_FILTER = {
   RADIUS: "Radius:",
   RADIUS_KM: "km",
   LOCATION: "Location:",
@@ -11,3 +11,4 @@ export default {
   OPTIONS_BLOCKED: "Blocked",
   OPTIONS_CANCELED: "Canceled",
 };
+export default EVENTS_FILTER;

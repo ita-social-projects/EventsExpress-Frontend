@@ -11,8 +11,8 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: $widthForContentFirstTabletScreen) {
-  .login-link{
+@media screen and (max-width: $mediaSecondTabletScreen) {
+  .login-link {
     display: none;
   }
 }

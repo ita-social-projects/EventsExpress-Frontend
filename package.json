@@ -123,10 +123,7 @@
 		"husky:pre-commit": "lint-staged"
 	},
 	"lint-staged": {
-		"*.{js,jsx}": [
-			"eslint --cache --fix",
-			"git diff --exit-code --stat"
-		]
+		"*.{js,jsx}": "npm run lint:fix"
 	},
 	"config": {
 		"commitizen": {

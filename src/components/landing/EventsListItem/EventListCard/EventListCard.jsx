@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { BiRightArrowAlt } from "react-icons/bi";
@@ -6,16 +6,17 @@ import moment from "moment";
 import IconsEventCard from "../../EventCard/IconsEventCard/IconsEventCard";
 import "./EventListCard.scss";
 import PhotoService from "../../../../services/PhotoService";
-import eventDefaultImage from "../../../../constants/eventDefaultImage";
+import eventDefaultImage from "../../../../constants/eventDefaultImageConstants";
 
 const EventListCard = ({ event }) => {
   const { id, title, description, location, dateFrom } = event;
   const ovner = event.organizers[0].username;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const photoService = new PhotoService();
+
+  const photoService = useMemo(() => new PhotoService(), []);
   const [eventImage, setEventImage] = useState(eventDefaultImage);
 
   useEffect(() => {
+    // TODO move to service and call from action
     photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {
       if (eventPreviewImage) {
         const image = URL.createObjectURL(eventPreviewImage);
@@ -25,7 +26,9 @@ const EventListCard = ({ event }) => {
     return () => {
       URL.revokeObjectURL(eventImage);
     };
-  }, [eventImage, id, photoService]);
+    // TODO Disabled this rule in eslint config
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="card-item-container">

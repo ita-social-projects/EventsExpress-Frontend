@@ -4,7 +4,7 @@ import { reduxForm, Field, reset } from "redux-form";
 import "./SearchInput.scss";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
-import PLACEHOLDER_INPUT from "../../constants/HeadArticleSearchConstants";
+import PLACEHOLDER_INPUT from "../../constants/searchInputConstants";
 import debounce from "../../services/Debaunce";
 
 const SearchInput = ({ searchFunc, searchText, name, clear, resetForm }) => {

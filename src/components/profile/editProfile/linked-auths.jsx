@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import externalLoginTypeEnum from "../../../constants/externalLoginTypeEnum";
+import externalLoginTypeEnum from "../../../constants/externalLoginTypeEnumConstants";
 
 const renderType = type => {
   switch (type) {

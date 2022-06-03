@@ -2,7 +2,7 @@
 import Avatar from "@material-ui/core/Avatar";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
-import userDefaultImage from "../../constants/userDefaultImage";
+import userDefaultImage from "../../constants/userDefaultImageConstants";
 import PhotoService from "../../services/PhotoService";
 import "./CustomAvatar.scss";
 
