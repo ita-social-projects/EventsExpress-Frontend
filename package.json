@@ -123,7 +123,7 @@
 		"husky:pre-commit": "lint-staged"
 	},
 	"lint-staged": {
-		"./src/*.{js,jsx}": [
+		"*.{js,jsx}": [
 			"eslint src --fix --ext .js,.jsx",
 			"git diff --exit-code --stat"
 		]
