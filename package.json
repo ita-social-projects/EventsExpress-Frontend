@@ -122,8 +122,16 @@
 		"prepare": "husky install",
 		"husky:pre-commit": "lint-staged"
 	},
+	"husky": {
+		"hooks": {
+		  "pre-commit": "lint-staged",
+		  "pre-push": "npm test"
+		}
+	},
 	"lint-staged": {
-		"*.{js,jsx}": "npm run lint:fix"
+		"./src/*.{js,jsx}": [
+		  "npm run lint"
+		]
 	},
 	"config": {
 		"commitizen": {
