@@ -1,8 +1,8 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import UserInfoCard from "../UserInfoCard/UserInfoCard";
-import PagePagination from "../shared/pagePagination";
-import "./users.scss";
+import PagePagination from "../shared/PagePagination/PagePagination";
+import "./Users.scss";
 
 const UserItemList = ({ page, totalPages, users, callback }) => {
   const handlePageChange = pageEl => {
