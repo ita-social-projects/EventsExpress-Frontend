@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import { getFormValues, reset } from "redux-form";
-import { connect } from "react-redux";
+
 import PropTypes from "prop-types";
-import TrackList from "./track-list";
-import TracksFilter from "./tracks-filter";
+import TrackList from "./TrackList";
+import TracksFilter from "./TracksFilter";
 import SpinnerWrapper from "../../containers/spinner";
-import getAllTracks, {
-  getEntityNames,
-} from "../../actions/tracks/track-list-action";
 
 class Tracks extends Component {
   componentDidMount = () => {
@@ -95,17 +91,4 @@ Tracks.propTypes = {
   form_values: PropTypes.object,
 };
 
-const mapStateToProps = state => ({
-  tracks: state.tracks,
-  form_values: getFormValues("tracks-filter-form")(state),
-});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getAllTracks: filter => dispatch(getAllTracks(filter)),
-    getEntityNames: () => dispatch(getEntityNames()),
-    reset_filters: () => dispatch(reset("tracks-filter-form")),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Tracks);
+export default Tracks;

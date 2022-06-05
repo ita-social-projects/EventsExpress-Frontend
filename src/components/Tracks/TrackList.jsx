@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import PagePagination from "../shared/pagePagination";
-import TrackItem from "./track-item";
+import PagePagination from "../shared/PagePagination/PagePagination";
+import TrackItem from "./TrackItem";
 
 class TrackList extends Component {
   renderItems = arr => {
