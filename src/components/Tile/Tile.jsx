@@ -2,10 +2,10 @@
 import PropTypes from "prop-types";
 import { getFormValues, change } from "redux-form";
 import { connect } from "react-redux";
-import ThreeStateCheckbox from "../three-state-checkbox/ThreeStateCheckbox";
-import "./Tile.css";
-import "./covers/tile-covers.css";
+import ThreeStateCheckbox from "../ThreeStateCheckbox/ThreeStateCheckbox";
+import "./Tile.scss";
 
+// TODO: check logic(strange)
 const Tile = ({
   formValues,
   categories,
