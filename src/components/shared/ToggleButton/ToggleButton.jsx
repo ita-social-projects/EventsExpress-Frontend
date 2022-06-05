@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./toggleButton.scss";
+import "./ToggleButton.scss";
 
 const ToggleButton = ({ children }) => {
   return (
