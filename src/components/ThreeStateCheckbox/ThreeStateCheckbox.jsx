@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import "./ThreeStateCheckbox.css";
+import "./ThreeStateCheckbox.scss";
 
 const updateInput = (ref, checked) => {
   const input = ref.current;
@@ -10,6 +10,7 @@ const updateInput = (ref, checked) => {
   }
 };
 
+// TODO: Remake logic
 const ThreeStateCheckbox = ({ name, checked, onChange }) => {
   const inputRef = useRef(null);
   const checkedRef = useRef(checked);
