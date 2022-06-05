@@ -9,7 +9,8 @@ import ErrorMessages from "../shared/errorMessage";
 
 momentLocaliser(moment);
 
-class SelectNotificationType extends Component {
+// TODO: to function
+class SelectNotificationTypes extends Component {
   componentDidMount() {
     this.props.initialize({
       notificationTypes: this.props.initialValues.notificationTypes,
@@ -40,7 +41,7 @@ class SelectNotificationType extends Component {
   }
 }
 
-SelectNotificationType.propTypes = {
+SelectNotificationTypes.propTypes = {
   initialize: propTypes.func,
   initialValues: propTypes.object,
   handleSubmit: propTypes.func,
@@ -49,7 +50,7 @@ SelectNotificationType.propTypes = {
   error: propTypes.string,
 };
 
-SelectNotificationType.defaultProps = {
+SelectNotificationTypes.defaultProps = {
   initialize: () => {},
   initialValues: {},
   handleSubmit: () => {},
@@ -61,4 +62,4 @@ SelectNotificationType.defaultProps = {
 export default reduxForm({
   form: "SelectNotificationType",
   enableReinitialize: true,
-})(SelectNotificationType);
+})(SelectNotificationTypes);
