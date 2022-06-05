@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
-import ErrorMessages from "../../shared/errorMessage";
+import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
 
 const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {

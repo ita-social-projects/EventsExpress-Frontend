@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import Moment from "react-moment";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Accordion from "@material-ui/core/Accordion";
@@ -16,11 +15,10 @@ import ChangePasswordContainer from "../../containers/editProfileContainers/chan
 import SelectCategoriesWrapper from "../../containers/categories/SelectCategories";
 import genders from "../../constants/GenderConstants";
 import ChangeAvatarWrapper from "../../containers/editProfileContainers/change-avatar";
-import "./profile.css";
-import SelectNotificationTypesWrapper from "../../containers/notificationTypes/SelectNotificationTypes";
+import SelectNotificationTypesWrapper from "../../containers/NotificationTypesContainer/NotificationTypesContainer";
 import LinkedAuthsWrapper from "../../containers/linked-auths-wrapper";
-import getComments from "../../actions/comment/comment-list-action";
 
+// TODO: Fix this styles
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
@@ -36,6 +34,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+// TODO: Split this component to smaller components
 const Profile = ({
   name,
   gender,
@@ -233,12 +232,4 @@ Profile.propTypes = {
   canChangePassword: PropTypes.bool,
 };
 
-const mapStateToProps = state => {
-  return state.user;
-};
-
-const mapDispatchToProps = dispatch => ({
-  getComments: (data, page) => dispatch(getComments(data, page)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default Profile;

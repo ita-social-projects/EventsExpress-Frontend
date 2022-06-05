@@ -9,10 +9,11 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import ErrorMessages from "../../shared/errorMessage";
+import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
 
+// TODO: remove this
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",

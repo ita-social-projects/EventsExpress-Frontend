@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import DropZoneField from "../../helpers/DropZoneField";
-import ErrorMessages from "../../shared/errorMessage";
+import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import PhotoService from "../../../services/PhotoService";
 
 const validate = values => {
