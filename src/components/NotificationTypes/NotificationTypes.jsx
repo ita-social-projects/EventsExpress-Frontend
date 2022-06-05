@@ -5,7 +5,7 @@ import momentLocaliser from "react-widgets-moment";
 import moment from "moment";
 import propTypes from "prop-types";
 import CheckboxGroup from "./CheckboxGroup";
-import ErrorMessages from "../shared/errorMessage";
+import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 
 momentLocaliser(moment);
 

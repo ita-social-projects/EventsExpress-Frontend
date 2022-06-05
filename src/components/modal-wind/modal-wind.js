@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import LoginWrapper from "../../containers/login";
 import RegisterWrapper from "../../containers/register";
 import { TogleOpenWind } from "../../actions/modalWind-action";
-import Modalwind2 from "../recoverPassword/modalwind2";
+import Modalwind2 from "../RecoverPassword/Modalwind2";
 
 const TabContainer = ({ children }) => {
   return (

@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import PagePagination from "../../shared/pagePagination";
+import PagePagination from "../../shared/PagePagination/PagePagination";
 import LocalSpinnerWrapper from "../../../containers/local-spinner";
 import renderItems from "../../helpers/eventsForProfileUtils";
 

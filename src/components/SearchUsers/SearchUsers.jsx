@@ -10,7 +10,7 @@ import { reset } from "redux-form";
 import SearchInput from "../SearchInput/SearchInput";
 import { getSearchUsers, changeFilter } from "../../actions/users/users-action";
 import SpinnerWrapper from "../../containers/spinner";
-import UserItemList from "../users/UserItemList";
+import UserItemList from "../Users/UserItemList";
 import "./SearchUsers.scss";
 
 const SearchUsers = ({

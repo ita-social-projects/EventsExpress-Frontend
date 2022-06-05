@@ -10,7 +10,7 @@ import {
   viewModeTypes,
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
 } from "../../../constants/EventsViewModeConstants";
-import SearchInput from "../../searchInput/SearchInput";
+import SearchInput from "../../SearchInput/SearchInput";
 
 const { SLIDER } = viewModeTypes;
 

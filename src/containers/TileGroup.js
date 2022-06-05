@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import SpinnerWrapper from "./spinner";
-import TileRow from "./tile-row/TileRow";
+import TileRow from "./TileRow/TileRow";
 
 export const TileGroup = props => {
   const renderRows = data => {

@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Spinner from "../components/spinner";
+import Spinner from "../components/Spinner/Spinner";
 
 function LocalSpinnerWrapper({ localCounter, children, showContent }) {
   return localCounter > 0 || !showContent ? <Spinner /> : children;

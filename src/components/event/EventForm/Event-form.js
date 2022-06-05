@@ -18,7 +18,7 @@ import {
 } from "../../helpers/form-helpers";
 import "./event-form.css";
 import asyncValidatePhoto from "../../../containers/async-validate-photo";
-import ErrorMessages from "../../shared/errorMessage";
+import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import Location from "../../location";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
 

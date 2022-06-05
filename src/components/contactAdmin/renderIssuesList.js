@@ -1,6 +1,6 @@
 ﻿import React, { Component } from "react";
 import propTypes from "prop-types";
-import PagePagination from "../shared/pagePagination";
+import PagePagination from "../shared/PagePagination/PagePagination";
 
 class RenderIssuesList extends Component {
   renderIssues = arr => arr.map(item => this.props.renderSingleIssue(item));

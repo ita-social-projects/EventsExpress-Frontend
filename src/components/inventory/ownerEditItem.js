@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import IconButton from "@material-ui/core/IconButton";
 import { renderSelectField, renderTextField } from "../helpers/form-helpers";
-import ErrorMessages from "../shared/errorMessage";
+import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import validate from "./inventory-form-validator";
 
 const OwnerEditItemForm = ({

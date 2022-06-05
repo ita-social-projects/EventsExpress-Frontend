@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { blockUser, unblockUser } from "../actions/user/user-action";
-import UserInfo from "../components/user-info";
-import UserBlock from "../components/user-info/user-block";
+import UserInfo from "../components/UserInfo/UserInfo";
+import UserBlock from "../components/UserInfo/UserBlock";
 import UserRoleWrapper from "./user-role";
 
 class UserInfoWrapper extends Component {

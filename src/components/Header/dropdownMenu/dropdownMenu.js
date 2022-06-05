@@ -10,7 +10,7 @@ import FeedbackIcon from "@material-ui/icons/Feedback";
 import Roles from "../../../constants/userRoles";
 import AuthComponent from "../../../security/authComponent";
 import headerConstants from "../../../constants/headerConstants";
-import ToggleButton from "../../shared/toggleButton/toggleButton";
+import ToggleButton from "../../shared/ToggleButton/ToggleButton";
 import "./dropdownMenu.scss";
 
 const { CREATE_EVENT, LOG_OUT, FEEDBACK, MY_PROFILE, MY_EVENTS } =
