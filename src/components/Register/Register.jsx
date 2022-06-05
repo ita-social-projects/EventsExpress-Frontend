@@ -11,7 +11,7 @@ import { renderTextField } from "../helpers/form-helpers";
 import isValidEmail from "../helpers/validators/email-address-validator";
 import fieldIsRequired from "../helpers/validators/required-fields-validator";
 import ErrorMessages from "../shared/errorMessage";
-import "./register.css";
+import "./Register.scss";
 
 const validate = values => {
   const errors = {};

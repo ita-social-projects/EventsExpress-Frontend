@@ -1,42 +1,17 @@
 import React from "react";
-import { Field, reduxForm, getFormValues } from "redux-form";
-import { connect } from "react-redux";
+import { Field } from "redux-form";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import moment from "moment";
-import { isValidPhoneNumber } from "react-phone-number-input";
+
 import {
   renderSelectField,
   renderPhoneInput,
   renderDatePicker,
   renderTextField,
 } from "../helpers/form-helpers";
-import isValidEmail from "../helpers/validators/email-address-validator";
-import fieldIsRequired from "../helpers/validators/required-fields-validator";
 
-const validate = values => {
-  const errors = {};
-  const requiredFields = ["birthday", "userName", "email", "phone", "gender"];
-
-  if (values.userName && values.userName.length < 3)
-    errors.userName = "User name too short";
-  else if (values.userName && values.userName.length > 50)
-    errors.userName = "User name too long";
-
-  if (values.phone && !isValidPhoneNumber(values.phone)) {
-    errors.phone = "Invalid phone number";
-  }
-  if (values.gender && values.gender > 3) {
-    errors.gender = "Invalid gender";
-  }
-
-  return {
-    ...errors,
-    ...fieldIsRequired(values, requiredFields),
-    ...isValidEmail(values.email),
-  };
-};
-
+// TODO: constansts
 const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
   return (
     <>
@@ -105,24 +80,6 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
   );
 };
 
-const mapStateToProps = state => {
-  const profile =
-    "profile" in state.routing.location.state
-      ? state.routing.location.state.profile
-      : null;
-  if (profile)
-    return {
-      initialValues: {
-        email: "email" in profile ? profile.email : null,
-        userName: "name" in profile ? profile.name : null,
-        birthday: "birthday" in profile ? profile.birthday : null,
-        gender: "gender" in profile ? profile.gender : null,
-      },
-      form_values: getFormValues("register-complete-form")(state),
-    };
-  return null;
-};
-
 RegisterComplete.defaultProps = {
   handleSubmit: () => {},
   pristine: false,
@@ -135,10 +92,4 @@ RegisterComplete.propTypes = {
   submitting: PropTypes.bool,
 };
 
-export default connect(mapStateToProps)(
-  reduxForm({
-    form: "register-complete-form",
-    validate,
-    enableReinitialize: true,
-  })(RegisterComplete),
-);
+export default RegisterComplete;
