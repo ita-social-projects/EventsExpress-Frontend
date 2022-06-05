@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./Stepper.css";
+import "./Stepper.scss";
 import updateStep from "../helpers/stepperHelper";
 
+// TODO: to function
 export default class Stepper extends Component {
   constructor() {
     super();

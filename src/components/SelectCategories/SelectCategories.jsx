@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
 import { renderMultiselect } from "../helpers/form-helpers";
-import ErrorMessages from "../shared/errorMessage";
+import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 
 // TODO: to function
 class SelectCategories extends Component {
