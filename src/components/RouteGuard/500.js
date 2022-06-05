@@ -1,5 +1,5 @@
 ﻿import React, { PureComponent } from "react";
-import "./css/error.css";
+import "./RouteGuardErrors.scss";
 
 export default class InternalServerError extends PureComponent {
   render() {

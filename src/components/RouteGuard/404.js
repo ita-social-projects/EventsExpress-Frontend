@@ -1,6 +1,6 @@
 ﻿import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
-import "./css/error.css";
+import "./RouteGuardErrors.scss";
 
 export default class NotFound extends PureComponent {
   render() {
