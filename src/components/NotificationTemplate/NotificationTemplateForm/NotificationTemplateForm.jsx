@@ -15,8 +15,9 @@ import {
   minLength10,
   minLength20,
 } from "../../helpers/validators/min-max-length-validators";
-import "./notification-template-form.css";
+import "./NotificationTemplateForm.scss";
 
+// TODO remake to functional component
 class NotificationTemplateForm extends Component {
   constructor(props) {
     super(props);

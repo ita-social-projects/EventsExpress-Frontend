@@ -1,8 +1,8 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import NotificationTemplateItem from "./notification-template-item";
+import NotificationTemplateItem from "./NotificationTemplateItem";
 
-const NotificationTemplates = ({ templates }) => {
+const NotificationTemplate = ({ templates }) => {
   return (
     <table className="table table-hover">
       <thead className="thead-dark">
@@ -22,12 +22,12 @@ const NotificationTemplates = ({ templates }) => {
   );
 };
 
-NotificationTemplates.defaultProps = {
+NotificationTemplate.defaultProps = {
   templates: [],
 };
 
-NotificationTemplates.propTypes = {
+NotificationTemplate.propTypes = {
   templates: PropTypes.array,
 };
 
-export default NotificationTemplates;
+export default NotificationTemplate;
