@@ -7,7 +7,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 import { reset } from "redux-form";
 
-import SearchInput from "../searchInput/SearchInput";
+import SearchInput from "../SearchInput/SearchInput";
 import { getSearchUsers, changeFilter } from "../../actions/users/users-action";
 import SpinnerWrapper from "../../containers/spinner";
 import UserItemList from "../users/UserItemList";

@@ -5,6 +5,7 @@ import propTypes from "prop-types";
 import { renderMultiselect } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/errorMessage";
 
+// TODO: to function
 class SelectCategories extends Component {
   componentWillMount() {
     this.props.initialize({
