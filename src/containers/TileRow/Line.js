@@ -1,7 +1,8 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import "./Line.css";
+import "./Line.scss";
 
+// TODO: strange component
 const Line = props => {
   const definePath = () => {
     const param = props.index * 40;

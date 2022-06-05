@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import CheckboxList from "./CheckboxList";
-import TileWrapper from "../../components/tile-wrapper/TileWrapper";
-import "./TileRow.css";
+import TileWrapper from "../TileContainer/TileContainer";
+import "./TileRow.scss";
 
+// TODO: check this component for correctness or redesign;
 const TileRow = props => {
   const [currTileIndex, setCurrTileIndex] = useState(-1);
 

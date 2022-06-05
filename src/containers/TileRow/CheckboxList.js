@@ -3,8 +3,8 @@ import { Field } from "redux-form";
 import PropTypes from "prop-types";
 import Line from "./Line";
 import { MultiCheckbox } from "../../components/helpers/form-helpers";
-import "./CheckboxList.css";
-import "./CustomCheckbox.css";
+import "./CheckboxList.scss";
+import "./CustomCheckbox.scss";
 
 function CheckboxList(props) {
   const mapToValues = arr => {
