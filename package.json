@@ -53,6 +53,7 @@
 		"react-google-login": "5.0.5",
 		"react-icons": "^3.11.0",
 		"react-images-upload": "1.2.7",
+		"react-lazy-load-image-component": "^1.5.4",
 		"react-leaflet": "2.7.0",
 		"react-leaflet-search": "2.0.1",
 		"react-material-ui-carousel": "2.2.7",
@@ -85,7 +86,8 @@
 		"slick-carousel": "^1.8.1",
 		"styled-components": "4.3.2",
 		"tiny-custom-pagination": "1.0.5",
-		"ui": "0.2.4"
+		"ui": "0.2.4",
+		"webpack": "^4.44.2"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^16.2.3",

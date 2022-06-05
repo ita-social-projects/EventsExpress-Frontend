@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import "./IconsEventCard.scss";
 
-const IconsEventCard = ({ styleForIcon, userId }) => {
+const IconsEventCard = ({ styleForIcon }) => {
   const MAPPER = [
     {
       id: 1,
@@ -11,17 +11,17 @@ const IconsEventCard = ({ styleForIcon, userId }) => {
       styles: `heart__icon add-favorite-${styleForIcon}`,
       todo: "TODO: CREATE FUNCTIONAL FOR ADD FAVORITE EVENT",
     },
-    {
-      id: 2,
-      visibility: userId,
-      nameControl: "joinToEvent",
-      styles: `join-to-event__icon join-to-event-${styleForIcon}`,
-      todo: "TODO: CREATE FUNCTIONAL FOR JOIN TO EVENT",
-    },
+    // {
+    //   id: 2,
+    //   visibility: userId,
+    //   nameControl: "joinToEvent",
+    //   styles: `join-to-event__icon join-to-event-${styleForIcon}`,
+    //   todo: "TODO: CREATE FUNCTIONAL FOR JOIN TO EVENT",
+    // },
   ];
 
   return MAPPER.map(
-    ({ id, nameControl, styles, todo, visibility }) =>
+    ({ id, nameControl, styles, visibility }) =>
       visibility !== null && (
         <label key={id} htmlFor={nameControl} className={styles}>
           <button
@@ -29,7 +29,7 @@ const IconsEventCard = ({ styleForIcon, userId }) => {
             name={nameControl}
             id={nameControl}
             onClick={() => {
-              console.log(todo);
+              // console.log(todo);
             }}
           >
             {" "}
