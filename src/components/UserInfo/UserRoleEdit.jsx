@@ -1,13 +1,11 @@
 ﻿import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { reduxForm, Field } from "redux-form";
+import { Field } from "redux-form";
 import IconButton from "@material-ui/core/IconButton";
-import getRoles from "../../actions/roles";
 import { renderMultiselect } from "../helpers/form-helpers";
-import ErrorMessages from "../shared/errorMessage";
+import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 
+// TODO: to function
 class UserRoleEdit extends Component {
   componentDidMount = () => {
     this.props.getRolesDispatch();
@@ -72,15 +70,4 @@ UserRoleEdit.propTypes = {
   getRolesDispatch: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-  roles: state.roles.data,
-});
-
-const mapDispatchToProps = dispatch => ({
-  getRolesDispatch: () => dispatch(getRoles()),
-});
-
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  reduxForm({ form: "user-role" }),
-)(UserRoleEdit);
+export default UserRoleEdit;
