@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Button } from "@material-ui/core";
-import { reduxForm, Field, getFormValues } from "redux-form";
+import { Field } from "redux-form";
 import moment from "moment";
 import PropTypes from "prop-types";
 import {
@@ -121,14 +121,4 @@ CompleteProfileForm.propTypes = {
   handleSubmit: PropTypes.func,
 };
 
-const mapStateToProps = state => {
-  return {
-    formValues: getFormValues("registrationForm")(state),
-  };
-};
-
-export default reduxForm(mapStateToProps, {
-  form: "registrationForm",
-  destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true,
-})(CompleteProfileForm);
+export default CompleteProfileForm;

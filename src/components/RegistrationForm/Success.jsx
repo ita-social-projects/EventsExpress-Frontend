@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import "./CheckMarkAnimation.css";
+import "./CheckMarkAnimation.scss";
 import { Button, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 

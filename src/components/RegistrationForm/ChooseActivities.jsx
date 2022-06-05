@@ -1,10 +1,6 @@
 ﻿import React, { useEffect } from "react";
 import { Grid, Button } from "@material-ui/core";
-import { connect } from "react-redux";
-import { reduxForm } from "redux-form";
 import PropTypes from "prop-types";
-import getCategoryGroups from "../../actions/categoryGroup/category-group-list-action";
-import getCategories from "../../actions/category/category-list-action";
 import { TileGroup } from "../../containers/TileGroup";
 
 const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
@@ -83,25 +79,4 @@ ChooseActivities.propTypes = {
   categories: PropTypes.array,
 };
 
-const mapStateToProps = state => ({
-  categoryGroups: state.categoryGroups.data,
-  categories: state.categories.data,
-});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getCategoryGroups: () => dispatch(getCategoryGroups()),
-    getCategories: () => dispatch(getCategories()),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(
-  reduxForm({
-    form: "registrationForm",
-    destroyOnUnmount: false,
-    forceUnregisterOnUnmount: true,
-  })(ChooseActivities),
-);
+export default ChooseActivities;

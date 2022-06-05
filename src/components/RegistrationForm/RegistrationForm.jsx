@@ -1,6 +1,6 @@
-import "./RegistrationForm.css";
+import "./RegistrationForm.scss";
 import React, { Component } from "react";
-import Stepper from "../stepper/Stepper";
+import Stepper from "../stepper";
 import CompleteProfileForm from "./CompleteProfileForm";
 import ConfirmForm from "./ConfirmForm";
 import ChooseActivities from "./ChooseActivities";
@@ -20,6 +20,8 @@ const {
   STEP_CONFIRM,
   STEP_SUCCESS,
 } = steps;
+
+// TODO: to function + constansts
 export default class RegistrationForm extends Component {
   constructor(props) {
     super(props);
