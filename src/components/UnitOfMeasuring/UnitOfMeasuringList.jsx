@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import UnitOfMeasuringItemWrapper from "../../containers/unitsOfMeasuring/unitOfMeasuring-item";
+import UnitOfMeasuringItemWrapper from "../../containers/UnitsOfMeasuringContainer/UnitOfMeasuringItemContainer";
 
 const UnitOfMeasuringList = ({ dataList }) => {
   return (

@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
 import { renderTextField, renderSelectField } from "../helpers/form-helpers";
-import ErrorMessages from "../shared/errorMessage";
+import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 
 const divStyle = {
   width: "90wh",

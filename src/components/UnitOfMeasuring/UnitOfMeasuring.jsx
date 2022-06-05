@@ -1,9 +1,9 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import UnitOfMeasuringAddWrapper from "../../containers/unitsOfMeasuring/unitOfMeasuring-add";
+import UnitOfMeasuringAddWrapper from "../../containers/UnitsOfMeasuringContainer/UnitOfMeasuringAddContainer";
 import SpinnerWrapper from "../../containers/spinner";
-import UnitOfMeasuringListWrapper from "../../containers/unitsOfMeasuring/UnitOfMeasuringListWrapper";
+import UnitOfMeasuringListWrapper from "../../containers/UnitsOfMeasuringContainer/UnitOfMeasuringListContainer";
 import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
 
 class UnitsOfMeasuring extends Component {

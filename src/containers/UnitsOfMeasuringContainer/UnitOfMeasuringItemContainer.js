@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
 import { confirmAlert } from "react-confirm-alert";
-import UnitOfMeasuringItem from "../../components/unitOfMeasuring/unitOfMeasuring-item";
-import UnitOfMeasuringEdit from "../../components/unitOfMeasuring/unitOfMeasuring-edit";
+import UnitOfMeasuringItem from "../../components/UnitOfMeasuring/UnitOfMeasuringItem";
+import UnitOfMeasuringEdit from "../../components/UnitOfMeasuring/UnitOfMeasuringEdit";
 import {
   addUnitOfMeasuring,
   setUnitOfMeasuringEdited,
@@ -13,6 +13,7 @@ import deleteUnitOfMeasuring from "../../actions/unitOfMeasuring/unitOfMeasuring
 import getCategoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
+// TODO: to function
 class UnitOfMeasuringItemWrapper extends Component {
   save = values => {
     if (
