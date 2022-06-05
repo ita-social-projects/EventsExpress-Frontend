@@ -1,3 +1,8 @@
-﻿const genders = ["Undefined", "Male", "Female", "Other"];
+﻿const genders = {
+  not_specified: "Not specified",
+  male: "Male",
+  female: "Female",
+  other: "Other",
+};
 
-export default genders;
+export default Object.values(genders);

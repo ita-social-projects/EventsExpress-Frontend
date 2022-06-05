@@ -1,48 +1,251 @@
 @import "../../../../styles/variables.scss";
 @import "../../../../styles/colors.scss";
+@import "../../../../styles/mixins.scss";
+@import "../../../../styles/fonts.scss";
 
-.card__item {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0px 5px 4px $transparentBlackBackground;
-  border-radius: $defaultBorderRadius;
-  margin-bottom: 20px;
-
-  & img {
-    flex-basis: 30%;
-    border-radius: $defaultBorderRadius;
+.card-item-container {
+  @include flex(row, start, center);
+  .card-item {
+    @include flex(column, center, center);
+    height: 280px;
+    position: relative;
+    width: 700px;
+    max-width: 700px;
+    box-shadow: $boxshadow;
+    margin-bottom: 50px;
+    .content {
+      @include flex(row, start, flex-end);
+      width: $fullWidth;
+      height: 200px;
+      position: relative;
+      padding: 15px;
+      padding-bottom: 0;
+      .image-container {
+        @include flex(row, center, center);
+        top: -25px;
+        left: 25px;
+        width: 370px;
+        height: 200px;
+        overflow: hidden;
+        position: absolute;
+        box-shadow: $imageshadow;
+      }
+      .card-image {
+        position: absolute;
+        top: $halfWidth;
+        left: $halfWidth;
+        transform:translate($minusHalfWidth, $minusHalfWidth);
+        width: 370px;
+        height: 200px;
+        object-fit:cover;
+      }
+      .card-item-content {
+        @include flex(column, start, space-between);
+        width: 40%;
+        .card-item-header {
+          text-transform: uppercase;
+          font-weight: $bold;
+          font-size: $fontsize-20;
+          color: $lightThemeAccept;
+          position: relative;
+        }
+        .card-item-ovner {
+          @include flex(row, center, center);
+          width: $fullWidth;
+          color: $black;
+          background-color: $lightPink;
+          border-radius: 3px;
+          font-weight: $bold;
+          padding: 5px;
+        }
+        .card-item-description {
+          font-size: $fontsize-14;
+          color: $lightThemeHeader;
+          padding-bottom: 15px;
+        }
+      }
+    }
+    .card-item-bottom-row {
+      @include flex(row, center, flex-end);
+      width: $fullWidth;
+      padding-bottom: 15px;
+      .card-item-footer {
+        margin: 0 60px;
+      }
+      .card-item-footer:last-child {
+        margin: 0 15px 0 60px;
+      }
+      .heart-icon {
+        margin-bottom: 0;
+      }
+      .event-date {
+        @include flex(column, start, start);
+        position: absolute;
+        left: 30px;
+        bottom: 25px;
+        .day, .month {
+          color: $lightThemeAccept;
+          font-family: $robinson;
+          height: 40px;
+        }
+        .day {
+          text-shadow: 0 0 20px $white;
+          margin-bottom: 15px;
+          font-weight: $bold;
+          font-size: 100px;
+          line-height: 30px;
+        }
+        .month {
+          text-transform: uppercase;
+          font-size: 45px;
+        }
+      }
+      .event-details-btn {
+        @include flex(row, center, start);
+        background-color: $lightThemeAccept;
+        color: $white;
+      }
+    }
   }
 }
 
-.card__item_content {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  flex-basis: 65%;
-  padding: 15px 15px 15px 0px;
+@media screen and (max-width: $mediaSecondTabletScreen) {
+    .card-item-container {
+    .card-item {
+      height: 235px;
+      justify-content: space-between;
+      .content {
+        margin-top: 10px;
+        padding-top: 0;
+        height: 130px;
+        .image-container {
+          width: 280px;
+          max-height: 150px;
+          top: -25px;
+          left: 20px;
+          .card-image {
+            min-width: 280px;
+            max-height: 150px;
+          }
+        }
+        .card-item-content {    
+          height: 200px;
+          justify-content: flex-start;
+          .card-item-header {
+            font-size: 12px;
+            padding-bottom: 10px;
+          }
+          .card-item-description {
+            font-size: 12px;
+            padding-bottom: 10px;
+          }
+        }
+      }
+      .card-item-bottom-row {
+        padding-bottom: 10px;
+        .event-date {
+          left: 20px;
+        }
+
+        .event-date {
+          position: absolute;
+          left: 30px;
+          bottom: 25px;
+          display: flex;
+          flex-direction: column;
+          
+          .day, .month {
+            color: $lightThemeAccept;
+            font-family: $robinson;
+            height: 40px;
+          }
+          .day {
+            text-shadow: 0 0 20px $white;
+            margin-bottom: 10px;
+            font-weight: $bold;
+            font-size: 80px;
+            line-height: 30px;
+          }
+          .month {
+            text-transform: uppercase;
+            font-size: 40px;
+          }
+        }
+        .card-item-footer {
+          margin: 0 30px;
+        }
+        .card-item-footer:last-child {
+          margin: 0 15px 0 30px;
+        }
+      }
+    }
+  }
 }
 
-.card__item_header {
-  width: 80%;
-  font-weight: bold;
-  font-size: 20px;
-  color: $lightThemeAccept;
-  margin-bottom: 15px;
+@media screen and (max-width: $mediaMobileScreen) {
+  .card-item-container {
+    .card-item {
+      height: 220px;
+      width: 450px;
+      .content {
+        padding-top: 0;
+        @include flex(row, center, start);
+        height: 220px;
+        .image-container {
+          position: relative;
+          width: $fullWidth;
+          top: -20px;
+          left: 0;
+          padding-bottom: 0;
+          margin-bottom: 0;
+          .card-image {
+            width: $fullWidth;
+          }
+        }
+        .card-item-content {   
+          width: 150px;
+          height: 70px;
+          @include flex(column, start, center);
+          .card-item-header {
+            font-size: $fontsize-12;
+            padding: 10px;
+          }
+          .card-item-ovner {
+            margin-left: 10px;
+          }
+          .card-item-description {
+            display: none;
+          }
+        }
+      }
+      .card-item-bottom-row {
+        padding-bottom: 10px;
+        .event-date {
+          left: 20px;
+          .day {
+            text-shadow: 0 0 10px $lightThemeHeader;
+            margin-bottom: 10px;
+            font-weight: $bold;
+            font-size: 70px;
+            line-height: 70px;
+          }
+          .month {
+            text-transform: uppercase;
+            font-size: 40px;
+          }
+        }
+        .card-item-footer {
+          margin: 0 35px;
+        }
+        .card-item-footer:last-child {
+          margin: 0 35px 0 35px;
+        }
+      }
+    }
+  }
 }
-
-.card__item_description {
-  font-size: 16px;
-  color: #848484;
-  margin-bottom: 15px;
-}
-.card__item_bottom-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.card__item_footer {
-  font-size: 16px;
-  font-weight: bold;
-  color: #956ab2;
+@media screen and (max-width: $mobile-breakpoint) {
+  .event-location {
+    display: none;
+  }
 }

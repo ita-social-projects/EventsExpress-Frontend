@@ -1,0 +1,73 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
+@import "../../../styles/mixins.scss";
+@import "../../../styles/pages/about.scss";
+
+.about-banner {
+    @include flex(column, flex-end, flex-end);
+    background: $aboutUsBannerGradient, $aboutUsBannerImage;
+    background-position: center;
+    background-size: cover;
+    width: $fullWidth;
+    height: $aboutUsBannerHeight;
+    padding: 50px;
+
+    .banner-content__quote {
+        font-family: $quoteFont;
+        font-size: $aboutUsQuote;
+        color: $white;
+        margin-bottom: 0px;
+    }
+
+    .btn-events {
+        text-decoration: none;
+        padding: 20px 100px;
+        margin-top: 20px;
+        text-align: center;
+        font-size: $aboutUsBodyText;
+        font-weight: $bold;
+        color: $black;
+        background: $white;
+        border-radius: $defaultBorderRadius;
+
+        &:hover {
+            box-shadow: $aboutUsBannerBtnShadow;
+        }
+    }
+
+
+    @include adaptiveStyles($mediaFirstTabletScreen) {
+        .btn-events {
+            padding: 15px 50px;
+            margin-top: 15px;
+        }
+    }
+
+    @include adaptiveStyles($mediaSecondTabletScreen) {
+        width: $fullWidth;
+        text-align: center;
+        align-items: center;
+        right: inherit;
+
+        .banner-content__quote {
+            font-size: $aboutUsQuoteMobile;
+        }
+    }
+
+    @include adaptiveStyles($mediaMobileScreen) {
+        width: $fullWidth;
+        text-align: center;
+        align-items: center;
+        right: inherit;
+
+        .banner-content__quote {
+            font-size: $aboutUsQuoteMobile;
+        }
+
+        .btn-events {
+            padding: 10px 30px;
+            font-size: $aboutUsBodyTextMobile;
+        }
+    }
+}

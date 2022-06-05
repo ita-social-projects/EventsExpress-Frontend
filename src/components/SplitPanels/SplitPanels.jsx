@@ -36,11 +36,9 @@ const SplitPanels = () => {
       style={{ height: "780px" }}
     >
       <div
-        className={[
-          "left-side",
-          collapsedIndex === 0 ? "collapsed" : "",
-          collapsedIndex === 1 ? "full-size" : "",
-        ].join(" ")}
+        className={`left-side ${
+          collapsedIndex === 0 ? "collapsed" : "full-size"
+        }`}
       >
         <div className="left-side__text header-text">
           <span>{CREATE_PART}</span>
@@ -81,11 +79,7 @@ const SplitPanels = () => {
           </Options>
         </div>
       </div>
-      <div
-        className={["right-side", collapsedIndex === 1 ? "collapsed" : ""].join(
-          " ",
-        )}
-      >
+      <div className={`right-side ${collapsedIndex === 1 ? "collapsed" : ""}`}>
         <div className="option-button">
           <Options>
             <CollapseButton
@@ -123,7 +117,6 @@ const SplitPanels = () => {
           </Link>
         </div>
       </div>
-      {/* </Split> */}
     </Split>
   );
 };

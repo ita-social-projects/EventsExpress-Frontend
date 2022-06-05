@@ -38,16 +38,12 @@ const useStyles = makeStyles({
   },
 });
 
-const ModalWind = ({ setStatus, status, renderButton }) => {
+const ModalWind = ({ setStatus, status }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const handleClickOpen = () => {
-    setStatus(true);
   };
 
   const handleClose = () => {
@@ -56,7 +52,6 @@ const ModalWind = ({ setStatus, status, renderButton }) => {
 
   return (
     <>
-      {renderButton(handleClickOpen)}
       <Dialog open={status.isOpen} onClose={handleClose}>
         <Paper square className={classes.root}>
           <Tabs
@@ -96,13 +91,11 @@ const ModalWind = ({ setStatus, status, renderButton }) => {
 ModalWind.defaultProps = {
   setStatus: () => {},
   status: {},
-  renderButton: () => {},
 };
 
 ModalWind.propTypes = {
   setStatus: PropTypes.func,
   status: PropTypes.object,
-  renderButton: PropTypes.func,
 };
 
 const mapStateToProps = state => ({

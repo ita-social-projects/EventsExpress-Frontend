@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import EventListCard from "./EventListCard/EventListCard";
 
 const EventsListItem = ({ events }) =>
-  events.map(event => <EventListCard key={event.id} event={event} />);
+  events.map(event => <EventListCard key={event.id + 5} event={event} />);
 
 EventsListItem.defaultProps = {
   events: [],

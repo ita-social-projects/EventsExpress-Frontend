@@ -1,123 +1,241 @@
-@import "../../styles/colors.scss";
-@import "../../styles/fonts.scss";
-@import "../../styles/variables.scss";
-@import "../../styles/mixins.scss";
+@import '../../styles/colors.scss';
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+
 
 .footer__container {
-  height: 150px;
-  width: 100%;
-  z-index: 500;
-  background-color: $lightThemeAccept;
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  font-family: $mainFont;
-  color: $gray;
+  position: absolute;
+  bottom: 0;
+  width: $fullWidth;
+  text-align: center;
   margin-top: 30px;
 }
 
-.footer__links {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 70px;
-  margin-left: 100px;
-}
+.footer__head {
+  background-color: $purpleDark;
+  padding: 10px;
 
-.footer__logo {
-  width: 100px;
-  height: 50px;
-  margin-top: 30px;
-}
-
-.footer__link_item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-right: 10px;
-  &:hover {
-    text-decoration: none;
-    color: inherit;
+  .head__text {
+    color: $lightPink;
+    font-family: $quoteFont;
+    font-size: $fontsize-40;
+    font-weight: $headText;
+    margin: 0;
   }
 }
-.footer__subscribe {
+
+.footer__interact {
+  padding: 50px 0;
+  background-color: $white;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+
+  .footer__contacts {
+    .contact__us {
+      font-family: $mainFont;
+      font-size: $fontsize-24;
+      font-weight: $semiBold;
+      margin: 0px;
+      margin-bottom: 10px;
+    }
+
+    .contact__number {
+      font-family: $mainFont;
+      font-size: $fontsize-18;
+      font-weight: $semiBold;
+    }
+  }
+
+  .footer__subscribe {
+    .subscibe__us {
+      font-family: $mainFont;
+      font-size: $fontsize-24;
+      font-weight: $semiBold;
+    }
+
+    .footer__form {
+      width: $fullWidth;
+      margin-top: 10px;
+      position: relative;
+
+      .footer__input {
+        @include form_input;
+      }
+
+      .footer__subscribe__icon {
+        position: absolute;
+        top: 13px;
+        right: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .footer__social_links {
+    .our__socials {
+      font-family: $mainFont;
+      font-size: $fontsize-24;
+      font-weight: $semiBold;
+      margin: 0;
+    }
+
+    .footer__social_links_icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+  }
 }
 
-.custom-footer__subscribe input {
-    background-color: $mainSearchGrey;
-    font-family:  $mainFont;
-    font-style: normal;
-    font-weight: $bold;
-    font-size: $fontsize-14;
-    display: flex;
-    color: $headerBackground;
-} 
-
-.custom-footer .social-links {
-    display: flex;
-    flex-direction: column;
-align-items: center;
-justify-content: center;
-    gap: 5px;
-}
-
-.footer__subscribe__icon {
-  margin: 10px;
-}
-
-.footer__input {
-  background-color: $mainSearchGrey;
-  @include font_input($mainFont, normal, 700);
-  font-size: $fontsize-14;
-  display: flex;
-  color: $white;
-  padding-left: 10px;
-}
-
-.footer__social_links {
-  margin-top: 40px;
-}
-
-.footer__social_links_icons {
-  display: flex;
-  flex-direction: row;
-}
 
 @media screen and (max-width: $mediaFirstTabletScreen) {
-  .footer__social_links p,
-  .footer__social_links h4,
-  .footer__subscribe h4,
-  .footer__link_item {
-    font-size: $fontsize-14;
+  .footer__container {
+    margin-top: 25px;
+  }
+
+  .footer__head {
+    .head__text {
+      font-size: $fontsize-32;
+    }
+  }
+
+  .footer__interact {
+    padding: 40px 0;
+
+    .footer__contacts {
+      .contact__us {
+        font-size: $fontsize-20;
+      }
+
+      .contact__number {
+        font-size: $fontsize-16;
+        margin-top: 8px;
+      }
+    }
+
+    .footer__subscribe {
+      .subscibe__us {
+        font-size: $fontsize-20;
+      }
+
+      .footer__form {
+        .footer__input {
+          @include form_input;
+        }
+      }
+    }
+
+    .footer__social_links {
+      .our__socials {
+        font-size: $fontsize-20;
+      }
+    }
   }
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
   .footer__container {
-    display: flex;
-    flex-direction: row;
+    margin-top: $fontsize-20;
   }
-  .footer__links {
-    margin-top: 5px;
-    margin-left: 5px;
-    @include flex(column, flex-start, flex-start);
+
+  .footer__head {
+    .head__text {
+      font-size: $fontsize-24;
+    }
   }
-  .footer_link_item {
-    padding-top: 10px;
+
+  .footer__interact {
+    padding: 30px 0;
+
+    .footer__contacts {
+      .contact__us {
+        font-size: $fontsize-16;
+      }
+
+      .contact__number {
+        font-size: $fontsize-14;
+        margin-top: 5px;
+      }
+    }
+
+    .footer__subscribe {
+      .subscibe__us {
+        font-size: $fontsize-16;
+      }
+
+      .footer__form {
+        .footer__input {
+          @include form_input;
+        }
+      }
+    }
+
+    .footer__social_links {
+      .our__socials {
+        font-size: $fontsize-16;
+      }
+    }
   }
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
-  .footer__logo {
-    display: none;
+  .footer__container {
+    margin-top: 15px;
   }
-  .footer__input {
-    width: 150px;
+
+  .footer__head {
+    .head__text {
+      font-size: $fontsize-20;
+    }
   }
-  .footer__link_item {
-    font-size: 10px;
-    padding-top: 5px;
+
+  .footer__interact {
+    padding: 15px 0;
+    flex-direction: column;
+
+    .footer__contacts {
+      .contact__us {
+        font-size: $fontsize-14;
+      }
+
+      .contact__number {
+        font-size: $fontsize-12;
+        margin-top: 5px;
+      }
+    }
+
+    .footer__subscribe {
+      margin-top: 20px;
+
+      .subscibe__us {
+        font-size: $fontsize-14;
+        margin: 0;
+      }
+
+      .footer__form {
+        margin: 0;
+
+        .footer__input {
+          @include form_input;
+        }
+
+        .footer__subscribe__icon {
+          right: 12%;
+        }
+      }
+    }
+
+    .footer__social_links {
+      margin-top: 20px;
+
+      .our__socials {
+        font-size: $fontsize-14;
+      }
+
+      .footer__social_links_icons {
+        margin: 0;
+      }
+    }
   }
 }
