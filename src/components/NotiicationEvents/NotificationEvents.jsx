@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import eventsForNotification from "../../actions/events/events-for-notification-action";
 import EventList from "../event/EventsForProfile/EventsForProfile";
 import SpinnerWrapper from "../../containers/spinner";
 
+// TODO :to functional component
 class NotificationEvents extends Component {
   componentWillMount = () => {
     this.props.getEvents(this.props.notification.events);
@@ -47,19 +46,4 @@ NotificationEvents.propTypes = {
   currentUser: PropTypes.object,
 };
 
-const mapStateToProps = state => {
-  return {
-    events: state.events,
-    currentUser: state.user,
-    notification: state.notification,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getEvents: (eventIds, page) =>
-      dispatch(eventsForNotification(eventIds, page)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NotificationEvents);
+export default NotificationEvents;
