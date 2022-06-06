@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import CustomAvatar from "../Avatar/CustomAvatar";
+import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../rating/rating-average";
 
 const UserInfo = ({ user }) => {

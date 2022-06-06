@@ -6,12 +6,13 @@ import propTypes from "prop-types";
 import RatingWrapper from "../../../containers/rating";
 import Comment from "../../Comment/Comment";
 import "moment-timezone";
-import "../../Layout/Colorlib.css";
+import "../../Layout/Colorlib.scss";
 import "./EventItemView.css";
 import EventVisitors from "../EventVisitors/EventVisitors";
 import EventLeaveModal from "../EventLeaveModal/EventLeaveModal";
 import InventoryList from "../../Inventory/InventoryList";
 import DisplayLocation from "../Map/DisplayLocation";
+
 import userStatusEnum from "../../../constants/userStatusEnumConstants";
 import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
@@ -20,6 +21,7 @@ import PhotoService from "../../../services/PhotoService";
 
 const photoService = new PhotoService();
 
+// TODO refactor components
 export default class EventItemView extends Component {
   constructor(props) {
     super(props);

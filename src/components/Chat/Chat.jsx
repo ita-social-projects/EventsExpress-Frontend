@@ -14,7 +14,7 @@ import getChat, {
 } from "../../actions/chat/chat-action";
 import Msg from "./Msg";
 import SpinnerWrapper from "../../containers/spinner";
-import CustomAvatarContainer from "../Avatar/CustomAvatar";
+import CustomAvatarContainer from "../CustomAvatar/CustomAvatar";
 
 class Chat extends Component {
   componentWillMount = () => {

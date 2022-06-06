@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Badge from "@material-ui/core/Badge";
-import ContainerCustomAvatar from "../Avatar/CustomAvatar";
+import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
 
 export const handleSetAnchorEl = (e, setEvent) => {
   const event = e?.currentTarget || null;

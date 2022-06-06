@@ -4,7 +4,7 @@ import Zoom from "@material-ui/core/Zoom";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import userViewAttitude from "../../helpers/userViewUtils";
-import CustomAvatar from "../../Avatar/CustomAvatar";
+import CustomAvatar from "../../CustomAvatar/CustomAvatar";
 import "./UserView.css";
 import getAge from "../../helpers/get-age-string";
 import USER_VIEW_LABELS from "../../../constants/userViewConstants";

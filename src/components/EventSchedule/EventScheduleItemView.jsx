@@ -10,7 +10,7 @@ import "moment-timezone";
 import renderPeriod from "./render-period";
 import useStyles from "./CardStyleConst";
 import SelectiveForm from "./SelectiveForm";
-import "../Layout/Colorlib.css";
+// import "../Layout/Colorlib.scss";
 import getEvent from "../../actions/event/event-item-view-action";
 import eventDefaultImage from "../../constants/eventDefaultImageConstants";
 import PhotoService from "../../services/PhotoService";

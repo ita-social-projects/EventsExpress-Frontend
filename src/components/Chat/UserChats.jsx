@@ -6,7 +6,7 @@ import propTypes from "prop-types";
 import getChatsAction from "../../actions/chat/chats-action";
 import SpinnerWrapper from "../../containers/spinner";
 import "./UserChats.css";
-import ContainerCustomAvatar from "../Avatar/CustomAvatar";
+import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
 
 class UserChats extends Component {
   componentWillMount = () => {

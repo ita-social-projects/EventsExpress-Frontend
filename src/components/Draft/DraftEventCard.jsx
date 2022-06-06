@@ -13,7 +13,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import PropTypes from "prop-types";
-import CustomAvatar from "../Avatar/CustomAvatar";
+import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import "./EventItem.css";
 import useStyle from "../event/CardStyle/CardStyle";
 import SimpleModalWithDetails from "../helpers/simple-modal-with-details";

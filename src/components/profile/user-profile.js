@@ -10,7 +10,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 import GENDERS from "../../constants/gendersVarietyConstants";
 import Event from "../event/EventItem/EventItem";
-import CustomAvatar from "../Avatar/CustomAvatar";
+import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../rating/rating-average";
 import "./User-profile.css";
 import Events from "./events";

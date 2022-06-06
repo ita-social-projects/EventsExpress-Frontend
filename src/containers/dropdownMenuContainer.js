@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import DropdownMenu from "../components/Header/DropDownMenu/DropDownMenu";
+import DropdownMenu from "../components/Header/DropdownMenu/DropDownMenu.jsx";
 import logout from "../actions/login/logout-action";
 import addEvent from "../actions/event/event-add-action";
 

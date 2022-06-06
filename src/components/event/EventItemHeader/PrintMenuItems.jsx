@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MenuItem } from "@material-ui/core";
 
-import ContainerCustomAvatar from "../../Avatar/CustomAvatar";
+import ContainerCustomAvatar from "../../CustomAvatar/CustomAvatar";
 
 const PrintMenuItems = ({ owners, handleSetAnchorEl, setAnchorElO }) =>
   owners.map(user => (

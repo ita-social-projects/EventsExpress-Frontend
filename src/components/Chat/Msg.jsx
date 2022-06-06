@@ -6,7 +6,7 @@ import propTypes from "prop-types";
 import { deleteSeenMsgNotification } from "../../actions/chat/chat-action";
 import "./Msg.css";
 import getTimeDifferenceFromNull from "../helpers/TimeHelper";
-import ContainerCustomAvatar from "../Avatar/CustomAvatar";
+import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
 
 class Msg extends Component {
   componentDidUpdate = () => {

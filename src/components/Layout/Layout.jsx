@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import LeftSidebarWrapper from "../../containers/left-sidebar";
 import "./Layout.css";
-import "./Colorlib.css";
+import "./Colorlib.scss";
 
 const Layout = ({ children }) => {
   return (
