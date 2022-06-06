@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Badge from "@material-ui/core/Badge";
-import "./LeftSidebar.css";
+import "./LeftSidebar.scss";
 import NavItem from "../NavItem/NavItem";
 import AuthComponent from "../../security/authComponent";
 import Roles from "../../constants/userRolesConstants";

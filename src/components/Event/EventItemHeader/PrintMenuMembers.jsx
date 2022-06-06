@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MenuItem } from "@material-ui/core";
-import getAttitudeClassName from "../attitude/Attitude";
+import getAttitudeClassName from "../Attitude/Attitude";
 import ContainerCustomAvatar from "../../CustomAvatar/CustomAvatar";
 
 const PrintMenuMembers = ({ members, handleSetAnchorEl, setAnchorElM }) =>

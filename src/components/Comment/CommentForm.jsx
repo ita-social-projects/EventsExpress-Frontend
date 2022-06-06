@@ -4,7 +4,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
 import { renderTextField } from "../helpers/form-helpers";
-import "./Comment.css";
+import "./Comment.scss";
 import ErrorMessages from "../shared/errorMessage";
 
 const Comment = props => {

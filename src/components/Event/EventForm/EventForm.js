@@ -19,7 +19,7 @@ import {
 import "./EventForm.css";
 import asyncValidatePhoto from "../../../containers/async-validate-photo";
 import ErrorMessages from "../../shared/errorMessage";
-import Location from "../../Location";
+import Location from "../../Location/Location";
 import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
 
 momentLocaliser(moment);

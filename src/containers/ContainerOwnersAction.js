@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { deleteFromOwners } from "../actions/event/event-item-view-action";
-import OwnersActions from "../components/event/OwnersAction/OwnersAction";
+import OwnersActions from "../components/Event/OwnersAction/OwnersAction";
 
 const mapStateToProps = state => ({
   eventId: state.event.data.id,

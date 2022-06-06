@@ -5,7 +5,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import propTypes from "prop-types";
 import getChatsAction from "../../actions/chat/chats-action";
 import SpinnerWrapper from "../../containers/spinner";
-import "./UserChats.css";
+import "./UserChats.scss";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
 
 class UserChats extends Component {

@@ -2,7 +2,7 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
-import "./EventSchedule.css";
+import "./EventSchedule.scss";
 
 const EventScheduleModal = ({
   show,

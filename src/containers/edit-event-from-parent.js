@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { getFormValues, reset } from "redux-form";
 import moment from "moment";
 import Button from "@material-ui/core/Button";
-import EventForm from "../components/event/EventForm/EventForm";
+import EventForm from "../components/Event/EventForm/EventForm";
 import editEventFromParent, {
   setEventFromParentPending,
   setEventFromParentSuccess,

@@ -2,7 +2,7 @@
 import propTypes from "prop-types";
 import AddComment from "../../containers/add-comment";
 import CommentListWrapper from "../../containers/comment-list";
-import "./Comment.css";
+import "./Comment.scss";
 
 const Comment = props => {
   return (

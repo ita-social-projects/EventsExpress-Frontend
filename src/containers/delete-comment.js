@@ -4,7 +4,7 @@ import Fab from "@material-ui/core/Fab";
 import PropTypes from "prop-types";
 import CommentItem from "../components/Comment/CommentItem";
 import deleteComm from "../actions/comment/comment-delete-action";
-import "../components/Comment/Comment.css";
+import "../components/Comment/Comment.scss";
 import CommentList from "../components/Comment/CommentList";
 import AddComment from "./add-comment";
 import { setAlert } from "../actions/alert-action";

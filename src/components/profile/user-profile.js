@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 import GENDERS from "../../constants/gendersVarietyConstants";
-import Event from "../event/EventItem/EventItem";
+import Event from "../Event/EventItem/EventItem";
 import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../rating/rating-average";
 import "./User-profile.css";

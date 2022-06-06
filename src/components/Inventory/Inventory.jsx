@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { renderSelectField, renderTextField } from "../helpers/form-helpers";
 import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
 import InventoryHeaderButton from "./InventoryHeaderButton";
-import "./Inventory.css";
+import "./Inventory.scss";
 import ErrorMessages from "../shared/errorMessage";
 
 const renderInventories = ({ fields, unitOfMeasuringState, error }) => {

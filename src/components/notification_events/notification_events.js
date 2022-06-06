@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import eventsForNotification from "../../actions/events/events-for-notification-action";
-import EventList from "../event/EventsForProfile/EventsForProfile";
+import EventList from "../Event/EventsForProfile/EventsForProfile";
 import SpinnerWrapper from "../../containers/spinner";
 
 class NotificationEvents extends Component {

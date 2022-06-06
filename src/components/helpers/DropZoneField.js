@@ -4,7 +4,7 @@ import DropZone from "react-dropzone";
 import Button from "@material-ui/core/Button";
 import ImagePreview from "./ImagePreview";
 import Placeholder from "./Placeholder";
-import ImageResizer from "../event/ImageResizer/ImageResizer";
+import ImageResizer from "../Event/ImageResizer/ImageResizer";
 import renderFieldError from "./form-helpers/render-field-error";
 
 class DropZoneField extends Component {

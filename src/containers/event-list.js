@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { parse as queryStringParse } from "query-string";
 import { withRouter } from "react-router-dom";
-import EventList from "../components/event/EventList/EventList";
+import EventList from "../components/Event/EventList/EventList";
 import SpinnerWrapper from "./spinner";
 import { getEvents } from "../actions/event/event-list-action";
 import filterHelper from "../components/helpers/filterHelper";

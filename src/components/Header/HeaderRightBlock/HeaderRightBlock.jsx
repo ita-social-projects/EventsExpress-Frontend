@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ModalWind from "../../ModalWind";
+import ModalWind from "../../ModalWind/ModalWind";
 import AuthComponent from "../../../security/authComponent";
 import DropdownMenu from "../../../containers/dropdownMenuContainer";
 import { TogleOpenWind } from "../../../actions/modalWind-action";

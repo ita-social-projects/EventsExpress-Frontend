@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import propTypes from "prop-types";
 import { deleteSeenMsgNotification } from "../../actions/chat/chat-action";
-import "./Msg.css";
+import "./Msg.scss";
 import getTimeDifferenceFromNull from "../helpers/TimeHelper";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import EventsForProfile from "../event/EventsForProfile/EventsForProfile";
+import EventsForProfile from "../Event/EventsForProfile/EventsForProfile";
 import "moment-timezone";
 import "./User-profile.css";
 import eventsProfile from "../../constants/profileEventsConstants";

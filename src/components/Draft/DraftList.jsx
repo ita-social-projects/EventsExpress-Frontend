@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { createBrowserHistory } from "history";
 import PropTypes from "prop-types";
 import DraftEventCard from "./DraftEventCard";
-import RenderList from "../event/RenderList/RenderList";
+import RenderList from "../Event/RenderList/RenderList";
 import { changeEventStatus } from "../../actions/event/event-item-view-action";
 import eventStatusEnum from "../../constants/eventStatusEnumConstants";
 import { setSuccessAllert } from "../../actions/alert-action";

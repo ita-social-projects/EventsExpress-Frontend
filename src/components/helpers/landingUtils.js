@@ -1,7 +1,7 @@
 import React from "react";
-import SliderForEvents from "../landing/SliderForEvents/SliderForEvents";
-import EventsListItem from "../landing/EventsListItem/EventsListItem";
-import EventMatrix from "../landing/EventMatrix/EventMatrix";
+import SliderForEvents from "../Landing/SliderForEvents/SliderForEvents";
+import EventsListItem from "../Landing/EventsListItem/EventsListItem";
+import EventMatrix from "../Landing/EventMatrix/EventMatrix";
 import {
   viewModeTypes,
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
