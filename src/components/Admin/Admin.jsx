@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import "./Admin.css";
+import "./Admin.scss";
 import NavItem from "../NavItem/NavItem";
 import Category from "../Category/Categories";
 import UsersWrapper from "../../containers/users";
@@ -9,6 +9,7 @@ import NotificationTemplateWrapper from "../../containers/notification-template/
 import NotificationInfoWrapper from "../../containers/notification-template/notification-info";
 import Track from "../tracks/track";
 
+// TODO Rename to function component
 export default class Admin extends PureComponent {
   render() {
     return (
