@@ -1,13 +1,13 @@
 ﻿import React, { Component } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import "./eventSchedule.css";
+import "./EventSchedule.scss";
 import AddFromParentEventWrapper from "../../containers/add-event-from-parent";
 import EditFromParentEventWrapper from "../../containers/edit-event-from-parent";
 import CancelNextEventWrapper from "../../containers/cancel-next-event";
 import CancelAllEventsWrapper from "../../containers/cancel-all-events";
-import EventSchedulePopover from "./eventSchedule-popover";
-import EventScheduleModal from "./eventSchedule-modal";
+import EventSchedulePopover from "./EventSchedulePopover";
+import EventScheduleModal from "./EventScheduleModal";
 
 export default class SelectiveForm extends Component {
   constructor() {

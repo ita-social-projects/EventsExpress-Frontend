@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import EventSchedulesList from "../components/eventSchedule/eventSchedule-list";
+import EventSchedulesList from "../components/EventSchedules/EventScheduleList";
 import SpinnerWrapper from "./spinner";
 import { getEventSchedules } from "../actions/eventSchedule/eventSchedule-list-action";
 

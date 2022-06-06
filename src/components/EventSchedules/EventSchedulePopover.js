@@ -2,7 +2,7 @@
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Popover from "@material-ui/core/Popover";
-import "./eventSchedule.css";
+import "./EventSchedule.scss";
 
 class EventSchedulePopover extends Component {
   constructor() {

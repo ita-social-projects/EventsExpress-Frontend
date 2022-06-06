@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import EventScheduleItemView from "../components/eventSchedule/eventSchedule-item-view";
+import EventScheduleItemView from "../components/EventSchedules/EventScheduleItemView";
 import SpinnerWrapper from "./spinner";
 import getEventSchedule, {
   resetEventSchedule,

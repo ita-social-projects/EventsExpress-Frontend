@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Dropdown from "react-bootstrap/Dropdown";
-import EventScheduleModal from "../components/eventSchedule/eventSchedule-modal";
+import EventScheduleModal from "../components/EventSchedules/EventScheduleModal";
 import cancelNextEventSchedule from "../actions/eventSchedule/eventSchedule-cancel-next-action";
 
 class CancelNextEventWrapper extends Component {

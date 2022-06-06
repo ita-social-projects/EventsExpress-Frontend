@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Dropdown from "react-bootstrap/Dropdown";
-import EventScheduleModal from "../components/eventSchedule/eventSchedule-modal";
+import EventScheduleModal from "../components/EventSchedules/EventScheduleModal";
 import addСopyEvent from "../actions/event/event-copy-without-edit-action";
 
 class AddFromParentEventWrapper extends Component {
