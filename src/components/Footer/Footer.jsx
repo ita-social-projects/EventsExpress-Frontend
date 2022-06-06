@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { IoMdSend } from "react-icons/io";
-import "./Footer.scss";
 import { FOOTER_LABELS } from "../../constants/footerConstants";
 import SOCIAL_NAV_LINKS from "./FooterMapper";
 import emailService from "../../services/EmailService";
+import "./Footer.scss";
 
 const {
   SUBSCRIBE_US,
@@ -27,7 +27,7 @@ const Footer = () => {
   const handleChange = e => {
     e.persist();
     // eslint-disable-next-line no-shadow
-    setValues((values) => ({
+    setValues(values => ({
       ...values,
       [e.target.name]: e.target.value,
     }));
