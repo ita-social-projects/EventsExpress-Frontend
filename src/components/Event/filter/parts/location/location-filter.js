@@ -10,7 +10,7 @@ import enumLocationType from "../../../../../constants/eventLocationTypeConstant
 import FilterExpansionPanel from "../../expansion-panel/filter-expansion-panel";
 import { LocationMapWithCircle } from "../../../../helpers/form-helpers/location";
 import DisplayMap from "../../../Map/DisplayMap";
-import "../../../Slider.css";
+import "../../../Slider.scss";
 
 const LocationFilter = ({ dispatch, formValues, ...props }) => {
   const clear = () => props.clear({ type: null });

@@ -14,7 +14,7 @@ import EventMapModal from "../MapModal/MapModal";
 import DisplayMap from "../Map/DisplayMap";
 import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
 import constants from "../../../constants/eventsFilterConstants";
-import "./EventFilter.css";
+import "./EventFilter.scss";
 
 const {
   RADIUS,

@@ -7,7 +7,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { Field } from "redux-form";
 import PropTypes from "prop-types";
 import { LocationMapWithCircle } from "../../helpers/form-helpers/location";
-import "../Slider.css";
+import "../Slider.scss";
 import DisplayMap from "../Map/DisplayMap";
 import constants from "../../../constants/mapModalConstants";
 

@@ -32,7 +32,7 @@ import withAuthRedirect from "../../security/withAuthRedirect";
 import AuthUser from "../../actions/login/auth-user-action";
 import getConfig from "../../actions/config/get-config-action";
 import RegistrationForm from "../RegistrationForm";
-import MainLayout from "../MainLayout";
+import MainLayout from "../MainLayout/MainLayout";
 import AboutUs from "../AboutUs/AboutUs";
 import SplitPanels from "../SplitPanels/SplitPanels";
 

@@ -16,7 +16,7 @@ import {
   renderMultiselect,
   parseEuDate,
 } from "../../helpers/form-helpers";
-import "./EventForm.css";
+import "./EventForm.scss";
 import asyncValidatePhoto from "../../../containers/async-validate-photo";
 import ErrorMessages from "../../shared/errorMessage";
 import Location from "../../Location/Location";

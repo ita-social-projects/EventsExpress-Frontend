@@ -3,7 +3,7 @@ import { FacebookProvider, ShareButton } from "react-facebook";
 import { Telegram, Twitter, Linkedin } from "react-social-sharing";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import "./Share.css";
+import "./Share.scss";
 
 const ShareButtons = ({ config, href }) => {
   return (
