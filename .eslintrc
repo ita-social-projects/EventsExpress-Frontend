@@ -1,87 +1,111 @@
 {
+  "env": {
+    "browser": true
+    // "es6": true
+  },
   "extends": [
     "react-app",
     "airbnb",
     "plugin:prettier/recommended",
-    "plugin:sonarjs/recommended",
+    // "plugin:sonarjs/recommended",
     "prettier/react",
     "plugin:react/recommended"
   ],
-  "plugins": [
-    "prettier",
-    "sonarjs",
-    "import"
-  ],
-  "env": {
-    "browser": true
-  },
+  "parser": "babel-eslint",
+  // "parserOptions": {
+  //   "ecmaFeatures": {
+  //     "jsx": true
+  // },
+  // "ecmaVersion": 12,
+  // "sourceType": "module"
+  // },
+  "plugins": ["prettier", "import", "react"], // "sonarjs is useless",
+
   "rules": {
-    "import/no-cycle": [
-      "off",
-      {
-        "maxDepth": 2
-      }
-    ],
-    "import/extensions": [
-      "error",
-      "never"
-    ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true
-      }
-    ],
+    // "camelcase": [
+    //   "error",
+    //   {
+    //     "properties": "always",
+    //     "ignoreDestructuring": false,
+    //     "ignoreImports": false
+    //   }
+    // ], // forbidden snake_case --------> ~ 140 errors
+
+    // "no-magic-numbers": [
+    //   "error",
+    //   { "ignore": [0, 1], "ignoreDefaultValues": true }
+    // ], // magic number becides 0,1 --------> ~ 100 errors
+
+    // "import/no-unresolved": [2, { "caseSensitive": true }], // check if imported file can be resolved
+
+    // "import/no-cycle": [
+    //   "off",
+    //   {
+    //     "maxDepth": 2
+    //   }
+    // ], // forbidden cycle dependency  --------> ~ 10 errors
+
+    // "import/extensions": ["error", "never"], // no need to import with file extension
+    // "import/no-named-as-default": ["error"], // import name === export name
+    // "import/no-unused-modules": [
+    //   "error",
+    //   { "missingExports": true, "unusedExports": true }
+    // ], // check if file is imported somewhere --------> ~ 110 errors
+
+    // "react/destructuring-assignment": 2, // require props destructuring inside component ~ 600
     "react/destructuring-assignment": "off",
-    "react/display-name": "off",
-    "react/forbid-prop-types": "off",
-    "react/no-did-update-set-state": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/jsx-curly-newline": "off",
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
-      }
-    ],
-    "react-hooks/rules-of-hooks": "off",
+    "react/forbid-prop-types": "off", // forbid propTypes.object
+    "react/no-did-update-set-state": "off", // needed till we have class components
+    "react/jsx-props-no-spreading": "error", // forbid to pass props via spread operator ~ 30
+    "react/jsx-curly-newline": "error", // formatting rule have to be off
+
+    // "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".js"] }], // files with jsx inside must have .jsx extension
+    // "react/jsx-max-depth": ["error", { "max": 4 }], // max deep in jsx --------> ~ 140 errors ~ 25components
+    "react-hooks/rules-of-hooks": "error", // should be here
+    "react-hooks/exhaustive-deps": "off", // skip required useEffect dependency
+    // "react/no-unstable-nested-components": "error", // forbidden to create component inside another
+    // "react/no-array-index-key": "error", // forbidden element index as key
+    // "react/no-multi-comp": ["error", { "ignoreStateless": false }], // one file - one component
+    // "react/jsx-curly-brace-presence": [
+    //   "error",
+    //   {
+    //     "props": "never",
+    //     "children": "always"
+    //   }
+    // ], // requires constants in jsx  --------> ~ 230 errors
+
     "jsx-a11y/label-has-for": [
       "error",
       {
         "required": {
-          "some": [
-            "nesting",
-            "id"
-          ]
+          "some": ["nesting", "id"]
         }
       }
     ],
     "prettier/prettier": [
-      "warn",
+      "error",
       {
-        "endOfLine": "auto",
-        "printWidth": 80,
-        "tabWidth": 2,
-        "useTabs": false,
-        "semi": true,
-        "singleQuote": false,
-        "trailingComma": "all",
-        "bracketSpacing": true,
-        "bracketSameLine": false,
         "arrowParens": "avoid",
-        "proseWrap": "always"
+        "bracketSameLine": false,
+        "bracketSpacing": true,
+
+        "endOfLine": "auto",
+        "jsxSingleQuote": false,
+
+        "printWidth": 80,
+        "proseWrap": "always",
+
+        "singleQuote": false,
+        "semi": true,
+
+        "tabWidth": 2,
+        "trailingComma": "all",
+
+        "useTabs": false
       }
     ]
   },
-  "parser": "babel-eslint",
   "settings": {
-    "import/extensions": [
-      ".js",
-      ".jsx",
-      ".json"
-    ]
+    "import/extensions": [".js", ".jsx", ".json"]
   }
 }
