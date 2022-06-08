@@ -8,7 +8,7 @@ const EventSchedulesList = ({ currentUser, dataList }) => {
   return (
     <>
       <div className="container">
-        {dataList.length === 0 ? (
+        {dataList.length > 0 ? (
           <div className="eventsBlock">
             {dataList.map(item => (
               <EventSchedule
