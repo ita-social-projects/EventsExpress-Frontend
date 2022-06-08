@@ -8,7 +8,7 @@ const EventSchedulesList = ({ currentUser, dataList }) => {
   return (
     <>
       <div className="container">
-        {dataList.length > 0 ? (
+        {dataList.length === 0 ? (
           <div className="eventsBlock">
             {dataList.map(item => (
               <EventSchedule
@@ -19,7 +19,11 @@ const EventSchedulesList = ({ currentUser, dataList }) => {
             ))}
           </div>
         ) : (
-          <NoResult />
+          <NoResult
+            title="Нou have no events yet"
+            subTitle="You have not yet created events with the ability to repeat them"
+            photo="https://res.cloudinary.com/wunu/image/upload/v1654537602/eventexpress/folder-is-empty-4064360-3363921_y9cgvg.png"
+          />
         )}
       </div>
     </>
