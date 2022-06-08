@@ -25,9 +25,12 @@ const SearchUsers = ({
   const { pathname } = useLocation();
   const [page, setPage] = useState(1);
 
-  const { totalPages } = users.data.pageViewModel;
+  const {
+    items,
+    pageViewModel: { totalPages, pageNumber },
+  } = users.data;
 
-  const getUsers = pageNumber => getSearchUsersDispatch(pageNumber);
+  const getUsers = folio => getSearchUsersDispatch(folio);
 
   useEffect(() => {
     push(`${pathname}?keyWord=${search}`);
@@ -56,11 +59,7 @@ const SearchUsers = ({
   };
 
   return (
-    <div
-      className={`search_users_container ${
-        users.data.items.length < 12 ? "small_container" : null
-      }`}
-    >
+    <div className="search_users_container">
       <div className="search_users_input">
         <SearchInput
           searchText={search}
@@ -72,14 +71,14 @@ const SearchUsers = ({
 
       <SpinnerWrapper showContent={users.data}>
         <UserItemList
-          users={users.data.items}
-          page={users.data.pageViewModel.pageNumber}
-          totalPages={users.data.pageViewModel.totalPages}
+          users={items}
+          page={pageNumber}
+          totalPages={totalPages}
           callback={getUsers}
         />
       </SpinnerWrapper>
 
-      {totalPages !== 1 && (
+      {totalPages > 1 && (
         <div className="search_users_pagination">
           <Pagination
             count={totalPages}
