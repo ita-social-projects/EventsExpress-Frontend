@@ -103,7 +103,6 @@
 		"eslint-plugin-import": "^2.25.2",
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-react": "^7.26.1",
-		"eslint-plugin-sonarjs": "0.10.0",
 		"husky": "^7.0.4",
 		"lint-staged": "^12.3.7",
 		"prettier": "^2.6.0",

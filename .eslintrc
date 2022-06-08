@@ -7,12 +7,11 @@
     "react-app",
     "airbnb",
     "plugin:prettier/recommended",
-    // "plugin:sonarjs/recommended",
     "prettier/react",
     "plugin:react/recommended"
   ],
   "parser": "babel-eslint",
-  "plugins": ["prettier", "import", "react"], // "sonarjs is useless",
+  "plugins": ["prettier", "import", "react"],
 
   "rules": {
     // "camelcase": [
