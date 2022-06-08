@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import EventSchedule from "./EventScheduleItem";
 import "./EventSchedule.scss";
+import NoResult from "../shared/NoResult/NoResult";
 
 const EventSchedulesList = ({ currentUser, dataList }) => {
   return (
@@ -18,14 +19,7 @@ const EventSchedulesList = ({ currentUser, dataList }) => {
             ))}
           </div>
         ) : (
-          <div id="notfound" className="w-100">
-            <div className="notfound">
-              <div className="notfound-404">
-                <div className="h1">No result</div>
-                {/* TODO: add const */}
-              </div>
-            </div>
-          </div>
+          <NoResult />
         )}
       </div>
     </>

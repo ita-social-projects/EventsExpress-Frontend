@@ -2,21 +2,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-top: 60px;
 }
 
 .eventsBlock {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-}
-
-.custom-center {
-    position: fixed;
-    top: 50%;
-    left: 55%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 
 .custom-center {

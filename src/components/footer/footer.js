@@ -46,7 +46,7 @@ const Footer = () => {
         </div>
         <div className="footer__subscribe">
           <h4 className="subscibe__us">{SUBSCRIBE_US}</h4>
-          <form className="footer__form">
+          <form className="footer__form" onSubmit={subscribeWithEmail}>
             <input
               type="email"
               name="email"
@@ -55,10 +55,9 @@ const Footer = () => {
               placeholder={PASTE_YOUR_EMAIL}
               className="footer__input"
             />
-            <IoMdSend
-              onClick={subscribeWithEmail}
-              className="footer__subscribe__icon"
-            />
+            <button className="footer__subscribe__icon" type="submit">
+              <IoMdSend />
+            </button>
           </form>
         </div>
         <div className="footer__social_links">

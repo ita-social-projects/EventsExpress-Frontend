@@ -1,5 +1,9 @@
 @import "../../../styles/main.scss";
 
+.container {
+  flex-direction: column;
+}
+
 .upcoming__events__navigation {
   margin: 50px 0px;
   display: flex;

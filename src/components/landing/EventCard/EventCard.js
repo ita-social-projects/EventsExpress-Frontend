@@ -16,16 +16,14 @@ const EventCard = ({ event }) => {
 
   useEffect(() => {
     photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {
-      if (eventPreviewImage) {
-        const image = URL.createObjectURL(eventPreviewImage);
-        setEventImage(image);
+      if (eventPreviewImage != null) {
+        setEventImage(URL.createObjectURL(eventPreviewImage));
       }
     });
     return () => {
       URL.revokeObjectURL(eventImage);
     };
   }, []);
-
   return (
     <div className="event-card">
       <img

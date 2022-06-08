@@ -1,3 +1,4 @@
+/* eslint-disable no-multi-assign */
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
@@ -19,17 +20,14 @@ const photoService = new PhotoService();
 
 const EventSchedule = ({ item }) => {
   const [eventImage, setEventImage] = useState(eventDefaultImage);
-
   useEffect(() => {
     photoService.getPreviewEventPhoto(item.eventId).then(eventPreviewImage => {
       if (eventPreviewImage != null) {
-        setEventImage({ eventImage: URL.createObjectURL(eventPreviewImage) });
+        setEventImage(URL.createObjectURL(eventPreviewImage));
       }
     });
-
     return () => URL.revokeObjectURL(eventImage);
   }, []);
-
   const classes = useStyles;
   const { id, frequency, periodicity, lastRun, nextRun, title, eventId } = item;
   const period = renderPeriod(periodicity, frequency);

@@ -24,9 +24,15 @@ export default class EventsExpressService {
   };
 
   getPhoto = async url => {
-    const call = callUrl => fetch(this.baseUrl + callUrl);
+    const call = callUrl =>
+      fetch(this.baseUrl + callUrl, {
+        method: "get",
+        headers: {
+          "Content-Type": "image/png",
+        },
+      });
     const res = await call(url);
-
+    console.log("RESHEADER", res.headers);
     if (res.ok) {
       return res.blob();
     }
