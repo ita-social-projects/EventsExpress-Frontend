@@ -7,7 +7,7 @@ import RatingWrapper from "../../../containers/rating";
 import Comment from "../../Comment/Comment";
 import "moment-timezone";
 import "../../Layout/Colorlib.scss";
-import "./EventItemView.css";
+import "./EventItemView.scss";
 import EventVisitors from "../EventVisitors/EventVisitors";
 import EventLeaveModal from "../EventLeaveModal/EventLeaveModal";
 import InventoryList from "../../Inventory/InventoryList";

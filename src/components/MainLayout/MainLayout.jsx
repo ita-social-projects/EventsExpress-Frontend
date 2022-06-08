@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Header from "../Header/MainHeader";
 import Footer from "../Footer/Footer";
 import AlertContainer from "../../containers/alert";
-import "./MainLayout.css";
+import "./MainLayout.scss";
 
 const MainLayout = ({ children }) => {
   return (

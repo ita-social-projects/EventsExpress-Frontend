@@ -6,7 +6,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import useStyle from "../CardStyle/CardStyle";
 import PrintMenuMembers from "./PrintMenuMembers";
 import PrintMenuItems from "./PrintMenuItems";
-import "./EventItemHeader.css";
+import "./EventItemHeader.scss";
 import {
   renderOwners,
   renderMembers,

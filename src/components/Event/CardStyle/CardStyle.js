@@ -1,6 +1,6 @@
 ﻿import { makeStyles } from "@material-ui/core/styles";
 import { red } from "@material-ui/core/colors";
-import "../EventItem/EventItem.css";
+import "../EventItem/EventItem.scss";
 
 export default makeStyles(theme => ({
   card: {

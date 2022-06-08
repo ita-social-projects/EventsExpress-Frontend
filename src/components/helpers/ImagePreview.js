@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../Event/EventForm/EventForm.css";
+import "../Event/EventForm/EventForm.scss";
 import "./helpers.css";
 
 const ImagePreview = ({ imagefile, shape, error, touched }) =>

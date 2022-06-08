@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-import "./app.css";
+import "./app.scss";
 
 import { connect } from "react-redux";
 import propTypes from "prop-types";
@@ -33,7 +33,7 @@ import withAuthRedirect from "../../security/withAuthRedirect";
 import AuthUser from "../../actions/login/auth-user-action";
 import getConfig from "../../actions/config/get-config-action";
 import RegistrationForm from "../../containers/RegistrationFormContainer/RegistrationFormContainer";
-import MainLayout from "../MainLayout";
+import MainLayout from "../MainLayout/MainLayout";
 import AboutUs from "../AboutUs/AboutUs";
 import SplitPanels from "../SplitPanels/SplitPanels";
 

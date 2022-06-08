@@ -1,4 +1,4 @@
-﻿import "./Attitude.css";
+﻿import "./Attitude.scss";
 
 const getAttitudeClassName = attitude => {
   switch (attitude) {
