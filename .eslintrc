@@ -12,13 +12,6 @@
     "plugin:react/recommended"
   ],
   "parser": "babel-eslint",
-  // "parserOptions": {
-  //   "ecmaFeatures": {
-  //     "jsx": true
-  // },
-  // "ecmaVersion": 12,
-  // "sourceType": "module"
-  // },
   "plugins": ["prettier", "import", "react"], // "sonarjs is useless",
 
   "rules": {
@@ -30,6 +23,7 @@
     //     "ignoreImports": false
     //   }
     // ], // forbidden snake_case --------> ~ 140 errors
+    // "complexity": ["error", 12],
 
     // "no-magic-numbers": [
     //   "error",
@@ -56,13 +50,14 @@
     "react/destructuring-assignment": "off",
     "react/forbid-prop-types": "off", // forbid propTypes.object
     "react/no-did-update-set-state": "off", // needed till we have class components
-    "react/jsx-props-no-spreading": "error", // forbid to pass props via spread operator ~ 30
+    // "react/jsx-props-no-spreading": "error", // forbid to pass props via spread operator ~ 30
+    "react/jsx-props-no-spreading": "off", // forbid to pass props via spread operator ~ 30
     "react/jsx-curly-newline": "error", // formatting rule have to be off
 
-    // "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".js"] }], // files with jsx inside must have .jsx extension
-    // "react/jsx-max-depth": ["error", { "max": 4 }], // max deep in jsx --------> ~ 140 errors ~ 25components
+    "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".js"] }], // files with jsx inside must have .jsx extension
     "react-hooks/rules-of-hooks": "error", // should be here
     "react-hooks/exhaustive-deps": "off", // skip required useEffect dependency
+    // "react/jsx-max-depth": ["error", { "max": 4 }], // max deep in jsx --------> ~ 140 errors ~ 25components
     // "react/no-unstable-nested-components": "error", // forbidden to create component inside another
     // "react/no-array-index-key": "error", // forbidden element index as key
     // "react/no-multi-comp": ["error", { "ignoreStateless": false }], // one file - one component
