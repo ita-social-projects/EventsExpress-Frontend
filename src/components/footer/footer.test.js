@@ -2,17 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { create } from "react-test-renderer";
 import emailService from "../../services/EmailService";
-import Footer from "../footer/footer";
+import Footer from "./footer";
 
 describe("check for clear EmailService working", () => {
   // Test data
   const values = {
-    email: "example123@gmail.com",
+    email: "example@gmail.com",
   };
   it("check for email", () => {
-    emailService(values);
-    // console.log("TEST VAL", emailService(values));
-    expect(values.email !== "").toBe(true);
+    expect(emailService(values)).toBe(true);
   });
   it("check Footer component", () => {
     const div = document.createElement("div");
