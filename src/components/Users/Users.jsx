@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Users.scss";
 import UserInfoWrapper from "../../containers/user-info";
 import PagePagination from "../shared/PagePagination/PagePagination";
+import "./Users.scss";
 
 const Users = ({ page, totalPages, users, callback }) => {
   const handlePageChange = pageEl => {
