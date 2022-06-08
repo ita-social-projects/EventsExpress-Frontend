@@ -1,8 +1,8 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import UserRoleDisplay from "../components/user-info/user-role-display";
-import UserRoleEdit from "../components/user-info/user-role-edit";
+import UserRoleDisplay from "../components/UserInfo/UserRoleDisplay";
+import UserRoleEdit from "../components/UserInfo/UserRoleEdit";
 import { changeUserRole, setEditedUser } from "../actions/user/user-action";
 
 class UserRoleWrapper extends Component {

@@ -6,8 +6,8 @@ import {
   getCurrrentRating,
   getAverageRating,
 } from "../actions/rating-action";
-import RatingAverage from "../components/rating/rating-average";
-import RatingSetter from "../components/rating/rating-setter";
+import RatingAverage from "../components/Rating/RatingAverage";
+import RatingSetter from "../components/Rating/RatingSetter";
 
 class RatingWrapper extends Component {
   componentDidMount = () => {

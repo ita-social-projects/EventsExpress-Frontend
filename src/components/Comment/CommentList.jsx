@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import propTypes from "prop-types";
 import CommentItemWrapper from "../../containers/delete-comment";
-import PagePagination from "../shared/pagePagination";
+import PagePagination from "../shared/PagePagination/PagePagination";
 
 export default class CommentList extends Component {
   handlePageChange = page => {

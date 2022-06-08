@@ -4,10 +4,10 @@ import "./Admin.scss";
 import NavItem from "../NavItem/NavItem";
 import Category from "../Category/Categories";
 import UsersWrapper from "../../containers/users";
-import UnitOfMeasuring from "../unitOfMeasuring/unitsOfMeasuring";
-import NotificationTemplateWrapper from "../../containers/notification-template/notification-template";
-import NotificationInfoWrapper from "../../containers/notification-template/notification-info";
-import Track from "../tracks/track";
+import UnitOfMeasuring from "../UnitOfMeasuring/UnitOfMeasuring";
+import NotificationTemplateWrapper from "../../containers/NotificationTemplateContainer/NotificationTemplateContainer";
+import NotificationInfoWrapper from "../../containers/NotificationTemplateContainer/NotificationInfoContainer";
+import Track from "../Tracks/Tracks";
 
 // TODO Rename to function component
 export default class Admin extends PureComponent {

@@ -5,7 +5,7 @@ import GENDERS from "../../constants/gendersVarietyConstants";
 import LABELS from "../../constants/labelConstants";
 import { ATTITUDE_TYPES } from "../../constants/userAttitudesConstants";
 import CustomAvatar from "../CustomAvatar/CustomAvatar";
-import RatingAverage from "../rating/rating-average";
+import RatingAverage from "../Rating/RatingAverage";
 import defineUserAge from "../helpers/defineUserAge";
 import getAttitudeToUser from "../helpers/getAttitudeToUser";
 import AttitudeToolTip from "./AttitudeToolTip/AttitudeToolTip";

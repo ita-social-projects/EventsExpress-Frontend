@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../shared/Logo/logo";
+import Logo from "../shared/Logo/Logo";
 import HeaderLinks from "./HeaderLinks/HeaderLinks";
 import MobileHeaderLinks from "./MobileHeaderLinks/MobileHeaderLinks";
 import "./MainHeader.scss";

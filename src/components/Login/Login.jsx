@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import GoogleLogin from "../../containers/GoogleLogin";
 import LoginFacebook from "../../containers/FacebookLogin";
-import ErrorMessages from "../shared/errorMessage";
+import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../helpers/form-helpers";
 import isValidEmail from "../helpers/validators/email-address-validator";
 import fieldIsRequired from "../helpers/validators/required-fields-validator";

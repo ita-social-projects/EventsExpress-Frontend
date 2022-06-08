@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Profile from "../components/profile/user-profile";
+import Profile from "../components/Profile/UserProfile";
 import SpinnerWrapper from "./spinner";
 import getUser, {
   setAttitude,
