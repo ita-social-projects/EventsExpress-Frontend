@@ -3,7 +3,7 @@ import {
   GET_MEMBERS_PENDING,
   GET_MEMBERS_SUCCESS,
   GET_MEMBERS_ERROR,
-} from "../../actions/aboutUs/membersActions";
+} from "../../actions/aboutUs/membersActionstypes";
 
 const aboutUsReducer = (state = initialState.aboutUs, action) => {
   switch (action.type) {

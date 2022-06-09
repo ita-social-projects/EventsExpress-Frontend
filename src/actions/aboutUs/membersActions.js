@@ -1,8 +1,9 @@
 import AboutUsService from "../../services/AboutUsService";
-
-export const GET_MEMBERS_PENDING = "GET_MEMBERS_PENDING";
-export const GET_MEMBERS_SUCCESS = "GET_MEMBERS_SUCCESS";
-export const GET_MEMBERS_ERROR = "GET_MEMBERS_ERROR";
+import {
+  GET_MEMBERS_PENDING,
+  GET_MEMBERS_ERROR,
+  GET_MEMBERS_SUCCESS,
+} from "./membersActionstypes";
 
 export const getMembersPending = () => ({
   type: GET_MEMBERS_PENDING,
@@ -18,14 +19,12 @@ export const getMembersError = error => ({
   error,
 });
 
-export const getMembersAction = () => {
-  return async dispatch => {
+export const getMembersAction = () => async dispatch => {
+  try {
     dispatch(getMembersPending());
-    try {
-      const members = await AboutUsService.getMembers();
-      dispatch(getMembersSuccess(members));
-    } catch (error) {
-      dispatch(getMembersError(error.message));
-    }
-  };
+    const members = await AboutUsService.getMembers();
+    dispatch(getMembersSuccess(members));
+  } catch (error) {
+    dispatch(getMembersError(error.message));
+  }
 };
