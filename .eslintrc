@@ -31,14 +31,14 @@
 
     // "import/no-unresolved": [2, { "caseSensitive": true }], // check if imported file can be resolved
 
-    // "import/no-cycle": [
-    //   "off",
-    //   {
-    //     "maxDepth": 2
-    //   }
-    // ], // forbidden cycle dependency  --------> ~ 10 errors
+    "import/no-cycle": [
+      "off", // error
+      {
+        "maxDepth": 2
+      }
+    ], // forbidden cycle dependency  --------> ~ 15 errors
 
-    // "import/extensions": ["error", "never"], // no need to import with file extension
+    "import/extensions": ["error", "never"], // no need to import with file extension
     // "import/no-named-as-default": ["error"], // import name === export name
     // "import/no-unused-modules": [
     //   "error",
@@ -51,7 +51,7 @@
     "react/no-did-update-set-state": "off", // needed till we have class components
     // "react/jsx-props-no-spreading": "error", // forbid to pass props via spread operator ~ 30
     "react/jsx-props-no-spreading": "off", // forbid to pass props via spread operator ~ 30
-    "react/jsx-curly-newline": "error", // formatting rule have to be off
+    "react/jsx-curly-newline": 0, // formatting rule have to be off
 
     "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".js"] }], // files with jsx inside must have .jsx extension
     "react-hooks/rules-of-hooks": "error", // should be here

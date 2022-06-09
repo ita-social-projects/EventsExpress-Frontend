@@ -79,7 +79,6 @@ export default class EventItemView extends Component {
     );
   };
 
-  // eslint-disable-next-line sonarjs/cognitive-complexity
   render() {
     const { currentUser } = this.props;
     const {
