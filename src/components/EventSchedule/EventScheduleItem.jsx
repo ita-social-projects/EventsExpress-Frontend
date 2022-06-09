@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import renderPeriod from "./render-period";
 import useStyles from "./CardStyleConst";
-import eventDefaultImage from "../../constants/eventDefaultImageConstants";
+import {EVENT_DEFAULT_IMAGE} from "../../constants/eventConstants";
 import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();
@@ -22,7 +22,7 @@ class EventSchedule extends Component {
     super(props);
 
     this.state = {
-      eventImage: eventDefaultImage,
+      eventImage: EVENT_DEFAULT_IMAGE,
     };
   }
 

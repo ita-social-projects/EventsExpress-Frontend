@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import enumLocationType from "../../../constants/eventLocationTypeConstants";
+import {ENUM_LOCATION_TYPE} from "../../../constants/eventConstants";
 import DisplayMap from "./DisplayMap";
 import DisplayOnline from "./DisplayOnline";
 
 const DisplayLocation = ({ location }) => {
-  if (location && location?.type === enumLocationType.map) {
+  if (location && location?.type === ENUM_LOCATION_TYPE.MAP) {
     return <DisplayMap location={location} />;
   }
-  if (location?.type === enumLocationType.online) {
+  if (location?.type === ENUM_LOCATION_TYPE.ONLINE) {
     return <DisplayOnline locationPath={location?.onlineMeeting} />;
   }
 

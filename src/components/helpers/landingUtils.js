@@ -3,11 +3,11 @@ import SliderForEvents from "../Landing/SliderForEvents/SliderForEvents";
 import EventsListItem from "../Landing/EventsListItem/EventsListItem";
 import EventMatrix from "../Landing/EventMatrix/EventMatrix";
 import {
-  viewModeTypes,
+  VIEW_MODE_TYPES,
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
-} from "../../constants/eventsViewConstants";
+} from "../../constants/eventConstants";
 
-const { SLIDER, LIST, MATRIX } = viewModeTypes;
+const { SLIDER, LIST, MATRIX } = VIEW_MODE_TYPES;
 
 const viewModeSwitcher = (events, viewModeType, filterTitle) => {
   const eventsFiltered = events.filter(event =>

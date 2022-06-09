@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import EventItemView from "../components/Event/EventItemView/EventItemView";
-import eventStatusEnum from "../constants/eventStatusEnumConstants";
+import {EVENT_STATUS_ENUM} from "../constants/eventConstants";
 import SpinnerWrapper from "./spinner";
 import getEvent, {
   join,
@@ -77,11 +77,11 @@ const mapDispatchToProps = dispatch => ({
   join: (userId, eventId) => dispatch(join(userId, eventId)),
   leave: (userId, eventId) => dispatch(leave(userId, eventId)),
   cancel: (eventId, reason) =>
-    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Canceled)),
+    dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.CANCELED)),
   unCancel: (eventId, reason) =>
-    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Active)),
+    dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.ACTIVE)),
   delete: (eventId, reason) =>
-    dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Deleted)),
+    dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.DELETED)),
   getUsersInventoriesByEventId: eventId =>
     dispatch(getUsersInventoriesByEventId(eventId)),
   getInventoriesByEventId: eventId =>

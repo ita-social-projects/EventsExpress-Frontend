@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import HEADER_CONSTS from "../../../constants/headerConstants";
+import {HEADER_CONSTS} from "../../../constants/headersConstants";
 import "./MobileHeaderLinks.scss";
 
 const MobileHeaderLinks = ({ setIsMobileHeaderOpen }) => {

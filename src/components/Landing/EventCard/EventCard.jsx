@@ -6,13 +6,12 @@ import moment from "moment";
 import IconsEventCard from "./IconsEventCard/IconsEventCard";
 import "./EventCard.scss";
 import PhotoService from "../../../services/PhotoService";
-import eventDefaultImage from "../../../constants/eventDefaultImageConstants";
-import FORMATS from "../../../constants/eventsCardConstants";
+import {EVENT_DEFAULT_IMAGE, FORMATS} from "../../../constants/eventConstants";
 
 const EventCard = ({ event }) => {
   const { id, title, dateFrom } = event;
   const photoService = useMemo(() => new PhotoService(), []);
-  const [eventImage, setEventImage] = useState(eventDefaultImage);
+  const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
 
   useEffect(() => {
     // TODO move to service and call from action
@@ -39,7 +38,7 @@ const EventCard = ({ event }) => {
       <div className="card-content">
         <div className="card-date date-container">
           <span className="day">
-            {moment(dateFrom).format(FORMATS.dayFormat)}
+            {moment(dateFrom).format(FORMATS.DAY_FORMAT)}
           </span>
         </div>
         <div className="card-info">
@@ -55,7 +54,7 @@ const EventCard = ({ event }) => {
         </div>
       </div>
       <span className="month">
-        {moment(dateFrom).format(FORMATS.monthFormat)}
+        {moment(dateFrom).format(FORMATS.MONTH_FORMAT)}
       </span>
     </div>
   );

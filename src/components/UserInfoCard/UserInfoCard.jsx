@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import GENDERS from "../../constants/gendersVarietyConstants";
 import LABELS from "../../constants/labelConstants";
-import { ATTITUDE_TYPES } from "../../constants/userAttitudesConstants";
+import { ATTITUDE_TYPES } from "../../constants/userConstants";
 import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../Rating/RatingAverage";
 import defineUserAge from "../helpers/defineUserAge";

@@ -6,7 +6,7 @@ import { MultiCheckbox, renderDatePicker } from "../helpers/form-helpers";
 import parseEuDate from "../helpers/form-helpers/parseEuDate";
 import filterHelper from "../helpers/filterHelper";
 import "./ContactAdminFilter.scss";
-import issueStatusEnum from "../../constants/issueStatusEnumConstants";
+import {ISSUE_STATUS_ENUM} from "../../constants/issueConstants";
 
 class ContactAdminFilter extends Component {
   constructor(props) {
@@ -41,9 +41,9 @@ class ContactAdminFilter extends Component {
     const { formValues, submitting, onReset } = this.props;
     const values = formValues || {};
     const options = [
-      { value: issueStatusEnum.Open, text: "Open" },
-      { value: issueStatusEnum.InProgress, text: "In progress" },
-      { value: issueStatusEnum.Resolve, text: "Resolve" },
+      { value: ISSUE_STATUS_ENUM.OPEN, text: "Open" },
+      { value: ISSUE_STATUS_ENUM.INPROGRESS, text: "In progress" },
+      { value: ISSUE_STATUS_ENUM.RESOLVE, text: "Resolve" },
     ];
 
     return (

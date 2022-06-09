@@ -4,7 +4,7 @@ import Badge from "@material-ui/core/Badge";
 import "./LeftSidebar.scss";
 import NavItem from "../NavItem/NavItem";
 import AuthComponent from "../../security/authComponent";
-import Roles from "../../constants/userRolesConstants";
+import {ROLES} from "../../constants/userConstants";
 
 class LeftSidebar extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class LeftSidebar extends Component {
             <hr />
             <ul className="list-unstyled">
               <NavItem to="/home" icon="fa fa-home" text="Home" />
-              <AuthComponent rolesMatch={Roles.User}>
+              <AuthComponent rolesMatch={ROLES.USER}>
                 <NavItem
                   to={`/user/${this.props.user.id}`}
                   icon="fa fa-user"
@@ -77,7 +77,7 @@ class LeftSidebar extends Component {
                   text="Comuna"
                 />
               </AuthComponent>
-              <AuthComponent rolesMatch={Roles.Admin}>
+              <AuthComponent rolesMatch={ROLES.ADMIN}>
                 <NavItem to="/admin/" icon="fa fa-user-secret" text="Admin" />
                 <NavItem
                   to="/contactAdmin/issues?page=1"

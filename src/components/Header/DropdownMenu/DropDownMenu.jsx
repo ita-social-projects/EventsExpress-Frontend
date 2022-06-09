@@ -7,14 +7,14 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FeedbackIcon from "@material-ui/icons/Feedback";
-import Roles from "../../../constants/userRolesConstants";
+import {ROLES} from "../../../constants/userConstants";
 import AuthComponent from "../../../security/authComponent";
-import headerConstants from "../../../constants/headerConstants";
+import {HEADER_CONSTS} from "../../../constants/headersConstants";
 import "./DropdownMenu.scss";
 import ToggleButton from "../../shared/ToggleButton/ToggleButton";
 
 const { CREATE_EVENT, LOG_OUT, FEEDBACK, MY_PROFILE, MY_EVENTS } =
-  headerConstants;
+HEADER_CONSTS;
 
 const DropDownItem = ({ link, className, icon, title, callback }) =>
   callback ? (
@@ -67,7 +67,7 @@ const DropdownMenu = ({ user, hub, logout, addEvent }) => {
     },
   ]
   return (
-    <AuthComponent rolesMatch={Roles.User}>
+    <AuthComponent rolesMatch={ROLES.USER}>
       <div className="users-info">
         <div className="btn-group">
           <ToggleButton>

@@ -6,7 +6,7 @@ import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import PropTypes from "prop-types";
-import enumLocationType from "../../../../../constants/eventLocationTypeConstants";
+import {ENUM_LOCATION_TYPE} from "../../../../../constants/eventConstants";
 import FilterExpansionPanel from "../../expansion-panel/filter-expansion-panel";
 import { LocationMapWithCircle } from "../../../../helpers/form-helpers/location";
 import DisplayMap from "../../../Map/DisplayMap";
@@ -17,15 +17,15 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
 
   const onChangeLocationType = event => {
     const type = Number(event.target.value);
-    if (type === enumLocationType.map) {
+    if (type === ENUM_LOCATION_TYPE.MAP) {
       props.changeLocation({
-        type: enumLocationType.map,
+        type: ENUM_LOCATION_TYPE.MAP,
         latitude: null,
         longitude: null,
         radius: 1,
       });
-    } else if (type === enumLocationType.online) {
-      props.changeLocation({ type: enumLocationType.online });
+    } else if (type === ENUM_LOCATION_TYPE.ONLINE) {
+      props.changeLocation({ type: ENUM_LOCATION_TYPE.ONLINE });
     }
   };
 
@@ -45,7 +45,7 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
               checked={
                 formValues !== null &&
                 formValues.location !== null &&
-                formValues.location.type === enumLocationType.map
+                formValues.location.type === ENUM_LOCATION_TYPE.MAP
               }
             />
             <FormControlLabel
@@ -55,7 +55,7 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
               checked={
                 formValues !== null &&
                 formValues.location !== null &&
-                formValues.location.type === enumLocationType.online
+                formValues.location.type === ENUM_LOCATION_TYPE.ONLINE
               }
             />
           </RadioGroup>
@@ -90,7 +90,7 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
           )}
         {formValues !== null &&
           formValues.location !== null &&
-          formValues.location.type === enumLocationType.map && (
+          formValues.location.type === ENUM_LOCATION_TYPE.MAP && (
             <Field
               name="location"
               component={LocationMapWithCircle}

@@ -6,7 +6,7 @@ import momentLocaliser from "react-widgets-moment";
 import propTypes from "prop-types";
 import DropZoneField from "../../helpers/DropZoneField";
 import PhotoService from "../../../services/PhotoService";
-import periodicity from "../../../constants/peridiocitConstants";
+import {PERIODICITY} from "../../../constants/peridiocitConstants";
 import {
   renderDatePicker,
   renderCheckbox,
@@ -19,7 +19,7 @@ import {
 import "./EventForm.scss";
 import asyncValidatePhoto from "../../../containers/async-validate-photo";
 import Location from "../../Location/Location";
-import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
+import {EVENT_STATUS_ENUM} from "../../../constants/eventConstants";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 
 momentLocaliser(moment);
@@ -39,7 +39,7 @@ const EventForm = ({
   onSubmit,
 }) => {
   const [checked, isChecked] = useState(false);
-  const periodicityListOptions = periodicity.map(item => (
+  const periodicityListOptions = PERIODICITY.map(item => (
     <option value={item.value} key={item.value}>
       {" "}
       {item.label}{" "}
@@ -141,7 +141,7 @@ const EventForm = ({
             label="Public"
           />
         </div>
-        {initialValues.eventStatus === eventStatusEnum.Draft && (
+        {initialValues.eventStatus === EVENT_STATUS_ENUM.DRAFT && (
           <div className="mt-2">
             <Field
               name="isOnlyForAdults"

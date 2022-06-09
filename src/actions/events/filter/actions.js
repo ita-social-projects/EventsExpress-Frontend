@@ -1,15 +1,15 @@
 /* eslint-disable no-param-reassign */
 import { stringify, exclude } from "query-string";
 import { getEvents } from "../../event/event-list-action";
-import enumLocationType from "../../../constants/eventLocationTypeConstants";
+import {ENUM_LOCATION_TYPE} from "../../../constants/eventConstants";
 
-const { map } = enumLocationType;
+const { MAP } = ENUM_LOCATION_TYPE;
 
 export const applyFilters = filters => {
   return async dispatch => {
     filters.owners = filters?.organizers?.map(organizer => organizer.id);
     filters.locationtype = filters?.location.type;
-    if (filters.location.type === map) {
+    if (filters.location.type === MAP) {
       filters.x = filters?.location.latitude;
       filters.y = filters?.location.longitude;
       filters.radius = filters?.location.radius;

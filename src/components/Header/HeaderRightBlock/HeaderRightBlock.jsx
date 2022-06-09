@@ -5,7 +5,7 @@ import ModalWind from "../../ModalWind/ModalWind";
 import AuthComponent from "../../../security/authComponent";
 import DropdownMenu from "../../../containers/dropdownMenuContainer";
 import { TogleOpenWind } from "../../../actions/modalWind-action";
-import HEADER_CONSTS from "../../../constants/headerConstants";
+import {HEADER_CONSTS} from "../../../constants/headersConstants";
 import "./RightBlock.scss";
 
 const { SIGN_IN } = HEADER_CONSTS;

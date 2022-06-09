@@ -1,47 +1,46 @@
 import React from "react";
 import propTypes from "prop-types";
-import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
-import eventStatusTitle from "../../../constants/eventStatusTitleConstants";
-import eventStatusButton from "../../../constants/eventStatusButtonConstants";
-import eventStatusIcon from "../../../constants/eventStatusIconConstants";
+
+import {EVENT_STATUS_ENUM, EVENT_STATUS_TITLE,EVENT_STATUS_ICON,EVENT_STATUS_BUTTON} from "../../../constants/eventConstants";
+
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
 import RenderEventButton from "./RenderEventButton";
 
 const EventActiveStatus = ({ eventStatus, eventId, onBlock, onUnBlock }) => {
   switch (eventStatus) {
-    case eventStatusEnum.Active:
+    case EVENT_STATUS_ENUM.ACTIVE:
       return (
         <SimpleModalWithDetails
           key={eventId + eventStatus}
           data="Are you sure?"
           submitCallback={reason => onBlock(eventId, reason, eventStatus)}
           button={RenderEventButton(
-            eventStatusTitle.ACTIVE,
-            eventStatusButton.TEXT_SUCCESS,
-            eventStatusIcon.ACTIVE,
+            EVENT_STATUS_TITLE.ACTIVE,
+            EVENT_STATUS_BUTTON.TEXT_SUCCESS,
+            EVENT_STATUS_ICON.ACTIVE,
           )}
         />
       );
-    case eventStatusEnum.Blocked:
+    case EVENT_STATUS_ENUM.BLOCKED:
       return (
         <SimpleModalWithDetails
           key={eventId + eventStatus}
           data="Are you sure?"
           submitCallback={reason => onUnBlock(eventId, reason)}
           button={RenderEventButton(
-            eventStatusTitle.BLOCKED,
-            eventStatusButton.TEXT_DANGER,
-            eventStatusIcon.BLOCKED,
+            EVENT_STATUS_TITLE.BLOCKED,
+            EVENT_STATUS_BUTTON.TEXT_DANGER,
+            EVENT_STATUS_ICON.BLOCKED,
           )}
         />
       );
-    case eventStatusEnum.Canceled:
+    case EVENT_STATUS_ENUM.CANCELED:
       return (
         <>
           {RenderEventButton(
-            eventStatusTitle.CANCELED,
-            eventStatusButton.TEXT_DANGER,
-            eventStatusIcon.CANCELED,
+            EVENT_STATUS_TITLE.CANCELED,
+            EVENT_STATUS_BUTTON.TEXT_DANGER,
+            EVENT_STATUS_ICON.CANCELED,
           )}
         </>
       );

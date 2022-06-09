@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { eventViewModeMapper } from "../../../constants/eventsViewConstants";
+import { EVENT_VIEW_MODE_MAPPER } from "../../../constants/eventConstants";
 import "./EventsViewMode.scss";
 
 const EventsViewMode = ({ setViewMode }) => (
   <div className="menu-view-mode">
-    {eventViewModeMapper.map(({ id, control, viewMode }) => (
+    {EVENT_VIEW_MODE_MAPPER.map(({ id, control, viewMode }) => (
       <label
         key={id}
         htmlFor={control}

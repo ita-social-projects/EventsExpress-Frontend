@@ -10,7 +10,7 @@ import {
   BANNER_BUTTON_TEXT,
   SLIDES,
   SLIDES_INTERVAL,
-} from "../../../constants/headArticleConstants";
+} from "../../../constants/headersConstants";
 
 const HeadArticle = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

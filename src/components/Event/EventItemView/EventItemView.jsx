@@ -13,10 +13,9 @@ import EventLeaveModal from "../EventLeaveModal/EventLeaveModal";
 import InventoryList from "../../Inventory/InventoryList";
 import DisplayLocation from "../Map/DisplayLocation";
 
-import userStatusEnum from "../../../constants/userStatusEnumConstants";
-import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
+import {USER_STATUS_ENUM} from "../../../constants/userConstants";
+import {EVENT_DEFAULT_IMAGE, EVENT_STATUS_ENUM} from "../../../constants/eventConstants";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
-import eventDefaultImage from "../../../constants/eventDefaultImageConstants";
 import PhotoService from "../../../services/PhotoService";
 
 const photoService = new PhotoService();
@@ -27,7 +26,7 @@ export default class EventItemView extends Component {
     super(props);
 
     this.state = {
-      eventImage: eventDefaultImage,
+      eventImage: EVENT_DEFAULT_IMAGE,
     };
   }
 
@@ -52,19 +51,19 @@ export default class EventItemView extends Component {
   getUserEventStatus = visitor => {
     if (visitor !== undefined) {
       switch (visitor.userStatusEvent) {
-        case userStatusEnum.APPROVED:
+        case USER_STATUS_ENUM.APPROVED:
           return (
             <span className="alert alert-success shadow" role="alert">
               You are gonna visit.
             </span>
           );
-        case userStatusEnum.DENIED:
+        case USER_STATUS_ENUM.DENIED:
           return (
             <span className="alert alert-danger shadow" role="alert">
               Denied participation.
             </span>
           );
-        case userStatusEnum.PENDING:
+        case USER_STATUS_ENUM.PENDING:
           return (
             <span className="alert alert-warning shadow" role="alert">
               Wait until admin approve your request.
@@ -121,23 +120,23 @@ export default class EventItemView extends Component {
       isFreePlace &&
       !iWillVisitIt &&
       !isMyEvent &&
-      eventStatus === eventStatusEnum.Active &&
+      eventStatus === EVENT_STATUS_ENUM.ACTIVE &&
       isAppropriateAge;
     const canLeave =
       isFutureEvent &&
       !isMyEvent &&
       iWillVisitIt &&
       visitorsEnum.deniedUsers.find(x => x.id === currentUser.id) == null &&
-      eventStatus === eventStatusEnum.Active;
+      eventStatus === EVENT_STATUS_ENUM.ACTIVE;
     const canCancel =
       isFutureEvent &&
       currentUser.id != null &&
       isMyEvent &&
-      eventStatus !== eventStatusEnum.Canceled;
+      eventStatus !== EVENT_STATUS_ENUM.CANCELED;
     const canUncancel =
-      isFutureEvent && isMyEvent && eventStatus === eventStatusEnum.Canceled;
+      isFutureEvent && isMyEvent && eventStatus === EVENT_STATUS_ENUM.CANCELED;
     const isMyPrivateEvent = isMyEvent && !isPublic;
-    const canDeleted = isMyEvent && eventStatus === eventStatusEnum.Canceled;
+    const canDeleted = isMyEvent && eventStatus === EVENT_STATUS_ENUM.CANCELED;
 
     return (
       <>
@@ -265,7 +264,7 @@ export default class EventItemView extends Component {
                 </div>
               )}
               <div className="text-box-big overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
-                {eventStatus === eventStatusEnum.Canceled && (
+                {eventStatus === EVENT_STATUS_ENUM.CANCELED && (
                   <div className="text-center text-uppercase cancel-text">
                     <i className="fas fa-exclamation-triangle text-warning" />
                     <span> This event is canceled </span>

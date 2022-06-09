@@ -7,12 +7,12 @@ import HeadArticle from "../HeadArticle/HeadArticle";
 import EventsViewMode from "../EventsViewMode/EventsViewMode";
 import viewModeSwitcher from "../../helpers/landingUtils";
 import {
-  viewModeTypes,
+  VIEW_MODE_TYPES,
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
-} from "../../../constants/eventsViewConstants";
+} from "../../../constants/eventConstants";
 import SearchInput from "../../SearchInput/SearchInput";
 
-const { SLIDER } = viewModeTypes;
+const { SLIDER } = VIEW_MODE_TYPES;
 
 const Landing = ({ getUpcomingEventsDispatch, events }) => {
   const [filterTitle, setFilterTitle] = useState("");

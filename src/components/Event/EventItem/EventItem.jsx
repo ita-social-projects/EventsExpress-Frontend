@@ -13,21 +13,19 @@ import Badge from "@material-ui/core/Badge";
 import SocialShareMenu from "../Share/SocialShareMenu";
 import EventActiveStatus from "../EventActiveStatus/EventActiveStatus";
 import DisplayLocation from "../Map/DisplayLocation";
-import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
 import useStyle from "../CardStyle/CardStyle";
 import AuthComponent from "../../../security/authComponent";
 import EventHeader from "../EventItemHeader/EventItemHeader";
-import Roles from "../../../constants/userRolesConstants";
+import {ROLES} from "../../../constants/userConstants";
 import PhotoService from "../../../services/PhotoService";
-import eventDefaultImage from "../../../constants/eventDefaultImageConstants";
-import EventItemConstants from "../../../constants/eventsItemConstants";
+import {EVENT_DEFAULT_IMAGE, EVENT_STATUS_ENUM, EVENT_ITEM_CONSTANTS} from "../../../constants/eventConstants";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();
 
 const EventCard = props => {
   const { item, onBlock, onUnBlock } = props;
-  const [eventImage, setEventImage] = useState(eventDefaultImage);
+  const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
 
   useEffect(() => {
     photoService.getPreviewEventPhoto(item.id).then(eventPreviewImage => {
@@ -69,8 +67,8 @@ const EventCard = props => {
         className={classes.cardCanceled}
         style={{
           backgroundColor:
-            eventStatus === eventStatusEnum.Blocked ? "gold" : "",
-          opacity: eventStatus === eventStatusEnum.Canceled ? 0.5 : 1,
+            eventStatus === EVENT_STATUS_ENUM.BLOCKED ? "gold" : "",
+          opacity: eventStatus === EVENT_STATUS_ENUM.CANCELED ? 0.5 : 1,
         }}
       >
         <EventHeader
@@ -93,7 +91,7 @@ const EventCard = props => {
         {maxParticipants && (
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
-              {countVisitor}/{maxParticipants} {EventItemConstants.PARTICIPANTS}
+              {countVisitor}/{maxParticipants} {EVENT_ITEM_CONSTANTS.PARTICIPANTS}
             </Typography>
           </CardContent>
         )}
@@ -153,7 +151,7 @@ const EventCard = props => {
                   </IconButton>
                 </Tooltip>
               )}
-              <AuthComponent rolesMatch={Roles.Admin}>
+              <AuthComponent rolesMatch={ROLES.ADMIN}>
                 <EventActiveStatus
                   key={item.id + item.eventStatus}
                   eventStatus={item.eventStatus}

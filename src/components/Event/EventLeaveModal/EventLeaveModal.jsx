@@ -7,13 +7,13 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import PropTypes from "prop-types";
-import leaveModal from "../../../constants/eventLeaveModalConstants";
+import {LEAVE_MODAL} from "../../../constants/eventConstants";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const { LEAVE, EXIT_EVENT, ALERT_LEAVE_EVENT, AGREE, DISAGREE } = leaveModal;
+const { LEAVE, EXIT_EVENT, ALERT_LEAVE_EVENT, AGREE, DISAGREE } = LEAVE_MODAL;
 const EventLeaveModal = props => {
   const [open, setOpen] = useState(false);
 

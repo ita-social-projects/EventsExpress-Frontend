@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
 import { renderTextField, renderTextArea } from "../helpers/form-helpers";
-import issueTypeEnum from "../../constants/issueTypeEnumConstants";
+import {ISSUE_TYPE_ENUM} from "../../constants/issueConstants";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import isValidEmail from "../helpers/validators/email-address-validator";
 import { maxLength30 } from "../helpers/validators/min-max-length-validators";
@@ -59,15 +59,15 @@ class ContactAdmin extends PureComponent {
                 component="select"
                 parse={value => Number(value)}
               >
-                <option value={issueTypeEnum.NewCategory}>New Category</option>
-                <option value={issueTypeEnum.BugReport}>Bug Report</option>
-                <option value={issueTypeEnum.BadEvent}>Bad Event</option>
-                <option value={issueTypeEnum.BadUser}>Bad User</option>
-                <option value={issueTypeEnum.Other}>Other</option>
+                <option value={ISSUE_TYPE_ENUM.NEWCATEGORY}>New Category</option>
+                <option value={ISSUE_TYPE_ENUM.BADUSER}>Bug Report</option>
+                <option value={ISSUE_TYPE_ENUM.BADEVENT}>Bad Event</option>
+                <option value={ISSUE_TYPE_ENUM.BADUSER}>Bad User</option>
+                <option value={ISSUE_TYPE_ENUM.OTHER}>Other</option>
               </Field>
 
               {this.props.form_values !== undefined &&
-                this.props.form_values.subject === issueTypeEnum.Other && (
+                this.props.form_values.subject === ISSUE_TYPE_ENUM.OTHER && (
                   <Field
                     name="title"
                     className="form-control"

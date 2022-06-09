@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import DraftEventCard from "./DraftEventCard";
 import RenderList from "../Event/RenderList/RenderList";
 import { changeEventStatus } from "../../actions/event/event-item-view-action";
-import eventStatusEnum from "../../constants/eventStatusEnumConstants";
+import {EVENT_STATUS_ENUM} from "../../constants/eventConstants";
 import { setSuccessAllert } from "../../actions/alert-action";
 
 const history = createBrowserHistory({ forceRefresh: true });
@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => {
   return {
     alert: msg => dispatch(setSuccessAllert(msg)),
     delete: (eventId, reason) =>
-      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Deleted)),
+      dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.DELETED)),
   };
 };
 

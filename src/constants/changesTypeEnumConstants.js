@@ -1,8 +1,20 @@
-const changesTypeEnum = {
-  Undefined: 0,
-  Modified: 1,
-  Created: 2,
-  Deleted: 3,
+export const CHANGES_TYPE_ENUM = {
+  UNDEFINED: 0,
+  MODIFIED: 1,
+  CREATED: 2,
+  DELETED: 3,
 };
 
-export default changesTypeEnum;
+export const FILTER_TYPE_LABELS = {
+  UNDEFINED: "Undefined",
+  MODIFIED: "Modified",
+  CREATED: "Created",
+  DELETED: "Deleted",
+};
+
+export const FILTER_OPTIONS_MAPPER = [
+  { value: CHANGES_TYPE_ENUM.UNDEFINED, text: FILTER_TYPE_LABELS.UNDEFINED },
+  { value: CHANGES_TYPE_ENUM.MODIFIED, text: FILTER_TYPE_LABELS.MODIFIED },
+  { value: CHANGES_TYPE_ENUM.CREATED, text: FILTER_TYPE_LABELS.CREATED },
+  { value: CHANGES_TYPE_ENUM.DELETED, text: FILTER_TYPE_LABELS.DELETED },
+];

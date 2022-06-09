@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import RenderList from "../RenderList/RenderList";
 import EventCard from "../EventItem/EventItem";
 import getQueryStringByFilter from "../../helpers/filterHelper";
-import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
+import {EVENT_STATUS_ENUM} from "../../../constants/eventConstants";
 import {
   resetEvents,
   updateEventsFilters,
@@ -65,9 +65,9 @@ const mapDispatchToProps = dispatch => {
     resetEvents: () => dispatch(resetEvents()),
     updateEventsFilters: filter => dispatch(updateEventsFilters(filter)),
     onBlock: (eventId, reason) =>
-      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Blocked)),
+      dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.BLOCKED)),
     onUnBlock: (eventId, reason) =>
-      dispatch(changeEventStatus(eventId, reason, eventStatusEnum.Active)),
+      dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.ACTIVE)),
   };
 };
 

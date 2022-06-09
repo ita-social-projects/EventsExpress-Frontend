@@ -6,14 +6,14 @@ import moment from "moment";
 import IconsEventCard from "../../EventCard/IconsEventCard/IconsEventCard";
 import "./EventListCard.scss";
 import PhotoService from "../../../../services/PhotoService";
-import eventDefaultImage from "../../../../constants/eventDefaultImageConstants";
+import {EVENT_DEFAULT_IMAGE} from "../../../../constants/eventConstants";
 
 const EventListCard = ({ event }) => {
   const { id, title, description, location, dateFrom } = event;
   const ovner = event.organizers[0].username;
 
   const photoService = useMemo(() => new PhotoService(), []);
-  const [eventImage, setEventImage] = useState(eventDefaultImage);
+  const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
 
   useEffect(() => {
     // TODO move to service and call from action

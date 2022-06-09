@@ -12,7 +12,7 @@ import useStyles from "./CardStyleConst";
 import SelectiveForm from "./SelectiveForm";
 // import "../Layout/Colorlib.scss";
 import getEvent from "../../actions/event/event-item-view-action";
-import eventDefaultImage from "../../constants/eventDefaultImageConstants";
+import {EVENT_DEFAULT_IMAGE} from "../../constants/eventConstants";
 import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();
@@ -22,7 +22,7 @@ class EventScheduleItemView extends Component {
     super(props);
 
     this.state = {
-      eventImage: eventDefaultImage,
+      eventImage: EVENT_DEFAULT_IMAGE,
     };
   }
 

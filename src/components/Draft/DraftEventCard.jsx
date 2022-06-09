@@ -18,7 +18,7 @@ import "./EventItem.scss";
 import useStyle from "../Event/CardStyle/CardStyle";
 import SimpleModalWithDetails from "../helpers/simple-modal-with-details";
 import PhotoService from "../../services/PhotoService";
-import eventDefaultImage from "../../constants/eventDefaultImageConstants";
+import {EVENT_DEFAULT_IMAGE} from "../../constants/eventConstants";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();
@@ -28,7 +28,7 @@ export default class DraftEventCard extends Component {
     super(props);
 
     this.state = {
-      eventImage: eventDefaultImage,
+      eventImage: EVENT_DEFAULT_IMAGE,
     };
   }
 
