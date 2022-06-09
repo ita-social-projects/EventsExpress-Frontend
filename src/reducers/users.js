@@ -12,20 +12,21 @@ import {
   changeUserRoleStates,
 } from "../actions/user/user-action";
 
-const reducer = (state = initialState.users, action) => {
-  switch (action.type) {
+const reducer = (state = initialState.users, { payload, type }) => {
+  switch (type) {
     case GET_USERS_DATA:
       return {
         ...state,
-        data: action.payload,
+        items: payload.items,
+        pageViewModel: payload.pageViewModel,
       };
     case RESET_USERS:
       return initialState.users;
 
     case blockUserStates.UPDATE: {
       const newState = { ...state };
-      newState.data.items = state.data.items.map(item => {
-        if (item.id === action.payload) {
+      newState.items = state.items.map(item => {
+        if (item.id === payload) {
           const updatedItem = item;
           updatedItem.isBlocked = true;
           return updatedItem;
@@ -37,8 +38,8 @@ const reducer = (state = initialState.users, action) => {
 
     case unBlockUserStates.UPDATE: {
       const newState = { ...state };
-      newState.data.items = state.data.items.map(item => {
-        if (item.id === action.payload) {
+      newState.items = state.items.map(item => {
+        if (item.id === payload) {
           const updatedItem = item;
           updatedItem.isBlocked = false;
           return updatedItem;
@@ -51,16 +52,16 @@ const reducer = (state = initialState.users, action) => {
     case changeUserRoleStates.SET_EDITED: {
       return {
         ...state,
-        editedUser: action.payload,
+        editedUser: payload,
       };
     }
 
     case changeUserRoleStates.UPDATE: {
       const newState = { ...state };
-      newState.data.items = state.data.items.map(item => {
-        if (item.id === action.payload.userId) {
+      newState.items = state.items.map(item => {
+        if (item.id === payload.userId) {
           const updatedItem = item;
-          updatedItem.roles = action.payload.newRoles;
+          updatedItem.roles = payload.newRoles;
           return updatedItem;
         }
         return item;
@@ -71,21 +72,21 @@ const reducer = (state = initialState.users, action) => {
     case CHANGE_USERS_FILTER: {
       return {
         ...state,
-        userSearchFilter: action.payload,
+        userSearchFilter: payload,
       };
     }
 
     case GET_USERS_COUNT: {
       return {
         ...state,
-        count: action.payload,
+        count: payload,
       };
     }
 
     case CHANGE_STATUS: {
       return {
         ...state,
-        status: action.payload,
+        status: payload,
       };
     }
 

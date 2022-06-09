@@ -56,10 +56,8 @@ const initialState = {
     count: null,
     editedUser: null,
     userSearchFilter: null,
-    data: {
-      items: [],
-      pageViewModel: {},
-    },
+    items: [],
+    pageViewModel: {},
   },
   comments: {
     data: {

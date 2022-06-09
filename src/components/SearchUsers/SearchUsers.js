@@ -28,7 +28,7 @@ const SearchUsers = ({
   const {
     items,
     pageViewModel: { totalPages, pageNumber },
-  } = users.data;
+  } = users;
 
   const getUsers = pageToGetUsers => getSearchUsersDispatch(pageToGetUsers);
 
@@ -45,13 +45,13 @@ const SearchUsers = ({
     push(`${pathname}?keyWord=${search}&page=${page}`);
   }, [page]);
 
-  const runSearch = value => {
-    setSearch(value);
-  };
-
   const resetFilter = () => {
     push(pathname);
     resetFiltersDispatch();
+  };
+
+  const runSearch = value => {
+    setSearch(value);
   };
 
   const handleChangePage = (event, value) => {
@@ -69,7 +69,7 @@ const SearchUsers = ({
         />
       </div>
 
-      <SpinnerWrapper showContent={users.data}>
+      <SpinnerWrapper showContent={users}>
         <UserItemList
           users={items}
           page={pageNumber}
