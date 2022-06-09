@@ -5,15 +5,16 @@ import { MEMBERS_TITLE } from "../../../constants/AboutUs";
 import "./Members.scss";
 import SpinnerWrapper from "../../../containers/spinner";
 
-const Members = ({ members, loading, error, getMembers }) => {
+const Members = ({ members, hasMembers, showContent, getMembers }) => {
   useEffect(() => {
-    if (members.length === 0) {
+    if (!hasMembers) {
       getMembers();
     }
-  }, [members, getMembers]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <SpinnerWrapper showContent={!loading || !error}>
+    <SpinnerWrapper showContent={showContent}>
       <div className="about-members">
         <h3 className="members-title">{MEMBERS_TITLE}</h3>
         <div className="members-container">
@@ -28,16 +29,16 @@ const Members = ({ members, loading, error, getMembers }) => {
 
 Members.defaultProps = {
   members: [],
-  loading: false,
-  error: null,
+  hasMembers: false,
+  showContent: false,
   getMembers: () => {},
 };
 
 Members.propTypes = {
   getMembers: PropTypes.func,
   members: PropTypes.array,
-  loading: PropTypes.bool,
-  error: PropTypes.string,
+  hasMembers: PropTypes.bool,
+  showContent: PropTypes.bool,
 };
 
 export default Members;
