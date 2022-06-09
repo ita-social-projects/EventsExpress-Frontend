@@ -1,11 +1,16 @@
-import initialState from "../../store/initialState";
 import {
   GET_MEMBERS_PENDING,
   GET_MEMBERS_SUCCESS,
   GET_MEMBERS_ERROR,
 } from "../../actions/aboutUs/membersActionstypes";
 
-const aboutUsReducer = (state = initialState.aboutUs, action) => {
+const aboutUsInitalState = {
+  members: [],
+  loading: false,
+  error: null,
+};
+
+const aboutUsReducer = (state = aboutUsInitalState, action) => {
   switch (action.type) {
     case GET_MEMBERS_PENDING:
       return { ...state, loading: true };

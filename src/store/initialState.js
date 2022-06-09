@@ -1,11 +1,6 @@
 import filterHelper from "../components/helpers/filterHelper";
 
 const initialState = {
-  aboutUs: {
-    members: [],
-    loading: false,
-    error: null,
-  },
   requestCount: {
     counter: 0,
   },
