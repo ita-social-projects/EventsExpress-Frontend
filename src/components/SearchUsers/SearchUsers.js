@@ -30,7 +30,7 @@ const SearchUsers = ({
     pageViewModel: { totalPages, pageNumber },
   } = users.data;
 
-  const getUsers = folio => getSearchUsersDispatch(folio);
+  const getUsers = pageToGetUsers => getSearchUsersDispatch(pageToGetUsers);
 
   useEffect(() => {
     push(`${pathname}?keyWord=${search}`);
