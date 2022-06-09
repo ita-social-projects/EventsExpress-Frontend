@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LogoViolet from "../../../assets/icons/LogoViolet.png";
-import "./Logo.scss";
+import "./logo.scss";
 
 const Logo = () => (
   <Link to="/landing" className="logo">
