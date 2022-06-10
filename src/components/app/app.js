@@ -11,7 +11,7 @@ import Profile from "../profile";
 import UserItemViewWrapper from "../../containers/user-item-view";
 import EventItemViewWrapper from "../../containers/event-item-view";
 import EventScheduleViewWrapper from "../../containers/event-Schedule-item-view";
-import EventSchedulesListWrapper from "../../containers/eventSchedules-list";
+import EventSchedulesListWrapper from "../../containers/eventSchedulesList";
 import Layout from "../layout";
 import SearchUserWrapper from "../../containers/UserSearchWrapper";
 import NotFound from "../Route guard/404";
