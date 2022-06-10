@@ -24,6 +24,7 @@ const EventListCard = ({ event }) => {
     return () => {
       URL.revokeObjectURL(eventImage);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

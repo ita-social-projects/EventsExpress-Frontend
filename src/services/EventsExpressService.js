@@ -32,7 +32,6 @@ export default class EventsExpressService {
         },
       });
     const res = await call(url);
-    console.log("RESHEADER", res.headers);
     if (res.ok) {
       return res.blob();
     }

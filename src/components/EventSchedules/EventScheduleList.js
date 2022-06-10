@@ -8,6 +8,7 @@ import NoResult from "../shared/NoResult/NoResult";
 const EventSchedulesList = ({ currentUser, dataList, getEvents, loaded }) => {
   useEffect(() => {
     getEvents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="container">

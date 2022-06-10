@@ -27,6 +27,7 @@ const EventSchedule = ({ item }) => {
       }
     });
     return () => URL.revokeObjectURL(eventImage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const classes = useStyles;
   const { id, frequency, periodicity, lastRun, nextRun, title, eventId } = item;

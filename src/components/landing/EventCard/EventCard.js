@@ -23,6 +23,7 @@ const EventCard = ({ event }) => {
     return () => {
       URL.revokeObjectURL(eventImage);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="event-card">
