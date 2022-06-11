@@ -72,19 +72,6 @@ Array [
        
     </button>
   </label>,
-  <label
-    className="join-to-event__icon join-to-event-list"
-    htmlFor="joinToEvent"
-  >
-    <button
-      id="joinToEvent"
-      name="joinToEvent"
-      onClick={[Function]}
-      type="button"
-    >
-       
-    </button>
-  </label>,
   ",",
 ]
 `;
@@ -104,19 +91,6 @@ Array [
        
     </button>
   </label>,
-  <label
-    className="join-to-event__icon join-to-event-matrix"
-    htmlFor="joinToEvent"
-  >
-    <button
-      id="joinToEvent"
-      name="joinToEvent"
-      onClick={[Function]}
-      type="button"
-    >
-       
-    </button>
-  </label>,
   ",",
 ]
 `;
@@ -130,19 +104,6 @@ Array [
     <button
       id="favorite"
       name="favorite"
-      onClick={[Function]}
-      type="button"
-    >
-       
-    </button>
-  </label>,
-  <label
-    className="join-to-event__icon join-to-event-slider"
-    htmlFor="joinToEvent"
-  >
-    <button
-      id="joinToEvent"
-      name="joinToEvent"
       onClick={[Function]}
       type="button"
     >
