@@ -22,7 +22,6 @@
 		"globalize": "1.4.2",
 		"history": "^5.2.0",
 		"jquery": "3.5.1",
-		"json-server": "^0.17.0",
 		"jsonwebtoken": "8.5.1",
 		"leaflet": "1.7.1",
 		"luxon": "^2.3.0",
@@ -121,9 +120,8 @@
 		"lint": "eslint src --ext .js,.jsx",
 		"lint:fix": "eslint src --fix --ext .js,.jsx",
 		"prepare": "husky install",
-		"husky:pre-commit": "lint-staged",
-		"aboutMembers:mockup": "json-server --watch .\\src\\mockup-db\\aboutUsMembers.json --port 8000"
-	},
+		"husky:pre-commit": "lint-staged"
+		},
 	"lint-staged": {
 		"*.{js,jsx}": [
 			"eslint --cache --fix",
