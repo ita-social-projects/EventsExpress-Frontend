@@ -14,10 +14,10 @@ const Member = ({ name, age, img, description }) => (
 );
 
 Member.defaultProps = {
-  name: ``,
+  name: `Anonymous`,
   img: ``,
   description: ``,
-  age: 18,
+  age: 6,
 };
 
 Member.propTypes = {
