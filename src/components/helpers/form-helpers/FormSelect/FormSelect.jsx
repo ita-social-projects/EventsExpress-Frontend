@@ -2,24 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./FormSelect.scss";
 
-function FormSelect(props) {
-  const {
-    input: { value, onChange },
-    className,
-    children,
-    ...restProps
-  } = props;
-  return (
-    <select
-      value={value}
-      onChange={onChange}
-      {...restProps}
-      className={`form-select ${className}`}
-    >
-      {children}
-    </select>
-  );
-}
+const FormSelect = ({
+  input: { value, onChange },
+  className,
+  children,
+  ...restProps
+}) => (
+  <select
+    value={value}
+    onChange={onChange}
+    {...restProps}
+    className={`form-select ${className}`}
+  >
+    {children}
+  </select>
+);
 
 FormSelect.defaultProps = {
   children: {},

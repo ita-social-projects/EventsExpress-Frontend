@@ -1,39 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./FormInput.scss";
+import "./FormTextArea.scss";
 
-const FormInput = ({
+const FormTextarea = ({
   input: { value, onChange, onBlur },
   className,
-  meta: { error, touched, invalid },
+  meta: { error, touched },
   ...restProps
 }) => (
-  <div className="form-group__input">
-    <input
+  <div className="form-group__textarea">
+    <textarea
       value={value}
       onChange={onChange}
       onBlur={onBlur}
-      className={`form-input ${className} ${
-        invalid && touched ? " form-input__error" : ""
+      className={`form-textarea ${className} ${
+        error && touched ? " form-textarea__error" : ""
       }`}
       {...restProps}
     />
-    {invalid && touched && <div className="form-error">{error}</div>}
+    {error && touched && <div className="form-error">{error}</div>}
   </div>
 );
 
-FormInput.defaultProps = {
+FormTextarea.defaultProps = {
   className: "",
   placeholder: "",
   input: {},
   meta: {
     error: "",
     touched: false,
-    invalid: true,
   },
 };
 
-FormInput.propTypes = {
+FormTextarea.propTypes = {
   className: PropTypes.string,
   placeholder: PropTypes.string,
   input: PropTypes.shape({
@@ -44,8 +43,7 @@ FormInput.propTypes = {
   meta: PropTypes.shape({
     error: PropTypes.string,
     touched: PropTypes.bool,
-    invalid: PropTypes.bool,
   }),
 };
 
-export default FormInput;
+export default FormTextarea;

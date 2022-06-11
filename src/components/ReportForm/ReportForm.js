@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Field } from "react-final-form";
 import FormInput from "../helpers/form-helpers/FormInput/FormInput";
 import FormSelect from "../helpers/form-helpers/FormSelect/FormSelect";
-import FormTextarea from "../helpers/form-helpers/FormTextarea/FormTextarea";
+import FormTextArea from "../helpers/form-helpers/FormTextArea/FormTextArea";
 import {
   ISSUES_TYPES_ENUM,
   ISSUES_TYPES,
@@ -53,7 +53,7 @@ const ReportForm = ({ handleSubmit, pristine, submitting, form, values }) => (
       name="description"
       placeholder={REPORT_FORM_DESCRIPTION_PLACEHOLDER}
       className="problem-description"
-      component={FormTextarea}
+      component={FormTextArea}
     />
 
     <div className="buttons">
