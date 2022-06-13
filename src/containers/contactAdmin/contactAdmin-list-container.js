@@ -7,7 +7,10 @@ import { parse as queryStringParse } from "query-string";
 import ContactAdminList from "../../components/contactAdmin/contactAdmin-list-component";
 import SpinnerWrapper from "../spinner";
 import getIssues from "../../actions/contactAdmin/contact-admin-list-action";
-import filterHelper from "../../components/helpers/filterHelper";
+import {
+  getQueryStringByFilter,
+  trimUndefinedKeys,
+} from "../../components/helpers/filterHelper/filterHelper";
 
 class ContactAdminListWrapper extends Component {
   constructor(props) {
@@ -20,9 +23,7 @@ class ContactAdminListWrapper extends Component {
     this.setSearchParamsToContactAdminFilter(
       this.props.history.location.search,
     );
-    const queryString = filterHelper.getQueryStringByFilter(
-      this.objCurrentQueryParams,
-    );
+    const queryString = getQueryStringByFilter(this.objCurrentQueryParams);
     this.props.getIssues(queryString);
   }
 
@@ -40,7 +41,7 @@ class ContactAdminListWrapper extends Component {
     Object.entries(this.objCurrentQueryParams).forEach(([key, value]) => {
       filterCopy[key] = value;
     });
-    this.objCurrentQueryParams = filterHelper.trimUndefinedKeys(filterCopy);
+    this.objCurrentQueryParams = trimUndefinedKeys(filterCopy);
   };
 
   render() {

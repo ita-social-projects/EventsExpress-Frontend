@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 import DraftList from "../components/Draft/Draft-list";
 import SpinnerWrapper from "./spinner";
 import { getDrafts, resetEvents } from "../actions/event/event-list-action";
-import filterHelper from "../components/helpers/filterHelper";
+import {
+  trimUndefinedKeys,
+  compareObjects,
+} from "../components/helpers/filterHelper/filterHelper";
 
 class EventDraftListWrapper extends Component {
   constructor(props) {
@@ -17,19 +20,14 @@ class EventDraftListWrapper extends Component {
   }
 
   componentDidUpdate() {
-    const objFilterParams = filterHelper.trimUndefinedKeys(
-      this.props.events.filter,
-    );
+    const objFilterParams = trimUndefinedKeys(this.props.events.filter);
     if (this.hasUpdateSearchParams(objFilterParams)) {
       this.objCurrentQueryParams = objFilterParams;
     }
   }
 
   hasUpdateSearchParams = objFilterParams => {
-    return !filterHelper.compareObjects(
-      objFilterParams,
-      this.objCurrentQueryParams,
-    );
+    return !compareObjects(objFilterParams, this.objCurrentQueryParams);
   };
 
   render() {

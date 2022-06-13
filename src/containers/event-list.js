@@ -7,7 +7,10 @@ import { withRouter } from "react-router-dom";
 import EventList from "../components/event/EventList/Event-list";
 import SpinnerWrapper from "./spinner";
 import { getEvents } from "../actions/event/event-list-action";
-import filterHelper from "../components/helpers/filterHelper";
+import {
+  getQueryStringByFilter,
+  trimUndefinedKeys,
+} from "../components/helpers/filterHelper/filterHelper";
 
 class EventListWrapper extends Component {
   constructor(props) {
@@ -18,9 +21,7 @@ class EventListWrapper extends Component {
 
   componentDidMount() {
     this.setSearchParamsToEventFilter(this.props.history.location.search);
-    const queryString = filterHelper.getQueryStringByFilter(
-      this.objCurrentQueryParams,
-    );
+    const queryString = getQueryStringByFilter(this.objCurrentQueryParams);
     this.props.getEvents(queryString);
   }
 
@@ -41,7 +42,7 @@ class EventListWrapper extends Component {
     ]) {
       filterCopy[key] = value;
     });
-    this.objCurrentQueryParams = filterHelper.trimUndefinedKeys(filterCopy);
+    this.objCurrentQueryParams = trimUndefinedKeys(filterCopy);
   };
 
   render() {

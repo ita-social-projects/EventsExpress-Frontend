@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import RenderList from "../RenderList/RenderList";
 import EventCard from "../EventItem/Event-item";
-import getQueryStringByFilter from "../../helpers/filterHelper";
+import { getQueryStringByFilter } from "../../helpers/filterHelper/filterHelper";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
 import {
   resetEvents,
