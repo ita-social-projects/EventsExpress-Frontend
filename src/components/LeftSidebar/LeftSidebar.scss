@@ -1,0 +1,164 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/fonts.scss";
+
+$sidebarWidth: 50px;
+$sidebarOffset: 5px;
+
+@media (min-width: $mediaMobileScreen) {
+  .sidebar-menu {
+    z-index: 99999;
+    width: fit-content;
+    position: fixed;
+    top: $height50;
+    transform: translateY(-$height50);
+    margin-left: 5px;
+    list-style: none;
+    .left-sidebar__item {
+      position: relative;
+      font-size: $fontsize-20;
+
+      @include flex(row, center, center);
+      padding: 15px;
+      background-color: $purpleDark;
+      width: $sidebarWidth;
+      transition: transform $defaultTransition;
+      transform: translateX(-$sidebarWidth - $sidebarOffset);
+
+      .item__page-name {
+        display: none;
+        width: max-content;
+        padding: 0px 5px;
+        border-radius: 5px;
+        background-color: $black;
+        position: absolute;
+        left: calc($fullWidth + $sidebarOffset);
+        top: $height50;
+        transform: translateY(-$height50);
+        transition: $defaultTransition;
+        opacity: $opacity0;
+      }
+
+      &:hover {
+        .item__page-name {
+          opacity: $opacity1;
+        }
+      }
+
+      .left-sidebar__link {
+        color: $white;
+        text-decoration: none;
+        font-size: $fontsize-16;
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+
+    .toggle {
+      all: unset;
+      @include flex(row, center, center);
+      margin-bottom: 10px;
+      cursor: pointer;
+      background-color: $purpleDark;
+      border-radius: 5px;
+
+      .toggle-btn {
+        cursor: pointer;
+        padding: 15px;
+        color: $white;
+        text-decoration: none;
+        font-weight: $bold;
+        font-size: $fontsize-16;
+      }
+    }
+  }
+
+  .sidebar-menu.active {
+    .left-sidebar__item {
+      transform: translateX(0);
+
+      .item__page-name {
+        display: flex;
+      }
+    }
+  }
+}
+
+@media (max-width: $mediaMobileScreen) {
+  .sidebar-menu {
+    z-index: 9999;
+    position: fixed;
+    bottom: 50px;
+    margin-left: $sidebarOffset;
+    @include flex(row, center, center);
+    list-style: none;
+    .left-sidebar__item {
+      position: relative;
+      font-size: $fontsize-16;
+      @include flex(row, center, center);
+      width: $sidebarWidth;
+      transition: transform $defaultTransition;
+      opacity: $opacity0;
+      transition: opacity $defaultTransition;
+      .item__page-name {
+        display: none;
+      }
+    }
+    .toggle {
+      all: unset;
+      width: $sidebarWidth;
+      background-color: $purpleDark;
+      @include flex(row, center, center);
+      border-radius: $borderRound;
+      font-size: $fontsize-20;
+      .toggle-btn {
+        width: $fullWidth;
+        padding: 15px 0;
+        cursor: pointer;
+        color: $white;
+        text-decoration: none;
+        font-size: $fontsize-16;
+      }
+    }
+  }
+
+  .sidebar-menu.active {
+    background-color: $purpleDark;
+    margin-left: 0;
+    clip-path: circle($width50);
+    transition: $defaultTransition;
+    width: $fullWidth;
+    height: $absoluteHeight100;
+    top: $height50;
+    transform: translateY(-$height50);
+    @include flex(column, center, center);
+    .toggle-btn > svg {
+      color: $white;
+      font-size: $fontsize-20;
+    }
+    .left-sidebar__item {
+      opacity: $opacity1;
+      display: flex;
+      padding: 15px 0;
+      width: max-content;
+      .left-sidebar__link {
+        @include flex(row, center, center);
+        color: $white;
+        font-size: $fontsize-20;
+        text-decoration: none;
+        &:hover {
+          .item__page-name {
+            letter-spacing: 2px;
+          }
+        }
+      }
+      .item__page-name {
+        display: flex;
+        margin-left: 10px;
+        transition: $defaultTransition;
+      }
+    }
+  }
+}
