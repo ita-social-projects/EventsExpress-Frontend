@@ -1,9 +1,4 @@
 import { stringify as queryStringStringify } from "query-string";
-import { isEqual } from "lodash";
-
-export const isObject = object => object !== null && typeof object === "object";
-
-export const compareObjects = (obj1, obj2) => isEqual(obj1, obj2);
 
 export const getQueryStringByFilter = filter =>
   `?${queryStringStringify(filter, { arrayFormat: "index" })}`;

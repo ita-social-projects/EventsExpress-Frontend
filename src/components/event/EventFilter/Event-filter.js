@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { compareObjects } from "lodash";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
@@ -9,7 +10,6 @@ import {
   renderMultiselect,
   parseEuDate,
 } from "../../helpers/form-helpers";
-import filterHelper from "../../helpers/filterHelper";
 import EventMapModal from "../MapModal/Map-modal";
 import DisplayMap from "../map/display-map";
 import eventStatusEnum from "../../../constants/eventStatusEnum";
@@ -44,10 +44,7 @@ class EventFilter extends Component {
     const { initialValues } = this.props;
 
     if (
-      !filterHelper.compareObjects(
-        initialValues,
-        prevProps.initialFormValues,
-      ) ||
+      !compareObjects(initialValues, prevProps.initialFormValues) ||
       this.state.needInitializeValues
     ) {
       this.props.initialize({

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import { compareObjects } from "lodash";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
 import { MultiCheckbox, renderDatePicker } from "../helpers/form-helpers";
 import parseEuDate from "../helpers/form-helpers/parseEuDate";
-import { compareObjects } from "../helpers/filterHelper/filterHelper";
 import "./contactAdmin-filter.css";
 import issueStatusEnum from "../../constants/issue-status-enum";
 
