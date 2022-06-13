@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import userViewAttitude from "../../helpers/userViewUtils";
 import CustomAvatar from "../../avatar/custom-avatar";
 import "./UserView.css";
-import getAge from "../../helpers/get-age-string";
+import getAge from "../../helpers/userAgeHelper/getUserAge";
 import USER_VIEW_LABELS from "../../../constants/userViewConstants";
 
 const { AGE, YOU, THIS_USER } = USER_VIEW_LABELS;

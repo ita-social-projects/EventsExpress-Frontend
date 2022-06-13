@@ -1,5 +1,2 @@
-const LABELS = {
-  NOT_SPECIFIED: "Not Specified",
-};
-
-export default LABELS;
+// eslint-disable-next-line import/prefer-default-export
+export const NOT_SPECIFIED = "Not Specified";

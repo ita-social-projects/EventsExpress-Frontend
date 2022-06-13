@@ -15,7 +15,7 @@ import RatingAverage from "../rating/rating-average";
 import "./User-profile.css";
 import Events from "./events";
 import AuthComponent from "../../security/authComponent";
-import getAge from "../helpers/get-age-string";
+import getAge from "../helpers/userAgeHelper/getUserAge";
 import indexToTabName from "../../constants/indexToTabName";
 
 class UserItemView extends Component {

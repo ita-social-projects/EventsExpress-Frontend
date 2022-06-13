@@ -2,11 +2,11 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import genders from "../../constants/GenderConstants";
-import LABELS from "../../constants/LabelsConstants";
+import { NOT_SPECIFIED } from "../../constants/LabelsConstants";
 import { ATTITUDE_TYPES } from "../../constants/UserAttitudeConstants";
 import CustomAvatar from "../avatar/custom-avatar";
 import RatingAverage from "../rating/rating-average";
-import defineUserAge from "../helpers/defineUserAge";
+import getAge from "../helpers/userAgeHelper/getUserAge";
 import getAttitudeToUser from "../helpers/getAttitudeToUser";
 import AttitudeToolTip from "./AttitudeToolTip/AttitudeToolTip";
 import "./UserInfoCard.scss";
@@ -14,8 +14,8 @@ import "./UserInfoCard.scss";
 const UserInfoCard = ({ id, username, gender, birthday, rating, attitude }) => {
   const attitudeToUser = getAttitudeToUser(attitude);
   const linkToUser = `/user/${id}`;
-  const userAge = defineUserAge(birthday);
-  const userGender = genders[gender] || LABELS.NOT_SPECIFIED;
+  const userAge = getAge(birthday);
+  const userGender = genders[gender] || NOT_SPECIFIED;
 
   return (
     <div className={`user_info_card ${attitudeToUser.bg}`}>
