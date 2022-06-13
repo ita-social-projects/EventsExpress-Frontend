@@ -7,7 +7,7 @@ import { ATTITUDE_TYPES } from "../../constants/UserAttitudeConstants";
 import CustomAvatar from "../avatar/custom-avatar";
 import RatingAverage from "../rating/rating-average";
 import getAge from "../helpers/userAgeHelper/getUserAge";
-import getAttitudeToUser from "../helpers/getAttitudeToUser";
+import getAttitudeToUser from "../helpers/attitudeToUserHelper/getAttitudeToUser";
 import AttitudeToolTip from "./AttitudeToolTip/AttitudeToolTip";
 import "./UserInfoCard.scss";
 
