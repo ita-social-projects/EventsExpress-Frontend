@@ -29,11 +29,6 @@ export const SIDEBAR_LIST_ITEMS = [
         faviconIconClass: "fa fa-clone",
         pageName: "Recurrent Events",
       },
-      {
-        link: "/contactAdmin",
-        faviconIconClass: "fa fa-exclamation-circle",
-        pageName: "Contact us",
-      },
     ],
   },
   {

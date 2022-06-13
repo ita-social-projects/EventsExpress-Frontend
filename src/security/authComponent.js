@@ -1,24 +1,11 @@
-import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-class AuthComponent extends Component {
-  render() {
-    const { id, roles, rolesMatch, children, onlyAnonymous } = this.props;
-    if (rolesMatch) {
-      if (id && roles[0] === rolesMatch) {
-        return children;
-      }
-    } else if (onlyAnonymous) {
-      if (!id) {
-        return children;
-      }
-    } else if (id) {
-      return children;
-    }
-    return <> </>;
-  }
-}
+const AuthComponent = ({ id, roles, rolesMatch, children, onlyAnonymous }) =>
+  (rolesMatch && id && roles[0] === rolesMatch) || (!onlyAnonymous && !id) || id
+    ? children
+    : null;
+
 AuthComponent.propTypes = {
   id: PropTypes.string,
   roles: PropTypes.array,
