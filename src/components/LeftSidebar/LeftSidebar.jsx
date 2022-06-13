@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { ImCross } from "react-icons/im";
-import LeftSidebarListItem from "../NavItem/LeftSidebarListItem";
-import { SIDEBAR_LIST_ITEMS } from "../../constants/leftSidebarConstants";
 import "./LeftSidebar.scss";
+import LeftSidebarItemsSecurity from "./LeftSidebarItems/LeftSidebarItemsSecurity";
 
-const LeftSidebar = () => {
+const LeftSidebar = ({ user, msgForRead }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const handleSidebarToggle = () => {
     setSidebarOpen(!sidebarOpen);
@@ -22,17 +22,23 @@ const LeftSidebar = () => {
           {sidebarOpen ? <ImCross /> : <AiOutlineArrowRight />}
         </button>
       </li>
-      {SIDEBAR_LIST_ITEMS.map(item => (
-        <LeftSidebarListItem
-          key={item.pageName}
-          link={item.link}
-          faviconIconClass={item.faviconIconClass}
-          pageName={item.pageName}
-          handleSidebarToggle={handleSidebarToggle}
-        />
-      ))}
+      <LeftSidebarItemsSecurity
+        user={user}
+        msgForRead={msgForRead}
+        handleSidebarToggle={handleSidebarToggle}
+      />
     </ul>
   );
+};
+
+LeftSidebar.defaultProps = {
+  user: {},
+  msgForRead: () => {},
+};
+
+LeftSidebar.propTypes = {
+  user: PropTypes.object,
+  msgForRead: PropTypes.func,
 };
 
 export default LeftSidebar;
