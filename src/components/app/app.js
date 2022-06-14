@@ -31,7 +31,7 @@ import Forbidden from "../Route guard/403";
 import withAuthRedirect from "../../security/withAuthRedirect";
 import AuthUser from "../../actions/login/auth-user-action";
 import getConfig from "../../actions/config/get-config-action";
-import RegistrationForm from "../RegistrationForm";
+import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import MainLayout from "../MainLayout";
 import AboutUs from "../AboutUs/AboutUs";
 import SplitPanels from "../SplitPanels/SplitPanels";

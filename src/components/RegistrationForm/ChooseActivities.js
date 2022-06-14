@@ -8,6 +8,7 @@ import getCategories from "../../actions/category/category-list-action";
 import { TileGroup } from "../../containers/TileGroup";
 
 const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
+  console.log("Choose Activities");
   useEffect(() => {
     props.getCategoryGroups();
     props.getCategories();

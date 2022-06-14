@@ -3,7 +3,7 @@ import "./CheckMarkAnimation.css";
 import { Button, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-export class Success extends PureComponent {
+class Success extends PureComponent {
   render() {
     return (
       <>

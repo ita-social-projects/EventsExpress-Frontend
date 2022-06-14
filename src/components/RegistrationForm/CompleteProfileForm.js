@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Button } from "@material-ui/core";
-import { reduxForm, Field, getFormValues } from "redux-form";
+import { reduxForm, Field } from "redux-form";
 import moment from "moment";
 import PropTypes from "prop-types";
 import {
@@ -28,7 +28,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
             <Grid item sm={9}>
               <ChangeAvatarWrapper />
             </Grid>
-            <Grid item sm={0} />
+            <Grid item sm={1} />
 
             <Grid item sm={12} />
 
@@ -95,7 +95,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
               </Field>
             </Grid>
 
-            <Grid item sm={12} justify="space-around">
+            <Grid item sm={12} justifyContent="space-around">
               <Button
                 type="submit"
                 className="next"
@@ -121,13 +121,13 @@ CompleteProfileForm.propTypes = {
   handleSubmit: PropTypes.func,
 };
 
-const mapStateToProps = state => {
-  return {
-    formValues: getFormValues("registrationForm")(state),
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     formValues: getFormValues("registrationForm")(state),
+//   };
+// };
 
-export default reduxForm(mapStateToProps, {
+export default reduxForm({
   form: "registrationForm",
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
