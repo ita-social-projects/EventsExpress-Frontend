@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import Badge from "@material-ui/core/Badge";
 
@@ -12,7 +12,8 @@ const LeftSidebarListItem = ({
 }) => {
   return (
     <li className="left-sidebar__item">
-      <Link
+      <NavLink
+        activeClassName="active"
         className="left-sidebar__link"
         to={link}
         onClick={handleSidebarToggle}
@@ -21,7 +22,7 @@ const LeftSidebarListItem = ({
           <i className={`${faviconIconClass} item__icon`} />
         </Badge>
         <span className="item__page-name">{pageName}</span>
-      </Link>
+      </NavLink>
     </li>
   );
 };

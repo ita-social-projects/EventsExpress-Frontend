@@ -18,7 +18,6 @@ $sidebarOffset: 5px;
     .left-sidebar__item {
       position: relative;
       font-size: $fontsize-20;
-
       @include flex(row, center, center);
       padding: 15px;
       background-color: $purpleDark;
@@ -46,12 +45,23 @@ $sidebarOffset: 5px;
         }
       }
 
+      &:first-child {
+        border-radius: 5px 5px 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 5px 5px;
+      }
+
       .left-sidebar__link {
         color: $white;
         text-decoration: none;
         font-size: $fontsize-16;
         &:hover {
           color: $white;
+        }
+        &.active {
+          color: $green;
         }
       }
     }
@@ -153,6 +163,9 @@ $sidebarOffset: 5px;
             letter-spacing: 2px;
           }
         }
+         &.active {
+           color: $green;
+         }
       }
       .item__page-name {
         display: flex;
