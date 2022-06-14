@@ -2,8 +2,8 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
-import CategoryItem from "../../components/category/category-item";
-import CategoryEdit from "../../components/category/category-edit";
+import CategoryItem from "../../components/Category/CategoryItem";
+import CategoryEdit from "../../components/Category/CategoryEdit";
 import addCategory, {
   setCategoryEdited,
 } from "../../actions/category/category-add-action";

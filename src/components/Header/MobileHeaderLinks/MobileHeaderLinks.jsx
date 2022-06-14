@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import {
-  ABOUT_US,
-  CREATE,
-  ENG,
-  EVENTS,
-  LOGIN,
-} from "../../../constants/Header";
+import {HEADER_CONSTS} from "../../../constants/headersConstants";
 import "./MobileHeaderLinks.scss";
 
 const MobileHeaderLinks = ({ setIsMobileHeaderOpen }) => {
   const countOfPixelsForTabletBrainpoint = 768;
-  const headerLinks = [ABOUT_US, EVENTS, CREATE, ENG, LOGIN];
+  const headerLinks = [
+    HEADER_CONSTS.ABOUT_US,
+    HEADER_CONSTS.EVENTS,
+    HEADER_CONSTS.CREATE,
+    HEADER_CONSTS.ENG,
+    HEADER_CONSTS.LOGIN,
+  ];
   const headerLinksUlr = ["/about", "/home/events"];
 
   window.addEventListener("resize", () => {

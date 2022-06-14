@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import LinkedAuths from "../components/profile/editProfile/linked-auths";
+import LinkedAuths from "../components/Profile/EditProfile/LinkedAuths";
 import getLinkedAuths from "../actions/redactProfile/linked-auths-action";
 import {
   GoogleLoginAdd,

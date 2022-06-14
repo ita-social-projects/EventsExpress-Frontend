@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import CategoryList from "../../components/category/category-list";
+import CategoryList from "../../components/Category/CategoryList";
 
 const CategoryListWrapper = ({ data }) => <CategoryList data_list={data} />;
 

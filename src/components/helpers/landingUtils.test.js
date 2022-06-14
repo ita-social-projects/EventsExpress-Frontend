@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import viewModeSwitcher from "./landingUtils";
-import { viewModeTypes } from "../../constants/EventsViewModeConstants";
+import { viewModeTypes } from "../../constants/eventsViewConstants";
 
 const { MATRIX, SLIDER, LIST } = viewModeTypes;
 

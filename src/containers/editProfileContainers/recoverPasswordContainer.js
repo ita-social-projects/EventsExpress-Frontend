@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import RecoverPassword from "../../components/recoverPassword/recoverPassword";
+import RecoverPassword from "../../components/RecoverPassword/RecoverPassword";
 import recoverPassword from "../../actions/redactProfile/password-recover-action";
 
 class RecoverPasswordContainer extends React.Component {

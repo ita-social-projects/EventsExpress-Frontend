@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import CommentList from "../components/comment/comment-list";
+import CommentList from "../components/Comment/CommentList";
 import getComments from "../actions/comment/comment-list-action";
 import LocalSpinnerWrapper from "./local-spinner";
 

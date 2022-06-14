@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getUsers, resetUsers } from "../actions/users/users-action";
-import Users from "../components/users";
+import Users from "../components/Users/Users";
 import SpinnerWrapper from "./spinner";
 import UsersFilterWrapper from "./user-filter";
 

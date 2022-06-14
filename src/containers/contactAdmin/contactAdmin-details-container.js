@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ContactAdminDetails from "../../components/contactAdmin/contactAdmin-details-component";
+import ContactAdminDetails from "../../components/ContactAdmin/ContactAdminDetailsComponent";
 import changeIssueStatus from "../../actions/contactAdmin/contact-admin-issue-status-action";
 import getMessageById from "../../actions/contactAdmin/contact-admin-item-action";
-import issueStatusEnum from "../../constants/issue-status-enum";
+import {ISSUE_STATUS_ENUM} from "../../constants/issueConstants";
 
 class ContactAdminDetailsContainer extends React.Component {
   componentWillMount = () => {
@@ -67,7 +67,7 @@ const mapDispatchToProps = dispatch => {
         changeIssueStatus(
           messageId,
           resolutionDetails,
-          issueStatusEnum.Resolve,
+          ISSUE_STATUS_ENUM.RESOLVE,
         ),
       ),
     inProgress: (messageId, resolutionDetails) =>
@@ -75,7 +75,7 @@ const mapDispatchToProps = dispatch => {
         changeIssueStatus(
           messageId,
           resolutionDetails,
-          issueStatusEnum.InProgress,
+          ISSUE_STATUS_ENUM.INPROGRESS,
         ),
       ),
   };

@@ -4,7 +4,7 @@ import {
   approveUser,
   promoteToOwner,
 } from "../actions/event/event-item-view-action";
-import ApprovedUsersActions from "../components/event/ApprovedUsersAction/ApprovedUsersActions";
+import ApprovedUsersActions from "../components/Event/ApprovedUsersAction/ApprovedUsersActions";
 
 const ApprovedUsersActionsContainer = props => (
   <ApprovedUsersActions props={props} />
