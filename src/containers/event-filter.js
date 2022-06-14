@@ -5,7 +5,11 @@ import { getFormValues, reset } from "redux-form";
 import { withRouter } from "react-router-dom";
 import EventFilter from "../components/event/EventFilter/Event-filter";
 import getСategoriesList from "../actions/category/category-list-action";
-import filterHelper from "../components/helpers/filterHelper";
+import {
+  getDefaultEventFilter,
+  trimUndefinedKeys,
+  getQueryStringByFilter,
+} from "../components/helpers/filterHelper/filterHelper";
 import EventFilterConstants from "../constants/EventFilterConstants";
 
 class EventFilterWrapper extends Component {
@@ -21,10 +25,10 @@ class EventFilterWrapper extends Component {
   onLoadUserDefaults = () => {
     this.props.reset_events();
     const defaultFilter = {
-      ...filterHelper.getDefaultEventFilter(),
+      ...getDefaultEventFilter(),
       categories: this.props.current_user.categories.map(item => item.id),
     };
-    const favoriteFilter = filterHelper.getQueryStringByFilter(defaultFilter);
+    const favoriteFilter = getQueryStringByFilter(defaultFilter);
     this.props.history.push(
       this.props.history.location.pathname +
         this.trimRadiusFromQueryString(favoriteFilter),
@@ -32,7 +36,7 @@ class EventFilterWrapper extends Component {
   };
 
   onSubmit = initialFilters => {
-    const filters = filterHelper.trimUndefinedKeys(initialFilters);
+    const filters = trimUndefinedKeys(initialFilters);
     const filterCopy = { ...this.props.events.filter };
     Object.entries(filters).forEach(([key, value]) => {
       switch (key) {
@@ -61,7 +65,7 @@ class EventFilterWrapper extends Component {
           break;
       }
     });
-    const queryString = filterHelper.getQueryStringByFilter(filterCopy);
+    const queryString = getQueryStringByFilter(filterCopy);
 
     if (filterCopy.x !== undefined && filterCopy.y !== undefined)
       this.props.history.push(
@@ -79,7 +83,7 @@ class EventFilterWrapper extends Component {
   };
 
   buildInitialFormValues = () => {
-    const filter = filterHelper.trimUndefinedKeys(this.props.events.filter);
+    const filter = trimUndefinedKeys(this.props.events.filter);
     const values = { ...filter };
 
     if (filter.categories.length) {

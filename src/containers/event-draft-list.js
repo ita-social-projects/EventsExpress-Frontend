@@ -1,13 +1,13 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import {
+  compareObjects,
+  trimUndefinedKeys,
+} from "../components/helpers/filterHelper/filterHelper";
 import DraftList from "../components/Draft/Draft-list";
 import SpinnerWrapper from "./spinner";
 import { getDrafts, resetEvents } from "../actions/event/event-list-action";
-import {
-  trimUndefinedKeys,
-  compareObjects,
-} from "../components/helpers/filterHelper/filterHelper";
 
 class EventDraftListWrapper extends Component {
   constructor(props) {
