@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import EventSchedule from "./EventScheduleItem";
 import "./EventSchedule.scss";
 import SpinnerWrapper from "../../containers/spinner";
 import NoResult from "../shared/NoResult/NoResult";
+import EventCard from "../landing/EventCard/EventCard";
 
-const EventSchedulesList = ({ currentUser, dataList, getEvents, loaded }) => {
+const EventSchedulesList = ({ dataList, getEvents, loaded }) => {
   useEffect(() => {
     getEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -16,11 +16,7 @@ const EventSchedulesList = ({ currentUser, dataList, getEvents, loaded }) => {
         {dataList.length > 0 ? (
           <div className="eventsBlock">
             {dataList.map(item => (
-              <EventSchedule
-                key={item.id}
-                item={item}
-                currentUser={currentUser}
-              />
+              <EventCard key={item.id} event={item} />
             ))}
           </div>
         ) : (
@@ -39,14 +35,12 @@ const EventSchedulesList = ({ currentUser, dataList, getEvents, loaded }) => {
 EventSchedulesList.propTypes = {
   loaded: PropTypes.bool,
   dataList: PropTypes.array,
-  currentUser: PropTypes.object,
   getEvents: PropTypes.func,
 };
 
 EventSchedulesList.defaultProps = {
   loaded: false,
   dataList: [],
-  currentUser: {},
   getEvents: () => {},
 };
 

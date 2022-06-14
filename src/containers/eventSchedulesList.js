@@ -5,7 +5,6 @@ import { getEventSchedules } from "../actions/eventSchedule/eventSchedule-list-a
 const mapStateToProps = state => {
   return {
     loaded: state.eventSchedules.data !== undefined,
-    currentUser: state.user,
     dataList: state.eventSchedules.data.items,
   };
 };

@@ -10,12 +10,12 @@ import eventDefaultImage from "../../../constants/eventDefaultImage";
 import FORMATS from "../../../constants/EventCardConstants";
 
 const EventCard = ({ event }) => {
-  const { id, title, dateFrom } = event;
+  const { id, title, dateFrom, eventId } = event;
   const photoService = new PhotoService();
   const [eventImage, setEventImage] = useState(eventDefaultImage);
 
   useEffect(() => {
-    photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {
+    photoService.getPreviewEventPhoto(eventId).then(eventPreviewImage => {
       if (eventPreviewImage != null) {
         setEventImage(URL.createObjectURL(eventPreviewImage));
       }
