@@ -1,7 +1,12 @@
 import React from "react";
 import propTypes from "prop-types";
 
-import {EVENT_STATUS_ENUM, EVENT_STATUS_TITLE,EVENT_STATUS_ICON,EVENT_STATUS_BUTTON} from "../../../constants/eventConstants";
+import {
+  EVENT_STATUS_ENUM,
+  EVENT_STATUS_TITLE,
+  EVENT_STATUS_ICON,
+  EVENT_STATUS_BUTTON,
+} from "../../../constants/eventConstants";
 
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
 import RenderEventButton from "./RenderEventButton";

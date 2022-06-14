@@ -6,7 +6,10 @@ import moment from "moment";
 import IconsEventCard from "./IconsEventCard/IconsEventCard";
 import "./EventCard.scss";
 import PhotoService from "../../../services/PhotoService";
-import {EVENT_DEFAULT_IMAGE, FORMATS} from "../../../constants/eventConstants";
+import {
+  EVENT_DEFAULT_IMAGE,
+  FORMATS,
+} from "../../../constants/eventConstants";
 
 const EventCard = ({ event }) => {
   const { id, title, dateFrom } = event;

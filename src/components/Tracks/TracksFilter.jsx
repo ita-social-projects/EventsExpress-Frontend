@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { Field, reduxForm } from "redux-form";
-import {FILTER_OPTIONS_MAPPER} from "../../constants/changesTypeEnumConstants";
+import { FILTER_OPTIONS_MAPPER } from "../../constants/changesTypeEnumConstants";
 import {
   MultiCheckbox,
   renderDatePicker,
@@ -19,7 +19,7 @@ const TracksFilter = ({
   pristine,
 }) => {
   const values = formValues || {};
-  const options = FILTER_OPTIONS_MAPPER
+  const options = FILTER_OPTIONS_MAPPER;
   return (
     entityNames?.length && (
       <form className="box" onSubmit={handleSubmit}>

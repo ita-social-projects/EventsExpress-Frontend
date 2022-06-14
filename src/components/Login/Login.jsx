@@ -5,8 +5,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import GoogleLogin from "../../containers/GoogleLogin";
-import LoginFacebook from "../../containers/FacebookLogin";
+import GoogleLogin from "../../containers/LoginContainer/GoogleLogin";
+import FacebookLogin from "../../containers/LoginContainer/FacebookLoginContainer";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../helpers/form-helpers";
 import isValidEmail from "../helpers/validators/email-address-validator";
@@ -54,7 +54,7 @@ const Login = ({ pristine, reset, submitting, error, handleSubmit }) => {
         </div>
       </form>
       <div className="d-flex justify-content-around mb-3">
-        <LoginFacebook />
+        <FacebookLogin />
         <GoogleLogin />
       </div>
       {error && <ErrorMessages error={error} className="text-center" />}
