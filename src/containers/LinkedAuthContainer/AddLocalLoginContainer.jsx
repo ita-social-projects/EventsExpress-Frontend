@@ -9,7 +9,6 @@ import Register from "../../components/Register/Register";
 import { localLoginAdd } from "../../actions/redactProfile/linked-auths-add-action";
 import "./LinkedAuth.scss";
 
-
 class AddLocalLoginContainer extends Component {
   constructor(props) {
     super(props);

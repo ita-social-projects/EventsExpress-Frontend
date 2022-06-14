@@ -51,4 +51,7 @@ const mapDispatchToProps = dispatch => ({
   getComments: (data, page) => dispatch(getComments(data, page)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommentListContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CommentListContainer);

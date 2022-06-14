@@ -2,7 +2,7 @@
 import { Grid, Button } from "@material-ui/core";
 import PropTypes from "prop-types";
 // eslint-disable-next-line import/no-named-as-default
-import TileGroupContainer from "../../containers/TileContainer/TileGroupContainer"
+import TileGroupContainer from "../../containers/TileContainer/TileGroupContainer";
 
 const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
   useEffect(() => {

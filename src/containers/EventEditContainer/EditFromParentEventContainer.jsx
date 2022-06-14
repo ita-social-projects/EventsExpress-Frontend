@@ -9,8 +9,8 @@ import editEventFromParent, {
   setEventFromParentPending,
   setEventFromParentSuccess,
 } from "../../actions/event/event-copy-with-edit-action";
-import validate from "./event-edit-validate-form ";
-import validateEventForm from "../event-validate-form";
+import eventEditValidateForm from "../../components/helpers/eventEditValidateForm ";
+import eventValidateForm from "../../components/helpers/eventValidateForm";
 import getCategories from "../../actions/category/category-list-action";
 
 class EditFromParentEventContainer extends Component {
@@ -37,7 +37,7 @@ class EditFromParentEventContainer extends Component {
       valuesCopy.isReccurent = false;
     }
     this.props.editEventFromParent({
-      ...validateEventForm(valuesCopy),
+      ...eventValidateForm(valuesCopy),
       user_id: this.props.user_id,
     });
   };
@@ -57,7 +57,7 @@ class EditFromParentEventContainer extends Component {
     return (
       <>
         <EventForm
-          validate={validate}
+          validate={eventEditValidateForm}
           allCategories={this.props.all_categories}
           onSubmit={this.onSubmit}
           initialValues={initialValues}

@@ -146,4 +146,7 @@ UserFilterContainer.defaultProps = {
   location: {},
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserFilterContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserFilterContainer);

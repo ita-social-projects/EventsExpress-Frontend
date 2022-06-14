@@ -55,4 +55,7 @@ LinkedAuthsContainer.defaultProps = {
   data: {},
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LinkedAuthsContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LinkedAuthsContainer);

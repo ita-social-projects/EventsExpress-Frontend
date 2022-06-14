@@ -111,7 +111,9 @@ class App extends Component {
                   <Route path="/contactAdmin/issues" component={Issues} />
                   <Route
                     path="/contactAdmin/:id/UpdateStatus"
-                    component={this.AdminRoleSecurity(ContactAdminDetailsContainer)}
+                    component={this.AdminRoleSecurity(
+                      ContactAdminDetailsContainer,
+                    )}
                   />
                   <Route
                     path="/notification_events"
@@ -127,7 +129,10 @@ class App extends Component {
                     path="/chat/:chatId"
                     component={this.AdminAndUserRoleSecurity(Chat)}
                   />
-                  <Route path="/contactAdmin" component={ContactAdminContainer} />
+                  <Route
+                    path="/contactAdmin"
+                    component={ContactAdminContainer}
+                  />
                   <Route path="/registerSuccess" component={RegisterSuccess} />
                   <Route
                     path="/editEvent/:id"

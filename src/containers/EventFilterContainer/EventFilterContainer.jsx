@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 import EventFilter from "../../components/Event/EventFilter/EventFilter";
 import getСategoriesList from "../../actions/category/category-list-action";
 import filterHelper from "../../components/helpers/filterHelper";
-import EventFilterConstants from "../constants/eventsFilterConstants";
+import EventFilterConstants from "../../constants/eventConstants";
 
 class EventFilterContainer extends Component {
   componentWillMount() {

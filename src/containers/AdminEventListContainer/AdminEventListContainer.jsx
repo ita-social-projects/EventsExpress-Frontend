@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import EventList from "../../components/Event/EventList/EventList";
-import SpinnerWrapper from "../spinner";
+import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import { getEvents } from "../../actions/event/event-list-action";
 
 class AdminEventListContainer extends Component {
@@ -17,7 +17,7 @@ class AdminEventListContainer extends Component {
     const { items } = data;
 
     return (
-      <SpinnerWrapper showContent={data !== undefined}>
+      <SpinnerContainer showContent={data !== undefined}>
         <EventList
           current_user={currentUser}
           dataList={items}
@@ -25,7 +25,7 @@ class AdminEventListContainer extends Component {
           totalPages={data.pageViewModel.totalPages}
           callback={this.props.getEvents}
         />
-      </SpinnerWrapper>
+      </SpinnerContainer>
     );
   }
 }

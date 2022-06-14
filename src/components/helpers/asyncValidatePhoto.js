@@ -1,4 +1,4 @@
-﻿import PhotoService from "../services/PhotoService";
+﻿import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();
 

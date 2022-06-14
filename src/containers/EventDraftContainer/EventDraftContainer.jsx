@@ -10,7 +10,7 @@ import SimpleModalWithDetails from "../../components/helpers/simple-modal-with-d
 import { EVENT_STATUS_ENUM } from "../../constants/eventConstants";
 import getСategoriesList from "../../actions/category/category-list-action";
 import { editEvent, publishEvent } from "../../actions/event/event-add-action";
-import validateEventForm from "../event-validate-form";
+import validateEventForm from "../../components/helpers/eventValidateForm";
 import { changeEventStatus } from "../../actions/event/event-item-view-action";
 import {
   setErrorAllertFromResponse,

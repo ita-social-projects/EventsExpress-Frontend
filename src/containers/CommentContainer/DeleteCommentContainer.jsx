@@ -104,4 +104,7 @@ DeleteCommentContainer.defaultProps = {
   userId: "",
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeleteCommentContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DeleteCommentContainer);

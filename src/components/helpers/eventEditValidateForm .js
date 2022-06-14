@@ -1,5 +1,5 @@
-import numberField from "../../components/helpers/validators/number-fields-validator";
-import fieldIsRequired from "../../components/helpers/validators/required-fields-validator";
+import numberField from "./validators/number-fields-validator";
+import fieldIsRequired from "./validators/required-fields-validator";
 
 const validate = values => {
   const errors = {};

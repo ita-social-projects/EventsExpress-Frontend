@@ -7,8 +7,8 @@ import Button from "@material-ui/core/Button";
 import EventForm from "../../components/Event/EventForm/EventForm";
 import { editEvent } from "../../actions/event/event-add-action";
 import { setSuccessAllert } from "../../actions/alert-action";
-import validate from "./event-edit-validate-form ";
-import validateEventForm from "../event-validate-form";
+import eventEditValidateForm from "../../components/helpers/eventEditValidateForm ";
+import validateEventForm from "../../components/helpers/eventValidateForm";
 import {
   buildValidationState,
   handleFormError,
@@ -32,7 +32,7 @@ class EditEventContainer extends Component {
       <>
         <div className="pl-md-4">
           <EventForm
-            validate={validate}
+            validate={eventEditValidateForm}
             allCategories={this.props.all_categories}
             onSubmit={this.onSubmit}
             onError={this.onError}

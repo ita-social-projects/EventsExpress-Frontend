@@ -85,4 +85,7 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryAddContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CategoryAddContainer);
