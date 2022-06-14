@@ -1,13 +1,12 @@
-@import '../../../../styles/colors.scss';
-@import '../../../../styles/fonts.scss';
-@import '../../../../styles/variables.scss';
+@import '../../../styles/colors.scss';
+@import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
 
-.form-group__textarea {
+.form-group__input {
     width: $fullWidth;
     margin-bottom: 30px;
 }
-
-.form-textarea {
+.form-input {
     width: $fullWidth;
     padding: 5px 20px;
     border-radius: $defaultBorderRadius;
@@ -19,7 +18,7 @@
     color: $purpleDark;
 }
 
-.form-textarea__error {
+.form-input__error {
     color: $deleteColor;
     box-shadow: 0px 2px 2px $deleteColor;
 }

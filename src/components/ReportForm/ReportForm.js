@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field } from "react-final-form";
-import FormInput from "../helpers/form-helpers/FormInput/FormInput";
-import FormSelect from "../helpers/form-helpers/FormSelect/FormSelect";
-import FormTextArea from "../helpers/form-helpers/FormTextArea/FormTextArea";
+import FormInput from "../shared/FormInput/FormInput";
+import FormSelect from "../shared/FormSelect/FormSelect";
+import FormTextArea from "../shared/FormTextArea/FormTextArea";
 import {
   ISSUES_TYPES_ENUM,
   ISSUES_TYPES,
