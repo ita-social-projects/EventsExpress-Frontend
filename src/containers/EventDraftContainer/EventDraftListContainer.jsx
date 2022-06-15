@@ -6,6 +6,7 @@ import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import { getDrafts, resetEvents } from "../../actions/event/event-list-action";
 import filterHelper from "../../components/helpers/filterHelper";
 
+// TODO Refactor class component
 class EventDraftListContainer extends Component {
   constructor(props) {
     super(props);

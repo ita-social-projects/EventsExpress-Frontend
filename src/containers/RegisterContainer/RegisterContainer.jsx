@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Register from "../../components/Register/Register";
 import register from "../../actions/register/register-action";
 
+// TODO Refactor class component
 class RegisterContainer extends React.Component {
   componentDidUpdate() {
     if (!this.props.registerError && this.props.isRegisterSuccess) {

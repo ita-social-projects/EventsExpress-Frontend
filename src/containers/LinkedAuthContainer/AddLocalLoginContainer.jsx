@@ -9,6 +9,7 @@ import Register from "../../components/Register/Register";
 import { localLoginAdd } from "../../actions/redactProfile/linked-auths-add-action";
 import "./LinkedAuth.scss";
 
+// TODO Refactor class component
 class AddLocalLoginContainer extends Component {
   constructor(props) {
     super(props);

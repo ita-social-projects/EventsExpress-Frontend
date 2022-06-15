@@ -22,6 +22,7 @@ import {
   handleFormError,
 } from "../../components/helpers/action-helpers";
 
+// TODO Refactor class component
 class EventDraftContainer extends Component {
   onPublish = async values => {
     if (!this.props.pristine) {

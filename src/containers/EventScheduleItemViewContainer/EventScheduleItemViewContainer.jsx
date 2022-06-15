@@ -7,6 +7,7 @@ import getEventSchedule, {
   resetEventSchedule,
 } from "../../actions/eventSchedule/eventSchedule-item-view-action";
 
+// TODO Refactor class component
 class EventScheduleItemViewContainer extends Component {
   componentWillMount() {
     const { id } = this.props.match.params;

@@ -5,6 +5,7 @@ import UserRoleDisplay from "../../components/UserInfo/UserRoleDisplay";
 import UserRoleEdit from "../../components/UserInfo/UserRoleEdit";
 import { changeUserRole, setEditedUser } from "../../actions/user/user-action";
 
+// TODO Refactor class component
 class UserRoleContainer extends Component {
   saveChanges = async values => {
     const { roles } = values;

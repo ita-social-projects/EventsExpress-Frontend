@@ -13,6 +13,7 @@ import eventEditValidateForm from "../../components/helpers/eventEditValidateFor
 import eventValidateForm from "../../components/helpers/eventValidateForm";
 import getCategories from "../../actions/category/category-list-action";
 
+// TODO Refactor class component
 class EditFromParentEventContainer extends Component {
   componentWillMount = () => {
     this.props.getCategories();

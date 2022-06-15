@@ -9,6 +9,7 @@ import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import getIssues from "../../actions/contactAdmin/contact-admin-list-action";
 import filterHelper from "../../components/helpers/filterHelper";
 
+// TODO Refactor class component
 class ContactAdminListContainer extends Component {
   constructor(props) {
     super(props);

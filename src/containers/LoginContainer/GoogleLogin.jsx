@@ -7,6 +7,7 @@ import { loginGoogle } from "../../actions/login/login-action";
 import { setErrorAlert } from "../../actions/alert-action";
 import "../LinkedAuthContainer/LinkedAuth.scss";
 
+// TODO Refactor class component
 class LoginGoogle extends Component {
   googleResponseHandler = response => {
     if (!response.profileObj.email) {

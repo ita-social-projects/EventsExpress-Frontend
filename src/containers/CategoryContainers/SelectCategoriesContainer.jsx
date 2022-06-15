@@ -6,6 +6,7 @@ import setUserCategory from "../../actions/redactProfile/userCategory-add-action
 import getCategories from "../../actions/category/category-list-action";
 import getUserCategories from "../../actions/category/userCategory-action";
 
+// TODO Refactor class component
 class SelectCategoriesContainer extends Component {
   constructor(props) {
     super(props);

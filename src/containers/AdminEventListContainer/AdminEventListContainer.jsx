@@ -5,6 +5,8 @@ import EventList from "../../components/Event/EventList/EventList";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import { getEvents } from "../../actions/event/event-list-action";
 
+// TODO Refactor class component
+
 class AdminEventListContainer extends Component {
   componentWillMount() {
     this.props.getEvents(this.props.params);

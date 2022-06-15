@@ -5,6 +5,7 @@ import EventSchedulesList from "../../components/EventSchedule/EventScheduleList
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import { getEventSchedules } from "../../actions/eventSchedule/eventSchedule-list-action";
 
+// TODO Refactor class component
 class EventSchedulesListContainer extends Component {
   constructor(props) {
     super(props);

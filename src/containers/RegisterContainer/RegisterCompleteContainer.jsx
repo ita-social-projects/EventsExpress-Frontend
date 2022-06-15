@@ -6,6 +6,7 @@ import registerBindAccount from "../../actions/register/register-bind-account-ac
 import RegisterComplete from "../../components/Register/RegisterComplete";
 import registerComplete from "../../actions/register/register-complete-action";
 
+// TODO Refactor class component
 class RegisterCompleteContainer extends Component {
   constructor(props) {
     super(props);

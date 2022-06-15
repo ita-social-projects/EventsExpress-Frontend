@@ -14,6 +14,7 @@ import {
   handleFormError,
 } from "../../components/helpers/action-helpers";
 
+// TODO Refactor class component
 class EditEventContainer extends Component {
   onSubmit = async values => {
     await this.props.editEvent({

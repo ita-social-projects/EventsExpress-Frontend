@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 
+// TODO Refactor class component
 class LeftSidebarContainer extends Component {
   searchUnreadMsg = () => {
     return this.props.notification.messages.filter(

@@ -18,6 +18,7 @@ import {
   wantToTake,
 } from "../../actions/inventory/inventar-action";
 
+// TODO Refactor class component
 class InventoryItemContainer extends Component {
   constructor(props) {
     super(props);

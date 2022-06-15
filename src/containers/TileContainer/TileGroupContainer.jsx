@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import TileRow from "../TileRow/TileRow";
 
+// TODO Refactor
 export const TileGroupContainer = props => {
   const renderRows = data => {
     const rows = [];

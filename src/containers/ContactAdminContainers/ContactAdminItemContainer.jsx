@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import ContactAdminItem from "../../components/ContactAdmin/ContactAdminItemComponent";
 
+// TODO Remove <tr>
 const ContactAdminItemContainer = ({ item }) => (
   <tr>
     <ContactAdminItem item={item} />

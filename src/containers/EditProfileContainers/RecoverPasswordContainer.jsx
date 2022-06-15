@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import RecoverPassword from "../../components/RecoverPassword/RecoverPassword";
 import recoverPassword from "../../actions/redactProfile/password-recover-action";
 
+// TODO Refactor class component
 class RecoverPasswordContainer extends React.Component {
   submit = value => {
     return this.props.recoverPassword(value);

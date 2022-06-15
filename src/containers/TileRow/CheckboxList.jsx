@@ -6,6 +6,7 @@ import { MultiCheckbox } from "../../components/helpers/form-helpers";
 import "./CheckboxList.scss";
 import "./CustomCheckbox.scss";
 
+// TODO Refactor
 function CheckboxList(props) {
   const mapToValues = arr => {
     return arr.map(el => ({ value: el.id, text: el.name }));

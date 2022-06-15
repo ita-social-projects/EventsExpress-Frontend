@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import EditBirthday from "../../components/Profile/EditProfile/EditBirthday";
 import editBirthday from "../../actions/redactProfile/birthday-edit-action";
 
+// TODO Refactor class component
 class EditBirthdayContainer extends React.Component {
   submit = value => {
     return this.props.editBirthday(value);

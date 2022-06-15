@@ -7,6 +7,7 @@ import { googleLoginAdd } from "../../actions/redactProfile/linked-auths-add-act
 import { setErrorAlert } from "../../actions/alert-action";
 import "./LinkedAuth.scss";
 
+// TODO Refactor class component
 class AddGoogleLoginContainer extends Component {
   googleResponseHandler = response => {
     if (typeof response.profileObj.email === "undefined") {

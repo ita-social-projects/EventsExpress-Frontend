@@ -9,6 +9,7 @@ import addCategory, {
 } from "../../actions/category/category-add-action";
 import deleteCategory from "../../actions/category/category-delete-action";
 
+// TODO Refactor
 const CategoryItemContainer = ({
   deleteCategoryDispatch,
   setCategoryEditedDispatch,

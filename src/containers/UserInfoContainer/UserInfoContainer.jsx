@@ -6,6 +6,7 @@ import UserInfo from "../../components/UserInfo/UserInfo";
 import UserBlock from "../../components/UserInfo/UserBlock";
 import UserRoleContainer from "../UserRoleContainer/UserRoleContainer";
 
+// TODO Refactor class component
 class UserInfoContainer extends Component {
   constructor(props) {
     super(props);

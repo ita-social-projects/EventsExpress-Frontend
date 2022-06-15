@@ -13,6 +13,7 @@ import {
   changeStatus,
 } from "../../actions/users/users-action";
 
+// TODO Refactor class component
 class UserFilterContainer extends Component {
   componentDidMount() {
     const { Unblocked, Blocked } = parse(this.props.location.search);

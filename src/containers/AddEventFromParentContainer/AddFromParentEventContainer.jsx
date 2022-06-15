@@ -5,6 +5,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import EventScheduleModal from "../../components/EventSchedule/EventScheduleModal";
 import addСopyEvent from "../../actions/event/event-copy-without-edit-action";
 
+// TODO Refactor class component
 class AddFromParentEventContainer extends Component {
   constructor() {
     super();

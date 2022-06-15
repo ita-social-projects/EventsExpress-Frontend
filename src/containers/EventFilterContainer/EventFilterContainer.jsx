@@ -8,6 +8,7 @@ import getСategoriesList from "../../actions/category/category-list-action";
 import filterHelper from "../../components/helpers/filterHelper";
 import EventFilterConstants from "../../constants/eventConstants";
 
+// TODO Refactor class component
 class EventFilterContainer extends Component {
   componentWillMount() {
     this.props.getСategoriesList();

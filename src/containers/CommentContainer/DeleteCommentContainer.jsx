@@ -9,6 +9,7 @@ import CommentList from "../../components/Comment/CommentList";
 import CommnetContainer from "./CommnetContainer";
 import { setAlert } from "../../actions/alert-action";
 
+// TODO Refactor class component
 class DeleteCommentContainer extends React.Component {
   constructor(props) {
     super(props);

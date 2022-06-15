@@ -5,6 +5,7 @@ import ChangeAvatar from "../../components/Profile/EditProfile/ChangeAvatar";
 import changeAvatar from "../../actions/redactProfile/avatar-change-action";
 import AuthComponent from "../../security/authComponent";
 
+// TODO Refactor class component
 class ChangeAvatarContainer extends Component {
   submit = values => {
     return this.props.changeAvatar(values);

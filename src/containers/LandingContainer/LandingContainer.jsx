@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import addEvent from "../../actions/event/event-add-action";
 import Landing from "../../components/Landing/Landing/Landing";
 
+// TODO Refactor class component
 class LandingContainer extends Component {
   onSubmit = () => {
     return this.props.addEvent();

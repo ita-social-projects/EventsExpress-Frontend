@@ -13,6 +13,7 @@ const pStyle = {
   margin: "0px",
 };
 
+// TODO Refactor class component
 class UnitOfMeasuringAddWrapper extends React.Component {
   componentDidMount() {
     this.props.getCategoriesOfMeasuring();

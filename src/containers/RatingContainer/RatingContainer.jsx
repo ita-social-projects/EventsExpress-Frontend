@@ -9,6 +9,7 @@ import {
 import RatingAverage from "../../components/Rating/RatingAverage";
 import RatingSetter from "../../components/Rating/RatingSetter";
 
+// TODO Refactor class component
 class RatingContainer extends Component {
   componentDidMount = () => {
     this.props.getMyRate();

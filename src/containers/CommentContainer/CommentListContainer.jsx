@@ -5,6 +5,7 @@ import CommentList from "../../components/Comment/CommentList";
 import getComments from "../../actions/comment/comment-list-action";
 import LocalSpinnerContainer from "../SpinnerContainer/LocalSpinnerContainer";
 
+// TODO Refactor class component
 class CommentListContainer extends Component {
   componentWillMount() {
     const { page } = this.props.match.params;

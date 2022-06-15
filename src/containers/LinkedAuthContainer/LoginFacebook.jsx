@@ -6,6 +6,7 @@ import { facebookLoginAdd } from "../../actions/redactProfile/linked-auths-add-a
 import { setErrorAlert } from "../../actions/alert-action";
 import "./LinkedAuth.scss";
 
+// TODO Refactor class component
 class LoginFacebook extends Component {
   facebookResponseHandler = response => {
     if (

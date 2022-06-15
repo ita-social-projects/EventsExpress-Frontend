@@ -6,6 +6,7 @@ import Users from "../../components/Users/Users";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import UserFilterContainer from "../UserFilterContainer/UserFilterContainer";
 
+// TODO Refactor class component
 class UsersContainer extends Component {
   componentDidMount() {
     this.getUsers(this.props.location.search);

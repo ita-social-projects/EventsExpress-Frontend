@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Login from "../../components/Login/Login";
 import login from "../../actions/login/login-action";
 
+// TODO Refactor class component
 class LoginContainer extends Component {
   submit = values => this.props.login(values.email, values.password);
 

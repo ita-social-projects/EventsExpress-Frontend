@@ -11,6 +11,7 @@ import getEvent, {
   approveUser,
 } from "../../actions/event/event-item-view-action";
 
+// TODO Refactor class component
 class EventEditContainer extends Component {
   componentWillMount() {
     const { id } = this.props.match.params;

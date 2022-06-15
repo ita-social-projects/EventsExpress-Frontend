@@ -6,9 +6,9 @@ import getLinkedAuths from "../../actions/redactProfile/linked-auths-action";
 import AddGoogleLoginContainer from "./AddGoogleLoginContainer";
 import AddLocalLoginContainer from "./AddLocalLoginContainer";
 import LoginFacebook from "./LoginFacebook";
-
 import "./LinkedAuth.scss";
 
+// TODO Refactor class component
 class LinkedAuthsContainer extends Component {
   componentDidMount() {
     this.props.loadData();

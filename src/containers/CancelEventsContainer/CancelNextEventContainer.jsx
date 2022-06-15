@@ -5,6 +5,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import EventScheduleModal from "../../components/EventSchedule/EventScheduleModal";
 import cancelNextEventSchedule from "../../actions/eventSchedule/eventSchedule-cancel-next-action";
 
+// TODO Refactor class component
 class CancelNextEventContainer extends Component {
   constructor() {
     super();

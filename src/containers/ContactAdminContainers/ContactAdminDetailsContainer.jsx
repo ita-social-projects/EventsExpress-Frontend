@@ -6,6 +6,7 @@ import changeIssueStatus from "../../actions/contactAdmin/contact-admin-issue-st
 import getMessageById from "../../actions/contactAdmin/contact-admin-item-action";
 import { ISSUE_STATUS_ENUM } from "../../constants/issueConstants";
 
+// TODO Refactor class component
 class ContactAdminDetailsContainer extends React.Component {
   componentWillMount = () => {
     const { id } = this.props.match.params;

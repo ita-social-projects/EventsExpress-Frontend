@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import ChangePassword from "../../components/Profile/EditProfile/ChangePassword";
 import changePassword from "../../actions/redactProfile/password-change-action";
 
+// TODO Refactor class component
 class ChangePasswordContainer extends React.Component {
   submit = value => {
     return this.props.changePassword(value);

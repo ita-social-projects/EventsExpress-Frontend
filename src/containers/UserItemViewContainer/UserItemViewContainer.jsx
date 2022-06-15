@@ -14,6 +14,8 @@ import {
   getEventsTogo,
 } from "../../actions/events/events-for-profile-action";
 // TODO Unused state field: 'flag'
+// TODO Refactor class component
+
 class UserItemViewContainer extends Component {
   // constructor(props) {
   //   super(props);

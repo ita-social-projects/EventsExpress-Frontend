@@ -9,6 +9,7 @@ import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import { getEvents } from "../../actions/event/event-list-action";
 import filterHelper from "../../components/helpers/filterHelper";
 
+// TODO Refactor class component
 class EventListContainer extends Component {
   constructor(props) {
     super(props);

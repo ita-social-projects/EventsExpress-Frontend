@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import EditGender from "../../components/Profile/EditProfile/EditGender";
 import editGender from "../../actions/redactProfile/gender-edit-action";
 
+// TODO Refactor class component
 class EditGenderContainer extends React.Component {
   submit = value => {
     return this.props.editGender(value);

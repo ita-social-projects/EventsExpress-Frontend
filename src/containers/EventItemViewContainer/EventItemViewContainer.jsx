@@ -14,6 +14,7 @@ import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-
 import { getInventoriesByEventId } from "../../actions/inventory/inventory-list-action";
 import { getUsersInventoriesByEventId } from "../../actions/users/users-inventories-action";
 
+// TODO Refactor class component
 class EventItemViewContainer extends Component {
   componentWillMount() {
     const { id } = this.props.match.params;
