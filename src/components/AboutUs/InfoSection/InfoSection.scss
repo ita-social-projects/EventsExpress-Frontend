@@ -9,37 +9,38 @@
     padding: 50px;
 
     .info-text__left {
+
         .info-text__header {
-            font-size: $aboutUsHeadingText;
-            font-weight: $bold;
             color: $black;
+            font-weight: $bold;
+            font-size: $aboutUsHeadingText;
         }
 
         .info-text__body {
             max-width: $infoTextMaxWidth;
-            font-size: $aboutUsBodyText;
             color: $black;
+            font-size: $aboutUsBodyText;
         }
     }
 
     .info-images {
         display: flex;
-        height: 400px;
         width: $fullWidth;
+        height: 400px;
 
         .info-images__item {
             position: relative;
             width: $width25;
 
             .info-images__item-img {
-                filter: brightness($infoImagesBrightness);
-                width: $fullWidth;
-                height: $fullHeight;
-                object-fit: cover;
                 position: absolute;
                 top: 0;
                 left: 0;
                 z-index: -1;
+                width: $fullWidth;
+                height: $fullHeight;
+                object-fit: cover;
+                filter: brightness($infoImagesBrightness);
                 transition: $defaultTransition;
             }
 
@@ -49,10 +50,11 @@
 
             .info-images__text {
                 z-index: 1;
-                @include centerAbsolute;
-                text-align: center;
                 color: $white;
                 font-size: $aboutUsBodyText;
+                text-align: center;
+
+                @include centerAbsolute;
             }
         }
 
@@ -66,10 +68,10 @@
         }
 
         @include adaptiveStyles($mediaSecondTabletScreen) {
-            height: 400px;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
+            height: 400px;
 
             .info-images__item {
                 width: auto;
@@ -91,19 +93,20 @@
 
     .info-text__right {
         @include flex(column, flex-end, center);
+
         width: $fullWidth;
         text-align: right;
 
         .info-text__header {
-            font-size: $aboutUsHeadingText;
-            font-weight: $bold;
             color: $black;
+            font-weight: $bold;
+            font-size: $aboutUsHeadingText;
         }
 
         .info-text__body {
             max-width: $infoTextMaxWidth;
-            font-size: $aboutUsBodyText;
             color: $black;
+            font-size: $aboutUsBodyText;
         }
     }
 
@@ -111,9 +114,9 @@
     .info-text__left {
         @include adaptiveStyles($mediaFirstTabletScreen) {
             align-items: center;
-            text-align: center;
             margin-left: 0;
             padding: 0 50px;
+            text-align: center;
 
             .info-text__header {
                 font-size: $aboutUsSecondaryHeading;
@@ -125,14 +128,15 @@
         }
 
         @include adaptiveStyles($mediaMobileScreen) {
+
             .info-text__body {
-                font-size: $aboutUsBodyTextMobile;
                 max-width: $fullWidth;
+                font-size: $aboutUsBodyTextMobile;
             }
 
             .info-text__header {
-                font-size: $aboutUsHeaderTextMobile;
                 margin-bottom: 10px;
+                font-size: $aboutUsHeaderTextMobile;
             }
         }
     }

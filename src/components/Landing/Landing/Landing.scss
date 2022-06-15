@@ -1,112 +1,116 @@
 @import "../../../styles/main.scss";
 
 .upcoming__events__navigation {
-  margin: 50px 0px;
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
 }
 
 .row {
-  margin: 0 !important;
-  padding: 0 !important;
-  align-items: center;
+    align-items: center;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .col-md-1 {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .col-md-2 {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .col-md-10 {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-link {
-  color: #212529 !important;
+    color: #212529 !important;
 }
 
 .button-container {
-  width: fit-content;
-  position: relative;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: relative;
+    top: 35%;
+    left: 50%;
+    width: fit-content;
+    transform: translate(-50%, -50%);
 }
 
 // TODO: move this style to HeadArticleButton
-.button-container>h2 {
-  color: white;
-  text-align: center;
-  filter: drop-shadow(0.05em 0.05em orange);
+
+.button-container > h2 {
+    color: $white;
+    text-align: center;
+    filter: drop-shadow(0.05em 0.05em $orange);
 }
 
 .btn {
-  width: fit-content;
-  font-size: 1.3em;
-  margin: 0 !important;
+    width: fit-content;
+    margin: 0 !important;
+    font-size: 1.3em;
 }
 
 .buttons {
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 .works-article {
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: $white;
 }
 
 .icons-wrapper {
-  font-size: 4em;
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
+    font-size: 4em;
 }
 
 .events-article {
-  padding: 2.5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5%;
 }
 
 .events-article .row {
-  flex-wrap: nowrap;
+    flex-wrap: nowrap;
 }
 
 .carousel-block {
-  padding: 5vw;
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
+    padding: 5vw;
 }
 
 .nav-icon {
-  width: 32px;
-  height: 32px;
+    width: 32px;
+    height: 32px;
 }
 
 .card {
-  height: 22.5vw !important;
-  width: 20vw;
-  max-width: 20vw;
+    width: 20vw;
+    max-width: 20vw;
+    height: 22.5vw !important;
 }
 
-/* TODO: I think this is a temporary solution. Work on this landing page still needs to be done and will be done in the future */
+/* TODO: I think this is a temporary solution. Work on
+this landing page still needs to be done and will be done in the future */
+
 .main__upcoming {
-  padding: 10px 5px;
+    padding: 10px 5px;
 }
 
-@media screen and (max-width: $mediaMobileScreen ) {
-  .upcoming__events__navigation {
-    margin: 30px 0px 30px 0px;
-    flex-direction: column-reverse;
-  }
+@media screen and (max-width: $mediaMobileScreen) {
+
+    .upcoming__events__navigation {
+        flex-direction: column-reverse;
+        margin: 30px 0;
+    }
 }

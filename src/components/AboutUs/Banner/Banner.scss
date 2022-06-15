@@ -6,28 +6,29 @@
 
 .about-banner {
     @include flex(column, flex-end, flex-end);
-    background: $aboutUsBannerGradient, $aboutUsBannerImage;
-    background-position: center;
-    background-size: cover;
+
     width: $fullWidth;
     height: $aboutUsBannerHeight;
     padding: 50px;
+    background: $aboutUsBannerGradient, $aboutUsBannerImage;
+    background-position: center;
+    background-size: cover;
 
     .banner-content__quote {
-        font-family: $quoteFont;
-        font-size: $aboutUsQuote;
+        margin-bottom: 0;
         color: $white;
-        margin-bottom: 0px;
+        font-size: $aboutUsQuote;
+        font-family: $quoteFont;
     }
 
     .btn-events {
-        text-decoration: none;
-        padding: 20px 100px;
         margin-top: 20px;
-        text-align: center;
-        font-size: $aboutUsBodyText;
-        font-weight: $bold;
+        padding: 20px 100px;
         color: $black;
+        font-weight: $bold;
+        font-size: $aboutUsBodyText;
+        text-align: center;
+        text-decoration: none;
         background: $white;
         border-radius: $defaultBorderRadius;
 
@@ -36,19 +37,19 @@
         }
     }
 
-
     @include adaptiveStyles($mediaFirstTabletScreen) {
+
         .btn-events {
-            padding: 15px 50px;
             margin-top: 15px;
+            padding: 15px 50px;
         }
     }
 
     @include adaptiveStyles($mediaSecondTabletScreen) {
+        right: inherit;
+        align-items: center;
         width: $fullWidth;
         text-align: center;
-        align-items: center;
-        right: inherit;
 
         .banner-content__quote {
             font-size: $aboutUsQuoteMobile;
@@ -56,10 +57,10 @@
     }
 
     @include adaptiveStyles($mediaMobileScreen) {
+        right: inherit;
+        align-items: center;
         width: $fullWidth;
         text-align: center;
-        align-items: center;
-        right: inherit;
 
         .banner-content__quote {
             font-size: $aboutUsQuoteMobile;

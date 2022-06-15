@@ -1,16 +1,16 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: Poppins, sans-serif;
 }
 
 .left-sidebar {
     position: fixed;
-    z-index: 101;
     top: 55px;
     left: 0;
-    background-color: rgb(255, 255, 255);
+    z-index: 101;
     overflow-x: hidden;
+    background-color: $white;
     transition: 0.5s;
 }
 
@@ -24,17 +24,12 @@ body {
 
 #open-close-zone {
     display: none;
-    /* position: fixed;
-    height: 100%;
-    z-index: 100;
-    overflow-x: hidden;
-    transition: 0.5s; */
 }
 
 #open-close-zone.left-sidebar-opened {
     width: 100%;
     padding-left: 15em;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgb(0 0 0 / 75%);
 }
 
 #open-close-zone.left-sidebar-closed {
@@ -42,30 +37,29 @@ body {
 }
 
 .open-close-btn {
-    font-size: 20px;
-    cursor: pointer;
     padding: 10px 5px;
+    font-size: 20px;
+    background-color: rgb(0 0 0 / 20%);
     border: none;
-    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .open-close-btn:hover {
-    color: white;
+    color: $white;
 }
 
-
 .left-sidebar ul li .link {
-    padding: 10px;
-    font-size: 1.1em;
-    color: rgba(0, 0, 0, 0.75);
     display: block;
+    padding: 10px;
+    color: rgb(0 0 0 / 75%);
+    font-size: 1.1em;
 }
 
 .left-sidebar ul li .link:hover {
-    color: rgb(0, 0, 0);
-    background: #fff;
+    color: rgb(0 0 0);
     font-weight: 550;
-    border-bottom: 3px solid rgb(63, 81, 181);
+    background: $white;
+    border-bottom: 3px solid rgb(63 81 181);
     transition: 0.1s;
 }
 
@@ -73,12 +67,12 @@ body {
     width: 100%;
 }
 
-
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media screen and (min-width:575px) {
+@media screen and (min-width: 575px) {
+
     #open-close-zone {
         display: none !important;
     }

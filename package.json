@@ -125,7 +125,8 @@
 		"lint:fix": "eslint src --fix --ext .js,.jsx",
 		"prepare": "husky install",
 		"husky:pre-commit": "lint-staged",
-		"stylelint": "stylelint \"**/*.scss\""
+		"stylelint": "stylelint \"**/*.scss\"",
+		"stylelint:fix": "stylelint \"**/*.scss\" --fix"
 	},
 	"lint-staged": {
 		"*.{js,jsx}": [

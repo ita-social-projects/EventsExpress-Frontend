@@ -1,64 +1,68 @@
-﻿@import "../../styles/variables.scss";
+@import "../../styles/variables.scss";
 @import "../../styles/colors.scss";
 @import "../../styles/mixins.scss";
 @import "../../styles/fonts.scss";
 
 .user_info_card {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-  height: 170px;
-  width: $fullWidth;
-  margin: 10px;
-  padding: 10px;
-  border-radius: $r16;
-  box-shadow: $inputShadow;
-
-  .user_avatar {
+    display: flex;
+    flex-direction: column;
+    width: $fullWidth;
+    min-width: 300px;
+    height: 170px;
     margin: 10px;
-    display: flex;
-    justify-content: center;
-    height: 60px;
-  }
-  .user_main_info {
-    @include flex(column, center, center);
+    padding: 10px;
+    border-radius: $r16;
+    box-shadow: $inputShadow;
 
-    > :first-child {
-      text-align: center;
-      font-size: $fontsize-24;
-      font-weight: $thick;
-      &:hover {
-        color: $black;
-        text-decoration: underline 2px solid $black;
-      }
+    .user_avatar {
+        display: flex;
+        justify-content: center;
+        height: 60px;
+        margin: 10px;
     }
-    .user_info_item {
-      text-align: center;
-      font-size: $fontsize-16;
+
+    .user_main_info {
+        @include flex(column, center, center);
+
+        > :first-child {
+            font-weight: $thick;
+            font-size: $fontsize24;
+            text-align: center;
+
+            &:hover {
+                color: $black;
+                text-decoration: underline 2px solid $black;
+            }
+        }
+
+        .user_info_item {
+            font-size: $fontsize16;
+            text-align: center;
+        }
     }
-  }
-  .user_rating {
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    z-index: 10;
-    top: -40px;
-    left: -10px;
-  }
+
+    .user_rating {
+        position: relative;
+        top: -40px;
+        left: -10px;
+        z-index: 10;
+        display: flex;
+        justify-content: flex-end;
+    }
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
-  .user_info_card {
-    max-width: 100%;
-    margin: 5px;
-    // margin-right: 20px;
-  }
+
+    .user_info_card {
+        max-width: 100%;
+        margin: 5px;
+    }
 }
 
 .attitude_bg_green {
-  background-color: $green;
+    background-color: $green;
 }
 
 .attitude_bg_red {
-  background-color: lighten($deleteColor, 30%);
+    background-color: lighten($deleteColor, 30%);
 }

@@ -6,7 +6,7 @@ const Spinner = () => {
     <div id="spinner-align">
       <div className="spinner-align">
         <div className="lds-css ng-scope">
-          <div className="lds-rolling">
+          <div className="ldsRolling">
             <div />
           </div>
         </div>

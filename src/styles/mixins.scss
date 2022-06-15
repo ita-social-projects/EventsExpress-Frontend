@@ -1,52 +1,46 @@
-@import './variables.scss';
-@import './fonts.scss';
+@import "./variables.scss";
+@import "./fonts.scss";
 
 @mixin flex($flex-d, $align-a, $justify-c) {
-  display: flex;
-  flex-direction: $flex-d;
-  align-items: $align-a;
-  justify-content: $justify-c;
-}
-
-@mixin font_input($family, $style, $weight) {
-  font-family: $family;
-  font-style: $style;
-  font-weight: $weight;
+    display: flex;
+    flex-direction: $flex-d;
+    align-items: $align-a;
+    justify-content: $justify-c;
 }
 
 @mixin centerAbsolute {
-  position: absolute;
-  top: $height50;
-  left: $width50;
-  transform: translate(-$width50, -$height50);
+    position: absolute;
+    top: $height50;
+    left: $width50;
+    transform: translate(-$width50, -$height50);
 }
 
 @mixin adaptiveStyles($maxWidth) {
-  @media (max-width: $maxWidth) {
-    @content;
-  }
+    @media (max-width: $maxWidth) {
+        @content;
+    }
 }
 
-@mixin form_input {
-  width: $inputWidth;
-  height: $inputHeight;
-  padding: $inputPadding;
-  border-radius: $r16;
-  box-shadow: $inputShadow;
-  border: $noBord;
-  outline: $Unoutline;
+@mixin formInput {
+    width: $inputWidth;
+    height: $inputHeight;
+    padding: $inputPadding;
+    border: $noBord;
+    border-radius: $r16;
+    outline: $unoutline;
+    box-shadow: $inputShadow;
 
-  @media screen and (max-width: $mediaFirstTabletScreen) {
-    width: $inputLaptopWidth;
-  }
+    @media screen and (max-width: $mediaFirstTabletScreen) {
+        width: $inputLaptopWidth;
+    }
 
-  @media screen and (max-width: $mediaSecondTabletScreen) {
-    width: $inputTabletWidth;
-  }
+    @media screen and (max-width: $mediaSecondTabletScreen) {
+        width: $inputTabletWidth;
+    }
 
-  @media screen and (max-width: $mediaMobileScreen) {
-    width: $inputMobileWidth;
-    font-size: $fontsize-12;
-    margin: 0;
-  }
+    @media screen and (max-width: $mediaMobileScreen) {
+        width: $inputMobileWidth;
+        margin: 0;
+        font-size: $fontsize12;
+    }
 }

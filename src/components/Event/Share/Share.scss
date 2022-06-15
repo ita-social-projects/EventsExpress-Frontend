@@ -1,33 +1,33 @@
-﻿body {
+body {
     font-family: Helvetica, sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 }
 
 #fb-share-button {
+    position: static;
+    display: inline-block;
+    padding: 8px 20px;
+    font-weight: 600;
     background: #3b5998;
     border-radius: 3px;
-    font-weight: 600;
-    padding: 8px 20px;
-    display: inline-block;
-    position: static;
 }
 
-    #fb-share-button:hover {
-        cursor: pointer;
-        background: #213A6F
-    }
+#fb-share-button:hover {
+    background: #213a6f;
+    cursor: pointer;
+}
 
-    #fb-share-button svg {
-        width: 18px;
-        fill: white;
-        vertical-align: middle;
-        border-radius: 2px
-    }
+#fb-share-button svg {
+    width: 18px;
+    vertical-align: middle;
+    border-radius: 2px;
+    fill: $white;
+}
 
-    #fb-share-button span {
-        vertical-align: middle;
-        color: white;
-        font-size: 14px;
-        padding: 0 3px
-    }
+#fb-share-button span {
+    padding: 0 3px;
+    color: $white;
+    font-size: 14px;
+    vertical-align: middle;
+}

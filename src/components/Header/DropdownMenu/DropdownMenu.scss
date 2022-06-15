@@ -3,56 +3,57 @@
 @import "../../../styles/fonts.scss";
 
 .user-name {
-  margin: 0 3px 0 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: $black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 3px 0 5px;
+    color: $black;
 
-  @media (max-width: $mobile-breakpoint) {
-    font-size: $fontsize-10;
-    margin: 0;
-  }
+    @media (max-width: $mobileBreakpoint) {
+        margin: 0;
+        font-size: $fontsize10;
+    }
 }
 
 .dropdown-toggle {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  color: $black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $black;
 }
 
 .dropdown-menu {
-  background: $dropDownGradient;
-  width: 210px;
-  padding-top: 10;
-  margin-top: 10px;
-  border-radius: $buttonBorderRadius;
+    width: 210px;
+    margin-top: 10px;
+    padding-top: 10;
+    background: $dropDownGradient;
+    border-radius: $buttonBorderRadius;
 }
+
 .dropdown-item {
-  background-color: $dropDownItemBackground;
-  width: 190px;
-  height: 40px;
-  color: $dropDownItemColor;
-  margin: 2px;
-  font-size: $fontsize-14;
-  text-align: center;
-  border-radius:$r16;
-  margin: auto;
-  margin-bottom: 7px;
-  display: flex;
-  justify-content: space-between;
-  align-items:center;
-  
-   @media (max-width: $mediaMobileScreen) {
-    font-size: $fontsize-10;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 190px;
+    height: 40px;
+    margin: 2px;
+    margin: auto;
+    margin-bottom: 7px;
+    color: $dropDownItemColor;
+    font-size: $fontsize14;
+    text-align: center;
+    background-color: $dropDownItemBackground;
+    border-radius: $r16;
+
+    @media (max-width: $mediaMobileScreen) {
+        font-size: $fontsize10;
+    }
 }
 
 .removedecorations {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 10px 20px;
-  margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 10px;
+    padding: 10px 20px;
 }

@@ -1,25 +1,27 @@
 @import "../../styles/variables.scss";
-.search_users_container {
-  width: $fullWidth;
-  display: flex;
-  flex-direction: column;
-  padding-right: 20px;
-  position: relative;
-  padding-bottom: 20px;
 
-  .search_users_input {
-    margin-top: 50px;
-    margin-bottom: 20px;
-  }
-  .search_users_pagination {
-    width: $fullWidth;
+.search_users_container {
+    position: relative;
     display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-  }
+    flex-direction: column;
+    width: $fullWidth;
+    padding-right: 20px;
+    padding-bottom: 20px;
+
+    .search_users_input {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .search_users_pagination {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        width: $fullWidth;
+    }
 }
 
 .small_container {
-  height: calc(100vh - 280px);
+    height: calc(100vh - 280px);
 }

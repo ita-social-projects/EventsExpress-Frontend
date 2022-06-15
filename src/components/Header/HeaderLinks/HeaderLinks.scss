@@ -1,83 +1,75 @@
 @import "../../../styles/main.scss";
 
 .header-links-wrapper {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  bottom: 2px;
-  top: 10px;
+    position: absolute;
+    top: 10px;
+    bottom: 2px;
+    display: flex;
+    align-items: center;
 
-  .header-link-item {
-    margin-left: $margin-50;
-  }
+    .header-link-item {
+        margin-left: $margin50;
 
-  .header-link-item {
-    .link-wrapper {
-      font-family: $mainFont;
-      font-style: normal;
-      font-weight: $bold;
-      font-size: $fontsize-14;
-      text-decoration: none;
-      margin-top: 10px;
+        .eng-link-wrapper {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            margin-right: $margin50;
+            font-weight: $bold;
+            font-size: $fontsize20;
+            font-family: $mainFont;
+            font-style: normal;
+            text-decoration: none;
+
+            .eng-link-icon {
+                display: block;
+                width: 16px;
+                height: 16px;
+                margin-top: 5px;
+                margin-left: 5px;
+            }
+        }
     }
-  }
-
-  .header-link-item {
-    .eng-link-wrapper {
-      margin-right: $margin-50;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      font-weight: $bold;
-      font-size: $fontsize-20;
-
-      .eng-link-icon {
-        display: block;
-        width: 16px;
-        height: 16px;
-        margin-top: 5px;
-        margin-left: 5px;
-      }
-    }
-  }
 }
 
 @media (max-width: $mediaFirstTabletScreen) {
-  .header-links-wrapper {
-    right: 15px;
 
-    .header-link-item {
-      margin-left: 20px;
+    .header-links-wrapper {
+        right: 15px;
+
+        .header-link-item {
+            margin-left: 20px;
+        }
+
+        .link-wrapper {
+            font-size: $fontsize12;
+        }
+
+        .login-link-wrapper,
+        .eng-link-wrapper {
+
+            .login-link,
+            .eng-link {
+                font-size: $fontsize12;
+            }
+        }
     }
-
-    .link-wrapper {
-      font-size: $fontsize-12;
-    }
-
-    .login-link-wrapper,
-    .eng-link-wrapper {
-
-      .login-link,
-      .eng-link {
-        font-size: $fontsize-12;
-      }
-    }
-
-  }
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
-  .header-links-wrapper {
-    .header-link-item {
 
-      .link-wrapper,
-      .eng-link-wrapper {
-        display: none;
-      }
-    }
+    .header-links-wrapper {
 
-    .header-burger {
-      display: block;
+        .header-link-item {
+
+            .link-wrapper,
+            .eng-link-wrapper {
+                display: none;
+            }
+        }
+
+        .header-burger {
+            display: block;
+        }
     }
-  }
 }

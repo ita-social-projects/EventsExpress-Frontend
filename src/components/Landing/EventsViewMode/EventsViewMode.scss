@@ -1,33 +1,34 @@
-@import '../../../styles/variables.scss';
+@import "../../../styles/variables.scss";
 
 .menu-view-mode {
-  margin: 20px 0px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 20px 0;
 }
 
 .menu-view-mode__button {
-  width: 40px;
-  height: 40px;
-  margin: 0px 5px;
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
 }
 
 .menu-view-mode__button_matrix {
-  background: url("../../../assets/icons/ImgEventsViewModeMatrix.svg") no-repeat center;
+    background: url("../../../assets/icons/ImgEventsViewModeMatrix.svg") no-repeat center;
 }
 
 .menu-view-mode__button_list {
-  background: url("../../../assets/icons/ImgEventsViewModeList.svg") no-repeat center;
+    background: url("../../../assets/icons/ImgEventsViewModeList.svg") no-repeat center;
 }
 
 .menu-view-mode__button_slider {
-  background: url("../../../assets/icons/ImgEventsViewModeSlider.svg") no-repeat center;
+    background: url("../../../assets/icons/ImgEventsViewModeSlider.svg") no-repeat center;
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
-  .menu-view-mode__button {
-    width: 32px;
-    height: 32px;
-  }
+
+    .menu-view-mode__button {
+        width: 32px;
+        height: 32px;
+    }
 }
