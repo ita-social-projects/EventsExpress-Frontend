@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getFormValues, reset } from "redux-form";
 import { withRouter } from "react-router-dom";
-import EventFilter from "../components/event/EventFilter/Event-filter";
+import EventFilter from "../components/Event/EventFilter/EventFilter";
 import getСategoriesList from "../actions/category/category-list-action";
 import filterHelper from "../components/helpers/filterHelper";
-import EventFilterConstants from "../constants/EventFilterConstants";
+import { EVENTS_FILTER } from "../constants/eventConstants";
 
 class EventFilterWrapper extends Component {
   componentWillMount() {
@@ -36,22 +36,22 @@ class EventFilterWrapper extends Component {
     const filterCopy = { ...this.props.events.filter };
     Object.entries(filters).forEach(([key, value]) => {
       switch (key) {
-        case EventFilterConstants.PAGE:
+        case EVENTS_FILTER.PAGE:
           filterCopy[key] = value;
           break;
-        case EventFilterConstants.DATE_TO:
+        case EVENTS_FILTER.DATE_TO:
           filterCopy[key] = new Date(value).toDateString();
           break;
-        case EventFilterConstants.CATEGORIES:
+        case EVENTS_FILTER.CATEGORIES:
           filterCopy[key] = value.map(item => item.id);
           break;
-        case EventFilterConstants.STATUSES:
+        case EVENTS_FILTER.STATUSES:
           filterCopy[key] = value;
           break;
-        case EventFilterConstants.RADIUS:
+        case EVENTS_FILTER.RADIUS:
           filterCopy[key] = value;
           break;
-        case EventFilterConstants.SELECTED_POS:
+        case EVENTS_FILTER.SELECTED_POS:
           filterCopy.x = value.latitude;
           filterCopy.y = value.longitude;
           filterCopy[key] = undefined;

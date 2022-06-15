@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import OwnerSeeItem from "../components/inventory/ownerSeeItem";
-import OwnerEditItemForm from "../components/inventory/ownerEditItem";
-import VisitorSeeItem from "../components/inventory/VisitorSeeItem";
-import VisitorEditItemForm from "../components/inventory/visitorTakeItem";
+import OwnerSeeItem from "../components/Inventory/OwnerSeeItem";
+import OwnerEditItemForm from "../components/Inventory/OwnerEditItem";
+import VisitorSeeItem from "../components/Inventory/VisitorSeeItem";
+/* import VisitorEditItemForm from "../components/Inventory/VisitorTakeItem"; */
+import VisitorEditItemForm from "../components/Inventory/VisitorTakeItem";
 import { getInventoriesByEventId } from "../actions/inventory/inventory-list-action";
 import {
   deleteUsersInventory,

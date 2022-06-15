@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Member from "./Member";
-import { MEMBERS_TITLE } from "../../../constants/AboutUs";
+import { MEMBERS_TITLE } from "../../../constants/aboutUsConstants";
 import "./Members.scss";
 import SpinnerWrapper from "../../../containers/spinner";
 

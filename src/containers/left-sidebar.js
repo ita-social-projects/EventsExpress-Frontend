@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import LeftSidebar from "../components/left-sidebar";
+import LeftSidebar from "../components/LeftSidebar/LeftSidebar";
 
 class LeftSidebarWrapper extends Component {
   searchUnreadMsg = () => {

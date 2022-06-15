@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 import SpinnerWrapper from "./spinner";
 import EventDraftWrapper from "./event-draft";
 import EditEventWrapper from "./edit-event";
-import eventStatusEnum from "../constants/eventStatusEnum";
+import { EVENT_STATUS_ENUM } from "../constants/eventConstants";
 import getСategoriesList from "../actions/category/category-list-action";
 import getEvent, {
   resetEvent,
@@ -35,7 +35,7 @@ class EventEditWrapper extends Component {
 
     return (
       <SpinnerWrapper showContent={data !== undefined}>
-        {data.eventStatus === eventStatusEnum.Active ? (
+        {data.eventStatus === EVENT_STATUS_ENUM.ACTIVE ? (
           <EditEventWrapper />
         ) : (
           <EventDraftWrapper />

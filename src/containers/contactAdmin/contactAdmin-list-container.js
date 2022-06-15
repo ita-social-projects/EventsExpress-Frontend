@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { getFormValues } from "redux-form";
 import { connect } from "react-redux";
 import { parse as queryStringParse } from "query-string";
-import ContactAdminList from "../../components/contactAdmin/contactAdmin-list-component";
+import ContactAdminList from "../../components/ContactAdmin/ContactAdminListComponent";
 import SpinnerWrapper from "../spinner";
 import getIssues from "../../actions/contactAdmin/contact-admin-list-action";
 import filterHelper from "../../components/helpers/filterHelper";

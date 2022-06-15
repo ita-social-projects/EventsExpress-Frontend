@@ -4,7 +4,7 @@ import {
   promoteToOwner,
   approveUser,
 } from "../../actions/event/event-item-view-action";
-import DeniedUsersAction from "../../components/event/DeniedUsersAction/Denied-users-action";
+import DeniedUsersAction from "../../components/Event/DeniedUsersAction/DeniedUsersAction";
 
 const DeniedUsersActionContainer = props => <DeniedUsersAction props={props} />;
 

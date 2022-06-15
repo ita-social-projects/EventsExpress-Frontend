@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import addEvent from "../actions/event/event-add-action";
-import Landing from "../components/landing";
+import Landing from "../components/Landing/Landing/Landing";
 
 class LandingWrapper extends Component {
   onSubmit = () => {

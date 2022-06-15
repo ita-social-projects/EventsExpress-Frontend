@@ -9,7 +9,7 @@ import {
   IoIosArrowRoundForward,
 } from "react-icons/io";
 import { Link } from "react-router-dom";
-import constantsSplitScreens from "../../constants/SplitScreens";
+import constantsSplitScreens from "../../constants/splitScreensConstants";
 import CollapseButton from "./CollapseButton";
 
 const SplitPanels = () => {

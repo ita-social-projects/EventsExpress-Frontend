@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Spinner from "../components/spinner";
+import Spinner from "../components/Spinner/Spinner";
 
 const SpinnerWrapper = ({ counter, showContent, children }) =>
   counter > 0 || !showContent ? <Spinner /> : children;

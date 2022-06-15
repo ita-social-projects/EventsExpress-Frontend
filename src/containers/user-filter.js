@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { parse } from "query-string";
-import UsersFilters from "../components/users/UsersFilters";
+import UsersFilters from "../components/Users/UsersFilters";
 import history from "../history";
 import {
   accountStatus,
