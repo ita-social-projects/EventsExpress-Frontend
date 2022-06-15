@@ -1,6 +1,6 @@
 import "./RegistrationForm.scss";
 import React, { Component } from "react";
-import Stepper from "../stepper";
+import Stepper from "../Stepper/Stepper";
 import CompleteProfileForm from "./CompleteProfileForm";
 import ConfirmForm from "./ConfirmForm";
 import ChooseActivities from "./ChooseActivities";

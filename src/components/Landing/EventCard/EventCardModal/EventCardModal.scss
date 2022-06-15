@@ -1,0 +1,75 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/fonts.scss";
+@import "../../../../styles/colors.scss";
+@import "../../../../styles/mixins.scss";
+@import "../../../../styles/animations.scss";
+
+.wrapper {
+    width: $fullWidth;
+    height: $fullHeight;
+    background-color: $backGroundModal;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    .container {
+        width: 384px;
+        box-shadow: $boxshadow;
+        border-radius: $r16;
+        padding: 20px;
+        background-color: $white;
+    }
+}
+
+.titleText {
+    text-align: center;
+
+    .title {
+        font-size: $fontsize-24;
+    }
+}
+
+.inputBlock {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    .input {
+        @include form_input;
+    }
+}
+
+.interact {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+
+    .interactBtn {
+        font-size: $fontsize-14;
+        font-family: $mainFont;
+        font-weight: $thick;
+        padding: 8px 20px;
+        border-radius: $r12;
+        opacity: .9;
+        cursor: pointer;
+        transition: $defaultTransition;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .interactBtn:first-child {
+        background-color: $lightPink;
+        color: $black;
+    }
+
+    .interactBtn:last-child {
+        background-color: $purple;
+        color: $white;
+    }
+}

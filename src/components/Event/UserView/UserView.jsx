@@ -7,7 +7,7 @@ import userViewAttitude from "../../helpers/userViewUtils";
 import CustomAvatar from "../../CustomAvatar/CustomAvatar";
 import "./UserView.scss";
 import getAge from "../../helpers/get-age-string";
-import {USER_VIEW_LABELS} from "../../../constants/userConstants";
+import { USER_VIEW_LABELS } from "../../../constants/userConstants";
 
 const { AGE, YOU, THIS_USER } = USER_VIEW_LABELS;
 

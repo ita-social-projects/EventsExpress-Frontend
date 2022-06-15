@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 import SpinnerWrapper from "./spinner";
 import EventDraftWrapper from "./event-draft";
 import EditEventWrapper from "./edit-event";
-import {EVENT_STATUS_ENUM} from "../constants/eventConstants";
+import { EVENT_STATUS_ENUM } from "../constants/eventConstants";
 import getСategoriesList from "../actions/category/category-list-action";
 import getEvent, {
   resetEvent,

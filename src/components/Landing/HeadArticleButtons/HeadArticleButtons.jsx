@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HEADER_CONSTS } from "../../../constants/headersConstants";
 import AuthComponent from "../../../security/authComponent";
 import ModalWind from "../../ModalWind/ModalWind";
-import constants from "../../../constants/headArticleConstants";
 
-const { CREATE_EVENT, FIND_EVENT, WHAT_DO_YOU_WANT_TO_DO } = constants;
+const { CREATE_EVENT, FIND_EVENT, WHAT_DO_YOU_WANT_TO_DO } = HEADER_CONSTS;
 
 const HeadArticleButtons = () => {
   return (

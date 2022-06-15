@@ -8,18 +8,22 @@ $widthForContentFirstTabletScreen: 730px;
 $widthForContentSecondTabletScreen: 560px;
 $mobile-breakpoint: 426px;
 
+//modalBackground
+$backGroundModal: rgba(0, 0, 0, 0.4);
+
 //width & height
 $fullWidth: 100%;
 $halfWidth: 50%;
 $minusHalfWidth: -50%;
 
-$maxDisplayWidth:100vw;
-$maxDisplayHeight:100vh;
+$maxDisplayWidth: 100vw;
+$maxDisplayHeight: 100vh;
 
 $fullHeight: 100%;
 
 //radius
 $r16: 16px;
+$r12: 12px;
 
 //input
 $inputGeneralHeight: 55px;
@@ -40,10 +44,10 @@ $buttonBorderRadius: 10px;
 
 
 //margins
-$margin-50:50px;
-$left-160:160px;
+$margin-50: 50px;
+$left-160: 160px;
 //
-$mediumPaddingTop:50px;
+$mediumPaddingTop: 50px;
 
 $borderRound: 100%;
 

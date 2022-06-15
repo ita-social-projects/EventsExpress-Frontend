@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import renderPeriod from "./render-period";
 import useStyles from "./CardStyleConst";
-import {EVENT_DEFAULT_IMAGE} from "../../constants/eventConstants";
+import { EVENT_DEFAULT_IMAGE } from "../../constants/eventConstants";
 import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();

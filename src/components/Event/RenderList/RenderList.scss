@@ -1,0 +1,20 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+
+    .draftPagination {
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.eventsBlock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

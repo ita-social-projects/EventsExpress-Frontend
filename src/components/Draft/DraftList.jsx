@@ -1,79 +1,66 @@
-﻿/* eslint-disable react/no-unused-state */
-import React, { Component } from "react";
-import { connect } from "react-redux";
+﻿import React, { useEffect } from "react";
 import { createBrowserHistory } from "history";
 import PropTypes from "prop-types";
-import DraftEventCard from "./DraftEventCard";
 import RenderList from "../Event/RenderList/RenderList";
-import { changeEventStatus } from "../../actions/event/event-item-view-action";
-import {EVENT_STATUS_ENUM} from "../../constants/eventConstants";
-import { setSuccessAllert } from "../../actions/alert-action";
+import { ALERT_MESSAGES } from "../../constants/draftConstants";
+import filterHelper from "../helpers/filterHelper";
 
 const history = createBrowserHistory({ forceRefresh: true });
 
-class DraftList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      currentPage: 1,
-    };
-  }
+const DraftList = ({ events, deleteEvent, alert, getDraftsAction }) => {
+  const { data, filter } = events;
+  const { items, pageViewModel } = data;
+  const { pageNumber, totalPages } = pageViewModel;
+  let objCurrentQueryParams = null;
+  const objFilterParams = filterHelper.trimUndefinedKeys(events.filter);
 
-  handlePageChange = page => {
-    this.props.get_drafts(page);
-    this.setState({
-      currentPage: page,
-    });
+  const handlePageChange = page => {
+    getDraftsAction(page);
   };
 
-  renderSingleItem = item => (
-    <DraftEventCard
-      key={item.id + item.isBlocked}
-      item={item}
-      current_user={this.props.current_user}
-      onDelete={this.onDelete}
-    />
-  );
-
-  onDelete = async (eventId, reason) => {
-    await this.props.delete(eventId, reason);
-    this.props.alert("Your event has been successfully deleted!");
+  const onDelete = async (eventId, reason) => {
+    await deleteEvent(eventId, reason);
+    alert(ALERT_MESSAGES.DELETE);
     history.push(`/drafts`);
   };
+  useEffect(() => {
+    getDraftsAction(pageNumber);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  render() {
-    return (
-      <>
-        <RenderList
-          {...this.props}
-          renderSingleItem={this.renderSingleItem}
-          handlePageChange={this.handlePageChange}
-        />
-      </>
-    );
-  }
-}
-
-DraftList.defaultProps = {
-  alert: () => {},
-  delete: () => {},
-  get_drafts: () => {},
-  current_user: {},
+  useEffect(() => {
+    if (!filterHelper.compareObjects(objFilterParams, objCurrentQueryParams)) {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      objCurrentQueryParams = objFilterParams;
+    }
+  }, [filter]);
+  return (
+    <RenderList
+      dataList={items}
+      totalPages={totalPages}
+      page={pageNumber}
+      handlePageChange={handlePageChange}
+      onDelete={onDelete}
+    />
+  );
 };
 
 DraftList.propTypes = {
+  getDraftsAction: PropTypes.func,
+  pageViewModel: PropTypes.object,
+  events: PropTypes.object,
+  pageNumber: PropTypes.number,
   alert: PropTypes.func,
-  delete: PropTypes.func,
-  get_drafts: PropTypes.func,
-  current_user: PropTypes.object,
+  deleteEvent: PropTypes.func,
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    alert: msg => dispatch(setSuccessAllert(msg)),
-    delete: (eventId, reason) =>
-      dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.DELETED)),
-  };
+DraftList.defaultProps = {
+  getDraftsAction: () => {},
+  pageViewModel: {},
+  alert: () => {},
+  deleteEvent: () => {},
+  events: {},
+  pageNumber: null,
 };
 
-export default connect(null, mapDispatchToProps)(DraftList);
+export default DraftList;

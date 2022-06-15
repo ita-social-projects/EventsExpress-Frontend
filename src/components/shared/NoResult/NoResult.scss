@@ -1,0 +1,134 @@
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/variables.scss";
+@import "../../../styles/animations.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 120px;
+
+    .image {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .bannerButton {
+        width: 100%;
+        max-width: 180px;
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+        background: $white;
+        border: 1px solid $white;
+        border-radius: $defaultBorderRadius;
+        color: $black;
+        padding: 10px 20px;
+        font-weight: $semiBold;
+        font-family: $mainFont;
+        transition: $defaultTransition;
+        animation: $landingBannerAnimation;
+        font-size: $fontsize-16;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: $textShadowNeon;
+            animation: none;
+        }
+    }
+
+}
+
+.containerText {
+    width: 100%;
+
+    .headText {
+        font-size: $fontsize-32;
+        font-weight: $semiBold;
+        margin-bottom: 10px;
+    }
+
+    .subTitleText {
+        font-size: $fontsize-20;
+        font-weight: $thick;
+    }
+
+}
+
+@media screen and (max-width: $mediaFirstTabletScreen) {
+    .container {
+        .image {
+            max-width: 350px;
+        }
+    }
+
+    .containerText {
+        .headText {
+            font-size: $fontsize-24;
+            margin-bottom: 10px;
+        }
+
+        .subTitleText {
+            font-size: $fontsize-18;
+        }
+    }
+}
+
+@media screen and (max-width: $mediaSecondTabletScreen) {
+    .container {
+        .image {
+            max-width: 300px;
+        }
+
+        .bannerButton {
+            max-width: 160px;
+            padding: 8px 15px;
+            font-size: $fontsize-16;
+        }
+    }
+
+    .containerText {
+        .headText {
+            font-size: $fontsize-20;
+            margin-bottom: 10px;
+        }
+
+        .subTitleText {
+            font-size: $fontsize-16;
+        }
+    }
+}
+
+@media screen and (max-width: $mediaMobileScreen) {
+    .container {
+        height: calc(100vh - 460px);
+        top: 50%;
+
+        .bannerButton {
+            max-width: 140px;
+            padding: 5px 10px;
+            font-size: $fontsize-14;
+        }
+    }
+
+    .containerText {
+        .headText {
+            font-size: $fontsize-18;
+            margin-bottom: 10px;
+        }
+
+        .subTitleText {
+            font-size: $fontsize-14;
+        }
+    }
+}
