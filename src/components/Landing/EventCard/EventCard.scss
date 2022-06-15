@@ -20,7 +20,7 @@
     object-fit:cover;
   }
   .card-content {
-    @include flex(row, start, start);
+    @include flex(row, flex-start, flex-start);
     width: $fullWidth;
     height: 150px;
     padding: 5px;
@@ -44,7 +44,7 @@
       }
     }
     .card-info {
-      @include flex(column, start, space-between);
+      @include flex(column, flex-start, space-between);
       padding: 5px;
       width: $fullWidth;
       .card-info-header {
@@ -72,7 +72,7 @@
           margin-left: 15px;
           background-color: $lightThemeAccept;
           color: $white;
-          @include flex(row, center, start);
+          @include flex(row, center, flex-start);
         }
       }
     }

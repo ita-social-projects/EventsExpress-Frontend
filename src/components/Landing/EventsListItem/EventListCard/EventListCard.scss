@@ -4,7 +4,7 @@
 @import "../../../../styles/fonts.scss";
 
 .card-item-container {
-  @include flex(row, start, center);
+  @include flex(row, flex-start, center);
   .card-item {
     @include flex(column, center, center);
     height: 280px;
@@ -14,7 +14,7 @@
     box-shadow: $boxshadow;
     margin-bottom: 50px;
     .content {
-      @include flex(row, start, flex-end);
+      @include flex(row, flex-start, flex-end);
       width: $fullWidth;
       height: 200px;
       position: relative;
@@ -40,7 +40,7 @@
         object-fit:cover;
       }
       .card-item-content {
-        @include flex(column, start, space-between);
+        @include flex(column, flex-start, space-between);
         width: 40%;
         .card-item-header {
           text-transform: uppercase;
@@ -79,7 +79,7 @@
         margin-bottom: 0;
       }
       .event-date {
-        @include flex(column, start, start);
+        @include flex(column, flex-start, flex-start);
         position: absolute;
         left: 30px;
         bottom: 25px;
@@ -101,7 +101,7 @@
         }
       }
       .event-details-btn {
-        @include flex(row, center, start);
+        @include flex(row, center, flex-start);
         background-color: $lightThemeAccept;
         color: $white;
       }
@@ -189,7 +189,7 @@
       width: 450px;
       .content {
         padding-top: 0;
-        @include flex(row, center, start);
+        @include flex(row, center, flex-start);
         height: 220px;
         .image-container {
           position: relative;
@@ -205,7 +205,7 @@
         .card-item-content {   
           width: 150px;
           height: 70px;
-          @include flex(column, start, center);
+          @include flex(column, flex-start, center);
           .card-item-header {
             font-size: $fontsize-12;
             padding: 10px;

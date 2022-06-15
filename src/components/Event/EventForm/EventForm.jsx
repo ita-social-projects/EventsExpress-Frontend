@@ -6,7 +6,7 @@ import momentLocaliser from "react-widgets-moment";
 import propTypes from "prop-types";
 import DropZoneField from "../../helpers/DropZoneField";
 import PhotoService from "../../../services/PhotoService";
-import {PERIODICITY} from "../../../constants/peridiocitConstants";
+import { PERIODICITY } from "../../../constants/peridiocitConstants";
 import {
   renderDatePicker,
   renderCheckbox,
@@ -19,7 +19,7 @@ import {
 import "./EventForm.scss";
 import asyncValidatePhoto from "../../../containers/async-validate-photo";
 import Location from "../../Location/Location";
-import {EVENT_STATUS_ENUM} from "../../../constants/eventConstants";
+import { EVENT_STATUS_ENUM } from "../../../constants/eventConstants";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 
 momentLocaliser(moment);

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import EventItemView from "../components/Event/EventItemView/EventItemView";
-import {EVENT_STATUS_ENUM} from "../constants/eventConstants";
+import { EVENT_STATUS_ENUM } from "../constants/eventConstants";
 import SpinnerWrapper from "./spinner";
 import getEvent, {
   join,

@@ -6,7 +6,7 @@ import { renderSelectField, renderTextField } from "../helpers/form-helpers";
 import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
 import InventoryHeaderButton from "./InventoryHeaderButton";
 import "./Inventory.scss";
-import ErrorMessages from "../shared/errorMessage";
+import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 
 const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
   return (

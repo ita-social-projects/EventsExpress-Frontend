@@ -12,8 +12,10 @@ import {
 import filterHelper from "../../helpers/filterHelper";
 import EventMapModal from "../MapModal/MapModal";
 import DisplayMap from "../Map/DisplayMap";
-import eventStatusEnum from "../../../constants/eventStatusEnumConstants";
-import constants from "../../../constants/eventsFilterConstants";
+import {
+  EVENT_STATUS_ICON,
+  EVENTS_FILTER,
+} from "../../../constants/eventConstants";
 import "./EventFilter.scss";
 
 const {
@@ -28,7 +30,9 @@ const {
   OPTIONS_ACTIVE,
   OPTIONS_BLOCKED,
   OPTIONS_CANCELED,
-} = constants;
+} = EVENTS_FILTER;
+
+const { ACTIVE, BLOCKED, CANCELED } = EVENT_STATUS_ICON;
 
 class EventFilter extends Component {
   constructor(props) {
@@ -79,9 +83,9 @@ class EventFilter extends Component {
 
     const values = formValues || { selectedPos: {} };
     const options = [
-      { value: eventStatusEnum.Active, text: OPTIONS_ACTIVE },
-      { value: eventStatusEnum.Blocked, text: OPTIONS_BLOCKED },
-      { value: eventStatusEnum.Canceled, text: OPTIONS_CANCELED },
+      { value: ACTIVE, text: OPTIONS_ACTIVE },
+      { value: BLOCKED, text: OPTIONS_BLOCKED },
+      { value: CANCELED, text: OPTIONS_CANCELED },
     ];
 
     return (

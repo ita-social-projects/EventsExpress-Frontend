@@ -56,7 +56,7 @@ $slick-next-rotate: 45deg;
     width: auto;
 }
 .slick-initialized .slick-slide {
-  @include flex(row, start, center);
+  @include flex(row, flex-start, center);
 }
 
 .slick-dots li {
