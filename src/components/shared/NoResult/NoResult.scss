@@ -10,7 +10,7 @@
 }
 
 .container {
-    width: 100%;
+    width: $fullWidth;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -19,18 +19,18 @@
     .image {
         display: block;
         margin: 0 auto;
-        width: 100%;
+        width: $fullWidth;
         max-width: 400px;
     }
 
     .bannerButton {
-        width: 100%;
+        width: $fullWidth;
         max-width: 180px;
         display: block;
         margin: 0 auto;
         margin-top: 10px;
         background: $white;
-        border: 1px solid $white;
+        border: $defaulBorder;
         border-radius: $defaultBorderRadius;
         color: $black;
         padding: 10px 20px;
@@ -50,7 +50,7 @@
 }
 
 .containerText {
-    width: 100%;
+    width: $fullWidth;
 
     .headText {
         font-size: $fontsize-32;
@@ -112,7 +112,7 @@
 @media screen and (max-width: $mediaMobileScreen) {
     .container {
         height: calc(100vh - 460px);
-        top: 50%;
+        top: $halfHieght;
 
         .bannerButton {
             max-width: 140px;
