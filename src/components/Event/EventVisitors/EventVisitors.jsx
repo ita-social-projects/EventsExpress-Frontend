@@ -5,7 +5,7 @@ import ApprovedUsersActionsContainer from "../../../containers/Approved-users-ac
 import PendingUsersActions from "../PendingUsersAction/PendingUsersAction";
 import DeniedUsersActions from "../DeniedUsersAction/DeniedUsersAction";
 import ParticipantGroup from "../ParticipantGroup/ParticipantGroup";
-import {EVENT_VISITORS} from "../../../constants/eventConstants";
+import { EVENT_VISITORS } from "../../../constants/eventConstants";
 
 const { ADMIN, VISITORS, PENDING_USERS, DENIED_USERS } = EVENT_VISITORS;
 

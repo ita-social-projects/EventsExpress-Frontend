@@ -13,8 +13,11 @@ import EventLeaveModal from "../EventLeaveModal/EventLeaveModal";
 import InventoryList from "../../Inventory/InventoryList";
 import DisplayLocation from "../Map/DisplayLocation";
 
-import {USER_STATUS_ENUM} from "../../../constants/userConstants";
-import {EVENT_DEFAULT_IMAGE, EVENT_STATUS_ENUM} from "../../../constants/eventConstants";
+import { USER_STATUS_ENUM } from "../../../constants/userConstants";
+import {
+  EVENT_DEFAULT_IMAGE,
+  EVENT_STATUS_ENUM,
+} from "../../../constants/eventConstants";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
 import PhotoService from "../../../services/PhotoService";
 

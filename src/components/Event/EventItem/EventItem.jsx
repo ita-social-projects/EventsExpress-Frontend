@@ -16,9 +16,13 @@ import DisplayLocation from "../Map/DisplayLocation";
 import useStyle from "../CardStyle/CardStyle";
 import AuthComponent from "../../../security/authComponent";
 import EventHeader from "../EventItemHeader/EventItemHeader";
-import {ROLES} from "../../../constants/userConstants";
+import { ROLES } from "../../../constants/userConstants";
 import PhotoService from "../../../services/PhotoService";
-import {EVENT_DEFAULT_IMAGE, EVENT_STATUS_ENUM, EVENT_ITEM_CONSTANTS} from "../../../constants/eventConstants";
+import {
+  EVENT_DEFAULT_IMAGE,
+  EVENT_STATUS_ENUM,
+  EVENT_ITEM_CONSTANTS,
+} from "../../../constants/eventConstants";
 
 const useStyles = useStyle;
 const photoService = new PhotoService();
@@ -91,7 +95,8 @@ const EventCard = props => {
         {maxParticipants && (
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
-              {countVisitor}/{maxParticipants} {EVENT_ITEM_CONSTANTS.PARTICIPANTS}
+              {countVisitor}/{maxParticipants}{" "}
+              {EVENT_ITEM_CONSTANTS.PARTICIPANTS}
             </Typography>
           </CardContent>
         )}

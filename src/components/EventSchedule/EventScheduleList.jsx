@@ -1,48 +1,48 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import EventSchedule from "./EventScheduleItem";
+import "./EventSchedule.scss";
+import SpinnerWrapper from "../../containers/spinner";
+import NoResult from "../shared/NoResult/NoResult";
+import EventCard from "../Landing/EventCard/EventCard";
+import { EVENT_NO_RESULT } from "../../constants/eventConstants";
 
-class EventSchedulesList extends Component {
-  renderItems = arr =>
-    arr.map(item => (
-      <EventSchedule
-        key={item.id}
-        item={item}
-        current_user={this.props.currentUser}
-      />
-    ));
-
-  render() {
-    const items = this.renderItems(this.props.dataList);
-    const { dataList } = this.props;
-    return (
-      <>
-        <div className="row">
-          {dataList.length > 0 ? (
-            items
-          ) : (
-            <div id="notfound" className="w-100">
-              <div className="notfound">
-                <div className="notfound-404">
-                  <div className="h1">No Results</div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </>
-    );
-  }
-}
+const EventSchedulesList = ({ dataList, getEvents, loaded }) => {
+  useEffect(() => {
+    getEvents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return (
+    <div className="container">
+      <SpinnerWrapper showContent={loaded}>
+        {dataList.length > 0 ? (
+          <div className="eventsBlock">
+            {dataList.map(item => (
+              <EventCard key={item.id} event={item} />
+            ))}
+          </div>
+        ) : (
+          <NoResult
+            title={EVENT_NO_RESULT.TITLE}
+            subTitle={EVENT_NO_RESULT.SUB_TITLE}
+            photo={EVENT_NO_RESULT.PHOTO}
+            btnTitle={EVENT_NO_RESULT.BTN_TITLE}
+          />
+        )}
+      </SpinnerWrapper>
+    </div>
+  );
+};
 
 EventSchedulesList.propTypes = {
+  loaded: PropTypes.bool,
   dataList: PropTypes.array,
-  currentUser: PropTypes.object,
+  getEvents: PropTypes.func,
 };
 
 EventSchedulesList.defaultProps = {
+  loaded: false,
   dataList: [],
-  currentUser: {},
+  getEvents: () => {},
 };
 
 export default EventSchedulesList;

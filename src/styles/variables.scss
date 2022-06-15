@@ -1,3 +1,5 @@
+@import "./colors.scss";
+
 //screens
 $mediaPcScreen: 1180px;
 $mediaFirstTabletScreen: 991px;
@@ -13,11 +15,11 @@ $fullWidth: 100%;
 $halfWidth: 50%;
 $minusHalfWidth: -50%;
 
-$maxDisplayWidth:100vw;
-$maxDisplayHeight:100vh;
+$maxDisplayWidth: 100vw;
+$maxDisplayHeight: 100vh;
 
 $fullHeight: 100%;
-
+$halfHieght: 50%;
 //radius
 $r16: 16px;
 
@@ -37,13 +39,13 @@ $Unoutline: none;
 //border
 $defaultBorderRadius: 20px;
 $buttonBorderRadius: 10px;
-
+$defaulBorder: 1px solid $white;
 
 //margins
-$margin-50:50px;
-$left-160:160px;
+$margin-50: 50px;
+$left-160: 160px;
 //
-$mediumPaddingTop:50px;
+$mediumPaddingTop: 50px;
 
 $borderRound: 100%;
 

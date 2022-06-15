@@ -1,26 +1,31 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import { BiRightArrowAlt } from "react-icons/bi";
 import moment from "moment";
 import IconsEventCard from "./IconsEventCard/IconsEventCard";
 import "./EventCard.scss";
 import PhotoService from "../../../services/PhotoService";
-import {EVENT_DEFAULT_IMAGE, FORMATS} from "../../../constants/eventConstants";
+import {
+  EVENT_DEFAULT_IMAGE,
+  FORMATS,
+} from "../../../constants/eventConstants";
 
 const EventCard = ({ event }) => {
-  const { id, title, dateFrom } = event;
+  const { id, eventId, title, dateFrom } = event;
   const photoService = useMemo(() => new PhotoService(), []);
   const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
-
+  const pathName = useLocation().pathname;
   useEffect(() => {
     // TODO move to service and call from action
-    photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {
-      if (eventPreviewImage) {
-        const image = URL.createObjectURL(eventPreviewImage);
-        setEventImage(image);
-      }
-    });
+    photoService
+      .getPreviewEventPhoto(pathName === "/eventSchedules" ? eventId : id)
+      .then(eventPreviewImage => {
+        if (eventPreviewImage) {
+          const image = URL.createObjectURL(eventPreviewImage);
+          setEventImage(image);
+        }
+      });
     return () => {
       URL.revokeObjectURL(eventImage);
     };
@@ -61,10 +66,10 @@ const EventCard = ({ event }) => {
 };
 
 EventCard.propTypes = {
-  event: {},
+  event: PropTypes.object,
 };
 
 EventCard.defaultProps = {
-  event: PropTypes.object,
+  event: {},
 };
 export default EventCard;
