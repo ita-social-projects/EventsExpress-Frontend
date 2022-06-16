@@ -1,5 +1,5 @@
 import React from "react";
-import Event from "../event/EventItem/Event-item";
+import Event from "../Event/EventItem/EventItem";
 
 const renderItems = (arr, currentUser) =>
   arr.map(item => (

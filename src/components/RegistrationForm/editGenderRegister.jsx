@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { renderSelectField } from "../helpers/form-helpers";
-import ErrorMessages from "../shared/errorMessage";
+import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 
 const editGenderRegister = props => {
   const { handleSubmit } = props;
