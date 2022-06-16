@@ -4,7 +4,7 @@ import Badge from "@material-ui/core/Badge";
 import "./LeftSidebar.scss";
 import NavItem from "../NavItem/NavItem";
 import AuthComponent from "../../security/authComponent";
-import {ROLES} from "../../constants/userConstants";
+import { ROLES } from "../../constants/userConstants";
 
 class LeftSidebar extends Component {
   constructor(props) {

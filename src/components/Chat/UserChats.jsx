@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import propTypes from "prop-types";
 import getChatsAction from "../../actions/chat/chats-action";
-import SpinnerWrapper from "../../containers/spinner";
+import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import "./UserChats.scss";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
 
@@ -64,11 +64,11 @@ class UserChats extends Component {
     });
 
     return (
-      <SpinnerWrapper showContent={data !== undefined}>
+      <SpinnerContainer showContent={data !== undefined}>
         <div className="row shadow mt-5 p-5 mb-5 bg-white rounded limit-width">
           {this.renderChats(data)}
         </div>
-      </SpinnerWrapper>
+      </SpinnerContainer>
     );
   }
 }

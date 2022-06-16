@@ -1,11 +1,11 @@
 import React from "react";
 import propTypes from "prop-types";
-import ContainerOwnersActions from "../../../containers/ContainerOwnersAction";
-import ApprovedUsersActionsContainer from "../../../containers/Approved-users-action-container";
+import OwnersActionContainer from "../../../containers/UsersActionsContainer/OwnersActionContainer";
+import ApprovedUsersActionsContainer from "../../../containers/UsersActionsContainer/ApprovedUsersActionsContainer";
 import PendingUsersActions from "../PendingUsersAction/PendingUsersAction";
 import DeniedUsersActions from "../DeniedUsersAction/DeniedUsersAction";
 import ParticipantGroup from "../ParticipantGroup/ParticipantGroup";
-import {EVENT_VISITORS} from "../../../constants/eventConstants";
+import { EVENT_VISITORS } from "../../../constants/eventConstants";
 
 const { ADMIN, VISITORS, PENDING_USERS, DENIED_USERS } = EVENT_VISITORS;
 
@@ -18,7 +18,7 @@ const EventVisitors = ({ isMyPrivateEvent, visitors, admins, isMyEvent }) => {
       users: admins,
       label: ADMIN,
       renderComponent: user => (
-        <ContainerOwnersActions user={user} isMyEvent={isMyEvent} />
+        <OwnersActionContainer user={user} isMyEvent={isMyEvent} />
       ),
     },
     {

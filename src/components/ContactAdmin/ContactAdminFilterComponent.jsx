@@ -6,7 +6,7 @@ import { MultiCheckbox, renderDatePicker } from "../helpers/form-helpers";
 import parseEuDate from "../helpers/form-helpers/parseEuDate";
 import filterHelper from "../helpers/filterHelper";
 import "./ContactAdminFilter.scss";
-import {ISSUE_STATUS_ENUM} from "../../constants/issueConstants";
+import { ISSUE_STATUS_ENUM } from "../../constants/issueConstants";
 
 class ContactAdminFilter extends Component {
   constructor(props) {

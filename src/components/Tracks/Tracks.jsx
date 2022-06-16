@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import TrackList from "./TrackList";
 import TracksFilter from "./TracksFilter";
-import SpinnerWrapper from "../../containers/spinner";
+import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 
 class Tracks extends Component {
   componentDidMount = () => {
@@ -47,7 +47,7 @@ class Tracks extends Component {
   render() {
     const { data, entityNames } = this.props.tracks;
     return (
-      <SpinnerWrapper showContent={data}>
+      <SpinnerContainer showContent={data}>
         <table className="table w-100 m-auto">
           <tbody>
             <div className="d-flex">
@@ -70,7 +70,7 @@ class Tracks extends Component {
             </div>
           </tbody>
         </table>
-      </SpinnerWrapper>
+      </SpinnerContainer>
     );
   }
 }

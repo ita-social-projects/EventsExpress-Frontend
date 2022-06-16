@@ -2,10 +2,10 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "./EventSchedule.scss";
-import AddFromParentEventWrapper from "../../containers/add-event-from-parent";
-import EditFromParentEventWrapper from "../../containers/edit-event-from-parent";
-import CancelNextEventWrapper from "../../containers/cancel-next-event";
-import CancelAllEventsWrapper from "../../containers/cancel-all-events";
+import AddFromParentEventContainer from "../../containers/AddEventFromParentContainer/AddFromParentEventContainer";
+import EditFromParentEventContainer from "../../containers/EventEditContainer/EditFromParentEventContainer";
+import CancelNextEventContainer from "../../containers/CancelEventsContainer/CancelNextEventContainer";
+import CancelAllEventsContainer from "../../containers/CancelEventsContainer/CancelAllEventsContainer";
 import EventSchedulePopover from "./EventSchedulePopover";
 import EventScheduleModal from "./EventScheduleModal";
 
@@ -45,12 +45,12 @@ export default class SelectiveForm extends Component {
           <div className="row">
             <div className="col-11">
               <DropdownButton title="Select Option For Event">
-                <Dropdown.Item as={AddFromParentEventWrapper}></Dropdown.Item>
+                <Dropdown.Item as={AddFromParentEventContainer}></Dropdown.Item>
                 <Dropdown.Item onClick={this.onEdit}>
                   Create with editing
                 </Dropdown.Item>
-                <Dropdown.Item as={CancelNextEventWrapper}></Dropdown.Item>
-                <Dropdown.Item as={CancelAllEventsWrapper}></Dropdown.Item>
+                <Dropdown.Item as={CancelNextEventContainer}></Dropdown.Item>
+                <Dropdown.Item as={CancelAllEventsContainer}></Dropdown.Item>
               </DropdownButton>
             </div>
             <EventSchedulePopover />
@@ -63,7 +63,7 @@ export default class SelectiveForm extends Component {
           />
           {this.state.submit && (
             <div className="mt-3">
-              <EditFromParentEventWrapper
+              <EditFromParentEventContainer
                 onCancelEditing={this.cancelHandler}
               />
             </div>
