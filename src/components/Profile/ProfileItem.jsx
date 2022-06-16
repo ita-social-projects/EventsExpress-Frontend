@@ -6,9 +6,12 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import { AccordionSummary } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import profileConstants from "../../constants/profileConstants";
+
+const { TYPE_LIST } = profileConstants;
 
 const getContentByType = (type, content) => {
-  if (type === "list") {
+  if (type === TYPE_LIST) {
     return (
       <>
         {content.map(({ id, name }) => (
@@ -24,7 +27,7 @@ const ProfileItem = ({ item, handleChange, expanded, classes }) => {
   const { panelId, title, type, content, accordionDetailsContent } = item;
   const acrodionContent = getContentByType(type, content);
   const hasContent =
-    acrodionContent || (type === "list" && acrodionContent.length !== 0);
+    acrodionContent || (type === TYPE_LIST && acrodionContent.length !== 0);
 
   return (
     <Accordion expanded={expanded === panelId} onChange={handleChange(panelId)}>
