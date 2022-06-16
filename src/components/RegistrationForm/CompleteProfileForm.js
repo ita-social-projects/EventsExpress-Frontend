@@ -1,134 +1,145 @@
 import React from "react";
-import { Grid, Button } from "@material-ui/core";
-import { reduxForm, Field } from "redux-form";
-import moment from "moment";
-import PropTypes from "prop-types";
-import {
-  renderDatePicker,
-  renderTextField,
-  renderSelectField,
-  parseEuDate,
-} from "../helpers/form-helpers";
-import ChangeAvatarWrapper from "../../containers/editProfileContainers/change-avatar";
+// import { Grid, Button } from "@material-ui/core";
+// import { reduxForm, Field } from "redux-form";
+// import moment from "moment";
+// import PropTypes from "prop-types";
+// import {
+//   renderDatePicker,
+//   renderTextField,
+//   renderSelectField,
+//   parseEuDate,
+// } from "../helpers/form-helpers";
+// import ChangeAvatarWrapper from "../../containers/editProfileContainers/change-avatar";
 
-const CompleteProfileForm = ({ handleSubmit }) => {
-  return (
-    <>
-      <div style={{ width: "97%", padding: "10px" }}>
-        <form onSubmit={handleSubmit}>
-          <Grid container spacing={3}>
-            <Grid item sm={6}>
-              <h1 style={{ fontSize: 20 }}>Step 2: Complete your profile. </h1>
-            </Grid>
-            <Grid item sm={6} />
+const CompleteProfileForm = () => (
+  <form className="complete-profile">
+    <div className="user-avatar">
+      <img alt="Avatar" src="./saddsa" />
+    </div>
+    <div className="user-details"></div>
+  </form>
+);
 
-            <Grid item sm={3}>
-              Choose your avatar:
-            </Grid>
-            <Grid item sm={9}>
-              <ChangeAvatarWrapper />
-            </Grid>
-            <Grid item sm={1} />
+export default CompleteProfileForm;
 
-            <Grid item sm={12} />
+// const CompleteProfileForm = ({ handleSubmit }) => {
+//   return (
+//     <>
+//       <div style={{ width: "97%", padding: "10px" }}>
+//         <form onSubmit={handleSubmit}>
+//           <Grid container spacing={3}>
+//             <Grid item sm={6}>
+//               <h1 style={{ fontSize: 20 }}>Step 2: Complete your profile. </h1>
+//             </Grid>
+//             <Grid item sm={6} />
 
-            <Grid item sm={3}>
-              <Field
-                name="firstName"
-                variant="outlined"
-                component={renderTextField}
-                type="input"
-                label="First Name"
-              />
-            </Grid>
-            <Grid item sm={3}>
-              <Field
-                name="lastName"
-                variant="outlined"
-                component={renderTextField}
-                type="input"
-                label="Last Name"
-              />
-            </Grid>
-            <Grid item sm={2} />
-            <Grid item sm={4}>
-              <Field
-                name="birthDate"
-                label="Birth Date"
-                minValue={moment(new Date()).subtract(115, "years")}
-                maxValue={moment(new Date()).subtract(14, "years")}
-                component={renderDatePicker}
-                parse={parseEuDate}
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <Field
-                name="country"
-                variant="outlined"
-                component={renderTextField}
-                type="input"
-                label="County"
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <Field
-                name="city"
-                variant="outlined"
-                component={renderTextField}
-                type="input"
-                label="City"
-              />
-            </Grid>
+//             <Grid item sm={3}>
+//               Choose your avatar:
+//             </Grid>
+//             <Grid item sm={9}>
+//               <ChangeAvatarWrapper />
+//             </Grid>
+//             <Grid item sm={1} />
 
-            <Grid item sm={2}></Grid>
-            <Grid item sm={4}>
-              <Field
-                minWidth={140}
-                name="gender"
-                component={renderSelectField}
-                label="Gender"
-              >
-                <option aria-label="None" value="" />
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Other</option>
-              </Field>
-            </Grid>
+//             <Grid item sm={12} />
 
-            <Grid item sm={12} justifyContent="space-around">
-              <Button
-                type="submit"
-                className="next"
-                color="primary"
-                variant="contained"
-                size="large"
-              >
-                Continue
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-    </>
-  );
-};
+//             <Grid item sm={3}>
+//               <Field
+//                 name="firstName"
+//                 variant="outlined"
+//                 component={renderTextField}
+//                 type="input"
+//                 label="First Name"
+//               />
+//             </Grid>
+//             <Grid item sm={3}>
+//               <Field
+//                 name="lastName"
+//                 variant="outlined"
+//                 component={renderTextField}
+//                 type="input"
+//                 label="Last Name"
+//               />
+//             </Grid>
+//             <Grid item sm={2} />
+//             <Grid item sm={4}>
+//               <Field
+//                 name="birthDate"
+//                 label="Birth Date"
+//                 minValue={moment(new Date()).subtract(115, "years")}
+//                 maxValue={moment(new Date()).subtract(14, "years")}
+//                 component={renderDatePicker}
+//                 parse={parseEuDate}
+//               />
+//             </Grid>
+//             <Grid item xs={3}>
+//               <Field
+//                 name="country"
+//                 variant="outlined"
+//                 component={renderTextField}
+//                 type="input"
+//                 label="County"
+//               />
+//             </Grid>
+//             <Grid item xs={3}>
+//               <Field
+//                 name="city"
+//                 variant="outlined"
+//                 component={renderTextField}
+//                 type="input"
+//                 label="City"
+//               />
+//             </Grid>
 
-CompleteProfileForm.defaultProps = {
-  handleSubmit: () => {},
-};
+//             <Grid item sm={2}></Grid>
+//             <Grid item sm={4}>
+//               <Field
+//                 minWidth={140}
+//                 name="gender"
+//                 component={renderSelectField}
+//                 label="Gender"
+//               >
+//                 <option aria-label="None" value="" />
+//                 <option value="1">Male</option>
+//                 <option value="2">Female</option>
+//                 <option value="3">Other</option>
+//               </Field>
+//             </Grid>
 
-CompleteProfileForm.propTypes = {
-  handleSubmit: PropTypes.func,
-};
-
-// const mapStateToProps = state => {
-//   return {
-//     formValues: getFormValues("registrationForm")(state),
-//   };
+//             <Grid item sm={12} justifyContent="space-around">
+//               <Button
+//                 type="submit"
+//                 className="next"
+//                 color="primary"
+//                 variant="contained"
+//                 size="large"
+//               >
+//                 Continue
+//               </Button>
+//             </Grid>
+//           </Grid>
+//         </form>
+//       </div>
+//     </>
+//   );
 // };
 
-export default reduxForm({
-  form: "registrationForm",
-  destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true,
-})(CompleteProfileForm);
+// CompleteProfileForm.defaultProps = {
+//   handleSubmit: () => {},
+// };
+
+// CompleteProfileForm.propTypes = {
+//   handleSubmit: PropTypes.func,
+// };
+
+// // const mapStateToProps = state => {
+// //   return {
+// //     formValues: getFormValues("registrationForm")(state),
+// //   };
+// // };
+
+// export default reduxForm({
+//   form: "registrationForm",
+//   destroyOnUnmount: false,
+//   forceUnregisterOnUnmount: true,
+// })(CompleteProfileForm);

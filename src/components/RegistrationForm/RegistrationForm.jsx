@@ -1,7 +1,7 @@
-import "./RegistrationForm.css";
 import React, { useState } from "react";
 import Stepper from "../Stepper/Stepper";
 import { STEPPER_STEPS } from "../../constants/registationFormConstants";
+import "./RegistrationForm.scss";
 
 const RegistrationForm = () => {
   const [currentStep, setCurrentStep] = useState(2);
