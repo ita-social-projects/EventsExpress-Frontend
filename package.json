@@ -42,6 +42,7 @@
 		"react-easy-crop": "3.3.1",
 		"react-facebook": "8.0.4",
 		"react-facebook-login": "4.1.1",
+		"react-final-form": "^6.5.9",
 		"react-google-login": "5.0.5",
 		"react-icons": "^3.11.0",
 		"react-images-upload": "1.2.7",
@@ -69,7 +70,7 @@
 		"sass": "^1.49.7",
 		"slick-carousel": "^1.8.1",
 		"webpack": "^4.44.2"
-	  },
+	},
 	"devDependencies": {
 		"@commitlint/cli": "^16.2.3",
 		"@commitlint/config-conventional": "^16.2.1",
