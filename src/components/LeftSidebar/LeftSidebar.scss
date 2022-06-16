@@ -8,7 +8,7 @@ $sidebarOffset: 5px;
 
 @media (min-width: $mediaMobileScreen) {
   .sidebar-menu {
-    z-index: 99999;
+    z-index: 100;
     width: fit-content;
     position: fixed;
     top: $height50;
@@ -98,7 +98,7 @@ $sidebarOffset: 5px;
 
 @media (max-width: $mediaMobileScreen) {
   .sidebar-menu {
-    z-index: 9999;
+    z-index: 100;
     position: fixed;
     bottom: 50px;
     margin-left: $sidebarOffset;
