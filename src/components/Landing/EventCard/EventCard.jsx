@@ -9,17 +9,15 @@ import {
   EVENT_DEFAULT_IMAGE,
   FORMATS,
 } from "../../../constants/eventConstants";
-import EventCardModal from "./EventCardModal/EventCardModal";
 
-const EventCard = ({ event, eventIcon, handleClick }) => {
+const EventCard = ({ event, additionalButtons, additionalModal }) => {
   const { id, title, dateFrom } = event;
   const photoService = new PhotoService();
   const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
-  const [isOpen, setIsOpen] = useState(false);
   const sliceLength = title.length > 35 ? `${title.slice(0, 35)}...` : title;
   useEffect(() => {
     photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {
-      if (eventPreviewImage != null) {
+      if (eventPreviewImage !== null) {
         setEventImage(URL.createObjectURL(eventPreviewImage));
       }
     });
@@ -28,6 +26,15 @@ const EventCard = ({ event, eventIcon, handleClick }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  // const cardTypeService = () => {
+  //   if (cardType === CARD_TYPE.DRAFT) {
+  //     return <BsTrash cursor="pointer" size={30} />;
+  //   }
+  //   if (cardType === CARD_TYPE.LANDING) {
+  //     return <AiOutlineHeart cursor="pointer" size={30} />;
+  //   }
+  //   return <></>;
+  // };
   return (
     <>
       <div className="event-card">
@@ -47,9 +54,7 @@ const EventCard = ({ event, eventIcon, handleClick }) => {
               {title !== null ? sliceLength : "No title"}
             </span>
             <div className="card-buttons">
-              <button type="button" onClick={() => setIsOpen(!isOpen)}>
-                {eventIcon}
-              </button>
+              {additionalButtons.map(button => button)}
               <NavLink to={`/home/events/${id}`} className="more bttn">
                 <BiRightArrowAlt size={30} />
               </NavLink>
@@ -60,27 +65,20 @@ const EventCard = ({ event, eventIcon, handleClick }) => {
           {moment(dateFrom).format(FORMATS.MONTH_FORMAT)}
         </span>
       </div>
-      {isOpen && (
-        <EventCardModal
-          closeModal={isOpen}
-          id={id}
-          onClose={setIsOpen}
-          handleClick={handleClick}
-        />
-      )}
+      {additionalModal}
     </>
   );
 };
 
 EventCard.propTypes = {
   event: PropTypes.object,
-  eventIcon: PropTypes.object,
-  handleClick: PropTypes.func,
+  additionalButtons: PropTypes.array,
+  additionalModal: PropTypes.object,
 };
 
 EventCard.defaultProps = {
   event: {},
-  eventIcon: {},
-  handleClick: () => {},
+  additionalButtons: [],
+  additionalModal: null,
 };
 export default EventCard;

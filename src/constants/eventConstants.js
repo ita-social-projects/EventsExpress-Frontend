@@ -83,3 +83,9 @@ export const EVENT_VISITORS = {
   PENDING_USERS: "Pending users",
   DENIED_USERS: "Denied users",
 };
+
+export const CARD_TYPE = {
+  DRAFT: "draft",
+  LANDING: "landing",
+  RECCURENT_EVENTS: "eventSchedules",
+};
