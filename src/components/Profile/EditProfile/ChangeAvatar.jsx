@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import DropZoneField from "../../helpers/DropZoneField";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import PhotoService from "../../../services/PhotoService";
+import AuthComponent from "../../../security/authComponent";
 
 const validate = values => {
   const errors = {};
@@ -25,54 +26,60 @@ const validate = values => {
 const photoService = new PhotoService();
 
 const ChangeAvatar = ({
-  handleSubmit,
   pristine,
   submitting,
   invalid,
   error,
-  initialValues,
+  changeAvatar,
+  userId,
 }) => {
+  const handleImageChangeSubmit = values => {
+    changeAvatar(values);
+  };
+
   return (
-    <form name="change-avatar" onSubmit={handleSubmit}>
-      <Field
-        name="image"
-        component={DropZoneField}
-        type="file"
-        crop
-        cropShape="round"
-        loadImage={() => photoService.getUserPhoto(initialValues.userId)}
-      />
-      {error && <ErrorMessages error={error} className="text-center" />}
-      <div>
-        <Button
-          color="primary"
-          type="submit"
-          disabled={pristine || submitting || invalid}
-        >
-          {" "}
-          Submit{" "}
-        </Button>
-      </div>
-    </form>
+    <AuthComponent>
+      <form name="change-avatar" onSubmit={handleImageChangeSubmit}>
+        <Field
+          name="image"
+          component={DropZoneField}
+          type="file"
+          crop
+          cropShape="round"
+          loadImage={() => photoService.getUserPhoto(userId)}
+        />
+        {error && <ErrorMessages error={error} className="text-center" />}
+        <div>
+          <Button
+            color="primary"
+            type="submit"
+            disabled={pristine || submitting || invalid}
+          >
+            {" "}
+            Submit{" "}
+          </Button>
+        </div>
+      </form>
+    </AuthComponent>
   );
 };
 
 ChangeAvatar.propTypes = {
-  handleSubmit: PropTypes.func,
   pristine: PropTypes.bool,
   submitting: PropTypes.bool,
   invalid: PropTypes.bool,
   error: PropTypes.object,
-  initialValues: PropTypes.object,
+  changeAvatar: PropTypes.func,
+  userId: PropTypes.string,
 };
 
 ChangeAvatar.defaultProps = {
-  handleSubmit: () => {},
   pristine: false,
   submitting: false,
   invalid: false,
   error: {},
-  initialValues: {},
+  changeAvatar: () => {},
+  userId: "",
 };
 
 export default reduxForm({

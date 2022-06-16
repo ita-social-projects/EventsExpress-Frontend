@@ -1,26 +1,79 @@
 import React from "react";
+import PropTypes from "prop-types";
 // import { Grid, Button } from "@material-ui/core";
-// import { reduxForm, Field } from "redux-form";
+import { reduxForm, Field } from "redux-form";
+import FormInput from "../../shared/FormInput/FormInput";
+import FormSelect from "../../shared/FormSelect/FormSelect";
 // import moment from "moment";
-// import PropTypes from "prop-types";
-// import {
-//   renderDatePicker,
-//   renderTextField,
-//   renderSelectField,
-//   parseEuDate,
-// } from "../helpers/form-helpers";
-// import ChangeAvatarWrapper from "../../containers/editProfileContainers/change-avatar";
+import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
+import ChangeAvatarContainer from "../../../containers/EditProfileContainers/ChangeAvatarContainer";
+import "./CompleteProfileForm.scss";
 
-const CompleteProfileForm = () => (
+const CompleteProfileForm = ({ nextPage }) => (
   <form className="complete-profile">
     <div className="user-avatar">
-      <img alt="Avatar" src="./saddsa" />
+      <ChangeAvatarContainer />
     </div>
-    <div className="user-details"></div>
+    <div className="user-details">
+      <Field
+        name="firstName"
+        component={FormInput}
+        className="firstname"
+        placeholder="Enter Your Name"
+      />
+      <Field
+        name="lastname"
+        component={FormInput}
+        className="lastname"
+        placeholder="Enter Your Surname"
+      />
+      <Field
+        name="birthDate"
+        label="Birth Date"
+        component={renderDatePicker}
+        parse={parseEuDate}
+      />
+      <Field
+        name="country"
+        component={FormInput}
+        className="country"
+        placeholder="Enter Your Country"
+      />
+      <Field
+        name="city"
+        component={FormInput}
+        className="city"
+        placeholder="Enter Your City"
+      />
+      <Field name="gender" component={FormSelect}>
+        <option selected value="1">
+          Male
+        </option>
+        <option value="2">Female</option>
+        <option value="3">Other</option>
+      </Field>
+      <button
+        className="complete-profile__button"
+        type="button"
+        onClick={nextPage}
+      >
+        Go next
+      </button>
+    </div>
   </form>
 );
+CompleteProfileForm.propTypes = {
+  nextPage: PropTypes.func,
+};
+CompleteProfileForm.defaultProps = {
+  nextPage: () => {},
+};
 
-export default CompleteProfileForm;
+export default reduxForm({
+  form: "registrationForm",
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true,
+})(CompleteProfileForm);
 
 // const CompleteProfileForm = ({ handleSubmit }) => {
 //   return (

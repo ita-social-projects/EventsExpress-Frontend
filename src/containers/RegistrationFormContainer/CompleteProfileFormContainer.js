@@ -1,5 +1,5 @@
 import { reduxForm, getFormValues } from "redux-form";
-import CompleteProfileForm from "../../components/RegistrationForm/CompleteProfileForm";
+import CompleteProfileForm from "../../components/RegistrationForm/CompleteProfileForm/CompleteProfileForm";
 
 const mapStateToProps = state => {
   return {

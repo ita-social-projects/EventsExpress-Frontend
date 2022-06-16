@@ -21,7 +21,7 @@ import UserChats from "../Chat/UserChats";
 import Admin from "../Admin/Admin";
 import NotFound from "../RouteGuard/404";
 import NotificationEvents from "../../containers/NotificationEventsContainer/NotificationEventsContainer";
-import ContactAdminContainer from "../../containers/ContactAdminContainers/ContactAdminContainer";
+import ReportPage from "../ReportPage/ReportPage";
 import ContactAdminDetailsContainer from "../../containers/ContactAdminContainers/ContactAdminDetailsContainer";
 import RegisterCompleteContainer from "../../containers/RegisterContainer/RegisterCompleteContainer";
 import RegisterSuccess from "../Register/RegisterSuccess";
@@ -129,10 +129,7 @@ class App extends Component {
                     path="/chat/:chatId"
                     component={this.AdminAndUserRoleSecurity(Chat)}
                   />
-                  <Route
-                    path="/contactAdmin"
-                    component={ContactAdminContainer}
-                  />
+                  <Route path="/contactAdmin" component={ReportPage} />
                   <Route path="/registerSuccess" component={RegisterSuccess} />
                   <Route
                     path="/editEvent/:id"

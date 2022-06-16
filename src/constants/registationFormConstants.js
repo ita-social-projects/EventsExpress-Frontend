@@ -13,7 +13,7 @@
 // };
 
 import ChooseActivities from "../components/RegistrationForm/ChooseActivities";
-import CompleteProfileForm from "../components/RegistrationForm/CompleteProfileForm";
+import CompleteProfileForm from "../components/RegistrationForm/CompleteProfileForm/CompleteProfileForm";
 import ConfirmForm from "../components/RegistrationForm/ConfirmForm";
 import PlaceHolder from "../components/RegistrationForm/PlaceHolder";
 import Success from "../components/RegistrationForm/Success";
