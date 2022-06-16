@@ -1,5 +1,5 @@
 import React from "react";
-import { MEMBERS_TITLE } from "../../../constants/AboutUs";
+import { MEMBERS_TITLE } from "../../../constants/aboutUsConstants";
 import MEMBERS from "../../../mockup-db/aboutUsMembers";
 import "./Members.scss";
 

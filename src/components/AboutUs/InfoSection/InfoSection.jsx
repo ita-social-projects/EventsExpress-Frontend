@@ -5,7 +5,7 @@ import {
   TEXT_BLOCK2_HEADING,
   TEXT_BLOCK2_BODY,
   INFO_CARDS,
-} from "../../../constants/AboutUs";
+} from "../../../constants/aboutUsConstants";
 import "./InfoSection.scss";
 
 const InfoSection = () => (

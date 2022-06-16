@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { SIDEBAR_LIST_ITEMS } from "../../../constants/leftSidebarConstants";
 import AuthComponent from "../../../security/authComponent";
 import LeftSidebarItems from "./LeftSidebarItems";
-import Roles from "../../../constants/userRoles";
+import { ROLES } from "../../../constants/userConstants";
 import LeftSidebarListItem from "./LeftSidebarListItem";
 
 const getSecurity = {
   DEFAULT: {},
-  USER: { rolesMatch: Roles.User },
-  ADMIN: { rolesMatch: Roles.ADMIN },
+  USER: { rolesMatch: ROLES.USER },
+  ADMIN: { rolesMatch: ROLES.ADMIN },
   ANONYMOUS: { onlyAnonymous: true },
 };
 
@@ -19,7 +19,7 @@ const LeftSidebarItemsSecurity = ({
   msgForRead,
 }) => (
   <>
-    <AuthComponent rolesMatch={Roles.User}>
+    <AuthComponent rolesMatch={ROLES.USER}>
       <LeftSidebarListItem
         handleSidebarToggle={handleSidebarToggle}
         link={`/user/${user.id}`}

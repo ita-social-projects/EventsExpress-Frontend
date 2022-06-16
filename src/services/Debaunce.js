@@ -1,4 +1,4 @@
-import DEBOUNCE_DELAYS from "../constants/DebounceDelays";
+import DEBOUNCE_DELAYS from "../constants/debounceDelaysConstants";
 
 const debounce = (callBackFunc, delay = DEBOUNCE_DELAYS.standartDelay) => {
   let timeout;

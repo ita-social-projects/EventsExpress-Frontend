@@ -6,10 +6,12 @@
   position: absolute;
   bottom: 2px;
   top: 10px;
-  .header-link-item{
+
+  .header-link-item {
     margin-left: $margin-50;
   }
-  .header-link-item{
+
+  .header-link-item {
     .link-wrapper {
       font-family: $mainFont;
       font-style: normal;
@@ -19,7 +21,8 @@
       margin-top: 10px;
     }
   }
-  .header-link-item{
+
+  .header-link-item {
     .eng-link-wrapper {
       margin-right: $margin-50;
       display: flex;
@@ -27,6 +30,7 @@
       text-decoration: none;
       font-weight: $bold;
       font-size: $fontsize-20;
+
       .eng-link-icon {
         display: block;
         width: 16px;
@@ -41,14 +45,20 @@
 @media (max-width: $mediaFirstTabletScreen) {
   .header-links-wrapper {
     right: 15px;
-    .header-link-item{
+
+    .header-link-item {
       margin-left: 20px;
     }
+
     .link-wrapper {
       font-size: $fontsize-12;
     }
-    .login-link-wrapper,.eng-link-wrapper {
-      .login-link,.eng-link{
+
+    .login-link-wrapper,
+    .eng-link-wrapper {
+
+      .login-link,
+      .eng-link {
         font-size: $fontsize-12;
       }
     }
@@ -56,15 +66,17 @@
   }
 }
 
-@media screen and (max-width: $mediaMobileScreen) {
+@media screen and (max-width: $mediaSecondTabletScreen) {
   .header-links-wrapper {
-    .header-link-item{
-      .link-wrapper,.eng-link-wrapper{
+    .header-link-item {
+
+      .link-wrapper,
+      .eng-link-wrapper {
         display: none;
       }
     }
 
-    .header-burger{
+    .header-burger {
       display: block;
     }
   }
