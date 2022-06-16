@@ -1,15 +1,15 @@
-import { like, dislike, def } from "../../constants/userViewAttitudeConstants";
+import { DEF, LIKE, DISLIKE } from "../../constants/userConstants";
 
 const userViewAttitude = attitude => {
   switch (attitude) {
     case 0: {
-      return like;
+      return LIKE;
     }
     case 1: {
-      return dislike;
+      return DISLIKE;
     }
     default: {
-      return def;
+      return DEF;
     }
   }
 };
