@@ -4,8 +4,10 @@ import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
+import profileConstants from "../../../constants/profileConstants";
 
 const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
+  const { SUBMIT, CLEAR } = profileConstants;
   return (
     <form onSubmit={handleSubmit}>
       <Field name="userName" component={renderTextField} label="UserName" />
@@ -13,7 +15,7 @@ const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
 
       <div>
         <Button type="submit" color="primary" disabled={pristine || submitting}>
-          Submit
+          {SUBMIT}
         </Button>
         <Button
           type="button"
@@ -21,7 +23,7 @@ const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
           disabled={pristine || submitting}
           onClick={reset}
         >
-          Clear
+          {CLEAR}
         </Button>
       </div>
     </form>

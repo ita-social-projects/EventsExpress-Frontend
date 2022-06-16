@@ -6,12 +6,16 @@ import moment from "moment";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
+import profileConstants from "../../../constants/profileConstants";
 
 const validate = values => {
   const errors = {};
   const requiredFields = ["birthday"];
 
-  if (new Date(values.Birthday).getTime() >= Date.now()) {
+  const birthdayDate = new Date(values.Birthday).getTime();
+  const currentDate = Date.now();
+
+  if (birthdayDate >= currentDate) {
     errors.Birthday = "Date is incorrect";
   }
   return {
@@ -23,6 +27,7 @@ const validate = values => {
 const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
   const minValue = moment(new Date()).subtract(115, "years");
   const maxValue = moment(new Date()).subtract(14, "years");
+  const { SUBMIT, CLEAR } = profileConstants;
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -38,7 +43,7 @@ const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
       </div>
       <div>
         <Button type="submit" color="primary" disabled={pristine || submitting}>
-          Submit
+          {SUBMIT}
         </Button>
         <Button
           type="button"
@@ -46,7 +51,7 @@ const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
           disabled={pristine || submitting}
           onClick={reset}
         >
-          Clear
+          {CLEAR}
         </Button>
       </div>
     </form>

@@ -5,20 +5,23 @@ import Button from "@material-ui/core/Button";
 import DropZoneField from "../../helpers/DropZoneField";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import PhotoService from "../../../services/PhotoService";
+import profileConstants from "../../../constants/profileConstants";
 
 const validate = values => {
-  const errors = {};
+  const { MIN_SIZE_OF_AVATAR, SMALL_IMAGE, REQUIRED_IMAGE } = profileConstants;
+  const errors = {
+    image: " ",
+  };
   if (
-    values.image != null &&
-    values.image.file != null &&
-    values.image.file.size < 4096
+    values.image &&
+    values.image.file &&
+    values.image.file.size < MIN_SIZE_OF_AVATAR
   ) {
-    errors.image = "Image is too small";
+    errors.image = SMALL_IMAGE;
   }
-  if (values.image === null || values.image === undefined) {
-    errors.image = "Image is required";
+  if (!values.image) {
+    errors.image = REQUIRED_IMAGE;
   }
-
   return errors;
 };
 
@@ -32,6 +35,7 @@ const ChangeAvatar = ({
   error,
   initialValues,
 }) => {
+  const { SUBMIT } = profileConstants;
   return (
     <form name="change-avatar" onSubmit={handleSubmit}>
       <Field
@@ -43,16 +47,13 @@ const ChangeAvatar = ({
         loadImage={() => photoService.getUserPhoto(initialValues.userId)}
       />
       {error && <ErrorMessages error={error} className="text-center" />}
-      <div>
-        <Button
-          color="primary"
-          type="submit"
-          disabled={pristine || submitting || invalid}
-        >
-          {" "}
-          Submit{" "}
-        </Button>
-      </div>
+      <Button
+        color="primary"
+        type="submit"
+        disabled={pristine || submitting || invalid}
+      >
+        {SUBMIT}
+      </Button>
     </form>
   );
 };

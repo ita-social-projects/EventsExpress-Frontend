@@ -4,8 +4,11 @@ import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import { renderSelectField } from "../../helpers/form-helpers";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
+import profileConstants from "../../../constants/profileConstants";
 
 const EditGender = ({ handleSubmit, pristine, submitting, error }) => {
+  const genders = ["Male", "Female", "Other"];
+  const { SUBMIT } = profileConstants;
   return (
     <form name="EditGender" onSubmit={handleSubmit}>
       <div>
@@ -16,16 +19,18 @@ const EditGender = ({ handleSubmit, pristine, submitting, error }) => {
           label="Gender"
         >
           <option aria-label="None" value="" />
-          <option value="1">Male</option>
-          <option value="2">Female</option>
-          <option value="3">Other</option>
+          {genders.map((gender, index) => (
+            <option key={gender} value={index + 1}>
+              {gender}
+            </option>
+          ))}
         </Field>
         {error && <ErrorMessages error={error} className="text-center" />}
       </div>
 
       <div>
         <Button type="submit" color="primary" disabled={pristine || submitting}>
-          Submit
+          {SUBMIT}
         </Button>
       </div>
     </form>

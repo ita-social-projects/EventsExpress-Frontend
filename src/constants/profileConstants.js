@@ -17,6 +17,18 @@ const profileConstants = {
   MANAGE_NOTIFICATIONS: "Manage notifications",
   LINKED_ACCOUNTS: "Linked accounts",
   BIRTH_DATE_FORMAT: "D MMM YYYY",
+  MIN_SIZE_OF_AVATAR: 4096,
+  SMALL_IMAGE: "Image is too small",
+  REQUIRED_IMAGE: "Image is required",
+  SUBMIT: "Submit",
+  CLEAR: "Clear",
+  CHANGE_PASSWORD: "Change Password",
+  fields: ["oldPassword", "newPassword", "repeatPassword"],
+  fieldsLabel: [
+    "Input current password",
+    "Input new password",
+    "Repeat new password",
+  ],
 };
 
 export default profileConstants;

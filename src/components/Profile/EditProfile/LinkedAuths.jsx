@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import externalLoginTypeEnum from "../../../constants/externalLoginTypeEnumConstants";
 
 const renderType = type => {
+  const { Google, Facebook, Twitter } = externalLoginTypeEnum;
   switch (type) {
-    case externalLoginTypeEnum.Google:
+    case Google:
       return <i className="fab fa-google" />;
-    case externalLoginTypeEnum.Facebook:
+    case Facebook:
       return <i className="fab fa-facebook" />;
-    case externalLoginTypeEnum.Twitter:
+    case Twitter:
       return <i className="fab fa-twitter" />;
     default:
       return <i className="fas fa-at" />;
