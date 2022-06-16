@@ -6,6 +6,13 @@ import LeftSidebarItems from "./LeftSidebarItems";
 import Roles from "../../../constants/userRoles";
 import LeftSidebarListItem from "./LeftSidebarListItem";
 
+const getSecurity = {
+  DEFAULT: {},
+  USER: { rolesMatch: Roles.User },
+  ADMIN: { rolesMatch: Roles.ADMIN },
+  ANONYMOUS: { onlyAnonymous: true },
+};
+
 const LeftSidebarItemsSecurity = ({
   handleSidebarToggle,
   user,
@@ -21,51 +28,14 @@ const LeftSidebarItemsSecurity = ({
       />
     </AuthComponent>
     {SIDEBAR_LIST_ITEMS.map(({ securityState, items }) => {
-      switch (securityState) {
-        case "DEFAULT":
-          return (
-            <AuthComponent>
-              <LeftSidebarItems
-                items={items}
-                handleSidebarToggle={handleSidebarToggle}
-              />
-            </AuthComponent>
-          );
-        case "USER":
-          return (
-            <AuthComponent rolesMatch={Roles.User}>
-              <LeftSidebarItems
-                items={items}
-                handleSidebarToggle={handleSidebarToggle}
-              />
-            </AuthComponent>
-          );
-        case "ADMIN":
-          return (
-            <AuthComponent rolesMatch={Roles.Admin}>
-              <LeftSidebarItems
-                items={items}
-                handleSidebarToggle={handleSidebarToggle}
-              />
-            </AuthComponent>
-          );
-        case "ANONYMOUS":
-          return (
-            <AuthComponent onlyAnonymous>
-              <LeftSidebarItems
-                items={items}
-                handleSidebarToggle={handleSidebarToggle}
-              />
-            </AuthComponent>
-          );
-        default:
-          return (
-            <LeftSidebarItems
-              items={items}
-              handleSidebarToggle={handleSidebarToggle}
-            />
-          );
-      }
+      return (
+        <AuthComponent key={securityState} {...getSecurity[securityState]}>
+          <LeftSidebarItems
+            items={items}
+            handleSidebarToggle={handleSidebarToggle}
+          />
+        </AuthComponent>
+      );
     })}
     <AuthComponent>
       <LeftSidebarListItem

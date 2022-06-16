@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const AuthComponent = ({ id, roles, rolesMatch, children, onlyAnonymous }) =>
-  (rolesMatch && id && roles[0] === rolesMatch) || (!onlyAnonymous && !id) || id
+  (rolesMatch && id && roles[0] === rolesMatch) || (onlyAnonymous && !id) || id
     ? children
     : null;
 
