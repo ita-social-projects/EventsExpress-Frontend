@@ -1,28 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import Moment from "react-moment";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import { AccordionSummary } from "@material-ui/core";
+import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ChangeAvatarContainer from "../../containers/EditProfileContainers/ChangeAvatarContainer";
-import EditBirthdayContainer from "../../containers/EditProfileContainers/EditBirthdayContainer";
-import EditUsernameContainer from "../../containers/EditProfileContainers/EditUsernameContainer";
-import EditGenderContainer from "../../containers/EditProfileContainers/EditGenderContainer";
 import ChangePasswordContainer from "../../containers/EditProfileContainers/ChangePasswordContainer";
-
-import SelectCategoriesContainer from "../../containers/CategoryContainers/SelectCategoriesContainer";
+import getComments from "../../actions/comment/comment-list-action";
 import GENDERS from "../../constants/gendersVarietyConstants";
-import SelectNotificationTypesWrapper from "../../containers/NotificationTypesContainer/NotificationTypesContainer";
-import LinkedAuthsContainer from "../../containers/LinkedAuthContainer/LinkedAuthsContainer";
+import ProfileItem from "./ProfileItem";
+import useProfileData from "./profileData";
 
-// TODO: Fix this styles
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
+    marginTop: "100px",
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -35,7 +24,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-// TODO: Split this component to smaller components
 const Profile = ({
   name,
   gender,
@@ -45,170 +33,31 @@ const Profile = ({
   canChangePassword,
 }) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
-  const handleChange = panel => (event, isExpanded) => {
+  const handleChange = panel => (_, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const profileItems = useProfileData(
+    name,
+    GENDERS[gender],
+    birthday,
+    categories,
+    notificationTypes,
+  );
+
   return (
     <div className={classes.root}>
-      <Accordion
-        expanded={expanded === "panel0"}
-        onChange={handleChange("panel0")}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1bh-content"
-          id="panel1bh-header"
-        >
-          <Typography className={classes.heading}>Change Avatar</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography component="div" className="w-100">
-            <MuiThemeProvider>
-              <ChangeAvatarContainer />
-            </MuiThemeProvider>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel1"}
-        onChange={handleChange("panel1")}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1bh-content"
-          id="panel1bh-header"
-        >
-          <Typography className={classes.heading}>Username</Typography>
-          <Typography className={classes.secondaryHeading}>{name}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography component="div">
-            <MuiThemeProvider>
-              <EditUsernameContainer />
-            </MuiThemeProvider>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel2"}
-        onChange={handleChange("panel2")}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2bh-content"
-          id="panel2bh-header"
-        >
-          <Typography className={classes.heading}>Gender</Typography>
-          <Typography className={classes.secondaryHeading}>
-            {GENDERS[gender]}
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography component="div">
-            <MuiThemeProvider>
-              <EditGenderContainer />
-            </MuiThemeProvider>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel3"}
-        onChange={handleChange("panel3")}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel3bh-content"
-          id="panel3bh-header"
-        >
-          <Typography className={classes.heading}>Date of Birth</Typography>
-          <Typography className={classes.secondaryHeading}>
-            <Moment format="D MMM YYYY" withTitle>
-              {birthday}
-            </Moment>
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography component="div">
-            <MuiThemeProvider>
-              <EditBirthdayContainer />
-            </MuiThemeProvider>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel4"}
-        onChange={handleChange("panel4")}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel4bh-content"
-          id="panel4bh-header"
-        >
-          <Typography className={classes.heading}>
-            Favorite Categories
-          </Typography>
-          <Typography component="div" className={classes.secondaryHeading}>
-            {categories.map(category => (
-              <div key={category.id}>{category.name}</div>
-            ))}
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography component="div">
-            <MuiThemeProvider>
-              <SelectCategoriesContainer />
-            </MuiThemeProvider>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel5"}
-        onChange={handleChange("panel5")}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel5bh-content"
-          id="panel5bh-header"
-        >
-          <Typography className={classes.heading}>
-            Manage notifications
-          </Typography>
-          <Typography component="div" className={classes.secondaryHeading}>
-            {notificationTypes.map(notificatin => (
-              <div key={notificatin.id}>{notificatin.name}</div>
-            ))}
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography component="div">
-            <MuiThemeProvider>
-              <SelectNotificationTypesWrapper />
-            </MuiThemeProvider>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel6"}
-        onChange={handleChange("panel6")}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel6bh-content"
-          id="panel6bh-header"
-        >
-          <Typography className={classes.heading}>Linked accounts</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography component="div">
-            <MuiThemeProvider>
-              <LinkedAuthsContainer />
-            </MuiThemeProvider>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+      {profileItems.map(item => (
+        <ProfileItem
+          key={item.panelId}
+          item={item}
+          handleChange={handleChange}
+          expanded={expanded}
+          classes={classes}
+        />
+      ))}
       {canChangePassword && <ChangePasswordContainer />}
     </div>
   );
@@ -233,4 +82,12 @@ Profile.propTypes = {
   canChangePassword: PropTypes.bool,
 };
 
-export default Profile;
+const mapStateToProps = state => {
+  return state.user;
+};
+
+const mapDispatchToProps = dispatch => ({
+  getComments: (data, page) => dispatch(getComments(data, page)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
