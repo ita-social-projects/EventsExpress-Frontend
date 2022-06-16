@@ -1,5 +1,5 @@
 import defineUserAge from "./getUserAge";
-import { NOT_SPECIFIED } from "../../../constants/LabelsConstants";
+import { NOT_SPECIFIED } from "../../../constants/labelConstants";
 
 describe("Test defineUserAge helper", () => {
   it("Returns Correct Age with Correct Data", () => {

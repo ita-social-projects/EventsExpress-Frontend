@@ -1,5 +1,5 @@
 import moment from "moment";
-import { NOT_SPECIFIED } from "../../../constants/LabelsConstants";
+import { NOT_SPECIFIED } from "../../../constants/labelConstants";
 
 const getAge = birthday => {
   const birthDate = moment(birthday, "DD/MM/YYYY");

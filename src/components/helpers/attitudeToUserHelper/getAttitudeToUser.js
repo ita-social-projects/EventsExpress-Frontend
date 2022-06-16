@@ -1,7 +1,7 @@
 import {
   ATTITUDE_MESSAGES,
   ATTITUDE_ICONS,
-} from "../../../constants/UserAttitudeConstants";
+} from "../../../constants/userConstants";
 
 const getAttitudeToUser = attitude => {
   if (attitude === 0) {

@@ -2,7 +2,7 @@ import getAttitudeToUser from "./getAttitudeToUser";
 import {
   ATTITUDE_MESSAGES,
   ATTITUDE_ICONS,
-} from "../../../constants/UserAttitudeConstants";
+} from "../../../constants/userConstants";
 
 describe("Test getAttitudeToUser", () => {
   it("Correct attitude with correct values", () => {
