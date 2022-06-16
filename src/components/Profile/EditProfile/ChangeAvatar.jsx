@@ -6,24 +6,7 @@ import DropZoneField from "../../helpers/DropZoneField";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import PhotoService from "../../../services/PhotoService";
 import profileConstants from "../../../constants/profileConstants";
-
-const validate = values => {
-  const { MIN_SIZE_OF_AVATAR, SMALL_IMAGE, REQUIRED_IMAGE } = profileConstants;
-  const errors = {
-    image: " ",
-  };
-  if (
-    values.image &&
-    values.image.file &&
-    values.image.file.size < MIN_SIZE_OF_AVATAR
-  ) {
-    errors.image = SMALL_IMAGE;
-  }
-  if (!values.image) {
-    errors.image = REQUIRED_IMAGE;
-  }
-  return errors;
-};
+import validateAvatarForProfile from "../../helpers/validateAvatar";
 
 const photoService = new PhotoService();
 
@@ -79,5 +62,5 @@ ChangeAvatar.defaultProps = {
 export default reduxForm({
   form: "change-avatar",
   enableReinitialize: true,
-  validate,
+  validateAvatarForProfile,
 })(ChangeAvatar);

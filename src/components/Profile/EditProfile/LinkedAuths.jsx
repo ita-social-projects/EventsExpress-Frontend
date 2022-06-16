@@ -4,16 +4,16 @@ import externalLoginTypeEnum from "../../../constants/externalLoginTypeEnumConst
 
 const renderType = type => {
   const { Google, Facebook, Twitter } = externalLoginTypeEnum;
-  switch (type) {
-    case Google:
-      return <i className="fab fa-google" />;
-    case Facebook:
-      return <i className="fab fa-facebook" />;
-    case Twitter:
-      return <i className="fab fa-twitter" />;
-    default:
-      return <i className="fas fa-at" />;
+  let element = <i className="fas fa-at" />;
+
+  if (type === Google) {
+    element = <i className="fab fa-google" />;
+  } else if (type === Facebook) {
+    element = <i className="fab fa-facebook" />;
+  } else if (type === Twitter) {
+    element = <i className="fab fa-twitter" />;
   }
+  return element;
 };
 
 const LinkedAuths = ({ item }) => {

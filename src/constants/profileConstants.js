@@ -23,12 +23,17 @@ const profileConstants = {
   SUBMIT: "Submit",
   CLEAR: "Clear",
   CHANGE_PASSWORD: "Change Password",
+  PASSWORD_NOT_MATCH: "Password do not match",
+  DATE_INCORRECT: "Date is incorrect",
+  genders: ["Male", "Female", "Other"],
   fields: ["oldPassword", "newPassword", "repeatPassword"],
   fieldsLabel: [
     "Input current password",
     "Input new password",
     "Repeat new password",
   ],
+  OLDEST_DATE_OF_CHOICE: 115,
+  YOUNGEST_DATE_OF_CHOICE: 14,
 };
 
 export default profileConstants;

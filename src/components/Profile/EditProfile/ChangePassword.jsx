@@ -13,12 +13,12 @@ import { renderTextField } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
 import profileConstants from "../../../constants/profileConstants";
 
-const { fields, fieldsLabel } = profileConstants;
+const { fields, fieldsLabel, PASSWORD_NOT_MATCH } = profileConstants;
 
 const validate = values => {
   const errors = {};
   if (values.newPassword !== values.repeatPassword) {
-    errors.repeatPassword = "Passwords do not match";
+    errors.repeatPassword = PASSWORD_NOT_MATCH;
   }
   return {
     ...fieldIsRequired(values, fields),
@@ -70,22 +70,20 @@ const ChangePassword = ({
               </div>
               {error && <ErrorMessages error={error} className="text-center" />}
 
-              <div>
-                <Button
-                  type="submit"
-                  color="primary"
-                  disabled={pristine || submitting}
-                >
-                  {SUBMIT}
-                </Button>
-                <Button
-                  type="button"
-                  disabled={pristine || submitting}
-                  onClick={reset}
-                >
-                  {CLEAR}
-                </Button>
-              </div>
+              <Button
+                type="submit"
+                color="primary"
+                disabled={pristine || submitting}
+              >
+                {SUBMIT}
+              </Button>
+              <Button
+                type="button"
+                disabled={pristine || submitting}
+                onClick={reset}
+              >
+                {CLEAR}
+              </Button>
             </form>
           </MuiThemeProvider>
         </Typography>

@@ -7,8 +7,7 @@ import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import profileConstants from "../../../constants/profileConstants";
 
 const EditGender = ({ handleSubmit, pristine, submitting, error }) => {
-  const genders = ["Male", "Female", "Other"];
-  const { SUBMIT } = profileConstants;
+  const { genders, SUBMIT } = profileConstants;
   return (
     <form name="EditGender" onSubmit={handleSubmit}>
       <div>
@@ -28,11 +27,9 @@ const EditGender = ({ handleSubmit, pristine, submitting, error }) => {
         {error && <ErrorMessages error={error} className="text-center" />}
       </div>
 
-      <div>
-        <Button type="submit" color="primary" disabled={pristine || submitting}>
-          {SUBMIT}
-        </Button>
-      </div>
+      <Button type="submit" color="primary" disabled={pristine || submitting}>
+        {SUBMIT}
+      </Button>
     </form>
   );
 };

@@ -2,21 +2,21 @@
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
-import moment from "moment";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
 import profileConstants from "../../../constants/profileConstants";
+import setRangeForSelectBirthday from "../../helpers/validators/setRangeForSelectBirthday";
 
 const validate = values => {
   const errors = {};
   const requiredFields = ["birthday"];
-
+  const { DATE_INCORRECT } = profileConstants;
   const birthdayDate = new Date(values.Birthday).getTime();
   const currentDate = Date.now();
 
   if (birthdayDate >= currentDate) {
-    errors.Birthday = "Date is incorrect";
+    errors.Birthday = { DATE_INCORRECT };
   }
   return {
     ...fieldIsRequired(values, requiredFields),
@@ -25,9 +25,13 @@ const validate = values => {
 };
 
 const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
-  const minValue = moment(new Date()).subtract(115, "years");
-  const maxValue = moment(new Date()).subtract(14, "years");
-  const { SUBMIT, CLEAR } = profileConstants;
+  const { SUBMIT, CLEAR, OLDEST_DATE_OF_CHOICE, YOUNGEST_DATE_OF_CHOICE } =
+    profileConstants;
+
+  const { minValue, maxValue } = setRangeForSelectBirthday(
+    OLDEST_DATE_OF_CHOICE,
+    YOUNGEST_DATE_OF_CHOICE,
+  );
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -41,19 +45,18 @@ const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
         />
         {error && <ErrorMessages error={error} className="text-center" />}
       </div>
-      <div>
-        <Button type="submit" color="primary" disabled={pristine || submitting}>
-          {SUBMIT}
-        </Button>
-        <Button
-          type="button"
-          color="primary"
-          disabled={pristine || submitting}
-          onClick={reset}
-        >
-          {CLEAR}
-        </Button>
-      </div>
+
+      <Button type="submit" color="primary" disabled={pristine || submitting}>
+        {SUBMIT}
+      </Button>
+      <Button
+        type="button"
+        color="primary"
+        disabled={pristine || submitting}
+        onClick={reset}
+      >
+        {CLEAR}
+      </Button>
     </form>
   );
 };
