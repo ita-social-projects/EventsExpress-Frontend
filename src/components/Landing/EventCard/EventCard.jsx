@@ -26,15 +26,6 @@ const EventCard = ({ event, additionalButtons, additionalModal }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // const cardTypeService = () => {
-  //   if (cardType === CARD_TYPE.DRAFT) {
-  //     return <BsTrash cursor="pointer" size={30} />;
-  //   }
-  //   if (cardType === CARD_TYPE.LANDING) {
-  //     return <AiOutlineHeart cursor="pointer" size={30} />;
-  //   }
-  //   return <></>;
-  // };
   return (
     <>
       <div className="event-card">
