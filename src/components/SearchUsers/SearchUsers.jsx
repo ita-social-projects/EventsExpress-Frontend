@@ -1,4 +1,4 @@
-﻿/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
@@ -15,6 +15,7 @@ import "./SearchUsers.scss";
 
 const SearchUsers = ({
   users,
+  pageView,
   params,
   getSearchUsersDispatch,
   changeFilterDispatch,
@@ -25,10 +26,7 @@ const SearchUsers = ({
   const { pathname } = useLocation();
   const [page, setPage] = useState(1);
 
-  const {
-    items,
-    pageViewModel: { totalPages, pageNumber },
-  } = users;
+  const { totalPages, pageNumber } = pageView;
 
   const getUsers = pageToGetUsers => getSearchUsersDispatch(pageToGetUsers);
 
@@ -69,9 +67,9 @@ const SearchUsers = ({
         />
       </div>
 
-      <SpinnerContainer showContent={users}>
+      <SpinnerContainer showContent>
         <UserItemList
-          users={items}
+          users={users}
           page={pageNumber}
           totalPages={totalPages}
           callback={getUsers}
@@ -92,7 +90,8 @@ const SearchUsers = ({
 };
 
 SearchUsers.defaultProps = {
-  users: {},
+  users: [],
+  pageView: {},
   getSearchUsersDispatch: () => {},
   changeFilterDispatch: () => {},
   resetFiltersDispatch: () => {},
@@ -100,7 +99,8 @@ SearchUsers.defaultProps = {
 };
 
 SearchUsers.propTypes = {
-  users: PropTypes.object,
+  pageView: PropTypes.object,
+  users: PropTypes.array,
   getSearchUsersDispatch: PropTypes.func,
   params: PropTypes.string,
   changeFilterDispatch: PropTypes.func,
@@ -108,7 +108,8 @@ SearchUsers.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  users: state.users,
+  users: state.users.items,
+  pageView: state.users.pageViewModel,
 });
 
 const mapDispatchToProps = dispatch => {

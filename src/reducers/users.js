@@ -1,4 +1,3 @@
-import initialState from "../store/initialState";
 import {
   GET_USERS_DATA,
   RESET_USERS,
@@ -12,7 +11,16 @@ import {
   changeUserRoleStates,
 } from "../actions/user/user-action";
 
-const reducer = (state = initialState.users, { payload, type }) => {
+const initialState = {
+  status: null,
+  count: null,
+  editedUser: null,
+  userSearchFilter: null,
+  items: [],
+  pageViewModel: {},
+};
+
+const reducer = (state = initialState, { payload, type }) => {
   switch (type) {
     case GET_USERS_DATA:
       return {
@@ -21,7 +29,7 @@ const reducer = (state = initialState.users, { payload, type }) => {
         pageViewModel: payload.pageViewModel,
       };
     case RESET_USERS:
-      return initialState.users;
+      return initialState;
 
     case blockUserStates.UPDATE: {
       const newState = { ...state };

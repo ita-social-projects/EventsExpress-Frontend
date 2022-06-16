@@ -51,14 +51,6 @@ const initialState = {
     isPending: false,
     data: [],
   },
-  users: {
-    status: null,
-    count: null,
-    editedUser: null,
-    userSearchFilter: null,
-    items: [],
-    pageViewModel: {},
-  },
   comments: {
     data: {
       items: [],
