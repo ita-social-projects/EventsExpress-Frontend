@@ -5,7 +5,7 @@
     display: flex;
 
     .gutter.gutter-vertical {
-        background-color: #f7f2ff;
+        background-color: $gray;
         cursor: row-resize;
     }
 
@@ -57,7 +57,7 @@
             &:hover {
                 color: darken($color: $lightThemeAccept, $amount: 15%);
                 text-decoration: none;
-                background-color: #e6e6e6;
+                background-color: $gray;
                 border-color: darken($color: $lightThemeAccept, $amount: 15%);
             }
         }
@@ -76,7 +76,7 @@
 
     .left-side {
         z-index: 1;
-        background-color: #f7f2ff;
+        background-color: $gray;
 
         &.full-size > .left-side__text {
             font-size: 96px;
@@ -144,7 +144,7 @@
                 &:hover {
                     color: darken($color: $lightThemeAccept, $amount: 15%);
                     text-decoration: none;
-                    background-color: #e6e6e6;
+                    background-color: $grey;
                     border-color: darken($color: $lightThemeAccept, $amount: 15%);
                 }
             }

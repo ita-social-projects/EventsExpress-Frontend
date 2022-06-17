@@ -1,3 +1,5 @@
+@import "../../../styles/colors.scss";
+
 .text-block {
     position: absolute;
     bottom: 20px;
@@ -6,7 +8,7 @@
     padding-left: 20px;
     color: $white;
     font-size: 28px;
-    background-color: #252424a6;
+    background-color: $grayBlack;
 }
 
 .title {
@@ -70,7 +72,7 @@
     z-index: 1;
     display: none;
     min-width: 160px;
-    background-color: #f9f9f9;
+    background-color: $white;
     box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
 }
 

@@ -1,3 +1,5 @@
+@import "../../styles/colors.scss";
+
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -11,21 +13,21 @@
     padding: 1rem;
     font-family: Helvetica, sans-serif;
     background: $white;
-    border-left: 1rem solid #8a8a8a;
+    border-left: 1rem solid $middleGrey;
     border-radius: 0.5rem;
     box-shadow: 0.125rem 0.125rem 0.25rem rgb(0 0 0 / 25%);
 }
 
 .Toast--success {
-    border-color: #008554;
+    border-color: $middleGreen;
 }
 
 .Toast--warning {
-    border-color: #ffc627;
+    border-color: $yellow;
 }
 
 .Toast--error {
-    border-color: #d14229;
+    border-color: $redOrange;
 }
 
 .Toast__message-category {
@@ -99,7 +101,7 @@ body {
 
 .notfound h2 {
     margin-top: 0;
-    color: #000000;
+    color: $black;
     font-weight: 700;
     font-size: 24px;
     font-family: Montserrat, sans-serif;
@@ -109,7 +111,7 @@ body {
 .notfound p {
     margin-top: 0;
     margin-bottom: 20px;
-    color: #000000;
+    color: $black;
     font-weight: 400;
     font-size: 14px;
     font-family: Montserrat, sans-serif;
@@ -118,16 +120,16 @@ body {
 .notfound a {
     display: inline-block;
     padding: 15px 30px;
-    color: #ffffff;
+    color: $white;
     font-weight: 700;
     font-size: 14px;
     font-family: Montserrat, sans-serif;
     text-transform: uppercase;
     text-decoration: none;
-    background: #0046d5;
+    background: $middleBlue;
     border-radius: 40px;
-    -webkit-box-shadow: 0 4px 15px -5px #0046d5;
-    box-shadow: 0 4px 15px -5px #0046d5;
+    -webkit-box-shadow: 0 4px 15px -5px $middleBlue;
+    box-shadow: 0 4px 15px -5px $middleBlue;
 }
 
 @media only screen and (max-width: 767px) {

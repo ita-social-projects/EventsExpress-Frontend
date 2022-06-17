@@ -22,10 +22,10 @@ label > input[ type = "checkbox" ] {
     width: 1.15em;
     height: 1.15em;
     margin: 0 0.25vw 0 0;
-    color: #505050;
+    color: $middleGrey;
     font: inherit;
     background-color: $white;
-    border: 0.15em solid #505050;
+    border: 0.15em solid $middleGrey;
     transform: translateY(0.03em);
     -webkit-appearance: none;
     -moz-appearance: none;

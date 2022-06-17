@@ -1,7 +1,9 @@
+@import "../../styles/colors.scss";
+
 .funkyradio label {
     width: 100%;
     font-weight: $headText;
-    border: 1px solid #d1d3d4;
+    border: 1px solid $gray;
     border-radius: 3px;
 }
 
@@ -31,51 +33,51 @@
     left: 0;
     display: block;
     width: 2.5em;
-    background: #d1d3d4;
+    background: $gray;
     border-radius: 3px 0 0 3px;
     content: "";
 }
 
 .funkyradio input[ type = "radio" ]:hover:not(:checked) ~ label,
 .funkyradio input[ type = "checkbox" ]:hover:not(:checked) ~ label {
-    color: #888888;
+    color: $grayBlack;
 }
 
 .funkyradio input[ type = "radio" ]:hover:not(:checked) ~ label::before,
 .funkyradio input[ type = "checkbox" ]:hover:not(:checked) ~ label::before {
-    color: #c2c2c2;
+    color: $gray;
     text-indent: 0.9em;
     content: "\2714";
 }
 
 .funkyradio input[ type = "radio" ]:checked ~ label,
 .funkyradio input[ type = "checkbox" ]:checked ~ label {
-    color: #777777;
+    color: $middleGray;
 }
 
 .funkyradio input[ type = "radio" ]:checked ~ label::before,
 .funkyradio input[ type = "checkbox" ]:checked ~ label::before {
-    color: #333333;
+    color: $grayBlack;
     text-indent: 0.9em;
-    background-color: #cccccc;
+    background-color: $middleGray;
     content: "\2714";
 }
 
 .funkyradio input[ type = "radio" ]:focus ~ label::before,
 .funkyradio input[ type = "checkbox" ]:focus ~ label::before {
-    box-shadow: 0 0 0 3px #999999;
+    box-shadow: 0 0 0 3px $middleGray;
 }
 
 .funkyradio-primary input[ type = "radio" ]:checked ~ label::before,
 .funkyradio-primary input[ type = "checkbox" ]:checked ~ label::before {
-    color: #ffffff;
-    background-color: #337ab7;
+    color: $white;
+    background-color: $lightBlue;
 }
 
 .funkyradio-info input[ type = "radio" ]:checked ~ label::before,
 .funkyradio-info input[ type = "checkbox" ]:checked ~ label::before {
-    color: #ffffff;
-    background-color: #5bc0de;
+    color: $white;
+    background-color: $whiteBlue;
 }
 
 .info {

@@ -20,7 +20,7 @@
 .radius-slider::-webkit-slider-thumb {
     width: 25px;
     height: 25px;
-    background: #4d7bdd;
+    background: $middleBlue;
     border-radius: 50%;
     cursor: pointer;
     -webkit-appearance: none;
@@ -30,7 +30,7 @@
 .radius-slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
-    background: #4d7bdd;
+    background: $middleBlue;
     border-radius: 50%;
     cursor: pointer;
 }

@@ -1,3 +1,5 @@
+@import "../../../styles/colors.scss";
+
 body {
     font-family: Helvetica, sans-serif;
     -moz-osx-font-smoothing: grayscale;
@@ -9,12 +11,12 @@ body {
     display: inline-block;
     padding: 8px 20px;
     font-weight: 600;
-    background: #3b5998;
+    background: $lightBlue;
     border-radius: 3px;
 }
 
 #fb-share-button:hover {
-    background: #213a6f;
+    background: $greyBlue;
     cursor: pointer;
 }
 

@@ -1,3 +1,5 @@
+@import "../../../styles/colors.scss";
+
 .search-control-icon-button {
     width: 33px !important;
     height: 33px !important;
@@ -6,7 +8,7 @@
 .error-text {
     min-height: 1em;
     margin-top: 8px;
-    color: #f44336;
+    color: $redOrange;
     font-weight: 400;
     font-size: 0.75rem;
     font-family: Roboto, Helvetica, Arial, sans-serif;
