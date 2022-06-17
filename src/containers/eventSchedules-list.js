@@ -4,8 +4,8 @@ import { getEventSchedules } from "../actions/eventSchedule/eventSchedule-list-a
 
 const mapStateToProps = state => {
   return {
-    loaded: state.eventSchedules.data !== undefined,
-    dataList: state.eventSchedules.data.items,
+    isDataFetched: state.eventSchedules.isDataFetched,
+    events: state.eventSchedules.events,
   };
 };
 

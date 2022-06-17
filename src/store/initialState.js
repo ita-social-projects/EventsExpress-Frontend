@@ -105,9 +105,8 @@ const initialState = {
     data: [],
   },
   eventSchedules: {
-    data: {
-      items: [],
-    },
+    events: [],
+    isDataFetched: false,
   },
   profile: {
     data: null,

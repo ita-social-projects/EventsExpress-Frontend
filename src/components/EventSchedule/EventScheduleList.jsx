@@ -6,18 +6,18 @@ import NoResult from "../shared/NoResult/NoResult";
 import EventCard from "../Landing/EventCard/EventCard";
 import { EVENT_NO_RESULT } from "../../constants/eventConstants";
 
-const EventSchedulesList = ({ dataList, getEvents, loaded }) => {
+const EventSchedulesList = ({ events, getEvents, isDataFetched }) => {
   useEffect(() => {
     getEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="container">
-      <SpinnerWrapper showContent={loaded}>
-        {dataList.length > 0 ? (
+      <SpinnerWrapper showContent={isDataFetched}>
+        {events.length > 0 ? (
           <div className="eventsBlock">
-            {dataList.map(item => (
-              <EventCard key={item.id} event={item} />
+            {events.map(event => (
+              <EventCard key={event.id} event={event} />
             ))}
           </div>
         ) : (
@@ -34,14 +34,14 @@ const EventSchedulesList = ({ dataList, getEvents, loaded }) => {
 };
 
 EventSchedulesList.propTypes = {
-  loaded: PropTypes.bool,
-  dataList: PropTypes.array,
+  isDataFetched: PropTypes.bool,
+  events: PropTypes.array,
   getEvents: PropTypes.func,
 };
 
 EventSchedulesList.defaultProps = {
-  loaded: false,
-  dataList: [],
+  isDataFetched: false,
+  events: [],
   getEvents: () => {},
 };
 
