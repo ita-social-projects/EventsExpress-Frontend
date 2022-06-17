@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { getAllTemplates } from "../../actions/notification-templates";
 import NotificationTemplate from "../../components/NotificationTemplate/NotificationTemplate";
 
+// TODO Refactor class component
 class NotificationTemplateWrapper extends Component {
   componentDidMount = () => {
     this.props.getAllTemplates();

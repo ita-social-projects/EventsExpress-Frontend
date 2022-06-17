@@ -1,14 +1,14 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import EventFilterWrapper from "../../../containers/event-filter";
-import AdminEventListWrapper from "../../../containers/events-for-admin";
+import EventFilterContainer from "../../../containers/EventFilterContainer/EventFilterContainer";
+import EventsForAdminContainer from "../../../containers/EventsForAdminContainer/EventsForAdminContainer";
 
 const EventsForAdmin = ({ location }) => {
   return (
     <>
-      <EventFilterWrapper />
+      <EventFilterContainer />
       <div className="admin-events-container">
-        <AdminEventListWrapper params={location.search} />
+        <EventsForAdminContainer params={location.search} />
       </div>
     </>
   );

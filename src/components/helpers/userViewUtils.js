@@ -1,4 +1,4 @@
-import { DEF,LIKE,DISLIKE} from "../../constants/userConstants";
+import { DEF, LIKE, DISLIKE } from "../../constants/userConstants";
 
 const userViewAttitude = attitude => {
   switch (attitude) {

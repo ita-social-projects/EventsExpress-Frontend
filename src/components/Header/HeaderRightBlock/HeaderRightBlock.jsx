@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ModalWind from "../../ModalWind/ModalWind";
 import AuthComponent from "../../../security/authComponent";
-import DropdownMenu from "../../../containers/dropdownMenuContainer";
+import DropdownMenu from "../../../containers/DropDownMenuContainer/DropdownMenuContainer";
 import { TogleOpenWind } from "../../../actions/modalWind-action";
-import {HEADER_CONSTS} from "../../../constants/headersConstants";
+import { HEADER_CONSTS } from "../../../constants/headersConstants";
 import "./RightBlock.scss";
 
 const { SIGN_IN } = HEADER_CONSTS;
