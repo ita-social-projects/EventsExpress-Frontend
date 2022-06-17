@@ -1,4 +1,5 @@
 @import "../../styles/colors.scss";
+@import "../../styles/fonts.scss";
 
 * {
     -webkit-box-sizing: border-box;
@@ -13,7 +14,7 @@
     padding: 1rem;
     font-family: Helvetica, sans-serif;
     background: $white;
-    border-left: 1rem solid $middleGrey;
+    border-left: 1rem solid $middleGray;
     border-radius: 0.5rem;
     box-shadow: 0.125rem 0.125rem 0.25rem rgb(0 0 0 / 25%);
 }

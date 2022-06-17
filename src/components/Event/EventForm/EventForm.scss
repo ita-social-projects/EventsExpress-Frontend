@@ -14,11 +14,11 @@
 }
 
 .MuiCheckbox-colorSecondary.Mui-checked {
-    color: $grey !important;
+    color: $gray;
 }
 
 .MuiRadio-colorSecondary.Mui-checked {
-    color: $grey !important;
+    color: $gray;
 }
 
 .cursor-pointer {
@@ -74,7 +74,7 @@
     height: 100%;
     margin: 0;
     text-align: center;
-    background-color: $grey;
+    background-color: $gray;
     opacity: 0.5;
 }
 
@@ -128,7 +128,7 @@
 .select-style {
     width: 120px;
     overflow: hidden;
-    border: 1px solid $grey;
+    border: 1px solid $gray;
     border-radius: 3px;
 }
 

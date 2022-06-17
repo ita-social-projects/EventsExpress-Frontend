@@ -1,5 +1,6 @@
 @import "../../styles/variables.scss";
 @import "../../styles/colors.scss";
+@import "../../styles/fonts.scss";
 
 .split-panels {
     display: flex;
@@ -144,7 +145,7 @@
                 &:hover {
                     color: darken($color: $lightThemeAccept, $amount: 15%);
                     text-decoration: none;
-                    background-color: $grey;
+                    background-color: $gray;
                     border-color: darken($color: $lightThemeAccept, $amount: 15%);
                 }
             }

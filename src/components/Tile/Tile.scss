@@ -5,13 +5,13 @@
     flex-direction: row-reverse;
     align-items: flex-start;
     min-height: 16vh;
-    background-color: $grey;
+    background-color: $gray;
     border-radius: 12px;
     cursor: pointer;
 }
 
 .tile:hover {
-    background-color: $middleGrey;
+    background-color: $middleGray;
 }
 
 .tri-state-checkbox {
