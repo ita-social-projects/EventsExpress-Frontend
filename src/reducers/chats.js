@@ -1,8 +1,11 @@
-import initialState from "../store/initialState";
 import { GET_CHATS_DATA } from "../actions/chat/chats-action";
 import { RECEIVE_MESSAGE } from "../actions/chat/chat-action";
 
-const reducer = (state = initialState.chats, action) => {
+const initialState = {
+  data: [],
+};
+
+const reducer = (state = initialState, action) => {
   let chat;
   let newChats;
   switch (action.type) {

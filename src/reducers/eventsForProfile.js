@@ -1,11 +1,14 @@
-import { getRolesData } from "../actions/roles";
+﻿import { GET_EVENTS_PROFILE_DATA } from "../actions/events/events-for-profile-action";
 
 const initialState = {
-  data: [],
+  data: {
+    items: [],
+    pageViewModel: {},
+  },
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === getRolesData.DATA) {
+  if (action.type === GET_EVENTS_PROFILE_DATA) {
     return {
       ...state,
       data: action.payload,

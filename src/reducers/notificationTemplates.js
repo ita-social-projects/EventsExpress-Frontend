@@ -1,14 +1,13 @@
-import { getRolesData } from "../actions/roles";
+﻿import { GET_TEMPLATES_SUCCESS } from "../actions/notification-templates";
 
 const initialState = {
   data: [],
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === getRolesData.DATA) {
+  if (action.type === GET_TEMPLATES_SUCCESS) {
     return {
-      ...state,
-      data: action.payload,
+      data: [...action.payload],
     };
   }
 

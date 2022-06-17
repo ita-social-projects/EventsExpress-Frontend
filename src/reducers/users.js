@@ -1,4 +1,3 @@
-import initialState from "../store/initialState";
 import {
   GET_USERS_DATA,
   RESET_USERS,
@@ -12,7 +11,21 @@ import {
   changeUserRoleStates,
 } from "../actions/user/user-action";
 
-const reducer = (state = initialState.users, action) => {
+const initialState = {
+  id: null,
+  name: null,
+  email: null,
+  phone: null,
+  birthday: null,
+  gender: null,
+  roles: [],
+  photoUrl: null,
+  token: null,
+  categories: [],
+  notificationTypes: [],
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USERS_DATA:
       return {
@@ -20,7 +33,7 @@ const reducer = (state = initialState.users, action) => {
         data: action.payload,
       };
     case RESET_USERS:
-      return initialState.users;
+      return initialState;
 
     case blockUserStates.UPDATE: {
       const newState = { ...state };

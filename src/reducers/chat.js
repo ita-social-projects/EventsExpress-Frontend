@@ -1,4 +1,3 @@
-import initialState from "../store/initialState";
 import {
   GET_CHAT_DATA,
   RESET_CHAT,
@@ -6,13 +5,21 @@ import {
   RECEIVE_SEEN_MESSAGE,
 } from "../actions/chat/chat-action";
 
-const reducer = (state = initialState.chat, action) => {
+const initialState = {
+  data: {
+    messages: [],
+    users: [],
+    id: null,
+  },
+};
+
+const reducer = (state = initialState, action) => {
   let newMsg = state.data.messages;
 
   switch (action.type) {
     case RESET_CHAT:
       return {
-        ...initialState.chat,
+        ...initialState,
       };
     case CONCAT_NEW_MSG:
       newMsg = newMsg.concat(action.payload);

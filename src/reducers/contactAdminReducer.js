@@ -1,17 +1,16 @@
-import { getRolesData } from "../actions/roles";
+import { contactAdminData } from "../actions/contactAdmin/contact-admin-add-action";
 
 const initialState = {
   data: [],
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === getRolesData.DATA) {
+  if (action.type === contactAdminData.DATA) {
     return {
       ...state,
       data: action.payload,
     };
   }
-
   return state;
 };
 

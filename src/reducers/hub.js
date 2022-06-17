@@ -1,9 +1,13 @@
-import initialState from "../store/initialState";
 import { INITIAL_CONNECTION, RESET_HUB } from "../actions/chat/chat-action";
 import { EVENT_WAS_CREATED } from "../actions/event/event-add-action";
 import { SET_USERS_HUB, RESET_USERS_HUB } from "../actions/users/users-action";
 
-const reducer = (state = initialState.hubConnections, action) => {
+const initialState = {
+  chatHub: null,
+  usersHub: null,
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case INITIAL_CONNECTION:
       return {

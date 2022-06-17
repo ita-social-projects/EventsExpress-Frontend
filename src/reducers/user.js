@@ -1,4 +1,3 @@
-import initialState from "../store/initialState";
 import { SET_USER } from "../actions/login/login-action";
 import { SET_LOGOUT } from "../actions/login/logout-action";
 import {
@@ -12,13 +11,24 @@ import {
 import { GET_USER_NOTIFICATION_TYPES_DATA } from "../actions/notificationType/userNotificationType-action";
 import { GET_USER_CATEGORIES_DATA } from "../actions/category/userCategory-action";
 
-export const reducer = (state = initialState.user, action) => {
+const initialState = {
+  status: null,
+  count: null,
+  editedUser: null,
+  userSearchFilter: null,
+  data: {
+    items: [],
+    pageViewModel: {},
+  },
+};
+
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
       return action.payload;
 
     case SET_LOGOUT:
-      return initialState.user;
+      return initialState;
 
     case addUserCategoryStates.UPDATE:
     case GET_USER_CATEGORIES_DATA:
