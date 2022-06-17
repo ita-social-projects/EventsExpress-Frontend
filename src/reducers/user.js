@@ -12,14 +12,17 @@ import { GET_USER_NOTIFICATION_TYPES_DATA } from "../actions/notificationType/us
 import { GET_USER_CATEGORIES_DATA } from "../actions/category/userCategory-action";
 
 const initialState = {
-  status: null,
-  count: null,
-  editedUser: null,
-  userSearchFilter: null,
-  data: {
-    items: [],
-    pageViewModel: {},
-  },
+  id: null,
+  name: null,
+  email: null,
+  phone: null,
+  birthday: null,
+  gender: null,
+  roles: [],
+  photoUrl: null,
+  token: null,
+  categories: [],
+  notificationTypes: [],
 };
 
 export const reducer = (state = initialState, action) => {

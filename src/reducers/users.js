@@ -12,17 +12,14 @@ import {
 } from "../actions/user/user-action";
 
 const initialState = {
-  id: null,
-  name: null,
-  email: null,
-  phone: null,
-  birthday: null,
-  gender: null,
-  roles: [],
-  photoUrl: null,
-  token: null,
-  categories: [],
-  notificationTypes: [],
+  status: null,
+  count: null,
+  editedUser: null,
+  userSearchFilter: null,
+  data: {
+    items: [],
+    pageViewModel: {},
+  },
 };
 
 const reducer = (state = initialState, action) => {
