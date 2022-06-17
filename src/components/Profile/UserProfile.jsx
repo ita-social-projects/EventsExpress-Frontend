@@ -14,7 +14,7 @@ import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../Rating/RatingAverage";
 import "./UserProfile.scss";
 import Events from "./Events";
-import AuthComponent from "../../security/authComponent";
+import AuthComponent from "../AuthComponent/AuthComponent";
 import getAge from "../helpers/get-age-string";
 import indexToTabName from "../../constants/indexToTabNameConstants";
 

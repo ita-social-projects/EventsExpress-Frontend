@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AuthComponent from "../../../security/authComponent";
+import AuthComponent from "../../AuthComponent/AuthComponent";
 import ModalWind from "../../ModalWind/ModalWind";
 import { HEADER_CONSTS } from "../../../constants/headersConstants";
 

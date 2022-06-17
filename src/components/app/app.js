@@ -29,7 +29,7 @@ import EventEditContainer from "../../containers/EventEditContainer/EventEditCon
 import EventDraftListContainer from "../../containers/EventDraftContainer/EventDraftListContainer";
 import Unauthorized from "../RouteGuard/401";
 import Forbidden from "../RouteGuard/403";
-import withAuthRedirect from "../../security/withAuthRedirect";
+import WithAuthRedirect from "../WithAuthRedirect/WithAuthRedirect";
 import AuthUser from "../../actions/login/auth-user-action";
 import getConfig from "../../actions/config/get-config-action";
 import RegistrationForm from "../../containers/RegistrationFormContainer/RegistrationFormContainer";
@@ -38,11 +38,11 @@ import AboutUs from "../AboutUs/AboutUs";
 import SplitPanels from "../SplitPanels/SplitPanels";
 
 class App extends Component {
-  UserRoleSecurity = withAuthRedirect(["User"]);
+  UserRoleSecurity = WithAuthRedirect(["User"]);
 
-  AdminRoleSecurity = withAuthRedirect(["Admin"]);
+  AdminRoleSecurity = WithAuthRedirect(["Admin"]);
 
-  AdminAndUserRoleSecurity = withAuthRedirect(["Admin", "User"]);
+  AdminAndUserRoleSecurity = WithAuthRedirect(["Admin", "User"]);
 
   constructor(props) {
     super(props);
