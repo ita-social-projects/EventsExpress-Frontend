@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Pagination from "@material-ui/lab/Pagination";
-import SpinnerWrapper from "../../../containers/spinner";
+import SpinnerWrapper from "../../../containers/SpinnerContainer/SpinnerContainer";
 import NoResult from "../../shared/NoResult/NoResult";
 import "./RenderList.scss";
 import { EMPTY_DRAFT } from "../../../constants/draftConstants";

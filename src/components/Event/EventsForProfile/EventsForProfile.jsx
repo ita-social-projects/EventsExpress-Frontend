@@ -1,7 +1,7 @@
 ﻿import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import PagePagination from "../../shared/PagePagination/PagePagination";
-import LocalSpinnerWrapper from "../../../containers/local-spinner";
+import LocalSpinnerContainer from "../../../containers/SpinnerContainer/LocalSpinnerContainer";
 import renderItems from "../../helpers/eventsForProfileUtils";
 
 const EventsForProfile = ({
@@ -31,7 +31,7 @@ const EventsForProfile = ({
 
   return (
     <>
-      <LocalSpinnerWrapper showContent={dataList !== null}>
+      <LocalSpinnerContainer showContent={dataList !== null}>
         <div className="row">{renderItems(dataList, currentUser)}</div>
         <br />
         {totalPages > 1 && (
@@ -41,7 +41,7 @@ const EventsForProfile = ({
             callback={handlePageChange}
           />
         )}
-      </LocalSpinnerWrapper>
+      </LocalSpinnerContainer>
     </>
   );
 };

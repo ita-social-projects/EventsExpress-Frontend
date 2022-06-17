@@ -8,6 +8,7 @@ import {
 } from "../../actions/notification-templates";
 import NotificationTemplateForm from "../../components/NotificationTemplate/NotificationTemplateForm/NotificationTemplateForm";
 
+// TODO Refactor class component
 class NotificationInfoWrapper extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;

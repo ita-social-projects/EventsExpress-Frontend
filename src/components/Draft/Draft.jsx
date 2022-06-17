@@ -1,8 +1,8 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import EventDraftListWrapper from "../../containers/event-draft-list";
+import EventDraftListContainer from "../../containers/EventDraftContainer/EventDraftListContainer";
 
-const Draft = ({ location }) => <EventDraftListWrapper location={location} />;
+const Draft = ({ location }) => <EventDraftListContainer location={location} />;
 
 Draft.defaultProps = {
   location: {},

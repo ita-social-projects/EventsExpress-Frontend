@@ -9,7 +9,7 @@ import { reset } from "redux-form";
 
 import SearchInput from "../SearchInput/SearchInput";
 import { getSearchUsers, changeFilter } from "../../actions/users/users-action";
-import SpinnerWrapper from "../../containers/spinner";
+import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import UserItemList from "../Users/UserItemList";
 import "./SearchUsers.scss";
 
@@ -70,14 +70,14 @@ const SearchUsers = ({
         />
       </div>
 
-      <SpinnerWrapper showContent={users.data}>
+      <SpinnerContainer showContent={users.data}>
         <UserItemList
           users={users.data.items}
           page={users.data.pageViewModel.pageNumber}
           totalPages={users.data.pageViewModel.totalPages}
           callback={getUsers}
         />
-      </SpinnerWrapper>
+      </SpinnerContainer>
 
       {totalPages !== 1 && (
         <div className="search_users_pagination">

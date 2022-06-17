@@ -10,8 +10,8 @@ import PersonPinIcon from "@material-ui/icons/PersonPin";
 import LockOpen from "@material-ui/icons/LockOpen";
 import Typography from "@material-ui/core/Typography";
 import { connect } from "react-redux";
-import LoginWrapper from "../../containers/login";
-import RegisterWrapper from "../../containers/register";
+import LoginContainer from "../../containers/LoginContainer/LoginContainer";
+import RegisterContainer from "../../containers/RegisterContainer/RegisterContainer";
 import { TogleOpenWind } from "../../actions/modalWind-action";
 import Modalwind2 from "../RecoverPassword/Modalwind2";
 
@@ -67,12 +67,12 @@ const ModalWind = ({ setStatus, status }) => {
 
           {value === 0 && (
             <TabContainer>
-              <LoginWrapper />
+              <LoginContainer />
             </TabContainer>
           )}
           {value === 1 && (
             <TabContainer>
-              <RegisterWrapper handleClose={handleClose} />
+              <RegisterContainer handleClose={handleClose} />
             </TabContainer>
           )}
 

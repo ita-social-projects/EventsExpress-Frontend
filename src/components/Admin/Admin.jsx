@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import "./Admin.scss";
 import NavItem from "../NavItem/NavItem";
 import Category from "../Category/Categories";
-import UsersWrapper from "../../containers/users";
+import UsersContainer from "../../containers/UsersContainer/UsersContainer";
 import UnitOfMeasuring from "../UnitOfMeasuring/UnitOfMeasuring";
 import NotificationTemplateWrapper from "../../containers/NotificationTemplateContainer/NotificationTemplateContainer";
 import NotificationInfoWrapper from "../../containers/NotificationTemplateContainer/NotificationInfoContainer";
@@ -71,7 +71,7 @@ export default class Admin extends PureComponent {
                 path="/admin/unitsOfMeasuring"
                 component={UnitOfMeasuring}
               />
-              <Route path="/admin/users" component={UsersWrapper} />
+              <Route path="/admin/users" component={UsersContainer} />
               <Route
                 path="/admin/notificationTemplates"
                 component={NotificationTemplateWrapper}

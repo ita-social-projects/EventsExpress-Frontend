@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import RecoverPasswordContainer from "../../containers/editProfileContainers/recoverPasswordContainer";
+import RecoverPasswordContainer from "../../containers/EditProfileContainers/RecoverPasswordContainer";
 
 const Modalwind2 = () => {
   const [open, setOpen] = React.useState(false);
