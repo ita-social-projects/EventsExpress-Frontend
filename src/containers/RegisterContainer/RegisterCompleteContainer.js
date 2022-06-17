@@ -4,7 +4,7 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import {
   fieldIsRequired,
   isValidEmail,
-} from "../../components/helpers/validators/formFieldValidationHelpers";
+} from "../../components/helpers/formFieldValidationHelpers";
 import RegisterComplete from "../../components/Register/RegisterComplete";
 
 // TODO Take out validation logic

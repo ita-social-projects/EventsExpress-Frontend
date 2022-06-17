@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import moment from "moment";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
-import { fieldIsRequired } from "../../helpers/validators/formFieldValidationHelpers";
+import { fieldIsRequired } from "../../helpers/formFieldValidationHelpers";
 
 const validate = values => {
   const errors = {};

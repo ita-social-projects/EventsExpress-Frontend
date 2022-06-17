@@ -3,10 +3,7 @@ import PropTypes from "prop-types";
 import DialogActions from "@material-ui/core/DialogActions";
 import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
-import {
-  minLength,
-  maxLength,
-} from "../helpers/validators/formFieldValidationHelpers";
+import { minLength, maxLength } from "../helpers/formFieldValidationHelpers";
 import { renderTextField } from "../helpers/form-helpers";
 
 const RegisterBindAccount = ({ pristine, submitting, handleSubmit }) => {

@@ -1,7 +1,4 @@
-import {
-  numberField,
-  fieldIsRequired,
-} from "./validators/formFieldValidationHelpers";
+import { numberField, fieldIsRequired } from "./formFieldValidationHelpers";
 
 const validate = values => {
   const errors = {};

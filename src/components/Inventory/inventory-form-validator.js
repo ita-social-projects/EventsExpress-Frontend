@@ -1,7 +1,7 @@
 import {
   fieldIsRequired,
   maxLength,
-} from "../helpers/validators/formFieldValidationHelpers";
+} from "../helpers/formFieldValidationHelpers";
 
 const validate = values => {
   const errors = {};

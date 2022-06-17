@@ -4,7 +4,7 @@ import RegisterBindAccount from "../../components/Register/RegisterBindAccount";
 import {
   fieldIsRequired,
   isValidEmail,
-} from "../../components/helpers/validators/formFieldValidationHelpers";
+} from "../../components/helpers/formFieldValidationHelpers";
 
 // TODO Take out validationl logic
 

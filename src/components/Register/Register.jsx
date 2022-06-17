@@ -8,7 +8,7 @@ import {
   maxLength,
   isValidEmail,
   fieldIsRequired,
-} from "../helpers/validators/formFieldValidationHelpers";
+} from "../helpers/formFieldValidationHelpers";
 import { renderTextField } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import "./Register.scss";

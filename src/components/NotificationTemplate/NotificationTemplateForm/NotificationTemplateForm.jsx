@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { MdContentCopy, MdCheck } from "react-icons/md";
-import { minLength } from "../../helpers/validators/formFieldValidationHelpers";
+import { minLength } from "../../helpers/formFieldValidationHelpers";
 import "./NotificationTemplateForm.scss";
 
 // TODO remake to functional component

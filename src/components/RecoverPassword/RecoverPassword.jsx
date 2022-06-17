@@ -9,7 +9,7 @@ import { renderTextField } from "../helpers/form-helpers";
 import {
   isValidEmail,
   fieldIsRequired,
-} from "../helpers/validators/formFieldValidationHelpers";
+} from "../helpers/formFieldValidationHelpers";
 
 const validate = values => {
   const requiredFields = ["email"];
