@@ -13,7 +13,7 @@ import filterHelper from "../../helpers/filterHelper";
 import EventMapModal from "../MapModal/MapModal";
 import DisplayMap from "../Map/DisplayMap";
 import {
-  EVENT_STATUS_ICON,
+  EVENT_STATUS_ENUM,
   EVENTS_FILTER,
 } from "../../../constants/eventConstants";
 import "./EventFilter.scss";
@@ -31,8 +31,6 @@ const {
   OPTIONS_BLOCKED,
   OPTIONS_CANCELED,
 } = EVENTS_FILTER;
-
-const { ACTIVE, BLOCKED, CANCELED } = EVENT_STATUS_ICON;
 
 class EventFilter extends Component {
   constructor(props) {
@@ -83,9 +81,9 @@ class EventFilter extends Component {
 
     const values = formValues || { selectedPos: {} };
     const options = [
-      { value: ACTIVE, text: OPTIONS_ACTIVE },
-      { value: BLOCKED, text: OPTIONS_BLOCKED },
-      { value: CANCELED, text: OPTIONS_CANCELED },
+      { value: EVENT_STATUS_ENUM.ACTIVE, text: OPTIONS_ACTIVE },
+      { value: EVENT_STATUS_ENUM.BLOCKED, text: OPTIONS_BLOCKED },
+      { value: EVENT_STATUS_ENUM.CANCELED, text: OPTIONS_CANCELED },
     ];
 
     return (

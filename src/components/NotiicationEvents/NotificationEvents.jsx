@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EventList from "../Event/EventsForProfile/EventsForProfile";
-import SpinnerWrapper from "../../containers/spinner";
+import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 
 // TODO :to functional component
 class NotificationEvents extends Component {
@@ -15,7 +15,7 @@ class NotificationEvents extends Component {
     const { items } = this.props.events.data;
 
     return (
-      <SpinnerWrapper showContent={data !== undefined}>
+      <SpinnerContainer showContent={data !== undefined}>
         {items.length === 0 && (
           <p className="text-center h3">You don&#39;t have notifications</p>
         )}
@@ -27,7 +27,7 @@ class NotificationEvents extends Component {
           totalPages={data.pageViewModel.totalPages}
           callback={this.props.getEvents}
         />
-      </SpinnerWrapper>
+      </SpinnerContainer>
     );
   }
 }

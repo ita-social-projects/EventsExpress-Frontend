@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
 import InventoryHeaderButton from "./InventoryHeaderButton";
 import { getInventoryData } from "../../actions/inventory/inventory-list-action";
-import InventoryItemWrapper from "../../containers/inventory-item";
+import InventoryItemContainer from "../../containers/InventoryItemContainer/InventoryItemContainer";
 import { editUsersInventory } from "../../actions/users/users-inventories-action";
 
 class InventoryList extends Component {
@@ -104,7 +104,7 @@ class InventoryList extends Component {
                 <div className="col col-md-2"></div>
               </div>
               {this.state.isNew && (
-                <InventoryItemWrapper
+                <InventoryItemContainer
                   item={{
                     itemName: "",
                     needQuantity: 0,
@@ -123,7 +123,7 @@ class InventoryList extends Component {
               )}
               {updateList.map(item => {
                 return (
-                  <InventoryItemWrapper
+                  <InventoryItemContainer
                     item={item}
                     user={user}
                     usersInventories={usersInventories}

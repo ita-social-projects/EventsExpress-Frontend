@@ -13,7 +13,7 @@ import getChat, {
   deleteOldNotififcation,
 } from "../../actions/chat/chat-action";
 import Msg from "./Msg";
-import SpinnerWrapper from "../../containers/spinner";
+import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import CustomAvatarContainer from "../CustomAvatar/CustomAvatar";
 
 class Chat extends Component {
@@ -92,7 +92,7 @@ class Chat extends Component {
     );
     const { data } = this.props.chat;
     return (
-      <SpinnerWrapper showContent={data !== undefined}>
+      <SpinnerContainer showContent={data !== undefined}>
         <div className="row justify-content-center h-100 mt-2">
           <div className="col-md-8 col-xl-8 chat">
             <div className="card">
@@ -143,7 +143,7 @@ class Chat extends Component {
             </div>
           </div>
         </div>
-      </SpinnerWrapper>
+      </SpinnerContainer>
     );
   }
 }

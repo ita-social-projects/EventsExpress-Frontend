@@ -1,5 +1,5 @@
 import userViewAttitude from "./userViewUtils";
-import { LIKE, DISLIKE, DEF } from "../../constants/userConstants";
+import { DEF, LIKE, DISLIKE } from "../../constants/userConstants";
 
 describe("user view attitude", () => {
   it("should return object like when I pick like", () => {

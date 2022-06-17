@@ -2,7 +2,7 @@
 import { parse as queryStringParse } from "query-string";
 import { withRouter } from "react-router-dom";
 import propTypes from "prop-types";
-import ContactAdminItemWrapper from "../../containers/contactAdmin/contactAdmin-item-container";
+import ContactAdminItemContainer from "../../containers/ContactAdminContainers/ContactAdminItemContainer";
 import RenderIssuesList from "./RenderIssuesList";
 import filterHelper from "../helpers/filterHelper";
 
@@ -21,7 +21,7 @@ class ContactAdminList extends Component {
   };
 
   renderSingleIssue = item => (
-    <ContactAdminItemWrapper key={item.messageId + item.status} item={item} />
+    <ContactAdminItemContainer key={item.messageId + item.status} item={item} />
   );
 
   render() {

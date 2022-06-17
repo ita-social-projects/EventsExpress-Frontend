@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AuthComponent from "../../../security/authComponent";
 import ModalWind from "../../ModalWind/ModalWind";
-import HEADER_CONSTS from "../../../constants/headersConstants";
+import { HEADER_CONSTS } from "../../../constants/headersConstants";
 
 const { CREATE_EVENT, FIND_EVENT, WHAT_DO_YOU_WANT_TO_DO } = HEADER_CONSTS;
 
