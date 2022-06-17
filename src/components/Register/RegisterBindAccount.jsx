@@ -4,9 +4,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import {
-  minLength6,
-  maxLength15,
-} from "../helpers/validators/min-max-length-validators";
+  minLength,
+  maxLength,
+} from "../helpers/validators/formFieldValidationHelpers";
 import { renderTextField } from "../helpers/form-helpers";
 
 const RegisterBindAccount = ({ pristine, submitting, handleSubmit }) => {
@@ -31,7 +31,7 @@ const RegisterBindAccount = ({ pristine, submitting, handleSubmit }) => {
               component={renderTextField}
               label="Password:"
               type="password"
-              validate={[maxLength15, minLength6]}
+              validate={[maxLength(15), minLength(6)]}
             />
           </div>
           <div className="form-group">

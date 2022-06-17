@@ -11,10 +11,7 @@ import {
 } from "@material-ui/core";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { MdContentCopy, MdCheck } from "react-icons/md";
-import {
-  minLength10,
-  minLength20,
-} from "../../helpers/validators/min-max-length-validators";
+import { minLength } from "../../helpers/validators/formFieldValidationHelpers";
 import "./NotificationTemplateForm.scss";
 
 // TODO remake to functional component
@@ -107,7 +104,7 @@ class NotificationTemplateForm extends Component {
             inputProps={{
               required: true,
             }}
-            validate={[minLength10]}
+            validate={[minLength(10)]}
           />
           <Field
             name="message"
@@ -121,7 +118,7 @@ class NotificationTemplateForm extends Component {
               required: true,
             }}
             variant="outlined"
-            validate={[minLength20]}
+            validate={[minLength(20)]}
           />
           <div className="align-self-end">
             <Button type="submit" disabled={submitting} color="primary">

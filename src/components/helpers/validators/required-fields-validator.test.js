@@ -1,4 +1,4 @@
-import fieldIsRequired from "./required-fields-validator";
+import { fieldIsRequired } from "./formFieldValidationHelpers";
 
 describe("Required fields validator", () => {
   it("Should all required fields are present", () => {

@@ -6,7 +6,7 @@ import Dialog from "@material-ui/core/Dialog";
 import { DialogContent } from "@material-ui/core";
 import { Field, reduxForm } from "redux-form";
 import { renderTextField } from "./form-helpers";
-import fieldIsRequired from "./validators/required-fields-validator";
+import { fieldIsRequired } from "./validators/formFieldValidationHelpers";
 
 const validate = values => {
   const errors = {};

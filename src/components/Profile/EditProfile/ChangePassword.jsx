@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
-import fieldIsRequired from "../../helpers/validators/required-fields-validator";
+import { fieldIsRequired } from "../../helpers/validators/formFieldValidationHelpers";
 
 // TODO: remove this
 const useStyles = makeStyles(theme => ({

@@ -1,12 +1,14 @@
-import fieldIsRequired from "../helpers/validators/required-fields-validator";
-import { maxLength30 } from "../helpers/validators/min-max-length-validators";
+import {
+  fieldIsRequired,
+  maxLength,
+} from "../helpers/validators/formFieldValidationHelpers";
 
 const validate = values => {
   const errors = {};
 
   const requiredFields = ["itemName", "needQuantity", "unitOfMeasuring.id"];
 
-  if (maxLength30(values.itemName)) {
+  if (maxLength(30)(values.itemName)) {
     errors.itemName = `Invalid length: 1 - 30 symbols`;
   }
   if (values.needQuantity && values.needQuantity <= 0) {

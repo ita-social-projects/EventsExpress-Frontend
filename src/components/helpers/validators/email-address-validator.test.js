@@ -1,4 +1,4 @@
-import isValidEmail from "./email-address-validator";
+import { isValidEmail } from "./formFieldValidationHelpers";
 
 describe("validation email helper", () => {
   const error = "Invalid email address";
