@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { BsTrash } from "react-icons/bs";
 import EventCard from "../Landing/EventCard/EventCard";
 import EventCardModal from "../Landing/EventCard/EventCardModal/EventCardModal";
+import { ICON_PROPERTIES } from "../../constants/draftConstants";
 
 const DraftEventCard = ({ event, onDelete }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ const DraftEventCard = ({ event, onDelete }) => {
       key="buckect-btn"
       onClick={() => setIsOpen(prev => !prev)}
     >
-      <BsTrash cursor="pointer" size={30} />
+      <BsTrash cursor={ICON_PROPERTIES.CIRSOR_POINER} size={ICON_PROPERTIES.ICON_SIZE} />
     </button>,
   ];
 
