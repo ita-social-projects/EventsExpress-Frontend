@@ -1,4 +1,4 @@
-import { alert } from "../actions/alert-action";
+import { alert } from "../actions/alert/alertActionTypes";
 
 const { SET, SETOPEN, RESET } = alert;
 

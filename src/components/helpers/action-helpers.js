@@ -1,6 +1,6 @@
 import "react-widgets/dist/css/react-widgets.css";
 import "react-datepicker/dist/react-datepicker.css";
-import { setErrorAlert } from "../../actions/alert-action";
+import { setErrorAlert } from "../../actions/alert/alertAction";
 
 export const buildValidationState = async responseData =>
   (await responseData.json()).errors;

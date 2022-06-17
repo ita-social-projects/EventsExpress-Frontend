@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { facebookLoginAdd } from "../../actions/redactProfile/linked-auths-add-action";
-import { setErrorAlert } from "../../actions/alert-action";
+import { facebookLoginAdd } from "../../actions/editProfile/linkedAuthsAddAction";
+import { setErrorAlert } from "../../actions/alert/alertAction";
 import "./LinkedAuth.scss";
 
 // TODO Refactor class component

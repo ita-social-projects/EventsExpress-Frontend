@@ -6,7 +6,7 @@ import { parse as queryStringParse } from "query-string";
 import { withRouter } from "react-router-dom";
 import EventList from "../../components/Event/EventList/EventList";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
-import { getEvents } from "../../actions/event/event-list-action";
+import { getEvents } from "../../actions/event/eventListAction";
 import filterHelper from "../../components/helpers/filterHelper";
 
 // TODO Refactor class component

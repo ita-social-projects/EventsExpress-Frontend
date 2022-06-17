@@ -8,14 +8,14 @@ import IconButton from "@material-ui/core/IconButton";
 import EventForm from "../../components/Event/EventForm/EventForm";
 import SimpleModalWithDetails from "../../components/helpers/simple-modal-with-details";
 import { EVENT_STATUS_ENUM } from "../../constants/eventConstants";
-import getСategoriesList from "../../actions/category/category-list-action";
-import { editEvent, publishEvent } from "../../actions/event/event-add-action";
+import getСategoriesList from "../../actions/category/categoryListAction";
+import { editEvent, publishEvent } from "../../actions/event/eventAddAction";
 import validateEventForm from "../../components/helpers/eventValidateForm";
-import { changeEventStatus } from "../../actions/event/event-item-view-action";
+import { changeEventStatus } from "../../actions/event/eventItemViewAction";
 import {
   setErrorAllertFromResponse,
   setSuccessAllert,
-} from "../../actions/alert-action";
+} from "../../actions/alert/alertAction";
 import "./EventDraftContainer.scss";
 import {
   buildValidationState,

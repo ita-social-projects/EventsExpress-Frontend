@@ -1,0 +1,4 @@
+export const REQUEST_INC = "REQUEST_INC";
+export const REQUEST_DEC = "REQUEST_DEC";
+export const REQUEST_LOCAL_INC = "REQUEST_LOCAL_INC";
+export const REQUEST_LOCAL_DEC = "REQUEST_LOCAL_DEC";

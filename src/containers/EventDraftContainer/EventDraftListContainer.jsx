@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import DraftList from "../../components/Draft/DraftList";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
-import { getDrafts, resetEvents } from "../../actions/event/event-list-action";
+import { getDrafts, resetEvents } from "../../actions/event/eventListAction";
 import filterHelper from "../../components/helpers/filterHelper";
 
 // TODO Refactor class component

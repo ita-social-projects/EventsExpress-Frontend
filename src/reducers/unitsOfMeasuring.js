@@ -1,5 +1,7 @@
-import { GET_UNITS_OF_MEASURING_DATA } from "../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
-import { SET_UNIT_OF_MEASURING_EDITED } from "../actions/unitOfMeasuring/unitOfMeasuring-add-action";
+import {
+  GET_UNITS_OF_MEASURING_DATA,
+  SET_UNIT_OF_MEASURING_EDITED,
+} from "../actions/unitOfMeasuring/unitOfMeasuringActionTypes";
 
 const initialState = {
   units: [],

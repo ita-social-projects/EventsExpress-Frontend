@@ -9,10 +9,10 @@ import getEvent, {
   leave,
   resetEvent,
   changeEventStatus,
-} from "../../actions/event/event-item-view-action";
-import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
-import { getInventoriesByEventId } from "../../actions/inventory/inventory-list-action";
-import { getUsersInventoriesByEventId } from "../../actions/users/users-inventories-action";
+} from "../../actions/event/eventItemViewAction";
+import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuringListAction";
+import { getInventoriesByEventId } from "../../actions/inventory/inventoryListAction";
+import { getUsersInventoriesByEventId } from "../../actions/users/usersInventoriesAction";
 
 // TODO Refactor class component
 class EventItemViewContainer extends Component {

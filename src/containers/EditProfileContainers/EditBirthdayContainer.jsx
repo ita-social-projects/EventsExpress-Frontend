@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import EditBirthday from "../../components/Profile/EditProfile/EditBirthday";
-import editBirthday from "../../actions/redactProfile/birthday-edit-action";
+import editBirthday from "../../actions/editProfile/birthdayEditAction";
 
 // TODO Refactor class component
 class EditBirthdayContainer extends React.Component {

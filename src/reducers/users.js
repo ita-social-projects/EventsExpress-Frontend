@@ -4,12 +4,12 @@ import {
   CHANGE_USERS_FILTER,
   GET_USERS_COUNT,
   CHANGE_STATUS,
-} from "../actions/users/users-action";
+} from "../actions/users/usersActionTypes";
 import {
   blockUserStates,
   unBlockUserStates,
   changeUserRoleStates,
-} from "../actions/user/user-action";
+} from "../actions/user/userActionTypes";
 
 const initialState = {
   status: null,

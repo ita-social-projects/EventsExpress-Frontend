@@ -10,8 +10,8 @@ import { EVENT_STATUS_ENUM } from "../../../constants/eventConstants";
 import {
   resetEvents,
   updateEventsFilters,
-} from "../../../actions/event/event-list-action";
-import { changeEventStatus } from "../../../actions/event/event-item-view-action";
+} from "../../../actions/event/eventListAction";
+import { changeEventStatus } from "../../../actions/event/eventItemViewAction";
 
 const EventList = ({
   totalPages,

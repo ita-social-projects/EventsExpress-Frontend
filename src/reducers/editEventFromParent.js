@@ -1,7 +1,7 @@
 ﻿import {
   SET_EVENT_FROM_PARENT_PENDING,
   SET_EVENT_FROM_PARENT_SUCCESS,
-} from "../actions/event/event-copy-with-edit-action";
+} from "../actions/event/eventActionTypes";
 
 const initialState = {
   isEventFromParentPending: false,

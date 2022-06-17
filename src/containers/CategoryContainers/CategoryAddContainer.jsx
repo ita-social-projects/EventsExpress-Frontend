@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import addCategory, {
   setCategoryEdited,
-} from "../../actions/category/category-add-action";
+} from "../../actions/category/categoryAddAction";
 import CategoryEdit from "../../components/Category/CategoryEdit";
 
 const CategoryAddContainer = ({

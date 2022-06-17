@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import GoogleLogin from "../../components/Login/GoogleLogin/GoogleLogin";
-import { googleLoginAdd } from "../../actions/redactProfile/linked-auths-add-action";
-import { setErrorAlert } from "../../actions/alert-action";
+import { googleLoginAdd } from "../../actions/editProfile/linkedAuthsAddAction";
+import { setErrorAlert } from "../../actions/alert/alertAction";
 import "./LinkedAuth.scss";
 
 // TODO Refactor class component

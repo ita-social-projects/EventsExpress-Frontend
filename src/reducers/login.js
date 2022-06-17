@@ -1,7 +1,7 @@
 import {
   SET_LOGIN_PENDING,
   SET_LOGIN_SUCCESS,
-} from "../actions/login/login-action";
+} from "../actions/login/loginActionTypes";
 
 const initialState = {
   isLoginSuccess: false,

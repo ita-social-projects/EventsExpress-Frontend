@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import LinkedAuths from "../../components/Profile/EditProfile/LinkedAuths";
-import getLinkedAuths from "../../actions/redactProfile/linked-auths-action";
+import getLinkedAuths from "../../actions/editProfile/linkedAuthsAction";
 import AddGoogleLoginContainer from "./AddGoogleLoginContainer";
 import AddLocalLoginContainer from "./AddLocalLoginContainer";
 import LoginFacebook from "./LoginFacebook";

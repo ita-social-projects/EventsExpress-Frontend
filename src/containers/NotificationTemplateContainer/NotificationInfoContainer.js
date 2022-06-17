@@ -5,7 +5,7 @@ import {
   getTemplate,
   getTemplateProperties,
   updateTemplate,
-} from "../../actions/notification-templates";
+} from "../../actions/notificationTemplate/notificationTemplates";
 import NotificationTemplateForm from "../../components/NotificationTemplate/NotificationTemplateForm/NotificationTemplateForm";
 
 // TODO Refactor class component

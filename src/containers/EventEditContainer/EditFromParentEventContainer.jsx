@@ -8,10 +8,10 @@ import EventForm from "../../components/Event/EventForm/EventForm";
 import editEventFromParent, {
   setEventFromParentPending,
   setEventFromParentSuccess,
-} from "../../actions/event/event-copy-with-edit-action";
+} from "../../actions/event/eventCopyWithEditAction";
 import eventEditValidateForm from "../../components/helpers/eventEditValidateForm ";
 import eventValidateForm from "../../components/helpers/eventValidateForm";
-import getCategories from "../../actions/category/category-list-action";
+import getCategories from "../../actions/category/categoryListAction";
 
 // TODO Refactor class component
 class EditFromParentEventContainer extends Component {

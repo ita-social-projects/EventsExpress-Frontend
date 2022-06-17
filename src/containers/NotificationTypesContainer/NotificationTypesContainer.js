@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import setUserNotificationTypes from "../../actions/redactProfile/userNotificationType-add-action";
-import getNotificationTypes from "../../actions/notificationType/notificationType-list-action";
+import setUserNotificationTypes from "../../actions/editProfile/userNotificationTypeAddAction";
+import getNotificationTypes from "../../actions/notificationType/notificationTypeListAction";
 import SelectNotificationType from "../../components/NotificationTypes/NotificationTypes";
-import getUserNotificationTypes from "../../actions/notificationType/userNotificationType-action";
+import getUserNotificationTypes from "../../actions/notificationType/userNotificationTypeAction";
 
 // TODO Refactor class component
 class SelectNotificationTypesWrapper extends Component {

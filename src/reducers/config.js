@@ -1,4 +1,4 @@
-﻿import { GET_CONFIG_DATA } from "../actions/config/get-config-action";
+﻿import { GET_CONFIG_DATA } from "../actions/config/configActionTypes";
 
 const initialState = {
   config: {

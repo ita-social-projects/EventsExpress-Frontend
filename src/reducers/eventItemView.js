@@ -1,9 +1,12 @@
 import {
   GET_EVENT_DATA,
   RESET_EVENT,
-  event,
-} from "../actions/event/event-item-view-action";
-import { getRateStates, getAverageRateStates } from "../actions/rating-action";
+  CHANGE_STATUS,
+} from "../actions/event/eventActionTypes";
+import {
+  getRateStates,
+  getAverageRateStates,
+} from "../actions/rating/ratingActionTypes";
 
 const initialState = {
   cancelationModalStatus: false,
@@ -20,7 +23,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         data: action.payload,
       };
-    case event.CHANGE_STATUS:
+    case CHANGE_STATUS:
       stateChangeEvent.data.eventStatus = action.payload.eventStatus;
       return stateChangeEvent;
     case RESET_EVENT:

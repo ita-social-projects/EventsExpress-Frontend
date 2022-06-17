@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Field, FieldArray, getFormSyncErrors } from "redux-form";
 import { connect } from "react-redux";
 import { renderSelectField, renderTextField } from "../helpers/form-helpers";
-import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
+import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuringListAction";
 import InventoryHeaderButton from "./InventoryHeaderButton";
 import "./Inventory.scss";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";

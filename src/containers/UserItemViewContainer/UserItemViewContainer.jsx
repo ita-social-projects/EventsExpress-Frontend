@@ -6,13 +6,13 @@ import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import getUser, {
   setAttitude,
   resetUser,
-} from "../../actions/user/user-item-view-action";
+} from "../../actions/user/userItemViewAction";
 import {
   getFutureEvents,
   getPastEvents,
   getVisitedEvents,
   getEventsTogo,
-} from "../../actions/events/events-for-profile-action";
+} from "../../actions/events/eventsForProfileAction";
 // TODO Unused state field: 'flag'
 // TODO Refactor class component
 

@@ -1,4 +1,4 @@
-import { GET_USERSINVENTORIES_DATA } from "../actions/users/users-inventories-action";
+import { GET_USERSINVENTORIES_DATA } from "../actions/users/usersActionTypes";
 
 const initialState = {
   data: [],

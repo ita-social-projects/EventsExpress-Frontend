@@ -1,5 +1,5 @@
-﻿import { SET_OPEN_STATUS } from "../actions/modalWind-action";
-import { SET_LOGIN_SUCCESS } from "../actions/login/login-action";
+﻿import { SET_OPEN_STATUS } from "../actions/modalWind/modalWindActionTypes";
+import { SET_LOGIN_SUCCESS } from "../actions/login/loginActionTypes";
 
 const initialState = {
   isOpen: false,

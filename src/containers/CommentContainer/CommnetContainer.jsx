@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import CommentForm from "../../components/Comment/CommentForm";
-import addComment from "../../actions/comment/comment-add-action";
+import addComment from "../../actions/comment/commentAddAction";
 
 const CommentContainer = ({ add, userId, eventId, parentId }) => {
   const submit = values => {

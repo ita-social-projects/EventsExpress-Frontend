@@ -1,4 +1,4 @@
-import { SET_USERS } from "../actions/events/filter/users-data";
+import { SET_USERS } from "../actions/events/filter/filterActionTypes";
 
 const initialState = [];
 

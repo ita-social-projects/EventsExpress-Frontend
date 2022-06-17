@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import {
   promoteToOwner,
   approveUser,
-} from "../../../actions/event/event-item-view-action";
+} from "../../../actions/event/eventItemViewAction";
 
 const useStyles = makeStyles(() => ({
   success: {

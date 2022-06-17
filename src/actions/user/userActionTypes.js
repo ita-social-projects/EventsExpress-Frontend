@@ -1,0 +1,21 @@
+export const blockUserStates = {
+  PENDING: "PENDING_BLOCK",
+  SUCCESS: "SUCCESS_BLOCK",
+  UPDATE: "UPDATE_BLOCKED",
+};
+
+export const unBlockUserStates = {
+  PENDING: "PENDING_UNBLOCK",
+  SUCCESS: "SUCCESS_UNBLOCK",
+  UPDATE: "UPDATE_UNBLOCKED",
+};
+
+export const changeUserRoleStates = {
+  SET_EDITED: "SET_EDITED_USER",
+  PENDING: "PENDING_CHANGE_ROLE",
+  SUCCESS: "SUCCESS_CHANGE_ROLE",
+  UPDATE: "UPDATE_CHANGE_ROLE",
+};
+
+export const GET_PROFILE_DATA = "GET_PROFILE_DATA";
+export const RESET_USER = "RESET_USER";

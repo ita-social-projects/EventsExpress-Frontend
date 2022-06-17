@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { loginAfterEmailConfirmation } from "../../actions/login/login-action";
+import { loginAfterEmailConfirmation } from "../../actions/login/loginAction";
 
 class Authentication extends Component {
   componentWillMount = () => {

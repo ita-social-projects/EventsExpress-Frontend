@@ -1,4 +1,4 @@
-import { SET_LOCATION } from "../actions/events/filter/location-filter";
+import { SET_LOCATION } from "../actions/events/filter/filterActionTypes";
 
 const initialState = {
   location: {},

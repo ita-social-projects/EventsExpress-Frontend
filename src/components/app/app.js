@@ -30,8 +30,8 @@ import EventDraftListContainer from "../../containers/EventDraftContainer/EventD
 import Unauthorized from "../RouteGuard/401";
 import Forbidden from "../RouteGuard/403";
 import WithAuthRedirect from "../WithAuthRedirect/WithAuthRedirect";
-import AuthUser from "../../actions/login/auth-user-action";
-import getConfig from "../../actions/config/get-config-action";
+import AuthUser from "../../actions/login/authUserAction";
+import getConfig from "../../actions/config/getConfigAction";
 import RegistrationForm from "../../containers/RegistrationFormContainer/RegistrationFormContainer";
 import MainLayout from "../MainLayout/MainLayout";
 import AboutUs from "../AboutUs/AboutUs";

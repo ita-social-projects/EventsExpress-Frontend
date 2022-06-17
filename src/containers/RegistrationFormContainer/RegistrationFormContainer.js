@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
-import getCategoryGroups from "../../actions/categoryGroup/category-group-list-action";
-import getCategories from "../../actions/category/category-list-action";
+import getCategoryGroups from "../../actions/categoryGroup/categoryGroupListAction";
+import getCategories from "../../actions/category/categoryListAction";
 import ChooseActivities from "../../components/RegistrationForm/ChooseActivities";
 
 const mapStateToProps = state => ({

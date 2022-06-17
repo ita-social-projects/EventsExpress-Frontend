@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Register from "../../components/Register/Register";
-import register from "../../actions/register/register-action";
+import register from "../../actions/register/registerAction";
 
 // TODO Refactor class component
 class RegisterContainer extends React.Component {

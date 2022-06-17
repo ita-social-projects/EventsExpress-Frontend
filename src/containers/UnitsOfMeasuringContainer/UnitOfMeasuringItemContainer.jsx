@@ -8,9 +8,9 @@ import UnitOfMeasuringEdit from "../../components/UnitOfMeasuring/UnitOfMeasurin
 import {
   addUnitOfMeasuring,
   setUnitOfMeasuringEdited,
-} from "../../actions/unitOfMeasuring/unitOfMeasuring-add-action";
-import deleteUnitOfMeasuring from "../../actions/unitOfMeasuring/unitOfMeasuring-delete-action";
-import getCategoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
+} from "../../actions/unitOfMeasuring/unitOfMeasuringAddAction";
+import deleteUnitOfMeasuring from "../../actions/unitOfMeasuring/unitOfMeasuringDeleteAction";
+import getCategoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuringListAction";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 // TODO: to function

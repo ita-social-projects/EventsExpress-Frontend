@@ -1,4 +1,4 @@
-import { getRolesData } from "../actions/roles";
+import { getRolesData } from "../actions/roles/rolesActionTypes";
 
 const initialState = {
   data: [],

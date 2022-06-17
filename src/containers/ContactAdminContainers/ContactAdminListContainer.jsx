@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { parse as queryStringParse } from "query-string";
 import ContactAdminList from "../../components/ContactAdmin/ContactAdminListComponent";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
-import getIssues from "../../actions/contactAdmin/contact-admin-list-action";
+import getIssues from "../../actions/contactAdmin/contactAdminListAction";
 import filterHelper from "../../components/helpers/filterHelper";
 
 // TODO Refactor class component

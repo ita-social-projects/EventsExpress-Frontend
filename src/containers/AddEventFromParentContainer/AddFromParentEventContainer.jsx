@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Dropdown from "react-bootstrap/Dropdown";
 import EventScheduleModal from "../../components/EventSchedule/EventScheduleModal";
-import addСopyEvent from "../../actions/event/event-copy-without-edit-action";
+import addСopyEvent from "../../actions/event/eventCopyWithEditAction";
 
 // TODO Refactor class component
 class AddFromParentEventContainer extends Component {

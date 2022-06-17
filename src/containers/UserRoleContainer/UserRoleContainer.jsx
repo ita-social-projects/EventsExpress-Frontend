@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import UserRoleDisplay from "../../components/UserInfo/UserRoleDisplay";
 import UserRoleEdit from "../../components/UserInfo/UserRoleEdit";
-import { changeUserRole, setEditedUser } from "../../actions/user/user-action";
+import { changeUserRole, setEditedUser } from "../../actions/user/userAction";
 
 // TODO Refactor class component
 class UserRoleContainer extends Component {

@@ -5,9 +5,9 @@ import IconButton from "@material-ui/core/IconButton";
 import {
   addUnitOfMeasuring,
   setUnitOfMeasuringEdited,
-} from "../../actions/unitOfMeasuring/unitOfMeasuring-add-action";
+} from "../../actions/unitOfMeasuring/unitOfMeasuringAddAction";
 import UnitOfMeasuringEdit from "../../components/UnitOfMeasuring/UnitOfMeasuringEdit";
-import getCategoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
+import getCategoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuringListAction";
 
 const pStyle = {
   margin: "0px",

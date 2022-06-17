@@ -1,4 +1,4 @@
-import { GET_NOTIFICATION_TYPES_DATA } from "../actions/notificationType/notificationType-list-action";
+import { GET_NOTIFICATION_TYPES_DATA } from "../actions/notificationType/notificationActionTypes";
 
 const initialState = {
   data: [],

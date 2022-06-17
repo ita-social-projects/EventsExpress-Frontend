@@ -1,4 +1,4 @@
-import { GET_CONTACT_ADMIN_DATA } from "../actions/contactAdmin/contact-admin-item-action";
+import { GET_CONTACT_ADMIN_DATA } from "../actions/contactAdmin/contactAdminActionTypes";
 
 const initialState = {
   data: [],

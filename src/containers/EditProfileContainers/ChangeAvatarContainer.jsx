@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import ChangeAvatar from "../../components/Profile/EditProfile/ChangeAvatar";
-import changeAvatar from "../../actions/redactProfile/avatar-change-action";
+import changeAvatar from "../../actions/editProfile/avatarChangeAction";
 import AuthComponent from "../../components/AuthComponent/AuthComponent";
 
 // TODO Refactor class component

@@ -1,4 +1,4 @@
-﻿import { GET_TEMPLATES_SUCCESS } from "../actions/notification-templates";
+import { GET_TEMPLATES_SUCCESS } from "../actions/notificationTemplate/notificationTemplateActionTypes";
 
 const initialState = {
   data: [],

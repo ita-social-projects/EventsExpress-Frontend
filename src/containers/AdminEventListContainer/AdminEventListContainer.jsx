@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import EventList from "../../components/Event/EventList/EventList";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
-import { getEvents } from "../../actions/event/event-list-action";
+import { getEvents } from "../../actions/event/eventListAction";
 
 // TODO Refactor class component
 

@@ -1,4 +1,4 @@
-﻿import { GET_COMMENTS_DATA } from "../actions/comment/comment-list-action";
+﻿import { GET_COMMENTS_DATA } from "../actions/comment/commentActionTypes";
 
 const initialState = {
   data: {

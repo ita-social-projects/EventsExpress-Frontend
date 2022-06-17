@@ -5,11 +5,11 @@ import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import EventDraftContainer from "../EventDraftContainer/EventDraftContainer";
 import EditEventContainer from "./EditEventContainer";
 import { EVENT_STATUS_ENUM } from "../../constants/eventConstants";
-import getСategoriesList from "../../actions/category/category-list-action";
+import getСategoriesList from "../../actions/category/categoryListAction";
 import getEvent, {
   resetEvent,
   approveUser,
-} from "../../actions/event/event-item-view-action";
+} from "../../actions/event/eventItemViewAction";
 
 // TODO Refactor class component
 class EventEditContainer extends Component {
