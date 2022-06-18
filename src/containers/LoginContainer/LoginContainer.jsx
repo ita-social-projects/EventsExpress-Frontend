@@ -1,17 +1,13 @@
 ﻿import { connect } from "react-redux";
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Login from "../../components/Login/Login";
 import login from "../../actions/login/login-action";
 
-// TODO Refactor class component
-class LoginContainer extends Component {
-  submit = values => this.props.login(values.email, values.password);
-
-  render() {
-    return <Login onSubmit={this.submit} />;
-  }
-}
+const LoginContainer = ({ loginDispatch, handleClose }) => {
+  const handleLogin = ({ email, password }) => loginDispatch(email, password);
+  return <Login onSubmit={handleLogin} handleClose={handleClose} />;
+};
 
 const mapStateToProps = state => {
   return {
@@ -21,16 +17,18 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (email, password) => dispatch(login(email, password)),
+    loginDispatch: (email, password) => dispatch(login(email, password)),
   };
 };
 
 LoginContainer.propTypes = {
-  login: PropTypes.func,
+  loginDispatch: PropTypes.func,
+  handleClose: PropTypes.func,
 };
 
 LoginContainer.defaultProps = {
-  login: () => {},
+  loginDispatch: () => {},
+  handleClose: () => {},
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);

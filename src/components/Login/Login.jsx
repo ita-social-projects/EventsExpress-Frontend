@@ -1,71 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { ImCross } from "react-icons/im";
 import { Field, reduxForm } from "redux-form";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 import GoogleLogin from "../../containers/LoginContainer/GoogleLogin";
 import FacebookLogin from "../../containers/LoginContainer/FacebookLoginContainer";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
-import { renderTextField } from "../helpers/form-helpers";
 import { validate } from "../helpers/validateHelper";
 import "./Login.scss";
+import FormInput from "../shared/FormInput/FormInput";
+import RecoverPassword from "../RecoverPassword/RecoverPassword";
 
-const Login = ({ pristine, reset, submitting, error, handleSubmit }) => {
+// error
+const Login = ({ handleSubmit, handleClose, error }) => {
+  const [isRecoverPassword, setIsRecoverPassword] = useState(false);
+  const handleRecoverClick = () => {
+    setIsRecoverPassword(true);
+  };
+  const handleLoginClose = () => {
+    setIsRecoverPassword(false);
+    handleClose();
+  };
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <div>
-        <Field name="email" component={renderTextField} label="E-mail:" />
-      </div>
-      <div>
-        <Field
-          name="password"
-          component={renderTextField}
-          label="Password:"
-          type="password"
+    <form className="login-form" onSubmit={handleSubmit} autoComplete="off">
+      <h2 className="login-form__title">Login</h2>
+      {error && (
+        <ErrorMessages error={error} className="login-error text-center" />
+      )}
+      <button className="close-btn" onClick={handleLoginClose} type="button">
+        <ImCross />
+      </button>
+      <Field
+        name="email"
+        className="auth-input"
+        placeholder="Enter Email"
+        component={FormInput}
+      />
+      <Field
+        name="password"
+        className="auth-input"
+        type="password"
+        placeholder="Enter Password"
+        component={FormInput}
+      />
+      <button className="auth-btn" type="submit">
+        Sign Up
+      </button>
+      <button
+        onClick={handleRecoverClick}
+        className="recover-password-btn"
+        type="button"
+      >
+        Forgot Password?
+      </button>
+      {isRecoverPassword && (
+        <RecoverPassword
+          handleRecoverClose={() => setIsRecoverPassword(false)}
         />
-      </div>
-      <div>
-        <DialogActions>
-          <Button
-            fullWidth
-            type="button"
-            color="primary"
-            disabled={pristine || submitting}
-            onClick={reset}
-          >
-            CLEAR
-          </Button>
-          <Button fullWidth type="submit" value="Login" color="primary">
-            Sign In
-            <Redirect to="/landing" />
-          </Button>
-        </DialogActions>
-      </div>
-      <div className="d-flex justify-content-around mb-3">
+      )}
+      <div className="social-auth">
+        <span className="social-auth__title">Or sign in with:</span>
         <FacebookLogin />
         <GoogleLogin />
       </div>
-      {error && <ErrorMessages error={error} className="text-center" />}
     </form>
   );
 };
 
 Login.defaultProps = {
-  pristine: false,
-  reset: () => {},
-  submitting: false,
+  // pristine: false,
+  // reset: () => {},
+  // submitting: false,
   error: [],
   handleSubmit: () => {},
+  handleClose: () => {},
 };
 
 Login.propTypes = {
-  pristine: PropTypes.bool,
-  reset: PropTypes.func,
-  submitting: PropTypes.bool,
+  // pristine: PropTypes.bool,
+  // reset: PropTypes.func,
+  // submitting: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   handleSubmit: PropTypes.func,
+  handleClose: PropTypes.func,
 };
 
 const mapStateToProps = state => {

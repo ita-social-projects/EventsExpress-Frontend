@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { ImCross } from "react-icons/im";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import LoginContainer from "../../containers/LoginContainer/LoginContainer";
@@ -23,38 +22,34 @@ const ModalWind = ({ setIsOpen, isOpen }) => {
       onClose={handleClose}
       className={`auth-modal ${isOpen ? "" : "closed"}`}
     >
-      <button onClick={handleClose} type="button">
-        <ImCross />
-      </button>
-      {isLogin && <LoginContainer />}
+      {isLogin && <LoginContainer handleClose={handleClose} />}
       {!isLogin && <RegisterContainer handleClose={handleClose} />}
       {/* MOVE TO LOGIN CONTAINER {isLogin && <Modalwind2 />} */}
-      <div className="modal-switcher">
-        {isLogin && (
-          <h4>
-            You haven’t got an account?
-            <button
-              type="button"
-              onClick={handleModeSwitch}
-              className="switcher-btn"
-            >
-              Register
-            </button>{" "}
-          </h4>
-        )}
-        {!isLogin && (
-          <h4>
-            Have an account?{" "}
-            <button
-              type="button"
-              onClick={handleModeSwitch}
-              className="switcher-btn"
-            >
-              Login
-            </button>
-          </h4>
-        )}
-      </div>
+
+      {isLogin && (
+        <h4 className="modal-switcher">
+          You haven’t got an account?
+          <button
+            type="button"
+            onClick={handleModeSwitch}
+            className="switcher-btn"
+          >
+            Register
+          </button>{" "}
+        </h4>
+      )}
+      {!isLogin && (
+        <h4 className="modal-switcher">
+          Have an account?{" "}
+          <button
+            type="button"
+            onClick={handleModeSwitch}
+            className="switcher-btn"
+          >
+            Login
+          </button>
+        </h4>
+      )}
     </div>
   );
 };

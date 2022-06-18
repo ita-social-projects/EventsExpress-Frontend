@@ -1,13 +1,12 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
-import DialogContentText from "@material-ui/core/DialogContentText";
+import { ImCross } from "react-icons/im";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
-import { renderTextField } from "../helpers/form-helpers";
 import isValidEmail from "../helpers/validators/email-address-validator";
 import fieldIsRequired from "../helpers/validators/required-fields-validator";
+import "./RecoverPassword.scss";
+import FormInput from "../shared/FormInput/FormInput";
 
 const validate = values => {
   const requiredFields = ["email"];
@@ -23,36 +22,35 @@ const RecoverPassword = ({
   reset,
   submitting,
   error,
+  handleRecoverClose,
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <DialogContentText>
-        If you forgot your password please enter your <br /> email address here.
-        We will send you new
-        <br /> password.
-      </DialogContentText>
+    <form className="recover-password-form" onSubmit={handleSubmit}>
+      <button className="close-btn" onClick={handleRecoverClose} type="button">
+        <ImCross />
+      </button>
+      <h4 className="recover-heading">
+        If you forgot your password please enter your email address here. <br />{" "}
+        We will send you new password.
+      </h4>
+
       <div>
-        <Field name="email" component={renderTextField} label="E-mail:" />
+        <Field name="email" component={FormInput} placeholder="Your Email..." />
         {error && <ErrorMessages error={error} className="text-center" />}
       </div>
 
-      <div>
-        <DialogActions className="d-flex flex-column ">
-          <div className="d-flex justify-content-around w-100">
-            <Button
-              fullWidth
-              type="button"
-              color="primary"
-              disabled={pristine || submitting}
-              onClick={reset}
-            >
-              CLEAR
-            </Button>
-            <Button fullWidth type="submit" color="primary">
-              Submit
-            </Button>
-          </div>
-        </DialogActions>
+      <div className="recover-btns">
+        <button
+          className="recover-clear"
+          onClick={reset}
+          disabled={pristine || submitting}
+          type="button"
+        >
+          Clear
+        </button>
+        <button className="recover-submit" type="submit">
+          Submit
+        </button>
       </div>
     </form>
   );
@@ -64,6 +62,7 @@ RecoverPassword.defaultProps = {
   reset: () => {},
   submitting: false,
   error: [],
+  handleRecoverClose: () => {},
 };
 
 RecoverPassword.propTypes = {
@@ -72,6 +71,7 @@ RecoverPassword.propTypes = {
   reset: PropTypes.func,
   submitting: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  handleRecoverClose: PropTypes.func,
 };
 
 export default reduxForm({

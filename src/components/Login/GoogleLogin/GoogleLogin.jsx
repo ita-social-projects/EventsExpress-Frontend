@@ -2,7 +2,6 @@
 import { GoogleLogin as Login } from "react-google-login";
 import PropTypes from "prop-types";
 import { FcGoogle } from "react-icons/fc";
-import BUTTON_NAMES from "../../../constants/buttonConsts";
 import "../GoogleFacebookLogin.scss";
 
 const GoogleLogin = ({
@@ -22,9 +21,6 @@ const GoogleLogin = ({
             disabled={renderProps.disabled}
           >
             <FcGoogle className="btn-google__icon" />
-            <span className="btn-google__text">
-              {BUTTON_NAMES.GOOGLE_LOGIN}
-            </span>
           </button>
         )}
         onSuccess={googleResponseHandler}

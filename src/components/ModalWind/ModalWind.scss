@@ -13,11 +13,12 @@
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    background-color: aqua;
+    background-color: rgba(0, 0, 0, 0.9);
     &.closed {
         display: none;
     }
     .modal-switcher {
+        width: 450px;
         padding: 30px 50px;
         border-radius: 10px;
         display: flex;
@@ -25,7 +26,8 @@
         justify-content: center;
         background-color: $lightPink; 
         color: $black;
-        font-size: $fontsize-18;
+        font-size: $fontsize-16;
+        box-shadow: 0 0 15px $white;
         .switcher-btn {
             cursor: pointer;
             margin-left: 15px;
