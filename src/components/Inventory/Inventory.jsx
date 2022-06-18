@@ -4,7 +4,7 @@ import { Field, FieldArray, getFormSyncErrors } from "redux-form";
 import { connect } from "react-redux";
 import TextField from "../shared/TextField/TextField";
 import SelectField from "../shared/SelectField/SelectField";
-import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
+import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuringListAction";
 import InventoryHeaderButton from "./InventoryHeaderButton";
 import "./Inventory.scss";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";

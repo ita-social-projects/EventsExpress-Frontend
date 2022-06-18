@@ -1,4 +1,4 @@
-﻿import { recoverPasswordStates } from "../actions/redactProfile/password-recover-action";
+import { recoverPasswordStates } from "../actions/editProfile/editProfileActionTypes";
 
 const { DATA } = recoverPasswordStates;
 

@@ -4,8 +4,8 @@ import propTypes from "prop-types";
 import CategoryAddContainer from "../../containers/CategoryContainers/CategoryAddContainer";
 import CategoryListContainer from "../../containers/CategoryContainers/CategoryListContainer";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
-import getCategories from "../../actions/category/category-list-action";
-import getCategoryGroups from "../../actions/categoryGroup/category-group-list-action";
+import getCategories from "../../actions/category/categoryListAction";
+import getCategoryGroups from "../../actions/categoryGroup/categoryGroupListAction";
 
 class Categories extends Component {
   constructor(props) {

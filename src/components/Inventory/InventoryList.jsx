@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
 import InventoryHeaderButton from "./InventoryHeaderButton";
-import { getInventoryData } from "../../actions/inventory/inventory-list-action";
+import { getInventoryData } from "../../actions/inventory/inventoryListAction";
 import InventoryItemContainer from "../../containers/InventoryItemContainer/InventoryItemContainer";
-import { editUsersInventory } from "../../actions/users/users-inventories-action";
+import { editUsersInventory } from "../../actions/users/usersInventoriesAction";
 
 class InventoryList extends Component {
   constructor() {

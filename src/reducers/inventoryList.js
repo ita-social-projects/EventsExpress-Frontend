@@ -1,4 +1,4 @@
-import { GET_INVENTORY_DATA } from "../actions/inventory/inventory-list-action";
+import { GET_INVENTORY_DATA } from "../actions/inventory/inventoryActionTypes";
 
 const initialState = {
   items: [],

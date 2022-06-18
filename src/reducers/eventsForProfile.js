@@ -1,4 +1,4 @@
-﻿import { GET_EVENTS_PROFILE_DATA } from "../actions/events/events-for-profile-action";
+﻿import { GET_EVENTS_PROFILE_DATA } from "../actions/events/eventsActionType";
 
 const initialState = {
   data: {

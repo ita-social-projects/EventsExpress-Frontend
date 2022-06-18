@@ -1,7 +1,7 @@
 import {
   GET_EVENT_SCHEDULE_DATA,
   RESET_EVENT_SCHEDULE,
-} from "../actions/eventSchedule/eventSchedule-item-view-action";
+} from "../actions/eventSchedule/eventScheduleActionTypes";
 
 const initialState = {
   cancelationModalStatus: false,

@@ -1,5 +1,7 @@
-import { GET_CHATS_DATA } from "../actions/chat/chats-action";
-import { RECEIVE_MESSAGE } from "../actions/chat/chat-action";
+import {
+  GET_CHATS_DATA,
+  RECEIVE_MESSAGE,
+} from "../actions/chat/chatActionTypes";
 
 const initialState = {
   data: [],

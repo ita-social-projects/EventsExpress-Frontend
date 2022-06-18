@@ -1,7 +1,7 @@
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
-import getRoles from "../../actions/roles";
+import getRoles from "../../actions/roles/roles";
 import UserRoleEdit from "../../components/UserInfo/UserRoleEdit";
 
 const mapStateToProps = state => ({

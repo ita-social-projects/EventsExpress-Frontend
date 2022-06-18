@@ -2,7 +2,7 @@ import {
   GET_TRACKS_DATA,
   GET_ENTITY_NAMES,
   RESET_TRACKS,
-} from "../actions/tracks/track-list-action";
+} from "../actions/tracks/tracksActionTypes";
 
 const initialState = {
   isError: false,

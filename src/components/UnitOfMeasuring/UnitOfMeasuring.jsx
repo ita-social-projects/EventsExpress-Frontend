@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import UnitOfMeasuringAddWrapper from "../../containers/UnitsOfMeasuringContainer/UnitOfMeasuringAddContainer";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import UnitOfMeasuringListWrapper from "../../containers/UnitsOfMeasuringContainer/UnitOfMeasuringListContainer";
-import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
+import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuringListAction";
 
 class UnitsOfMeasuring extends Component {
   componentWillMount = () => this.props.getUnitsOfMeasuringDispatch();

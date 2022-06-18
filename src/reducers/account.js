@@ -1,4 +1,4 @@
-import { GET_LINKED_AUTHS_SUCCESS } from "../actions/redactProfile/linked-auths-action";
+import { GET_LINKED_AUTHS_SUCCESS } from "../actions/editProfile/editProfileActionTypes";
 
 const initialState = {
   linkedAuths: [],

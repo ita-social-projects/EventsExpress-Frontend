@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { blockUser, unblockUser } from "../../actions/user/user-action";
+import { blockUser, unblockUser } from "../../actions/user/userAction";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import UserBlock from "../../components/UserInfo/UserBlock";
 import UserRoleContainer from "../UserRoleContainer/UserRoleContainer";

@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { connect } from "react-redux";
 import LoginContainer from "../../containers/LoginContainer/LoginContainer";
 import RegisterContainer from "../../containers/RegisterContainer/RegisterContainer";
-import { TogleOpenWind } from "../../actions/modalWind-action";
+import { TogleOpenWind } from "../../actions/modalWind/modalWindAction";
 import Modalwind2 from "../RecoverPassword/Modalwind2";
 
 const TabContainer = ({ children }) => {

@@ -1,9 +1,9 @@
-import { event } from "../actions/event/event-item-view-action";
 import {
   GET_EVENTS_DATA,
   RESET_EVENTS,
   UPDATE_EVENTS_FILTERS,
-} from "../actions/event/event-list-action";
+CHANGE_STATUS,
+} from "../actions/event/eventActionTypes";
 import filterHelper from "../helpers/filterHelper";
 
 const initialState = {
@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         data: action.payload,
       };
-    case event.CHANGE_STATUS: {
+    case CHANGE_STATUS: {
       const stateChangeEvent = { ...state };
       stateChangeEvent.data.items = state.data.items.map(item => {
         if (item.id === action.payload.eventId) {

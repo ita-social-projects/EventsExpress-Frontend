@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Tracks from "../../components/Tracks/Tracks";
 import getAllTracks, {
   getEntityNames,
-} from "../../actions/tracks/track-list-action";
+} from "../../actions/tracks/trackListAction";
 
 const mapStateToProps = state => ({
   tracks: state.tracks,

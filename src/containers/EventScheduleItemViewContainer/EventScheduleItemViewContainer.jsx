@@ -5,7 +5,7 @@ import EventScheduleItemView from "../../components/EventSchedule/EventScheduleI
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import getEventSchedule, {
   resetEventSchedule,
-} from "../../actions/eventSchedule/eventSchedule-item-view-action";
+} from "../../actions/eventSchedule/eventScheduleItemViewAction";
 
 // TODO Refactor class component
 class EventScheduleItemViewContainer extends Component {

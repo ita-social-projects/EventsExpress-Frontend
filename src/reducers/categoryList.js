@@ -1,6 +1,8 @@
-﻿import { GET_CATEGORIES_DATA } from "../actions/category/category-list-action";
-import { GET_CATEGORIES_BY_GROUP_ID } from "../actions/category/category-list-by-groupid-action";
-import { SET_CATEGORY_EDITED } from "../actions/category/category-add-action";
+﻿import {
+  GET_CATEGORIES_DATA,
+  GET_CATEGORIES_BY_GROUP_ID,
+  SET_CATEGORY_EDITED,
+} from "../actions/category/categoryActionTypes";
 
 const initialState = {
   editedCategory: null,

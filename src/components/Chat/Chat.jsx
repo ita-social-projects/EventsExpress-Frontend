@@ -13,7 +13,7 @@ import getChat, {
   reset,
   concatNewMsg,
   deleteOldNotififcation,
-} from "../../actions/chat/chat-action";
+} from "../../actions/chat/chatAction";
 import Msg from "./Msg";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import CustomAvatarContainer from "../CustomAvatar/CustomAvatar";

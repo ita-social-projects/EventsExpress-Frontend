@@ -1,4 +1,7 @@
-﻿import { REQUEST_INC, REQUEST_DEC } from "../actions/request-count-action";
+﻿import {
+  REQUEST_INC,
+  REQUEST_DEC,
+} from "../actions/requestCount/requestCountActionTypes";
 
 const initialState = {
   counter: 0,

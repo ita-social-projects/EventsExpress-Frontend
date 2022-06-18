@@ -1,5 +1,5 @@
-import { CHANGE_STATUS } from "../actions/contactAdmin/contact-admin-issue-status-action";
 import filterHelper from "../helpers/filterHelper";
+import { CHANGE_STATUS } from "../actions/contactAdmin/contactAdminActionTypes";
 
 const initialState = {
   data: {

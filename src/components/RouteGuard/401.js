@@ -1,8 +1,8 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
-import { TogleOpenWind, isOpen } from "../../actions/modalWind-action";
-import logout from "../../actions/login/logout-action";
+import { TogleOpenWind, isOpen } from "../../actions/modalWind/modalWindAction";
+import logout from "../../actions/login/logoutAction";
 
 class Unauthorized extends Component {
   componentWillMount = () => {

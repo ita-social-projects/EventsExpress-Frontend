@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import eventsForNotification from "../../actions/events/events-for-notification-action";
+import eventsForNotification from "../../actions/events/eventsForNotificationAction";
 import NotificationEvents from "../../components/NotiicationEvents/NotificationEvents";
 
 const mapStateToProps = state => {

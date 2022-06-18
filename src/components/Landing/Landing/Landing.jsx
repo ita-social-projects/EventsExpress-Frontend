@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "./Landing.scss";
-import { getUpcomingEvents } from "../../../actions/event/event-list-action";
+import { getUpcomingEvents } from "../../../actions/event/eventListAction";
 import HeadArticle from "../HeadArticle/HeadArticle";
 import EventsViewMode from "../EventsViewMode/EventsViewMode";
 import LandingContent from "./LandingContent";

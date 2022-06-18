@@ -3,7 +3,7 @@ import {
   RESET_CHAT,
   CONCAT_NEW_MSG,
   RECEIVE_SEEN_MESSAGE,
-} from "../actions/chat/chat-action";
+} from "../actions/chat/chatActionTypes";
 
 const initialState = {
   data: {

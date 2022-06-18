@@ -1,7 +1,7 @@
 import {
   GET_EVENTS_SCHEDULE_DATA,
   RESET_EVENTS_SCHEDULE,
-} from "../actions/eventSchedule/eventSchedule-list-action";
+} from "../actions/eventSchedule/eventScheduleActionTypes";
 
 const initialState = {
   data: {

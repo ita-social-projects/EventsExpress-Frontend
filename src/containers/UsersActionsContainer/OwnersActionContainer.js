@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { deleteFromOwners } from "../../actions/event/event-item-view-action";
+import { deleteFromOwners } from "../../actions/event/eventItemViewAction";
 import OwnersActions from "../../components/Event/OwnersAction/OwnersAction";
 
 const mapStateToProps = state => ({

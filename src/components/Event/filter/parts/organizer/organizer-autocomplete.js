@@ -4,7 +4,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import useOrganizerFilterStyles from "./organizer-filter-styles";
-import { fetchUsers } from "../../../../../actions/events/filter/users-data";
+import { fetchUsers } from "../../../../../actions/events/filter/usersData";
 import useDelay from "./use-delay";
 
 const OrganizerAutocomplete = ({ input, options, ...props }) => {

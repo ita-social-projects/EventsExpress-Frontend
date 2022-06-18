@@ -1,4 +1,4 @@
-﻿import { GET_CATEGORY_GROUPS_DATA } from "../actions/categoryGroup/category-group-list-action";
+﻿import { GET_CATEGORY_GROUPS_DATA } from "../actions/categoryGroup/categoryGroupActionTypes";
 
 const initialState = {
   data: [],

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import DropdownMenu from "../../components/Header/DropdownMenu/DropDownMenu";
-import logout from "../../actions/login/logout-action";
-import addEvent from "../../actions/event/event-add-action";
+import logout from "../../actions/login/logoutAction";
+import addEvent from "../../actions/event/eventAddAction";
 
 const mapStateToProps = ({ user, hubConnections }) => ({
   user,

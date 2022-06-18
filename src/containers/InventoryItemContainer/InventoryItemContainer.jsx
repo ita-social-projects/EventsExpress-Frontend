@@ -6,17 +6,17 @@ import OwnerEditItemForm from "../../components/Inventory/OwnerEditItem";
 import VisitorSeeItem from "../../components/Inventory/VisitorSeeItem";
 /* import VisitorEditItemForm from "../components/Inventory/VisitorTakeItem"; */
 import VisitorEditItemForm from "../../components/Inventory/VisitorTakeItem";
-import { getInventoriesByEventId } from "../../actions/inventory/inventory-list-action";
+import { getInventoriesByEventId } from "../../actions/inventory/inventoryListAction";
 import {
   deleteUsersInventory,
   editUsersInventory,
-} from "../../actions/users/users-inventories-action";
+} from "../../actions/users/usersInventoriesAction";
 import {
   deleteItem,
   editItem,
   addItem,
   wantToTake,
-} from "../../actions/inventory/inventar-action";
+} from "../../actions/inventory/inventarAction";
 
 // TODO Refactor class component
 class InventoryItemContainer extends Component {

@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getAllTemplates } from "../../actions/notification-templates";
+import { getAllTemplates } from "../../actions/notificationTemplate/notificationTemplates";
 import NotificationTemplate from "../../components/NotificationTemplate/NotificationTemplate";
 
 // TODO Refactor class component

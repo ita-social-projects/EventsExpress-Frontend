@@ -1,7 +1,7 @@
 import {
   GET_TEMPLATE_PROPERTIES_SUCCESS,
   GET_TEMPLATE_SUCCESS,
-} from "../actions/notification-templates";
+} from "../actions/notificationTemplate/notificationTemplateActionTypes";
 
 const initialState = {
   id: null,

@@ -4,12 +4,9 @@ import {
   RECEIVE_SEEN_MESSAGE,
   DELETE_SEEN_MSG_NOTIFICATION,
   RECEIVED_NEW_EVENT,
-} from "../actions/chat/chat-action";
-
-import {
   GET_UNREAD_MESSAGES,
   RESET_NOTIFICATION,
-} from "../actions/chat/chats-action";
+} from "../actions/chat/chatActionTypes";
 
 const initialState = {
   messages: [],

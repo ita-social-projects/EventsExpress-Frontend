@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   approveUser,
   promoteToOwner,
-} from "../../actions/event/event-item-view-action";
+} from "../../actions/event/eventItemViewAction";
 import ApprovedUsersActions from "../../components/Event/ApprovedUsersAction/ApprovedUsersActions";
 
 const ApprovedUsersActionsContainer = props => (

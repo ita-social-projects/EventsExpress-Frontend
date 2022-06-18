@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ContactAdmin from "../../components/ContactAdmin/ContactAdminComponent";
-import contactAdmin from "../../actions/contactAdmin/contact-admin-add-action";
+import contactAdmin from "../../actions/contactAdmin/contactAdminAddAction";
 
 const ContactAdminContainer = ({ user, contactAdminDispatch }) => {
   const submit = values => {

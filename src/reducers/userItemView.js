@@ -1,7 +1,4 @@
-﻿import {
-  GET_PROFILE_DATA,
-  RESET_USER,
-} from "../actions/user/user-item-view-action";
+﻿import { GET_PROFILE_DATA, RESET_USER } from "../actions/user/userActionTypes";
 
 const initialState = {
   data: null,

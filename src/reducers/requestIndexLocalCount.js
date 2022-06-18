@@ -1,7 +1,7 @@
 ﻿import {
   REQUEST_LOCAL_INC,
   REQUEST_LOCAL_DEC,
-} from "../actions/request-local-count-action";
+} from "../actions/requestCount/requestCountActionTypes";
 
 const initialState = {
   localCounter: 0,

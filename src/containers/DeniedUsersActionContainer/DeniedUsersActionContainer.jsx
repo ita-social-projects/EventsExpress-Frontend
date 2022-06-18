@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   promoteToOwner,
   approveUser,
-} from "../../actions/event/event-item-view-action";
+} from "../../actions/event/eventItemViewAction";
 import DeniedUsersAction from "../../components/Event/DeniedUsersAction/DeniedUsersAction";
 
 const DeniedUsersActionContainer = props => <DeniedUsersAction props={props} />;

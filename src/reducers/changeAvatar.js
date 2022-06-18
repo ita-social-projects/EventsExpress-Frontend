@@ -1,4 +1,4 @@
-import { changeAvatarStates } from "../actions/redactProfile/avatar-change-action";
+import { changeAvatarStates } from "../actions/editProfile/editProfileActionTypes";
 
 const { UPDATE } = changeAvatarStates;
 

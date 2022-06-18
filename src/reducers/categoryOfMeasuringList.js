@@ -1,7 +1,7 @@
 ﻿import {
   SET_CATEGORIES_OF_MEASURING_PENDING,
   GET_CATEGORIES_OF_MEASURING_SUCCESS,
-} from "../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
+} from "../actions/categoryOfMeasuring/categoryOfMeasuringActionTypes";
 
 const initialState = {
   isPending: false,

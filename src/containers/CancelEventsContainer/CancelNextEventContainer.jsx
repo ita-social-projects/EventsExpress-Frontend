@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Dropdown from "react-bootstrap/Dropdown";
 import EventScheduleModal from "../../components/EventSchedule/EventScheduleModal";
-import cancelNextEventSchedule from "../../actions/eventSchedule/eventSchedule-cancel-next-action";
+import cancelNextEventSchedule from "../../actions/eventSchedule/eventScheduleCancelAllAction";
 
 // TODO Refactor class component
 class CancelNextEventContainer extends Component {
