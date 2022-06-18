@@ -5,7 +5,7 @@ import "./Landing.scss";
 import { getUpcomingEvents } from "../../../actions/event/event-list-action";
 import HeadArticle from "../HeadArticle/HeadArticle";
 import EventsViewMode from "../EventsViewMode/EventsViewMode";
-import viewModeSwitcher from "../../helpers/landingUtils";
+import LandingContent from "./LandingContent";
 import {
   VIEW_MODE_TYPES,
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
@@ -39,7 +39,7 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
             />
             <EventsViewMode setViewMode={setEventsViewMode} />
           </div>
-          {viewModeSwitcher(items, eventsViewMode, filterTitle)}
+          {LandingContent(items, eventsViewMode, filterTitle)}
         </div>
       )}
     </div>

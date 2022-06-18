@@ -5,7 +5,7 @@ import { getFormValues, reset } from "redux-form";
 import { withRouter } from "react-router-dom";
 import EventFilter from "../../components/Event/EventFilter/EventFilter";
 import getСategoriesList from "../../actions/category/category-list-action";
-import filterHelper from "../../components/helpers/filterHelper";
+import filterHelper from "../../helpers/filterHelper";
 import EventFilterConstants from "../../constants/eventConstants";
 
 // TODO Refactor class component

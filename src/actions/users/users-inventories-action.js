@@ -3,7 +3,7 @@ import InventoryService from "../../services/InventoryService";
 import { getInventoriesByEventId } from "../inventory/inventory-list-action";
 import { setErrorAllertFromResponse } from "../alert-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 
 export const GET_USERSINVENTORIES_DATA = "GET_USERSINVENTORIES_SUCCESS";
 

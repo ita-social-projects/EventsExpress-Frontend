@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow */
-import { getErrorMessage } from "../components/helpers/action-helpers";
+import { getErrorMessage } from "../helpers/actionHelpers";
 
 export const alert = {
   SET: "SET_ALERT",

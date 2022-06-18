@@ -2,7 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import IconButton from "@material-ui/core/IconButton";
-import { renderSelectField, renderTextField } from "../helpers/form-helpers";
+
+import TextField from "../shared/TextField/TextField";
+import SelectField from "../shared/SelectField/SelectField";
+
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import validate from "./inventory-form-validator";
 
@@ -22,7 +25,7 @@ const OwnerEditItemForm = ({
           type="text"
           fullWidth={false}
           label="Item name"
-          component={renderTextField}
+          component={TextField}
         />
       </div>
       <div className="col">{alreadyGet}</div>
@@ -32,15 +35,11 @@ const OwnerEditItemForm = ({
           type="number"
           fullWidth={false}
           label="Item count"
-          component={renderTextField}
+          component={TextField}
         />
       </div>
       <div className="col col-md-2 d-flex align-items-center ">
-        <Field
-          name="unitOfMeasuring.id"
-          minWidth={100}
-          component={renderSelectField}
-        >
+        <Field name="unitOfMeasuring.id" minWidth={100} component={SelectField}>
           {unitOfMeasuringState.units.map(unit => (
             <option value={unit.id} key={unit.id}>
               {unit.unitName}

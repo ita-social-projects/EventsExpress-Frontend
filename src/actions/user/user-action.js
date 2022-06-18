@@ -1,7 +1,7 @@
 ﻿import { SubmissionError } from "redux-form";
 import { UserService } from "../../services";
 import { setErrorAllertFromResponse } from "../alert-action";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 
 export const blockUserStates = {
   PENDING: "PENDING_BLOCK",

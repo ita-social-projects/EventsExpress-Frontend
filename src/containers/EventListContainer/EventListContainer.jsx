@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import EventList from "../../components/Event/EventList/EventList";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import { getEvents } from "../../actions/event/event-list-action";
-import filterHelper from "../../components/helpers/filterHelper";
+import filterHelper from "../../helpers/filterHelper";
 
 // TODO Refactor class component
 class EventListContainer extends Component {

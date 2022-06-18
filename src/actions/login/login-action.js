@@ -1,9 +1,9 @@
 import { SubmissionError } from "redux-form";
 import { createBrowserHistory } from "history";
 import { AuthenticationService } from "../../services";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 import { setErrorAllertFromResponse } from "../alert-action";
-import filterHelper from "../../components/helpers/filterHelper";
+import filterHelper from "../../helpers/filterHelper";
 import { updateEventsFilters } from "../event/event-list-action";
 import { initialConnection } from "../chat/chat-action";
 import { getUnreadMessages } from "../chat/chats-action";

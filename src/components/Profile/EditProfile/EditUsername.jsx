@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
-import { renderTextField } from "../../helpers/form-helpers";
+import TextField from "../../shared/TextField/TextField";
 
 const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <Field name="userName" component={renderTextField} label="UserName" />
+      <Field name="userName" component={TextField} label="UserName" />
       {error && <ErrorMessages error={error} className="text-center" />}
 
       <div>

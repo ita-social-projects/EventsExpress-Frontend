@@ -4,7 +4,7 @@ import {
   RESET_EVENTS,
   UPDATE_EVENTS_FILTERS,
 } from "../actions/event/event-list-action";
-import filterHelper from "../components/helpers/filterHelper";
+import filterHelper from "../helpers/filterHelper";
 
 const initialState = {
   data: {

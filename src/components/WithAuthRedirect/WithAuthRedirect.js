@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { AuthenticationService } from "../../services";
-import usersHaveAnyOfRoles from "../helpers/authUtils";
+import usersHaveAnyOfRoles from "../../helpers/authUtils";
 
 const apiServ = new AuthenticationService();
 

@@ -2,7 +2,7 @@ import { createBrowserHistory } from "history";
 import { SubmissionError } from "redux-form";
 import { AuthenticationService } from "../../services";
 import { getRequestInc, getRequestDec } from "../request-count-action";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 
 export const SET_REGISTER_PENDING = "SET_REGISTER_PENDING";
 export const SET_REGISTER_SUCCESS = "SET_REGISTER_SUCCESS";

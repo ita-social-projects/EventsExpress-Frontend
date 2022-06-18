@@ -1,7 +1,7 @@
 import { SubmissionError, reset } from "redux-form";
 import UnitOfMeasuringService from "../../services/unitOfMeasuringService";
 import getUnitsOfMeasuring from "./unitsOfMeasuring-list-action";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const SET_UNIT_OF_MEASURING_EDITED = "SET_UNIT_OF_MEASURING_EDITED";

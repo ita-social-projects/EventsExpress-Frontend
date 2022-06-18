@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
-import { renderSelectField } from "../../helpers/form-helpers";
+import SelectField from "../../shared/SelectField/SelectField";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 
 const EditGender = ({ handleSubmit, pristine, submitting, error }) => {
@@ -12,7 +12,7 @@ const EditGender = ({ handleSubmit, pristine, submitting, error }) => {
         <Field
           minWidth={210}
           name="gender"
-          component={renderSelectField}
+          component={SelectField}
           label="Gender"
         >
           <option aria-label="None" value="" />

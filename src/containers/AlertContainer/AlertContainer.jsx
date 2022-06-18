@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import MySnackbar from "../../components/helpers/Alert";
+import MySnackbar from "../../components/Alert/Alert";
 import { setAlertOpen } from "../../actions/alert-action";
 
 const AlertContainer = ({ open, close, alert }) => {

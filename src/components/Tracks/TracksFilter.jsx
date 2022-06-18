@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { Field, reduxForm } from "redux-form";
 import { FILTER_OPTIONS_MAPPER } from "../../constants/changesTypeEnumConstants";
-import {
-  MultiCheckbox,
-  renderDatePicker,
-  renderMultiselect,
-  parseEuDate,
-} from "../helpers/form-helpers";
+
+import MultiSelectField from "../shared/MultiSelectField/MultiSelectField";
+import DatePickerFirst from "../shared/DatePickerFirst/DatePickerFirst";
+import MultiCheckBox from "../shared/MultiCheckBox/MultiCheckbox";
+
+import parseEuDate from "../../helpers/parseEuDate";
 
 const TracksFilter = ({
   entityNames,
@@ -27,7 +27,7 @@ const TracksFilter = ({
           <div className="form-group">
             <Field
               data={entityNames}
-              component={renderMultiselect}
+              component={MultiSelectField}
               name="entityNames"
               valueField="id"
               textField="entityName"
@@ -38,7 +38,7 @@ const TracksFilter = ({
           <div className="form-group">
             <Field
               options={options}
-              component={MultiCheckbox}
+              component={MultiCheckBox}
               name="changesType"
               className="form-control mt-2"
               placeholder="Changes type"
@@ -48,7 +48,7 @@ const TracksFilter = ({
             <Field
               name="dateFrom"
               label="From"
-              component={renderDatePicker}
+              component={DatePickerFirst}
               parse={parseEuDate}
             />
           </div>
@@ -57,7 +57,7 @@ const TracksFilter = ({
               name="dateTo"
               label="To"
               minValue={new Date(values.dateFrom)}
-              component={renderDatePicker}
+              component={DatePickerFirst}
               parse={parseEuDate}
             />
           </div>

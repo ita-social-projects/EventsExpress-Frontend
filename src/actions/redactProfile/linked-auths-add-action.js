@@ -2,7 +2,7 @@ import { SubmissionError } from "redux-form";
 import { AccountService } from "../../services";
 import { setErrorAllertFromResponse } from "../alert-action";
 import getLinkedAuths from "./linked-auths-action";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 
 const apiService = new AccountService();
 

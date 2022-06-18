@@ -1,7 +1,7 @@
 ﻿import { SubmissionError, reset } from "redux-form";
 import getComments from "./comment-list-action";
 import { CommentService } from "../../services";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
 const apiService = new CommentService();

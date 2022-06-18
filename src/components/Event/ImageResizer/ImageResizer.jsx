@@ -10,7 +10,7 @@ import {
   onCropChange,
   onZoomChange,
   onCropComplete,
-} from "../../helpers/Image-resizer";
+} from "../../ImageResizer/ImageResizer";
 
 const { CROP, ROUND } = imageConstants;
 

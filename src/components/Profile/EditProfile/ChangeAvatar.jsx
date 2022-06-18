@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
-import DropZoneField from "../../helpers/DropZoneField";
+import DropZoneField from "../../DropZoneField/DropZoneField";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import PhotoService from "../../../services/PhotoService";
 

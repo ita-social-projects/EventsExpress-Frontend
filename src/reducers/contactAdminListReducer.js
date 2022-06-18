@@ -2,7 +2,7 @@ import {
   GET_CONTACT_ADMIN_DATA,
   RESET_CONTACT_ADMIN,
 } from "../actions/contactAdmin/contact-admin-list-action";
-import filterHelper from "../components/helpers/filterHelper";
+import filterHelper from "../helpers/filterHelper";
 
 const initialState = {
   data: {

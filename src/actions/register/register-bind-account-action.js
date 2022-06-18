@@ -2,7 +2,7 @@
 import { SubmissionError } from "redux-form";
 import { AuthenticationService } from "../../services";
 import { setSuccessAllert } from "../alert-action";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 import { jwtStorageKey } from "../../constants/constants";
 
 const apiService = new AuthenticationService();

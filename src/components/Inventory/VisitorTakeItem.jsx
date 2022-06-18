@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import IconButton from "@material-ui/core/IconButton";
-import { renderTextField } from "../helpers/form-helpers";
+import TextField from "../shared/TextField/TextField";
 
 class VisitorEditItemForm extends Component {
   maxValueLimitor = this.maxValue(
@@ -30,7 +30,7 @@ class VisitorEditItemForm extends Component {
             fullWidth={false}
             validate={[this.maxValueLimitor, this.minValueLimitor]}
             label="Will take"
-            component={renderTextField}
+            component={TextField}
           />
         </div>
         <div className="col col-md-2">{initialValues.needQuantity}</div>

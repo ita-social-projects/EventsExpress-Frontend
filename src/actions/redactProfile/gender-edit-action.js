@@ -1,7 +1,7 @@
 ﻿import { SubmissionError } from "redux-form";
 import { UserService } from "../../services";
 import { setSuccessAllert } from "../alert-action";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const editGenderStates = {

@@ -2,7 +2,7 @@ import { SubmissionError } from "redux-form";
 import { createBrowserHistory } from "history";
 import { EventService } from "../../services";
 import getEvent, { getEventData } from "./event-item-view-action";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 import { setSuccessAllert, setErrorAllertFromResponse } from "../alert-action";
 

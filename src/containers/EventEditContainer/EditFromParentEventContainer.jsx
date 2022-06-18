@@ -10,7 +10,7 @@ import editEventFromParent, {
   setEventFromParentSuccess,
 } from "../../actions/event/event-copy-with-edit-action";
 import eventEditValidateForm from "../../components/helpers/eventEditValidateForm ";
-import eventValidateForm from "../../components/helpers/eventValidateForm";
+import eventValidateForm from "../../helpers/eventValidateForm";
 import getCategories from "../../actions/category/category-list-action";
 
 // TODO Refactor class component

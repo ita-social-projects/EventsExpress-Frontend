@@ -4,13 +4,10 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import moment from "moment";
 
-import {
-  renderSelectField,
-  renderPhoneInput,
-  renderDatePicker,
-  renderTextField,
-} from "../helpers/form-helpers";
-
+import TextField from "../shared/TextField/TextField";
+import PhoneNumberInput from "../shared/PhoneNumberInput/PhoneNumberInput";
+import DatePickerFirst from "../shared/DatePickerFirst/DatePickerFirst";
+import SelectField from "../shared/SelectField/SelectField";
 // TODO: constansts
 const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
   return (
@@ -23,17 +20,13 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
           <div className="form-group">
             <Field
               name="email"
-              component={renderTextField}
+              component={TextField}
               label="E-mail:"
               type="email"
             />
           </div>
           <div className="form-group">
-            <Field
-              name="userName"
-              component={renderTextField}
-              label="User name"
-            />
+            <Field name="userName" component={TextField} label="User name" />
           </div>
           <div className="row">
             <div className="form-group col">
@@ -43,14 +36,14 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
                 label="Birthday"
                 minValue={moment(new Date()).subtract(115, "years")}
                 maxValue={moment(new Date()).subtract(15, "years")}
-                component={renderDatePicker}
+                component={DatePickerFirst}
               />
             </div>
             <div className="form-group col">
               <Field
                 minWidth={210}
                 name="gender"
-                component={renderSelectField}
+                component={SelectField}
                 label="Gender"
                 parse={Number}
               >
@@ -62,7 +55,7 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
             </div>
           </div>
           <div className="form-group">
-            <Field component={renderPhoneInput} name="phone" label="Phone" />
+            <Field component={PhoneNumberInput} name="phone" label="Phone" />
           </div>
           <div className="form-group">
             <Button

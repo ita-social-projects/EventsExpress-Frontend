@@ -2,7 +2,7 @@
 import { CategoryService } from "../../services";
 import getCategories from "./category-list-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 
 export const SET_CATEGORY_EDITED = "SET_CATEGORY_EDITED";
 

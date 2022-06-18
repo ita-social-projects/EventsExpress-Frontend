@@ -1,4 +1,4 @@
-import filterHelper from "../../components/helpers/filterHelper";
+import filterHelper from "../../helpers/filterHelper";
 import { AuthenticationService } from "../../services";
 import { reset } from "../chat/chat-action";
 import { resetNotification } from "../chat/chats-action";

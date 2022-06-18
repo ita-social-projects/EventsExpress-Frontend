@@ -4,7 +4,7 @@ import { InventoryService } from "../../services";
 import { getInventoriesByEventId } from "./inventory-list-action";
 import { getUsersInventoriesByEventId } from "../users/users-inventories-action";
 import { setErrorAllertFromResponse } from "../alert-action";
-import { buildValidationState } from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../helpers/actionHelpers";
 
 const apiService = new InventoryService();
 

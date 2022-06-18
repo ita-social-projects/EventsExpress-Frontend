@@ -10,7 +10,7 @@ import SimpleModalWithDetails from "../../components/helpers/simple-modal-with-d
 import { EVENT_STATUS_ENUM } from "../../constants/eventConstants";
 import getСategoriesList from "../../actions/category/category-list-action";
 import { editEvent, publishEvent } from "../../actions/event/event-add-action";
-import validateEventForm from "../../components/helpers/eventValidateForm";
+import validateEventForm from "../../helpers/eventValidateForm";
 import { changeEventStatus } from "../../actions/event/event-item-view-action";
 import {
   setErrorAllertFromResponse,
@@ -20,7 +20,7 @@ import "./EventDraftContainer.scss";
 import {
   buildValidationState,
   handleFormError,
-} from "../../components/helpers/action-helpers";
+} from "../../helpers/actionHelpers";
 
 // TODO Refactor class component
 class EventDraftContainer extends Component {
