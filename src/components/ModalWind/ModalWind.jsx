@@ -1,109 +1,80 @@
-import React from "react";
+import React, { useState } from "react";
+import { ImCross } from "react-icons/im";
 import PropTypes from "prop-types";
-import Dialog from "@material-ui/core/Dialog";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import { makeStyles } from "@material-ui/core/styles";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import PersonPinIcon from "@material-ui/icons/PersonPin";
-import LockOpen from "@material-ui/icons/LockOpen";
-import Typography from "@material-ui/core/Typography";
 import { connect } from "react-redux";
 import LoginContainer from "../../containers/LoginContainer/LoginContainer";
 import RegisterContainer from "../../containers/RegisterContainer/RegisterContainer";
 import { TogleOpenWind } from "../../actions/modalWind-action";
-import Modalwind2 from "../RecoverPassword/Modalwind2";
+import "./ModalWind.scss";
 
-const TabContainer = ({ children }) => {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {children}
-    </Typography>
-  );
-};
-
-TabContainer.defaultProps = {
-  children: {},
-};
-
-TabContainer.propTypes = {
-  children: PropTypes.object,
-};
-
-const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-    maxWidth: 500,
-  },
-});
-
-const ModalWind = ({ setStatus, status }) => {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+const ModalWind = ({ setIsOpen, isOpen }) => {
+  const [isLogin, setIsLogin] = useState(true);
 
   const handleClose = () => {
-    setStatus(false);
+    setIsOpen(false);
+  };
+
+  const handleModeSwitch = () => {
+    setIsLogin(!isLogin);
   };
 
   return (
-    <>
-      <Dialog open={status.isOpen} onClose={handleClose}>
-        <Paper square className={classes.root}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            variant="fullWidth"
-            indicatorColor="primary"
-            textColor="primary"
-          >
-            <Tab icon={<LockOpen />} label="Login" />
-            <Tab icon={<PersonPinIcon />} label="Register" />
-          </Tabs>
-
-          {value === 0 && (
-            <TabContainer>
-              <LoginContainer />
-            </TabContainer>
-          )}
-          {value === 1 && (
-            <TabContainer>
-              <RegisterContainer handleClose={handleClose} />
-            </TabContainer>
-          )}
-
-          <>
-            <Modalwind2 />
-          </>
-          <Button fullWidth onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-        </Paper>
-      </Dialog>
-    </>
+    <div
+      onClose={handleClose}
+      className={`auth-modal ${isOpen ? "" : "closed"}`}
+    >
+      <button onClick={handleClose} type="button">
+        <ImCross />
+      </button>
+      {isLogin && <LoginContainer />}
+      {!isLogin && <RegisterContainer handleClose={handleClose} />}
+      {/* MOVE TO LOGIN CONTAINER {isLogin && <Modalwind2 />} */}
+      <div className="modal-switcher">
+        {isLogin && (
+          <h4>
+            You haven’t got an account?
+            <button
+              type="button"
+              onClick={handleModeSwitch}
+              className="switcher-btn"
+            >
+              Register
+            </button>{" "}
+          </h4>
+        )}
+        {!isLogin && (
+          <h4>
+            Have an account?{" "}
+            <button
+              type="button"
+              onClick={handleModeSwitch}
+              className="switcher-btn"
+            >
+              Login
+            </button>
+          </h4>
+        )}
+      </div>
+    </div>
   );
 };
 
 ModalWind.defaultProps = {
-  setStatus: () => {},
-  status: {},
+  setIsOpen: () => {},
+  isOpen: false,
 };
 
 ModalWind.propTypes = {
-  setStatus: PropTypes.func,
-  status: PropTypes.object,
+  setIsOpen: PropTypes.func,
+  isOpen: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
-  status: state.modal,
+  isOpen: state.modal.isOpen,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setStatus: data => dispatch(TogleOpenWind(data)),
+  setIsOpen: data => dispatch(TogleOpenWind(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalWind);

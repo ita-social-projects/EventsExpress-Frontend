@@ -11,6 +11,7 @@ import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../helpers/form-helpers";
 import isValidEmail from "../helpers/validators/email-address-validator";
 import fieldIsRequired from "../helpers/validators/required-fields-validator";
+import "./Login.scss";
 
 const validate = values => {
   const requiredFields = ["password", "email"];
@@ -22,43 +23,41 @@ const validate = values => {
 
 const Login = ({ pristine, reset, submitting, error, handleSubmit }) => {
   return (
-    <div className="auth">
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <div>
-          <Field name="email" component={renderTextField} label="E-mail:" />
-        </div>
-        <div>
-          <Field
-            name="password"
-            component={renderTextField}
-            label="Password:"
-            type="password"
-          />
-        </div>
-        <div>
-          <DialogActions>
-            <Button
-              fullWidth
-              type="button"
-              color="primary"
-              disabled={pristine || submitting}
-              onClick={reset}
-            >
-              CLEAR
-            </Button>
-            <Button fullWidth type="submit" value="Login" color="primary">
-              Sign In
-              <Redirect to="/landing" />
-            </Button>
-          </DialogActions>
-        </div>
-      </form>
+    <form onSubmit={handleSubmit} autoComplete="off">
+      <div>
+        <Field name="email" component={renderTextField} label="E-mail:" />
+      </div>
+      <div>
+        <Field
+          name="password"
+          component={renderTextField}
+          label="Password:"
+          type="password"
+        />
+      </div>
+      <div>
+        <DialogActions>
+          <Button
+            fullWidth
+            type="button"
+            color="primary"
+            disabled={pristine || submitting}
+            onClick={reset}
+          >
+            CLEAR
+          </Button>
+          <Button fullWidth type="submit" value="Login" color="primary">
+            Sign In
+            <Redirect to="/landing" />
+          </Button>
+        </DialogActions>
+      </div>
       <div className="d-flex justify-content-around mb-3">
         <FacebookLogin />
         <GoogleLogin />
       </div>
       {error && <ErrorMessages error={error} className="text-center" />}
-    </div>
+    </form>
   );
 };
 
