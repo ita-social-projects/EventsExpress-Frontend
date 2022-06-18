@@ -4,6 +4,8 @@ import RegisterBindAccount from "../../components/Register/RegisterBindAccount";
 import fieldIsRequired from "../../components/helpers/validators/required-fields-validator";
 import isValidEmail from "../../components/helpers/validators/email-address-validator";
 
+// TODO Take out validationl logic
+
 const validate = values => {
   const requiredFields = ["password", "email", "type"];
 

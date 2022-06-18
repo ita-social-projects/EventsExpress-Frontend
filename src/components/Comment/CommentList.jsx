@@ -1,6 +1,6 @@
 ﻿import React, { Component } from "react";
 import propTypes from "prop-types";
-import CommentItemWrapper from "../../containers/delete-comment";
+import DeleteCommentContainer from "../../containers/CommentContainer/DeleteCommentContainer";
 import PagePagination from "../shared/PagePagination/PagePagination";
 
 export default class CommentList extends Component {
@@ -9,7 +9,7 @@ export default class CommentList extends Component {
   };
 
   renderItems = arr =>
-    arr.map(item => <CommentItemWrapper key={item.id} item={item} />);
+    arr.map(item => <DeleteCommentContainer key={item.id} item={item} />);
 
   render() {
     const { dataList } = this.props;

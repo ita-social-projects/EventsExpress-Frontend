@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import moment from "moment";
 import propTypes from "prop-types";
-import RatingWrapper from "../../../containers/rating";
+import RatingContainer from "../../../containers/RatingContainer/RatingContainer";
 import Comment from "../../Comment/Comment";
 import "moment-timezone";
 import "../../Layout/Colorlib.scss";
@@ -252,7 +252,7 @@ export default class EventItemView extends Component {
 
               {!isFutureEvent && (
                 <div className="text-box overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
-                  <RatingWrapper
+                  <RatingContainer
                     iWillVisitIt={iWillVisitIt}
                     eventId={id}
                     userId={currentUser.id}

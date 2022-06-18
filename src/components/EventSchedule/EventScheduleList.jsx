@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import "./EventSchedule.scss";
-import SpinnerWrapper from "../../containers/spinner";
+import SpinnerWrapper from "../../containers/SpinnerContainer/SpinnerContainer";
 import NoResult from "../shared/NoResult/NoResult";
 import EventCard from "../Landing/EventCard/EventCard";
 import { EVENT_NO_RESULT } from "../../constants/eventConstants";

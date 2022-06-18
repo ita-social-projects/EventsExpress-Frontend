@@ -12,11 +12,11 @@ import {
 import filterHelper from "../../helpers/filterHelper";
 import EventMapModal from "../MapModal/MapModal";
 import DisplayMap from "../Map/DisplayMap";
-import "./EventFilter.scss";
 import {
-  EVENTS_FILTER,
   EVENT_STATUS_ENUM,
+  EVENTS_FILTER,
 } from "../../../constants/eventConstants";
+import "./EventFilter.scss";
 
 const {
   RADIUS,

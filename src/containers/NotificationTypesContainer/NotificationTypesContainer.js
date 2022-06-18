@@ -6,6 +6,7 @@ import getNotificationTypes from "../../actions/notificationType/notificationTyp
 import SelectNotificationType from "../../components/NotificationTypes/NotificationTypes";
 import getUserNotificationTypes from "../../actions/notificationType/userNotificationType-action";
 
+// TODO Refactor class component
 class SelectNotificationTypesWrapper extends Component {
   constructor(props) {
     super(props);

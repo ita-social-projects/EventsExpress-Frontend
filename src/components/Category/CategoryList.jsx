@@ -1,6 +1,6 @@
 ﻿import React, { Component } from "react";
 import propTypes from "prop-types";
-import CategoryItemWrapper from "../../containers/categories/category-item";
+import CategoryItemWrapper from "../../containers/CategoryContainers/CategoryItemContainer";
 
 export default class CategoryList extends Component {
   renderItems = arr =>

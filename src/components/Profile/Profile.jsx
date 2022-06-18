@@ -8,15 +8,16 @@ import { AccordionSummary } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import EditUsernameContainer from "../../containers/editProfileContainers/editUsernameContainer";
-import EditGenderContainer from "../../containers/editProfileContainers/editGenderContainer";
-import EditBirthdayContainer from "../../containers/editProfileContainers/editBirthdayContainer";
-import ChangePasswordContainer from "../../containers/editProfileContainers/changePasswordContainer";
-import SelectCategoriesWrapper from "../../containers/categories/SelectCategories";
+import ChangeAvatarContainer from "../../containers/EditProfileContainers/ChangeAvatarContainer";
+import EditBirthdayContainer from "../../containers/EditProfileContainers/EditBirthdayContainer";
+import EditUsernameContainer from "../../containers/EditProfileContainers/EditUsernameContainer";
+import EditGenderContainer from "../../containers/EditProfileContainers/EditGenderContainer";
+import ChangePasswordContainer from "../../containers/EditProfileContainers/ChangePasswordContainer";
+
+import SelectCategoriesContainer from "../../containers/CategoryContainers/SelectCategoriesContainer";
 import GENDERS from "../../constants/gendersVarietyConstants";
-import ChangeAvatarWrapper from "../../containers/editProfileContainers/change-avatar";
 import SelectNotificationTypesWrapper from "../../containers/NotificationTypesContainer/NotificationTypesContainer";
-import LinkedAuthsWrapper from "../../containers/linked-auths-wrapper";
+import LinkedAuthsContainer from "../../containers/LinkedAuthContainer/LinkedAuthsContainer";
 
 // TODO: Fix this styles
 const useStyles = makeStyles(theme => ({
@@ -66,7 +67,7 @@ const Profile = ({
         <AccordionDetails>
           <Typography component="div" className="w-100">
             <MuiThemeProvider>
-              <ChangeAvatarWrapper />
+              <ChangeAvatarContainer />
             </MuiThemeProvider>
           </Typography>
         </AccordionDetails>
@@ -158,7 +159,7 @@ const Profile = ({
         <AccordionDetails>
           <Typography component="div">
             <MuiThemeProvider>
-              <SelectCategoriesWrapper />
+              <SelectCategoriesContainer />
             </MuiThemeProvider>
           </Typography>
         </AccordionDetails>
@@ -203,7 +204,7 @@ const Profile = ({
         <AccordionDetails>
           <Typography component="div">
             <MuiThemeProvider>
-              <LinkedAuthsWrapper />
+              <LinkedAuthsContainer />
             </MuiThemeProvider>
           </Typography>
         </AccordionDetails>

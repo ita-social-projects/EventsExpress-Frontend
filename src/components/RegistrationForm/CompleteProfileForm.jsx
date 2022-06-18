@@ -9,7 +9,7 @@ import {
   renderSelectField,
   parseEuDate,
 } from "../helpers/form-helpers";
-import ChangeAvatarWrapper from "../../containers/editProfileContainers/change-avatar";
+import ChangeAvatarContainer from "../../containers/EditProfileContainers/ChangeAvatarContainer";
 
 const CompleteProfileForm = ({ handleSubmit }) => {
   return (
@@ -26,7 +26,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
               Choose your avatar:
             </Grid>
             <Grid item sm={9}>
-              <ChangeAvatarWrapper />
+              <ChangeAvatarContainer />
             </Grid>
             <Grid item sm={0} />
 

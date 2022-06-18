@@ -17,7 +17,7 @@ import {
   parseEuDate,
 } from "../../helpers/form-helpers";
 import "./EventForm.scss";
-import asyncValidatePhoto from "../../../containers/async-validate-photo";
+import asyncValidatePhoto from "../../helpers/asyncValidatePhoto";
 import Location from "../../Location/Location";
 import { EVENT_STATUS_ENUM } from "../../../constants/eventConstants";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";

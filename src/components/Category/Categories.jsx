@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
-import CategoryAddWrapper from "../../containers/categories/category-add";
-import CategoryListWrapper from "../../containers/categories/category-list";
-import SpinnerWrapper from "../../containers/spinner";
+import CategoryAddContainer from "../../containers/CategoryContainers/CategoryAddContainer";
+import CategoryListContainer from "../../containers/CategoryContainers/CategoryListContainer";
+import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import getCategories from "../../actions/category/category-list-action";
 import getCategoryGroups from "../../actions/categoryGroup/category-group-list-action";
 
@@ -22,7 +22,7 @@ class Categories extends Component {
       <div>
         <table className="table w-100 m-auto">
           <tbody>
-            <CategoryAddWrapper
+            <CategoryAddContainer
               item={{
                 name: "",
                 id: "00000000-0000-0000-0000-000000000000",
@@ -33,11 +33,11 @@ class Categories extends Component {
               }}
               groups={groups}
             />
-            <SpinnerWrapper
+            <SpinnerContainer
               showContent={categories !== undefined && groups !== undefined}
             >
-              <CategoryListWrapper data={categories} />
-            </SpinnerWrapper>
+              <CategoryListContainer data={categories} />
+            </SpinnerContainer>
           </tbody>
         </table>
       </div>

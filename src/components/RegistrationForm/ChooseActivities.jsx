@@ -1,7 +1,8 @@
 ﻿import React, { useEffect } from "react";
 import { Grid, Button } from "@material-ui/core";
 import PropTypes from "prop-types";
-import { TileGroup } from "../../containers/TileGroup";
+// eslint-disable-next-line import/no-named-as-default
+import TileGroupContainer from "../../containers/TileContainer/TileGroupContainer";
 
 const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
   useEffect(() => {
@@ -31,7 +32,7 @@ const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
           Settings)
         </h4>
         <form onSubmit={handleSubmit}>
-          <TileGroup data={mapToCategories()} />
+          <TileGroupContainer data={mapToCategories()} />
           <Grid container spacing={3}>
             <Grid item sm={12} justify="center">
               <Button
