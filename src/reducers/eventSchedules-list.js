@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 import initialState from "../store/initialState";
 import {
   GET_EVENTS_SCHEDULE_DATA,
