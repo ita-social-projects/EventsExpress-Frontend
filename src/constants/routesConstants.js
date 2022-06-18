@@ -1,0 +1,9 @@
+export const HOME = "/home";
+export const SEARCH_USERS = "/search/users?page=1";
+export const DRAFTS = "/drafts";
+export const EVENT_SCHEDULES = "/eventSchedules";
+export const ADMIN = "/admin";
+export const ISSUES = "/contactAdmin/issues?page=1";
+export const CONTACT_ADMIN = "/contactAdmin";
+export const USER = "/user";
+export const USER_CHATS = "/user_chats";

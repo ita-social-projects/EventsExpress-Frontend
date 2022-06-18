@@ -1,17 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { SIDEBAR_LIST_ITEMS } from "../../../constants/leftSidebarConstants";
+import {
+  SIDEBAR_LIST_ITEMS,
+  COMUNA_NAME,
+  PROFILE_PAGE_NAME,
+  SECURITY_TYPES,
+} from "../../../constants/leftSidebarConstants";
 import AuthComponent from "../../../security/authComponent";
 import LeftSidebarItems from "./LeftSidebarItems";
 import { ROLES } from "../../../constants/userConstants";
 import LeftSidebarListItem from "./LeftSidebarListItem";
-
-const getSecurity = {
-  DEFAULT: {},
-  USER: { rolesMatch: ROLES.USER },
-  ADMIN: { rolesMatch: ROLES.ADMIN },
-  ANONYMOUS: { onlyAnonymous: true },
-};
+import { COMMENTS_ICON, USERS_ICON } from "../../../constants/iconsConstants";
+import { USER, USER_CHATS } from "../../../constants/routesConstants";
 
 const LeftSidebarItemsSecurity = ({
   handleSidebarToggle,
@@ -22,14 +22,14 @@ const LeftSidebarItemsSecurity = ({
     <AuthComponent rolesMatch={ROLES.USER}>
       <LeftSidebarListItem
         handleSidebarToggle={handleSidebarToggle}
-        link={`/user/${user.id}`}
-        pageName="Profile"
-        faviconIconClass="fa fa-user"
+        link={`${USER}/${user.id}`}
+        pageName={PROFILE_PAGE_NAME}
+        faviconIconClass={USERS_ICON}
       />
     </AuthComponent>
     {SIDEBAR_LIST_ITEMS.map(({ securityState, items }) => {
       return (
-        <AuthComponent key={securityState} {...getSecurity[securityState]}>
+        <AuthComponent key={securityState} {...SECURITY_TYPES[securityState]}>
           <LeftSidebarItems
             items={items}
             handleSidebarToggle={handleSidebarToggle}
@@ -40,9 +40,9 @@ const LeftSidebarItemsSecurity = ({
     <AuthComponent>
       <LeftSidebarListItem
         handleSidebarToggle={handleSidebarToggle}
-        link="/user_chats"
-        pageName="Comuna"
-        faviconIconClass="fas fa-comments"
+        link={USER_CHATS}
+        pageName={COMUNA_NAME}
+        faviconIconClass={COMMENTS_ICON}
         badgeContent={msgForRead().length}
       />
     </AuthComponent>
