@@ -9,17 +9,8 @@ import GoogleLogin from "../../containers/LoginContainer/GoogleLogin";
 import FacebookLogin from "../../containers/LoginContainer/FacebookLoginContainer";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../helpers/form-helpers";
-import isValidEmail from "../helpers/validators/email-address-validator";
-import fieldIsRequired from "../helpers/validators/required-fields-validator";
+import { validate } from "../helpers/validateHelper";
 import "./Login.scss";
-
-const validate = values => {
-  const requiredFields = ["password", "email"];
-  return {
-    ...fieldIsRequired(values, requiredFields),
-    ...isValidEmail(values.email),
-  };
-};
 
 const Login = ({ pristine, reset, submitting, error, handleSubmit }) => {
   return (
@@ -87,5 +78,5 @@ connect(mapStateToProps, null)(Login);
 
 export default reduxForm({
   form: "login-form",
-  validate,
+  validate: validate(["email", "password"]),
 })(Login);

@@ -1,0 +1,31 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/fonts.scss';
+@import '../../../styles/variables.scss';
+
+.form-group__textarea {
+    width: $fullWidth;
+    margin-bottom: 30px;
+}
+
+.form-textarea {
+    width: $fullWidth;
+    padding: 5px 20px;
+    border-radius: $defaultBorderRadius;
+    background: $white;
+    border: 2px solid $white;
+    box-shadow: 0px 4px 4px #00000040;
+    text-align: left;
+    font-size: $bodyText;
+    color: $purpleDark;
+}
+
+.form-textarea__error {
+    color: $deleteColor;
+    box-shadow: 0px 2px 2px $deleteColor;
+}
+
+.form-error {
+    color: $deleteColor;
+    font-size: $bodyText;
+    margin-left: 15px;
+}

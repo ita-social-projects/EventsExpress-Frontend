@@ -1,0 +1,16 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
+
+.form-select {
+      width: $fullWidth;
+      margin-bottom: 30px;
+      padding: 5px 20px;
+      border-radius: $defaultBorderRadius;
+      background: $white;
+      border: 2px solid $white;
+      box-shadow: 0px 4px 4px #00000040;
+      text-align: left;
+      font-size: $bodyText;
+      color: $purpleDark;
+}

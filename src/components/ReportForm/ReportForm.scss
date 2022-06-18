@@ -1,0 +1,77 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/fonts.scss";
+
+.problem-btn {
+  cursor: pointer;
+  border-radius: $defaultBorderRadius;
+  padding: 10px 50px;
+  text-align: center;
+  font-weight: $bold;
+  font-size: $bodyText;
+  transition: $defaultTransition;
+}
+
+.report-form {
+  padding: 30px;
+  @include flex(column, center, center);
+  min-width: 500px;
+
+  .problem-types {
+    width: $fullWidth;
+    @include flex(column, flex-start, center);
+
+    .problem-types__title {
+      font-size: $bodyText;
+      color: $purpleDark;
+      margin-bottom: 20px;
+    }
+  }
+
+  .problem-description {
+    min-height: 200px;
+  }
+
+  .buttons {
+    margin-top: 20px;
+    width: $fullWidth;
+    @include flex(row, center, space-between);
+
+    .btn-submit {
+      @extend .problem-btn;
+      background: $purpleDark;
+      color: $white;
+    }
+
+    .btn-reset {
+      @extend .problem-btn;
+      border: 3px solid $deleteColor;
+      color: $deleteColor;
+      &:hover {
+        background: $deleteColor;
+        color: $white;
+      }
+    }
+  }
+}
+
+@media (max-width: $mediaFirstTabletScreen) {
+  .report-form {
+    min-width: 400px;
+  }
+}
+
+@media (max-width: $mediaMobileScreen) {
+  .report-form {
+    min-width: unset;
+    padding: 20px;
+    box-sizing: border-box;
+    .buttons {
+      flex-direction: column;
+      .btn-reset {
+        margin-top: 15px;
+      }
+    }
+  }
+}

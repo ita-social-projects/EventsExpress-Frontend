@@ -14,14 +14,12 @@ import EventScheduleItemViewContainer from "../../containers/EventScheduleItemVi
 import EventSchedulesListContainer from "../../containers/EventSchedulesListContainer/EventSchedulesListContainer";
 import Layout from "../Layout/Layout";
 import UsersSearchContainer from "../../containers/UsersContainer/UsersSearchContainer";
-
 import Authentication from "../Authentication/Authentication";
 import Chat from "../Chat/Chat";
 import UserChats from "../Chat/UserChats";
 import Admin from "../Admin/Admin";
 import NotFound from "../RouteGuard/404";
 import NotificationEvents from "../../containers/NotificationEventsContainer/NotificationEventsContainer";
-import ContactAdminContainer from "../../containers/ContactAdminContainers/ContactAdminContainer";
 import ContactAdminDetailsContainer from "../../containers/ContactAdminContainers/ContactAdminDetailsContainer";
 import RegisterCompleteContainer from "../../containers/RegisterContainer/RegisterCompleteContainer";
 import RegisterSuccess from "../Register/RegisterSuccess";
@@ -36,6 +34,7 @@ import RegistrationForm from "../../containers/RegistrationFormContainer/Registr
 import MainLayout from "../MainLayout/MainLayout";
 import AboutUs from "../AboutUs/AboutUs";
 import SplitPanels from "../SplitPanels/SplitPanels";
+import ReportPage from "../ReportPage/ReportPage";
 
 class App extends Component {
   UserRoleSecurity = withAuthRedirect(["User"]);
@@ -129,10 +128,7 @@ class App extends Component {
                     path="/chat/:chatId"
                     component={this.AdminAndUserRoleSecurity(Chat)}
                   />
-                  <Route
-                    path="/contactAdmin"
-                    component={ContactAdminContainer}
-                  />
+                  <Route path="/contactAdmin" component={ReportPage} />
                   <Route path="/registerSuccess" component={RegisterSuccess} />
                   <Route
                     path="/editEvent/:id"
