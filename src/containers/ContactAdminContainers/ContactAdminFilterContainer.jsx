@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { getFormValues, reset } from "redux-form";
 import { withRouter } from "react-router-dom";
 import ContactAdminFilter from "../../components/ContactAdmin/ContactAdminFilterComponent";
-import filterHelper from "../../components/helpers/filterHelper";
+import filterHelper from "../../helpers/filterHelper";
 
 // TODO Take out some logic
 const ContactAdminFilterContainer = ({

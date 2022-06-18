@@ -1,0 +1,6 @@
+export const contactAdminData = {
+  DATA: "SET_CONTACT_ADMIN_DATA",
+};
+export const CHANGE_STATUS = "UPDATE_STATUS";
+export const GET_CONTACT_ADMIN_DATA = "GET_CONTACT_ADMIN_DATA";
+export const RESET_CONTACT_ADMIN = "RESET_CONTACT_ADMIN";

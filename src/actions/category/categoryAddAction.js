@@ -1,0 +1,39 @@
+﻿import { SubmissionError } from "redux-form";
+import { CategoryService } from "../../services";
+import getCategories from "./categoryListAction";
+import {
+  getRequestInc,
+  getRequestDec,
+} from "../requestCount/requestCountAction";
+import { buildValidationState } from "../../helpers/actionHelpers";
+import { SET_CATEGORY_EDITED } from "./categoryActionTypes";
+
+const apiService = new CategoryService();
+
+export function setCategoryEdited(data) {
+  return {
+    type: SET_CATEGORY_EDITED,
+    payload: data,
+  };
+}
+
+const addCategory = data => {
+  return async dispatch => {
+    dispatch(getRequestInc());
+    let response;
+    if (data.id) {
+      response = await apiService.editCategory(data);
+    } else {
+      response = await apiService.setCategory(data);
+    }
+    dispatch(getRequestDec());
+    if (!response.ok) {
+      throw new SubmissionError(await buildValidationState(response));
+    }
+    dispatch(setCategoryEdited(null));
+    dispatch(getCategories());
+    return Promise.resolve();
+  };
+};
+
+export default addCategory;

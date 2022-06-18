@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import propTypes from "prop-types";
-import { deleteSeenMsgNotification } from "../../actions/chat/chat-action";
+import { deleteSeenMsgNotification } from "../../actions/chat/chatAction";
 import "./Msg.scss";
-import getTimeDifferenceFromNull from "../helpers/TimeHelper";
+import getTimeDifferenceFromNull from "../../helpers/timeHelper";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
 
 class Msg extends Component {

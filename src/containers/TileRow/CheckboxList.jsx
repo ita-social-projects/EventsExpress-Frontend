@@ -2,7 +2,7 @@
 import { Field } from "redux-form";
 import PropTypes from "prop-types";
 import Line from "./Line";
-import { MultiCheckbox } from "../../components/helpers/form-helpers";
+import MultiCheckbox from "../../components/shared/MultiCheckBox/MultiCheckbox";
 import "./CheckboxList.scss";
 import "./CustomCheckbox.scss";
 

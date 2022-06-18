@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getUsers, resetUsers } from "../../actions/users/users-action";
+import { getUsers, resetUsers } from "../../actions/users/usersAction";
 import Users from "../../components/Users/Users";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import UserFilterContainer from "../UserFilterContainer/UserFilterContainer";

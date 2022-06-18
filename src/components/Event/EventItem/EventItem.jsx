@@ -14,7 +14,7 @@ import SocialShareMenu from "../Share/SocialShareMenu";
 import EventActiveStatus from "../EventActiveStatus/EventActiveStatus";
 import DisplayLocation from "../Map/DisplayLocation";
 import useStyle from "../CardStyle/CardStyle";
-import AuthComponent from "../../../security/authComponent";
+import AuthComponent from "../../AuthComponent/AuthComponent";
 import EventHeader from "../EventItemHeader/EventItemHeader";
 import { ROLES } from "../../../constants/userConstants";
 import PhotoService from "../../../services/PhotoService";

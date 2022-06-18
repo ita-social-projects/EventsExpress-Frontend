@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
-import {
-  renderDatePicker,
-  MultiCheckbox,
-  renderTextField,
-  renderMultiselect,
-  parseEuDate,
-} from "../../helpers/form-helpers";
-import filterHelper from "../../helpers/filterHelper";
+
+import DatePickerFirst from "../../shared/DatePickerFirst/DatePickerFirst";
+import MultiCheckbox from "../../shared/MultiCheckBox/MultiCheckbox";
+import TextField from "../../shared/TextField/TextField";
+import parseEuDate from "../../../helpers/parseEuDate";
+import MultiSelectField from "../../shared/MultiSelectField/MultiSelectField";
+
+import filterHelper from "../../../helpers/filterHelper";
 import EventMapModal from "../MapModal/MapModal";
 import DisplayMap from "../Map/DisplayMap";
 import {
@@ -92,7 +92,7 @@ class EventFilter extends Component {
           <div className="form-group">
             <Field
               name="keyWord"
-              component={renderTextField}
+              component={TextField}
               type="input"
               label="Keyword"
             />
@@ -104,7 +104,7 @@ class EventFilter extends Component {
                   name="dateFrom"
                   label="From"
                   minValue={new Date()}
-                  component={renderDatePicker}
+                  component={DatePickerFirst}
                   parse={parseEuDate}
                 />
               </div>
@@ -113,14 +113,14 @@ class EventFilter extends Component {
                   name="dateTo"
                   label="To"
                   minValue={new Date(values.dateFrom)}
-                  component={renderDatePicker}
+                  component={DatePickerFirst}
                   parse={parseEuDate}
                 />
               </div>
               <div className="form-group">
                 <Field
                   name="categories"
-                  component={renderMultiselect}
+                  component={MultiSelectField}
                   data={allCategories.data}
                   valueField="id"
                   textField="name"

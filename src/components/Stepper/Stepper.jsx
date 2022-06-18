@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Stepper.scss";
-import updateStep from "../helpers/stepperHelper";
+import updateStep from "../../helpers/stepperHelper";
 
 // TODO: to function
 export default class Stepper extends Component {

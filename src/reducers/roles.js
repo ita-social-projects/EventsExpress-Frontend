@@ -1,7 +1,10 @@
-import initialState from "../store/initialState";
-import { getRolesData } from "../actions/roles";
+import { getRolesData } from "../actions/roles/rolesActionTypes";
 
-const reducer = (state = initialState.roles, action) => {
+const initialState = {
+  data: [],
+};
+
+const reducer = (state = initialState, action) => {
   if (action.type === getRolesData.DATA) {
     return {
       ...state,

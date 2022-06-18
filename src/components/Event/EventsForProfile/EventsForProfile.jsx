@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import PagePagination from "../../shared/PagePagination/PagePagination";
 import LocalSpinnerContainer from "../../../containers/SpinnerContainer/LocalSpinnerContainer";
-import renderItems from "../../helpers/eventsForProfileUtils";
+import ProfileEvents from "../ProfileEvents/ProfileEvents";
 
 const EventsForProfile = ({
   page,
@@ -32,7 +32,7 @@ const EventsForProfile = ({
   return (
     <>
       <LocalSpinnerContainer showContent={dataList !== null}>
-        <div className="row">{renderItems(dataList, currentUser)}</div>
+        <div className="row">{ProfileEvents(dataList, currentUser)}</div>
         <br />
         {totalPages > 1 && (
           <PagePagination

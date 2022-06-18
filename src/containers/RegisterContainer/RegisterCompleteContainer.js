@@ -1,8 +1,10 @@
 import { reduxForm, getFormValues } from "redux-form";
 import { connect } from "react-redux";
 import { isValidPhoneNumber } from "react-phone-number-input";
-import fieldIsRequired from "../../components/helpers/validators/required-fields-validator";
-import isValidEmail from "../../components/helpers/validators/email-address-validator";
+import {
+  fieldIsRequired,
+  isValidEmail,
+} from "../../components/helpers/formFieldValidationHelpers";
 import RegisterComplete from "../../components/Register/RegisterComplete";
 
 // TODO Take out validation logic

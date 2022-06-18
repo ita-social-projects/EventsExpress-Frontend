@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { reset } from "redux-form";
-import { getSearchUsers, changeFilter } from "../../actions/users/users-action";
+import { getSearchUsers, changeFilter } from "../../actions/users/usersAction";
 import SearchUsers from "../../components/SearchUsers/SearchUsers";
 
 const mapStateToProps = state => ({

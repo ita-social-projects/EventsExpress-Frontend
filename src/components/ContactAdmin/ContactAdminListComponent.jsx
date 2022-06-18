@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import propTypes from "prop-types";
 import ContactAdminItemContainer from "../../containers/ContactAdminContainers/ContactAdminItemContainer";
 import RenderIssuesList from "./RenderIssuesList";
-import filterHelper from "../helpers/filterHelper";
+import filterHelper from "../../helpers/filterHelper";
 
 class ContactAdminList extends Component {
   pageChange = page => {

@@ -1,18 +1,28 @@
-import initialState from "../store/initialState";
 import {
   GET_USERS_DATA,
   RESET_USERS,
   CHANGE_USERS_FILTER,
   GET_USERS_COUNT,
   CHANGE_STATUS,
-} from "../actions/users/users-action";
+} from "../actions/users/usersActionTypes";
 import {
   blockUserStates,
   unBlockUserStates,
   changeUserRoleStates,
-} from "../actions/user/user-action";
+} from "../actions/user/userActionTypes";
 
-const reducer = (state = initialState.users, action) => {
+const initialState = {
+  status: null,
+  count: null,
+  editedUser: null,
+  userSearchFilter: null,
+  data: {
+    items: [],
+    pageViewModel: {},
+  },
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USERS_DATA:
       return {
@@ -20,7 +30,7 @@ const reducer = (state = initialState.users, action) => {
         data: action.payload,
       };
     case RESET_USERS:
-      return initialState.users;
+      return initialState;
 
     case blockUserStates.UPDATE: {
       const newState = { ...state };

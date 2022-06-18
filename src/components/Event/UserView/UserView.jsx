@@ -3,10 +3,10 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import userViewAttitude from "../../helpers/userViewUtils";
+import userViewAttitude from "../../../helpers/userViewUtils";
 import CustomAvatar from "../../CustomAvatar/CustomAvatar";
 import "./UserView.scss";
-import getAge from "../../helpers/get-age-string";
+import getAge from "../../../helpers/getAgeString";
 import { USER_VIEW_LABELS } from "../../../constants/userConstants";
 
 const { AGE, YOU, THIS_USER } = USER_VIEW_LABELS;

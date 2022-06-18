@@ -5,7 +5,7 @@ import {
   setRating,
   getCurrrentRating,
   getAverageRating,
-} from "../../actions/rating-action";
+} from "../../actions/rating/ratingAction";
 import RatingAverage from "../../components/Rating/RatingAverage";
 import RatingSetter from "../../components/Rating/RatingSetter";
 

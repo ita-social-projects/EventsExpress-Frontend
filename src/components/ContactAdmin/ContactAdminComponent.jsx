@@ -3,17 +3,22 @@ import { reduxForm, Field, getFormValues } from "redux-form";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
-import { renderTextField, renderTextArea } from "../helpers/form-helpers";
+
+import TextField from "../shared/TextField/TextField";
+import TextArea from "../shared/TextArea/TextArea";
+
 import { ISSUE_TYPE_ENUM } from "../../constants/issueConstants";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
-import isValidEmail from "../helpers/validators/email-address-validator";
-import { maxLength30 } from "../helpers/validators/min-max-length-validators";
-import fieldIsRequired from "../helpers/validators/required-fields-validator";
+import {
+  isValidEmail,
+  fieldIsRequired,
+  maxLength,
+} from "../helpers/formFieldValidationHelpers";
 
 const validate = values => {
   const errors = {};
   const requiredFields = ["title", "email", "description"];
-  if (maxLength30(values.title)) {
+  if (maxLength(30)(values.title)) {
     errors.title = "Title should be less 30 symbols";
   }
 
@@ -37,7 +42,7 @@ class ContactAdmin extends PureComponent {
                 <Field
                   name="email"
                   className="form-control"
-                  component={renderTextField}
+                  component={TextField}
                   value={this.props.email}
                   label="Your e-mail:"
                 />
@@ -45,7 +50,7 @@ class ContactAdmin extends PureComponent {
                 <Field
                   name="email"
                   className="form-control"
-                  component={renderTextField}
+                  component={TextField}
                   label="Your e-mail:"
                 />
               )}
@@ -73,7 +78,7 @@ class ContactAdmin extends PureComponent {
                   <Field
                     name="title"
                     className="form-control"
-                    component={renderTextField}
+                    component={TextField}
                     label="Enter problem type:"
                   />
                 )}
@@ -84,7 +89,7 @@ class ContactAdmin extends PureComponent {
               <Field
                 name="description"
                 className="form-control"
-                component={renderTextArea}
+                component={TextArea}
                 type="input"
               />
             </div>

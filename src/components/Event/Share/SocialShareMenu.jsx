@@ -3,7 +3,10 @@ import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import PropTypes from "prop-types";
 import ShareButtons from "./ShareButtons";
-import { StyledMenuItem, StyledMenu } from "../../helpers/socialShareMenuUtils";
+import {
+  StyledMenuItem,
+  StyledMenu,
+} from "../../SocialShareMenu/SocialShareMenuUtils";
 
 const SocialShareMenu = ({ href }) => {
   const [anchorEl, setAnchorEl] = useState(null);

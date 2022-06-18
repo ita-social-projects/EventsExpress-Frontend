@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import Fab from "@material-ui/core/Fab";
 import PropTypes from "prop-types";
 import CommentItem from "../../components/Comment/CommentItem";
-import deleteComm from "../../actions/comment/comment-delete-action";
+import deleteComm from "../../actions/comment/commentDeleteAction";
 import "../../components/Comment/Comment.scss";
 import CommentList from "../../components/Comment/CommentList";
 import CommnetContainer from "./CommnetContainer";
-import { setAlert } from "../../actions/alert-action";
+import { setAlert } from "../../actions/alert/alertAction";
 
 // TODO Refactor class component
 class DeleteCommentContainer extends React.Component {

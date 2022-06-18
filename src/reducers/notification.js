@@ -1,18 +1,20 @@
-import initialState from "../store/initialState";
 import {
   RECEIVE_MESSAGE,
   DELETE_OLD_NOTIFICATION,
   RECEIVE_SEEN_MESSAGE,
   DELETE_SEEN_MSG_NOTIFICATION,
   RECEIVED_NEW_EVENT,
-} from "../actions/chat/chat-action";
-
-import {
   GET_UNREAD_MESSAGES,
   RESET_NOTIFICATION,
-} from "../actions/chat/chats-action";
+} from "../actions/chat/chatActionTypes";
 
-const reducer = (state = initialState.notification, action) => {
+const initialState = {
+  messages: [],
+  seen_messages: [],
+  events: [],
+};
+
+const reducer = (state = initialState, action) => {
   let newEvents = state.events;
   let newMsg = state.messages;
 
@@ -50,7 +52,7 @@ const reducer = (state = initialState.notification, action) => {
       };
     case RESET_NOTIFICATION:
       return {
-        ...initialState.notification,
+        ...initialState,
       };
     case DELETE_OLD_NOTIFICATION:
       newMsg = state.messages;

@@ -1,9 +1,15 @@
-import { alert } from "../actions/alert-action";
-import initialState from "../store/initialState";
+import { alert } from "../actions/alert/alertActionTypes";
 
 const { SET, SETOPEN, RESET } = alert;
 
-const reducer = (state = initialState.alert, action) => {
+const initialState = {
+  variant: null,
+  message: null,
+  autoHideDuration: null,
+  open: false,
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET:
       return {
@@ -16,7 +22,7 @@ const reducer = (state = initialState.alert, action) => {
       return { ...state, open: action.payload };
     // TODO State RESET not created in actions
     case RESET:
-      return initialState.alert;
+      return initialState;
     default:
       return state;
   }

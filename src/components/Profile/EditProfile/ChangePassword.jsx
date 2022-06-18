@@ -10,8 +10,9 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
-import { renderTextField } from "../../helpers/form-helpers";
-import fieldIsRequired from "../../helpers/validators/required-fields-validator";
+import TextField from "../../shared/TextField/TextField";
+
+import { fieldIsRequired } from "../../helpers/formFieldValidationHelpers";
 
 // TODO: remove this
 const useStyles = makeStyles(theme => ({
@@ -76,7 +77,7 @@ const ChangePassword = ({
                 <Field
                   name="oldPassword"
                   label="Input current password"
-                  component={renderTextField}
+                  component={TextField}
                   type="password"
                   className="mb-3"
                 />
@@ -84,7 +85,7 @@ const ChangePassword = ({
                 <Field
                   name="newPassword"
                   label="Input new password"
-                  component={renderTextField}
+                  component={TextField}
                   type="password"
                   className="mb-3"
                 />
@@ -93,7 +94,7 @@ const ChangePassword = ({
                   name="repeatPassword"
                   type="password"
                   label="Repeat new password"
-                  component={renderTextField}
+                  component={TextField}
                   className="mb-3"
                 />
               </div>

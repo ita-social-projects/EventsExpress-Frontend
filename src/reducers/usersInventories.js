@@ -1,7 +1,10 @@
-import initialState from "../store/initialState";
-import { GET_USERSINVENTORIES_DATA } from "../actions/users/users-inventories-action";
+import { GET_USERSINVENTORIES_DATA } from "../actions/users/usersActionTypes";
 
-export const reducer = (state = initialState.usersInventories, action) => {
+const initialState = {
+  data: [],
+};
+
+export const reducer = (state = initialState, action) => {
   if (action.type === GET_USERSINVENTORIES_DATA) {
     return {
       ...state,

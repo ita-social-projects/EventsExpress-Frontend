@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import CommentList from "../../components/Comment/CommentList";
-import getComments from "../../actions/comment/comment-list-action";
+import getComments from "../../actions/comment/commentListAction";
 import LocalSpinnerContainer from "../SpinnerContainer/LocalSpinnerContainer";
 
 // TODO Refactor class component

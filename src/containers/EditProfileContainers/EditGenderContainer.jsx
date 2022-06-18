@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import EditGender from "../../components/Profile/EditProfile/EditGender";
-import editGender from "../../actions/redactProfile/gender-edit-action";
+import editGender from "../../actions/editProfile/genderEditAction";
 
 // TODO Refactor class component
 class EditGenderContainer extends React.Component {

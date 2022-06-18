@@ -5,13 +5,15 @@ import Button from "@material-ui/core/Button";
 import { reduxForm, Field, reset as resetForm } from "redux-form";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import propTypes from "prop-types";
-import { renderTextArea } from "../helpers/form-helpers";
+
+import TextArea from "../shared/TextArea/TextArea";
+
 import getChat, {
   initialConnection,
   reset,
   concatNewMsg,
   deleteOldNotififcation,
-} from "../../actions/chat/chat-action";
+} from "../../actions/chat/chatAction";
 import Msg from "./Msg";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import CustomAvatarContainer from "../CustomAvatar/CustomAvatar";
@@ -125,7 +127,7 @@ class Chat extends Component {
                 >
                   <Field
                     name="msg"
-                    component={renderTextArea}
+                    component={TextArea}
                     type="input"
                     autocomplete="off"
                     label="Type your message..."

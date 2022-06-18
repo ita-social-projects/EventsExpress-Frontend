@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import addEvent from "../../actions/event/event-add-action";
+import addEvent from "../../actions/event/eventAddAction";
 import Landing from "../../components/Landing/Landing/Landing";
 
 // TODO Refactor class component

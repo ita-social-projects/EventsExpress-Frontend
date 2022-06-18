@@ -5,8 +5,8 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import { DialogContent } from "@material-ui/core";
 import { Field, reduxForm } from "redux-form";
-import { renderTextField } from "./form-helpers";
-import fieldIsRequired from "./validators/required-fields-validator";
+import TextField from "../shared/TextField/TextField";
+import { fieldIsRequired } from "./formFieldValidationHelpers";
 
 const validate = values => {
   const errors = {};
@@ -62,7 +62,7 @@ class SimpleModalWithDetails extends Component {
               <Field
                 className="form-control"
                 name="detailsString"
-                component={renderTextField}
+                component={TextField}
                 type="text"
                 label={data}
               />

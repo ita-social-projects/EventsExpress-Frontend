@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import propTypes from "prop-types";
 import "./Comment.scss";
-import getTimeDifferenceFromNull from "../helpers/TimeHelper";
+import getTimeDifferenceFromNull from "../../helpers/timeHelper";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
 
 export default class commentItem extends PureComponent {

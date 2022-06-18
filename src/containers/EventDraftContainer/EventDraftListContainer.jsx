@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import DraftList from "../../components/Draft/DraftList";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
-import { getDrafts, resetEvents } from "../../actions/event/event-list-action";
-import filterHelper from "../../components/helpers/filterHelper";
+import filterHelper from "../../helpers/filterHelper";
+import { getDrafts, resetEvents } from "../../actions/event/eventListAction";
 
 // TODO Refactor class component
 class EventDraftListContainer extends Component {

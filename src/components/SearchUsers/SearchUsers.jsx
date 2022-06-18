@@ -8,7 +8,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import { reset } from "redux-form";
 
 import SearchInput from "../SearchInput/SearchInput";
-import { getSearchUsers, changeFilter } from "../../actions/users/users-action";
+import { getSearchUsers, changeFilter } from "../../actions/users/usersAction";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import UserItemList from "../Users/UserItemList";
 import "./SearchUsers.scss";

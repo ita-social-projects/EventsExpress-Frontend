@@ -8,7 +8,7 @@ import {
   EVENT_STATUS_BUTTON,
 } from "../../../constants/eventConstants";
 
-import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
+import SimpleModalWithDetails from "../../SimpleModalWithDetails/SimpleModalWithDetails";
 import RenderEventButton from "./RenderEventButton";
 
 const EventActiveStatus = ({ eventStatus, eventId, onBlock, onUnBlock }) => {

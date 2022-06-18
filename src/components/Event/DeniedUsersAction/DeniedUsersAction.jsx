@@ -7,7 +7,7 @@ import propTypes from "prop-types";
 import {
   promoteToOwner,
   approveUser,
-} from "../../../actions/event/event-item-view-action";
+} from "../../../actions/event/eventItemViewAction";
 
 import constants from "../../../constants/deniedUsersActionConstants";
 

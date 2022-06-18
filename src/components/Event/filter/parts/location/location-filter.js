@@ -8,7 +8,7 @@ import Radio from "@material-ui/core/Radio";
 import PropTypes from "prop-types";
 import { ENUM_LOCATION_TYPE } from "../../../../../constants/eventConstants";
 import FilterExpansionPanel from "../../expansion-panel/filter-expansion-panel";
-import { LocationMapWithCircle } from "../../../../helpers/form-helpers/location";
+import LocationMapWithCircle from "../../../../Location/LocationMapWithCircle";
 import DisplayMap from "../../../Map/DisplayMap";
 import "../../../Slider.scss";
 

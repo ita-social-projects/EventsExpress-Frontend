@@ -8,9 +8,11 @@ import { Redirect } from "react-router-dom";
 import GoogleLogin from "../../containers/LoginContainer/GoogleLogin";
 import FacebookLogin from "../../containers/LoginContainer/FacebookLoginContainer";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
-import { renderTextField } from "../helpers/form-helpers";
-import isValidEmail from "../helpers/validators/email-address-validator";
-import fieldIsRequired from "../helpers/validators/required-fields-validator";
+import TextField from "../shared/TextField/TextField";
+import {
+  isValidEmail,
+  fieldIsRequired,
+} from "../helpers/formFieldValidationHelpers";
 
 const validate = values => {
   const requiredFields = ["password", "email"];
@@ -25,12 +27,12 @@ const Login = ({ pristine, reset, submitting, error, handleSubmit }) => {
     <div className="auth">
       <form onSubmit={handleSubmit} autoComplete="off">
         <div>
-          <Field name="email" component={renderTextField} label="E-mail:" />
+          <Field name="email" component={TextField} label="E-mail:" />
         </div>
         <div>
           <Field
             name="password"
-            component={renderTextField}
+            component={TextField}
             label="Password:"
             type="password"
           />

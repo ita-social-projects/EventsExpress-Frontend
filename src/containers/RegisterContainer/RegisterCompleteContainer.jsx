@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import RegisterBindAccount from "../../components/Register/RegisterBindAccount";
-import registerBindAccount from "../../actions/register/register-bind-account-action";
+import registerBindAccount from "../../actions/register/registerBindAccountAction";
 import RegisterComplete from "../../components/Register/RegisterComplete";
-import registerComplete from "../../actions/register/register-complete-action";
+import registerComplete from "../../actions/register/registerCompleteAction";
 
 // TODO Refactor class component
 class RegisterCompleteContainer extends Component {

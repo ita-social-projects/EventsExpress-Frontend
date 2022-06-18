@@ -11,7 +11,7 @@ import {
   renderOwners,
   renderMembers,
   handleSetAnchorEl,
-} from "../../helpers/EventItemHeaderUtils";
+} from "./EventItemHeaderUtils";
 
 const EventHeader = ({ members, countVisitor, owners, dateFrom, title }) => {
   const [anchorElM, setAnchorElM] = useState(null);

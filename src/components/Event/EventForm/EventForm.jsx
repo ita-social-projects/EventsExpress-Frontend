@@ -4,20 +4,20 @@ import moment from "moment";
 import "react-widgets/dist/css/react-widgets.css";
 import momentLocaliser from "react-widgets-moment";
 import propTypes from "prop-types";
-import DropZoneField from "../../helpers/DropZoneField";
+import DropZoneField from "../../DropZoneField/DropZoneField";
 import PhotoService from "../../../services/PhotoService";
 import { PERIODICITY } from "../../../constants/peridiocitConstants";
-import {
-  renderDatePicker,
-  renderCheckbox,
-  renderSelectField,
-  renderTextField,
-  renderTextArea,
-  renderMultiselect,
-  parseEuDate,
-} from "../../helpers/form-helpers";
+import parseEuDate from "../../../helpers/parseEuDate";
+
+import DatePickerFirst from "../../shared/DatePickerFirst/DatePickerFirst";
+import SelectFeld from "../../shared/SelectField/SelectField";
+import CheckBox from "../../shared/CheckBox/CheckBox";
+import MultiSelectField from "../../shared/MultiSelectField/MultiSelectField";
+import TextArea from "../../shared/TextArea/TextArea";
+import TextField from "../../shared/TextField/TextField";
+
 import "./EventForm.scss";
-import asyncValidatePhoto from "../../helpers/asyncValidatePhoto";
+import asyncValidatePhoto from "../../../helpers/asyncValidatePhoto";
 import Location from "../../Location/Location";
 import { EVENT_STATUS_ENUM } from "../../../constants/eventConstants";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
@@ -71,7 +71,7 @@ const EventForm = ({
         <div className="mt-2">
           <Field
             name="organizer"
-            component={renderTextField}
+            component={TextField}
             type="input"
             label="Organizer"
             InputLabelProps={{ shrink: true }}
@@ -82,7 +82,7 @@ const EventForm = ({
         <div className="mt-2">
           <Field
             name="title"
-            component={renderTextField}
+            component={TextField}
             type="input"
             label="Title"
             inputProps={{ maxLength: 60 }}
@@ -92,7 +92,7 @@ const EventForm = ({
           <Field
             parse={Number}
             name="maxParticipants"
-            component={renderTextField}
+            component={TextField}
             type="number"
             label="Max Count Of Participants"
           />
@@ -103,7 +103,7 @@ const EventForm = ({
               type="checkbox"
               label="Recurrent Event"
               name="isReccurent"
-              component={renderCheckbox}
+              component={CheckBox}
               checked={checked}
               onChange={handleChange}
             />
@@ -116,7 +116,7 @@ const EventForm = ({
                 minWidth={200}
                 name="periodicity"
                 text="Periodicity"
-                component={renderSelectField}
+                component={SelectFeld}
                 parse={Number}
               >
                 {periodicityListOptions}
@@ -126,7 +126,7 @@ const EventForm = ({
               <Field
                 name="frequency"
                 type="number"
-                component={renderTextField}
+                component={TextField}
                 label="Frequency"
                 parse={Number}
               />
@@ -136,7 +136,7 @@ const EventForm = ({
         <div className="mt-2">
           <Field
             name="isPublic"
-            component={renderCheckbox}
+            component={CheckBox}
             type="checkbox"
             label="Public"
           />
@@ -145,7 +145,7 @@ const EventForm = ({
           <div className="mt-2">
             <Field
               name="isOnlyForAdults"
-              component={renderCheckbox}
+              component={CheckBox}
               type="checkbox"
               label="Only adults"
             />
@@ -157,7 +157,7 @@ const EventForm = ({
               name="dateFrom"
               label="From"
               minValue={moment(new Date())}
-              component={renderDatePicker}
+              component={DatePickerFirst}
               parse={parseEuDate}
             />
           </span>
@@ -167,7 +167,7 @@ const EventForm = ({
                 name="dateTo"
                 label="To"
                 minValue={formValues.dateFrom}
-                component={renderDatePicker}
+                component={DatePickerFirst}
                 parse={parseEuDate}
               />
             </span>
@@ -176,7 +176,7 @@ const EventForm = ({
         <div className="mt-3">
           <Field
             name="description"
-            component={renderTextArea}
+            component={TextArea}
             type="input"
             label="Description"
           />
@@ -184,7 +184,7 @@ const EventForm = ({
         <div className="mt-2">
           <Field
             name="categories"
-            component={renderMultiselect}
+            component={MultiSelectField}
             data={allCategories.data}
             valueField="id"
             textField="name"

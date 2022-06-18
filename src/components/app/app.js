@@ -29,20 +29,20 @@ import EventEditContainer from "../../containers/EventEditContainer/EventEditCon
 import EventDraftListContainer from "../../containers/EventDraftContainer/EventDraftListContainer";
 import Unauthorized from "../RouteGuard/401";
 import Forbidden from "../RouteGuard/403";
-import withAuthRedirect from "../../security/withAuthRedirect";
-import AuthUser from "../../actions/login/auth-user-action";
-import getConfig from "../../actions/config/get-config-action";
+import WithAuthRedirect from "../WithAuthRedirect/WithAuthRedirect";
+import AuthUser from "../../actions/login/authUserAction";
+import getConfig from "../../actions/config/getConfigAction";
 import RegistrationForm from "../../containers/RegistrationFormContainer/RegistrationFormContainer";
 import MainLayout from "../MainLayout/MainLayout";
 import AboutUs from "../AboutUs/AboutUs";
 import SplitPanels from "../SplitPanels/SplitPanels";
 
 class App extends Component {
-  UserRoleSecurity = withAuthRedirect(["User"]);
+  UserRoleSecurity = WithAuthRedirect(["User"]);
 
-  AdminRoleSecurity = withAuthRedirect(["Admin"]);
+  AdminRoleSecurity = WithAuthRedirect(["Admin"]);
 
-  AdminAndUserRoleSecurity = withAuthRedirect(["Admin", "User"]);
+  AdminAndUserRoleSecurity = WithAuthRedirect(["Admin", "User"]);
 
   constructor(props) {
     super(props);

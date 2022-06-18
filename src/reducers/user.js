@@ -1,6 +1,4 @@
-import initialState from "../store/initialState";
-import { SET_USER } from "../actions/login/login-action";
-import { SET_LOGOUT } from "../actions/login/logout-action";
+import { SET_USER, SET_LOGOUT } from "../actions/login/loginActionTypes";
 import {
   addUserCategoryStates,
   addUserNotificationTypeStates,
@@ -8,17 +6,31 @@ import {
   editGenderStates,
   editUsernameStates,
   changeAvatarStates,
-} from "../actions/redactProfile/index";
-import { GET_USER_NOTIFICATION_TYPES_DATA } from "../actions/notificationType/userNotificationType-action";
-import { GET_USER_CATEGORIES_DATA } from "../actions/category/userCategory-action";
+} from "../actions/editProfile/editProfileActionTypes";
+import { GET_USER_NOTIFICATION_TYPES_DATA } from "../actions/notificationType/notificationActionTypes";
+import { GET_USER_CATEGORIES_DATA } from "../actions/category/categoryActionTypes";
 
-export const reducer = (state = initialState.user, action) => {
+const initialState = {
+  id: null,
+  name: null,
+  email: null,
+  phone: null,
+  birthday: null,
+  gender: null,
+  roles: [],
+  photoUrl: null,
+  token: null,
+  categories: [],
+  notificationTypes: [],
+};
+
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
       return action.payload;
 
     case SET_LOGOUT:
-      return initialState.user;
+      return initialState;
 
     case addUserCategoryStates.UPDATE:
     case GET_USER_CATEGORIES_DATA:

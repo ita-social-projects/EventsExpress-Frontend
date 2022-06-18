@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import getComments from "../../actions/comment/comment-list-action";
+import getComments from "../../actions/comment/commentListAction";
 import Profile from "../../components/Profile/Profile";
 
 const mapStateToProps = state => state.user;

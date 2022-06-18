@@ -3,7 +3,9 @@ import { Field, reduxForm } from "redux-form";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
-import { renderTextField } from "../helpers/form-helpers";
+
+import TextField from "../shared/TextField/TextField";
+
 import "./Comment.scss";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 
@@ -11,7 +13,7 @@ const Comment = props => {
   return (
     <>
       <form name="addComment" onSubmit={props.handleSubmit}>
-        <Field name="text" component={renderTextField} label="Comment:" />
+        <Field name="text" component={TextField} label="Comment:" />
         <DialogActions>
           <Button type="submit" value="Add" color="primary">
             {" "}

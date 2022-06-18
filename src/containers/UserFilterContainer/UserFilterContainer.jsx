@@ -5,13 +5,13 @@ import { parse } from "query-string";
 import UsersFilters from "../../components/Users/UsersFilters";
 import history from "../../history";
 import {
-  accountStatus,
   getUsers,
   getCount,
   initialConnection,
   closeConnection,
   changeStatus,
-} from "../../actions/users/users-action";
+} from "../../actions/users/usersAction";
+import { accountStatus } from "../../actions/users/usersActionTypes";
 
 // TODO Refactor class component
 class UserFilterContainer extends Component {

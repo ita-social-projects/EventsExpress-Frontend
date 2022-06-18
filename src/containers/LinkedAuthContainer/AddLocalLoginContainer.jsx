@@ -6,7 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Register from "../../components/Register/Register";
-import { localLoginAdd } from "../../actions/redactProfile/linked-auths-add-action";
+import { localLoginAdd } from "../../actions/editProfile/linkedAuthsAddAction";
 import "./LinkedAuth.scss";
 
 // TODO Refactor class component

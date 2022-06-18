@@ -2,9 +2,9 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import SelectCategories from "../../components/SelectCategories/SelectCategories";
-import setUserCategory from "../../actions/redactProfile/userCategory-add-action";
-import getCategories from "../../actions/category/category-list-action";
-import getUserCategories from "../../actions/category/userCategory-action";
+import setUserCategory from "../../actions/editProfile/userCategoryAddAction";
+import getCategories from "../../actions/category/categoryListAction";
+import getUserCategories from "../../actions/category/userCategoryAction";
 
 // TODO Refactor class component
 class SelectCategoriesContainer extends Component {

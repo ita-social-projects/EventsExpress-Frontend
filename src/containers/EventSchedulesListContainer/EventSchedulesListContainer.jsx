@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import EventSchedulesList from "../../components/EventSchedule/EventScheduleList";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
-import { getEventSchedules } from "../../actions/eventSchedule/eventSchedule-list-action";
+import { getEventSchedules } from "../../actions/eventSchedule/eventScheduleListAction";
 
 // TODO Refactor class component
 class EventSchedulesListContainer extends Component {

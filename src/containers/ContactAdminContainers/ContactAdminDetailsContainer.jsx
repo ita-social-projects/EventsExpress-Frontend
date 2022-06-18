@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ContactAdminDetails from "../../components/ContactAdmin/ContactAdminDetailsComponent";
-import changeIssueStatus from "../../actions/contactAdmin/contact-admin-issue-status-action";
-import getMessageById from "../../actions/contactAdmin/contact-admin-item-action";
+import changeIssueStatus from "../../actions/contactAdmin/contactAdminIssueStatusAction";
+import getMessageById from "../../actions/contactAdmin/contactAdminItemAction";
 import { ISSUE_STATUS_ENUM } from "../../constants/issueConstants";
 
 // TODO Refactor class component

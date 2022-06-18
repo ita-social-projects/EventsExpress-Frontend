@@ -2,10 +2,10 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "./Landing.scss";
-import { getUpcomingEvents } from "../../../actions/event/event-list-action";
+import { getUpcomingEvents } from "../../../actions/event/eventListAction";
 import HeadArticle from "../HeadArticle/HeadArticle";
 import EventsViewMode from "../EventsViewMode/EventsViewMode";
-import viewModeSwitcher from "../../helpers/landingUtils";
+import LandingContent from "./LandingContent";
 import {
   VIEW_MODE_TYPES,
   VIEW_MODE_KEY_FOR_LOCAL_STORAGE,
@@ -39,7 +39,7 @@ const Landing = ({ getUpcomingEventsDispatch, events }) => {
             />
             <EventsViewMode setViewMode={setEventsViewMode} />
           </div>
-          {viewModeSwitcher(items, eventsViewMode, filterTitle)}
+          {LandingContent(items, eventsViewMode, filterTitle)}
         </div>
       )}
     </div>

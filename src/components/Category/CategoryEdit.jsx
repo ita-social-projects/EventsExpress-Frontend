@@ -4,9 +4,12 @@ import React, { PureComponent } from "react";
 import { Field, reduxForm } from "redux-form";
 import IconButton from "@material-ui/core/IconButton";
 import propTypes from "prop-types";
-import { renderTextField, renderSelectField } from "../helpers/form-helpers";
+
+import TextFiled from "../shared/TextField/TextField";
+import SelectField from "../shared/SelectField/SelectField";
+
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
-import fieldIsRequired from "../helpers/validators/required-fields-validator";
+import { fieldIsRequired } from "../helpers/formFieldValidationHelpers";
 
 const validate = values => {
   const requiredFields = ["name", "categoryGroup"];
@@ -30,7 +33,7 @@ class CategoryEdit extends PureComponent {
                 className="form-control"
                 name="name"
                 label="Name"
-                component={renderTextField}
+                component={TextFiled}
               />
               {this.props.error && (
                 <ErrorMessages
@@ -44,7 +47,7 @@ class CategoryEdit extends PureComponent {
                 className="form-control"
                 name="categoryGroup"
                 label="Select a group"
-                component={renderSelectField}
+                component={SelectField}
                 defaultValue={JSON.stringify(
                   this.props?.initialValues?.categoryGroup,
                 )}

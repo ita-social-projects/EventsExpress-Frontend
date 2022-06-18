@@ -1,8 +1,10 @@
 import { reduxForm, getFormValues } from "redux-form";
 import { connect } from "react-redux";
 import RegisterBindAccount from "../../components/Register/RegisterBindAccount";
-import fieldIsRequired from "../../components/helpers/validators/required-fields-validator";
-import isValidEmail from "../../components/helpers/validators/email-address-validator";
+import {
+  fieldIsRequired,
+  isValidEmail,
+} from "../../components/helpers/formFieldValidationHelpers";
 
 // TODO Take out validationl logic
 

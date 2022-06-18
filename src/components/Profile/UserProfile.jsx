@@ -14,8 +14,8 @@ import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../Rating/RatingAverage";
 import "./UserProfile.scss";
 import Events from "./Events";
-import AuthComponent from "../../security/authComponent";
-import getAge from "../helpers/get-age-string";
+import AuthComponent from "../AuthComponent/AuthComponent";
+import getAge from "../../helpers/getAgeString";
 import indexToTabName from "../../constants/indexToTabNameConstants";
 
 class UserItemView extends Component {

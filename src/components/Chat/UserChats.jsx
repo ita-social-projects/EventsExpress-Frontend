@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import propTypes from "prop-types";
-import getChatsAction from "../../actions/chat/chats-action";
+import getChatsAction from "../../actions/chat/chatsAction";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import "./UserChats.scss";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";

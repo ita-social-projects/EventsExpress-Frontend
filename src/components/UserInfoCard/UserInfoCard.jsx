@@ -6,8 +6,8 @@ import LABELS from "../../constants/labelConstants";
 import { ATTITUDE_TYPES } from "../../constants/userConstants";
 import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../Rating/RatingAverage";
-import defineUserAge from "../helpers/defineUserAge";
-import getAttitudeToUser from "../helpers/getAttitudeToUser";
+import defineUserAge from "../../helpers/defineUserAge";
+import getAttitudeToUser from "../../helpers/getAttitudeToUser";
 import AttitudeToolTip from "./AttitudeToolTip/AttitudeToolTip";
 import "./UserInfoCard.scss";
 

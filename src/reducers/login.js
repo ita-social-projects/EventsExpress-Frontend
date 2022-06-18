@@ -1,10 +1,13 @@
 import {
   SET_LOGIN_PENDING,
   SET_LOGIN_SUCCESS,
-} from "../actions/login/login-action";
-import initialState from "../store/initialState";
+} from "../actions/login/loginActionTypes";
 
-const reducer = (state = initialState.login, action) => {
+const initialState = {
+  isLoginSuccess: false,
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LOGIN_PENDING:
       return { ...state, isLoginPending: action.isLoginPending };

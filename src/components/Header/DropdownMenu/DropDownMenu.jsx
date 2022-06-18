@@ -8,7 +8,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FeedbackIcon from "@material-ui/icons/Feedback";
 import {ROLES} from "../../../constants/userConstants";
-import AuthComponent from "../../../security/authComponent";
+import AuthComponent from "../../AuthComponent/AuthComponent";
 import {HEADER_CONSTS} from "../../../constants/headersConstants";
 import "./DropdownMenu.scss";
 import ToggleButton from "../../shared/ToggleButton/ToggleButton";

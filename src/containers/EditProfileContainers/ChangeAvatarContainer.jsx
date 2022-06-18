@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import ChangeAvatar from "../../components/Profile/EditProfile/ChangeAvatar";
-import changeAvatar from "../../actions/redactProfile/avatar-change-action";
-import AuthComponent from "../../security/authComponent";
+import changeAvatar from "../../actions/editProfile/avatarChangeAction";
+import AuthComponent from "../../components/AuthComponent/AuthComponent";
 
 // TODO Refactor class component
 class ChangeAvatarContainer extends Component {

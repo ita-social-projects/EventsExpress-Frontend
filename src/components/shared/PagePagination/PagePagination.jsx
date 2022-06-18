@@ -2,7 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import Pagination from "react-paginating";
 import PAGINATION_LABELS from "../../../constants/paginationConstants";
-import { renderEdgePage, renderPages } from "../../helpers/paginationUtils";
+import {
+  PaginationUtil,
+  PaginationPages,
+} from "../../PaginationUtil/PaginationUtil";
 
 const { FIRST, LAST, NEXT, PREV } = PAGINATION_LABELS;
 
@@ -33,7 +36,7 @@ const PagePagination = ({ callback }, props) => {
         }) => (
           <>
             {hasPreviousPage &&
-              renderEdgePage(
+              PaginationUtil(
                 handlePageChange,
                 1,
                 FIRST,
@@ -41,14 +44,14 @@ const PagePagination = ({ callback }, props) => {
                 PREV,
                 getPageItemProps,
               )}
-            {renderPages(
+            {PaginationPages(
               pages,
               currentPage,
               getPageItemProps,
               handlePageChange,
             )}
             {hasNextPage &&
-              renderEdgePage(
+              PaginationUtil(
                 handlePageChange,
                 nextPage,
                 NEXT,

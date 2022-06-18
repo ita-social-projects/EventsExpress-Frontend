@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Badge from "@material-ui/core/Badge";
 import "./LeftSidebar.scss";
 import NavItem from "../NavItem/NavItem";
-import AuthComponent from "../../security/authComponent";
+import AuthComponent from "../AuthComponent/AuthComponent";
 import { ROLES } from "../../constants/userConstants";
 
 class LeftSidebar extends Component {

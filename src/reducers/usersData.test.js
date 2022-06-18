@@ -1,0 +1,18 @@
+import { SET_USERS } from "../actions/events/filter/filterActionTypes";
+import usersDataReducer from "./usersData";
+
+describe("Users Data Reducer", () => {
+  it("Should return default state", () => {
+    const newState = usersDataReducer([], {});
+    expect(newState).toEqual([]);
+  });
+
+  it("Should return new state if receiving type", () => {
+    const users = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    const newState = usersDataReducer([], {
+      type: SET_USERS,
+      payload: users,
+    });
+    expect(newState).toEqual(users);
+  });
+});

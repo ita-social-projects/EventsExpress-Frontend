@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Field, FieldArray, getFormSyncErrors } from "redux-form";
 import { connect } from "react-redux";
-import { renderSelectField, renderTextField } from "../helpers/form-helpers";
-import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
+import TextField from "../shared/TextField/TextField";
+import SelectField from "../shared/SelectField/SelectField";
+import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuringListAction";
 import InventoryHeaderButton from "./InventoryHeaderButton";
 import "./Inventory.scss";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
@@ -35,7 +36,7 @@ const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
                   type="text"
                   fullWidth={false}
                   label="Item name"
-                  component={renderTextField}
+                  component={TextField}
                 />
               </div>
               <div className="p-2 bd-highlight">
@@ -44,7 +45,7 @@ const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
                   type="number"
                   fullWidth={false}
                   label="count"
-                  component={renderTextField}
+                  component={TextField}
                 />
               </div>
               <div className="p-2 bd-highlight">
@@ -52,7 +53,7 @@ const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
                   className="selectpicker"
                   name={`${item}.unitOfMeasuring.id`}
                   minWidth={100}
-                  component={renderSelectField}
+                  component={SelectField}
                 >
                   {unitOfMeasuringState.units.map(unit => (
                     <option value={unit.id} key={unit.id}>

@@ -4,12 +4,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import {
-  minLength6,
-  maxLength15,
-} from "../helpers/validators/min-max-length-validators";
-import { renderTextField } from "../helpers/form-helpers";
-import isValidEmail from "../helpers/validators/email-address-validator";
-import fieldIsRequired from "../helpers/validators/required-fields-validator";
+  minLength,
+  maxLength,
+  isValidEmail,
+  fieldIsRequired,
+} from "../helpers/formFieldValidationHelpers";
+import TextField from "../shared/TextField/TextField";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import "./Register.scss";
 
@@ -40,7 +40,7 @@ const Register = ({ pristine, reset, submitting, error, handleSubmit }) => {
           <Field
             className="registerFormInputs"
             name="email"
-            component={renderTextField}
+            component={TextField}
             label="E-mail:"
             type="email"
           />
@@ -49,20 +49,20 @@ const Register = ({ pristine, reset, submitting, error, handleSubmit }) => {
           <Field
             className="registerFormInputs"
             name="password"
-            component={renderTextField}
+            component={TextField}
             label="Password:"
             type="password"
-            validate={[maxLength15, minLength6]}
+            validate={[maxLength(15), minLength(6)]}
           />
         </div>
         <div>
           <Field
             className="registerFormInputs"
             name="RepeatPassword"
-            component={renderTextField}
+            component={TextField}
             label="Repeat password:"
             type="password"
-            validate={[maxLength15, minLength6]}
+            validate={[maxLength(15), minLength(6)]}
           />
         </div>
         <div>

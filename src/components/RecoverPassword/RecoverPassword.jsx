@@ -5,9 +5,11 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
-import { renderTextField } from "../helpers/form-helpers";
-import isValidEmail from "../helpers/validators/email-address-validator";
-import fieldIsRequired from "../helpers/validators/required-fields-validator";
+import TextField from "../shared/TextField/TextField";
+import {
+  isValidEmail,
+  fieldIsRequired,
+} from "../helpers/formFieldValidationHelpers";
 
 const validate = values => {
   const requiredFields = ["email"];
@@ -32,7 +34,7 @@ const RecoverPassword = ({
         <br /> password.
       </DialogContentText>
       <div>
-        <Field name="email" component={renderTextField} label="E-mail:" />
+        <Field name="email" component={TextField} label="E-mail:" />
         {error && <ErrorMessages error={error} className="text-center" />}
       </div>
 

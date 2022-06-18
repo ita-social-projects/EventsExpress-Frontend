@@ -6,8 +6,8 @@ import CategoryItem from "../../components/Category/CategoryItem";
 import CategoryEdit from "../../components/Category/CategoryEdit";
 import addCategory, {
   setCategoryEdited,
-} from "../../actions/category/category-add-action";
-import deleteCategory from "../../actions/category/category-delete-action";
+} from "../../actions/category/categoryAddAction";
+import deleteCategory from "../../actions/category/categoryDeleteAction";
 
 // TODO Refactor
 const CategoryItemContainer = ({

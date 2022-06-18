@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import moment from "moment";
+import DatePickerFirst from "../../shared/DatePickerFirst/DatePickerFirst";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
-import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
-import fieldIsRequired from "../../helpers/validators/required-fields-validator";
+import parseEuDate from "../../../helpers/parseEuDate";
+import { fieldIsRequired } from "../../helpers/formFieldValidationHelpers";
 
 const validate = values => {
   const errors = {};
@@ -21,8 +22,8 @@ const validate = values => {
 };
 
 const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
-  const minValue = moment(new Date()).subtract(115, "years");
-  const maxValue = moment(new Date()).subtract(14, "years");
+  const minValue = moment(new Date()).subtract({ years: 115 });
+  const maxValue = moment(new Date()).subtract({ years: 14 });
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -31,7 +32,7 @@ const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
           label="Birthday"
           minValue={minValue}
           maxValue={maxValue}
-          component={renderDatePicker}
+          component={DatePickerFirst}
           parse={parseEuDate}
         />
         {error && <ErrorMessages error={error} className="text-center" />}
