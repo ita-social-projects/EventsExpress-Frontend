@@ -4,7 +4,6 @@ import { setErrorAllertFromResponse } from "../alert/alertAction";
 import getLinkedAuths from "./linkedAuthsAction";
 import { buildValidationState } from "../../helpers/actionHelpers";
 
-
 const apiService = new AccountService();
 
 const loginResponseHandler = call => {

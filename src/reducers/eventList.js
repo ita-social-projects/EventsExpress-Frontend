@@ -2,7 +2,7 @@ import {
   GET_EVENTS_DATA,
   RESET_EVENTS,
   UPDATE_EVENTS_FILTERS,
-CHANGE_STATUS,
+  CHANGE_STATUS,
 } from "../actions/event/eventActionTypes";
 import filterHelper from "../helpers/filterHelper";
 

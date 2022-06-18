@@ -6,7 +6,6 @@ import { getUsersInventoriesByEventId } from "../users/usersInventoriesAction";
 import { setErrorAllertFromResponse } from "../alert/alertAction";
 import { buildValidationState } from "../../helpers/actionHelpers";
 
-
 const apiService = new InventoryService();
 
 export function addItem(item, eventId) {
