@@ -7,20 +7,23 @@ const FormInput = ({
   className,
   meta: { error, touched, invalid },
   ...restProps
-}) => (
-  <div className="form-group__input">
-    <input
-      value={value}
-      onChange={onChange}
-      onBlur={onBlur}
-      className={`form-input ${className} ${
-        invalid && touched ? " form-input__error" : ""
-      }`}
-      {...restProps}
-    />
-    {invalid && touched && <div className="form-error">{error}</div>}
-  </div>
-);
+}) => {
+  const isError = touched && invalid;
+  return (
+    <div className="form-group__input">
+      <input
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        className={`form-input ${className} ${
+          isError ? " form-input__error" : ""
+        }`}
+        {...restProps}
+      />
+      {isError && <div className="form-error">{error}</div>}
+    </div>
+  );
+};
 
 FormInput.defaultProps = {
   className: "",

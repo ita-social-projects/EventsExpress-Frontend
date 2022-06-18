@@ -8,29 +8,9 @@ import {
   maxLength15,
 } from "../helpers/validators/min-max-length-validators";
 import { renderTextField } from "../helpers/form-helpers";
-import isValidEmail from "../helpers/validators/email-address-validator";
-import fieldIsRequired from "../helpers/validators/required-fields-validator";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import "./Register.scss";
-
-const validate = values => {
-  const errors = {};
-  const requiredFields = ["password", "email", "RepeatPassword"];
-
-  if (values.password !== values.RepeatPassword) {
-    errors.RepeatPassword = "Passwords do not match";
-  }
-
-  if (values.newPassword !== values.repeatPassword) {
-    errors.repeatPassword = "Passwords do not match";
-  }
-
-  return {
-    ...errors,
-    ...fieldIsRequired(values, requiredFields),
-    ...isValidEmail(values.email),
-  };
-};
+import { validate } from "../helpers/validateHelper";
 
 const Register = ({ pristine, reset, submitting, error, handleSubmit }) => {
   return (
@@ -105,5 +85,5 @@ Register.propTypes = {
 
 export default reduxForm({
   form: "register-form",
-  validate,
+  validate: validate(["password", "email", "RepeatPassword"]),
 })(Register);

@@ -7,20 +7,23 @@ const FormTextarea = ({
   className,
   meta: { error, touched },
   ...restProps
-}) => (
-  <div className="form-group__textarea">
-    <textarea
-      value={value}
-      onChange={onChange}
-      onBlur={onBlur}
-      className={`form-textarea ${className} ${
-        error && touched ? " form-textarea__error" : ""
-      }`}
-      {...restProps}
-    />
-    {error && touched && <div className="form-error">{error}</div>}
-  </div>
-);
+}) => {
+  const isError = touched && error;
+  return (
+    <div className="form-group__textarea">
+      <textarea
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        className={`form-textarea ${className} ${
+          isError ? " form-textarea__error" : ""
+        }`}
+        {...restProps}
+      />
+      {isError && <div className="form-error">{error}</div>}
+    </div>
+  );
+};
 
 FormTextarea.defaultProps = {
   className: "",
