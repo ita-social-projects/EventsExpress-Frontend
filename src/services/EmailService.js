@@ -1,7 +1,8 @@
 import emailjs from "@emailjs/browser";
+import isValidEmail from "../components/helpers/validators/email-address-validator";
 
 const emailService = values => {
-  if (values.email !== "") {
+  if (isValidEmail(values.email)) {
     emailjs.send(
       "service_hxod138",
       "template_1k257d8",
