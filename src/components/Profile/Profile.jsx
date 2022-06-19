@@ -1,28 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
 import ChangePasswordContainer from "../../containers/EditProfileContainers/ChangePasswordContainer";
 import getComments from "../../actions/comment/comment-list-action";
 import GENDERS from "../../constants/gendersVarietyConstants";
 import ProfileItem from "./ProfileItem";
 import useProfileData from "./profileData";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: "100%",
-    marginTop: "100px",
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    flexBasis: "33.33%",
-    flexShrink: 0,
-  },
-  secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
-  },
-}));
+import "./Profile.scss";
 
 const Profile = ({
   name,
@@ -32,7 +16,6 @@ const Profile = ({
   notificationTypes,
   canChangePassword,
 }) => {
-  const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = panel => (_, isExpanded) => {
@@ -48,14 +31,13 @@ const Profile = ({
   );
 
   return (
-    <div className={classes.root}>
+    <div className="user-profile-wrapper">
       {profileItems.map(item => (
         <ProfileItem
           key={item.panelId}
           item={item}
           handleChange={handleChange}
           expanded={expanded}
-          classes={classes}
         />
       ))}
       {canChangePassword && <ChangePasswordContainer />}

@@ -23,7 +23,7 @@ const getContentByType = (type, content) => {
 
   return content;
 };
-const ProfileItem = ({ item, handleChange, expanded, classes }) => {
+const ProfileItem = ({ item, handleChange, expanded }) => {
   const { panelId, title, type, content, accordionDetailsContent } = item;
   const acrodionContent = getContentByType(type, content);
   const hasContent =
@@ -36,11 +36,9 @@ const ProfileItem = ({ item, handleChange, expanded, classes }) => {
         aria-controls={panelId}
         id={panelId}
       >
-        <Typography className={classes.heading}>{title}</Typography>
+        <Typography style={{ flexBasis: "33.33%" }}>{title}</Typography>
         {hasContent && (
-          <Typography component="div" className={classes.secondaryHeading}>
-            {acrodionContent}
-          </Typography>
+          <Typography component="div">{acrodionContent}</Typography>
         )}
       </AccordionSummary>
       <AccordionDetails>
@@ -56,14 +54,12 @@ ProfileItem.defaultProps = {
   item: {},
   handleChange: () => {},
   expanded: false,
-  classes: {},
 };
 
 ProfileItem.propTypes = {
   item: PropTypes.object,
   handleChange: PropTypes.func,
   expanded: PropTypes.bool,
-  classes: PropTypes.object,
 };
 
 export default ProfileItem;
