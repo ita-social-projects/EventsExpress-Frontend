@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import DropZone from "react-dropzone";
 import Button from "@material-ui/core/Button";
@@ -7,125 +7,117 @@ import Placeholder from "./Placeholder";
 import ImageResizer from "../Event/ImageResizer/ImageResizer";
 import renderFieldError from "./form-helpers/render-field-error";
 
-class DropZoneField extends Component {
-  constructor() {
-    super();
-    this.state = {
-      imagefile: [],
-      cropped: false,
-    };
-  }
+const DropZoneField = ({
+  loadImage,
+  input,
+  submitting,
+  crop,
+  cropShape,
+  meta: { touched, error },
+  input: { onChange },
+}) => {
+  const [imageFile, setImage] = useState(null);
+  const [isCropped, setIsCropped] = useState(false);
 
-  componentDidMount() {
-    this.props.loadImage().then(image => {
-      if (image != null) {
-        const imagefile = {
-          file: "",
-          name: "",
-          preview: URL.createObjectURL(image),
-        };
-        this.setState({ imagefile: [imagefile] });
-      }
-    });
-  }
+  const containerClass = error && touched ? "invalid" : "valid";
 
-  componentWillUnmount() {
-    this.revokeImageUrl();
-  }
-
-  handleOnClear = () => {
-    this.revokeImageUrl();
-    this.setState({ cropped: false, imagefile: [] });
-    this.props.input.onChange(null);
-  };
-
-  revokeImageUrl = () => {
-    if (this.state.imagefile[0] !== undefined && !this.state.cropped) {
-      URL.revokeObjectURL(this.state.imagefile[0].preview);
+  const revokeImageUrl = () => {
+    if (imageFile && !isCropped) {
+      URL.revokeObjectURL(imageFile.preview);
     }
   };
 
-  handleOnDrop = file => {
+  const handleOnClear = () => {
+    revokeImageUrl();
+    setImage(null);
+    setIsCropped(false);
+    input.onChange(null);
+  };
+
+  const handleOnDrop = file => {
     if (file.length > 0) {
-      const imagefile = {
+      setImage({
         file: file[0],
         name: file[0].name,
         preview: URL.createObjectURL(file[0]),
-      };
-      this.setState({ imagefile: [imagefile] });
+      });
     }
   };
 
-  handleOnCrop = async croppedImage => {
-    URL.revokeObjectURL(this.state.imagefile[0].preview);
+  const handleOnCrop = async croppedImage => {
+    URL.revokeObjectURL(imageFile.preview);
     const file = new File(croppedImage, "image.jpg", { type: "image/jpeg" });
-    const imagefile = {
+    const image = {
       file,
       name: "image.jpg",
       preview: croppedImage[0],
     };
 
-    this.setState({ imagefile: [imagefile], cropped: true }, () =>
-      this.props.input.onChange(imagefile),
-    );
+    setImage(image);
+    setIsCropped(true);
+    input.onChange(image);
   };
 
-  render() {
-    const {
-      submitting,
-      crop,
-      cropShape,
-      meta: { touched, error },
-      input: { onChange },
-    } = this.props;
-    const { imagefile, cropped } = this.state;
-    const { handleOnCrop, handleOnDrop, handleOnClear } = this;
-    const containerClass = error && touched ? "invalid" : "valid";
-    return (
-      <div className={`preview-container ${containerClass}`}>
-        {imagefile.length && crop && !cropped ? (
-          <ImageResizer
-            image={imagefile[0]}
-            onChange={onChange}
-            handleOnCrop={handleOnCrop}
-            cropShape={cropShape}
-          />
-        ) : (
-          <DropZone
-            accept="image/jpeg, image/png, image/gif, image/bmp"
-            className="upload-container"
-            onDrop={file => handleOnDrop(file)}
-            multiple={false}
-          >
-            {props =>
-              imagefile && imagefile.length > 0 ? (
-                <ImagePreview
-                  imagefile={imagefile}
-                  shape={cropShape}
-                  error={error}
-                  touched={touched}
-                />
-              ) : (
-                <Placeholder {...props} error={error} touched={touched} />
-              )
-            }
-          </DropZone>
-        )}
-        <Button
-          className="mt-3"
-          type="button"
-          color="primary"
-          disabled={submitting}
-          onClick={handleOnClear}
-          style={{ float: "right" }}
+  useEffect(() => {
+    loadImage().then(image => {
+      if (image !== null) {
+        setImage({
+          file: "",
+          name: "",
+          preview: URL.createObjectURL(image),
+        });
+      }
+    });
+
+    return () => {
+      revokeImageUrl();
+    };
+  }, []);
+
+  return (
+    <div className={`preview-container ${containerClass}`}>
+      {imageFile && crop && !isCropped ? (
+        <ImageResizer
+          image={imageFile}
+          onChange={onChange}
+          handleOnCrop={handleOnCrop}
+          cropShape={cropShape}
+        />
+      ) : (
+        <DropZone
+          accept="image/jpeg, image/png, image/gif, image/bmp"
+          className="upload-container"
+          onDrop={handleOnDrop}
+          multiple={false}
         >
-          Clear
-        </Button>
-        {renderFieldError({ touched, error })}
-      </div>
-    );
-  }
-}
+          {props =>
+            imageFile ? (
+              <ImagePreview
+                imagefile={imageFile}
+                shape={cropShape}
+                error={error}
+                touched={touched}
+              />
+            ) : (
+              <Placeholder {...props} error={error} touched={touched} />
+            )
+          }
+        </DropZone>
+      )}
+      <Button
+        className="mt-3"
+        type="button"
+        color="primary"
+        disabled={submitting}
+        onClick={handleOnClear}
+        style={{ float: "right" }}
+      >
+        Clear
+      </Button>
+      {renderFieldError({ touched, error })}
+    </div>
+  );
+};
 
 DropZoneField.propTypes = {
   onChange: PropTypes.func,

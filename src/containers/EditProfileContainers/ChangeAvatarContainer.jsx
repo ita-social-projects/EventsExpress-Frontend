@@ -8,7 +8,7 @@ import AuthComponent from "../../security/authComponent";
 // TODO Refactor class component
 class ChangeAvatarContainer extends Component {
   submit = values => {
-    return this.props.changeAvatar(values);
+    return this.props.changeAvatarAction(values);
   };
 
   render() {
@@ -29,17 +29,17 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeAvatar: data => dispatch(changeAvatar(data)),
+    changeAvatarAction: data => dispatch(changeAvatar(data)),
   };
 };
 
 ChangeAvatarContainer.propTypes = {
   userId: PropTypes.string,
-  changeAvatar: PropTypes.func,
+  changeAvatarAction: PropTypes.func,
 };
 ChangeAvatarContainer.defaultProps = {
   userId: "",
-  changeAvatar: () => {},
+  changeAvatarAction: () => {},
 };
 
 export default connect(

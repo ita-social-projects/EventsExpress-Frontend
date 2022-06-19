@@ -21,7 +21,7 @@ export default class PhotoService {
 
   getFullEventPhoto = () => new Promise(resolve => resolve(null));
 
-  getUserPhoto = id => baseService.getPhoto(`Photo/GetUserPhoto?id=${id}`);
+  getUserPhoto = id => baseService.getPhoto(`UserPhoto/GetUserPhoto?id=${id}`);
 
   setEventTempPhoto = async (id, data) => {
     const photo = new FormData();
