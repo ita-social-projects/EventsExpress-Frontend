@@ -9,9 +9,10 @@ const RecoverPasswordContainer = ({
   status,
   handleRecoverClose,
 }) => {
-  const handleRecoverSubmit = values => {
-    recoverPasswordDispatch(values.email);
+  const handleRecoverSubmit = email => {
+    return recoverPasswordDispatch(email);
   };
+
   return (
     <RecoverPassword
       handleRecoverClose={handleRecoverClose}

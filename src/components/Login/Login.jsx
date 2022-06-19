@@ -21,44 +21,46 @@ const Login = ({ handleSubmit, handleClose, error }) => {
     handleClose();
   };
   return (
-    <form className="login-form" onSubmit={handleSubmit} autoComplete="off">
-      <h2 className="login-form__title">Login</h2>
-      {error && (
-        <ErrorMessages error={error} className="login-error text-center" />
-      )}
-      <button className="close-btn" onClick={handleLoginClose} type="button">
-        <ImCross />
-      </button>
-      <Field
-        name="email"
-        className="auth-input"
-        placeholder="Enter Email"
-        component={FormInput}
-      />
-      <Field
-        name="password"
-        className="auth-input"
-        type="password"
-        placeholder="Enter Password"
-        component={FormInput}
-      />
-      <button className="auth-btn" type="submit">
-        Sign In
-      </button>
-      <button
-        onClick={handleRecoverClick}
-        className="recover-password-btn"
-        type="button"
-      >
-        Forgot Password?
-      </button>
+    <>
+      <form className="login-form" onSubmit={handleSubmit} autoComplete="off">
+        <h2 className="login-form__title">Login</h2>
+        {error && (
+          <ErrorMessages error={error} className="login-error text-center" />
+        )}
+        <button className="close-btn" onClick={handleLoginClose} type="button">
+          <ImCross />
+        </button>
+        <Field
+          name="email"
+          className="auth-input"
+          placeholder="Enter Email"
+          component={FormInput}
+        />
+        <Field
+          name="password"
+          className="auth-input"
+          type="password"
+          placeholder="Enter Password"
+          component={FormInput}
+        />
+        <button className="auth-btn" type="submit">
+          Sign In
+        </button>
+        <button
+          onClick={handleRecoverClick}
+          className="recover-password-btn"
+          type="button"
+        >
+          Forgot Password?
+        </button>
+        <SocialAuth />
+      </form>
       {isRecoverPassword && (
         <RecoverPasswordContainer
           handleRecoverClose={() => setIsRecoverPassword(false)}
         />
       )}
-      <SocialAuth />
-    </form>
+    </>
   );
 };
 

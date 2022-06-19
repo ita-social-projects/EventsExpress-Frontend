@@ -1,7 +1,6 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import { ImCross } from "react-icons/im";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import { validate } from "../helpers/validateHelper";
 import "./RecoverPassword.scss";
@@ -18,9 +17,6 @@ const RecoverPassword = ({
 }) => {
   return (
     <form className="recover-password-form" onSubmit={handleSubmit}>
-      <button className="close-btn" onClick={handleRecoverClose} type="button">
-        <ImCross />
-      </button>
       <h4 className="recover-heading">
         If you forgot your password please enter your email address here. <br />{" "}
         We will send you new password.
@@ -52,6 +48,9 @@ const RecoverPassword = ({
           Submit
         </button>
       </div>
+      <button className="close-btn" onClick={handleRecoverClose} type="button">
+        Close
+      </button>
     </form>
   );
 };
