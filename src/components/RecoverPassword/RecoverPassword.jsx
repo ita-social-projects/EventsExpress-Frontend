@@ -57,7 +57,7 @@ const RecoverPassword = ({
       </div>
       <Button
         content={CLOSE}
-        className="close-clobtnse"
+        className="close-btn"
         onClick={handleRecoverClose}
       />
     </form>

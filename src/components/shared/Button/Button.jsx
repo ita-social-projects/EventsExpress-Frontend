@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const Button = ({ content, onClick, className, type, ...otherProps }) => {
   return (
     // eslint-disable-next-line react/button-has-type
-    <button className={className} type={type} {...otherProps}>
+    <button onClick={onClick} className={className} type={type} {...otherProps}>
       {content}
     </button>
   );

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { ImCross } from "react-icons/im";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import { validate } from "../helpers/validateHelper";
 import "./Login.scss";
