@@ -39,7 +39,7 @@ class EditEventContainer extends Component {
             onError={this.onError}
             initialValues={this.props.event}
             formValues={this.props.form_values}
-            haveReccurentCheckBox={false}
+            haveReccurentCheckBox
             eventId={this.props.event.id}
           >
             <div className="col">

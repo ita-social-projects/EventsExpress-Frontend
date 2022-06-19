@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { parse as queryStringParse } from "query-string";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { AiFillEdit } from "react-icons/ai";
 import RenderList from "../RenderList/RenderList";
-import EventCard from "../EventItem/EventItem";
+import EventCard from "../../Landing/EventCard/EventCard";
 import getQueryStringByFilter from "../../helpers/filterHelper";
 import { EVENT_STATUS_ENUM } from "../../../constants/eventConstants";
 import {
@@ -12,6 +13,7 @@ import {
   updateEventsFilters,
 } from "../../../actions/event/event-list-action";
 import { changeEventStatus } from "../../../actions/event/event-item-view-action";
+import { ICON_PROPERTIES } from "../../../constants/draftConstants";
 
 const EventList = ({
   totalPages,
@@ -29,7 +31,7 @@ const EventList = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalPages, history.location.search]);
 
-  const handlePageChange = page => {
+  const handlePageChange = (page) => {
     const queryStringToObject = queryStringParse(history.location.search);
     if (history.location.search === "") {
       history.push(`${history.location.pathname}?page=${page}`);
@@ -38,19 +40,33 @@ const EventList = ({
     }
 
     history.push(
-      history.location.pathname + getQueryStringByFilter(queryStringToObject),
+      history.location.pathname + getQueryStringByFilter(queryStringToObject)
     );
   };
 
-  const renderSingleItem = item => (
+  const additionalButtons = id => {
+    return [
+      <Link to={`/editEvent/${id}`} key={id}>
+        <AiFillEdit
+          key={5}
+          cursor={ICON_PROPERTIES.CIRSOR_POINER}
+          size={ICON_PROPERTIES.ICON_SIZE}
+        />
+      </Link>,
+    ];
+  };
+
+  // <Link to={`/editEvent/${id}`} key={id}>
+  // </Link>
+
+  const renderSingleItem = (item) => (
     <EventCard
       key={item.id + item.Active}
-      item={item}
-      current_user={currentUser}
-      onBlock={onBlock}
-      onUnBlock={onUnBlock}
+      event={item}
+      additionalButtons={additionalButtons(item.id)}
     />
   );
+
   return (
     <RenderList
       {...props}
@@ -60,10 +76,10 @@ const EventList = ({
   );
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     resetEvents: () => dispatch(resetEvents()),
-    updateEventsFilters: filter => dispatch(updateEventsFilters(filter)),
+    updateEventsFilters: (filter) => dispatch(updateEventsFilters(filter)),
     onBlock: (eventId, reason) =>
       dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.BLOCKED)),
     onUnBlock: (eventId, reason) =>
@@ -81,6 +97,7 @@ EventList.propTypes = {
   currentUser: PropTypes.object,
   onBlock: PropTypes.func,
   onUnBlock: PropTypes.func,
+  onEdit: PropTypes.func,
 };
 
 EventList.defaultProps = {
@@ -93,6 +110,7 @@ EventList.defaultProps = {
   currentUser: {},
   onBlock: () => {},
   onUnBlock: () => {},
+  onEdit: () => {},
 };
 
 export default withRouter(connect(null, mapDispatchToProps)(EventList));

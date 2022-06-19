@@ -35,7 +35,7 @@
 		"react-bootstrap": "1.4.0",
 		"react-confirm-alert": "2.7.0",
 		"react-copy-to-clipboard": "5.0.4",
-		"react-datepicker": "2.8.0",
+		"react-datepicker": "^2.8.0",
 		"react-dom": "16.8.6",
 		"react-dropzone": "10.1.5",
 		"react-easy-crop": "3.3.1",
@@ -68,7 +68,7 @@
 		"sass": "^1.49.7",
 		"slick-carousel": "^1.8.1",
 		"webpack": "^4.44.2"
-	  },
+	},
 	"devDependencies": {
 		"@commitlint/cli": "^16.2.3",
 		"@commitlint/config-conventional": "^16.2.1",

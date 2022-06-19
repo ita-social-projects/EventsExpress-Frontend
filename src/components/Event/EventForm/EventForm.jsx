@@ -46,7 +46,7 @@ const EventForm = ({
     </option>
   ));
 
-  isChecked(initialValues.isReccurent);
+  // isChecked(initialValues.isReccurent);
 
   const handleChange = () => {
     isChecked(!checked);
@@ -141,7 +141,7 @@ const EventForm = ({
             label="Public"
           />
         </div>
-        {initialValues.eventStatus === EVENT_STATUS_ENUM.DRAFT && (
+        {initialValues.eventStatus === EVENT_STATUS_ENUM.CANCELED && (
           <div className="mt-2">
             <Field
               name="isOnlyForAdults"
