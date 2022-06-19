@@ -6,6 +6,7 @@ import ImagePreview from "./ImagePreview";
 import Placeholder from "./Placeholder";
 import ImageResizer from "../Event/ImageResizer/ImageResizer";
 import renderFieldError from "./form-helpers/render-field-error";
+import profileConstants from "../../constants/profileConstants";
 
 const DropZoneField = ({
   loadImage,
@@ -16,6 +17,7 @@ const DropZoneField = ({
   meta: { touched, error },
   input: { onChange },
 }) => {
+  const { CLEAR } = profileConstants;
   const [imageFile, setImage] = useState(null);
   const [isCropped, setIsCropped] = useState(false);
 
@@ -112,7 +114,7 @@ const DropZoneField = ({
         onClick={handleOnClear}
         style={{ float: "right" }}
       >
-        Clear
+        {CLEAR}
       </Button>
       {renderFieldError({ touched, error })}
     </div>

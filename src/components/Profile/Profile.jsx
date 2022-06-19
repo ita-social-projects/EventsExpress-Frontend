@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import ChangePasswordContainer from "../../containers/EditProfileContainers/ChangePasswordContainer";
-import getComments from "../../actions/comment/comment-list-action";
 import GENDERS from "../../constants/gendersVarietyConstants";
 import ProfileItem from "./ProfileItem";
 import useProfileData from "./profileData";
@@ -64,12 +62,4 @@ Profile.propTypes = {
   canChangePassword: PropTypes.bool,
 };
 
-const mapStateToProps = state => {
-  return state.user;
-};
-
-const mapDispatchToProps = dispatch => ({
-  getComments: (data, page) => dispatch(getComments(data, page)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default Profile;

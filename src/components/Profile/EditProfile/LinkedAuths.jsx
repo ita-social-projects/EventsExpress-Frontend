@@ -3,15 +3,21 @@ import PropTypes from "prop-types";
 import externalLoginTypeEnum from "../../../constants/externalLoginTypeEnumConstants";
 
 const renderType = type => {
+  const renderData = {
+    Google: <i className="fab fa-google" />,
+    Facebook: <i className="fab fa-facebook" />,
+    Twitter: <i className="fab fa-twitter" />,
+    dafault: <i className="fas fa-at" />,
+  };
   const { Google, Facebook, Twitter } = externalLoginTypeEnum;
-  let element = <i className="fas fa-at" />;
+  let element = renderData.dafault;
 
   if (type === Google) {
-    element = <i className="fab fa-google" />;
+    element = renderData.Google;
   } else if (type === Facebook) {
-    element = <i className="fab fa-facebook" />;
+    element = renderData.Facebook;
   } else if (type === Twitter) {
-    element = <i className="fab fa-twitter" />;
+    element = renderData.Twitter;
   }
   return element;
 };

@@ -39,12 +39,9 @@ const ChangePassword = ({
     setExpanded(isExpanded ? panel : false);
   };
 
-  const { SUBMIT, CLEAR, CHANGE_PASSWORD } = profileConstants;
+  const { SUBMIT, CLEAR, CHANGE_PASSWORD, PANEL5 } = profileConstants;
   return (
-    <Accordion
-      expanded={expanded === "panel5"}
-      onChange={handleChange("panel5")}
-    >
+    <Accordion expanded={expanded === PANEL5} onChange={handleChange(PANEL5)}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1bh-content"
