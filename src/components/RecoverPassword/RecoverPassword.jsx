@@ -3,18 +3,9 @@ import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import { ImCross } from "react-icons/im";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
-import isValidEmail from "../helpers/validators/email-address-validator";
-import fieldIsRequired from "../helpers/validators/required-fields-validator";
+import { validate } from "../helpers/validateHelper";
 import "./RecoverPassword.scss";
 import FormInput from "../shared/FormInput/FormInput";
-
-const validate = values => {
-  const requiredFields = ["email"];
-  return {
-    ...fieldIsRequired(values, requiredFields),
-    ...isValidEmail(values.email),
-  };
-};
 
 const RecoverPassword = ({
   handleSubmit,
@@ -23,6 +14,7 @@ const RecoverPassword = ({
   submitting,
   error,
   handleRecoverClose,
+  status,
 }) => {
   return (
     <form className="recover-password-form" onSubmit={handleSubmit}>
@@ -33,12 +25,20 @@ const RecoverPassword = ({
         If you forgot your password please enter your email address here. <br />{" "}
         We will send you new password.
       </h4>
-
-      <div>
-        <Field name="email" component={FormInput} placeholder="Your Email..." />
-        {error && <ErrorMessages error={error} className="text-center" />}
-      </div>
-
+      {!status.isError && submitting && (
+        <p className="recover-success">
+          New password sent by your email.
+          <br />
+          Please use it to sign in.
+        </p>
+      )}
+      <Field
+        className="auth-input"
+        name="email"
+        component={FormInput}
+        placeholder="Your Email..."
+      />
+      {error && <ErrorMessages error={error} className="text-center" />}
       <div className="recover-btns">
         <button
           className="recover-clear"
@@ -63,6 +63,7 @@ RecoverPassword.defaultProps = {
   submitting: false,
   error: [],
   handleRecoverClose: () => {},
+  status: {},
 };
 
 RecoverPassword.propTypes = {
@@ -72,9 +73,10 @@ RecoverPassword.propTypes = {
   submitting: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   handleRecoverClose: PropTypes.func,
+  status: PropTypes.object,
 };
 
 export default reduxForm({
   form: "recoverPassword",
-  validate,
+  validate: validate(["email"]),
 })(RecoverPassword);

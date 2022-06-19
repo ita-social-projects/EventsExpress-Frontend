@@ -4,6 +4,7 @@
 .login-form {
     position: relative;
     width: 500px;
+    height: 550px;
     padding: 50px 30px 20px 30px;
     border-radius: 10px;
     display: flex;
@@ -48,18 +49,5 @@
         text-decoration: underline;
         font-size: $fontsize-12;
         font-weight: $bold;
-        margin-bottom: 100px;
-    }
-    .social-auth {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        .social-auth__title {
-            margin-right: 30px;
-            font-size: $fontsize-18;
-        }
-        .btn-facebook {
-            margin-right: 20px;
-        }
     }
 }

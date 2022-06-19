@@ -1,3 +1,47 @@
-.registerFormInputs {
-  width: 100%;
+@import "../../styles/colors.scss";
+@import "../../styles/fonts.scss";
+
+.register-form {
+    position: relative;
+    width: 500px;
+    height: 550px;
+    padding: 50px 30px 20px 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $lightPink; 
+    color: $black;
+    font-size: $fontsize-18;
+    margin-bottom: 30px;
+    box-shadow: 0 0 15px $white;
+    .register-form__title {
+        font-size: $fontsize-40;
+        font-weight: $bold;
+        margin-bottom: 50px;
+    }
+    .register-error {
+        margin-bottom: 20px;
+    }
+    .close-btn {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        cursor: pointer;
+    }
+    .auth-input {
+        max-width: 80%;
+    }
+    .auth-btn {
+        cursor: pointer;
+        padding: 10px 100px;
+        border-radius: 10px;
+        color: $white;
+        background-color: $purpleDark;
+        font-size: $fontsize-18;
+        font-weight: $bold;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
 }

@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 import { ImCross } from "react-icons/im";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import GoogleLogin from "../../containers/LoginContainer/GoogleLogin";
-import FacebookLogin from "../../containers/LoginContainer/FacebookLoginContainer";
+
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import { validate } from "../helpers/validateHelper";
 import "./Login.scss";
 import FormInput from "../shared/FormInput/FormInput";
-import RecoverPassword from "../RecoverPassword/RecoverPassword";
+import SocialAuth from "../SocialAuth/SocialAuth";
+import RecoverPasswordContainer from "../../containers/EditProfileContainers/RecoverPasswordContainer";
 
-// error
 const Login = ({ handleSubmit, handleClose, error }) => {
   const [isRecoverPassword, setIsRecoverPassword] = useState(false);
   const handleRecoverClick = () => {
@@ -44,7 +43,7 @@ const Login = ({ handleSubmit, handleClose, error }) => {
         component={FormInput}
       />
       <button className="auth-btn" type="submit">
-        Sign Up
+        Sign In
       </button>
       <button
         onClick={handleRecoverClick}
@@ -54,32 +53,22 @@ const Login = ({ handleSubmit, handleClose, error }) => {
         Forgot Password?
       </button>
       {isRecoverPassword && (
-        <RecoverPassword
+        <RecoverPasswordContainer
           handleRecoverClose={() => setIsRecoverPassword(false)}
         />
       )}
-      <div className="social-auth">
-        <span className="social-auth__title">Or sign in with:</span>
-        <FacebookLogin />
-        <GoogleLogin />
-      </div>
+      <SocialAuth />
     </form>
   );
 };
 
 Login.defaultProps = {
-  // pristine: false,
-  // reset: () => {},
-  // submitting: false,
   error: [],
   handleSubmit: () => {},
   handleClose: () => {},
 };
 
 Login.propTypes = {
-  // pristine: PropTypes.bool,
-  // reset: PropTypes.func,
-  // submitting: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   handleSubmit: PropTypes.func,
   handleClose: PropTypes.func,

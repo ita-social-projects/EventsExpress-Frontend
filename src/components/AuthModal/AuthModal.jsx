@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import LoginContainer from "../../containers/LoginContainer/LoginContainer";
 import RegisterContainer from "../../containers/RegisterContainer/RegisterContainer";
+import AuthSwitcher from "./AuthSwitcher";
 import { TogleOpenWind } from "../../actions/modalWind-action";
-import "./ModalWind.scss";
+import "./AuthModal.scss";
 
-const ModalWind = ({ setIsOpen, isOpen }) => {
+const AuthModal = ({ setIsOpen, isOpen }) => {
   const [isLogin, setIsLogin] = useState(true);
 
   const handleClose = () => {
@@ -24,42 +25,17 @@ const ModalWind = ({ setIsOpen, isOpen }) => {
     >
       {isLogin && <LoginContainer handleClose={handleClose} />}
       {!isLogin && <RegisterContainer handleClose={handleClose} />}
-      {/* MOVE TO LOGIN CONTAINER {isLogin && <Modalwind2 />} */}
-
-      {isLogin && (
-        <h4 className="modal-switcher">
-          You haven’t got an account?
-          <button
-            type="button"
-            onClick={handleModeSwitch}
-            className="switcher-btn"
-          >
-            Register
-          </button>{" "}
-        </h4>
-      )}
-      {!isLogin && (
-        <h4 className="modal-switcher">
-          Have an account?{" "}
-          <button
-            type="button"
-            onClick={handleModeSwitch}
-            className="switcher-btn"
-          >
-            Login
-          </button>
-        </h4>
-      )}
+      <AuthSwitcher isLogin={isLogin} handleModeSwitch={handleModeSwitch} />
     </div>
   );
 };
 
-ModalWind.defaultProps = {
+AuthModal.defaultProps = {
   setIsOpen: () => {},
   isOpen: false,
 };
 
-ModalWind.propTypes = {
+AuthModal.propTypes = {
   setIsOpen: PropTypes.func,
   isOpen: PropTypes.bool,
 };
@@ -72,4 +48,4 @@ const mapDispatchToProps = dispatch => ({
   setIsOpen: data => dispatch(TogleOpenWind(data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalWind);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthModal);

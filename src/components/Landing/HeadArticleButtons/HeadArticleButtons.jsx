@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AuthComponent from "../../../security/authComponent";
-import ModalWind from "../../ModalWind/ModalWind";
+import AuthModal from "../../AuthModal/AuthModal";
 import { HEADER_CONSTS } from "../../../constants/headersConstants";
 
 const { CREATE_EVENT, FIND_EVENT, WHAT_DO_YOU_WANT_TO_DO } = HEADER_CONSTS;
@@ -12,7 +12,7 @@ const HeadArticleButtons = () => {
       <h2>{WHAT_DO_YOU_WANT_TO_DO}</h2>
       <div className="buttons">
         <AuthComponent onlyAnonymous>
-          <ModalWind
+          <AuthModal
             className="text-center"
             renderButton={action => (
               <button

@@ -4,29 +4,22 @@ import PropTypes from "prop-types";
 import RecoverPassword from "../../components/RecoverPassword/RecoverPassword";
 import recoverPassword from "../../actions/redactProfile/password-recover-action";
 
-// TODO Refactor class component
-class RecoverPasswordContainer extends React.Component {
-  submit = value => {
-    return this.props.recoverPassword(value);
+const RecoverPasswordContainer = ({
+  recoverPasswordDispatch,
+  status,
+  handleRecoverClose,
+}) => {
+  const handleRecoverSubmit = values => {
+    recoverPasswordDispatch(values.email);
   };
-
-  render() {
-    const { status } = this.props;
-
-    return (
-      <>
-        <RecoverPassword onSubmit={this.submit} />
-        {status.isError !== undefined && !status.isError && (
-          <p className="text-success text-center">
-            New password sent by your email.
-            <br />
-            Please use it to sign in.
-          </p>
-        )}
-      </>
-    );
-  }
-}
+  return (
+    <RecoverPassword
+      handleRecoverClose={handleRecoverClose}
+      onSubmit={handleRecoverSubmit}
+      status={status}
+    />
+  );
+};
 
 const mapStateToProps = state => {
   return {
@@ -36,18 +29,22 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    recoverPassword: data => dispatch(recoverPassword(data)),
+    recoverPasswordDispatch: data => dispatch(recoverPassword(data)),
   };
 };
 
 RecoverPasswordContainer.propTypes = {
+  handleRecoverClose: PropTypes.func,
   status: PropTypes.object,
-  recoverPassword: PropTypes.func,
+  recoverPasswordDispatch: PropTypes.func,
 };
 
 RecoverPasswordContainer.defaultProps = {
-  status: {},
-  recoverPassword: () => {},
+  handleRecoverClose: () => {},
+  status: {
+    isError: false,
+  },
+  recoverPasswordDispatch: () => {},
 };
 
 export default connect(

@@ -1,89 +1,74 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DialogActions from "@material-ui/core/DialogActions";
 import { Field, reduxForm } from "redux-form";
-import Button from "@material-ui/core/Button";
-import {
-  minLength6,
-  maxLength15,
-} from "../helpers/validators/min-max-length-validators";
-import { renderTextField } from "../helpers/form-helpers";
+import { ImCross } from "react-icons/im";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import "./Register.scss";
 import { validate } from "../helpers/validateHelper";
+import FormInput from "../shared/FormInput/FormInput";
+import SocialAuth from "../SocialAuth/SocialAuth";
 
-const Register = ({ pristine, reset, submitting, error, handleSubmit }) => {
+const Register = ({ error, handleSubmit, handleClose }) => {
   return (
-    <div className="register">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <Field
-            className="registerFormInputs"
-            name="email"
-            component={renderTextField}
-            label="E-mail:"
-            type="email"
-          />
-        </div>
-        <div>
-          <Field
-            className="registerFormInputs"
-            name="password"
-            component={renderTextField}
-            label="Password:"
-            type="password"
-            validate={[maxLength15, minLength6]}
-          />
-        </div>
-        <div>
-          <Field
-            className="registerFormInputs"
-            name="RepeatPassword"
-            component={renderTextField}
-            label="Repeat password:"
-            type="password"
-            validate={[maxLength15, minLength6]}
-          />
-        </div>
-        <div>
-          <DialogActions>
-            <Button
-              fullWidth
-              type="button"
-              color="primary"
-              disabled={pristine || submitting}
-              onClick={reset}
-            >
-              CLEAR
-            </Button>
-            <Button fullWidth type="submit" color="primary">
-              Sign Up
-            </Button>
-          </DialogActions>
-        </div>
-        {error && <ErrorMessages error={error} className="text-center" />}
-      </form>
-    </div>
+    <form className="register-form" onSubmit={handleSubmit}>
+      <h2 className="register-form__title">Register</h2>
+      {error && (
+        <ErrorMessages error={error} className="register-error text-center" />
+      )}
+      <button className="close-btn" onClick={handleClose} type="button">
+        <ImCross />
+      </button>
+      <Field
+        className="auth-input"
+        name="email"
+        component={FormInput}
+        placeholder="Enter Email:"
+        type="email"
+      />
+
+      <Field
+        className="auth-input"
+        name="password"
+        component={FormInput}
+        placeholder="Enter Password:"
+        type="password"
+      />
+
+      <Field
+        className="auth-input"
+        name="RepeatPassword"
+        component={FormInput}
+        placeholder="Repeat Password:"
+        type="password"
+      />
+
+      <button className="auth-btn" type="submit">
+        Sign Up
+      </button>
+      <SocialAuth />
+    </form>
   );
 };
 
 Register.defaultProps = {
-  pristine: false,
-  reset: () => {},
-  submitting: false,
   error: "",
   handleSubmit: () => {},
+  handleClose: () => {},
 };
 
 Register.propTypes = {
-  pristine: PropTypes.bool,
-  reset: PropTypes.func,
-  submitting: PropTypes.bool,
   error: PropTypes.string,
   handleSubmit: PropTypes.func,
+  handleClose: PropTypes.func,
 };
 
 export default reduxForm({
   form: "register-form",
-  validate: validate(["password", "email", "RepeatPassword"]),
+  validate: validate(
+    ["password", "email", "RepeatPassword"],
+    [
+      { field: "password", minLen: 6, maxLen: 15 },
+      { field: "RepeatPassword", minLen: 6, maxLen: 15 },
+    ],
+  ),
 })(Register);
