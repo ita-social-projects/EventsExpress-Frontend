@@ -7,22 +7,32 @@ import "./Register.scss";
 import { validate } from "../helpers/validateHelper";
 import FormInput from "../shared/FormInput/FormInput";
 import SocialAuth from "../SocialAuth/SocialAuth";
+import Button from "../shared/Button/Button";
+import {
+  CONFIRM_PASSWORD_PLACEHOLDER,
+  EMAIL_PLACEHOLDER,
+  PASSWORD_PLACEHOLDER,
+  REGISTER,
+  SIGN_UP,
+} from "../../constants/authModalConstants";
 
 const Register = ({ error, handleSubmit, handleClose }) => {
   return (
     <form className="register-form" onSubmit={handleSubmit}>
-      <h2 className="register-form__title">Register</h2>
+      <h2 className="register-form__title">{REGISTER}</h2>
       {error && (
         <ErrorMessages error={error} className="register-error text-center" />
       )}
-      <button className="close-btn" onClick={handleClose} type="button">
-        <ImCross />
-      </button>
+      <Button
+        content={<ImCross />}
+        className="close-btn"
+        onClick={handleClose}
+      />
       <Field
         className="auth-input"
         name="email"
         component={FormInput}
-        placeholder="Enter Email:"
+        placeholder={EMAIL_PLACEHOLDER}
         type="email"
       />
 
@@ -30,7 +40,7 @@ const Register = ({ error, handleSubmit, handleClose }) => {
         className="auth-input"
         name="password"
         component={FormInput}
-        placeholder="Enter Password:"
+        placeholder={PASSWORD_PLACEHOLDER}
         type="password"
       />
 
@@ -38,13 +48,10 @@ const Register = ({ error, handleSubmit, handleClose }) => {
         className="auth-input"
         name="RepeatPassword"
         component={FormInput}
-        placeholder="Repeat Password:"
+        placeholder={CONFIRM_PASSWORD_PLACEHOLDER}
         type="password"
       />
-
-      <button className="auth-btn" type="submit">
-        Sign Up
-      </button>
+      <Button content={SIGN_UP} className="auth-btn" type="submit" />
       <SocialAuth />
     </form>
   );

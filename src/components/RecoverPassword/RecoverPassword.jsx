@@ -5,6 +5,17 @@ import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import { validate } from "../helpers/validateHelper";
 import "./RecoverPassword.scss";
 import FormInput from "../shared/FormInput/FormInput";
+import {
+  CLEAR,
+  CLOSE,
+  EMAIL_PLACEHOLDER,
+  NEW_PASSWORD_SENT_TO_USER_EMAIL,
+  OUR_ACTION_TO_USER_FORGOT_PASSWORD,
+  SUBMIT,
+  USER_FORGOT_PASSWORD_MESSAGE,
+  USE_NEW_PASSWORD_TO_LOGIN,
+} from "../../constants/authModalConstants";
+import Button from "../shared/Button/Button";
 
 const RecoverPassword = ({
   handleSubmit,
@@ -18,39 +29,37 @@ const RecoverPassword = ({
   return (
     <form className="recover-password-form" onSubmit={handleSubmit}>
       <h4 className="recover-heading">
-        If you forgot your password please enter your email address here. <br />{" "}
-        We will send you new password.
+        {USER_FORGOT_PASSWORD_MESSAGE} <br />
+        {OUR_ACTION_TO_USER_FORGOT_PASSWORD}
       </h4>
       {!status.isError && submitting && (
         <p className="recover-success">
-          New password sent by your email.
+          {NEW_PASSWORD_SENT_TO_USER_EMAIL}
           <br />
-          Please use it to sign in.
+          {USE_NEW_PASSWORD_TO_LOGIN}
         </p>
       )}
       <Field
         className="auth-input"
         name="email"
         component={FormInput}
-        placeholder="Your Email..."
+        placeholder={EMAIL_PLACEHOLDER}
       />
       {error && <ErrorMessages error={error} className="text-center" />}
       <div className="recover-btns">
-        <button
+        <Button
+          content={CLEAR}
           className="recover-clear"
           onClick={reset}
           disabled={pristine || submitting}
-          type="button"
-        >
-          Clear
-        </button>
-        <button className="recover-submit" type="submit">
-          Submit
-        </button>
+        />
+        <Button content={SUBMIT} className="recover-submit" type="submit" />
       </div>
-      <button className="close-btn" onClick={handleRecoverClose} type="button">
-        Close
-      </button>
+      <Button
+        content={CLOSE}
+        className="close-clobtnse"
+        onClick={handleRecoverClose}
+      />
     </form>
   );
 };

@@ -19,7 +19,7 @@
     .modal-switcher {
         width: 450px;
         padding: 30px 50px;
-        border-radius: 10px;
+        border-radius: $authModalBorderRadius;
         @include flex(row, center, center);
         background-color: $lightPink; 
         color: $black;

@@ -1,31 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {
+  AUTH_SWITCHER_DONT_HAVE_ACCOUNT,
+  AUTH_SWITCHER_HAVE_ACCOUNT,
+  LOGIN,
+  REGISTER,
+} from "../../constants/authModalConstants";
+import Button from "../shared/Button/Button";
 
 const AuthSwitcher = ({ isLogin, handleModeSwitch }) => {
   return (
     <>
       {isLogin && (
         <h4 className="modal-switcher">
-          You haven’t got an account?
-          <button
-            type="button"
+          {AUTH_SWITCHER_DONT_HAVE_ACCOUNT}
+          <Button
+            content={REGISTER}
             onClick={handleModeSwitch}
             className="switcher-btn"
-          >
-            Register
-          </button>{" "}
+          />
         </h4>
       )}
       {!isLogin && (
         <h4 className="modal-switcher">
-          Have an account?{" "}
-          <button
-            type="button"
+          {AUTH_SWITCHER_HAVE_ACCOUNT}
+          <Button
+            content={LOGIN}
             onClick={handleModeSwitch}
             className="switcher-btn"
-          >
-            Login
-          </button>
+          />
         </h4>
       )}
     </>
