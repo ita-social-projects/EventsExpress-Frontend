@@ -1,19 +1,18 @@
 @import "../../styles/colors.scss";
 @import "../../styles/fonts.scss";
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .auth-modal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include flex(column, center, center);
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    min-height: 100vh;
+    top: $height50;
+    left: $width50;
+    transform: translate(-$width50, -$height50);
+    width: $fullWidth;
+    min-height: $absoluteHeight100;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: $authModalOutsideColor;
     &.closed {
         display: none;
     }
@@ -21,13 +20,11 @@
         width: 450px;
         padding: 30px 50px;
         border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex(row, center, center);
         background-color: $lightPink; 
         color: $black;
         font-size: $fontsize-16;
-        box-shadow: 0 0 15px $white;
+        box-shadow: $authModalShadow;
         .switcher-btn {
             cursor: pointer;
             margin-left: 15px;
@@ -35,4 +32,17 @@
             font-weight: $bold;
         }
     }
+    @media screen and (max-width: $mediaMobileScreen) {
+        .modal-switcher {
+          width: $width80;
+          padding: 20px 30px;
+          font-size: $fontsize-16;
+          flex-direction: column;
+          .switcher-btn {
+            margin-top: 5px;
+            margin-left: 0;
+          }
+        }
+    }
 }
+
