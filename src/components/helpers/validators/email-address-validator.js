@@ -1,5 +1,7 @@
+import { EMAIL_ADDRESS_VALIDATOR_REGEX } from "../../../constants/helpersConstants";
+
 const isValidEmail = email => {
-  if (!email || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+  if (!email || !EMAIL_ADDRESS_VALIDATOR_REGEX.test(email)) {
     return false;
   }
   return true;

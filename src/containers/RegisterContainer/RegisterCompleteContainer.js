@@ -21,13 +21,15 @@ const mapStateToProps = state => {
   return null;
 };
 
+const registerCompleteValidate = validate(
+  ["birthday", "userName", "email", "phone", "gender"],
+  [{ field: "username", minLen: 3, maxLen: 50 }],
+);
+
 export default connect(mapStateToProps)(
   reduxForm({
     form: "register-complete-form",
-    validate: validate(
-      ["birthday", "userName", "email", "phone", "gender"],
-      [{ field: "username", minLen: 3, maxLen: 50 }],
-    ),
+    validate: registerCompleteValidate,
     enableReinitialize: true,
   })(RegisterComplete),
 );

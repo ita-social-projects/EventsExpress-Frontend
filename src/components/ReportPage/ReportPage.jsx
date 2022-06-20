@@ -16,15 +16,16 @@ const ReportPage = ({ handleReportFormSubmit }) => {
     };
     handleReportFormSubmit(validatedValues);
   };
+  const reportValidation = validate(
+    ["email", "description"],
+    [{ field: "title", maxLen: 30 }],
+  );
   return (
     <div className="report__container">
       <h3 className="report-container__title">{REPORT_FORM_TITLE}</h3>
       <Form
         onSubmit={onHandleReportFormSubmit}
-        validate={validate(
-          ["email", "description"],
-          [{ field: "title", maxLen: 30 }],
-        )}
+        validate={reportValidation}
         render={formProps => <ReportForm {...formProps} />}
       />
     </div>
