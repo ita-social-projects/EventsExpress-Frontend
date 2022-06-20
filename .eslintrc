@@ -22,13 +22,13 @@
     //   }
     // ], // forbidden snake_case --------> ~ 140 errors
     // "complexity": ["error", 12],
-
+    
+    "eol-last": ["error", "always"],
+    // "import/no-unresolved": [2, { "caseSensitive": true }], // check if imported file can be resolved
     // "no-magic-numbers": [
     //   "error",
-    //   { "ignore": [0, 1], "ignoreDefaultValues": true }
+    //   { "ignoreDefaultValues": true }
     // ], // magic number becides 0,1 --------> ~ 100 errors
-
-    // "import/no-unresolved": [2, { "caseSensitive": true }], // check if imported file can be resolved
 
     "import/no-cycle": [
       "off", // error
