@@ -18,7 +18,7 @@ Button.defaultProps = {
   type: "button",
 };
 Button.propTypes = {
-  content: PropTypes.object,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   onClick: PropTypes.func,
   className: PropTypes.string,
   type: PropTypes.string,
