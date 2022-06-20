@@ -57,7 +57,7 @@ UserInfoCard.propTypes = {
   birthday: PropTypes.string,
   attitude: PropTypes.number,
   rating: PropTypes.number,
-  gender: PropTypes.string,
+  gender: PropTypes.number,
 };
 
 export default UserInfoCard;
