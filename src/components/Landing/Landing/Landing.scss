@@ -1,6 +1,8 @@
 @import "../../../styles/main.scss";
+@import "../../../styles/variables.scss";
 
 .upcoming__events__navigation {
+    width: $fullWidth;
     display: flex;
     justify-content: space-between;
     margin: 50px 0;
@@ -41,7 +43,7 @@
 
 // TODO: move this style to HeadArticleButton
 
-.button-container > h2 {
+.button-container>h2 {
     color: $white;
     text-align: center;
     filter: drop-shadow(0.05em 0.05em $orange);

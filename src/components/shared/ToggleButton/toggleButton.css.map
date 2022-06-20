@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,gBAAgB,CAAC;EACf,WAAW,EAAE,MAAM;EACnB,cAAc,EAAE,GAAG;EACnB,MAAM,EAAE,GAAG;EACX,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,OAAO;EACf,KAAK,EERC,OAAO;CFad;;AAHC,MAAM,EAAE,SAAS,EAAE,KAAK;EAR1B,AAAA,gBAAgB,CAAC;IASb,aAAa,EAAE,GAAG;GAErB",
+    "sources": [
+        "toggleButton.scss",
+        "../../../styles/variables.scss",
+        "../../../styles/colors.scss"
+    ],
+    "names": [],
+    "file": "toggleButton.css"
+}
