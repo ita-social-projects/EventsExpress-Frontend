@@ -74,7 +74,7 @@ $centeredContainer: 460px;
 
 @media screen and (max-width: $mediaMobileScreen) {
     .container {
-        height: calc(100vh - $centeredContainer);
+        min-height: calc(100vh - $centeredContainer);
         top: $halfHieght;
 
         .bannerButton {

@@ -8,6 +8,7 @@ const DraftList = ({
   totalPages,
   isItemsAvaliable,
   isPages,
+  isItemsFetched,
   deleteEvent,
   getDraftsAction,
 }) => {
@@ -24,6 +25,7 @@ const DraftList = ({
       isItemsAvaliable={isItemsAvaliable}
       isPages={isPages}
       drafts={items}
+      isItemsFetched={isItemsFetched}
       totalPages={totalPages}
       page={pageNumber}
       handlePageChange={handlePageChange}
@@ -35,6 +37,7 @@ const DraftList = ({
 DraftList.propTypes = {
   getDraftsAction: PropTypes.func,
   items: PropTypes.array,
+  isItemsFetched: PropTypes.bool,
   totalPages: PropTypes.number,
   pageNumber: PropTypes.number,
   deleteEvent: PropTypes.func,
@@ -45,6 +48,7 @@ DraftList.propTypes = {
 DraftList.defaultProps = {
   getDraftsAction: () => {},
   deleteEvent: () => {},
+  isItemsFetched: false,
   items: [],
   totalPages: null,
   pageNumber: 1,

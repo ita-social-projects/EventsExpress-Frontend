@@ -4,9 +4,9 @@
 @import "../../styles/mixins.scss";
 
 .footer__container {
+    width: $fullWidth;
     position: absolute;
     bottom: 0;
-    width: $fullWidth;
     margin-top: 30px;
     text-align: center;
 }

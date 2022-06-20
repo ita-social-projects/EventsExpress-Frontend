@@ -5,7 +5,7 @@
 html,
 body,
 #root {
-    height: 100%;
+  height: 100%;
 }
 
 body {
@@ -15,55 +15,58 @@ body {
   font-weight: 500;
   font-size: 16px;
 }
+
 html {
   font-size: 16px;
 }
+
 @media screen and (max-width: $mediaSecondTabletScreen) {
-  html{
+  html {
     font-size: 14px;
   }
 }
+
 @media screen and (max-width: $mediaMobileScreen) {
-  html{
+  html {
     font-size: 12px;
   }
 }
 
 .container {
-    max-width: 1170px;
-    margin: 0 auto;
+  max-width: 1170px;
+  margin: 0 auto;
 
-    @media (max-width: $mediaPcScreen) {
-        max-width: $widthForContentPcScreen;
-    }
+  @media (max-width: $mediaPcScreen) {
+    max-width: $widthForContentPcScreen;
+  }
 
-    @media (max-width: $mediaFirstTabletScreen) {
-        max-width: $widthForContentFirstTabletScreen;
-    }
+  @media (max-width: $mediaFirstTabletScreen) {
+    max-width: $widthForContentFirstTabletScreen;
+  }
 
-    @media (max-width: $mediaSecondTabletScreen) {
-        max-width: $widthForContentSecondTabletScreen;
-    }
+  @media (max-width: $mediaSecondTabletScreen) {
+    max-width: $widthForContentSecondTabletScreen;
+  }
 
-    @media (max-width: $mediaMobileScreen) {
-        width: auto;
-        padding: 0 10px;
-    }
+  @media (max-width: $mediaMobileScreen) {
+    width: auto;
+    padding: 0 10px;
+  }
 }
 
 .bttn {
-    padding: 10px;
-    color: $lightThemeAccept;
-    font-weight: $bold;
-    font-size: 14px;
-    border: 2px solid $lightThemeAccept;
-    border-radius: $buttonBorderRadius;
-    cursor: pointer;
+  padding: 10px;
+  color: $lightThemeAccept;
+  font-weight: $bold;
+  font-size: 14px;
+  border: 2px solid $lightThemeAccept;
+  border-radius: $buttonBorderRadius;
+  cursor: pointer;
 
-    &:hover {
-        color: darken($color: $lightThemeAccept, $amount: 15%);
-        text-decoration: none;
-        background-color: $white;
-        border-color: darken($color: $lightThemeAccept, $amount: 15%);
-    }
+  &:hover {
+    color: darken($color: $lightThemeAccept, $amount: 15%);
+    text-decoration: none;
+    background-color: $white;
+    border-color: darken($color: $lightThemeAccept, $amount: 15%);
+  }
 }
