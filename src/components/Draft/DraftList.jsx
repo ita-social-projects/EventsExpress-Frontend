@@ -1,79 +1,55 @@
-﻿/* eslint-disable react/no-unused-state */
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { createBrowserHistory } from "history";
+﻿import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import DraftEventCard from "./DraftEventCard";
 import RenderList from "../Event/RenderList/RenderList";
-import { changeEventStatus } from "../../actions/event/event-item-view-action";
-import { EVENT_STATUS_ENUM } from "../../constants/eventConstants";
-import { setSuccessAllert } from "../../actions/alert-action";
 
-const history = createBrowserHistory({ forceRefresh: true });
-
-class DraftList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      currentPage: 1,
-    };
-  }
-
-  handlePageChange = page => {
-    this.props.get_drafts(page);
-    this.setState({
-      currentPage: page,
-    });
+const DraftList = ({
+  items,
+  pageNumber,
+  totalPages,
+  isItemsAvaliable,
+  isPages,
+  deleteEvent,
+  getDraftsAction,
+}) => {
+  const handlePageChange = page => {
+    getDraftsAction(page);
   };
 
-  renderSingleItem = item => (
-    <DraftEventCard
-      key={item.id + item.isBlocked}
-      item={item}
-      current_user={this.props.current_user}
-      onDelete={this.onDelete}
+  useEffect(() => {
+    getDraftsAction(pageNumber);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return (
+    <RenderList
+      isItemsAvaliable={isItemsAvaliable}
+      isPages={isPages}
+      drafts={items}
+      totalPages={totalPages}
+      page={pageNumber}
+      handlePageChange={handlePageChange}
+      onDelete={deleteEvent}
     />
   );
-
-  onDelete = async (eventId, reason) => {
-    await this.props.delete(eventId, reason);
-    this.props.alert("Your event has been successfully deleted!");
-    history.push(`/drafts`);
-  };
-
-  render() {
-    return (
-      <>
-        <RenderList
-          {...this.props}
-          renderSingleItem={this.renderSingleItem}
-          handlePageChange={this.handlePageChange}
-        />
-      </>
-    );
-  }
-}
-
-DraftList.defaultProps = {
-  alert: () => {},
-  delete: () => {},
-  get_drafts: () => {},
-  current_user: {},
 };
 
 DraftList.propTypes = {
-  alert: PropTypes.func,
-  delete: PropTypes.func,
-  get_drafts: PropTypes.func,
-  current_user: PropTypes.object,
+  getDraftsAction: PropTypes.func,
+  items: PropTypes.array,
+  totalPages: PropTypes.number,
+  pageNumber: PropTypes.number,
+  deleteEvent: PropTypes.func,
+  isItemsAvaliable: PropTypes.bool,
+  isPages: PropTypes.bool,
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    alert: msg => dispatch(setSuccessAllert(msg)),
-    delete: (eventId, reason) =>
-      dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.DELETED)),
-  };
+DraftList.defaultProps = {
+  getDraftsAction: () => {},
+  deleteEvent: () => {},
+  items: [],
+  totalPages: null,
+  pageNumber: 1,
+  isItemsAvaliable: false,
+  isPages: false,
 };
 
-export default connect(null, mapDispatchToProps)(DraftList);
+export default DraftList;

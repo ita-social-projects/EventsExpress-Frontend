@@ -1,3 +1,19 @@
+@import "../../styles/variables.scss";
+
+.container {
+    width: $fullWidth;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+.eventsBlock {
+    width: $fullWidth;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .custom-center {
     position: fixed;
     top: 50%;

@@ -70,7 +70,7 @@
 		"sass": "^1.49.7",
 		"slick-carousel": "^1.8.1",
 		"webpack": "^4.44.2"
-	  },
+	},
 	"devDependencies": {
 		"@commitlint/cli": "^16.2.3",
 		"@commitlint/config-conventional": "^16.2.1",

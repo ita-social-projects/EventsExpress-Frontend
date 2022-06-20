@@ -1,0 +1,22 @@
+@import "../../../styles/variables.scss";
+
+.container {
+    width: $fullWidth;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+
+    .draftPagination {
+        margin-top: 20px;
+        width: $fullWidth;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.eventsBlock {
+    width: $fullWidth;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
