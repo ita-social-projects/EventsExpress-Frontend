@@ -5,22 +5,8 @@ import Button from "@material-ui/core/Button";
 import DropZoneField from "../../helpers/DropZoneField";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import PhotoService from "../../../services/PhotoService";
-
-const validate = values => {
-  const errors = {};
-  if (
-    values.image != null &&
-    values.image.file != null &&
-    values.image.file.size < 4096
-  ) {
-    errors.image = "Image is too small";
-  }
-  if (values.image === null || values.image === undefined) {
-    errors.image = "Image is required";
-  }
-
-  return errors;
-};
+import profileConstants from "../../../constants/profileConstants";
+import validateAvatarForProfile from "../../helpers/validateAvatar";
 
 const photoService = new PhotoService();
 
@@ -32,6 +18,7 @@ const ChangeAvatar = ({
   error,
   initialValues,
 }) => {
+  const { SUBMIT } = profileConstants;
   return (
     <form name="change-avatar" onSubmit={handleSubmit}>
       <Field
@@ -43,16 +30,13 @@ const ChangeAvatar = ({
         loadImage={() => photoService.getUserPhoto(initialValues.userId)}
       />
       {error && <ErrorMessages error={error} className="text-center" />}
-      <div>
-        <Button
-          color="primary"
-          type="submit"
-          disabled={pristine || submitting || invalid}
-        >
-          {" "}
-          Submit{" "}
-        </Button>
-      </div>
+      <Button
+        color="primary"
+        type="submit"
+        disabled={pristine || submitting || invalid}
+      >
+        {SUBMIT}
+      </Button>
     </form>
   );
 };
@@ -78,5 +62,5 @@ ChangeAvatar.defaultProps = {
 export default reduxForm({
   form: "change-avatar",
   enableReinitialize: true,
-  validate,
+  validateAvatarForProfile,
 })(ChangeAvatar);

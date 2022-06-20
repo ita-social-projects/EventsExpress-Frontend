@@ -1,4 +1,4 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Accordion from "@material-ui/core/Accordion";
@@ -7,36 +7,21 @@ import { AccordionSummary } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
+import profileConstants from "../../../constants/profileConstants";
 
-// TODO: remove this
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: "100%",
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    flexBasis: "33.33%",
-    flexShrink: 0,
-  },
-  secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
-  },
-}));
+const { fields, fieldsLabel, PASSWORD_NOT_MATCH } = profileConstants;
 
 const validate = values => {
   const errors = {};
-  const requiredFields = ["oldPassword", "newPassword", "repeatPassword"];
   if (values.newPassword !== values.repeatPassword) {
-    errors.repeatPassword = "Passwords do not match";
+    errors.repeatPassword = PASSWORD_NOT_MATCH;
   }
   return {
-    ...fieldIsRequired(values, requiredFields),
+    ...fieldIsRequired(values, fields),
     ...errors,
   };
 };
@@ -48,73 +33,54 @@ const ChangePassword = ({
   submitting,
   error,
 }) => {
-  const classes = useStyles();
-
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const { SUBMIT, CLEAR, CHANGE_PASSWORD, PANEL5 } = profileConstants;
   return (
-    <Accordion
-      expanded={expanded === "panel5"}
-      onChange={handleChange("panel5")}
-    >
+    <Accordion expanded={expanded === PANEL5} onChange={handleChange(PANEL5)}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1bh-content"
         id="panel1bh-header"
       >
-        <Typography className={classes.heading}>Change Password</Typography>
+        <Typography>{CHANGE_PASSWORD}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
           <MuiThemeProvider>
             <form onSubmit={handleSubmit}>
               <div className="d-flex flex-column">
-                <Field
-                  name="oldPassword"
-                  label="Input current password"
-                  component={renderTextField}
-                  type="password"
-                  className="mb-3"
-                />
-
-                <Field
-                  name="newPassword"
-                  label="Input new password"
-                  component={renderTextField}
-                  type="password"
-                  className="mb-3"
-                />
-
-                <Field
-                  name="repeatPassword"
-                  type="password"
-                  label="Repeat new password"
-                  component={renderTextField}
-                  className="mb-3"
-                />
+                {fields.map((field, index) => (
+                  <Field
+                    key={field}
+                    name={field}
+                    label={fieldsLabel[index]}
+                    component={renderTextField}
+                    type="password"
+                    className="mb-3"
+                  />
+                ))}
               </div>
               {error && <ErrorMessages error={error} className="text-center" />}
 
-              <div>
-                <Button
-                  type="submit"
-                  color="primary"
-                  disabled={pristine || submitting}
-                >
-                  Submit
-                </Button>
-                <Button
-                  type="button"
-                  disabled={pristine || submitting}
-                  onClick={reset}
-                >
-                  Clear
-                </Button>
-              </div>
+              <Button
+                type="submit"
+                color="primary"
+                disabled={pristine || submitting}
+              >
+                {SUBMIT}
+              </Button>
+              <Button
+                type="button"
+                disabled={pristine || submitting}
+                onClick={reset}
+              >
+                {CLEAR}
+              </Button>
             </form>
           </MuiThemeProvider>
         </Typography>
