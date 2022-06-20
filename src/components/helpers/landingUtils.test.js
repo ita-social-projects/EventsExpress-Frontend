@@ -104,19 +104,26 @@ const events = [
   },
 ];
 
+const filterTitle = "EDUCATION";
 describe("renders events in different view modes without events", () => {
   it("should return slider", () => {
-    const tree = renderer.create(viewModeSwitcher([], SLIDER)).toJSON();
+    const tree = renderer
+      .create(viewModeSwitcher([], SLIDER, filterTitle))
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should return matrix", () => {
-    const tree = renderer.create(viewModeSwitcher([], MATRIX)).toJSON();
+    const tree = renderer
+      .create(viewModeSwitcher([], MATRIX, filterTitle))
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should return list", () => {
-    const tree = renderer.create(viewModeSwitcher([], LIST)).toJSON();
+    const tree = renderer
+      .create(viewModeSwitcher([], LIST, filterTitle))
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
@@ -132,7 +139,10 @@ const store = mockStore({
 const treeWithEvents = viewMode =>
   renderer.create(
     <BrowserRouter>
-      <Provider store={store}>{viewModeSwitcher(events, viewMode)}</Provider>,
+      <Provider store={store}>
+        {viewModeSwitcher(events, viewMode, filterTitle)}
+      </Provider>
+      ,
     </BrowserRouter>,
   );
 

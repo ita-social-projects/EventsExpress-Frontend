@@ -105,11 +105,10 @@
 		"lint:fix": "eslint src --fix --ext .js,.jsx",
 		"prepare": "husky install",
 		"husky:pre-commit": "lint-staged"
-	},
+		},
 	"lint-staged": {
 		"*.{js,jsx}": [
-			"eslint src --fix --ext .js,.jsx",
-			"git diff --exit-code --stat"
+			"eslint src --fix --ext .js,.jsx"
 		]
 	},
 	"config": {
