@@ -5,7 +5,8 @@
 @import "../../../../styles/animations.scss";
 
 .wrapper {
-    @include flexContainer(center, center);
+    display: flex;
+    justify-content: center;
     width: $fullWidth;
     height: $fullHeight;
     background-color: $backGroundModal;

@@ -5,7 +5,7 @@ import { getEventSchedules } from "../../actions/eventSchedule/eventSchedule-lis
 const mapStateToProps = state => {
   return {
     isDataFetched: state.eventSchedules.isDataFetched,
-    isItemsAvaliable: state.eventSchedules.events.length < 0,
+    isItemsAvaliable: state.eventSchedules.events.length > 0,
     events: state.eventSchedules.events,
   };
 };
@@ -15,5 +15,4 @@ const mapDispatchToProps = dispatch => {
     getEvents: () => dispatch(getEventSchedules()),
   };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(EventSchedulesList);

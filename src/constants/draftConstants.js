@@ -1,6 +1,4 @@
-export const ALERT_MESSAGES = {
-  DELETE: "Your event has been successfully deleted",
-};
+export const ALERT_MESSAGE_DELETE = "Your event has been successfully deleted";
 
 export const EMPTY_DRAFT = {
   TITLE: "Нou have no drafts",
@@ -14,4 +12,9 @@ export const DELETE_DRAFT = {
   MESSAGE: "Are you sure?",
   CANCEL: "Cancel",
   CONFIRM: "Confirm",
+};
+
+export const ICON_PROPERTIES = {
+  ICON_SIZE: 30,
+  CIRSOR_POINER: "pointer",
 };

@@ -9,8 +9,10 @@ import DraftEventCard from "../../Draft/DraftEventCard";
 
 const RenderList = ({
   page,
+  isPages,
   totalPages,
-  dataList,
+  drafts,
+  isItemsAvaliable,
   handlePageChange,
   onDelete,
 }) => {
@@ -20,10 +22,10 @@ const RenderList = ({
 
   return (
     <div className="container">
-      <SpinnerWrapper showContent={dataList !== null}>
-        {dataList.length > 0 ? (
+      <SpinnerWrapper showContent={isItemsAvaliable}>
+        {isItemsAvaliable ? (
           <div className="eventsBlock">
-            {dataList.map(item => (
+            {drafts.map(item => (
               <DraftEventCard key={item.id} event={item} onDelete={onDelete} />
             ))}
           </div>
@@ -37,7 +39,7 @@ const RenderList = ({
         )}
       </SpinnerWrapper>
       <div className="draftPagination">
-        {totalPages > 1 && (
+        {isPages && (
           <Pagination count={totalPages} page={page} onChange={pageChange} />
         )}
       </div>
@@ -48,7 +50,9 @@ const RenderList = ({
 RenderList.propTypes = {
   page: PropTypes.number,
   totalPages: PropTypes.number,
-  dataList: PropTypes.array,
+  isPages: PropTypes.bool,
+  drafts: PropTypes.array,
+  isItemsAvaliable: PropTypes.bool,
   handlePageChange: PropTypes.func,
   onDelete: PropTypes.func,
 };
@@ -56,7 +60,9 @@ RenderList.propTypes = {
 RenderList.defaultProps = {
   page: null,
   totalPages: null,
-  dataList: [],
+  isPages: false,
+  drafts: [],
+  isItemsAvaliable: false,
   handlePageChange: () => {},
   onDelete: () => {},
 };

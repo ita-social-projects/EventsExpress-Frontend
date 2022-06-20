@@ -13,7 +13,10 @@ const DraftEventCard = ({ event, onDelete }) => {
       key="buckect-btn"
       onClick={() => setIsOpen(prev => !prev)}
     >
-      <BsTrash cursor={ICON_PROPERTIES.CIRSOR_POINER} size={ICON_PROPERTIES.ICON_SIZE} />
+      <BsTrash
+        cursor={ICON_PROPERTIES.CIRSOR_POINER}
+        size={ICON_PROPERTIES.ICON_SIZE}
+      />
     </button>,
   ];
 
@@ -22,7 +25,7 @@ const DraftEventCard = ({ event, onDelete }) => {
       closeModal={isOpen}
       id={event.id}
       onClose={setIsOpen}
-      handleClick={onDelete}
+      onClick={onDelete}
     />
   ) : null;
   return (

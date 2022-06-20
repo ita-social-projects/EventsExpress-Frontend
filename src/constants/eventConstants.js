@@ -84,6 +84,11 @@ export const EVENT_VISITORS = {
   DENIED_USERS: "Denied users",
 };
 
+export const CARD_TYPE = {
+  DRAFT: "draft",
+  LANDING: "landing",
+  RECCURENT_EVENTS: "eventSchedules",
+};
 export const EVENT_NO_RESULT = {
   TITLE: "Нou have no events yet",
   SUB_TITLE: "You have not yet created events with the ability to repeat them",

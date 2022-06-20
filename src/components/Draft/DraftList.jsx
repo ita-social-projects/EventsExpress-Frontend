@@ -1,66 +1,55 @@
 ﻿import React, { useEffect } from "react";
-import { createBrowserHistory } from "history";
 import PropTypes from "prop-types";
 import RenderList from "../Event/RenderList/RenderList";
-import { ALERT_MESSAGES } from "../../constants/draftConstants";
-import filterHelper from "../helpers/filterHelper";
 
-const history = createBrowserHistory({ forceRefresh: true });
-
-const DraftList = ({ events, deleteEvent, alert, getDraftsAction }) => {
-  const { data, filter } = events;
-  const { items, pageViewModel } = data;
-  const { pageNumber, totalPages } = pageViewModel;
-  let objCurrentQueryParams = null;
-  const objFilterParams = filterHelper.trimUndefinedKeys(events.filter);
-
+const DraftList = ({
+  items,
+  pageNumber,
+  totalPages,
+  isItemsAvaliable,
+  isPages,
+  deleteEvent,
+  getDraftsAction,
+}) => {
   const handlePageChange = page => {
     getDraftsAction(page);
   };
 
-  const onDelete = async (eventId, reason) => {
-    await deleteEvent(eventId, reason);
-    alert(ALERT_MESSAGES.DELETE);
-    history.push(`/drafts`);
-  };
   useEffect(() => {
     getDraftsAction(pageNumber);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    if (!filterHelper.compareObjects(objFilterParams, objCurrentQueryParams)) {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      objCurrentQueryParams = objFilterParams;
-    }
-  }, [filter]);
   return (
     <RenderList
-      dataList={items}
+      isItemsAvaliable={isItemsAvaliable}
+      isPages={isPages}
+      drafts={items}
       totalPages={totalPages}
       page={pageNumber}
       handlePageChange={handlePageChange}
-      onDelete={onDelete}
+      onDelete={deleteEvent}
     />
   );
 };
 
 DraftList.propTypes = {
   getDraftsAction: PropTypes.func,
-  pageViewModel: PropTypes.object,
-  events: PropTypes.object,
+  items: PropTypes.array,
+  totalPages: PropTypes.number,
   pageNumber: PropTypes.number,
-  alert: PropTypes.func,
   deleteEvent: PropTypes.func,
+  isItemsAvaliable: PropTypes.bool,
+  isPages: PropTypes.bool,
 };
 
 DraftList.defaultProps = {
   getDraftsAction: () => {},
-  pageViewModel: {},
-  alert: () => {},
   deleteEvent: () => {},
-  events: {},
-  pageNumber: null,
+  items: [],
+  totalPages: null,
+  pageNumber: 1,
+  isItemsAvaliable: false,
+  isPages: false,
 };
 
 export default DraftList;

@@ -18,5 +18,5 @@ const parseReccurentEvents = data =>
       title,
     }),
   );
-  
-  export default parseReccurentEvents;
+
+export default parseReccurentEvents;

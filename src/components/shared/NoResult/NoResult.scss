@@ -4,6 +4,8 @@
 @import "../../../styles/animations.scss";
 @import "../../../styles/mixins.scss";
 
+$centeredContainer: 460px;
+
 .container {
     @include flex(column, center, center);
     width: $fullWidth;
@@ -72,7 +74,7 @@
 
 @media screen and (max-width: $mediaMobileScreen) {
     .container {
-        height: calc(100vh - 460px);
+        height: calc(100vh - $centeredContainer);
         top: $halfHieght;
 
         .bannerButton {

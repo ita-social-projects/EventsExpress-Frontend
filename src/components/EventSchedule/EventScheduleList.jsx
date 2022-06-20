@@ -6,12 +6,16 @@ import NoResult from "../shared/NoResult/NoResult";
 import EventCard from "../Landing/EventCard/EventCard";
 import { EVENT_NO_RESULT } from "../../constants/eventConstants";
 
-const EventSchedulesList = ({ events, getEvents, isDataFetched, isItemsAvaliable }) => {
+const EventSchedulesList = ({
+  events,
+  getEvents,
+  isDataFetched,
+  isItemsAvaliable,
+}) => {
   useEffect(() => {
     getEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log('isItem', isItemsAvaliable);
   return (
     <div className="container">
       <SpinnerWrapper showContent={isDataFetched}>
