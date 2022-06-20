@@ -2,15 +2,27 @@ import emailService from "./EmailService";
 
 describe("check emailService", () => {
   it("Is email correct", () => {
-    expect(emailService({ email: "example@gmail.com" })).toBe(true);
+    const values = {
+      email: "example@gmail.com"
+    }
+    expect(emailService(values)).toBe(true);
   });
   it("Email without at(@)", () => {
-    expect(emailService({ email: "examplegmail.com" })).toBe(false);
+    const values = {
+      email: "examplegmail.com"
+    }
+    expect(emailService(values)).toBe(false);
   });
   it("Email without address", () => {
-    expect(emailService({ email: "example@gmailcom" })).toBe(false);
+    const values = {
+      email: "example@gmailcom"
+    }
+    expect(emailService(values)).toBe(false);
   });
   it("Email is empty", () => {
-    expect(emailService({ email: "" })).toBe(false);
+    const values = {
+      email: ""
+    }
+    expect(emailService(values)).toBe(false);
   });
 });

@@ -10,10 +10,8 @@ const emailService = values => {
       "hIa6EbQItOhL_Sxmg",
     );
     return true;
-    // eslint-disable-next-line no-else-return
-  } else {
-    return false;
-  }
+  } 
+  return false;
 };
 
 export default emailService;
