@@ -1,4 +1,4 @@
-﻿import React, { Component } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -13,75 +13,78 @@ import {
   buildValidationState,
   handleFormError,
 } from "../../components/helpers/action-helpers";
+import BUTTON_NAMES from "../../constants/buttonConsts";
 
-// TODO Refactor class component
-class EditEventContainer extends Component {
-  onSubmit = async values => {
-    await this.props.editEvent({
+const EditEventContainer = ({
+  event,
+  editEventForm,
+  userId,
+  userName,
+  history,
+  allCategories,
+  formValues,
+  handleEventFormError,
+}) => {
+  const { SAVE, CANCEL } = BUTTON_NAMES;
+  const onSubmit = async values => {
+    await editEventForm({
       ...validateEventForm(values),
-      user_id: this.props.user_id,
-      id: this.props.event.id,
+      userId,
+      id: event.id,
     });
 
-    this.props.history.goBack();
+    history.goBack();
   };
 
-  onError = error => this.props.handleFormError(error);
+  const onError = error => handleEventFormError(error);
 
-  render() {
-    return (
-      <>
-        <div className="pl-md-4">
-          <EventForm
-            validate={eventEditValidateForm}
-            allCategories={this.props.all_categories}
-            onSubmit={this.onSubmit}
-            onError={this.onError}
-            initialValues={this.props.event}
-            userName={this.props.user_name}
-            formValues={this.props.form_values}
-            haveReccurentCheckBox
-            eventId={this.props.event.id}
-          >
-            <div className="col">
-              <Button
-                className="border"
-                fullWidth
-                color="primary"
-                type="submit"
-              >
-                Save
-              </Button>
-            </div>
-            <div className="col">
-              <Button
-                className="border"
-                fullWidth
-                color="primary"
-                onClick={this.props.history.goBack}
-              >
-                Cancel
-              </Button>
-            </div>
-          </EventForm>
-        </div>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <div className="pl-md-4">
+        <EventForm
+          validate={eventEditValidateForm}
+          allCategories={allCategories}
+          onSubmit={onSubmit}
+          onError={onError}
+          initialValues={event}
+          userName={userName}
+          formValues={formValues}
+          haveReccurentCheckBox
+          eventId={event.id}
+        >
+          <div className="col">
+            <Button className="border" fullWidth color="primary" type="submit">
+              {SAVE}
+            </Button>
+          </div>
+          <div className="col">
+            <Button
+              className="border"
+              fullWidth
+              color="primary"
+              onClick={history.goBack}
+            >
+              {CANCEL}
+            </Button>
+          </div>
+        </EventForm>
+      </div>
+    </>
+  );
+};
 
 const mapStateToProps = state => ({
-  user_id: state.user.id,
-  user_name: state.user.name,
+  userId: state.user.id,
+  userName: state.user.name,
   add_event_status: state.add_event,
-  all_categories: state.categories,
-  form_values: getFormValues("event-form")(state),
+  allCategories: state.categories,
+  formValues: getFormValues("event-form")(state),
   event: state.event.data,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    editEvent: data =>
+    editEventForm: data =>
       dispatch(
         editEvent(
           data,
@@ -92,30 +95,30 @@ const mapDispatchToProps = dispatch => {
         ),
       ),
     alert: msg => dispatch(setSuccessAllert(msg)),
-    handleFormError: error => dispatch(handleFormError(error)),
+    handleEventFormError: error => dispatch(handleFormError(error)),
   };
 };
 
 EditEventContainer.propTypes = {
-  editEvent: PropTypes.func,
+  editEventForm: PropTypes.func,
   event: PropTypes.object,
-  user_id: PropTypes.string,
-  user_name: PropTypes.string,
+  userId: PropTypes.string,
+  userName: PropTypes.string,
   history: PropTypes.object,
-  handleFormError: PropTypes.func,
-  all_categories: PropTypes.object,
-  form_values: PropTypes.object,
+  handleEventFormError: PropTypes.func,
+  allCategories: PropTypes.object,
+  formValues: PropTypes.object,
 };
 
 EditEventContainer.defaultProps = {
-  editEvent: () => {},
-  user_id: "",
-  user_name: "",
+  editEventForm: () => {},
+  userId: "",
+  userName: "",
   event: {},
   history: {},
-  handleFormError: () => {},
-  all_categories: {},
-  form_values: {},
+  handleEventFormError: () => {},
+  allCategories: {},
+  formValues: {},
 };
 
 export default withRouter(

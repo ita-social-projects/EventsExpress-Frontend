@@ -31,7 +31,7 @@ const EventList = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalPages, history.location.search]);
 
-  const handlePageChange = (page) => {
+  const handlePageChange = page => {
     const queryStringToObject = queryStringParse(history.location.search);
     if (history.location.search === "") {
       history.push(`${history.location.pathname}?page=${page}`);
@@ -40,7 +40,7 @@ const EventList = ({
     }
 
     history.push(
-      history.location.pathname + getQueryStringByFilter(queryStringToObject)
+      history.location.pathname + getQueryStringByFilter(queryStringToObject),
     );
   };
 
@@ -59,7 +59,7 @@ const EventList = ({
   // <Link to={`/editEvent/${id}`} key={id}>
   // </Link>
 
-  const renderSingleItem = (item) => (
+  const renderSingleItem = item => (
     <EventCard
       key={item.id + item.Active}
       event={item}
@@ -76,10 +76,10 @@ const EventList = ({
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     resetEvents: () => dispatch(resetEvents()),
-    updateEventsFilters: (filter) => dispatch(updateEventsFilters(filter)),
+    updateEventsFilters: filter => dispatch(updateEventsFilters(filter)),
     onBlock: (eventId, reason) =>
       dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.BLOCKED)),
     onUnBlock: (eventId, reason) =>
