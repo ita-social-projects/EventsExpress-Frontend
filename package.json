@@ -93,7 +93,11 @@
 		"react-error-overlay": "^6.0.10",
 		"react-test-renderer": "16.8.6",
 		"redux-mock-store": "^1.5.4",
-		"rimraf": "2.6.2"
+		"rimraf": "2.6.2",
+		"stylelint": "^14.9.1",
+		"stylelint-config-rational-order": "^0.1.2",
+		"stylelint-config-standard-scss": "^4.0.0",
+		"stylelint-order": "^5.0.0"
 	},
 	"scripts": {
 		"start": "rimraf ./build && react-scripts start",
@@ -103,8 +107,10 @@
 		"lint": "eslint src --ext .js,.jsx",
 		"lint:fix": "eslint src --fix --ext .js,.jsx",
 		"prepare": "husky install",
-		"husky:pre-commit": "lint-staged"
-		},
+		"husky:pre-commit": "lint-staged",
+		"stylelint": "stylelint \"**/*.scss\"",
+		"stylelint:fix": "stylelint \"**/*.scss\" --fix"
+	},
 	"lint-staged": {
 		"*.{js,jsx}": [
 			"eslint src --fix --ext .js,.jsx"

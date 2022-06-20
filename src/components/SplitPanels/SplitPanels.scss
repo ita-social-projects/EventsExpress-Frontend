@@ -1,329 +1,345 @@
 @import "../../styles/variables.scss";
 @import "../../styles/colors.scss";
+@import "../../styles/fonts.scss";
 
 .split-panels {
-  display: flex;
-
-  .gutter.gutter-vertical {
-    background-color: #f7f2ff;
-    cursor: row-resize;
-  }
-
-  &>div {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    position: relative;
 
-    &.collapsed {
-      opacity: 0.6;
-
-      &>*:not(.option-button) {
-        display: none;
-      }
+    .gutter.gutter-vertical {
+        background-color: $gray;
+        cursor: row-resize;
     }
 
-    &>div:not(.option-button) {
-      width: 100%;
-    }
-  }
-
-  .discover-button-container {
-    height: 132px;
-    display: flex;
-    padding: 0 128px;
-
-    .discover-button>button {
-      color: $white;
-    }
-
-    .discover-button {
-      height: 40px;
-      width: 180px;
-      font-weight: bold;
-      font-size: inherit;
-      border: 2px solid $lightThemeAccept;
-      border-radius: $buttonBorderRadius;
-      padding: 8px 24px;
-      cursor: pointer;
-      transition: 0.5s all;
-
-      &>button {
-        display: flex;
-      }
-
-      &__icon {
-        font-size: 20px;
-      }
-
-      &:hover {
-        color: darken($color: $lightThemeAccept, $amount: 15%);
-        border-color: darken($color: $lightThemeAccept, $amount: 15%);
-        background-color: #e6e6e6;
-        text-decoration: none;
-      }
-    }
-  }
-
-  .collapse-button-icon {
-    font-size: 40px;
-  }
-
-  .option-button {
-    height: 40px;
-    width: 40px;
-    top: calc(50% - 20px);
-    position: absolute;
-  }
-
-  .left-side {
-    background-color: #f7f2ff;
-    z-index: 1;
-
-    &.full-size>.left-side__text {
-      font-size: 96px;
-    }
-
-    &__text {
-      padding: 16px 40px 68px 80px;
-      color: $black;
-      font-weight: bold;
-      font-size: 80px;
-      line-height: 92px;
-      user-select: none;
-
-      span {
-        font-size: inherit;
-      }
-
-      &__highlights {
+    & > div {
         position: relative;
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
 
-        &:before {
-          content: "";
-          position: absolute;
-          background-color: $lightThemeAccept;
-          z-index: -1;
-          height: 80px;
-          width: 152px;
-          top: 12px;
+        &.collapsed {
+            opacity: 0.6;
+
+            & > *:not(.option-button) {
+                display: none;
+            }
         }
 
-        &.first-square:before {
-          right: -8px;
+        & > div:not(.option-button) {
+            width: 100%;
         }
+    }
 
-        &.second-square:before {
-          left: -11px;
-        }
+    .discover-button-container {
+        display: flex;
+        height: 132px;
+        padding: 0 128px;
 
-        &.third-square:before {
-          right: -12px;
-        }
+        .discover-button {
+            width: 180px;
+            height: 40px;
+            padding: 8px 24px;
+            font-weight: $bold;
+            font-size: inherit;
+            border: 2px solid $lightThemeAccept;
+            border-radius: $buttonBorderRadius;
+            cursor: pointer;
+            transition: 0.5s all;
 
-        &.fourth-square:before {
-          left: 44px;
+            & > button {
+                display: flex;
+                color: $white;
+            }
+
+            &__icon {
+                font-size: 20px;
+            }
+
+            &:hover {
+                color: darken($color: $lightThemeAccept, $amount: 15%);
+                text-decoration: none;
+                background-color: $gray;
+                border-color: darken($color: $lightThemeAccept, $amount: 15%);
+            }
         }
-      }
+    }
+
+    .collapse-button-icon {
+        font-size: 40px;
     }
 
     .option-button {
-      right: 32px;
+        position: absolute;
+        top: calc(50% - 20px);
+        width: 40px;
+        height: 40px;
     }
 
-    .discover-button-container {
-      justify-content: flex-end;
+    .left-side {
+        z-index: 1;
+        background-color: $gray;
 
-      .discover-button>button {
-        color: $black;
-      }
-
-      .discover-button {
-        border: 2px solid $lightThemeAccept;
-        border-radius: $buttonBorderRadius;
-
-        &:hover {
-          color: darken($color: $lightThemeAccept, $amount: 15%);
-          border-color: darken($color: $lightThemeAccept, $amount: 15%);
-          background-color: #e6e6e6;
-          text-decoration: none;
+        &.full-size > .left-side__text {
+            font-size: 96px;
         }
-      }
-    }
-  }
 
-  .right-side {
-    background-image: url("../../mockup-images/SecondScreenPanel.jpg");
-    background-size: cover;
+        &__text {
+            padding: 16px 40px 68px 80px;
+            color: $black;
+            font-weight: $bold;
+            font-size: 80px;
+            line-height: 92px;
+            user-select: none;
 
-    .discover-button-container {
-      .discover-button>button {
-        color: $white;
-      }
+            span {
+                font-size: inherit;
+            }
 
-      .discover-button {
-        color: $white;
-        border: 2px solid $white;
-        border-radius: $buttonBorderRadius;
+            &__highlights {
+                position: relative;
+                display: inline-block;
 
-        &:hover {
-          color: darken($color: $lightThemeAccept, $amount: 15%);
-          border-color: darken($color: $lightThemeAccept, $amount: 15%);
-          background-color: $lightThemeAccept;
-          text-decoration: none;
+                &::before {
+                    position: absolute;
+                    top: 12px;
+                    z-index: -1;
+                    width: 152px;
+                    height: 80px;
+                    background-color: $lightThemeAccept;
+                    content: "";
+                }
+
+                &.first-square::before {
+                    right: -8px;
+                }
+
+                &.second-square::before {
+                    left: -11px;
+                }
+
+                &.third-square::before {
+                    right: -12px;
+                }
+
+                &.fourth-square::before {
+                    left: 44px;
+                }
+            }
         }
-      }
-    }
 
-    &__text {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
-
-      &>div {
-        font-weight: 900;
-        font-size: 48px;
-        color: $white;
-        background: $transparentBlackBackground;
-        padding: 20px;
-        width: calc(100% - 112px - 100px);
-        user-select: none;
-        // z-index: ;
-      }
-    }
-
-    .option-button {
-      left: 32px;
-    }
-  }
-}
-
-@media screen and (max-width: $mediaFirstTabletScreen) {
-  .split-panels {
-    >div>div:not(.option-button) {
-      width: 120%;
-    }
-
-    .discover-button-container {
-      .discover-button {
-        &__about {
-          font-size: 13px;
+        .option-button {
+            right: 32px;
         }
-      }
+
+        .discover-button-container {
+            justify-content: flex-end;
+
+            .discover-button > button {
+                color: $black;
+            }
+
+            .discover-button {
+                border: 2px solid $lightThemeAccept;
+                border-radius: $buttonBorderRadius;
+
+                &:hover {
+                    color: darken($color: $lightThemeAccept, $amount: 15%);
+                    text-decoration: none;
+                    background-color: $gray;
+                    border-color: darken($color: $lightThemeAccept, $amount: 15%);
+                }
+            }
+        }
     }
 
     .right-side {
-      &__text {
-        &>div {
-          font-size: 25px;
-          line-height: 32px;
-          padding: 30px;
-        }
-      }
-    }
-  }
+        background-image: url("../../mockup-images/SecondScreenPanel.jpg");
+        background-size: cover;
 
-  .split-panels .left-side {
-    &__text {
-      font-size: 45px;
-      line-height: 82px;
-      padding-left: 70px;
-      padding-top: 93px;
+        .discover-button-container {
 
-      &__highlights {
-        &:before {
-          height: 50px;
-          width: 92px;
+            .discover-button > button {
+                color: $white;
+            }
+
+            .discover-button {
+                color: $white;
+                border: 2px solid $white;
+                border-radius: $buttonBorderRadius;
+
+                &:hover {
+                    color: darken($color: $lightThemeAccept, $amount: 15%);
+                    text-decoration: none;
+                    background-color: $lightThemeAccept;
+                    border-color: darken($color: $lightThemeAccept, $amount: 15%);
+                }
+            }
         }
-      }
+
+        &__text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+
+            & > div {
+                width: calc(100% - 112px - 100px);
+                padding: 20px;
+                color: $white;
+                font-weight: 900;
+                font-size: 48px;
+                background: $transparentBlackBackground;
+                user-select: none;
+            }
+        }
+
+        .option-button {
+            left: 32px;
+        }
     }
-  }
+}
+
+@media screen and (max-width: $mediaFirstTabletScreen) {
+
+    .split-panels {
+
+        >div > div:not(.option-button) {
+            width: 120%;
+        }
+
+        .discover-button-container {
+
+            .discover-button {
+
+                &__about {
+                    font-size: 13px;
+                }
+            }
+        }
+
+        .right-side {
+
+            &__text {
+
+                & > div {
+                    padding: 30px;
+                    font-size: 25px;
+                    line-height: 32px;
+                }
+            }
+        }
+    }
+
+    .split-panels .left-side {
+
+        &__text {
+            padding-top: 93px;
+            padding-left: 70px;
+            font-size: 45px;
+            line-height: 82px;
+
+            &__highlights {
+
+                &::before {
+                    width: 92px;
+                    height: 50px;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
-  .split-panels {
-    >div>div:not(.option-button) {
-      width: 120%;
-    }
 
-    .discover-button-container {
-      .discover-button {
-        &__about {
-          font-size: 13px;
+    .split-panels {
+
+        >div > div:not(.option-button) {
+            width: 120%;
         }
-      }
-    }
 
-    .right-side {
-      &__text {
-        &>div {
-          font-size: 25px;
-          line-height: 32px;
-          padding: 30px;
+        .discover-button-container {
+
+            .discover-button {
+
+                &__about {
+                    font-size: 13px;
+                }
+            }
         }
-      }
-    }
-  }
 
-  .split-panels .left-side {
-    &__text {
-      font-size: 45px;
-      line-height: 82px;
-      padding-left: 70px;
-      padding-top: 93px;
+        .right-side {
 
-      &__highlights {
-        &:before {
-          height: 50px;
-          width: 92px;
+            &__text {
+
+                & > div {
+                    padding: 30px;
+                    font-size: 25px;
+                    line-height: 32px;
+                }
+            }
         }
-      }
     }
-  }
+
+    .split-panels .left-side {
+
+        &__text {
+            padding-top: 93px;
+            padding-left: 70px;
+            font-size: 45px;
+            line-height: 82px;
+
+            &__highlights {
+
+                &::before {
+                    width: 92px;
+                    height: 50px;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: $mediaFirstTabletScreen) {
-  .split-panels {
-    height: calc(100vh - 78px) !important; //header footer
 
-    >.left-side {
-      display: none;
-    }
+    .split-panels {
+        height: calc(100vh - 78px) !important; //header footer
 
-    .option-button {
-      display: none;
-    }
-
-    >.right-side {
-      width: 100% !important;
-
-      &>.header-text {
-        width: auto;
-        padding: auto;
-
-        &>div {
-          width: calc(100% - 72px);
-          font-size: 38px;
-          line-height: 46px;
-          padding: 36px;
+        >.left-side {
+            display: none;
         }
-      }
 
-      .discover-button-container {
-        height: unset;
-        margin: 32px auto 80px;
-        width: 180px;
-        padding: unset;
-
-        .discover-button {
-          &__about {
-            font-size: 13px;
-          }
+        .option-button {
+            display: none;
         }
-      }
+
+        >.right-side {
+            width: 100% !important;
+
+            & > .header-text {
+                width: auto;
+                padding: auto;
+
+                & > div {
+                    width: calc(100% - 72px);
+                    padding: 36px;
+                    font-size: 38px;
+                    line-height: 46px;
+                }
+            }
+
+            .discover-button-container {
+                width: 180px;
+                height: unset;
+                margin: 32px auto 80px;
+                padding: unset;
+
+                .discover-button {
+
+                    &__about {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
     }
-  }
 }

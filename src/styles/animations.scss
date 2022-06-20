@@ -1,4 +1,5 @@
-@keyframes btn-shadow {
+@keyframes btnShadow {
+
     0% {
         box-shadow: $textShadowNeon;
     }
@@ -12,4 +13,4 @@
     }
 }
 
-$landingBannerAnimation: btn-shadow 1s infinite;
+$landingBannerAnimation: btnshadow 1s infinite;

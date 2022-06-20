@@ -1,54 +1,54 @@
 @import "../../../../styles/colors.scss";
 
-$position-icons-top: 205px;
-$position-icons-left: 30px;
-$position-left-from-heart-icon: 50px;
-$position-top-for-icon-slider: 0px;
-$postition-icons-list-top: -10px;
-$postition-icons-list-right: 75px;
+$positionIconsTop: 205px;
+$positionIconsLeft: 30px;
+$positionLeftFromHeartIcon: 50px;
+$positionTopForIconSlider: 0px;
+$postitionIconsListTop: -10px;
+$postitionIconsListRight: 75px;
 
 .heart__icon {
-  background: url("../../../../assets/icons/Imgheart.svg") no-repeat center;
+    background: url("../../../../assets/icons/Imgheart.svg") no-repeat center;
 }
 
 .join-to-event__icon {
-  background: url("../../../../assets/icons/ImgJoinToEvent.svg") no-repeat center;
+    background: url("../../../../assets/icons/ImgJoinToEvent.svg") no-repeat center;
 }
 
 .heart__icon,
 .join-to-event__icon {
-  height: 40px;
-  width: 40px;
-  z-index: 1;
-  cursor: pointer;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
 }
 
 .add-favorite-slider {
-  top: calc($position-icons-top + $position-top-for-icon-slider);
-  left: $position-icons-left;
+    top: calc($positionIconsTop + $positionTopForIconSlider);
+    left: $positionIconsLeft;
 }
 
 .join-to-event-slider {
-  top: calc($position-icons-top + $position-top-for-icon-slider);
-  left: calc($position-icons-left + $position-left-from-heart-icon);
+    top: calc($positionIconsTop + $positionTopForIconSlider);
+    left: calc($positionIconsLeft + $positionLeftFromHeartIcon);
 }
 
 .add-favorite-matrix {
-  top: 0;
-  left: 0;
+    top: 0;
+    left: 0;
 }
 
 .join-to-event-matrix {
-  top: $position-icons-top;
-  left: calc($position-icons-left + $position-left-from-heart-icon);
+    top: $positionIconsTop;
+    left: calc($positionIconsLeft + $positionLeftFromHeartIcon);
 }
 
 .add-favorite-list {
-  top: $postition-icons-list-top;
-  right: $postition-icons-list-right;
+    top: $postitionIconsListTop;
+    right: $postitionIconsListRight;
 }
 
 .join-to-event-list {
-  top: $postition-icons-list-top;
-  right: calc($postition-icons-list-right - $position-left-from-heart-icon);
+    top: $postitionIconsListTop;
+    right: calc($postitionIconsListRight - $positionLeftFromHeartIcon);
 }

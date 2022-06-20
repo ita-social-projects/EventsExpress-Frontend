@@ -1,3 +1,5 @@
+@import "../../styles/colors.scss";
+
 .line {
     display: block;
     width: 100%;
@@ -5,7 +7,7 @@
 }
 
 .line path {
-    stroke: gray; 
     fill: transparent;
+    stroke: $gray;
     stroke-width: 0.3;
 }

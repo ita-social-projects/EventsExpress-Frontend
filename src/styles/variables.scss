@@ -6,16 +6,14 @@ $mediaMobileScreen: 575px;
 $widthForContentPcScreen: 930px;
 $widthForContentFirstTabletScreen: 730px;
 $widthForContentSecondTabletScreen: 560px;
-$mobile-breakpoint: 426px;
+$mobileBreakpoint: 426px;
 
 //width & height
 $fullWidth: 100%;
 $halfWidth: 50%;
 $minusHalfWidth: -50%;
-
-$maxDisplayWidth:100vw;
-$maxDisplayHeight:100vh;
-
+$maxDisplayWidth: 100vw;
+$maxDisplayHeight: 100vh;
 $fullHeight: 100%;
 
 //radius
@@ -29,23 +27,22 @@ $inputLaptopWidth: 250px;
 $inputTabletWidth: 220px;
 $inputMobileWidth: 80%;
 $inputPadding: 8px 25px;
-$inputMobilePadding: 0px 20px;
-$inputShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$inputMobilePadding: 0 20px;
+$inputShadow: 0 4px 4px rgb(0 0 0 / 25%);
 $noBord: none;
-$Unoutline: none;
+$unoutline: none;
 
 //border
 $defaultBorderRadius: 20px;
 $buttonBorderRadius: 10px;
 
 //margins
-$margin-50:50px;
-$left-160:160px;
-//
-$mediumPaddingTop:50px;
+$margin50: 50px;
+$left160: 160px;
 
+//other
+$mediumPaddingTop: 50px;
 $borderRound: 100%;
-
 $absoluteHeight100: 100vh;
 $fullWidth: 100%;
 $fullHeight: 100%;
@@ -53,7 +50,6 @@ $width80: 80%;
 $width50: 50%;
 $height50: 50%;
 $width25: 25%;
-
 $defaultTransition: 0.5s ease-in-out;
 
 $opacity0: 0;
@@ -65,3 +61,6 @@ $infoTextMaxWidth: $width50;
 
 //AuthModal
 $authModalBorderRadius: 10px;
+$landingBannerBgPattern: "https://i.pinimg.com/originals/4c/41/75/4c4175fc9f1274b6d732d5b5038f168d.jpg";
+$infoTextMaxWidth: $width50;
+$infoTextMaxWidth: $width50;

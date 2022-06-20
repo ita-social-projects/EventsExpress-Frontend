@@ -5,49 +5,52 @@
 html,
 body,
 #root {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  box-sizing: border-box;
-  font-family: $mainFont;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: $mainFont;
+    font-style: normal;
 }
 
 .container {
-  max-width: 1170px;
-  margin: 0 auto;
+    max-width: 1170px;
+    margin: 0 auto;
 
-  @media (max-width: $mediaPcScreen) {
-    max-width: $widthForContentPcScreen;
-  }
-  @media (max-width: $mediaFirstTabletScreen) {
-    max-width: $widthForContentFirstTabletScreen;
-  }
-  @media (max-width: $mediaSecondTabletScreen) {
-    max-width: $widthForContentSecondTabletScreen;
-  }
-  @media (max-width: $mediaMobileScreen) {
-    width: auto;
-    padding: 0 10px;
-  }
+    @media (max-width: $mediaPcScreen) {
+        max-width: $widthForContentPcScreen;
+    }
+
+    @media (max-width: $mediaFirstTabletScreen) {
+        max-width: $widthForContentFirstTabletScreen;
+    }
+
+    @media (max-width: $mediaSecondTabletScreen) {
+        max-width: $widthForContentSecondTabletScreen;
+    }
+
+    @media (max-width: $mediaMobileScreen) {
+        width: auto;
+        padding: 0 10px;
+    }
 }
 
 .bttn {
-  color: $lightThemeAccept;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 10px;
-  border: 2px solid $lightThemeAccept;
-  border-radius: $buttonBorderRadius;
-  cursor: pointer;
+    padding: 10px;
+    color: $lightThemeAccept;
+    font-weight: $bold;
+    font-size: 14px;
+    border: 2px solid $lightThemeAccept;
+    border-radius: $buttonBorderRadius;
+    cursor: pointer;
 
-  &:hover {
-    color: darken($color: $lightThemeAccept, $amount: 15%);
-    border-color: darken($color: $lightThemeAccept, $amount: 15%);
-    background-color: #e6e6e6;
-    text-decoration: none;
-  }
+    &:hover {
+        color: darken($color: $lightThemeAccept, $amount: 15%);
+        text-decoration: none;
+        background-color: $white;
+        border-color: darken($color: $lightThemeAccept, $amount: 15%);
+    }
 }

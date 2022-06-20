@@ -1,16 +1,18 @@
-﻿.card-inner {
+@import "../../styles/colors.scss";
+
+.card-inner {
     margin-left: 4rem;
 }
 
 .photo {
-   width: 55px;
-   height: 55px;
+    width: 55px;
+    height: 55px;
 }
 
 .comment-text {
-    font-size: 9px;
-    margin-left: -5px;
     margin-top: 4px;
+    margin-left: -5px;
+    font-size: 9px;
 }
 
 .photo-container {
@@ -19,25 +21,26 @@
 }
 
 .comment-container {
-    width: 100%;
-    margin-bottom: 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5px;
 }
+
 .ItemComment {
-    border-radius: 15px;
     display: flex;
+    justify-content: space-between;
     padding: 15px;
     padding-bottom: 0;
-    color: black;
-    justify-content: space-between;
+    color: $black;
+    border-radius: 15px;
 }
 
 .mybutton {
-   padding-right: 15px;
+    padding-right: 15px;
 }
 
 .children {
-   padding-left: 50px;
+    padding-left: 50px;
 }

@@ -2,19 +2,19 @@
 @import "../../styles/colors.scss";
 
 .section__header {
-  display: flex;
-  align-items: center;
-  color: $lightThemeHeader;
-  font-weight: $bold;
-  font-size: $fontsize-24;
-  line-height: 30px;
+    display: flex;
+    align-items: center;
+    color: $lightThemeHeader;
+    font-weight: $bold;
+    font-size: $fontsize24;
+    line-height: 30px;
 
-  &::before {
-    content: "";
-    height: 38px;
-    width: 12px;
-    background-color: $lightThemeAccept;
-    display: block;
-    margin-right: 5px;
-  }
+    &::before {
+        display: block;
+        width: 12px;
+        height: 38px;
+        margin-right: 5px;
+        background-color: $lightThemeAccept;
+        content: "";
+    }
 }

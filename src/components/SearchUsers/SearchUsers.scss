@@ -14,8 +14,22 @@
   .search_users_pagination {
     width: $fullWidth;
     display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-  }
+    flex-direction: column;
+    width: $fullWidth;
+    padding-right: 20px;
+    padding-bottom: 20px;
+
+    .search_users_input {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .search_users_pagination {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        width: $fullWidth;
+        }
+    }
 }

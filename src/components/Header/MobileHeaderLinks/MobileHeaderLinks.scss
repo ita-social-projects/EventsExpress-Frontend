@@ -1,22 +1,24 @@
 @import "../../../styles/main.scss";
 
-.mobile-header-links-wrapperr{
+.mobile-header-links-wrapperr {
     position: absolute;
     top: 0;
     left: 0;
-    background-color:$white;
     width: $maxDisplayWidth;
     height: $maxDisplayHeight;
     padding-top: $mediumPaddingTop;
-    .link-wrapper{
-        font-size: $fontsize-20;
-        margin-bottom: $fontsize-24;
+    background-color: $white;
+
+    .link-wrapper {
+        margin-bottom: $fontsize24;
         font-weight: $bold;
+        font-size: $fontsize20;
     }
 }
 
 @media (min-width: $mediaFirstTabletScreen) {
-    .mobile-header-links-wrapperr{
+
+    .mobile-header-links-wrapperr {
         display: none;
     }
 }

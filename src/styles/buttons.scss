@@ -1,25 +1,25 @@
-
 .btn-dark-theme {
-	display: flex;
-	justify-content: flex-end;   
-	border-radius: $buttonBorderRadius;
-	font-weight: bold;
-	align-self: flex-end;
-	transition: 0.5s all;
-	cursor: pointer;
- 	border: 2px solid $white;
-	color: $white;
+    display: flex;
+    align-self: flex-end;
+    justify-content: flex-end;
+    color: $white;
+    font-weight: $bold;
+    border: 2px solid $white;
+    border-radius: $buttonBorderRadius;
+    cursor: pointer;
+    transition: 0.5s all;
 
-	&:hover{
-		color: darken($color: $lightThemeAccept, $amount: 15%);
-		border-color: darken($color: $lightThemeAccept, $amount: 15%);
-		background-color: $gray;
-		text-decoration: none;
-	}
+    &:hover {
+        color: darken($color: $lightThemeAccept, $amount: 15%);
+        text-decoration: none;
+        background-color: $gray;
+        border-color: darken($color: $lightThemeAccept, $amount: 15%);
+    }
 }
 
 .btn-light-theme {
-	@extend .btn-dark-theme;
-	border: 2px solid $lightThemeAccept;
-	color: $lightThemeAccept;
+    @extend .btn-dark-theme;
+
+    color: $lightThemeAccept;
+    border: 2px solid $lightThemeAccept;
 }

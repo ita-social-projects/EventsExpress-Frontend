@@ -1,84 +1,91 @@
 @import "../../../styles/colors.scss";
 @import "../../../styles/mixins.scss";
 
+$slickBeforeTransformOrigin: 100% 100%;
+$slickAfterTransformOrigin: 100% 0%;
+$slickTranslate: translate(-75%, -50%);
+$slickPrevAfterTranslate: translate(-75%, 50%);
+$slickPrevRotate: 135deg;
+$slickNextRotate: 45deg;
 
-$slick-before-transform-origin: 100% 100%;
-$slick-after-transform-origin: 100% 0%;
-$slick-translate: translate(-75%, -50%);
-$slick-prev-after-translate: translate(-75%, 50%);
-$slick-prev-rotate: 135deg;
-$slick-next-rotate: 45deg;
-
-.slick-prev:before,
-.slick-prev:after,
-.slick-next:before,
-.slick-next:after {
-  content: "";
-  position: absolute;
-  height: 2px;
-  width: 25px;
-  background-color: $black;
-  border-radius: 2px;
+.slick-prev::before,
+.slick-prev::after,
+.slick-next::before,
+.slick-next::after {
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background-color: $black;
+    border-radius: 2px;
+    content: "";
 }
 
-.slick-prev:before {
-  transform-origin: $slick-before-transform-origin;
-  transform: $slick-translate rotate($slick-prev-rotate);
-}
-.slick-prev:after {
-  transform-origin: $slick-after-transform-origin;
-  transform: $slick-prev-after-translate rotate(calc($slick-prev-rotate * -1));
+.slick-prev::before {
+    transform: $slickTranslate rotate($slickPrevRotate);
+    transform-origin: $slickBeforeTransformOrigin;
 }
 
-.slick-next:before {
-  transform-origin: $slick-before-transform-origin;
-  transform: $slick-translate rotate($slick-next-rotate);
+.slick-prev::after {
+    transform: $slickPrevAfterTranslate rotate(calc($slickPrevRotate * -1));
+    transform-origin: $slickAfterTransformOrigin;
 }
-.slick-next:after {
-  transform-origin: $slick-after-transform-origin;
-  transform: $slick-translate rotate(calc($slick-next-rotate * -1));
+
+.slick-next::before {
+    transform: $slickTranslate rotate($slickNextRotate);
+    transform-origin: $slickBeforeTransformOrigin;
+}
+
+.slick-next::after {
+    transform: $slickTranslate rotate(calc($slickNextRotate * -1));
+    transform-origin: $slickAfterTransformOrigin;
 }
 
 .slick-prev {
-  left: -40px;
-  transform: translate(150%, -50%);
+    left: -40px;
+    transform: translate(150%, -50%);
 }
+
 .slick-next {
-  transform: translate(-150%, -50%);
+    transform: translate(-150%, -50%);
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
 .slick-slider {
-    margin: 30px auto 50px;
     width: auto;
+    margin: 30px auto 50px;
 }
+
 .slick-initialized .slick-slide {
-  @include flex(row, start, center);
+    @include flex(row, flex-start, center);
 }
 
 .slick-dots li {
-  margin: 0 15px;
-}
-.slick-dots li button:before {
-  content: "";
-  background: $gray;
-  opacity: 1;
-  height: 4px;
-  width: 40px;
-}
-.slick-dots li.slick-active button:before {
-  content: "";
-  background: $lightThemeAccept;
-  opacity: 1;
-  height: 4px;
-  width: 40px;
+    margin: 0 15px;
 }
 
-@media screen and (max-width: $mediaSecondTabletScreen){
-  .slick-slide {
-    margin-bottom: 35px;
-  }
+.slick-dots li button::before {
+    width: 40px;
+    height: 4px;
+    background: $gray;
+    opacity: 1;
+    content: "";
+}
+
+.slick-dots li.slick-active button::before {
+    width: 40px;
+    height: 4px;
+    background: $lightThemeAccept;
+    opacity: 1;
+    content: "";
+}
+
+@media screen and (max-width: $mediaSecondTabletScreen) {
+
+    .slick-slide {
+        margin-bottom: 35px;
+    }
 }

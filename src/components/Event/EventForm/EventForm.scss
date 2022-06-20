@@ -1,35 +1,39 @@
+@import "../../../styles/colors.scss";
+
 .custom-input {
     border-top: none;
     border-right: none;
     border-left: none;
 }
 
-.custom-input:active, :hover, :focus {
+.custom-input:active,
+:hover,
+:focus {
     outline: 0;
     outline-offset: 0;
 }
 
 .MuiCheckbox-colorSecondary.Mui-checked {
-    color: grey !important;
+    color: $gray;
 }
 
 .MuiRadio-colorSecondary.Mui-checked {
-    color: grey !important;
+    color: $gray;
 }
 
 .cursor-pointer {
     cursor: pointer;
-  }
+}
 
 .pic-container {
     overflow: hidden;
 }
 
 .pic {
-    max-height: 500px;
     display: block;
-    margin-left: auto;
+    max-height: 500px;
     margin-right: auto;
+    margin-left: auto;
 }
 
 .pic-container.pic-xs {
@@ -52,7 +56,6 @@
     height: 250px;
 }
 
-
 .pic-container.pic-xl {
     width: 350px;
     height: 350px;
@@ -63,16 +66,16 @@
 }
 
 .pic-overlay {
-    background-color: #ccc;
-    opacity: 0.5;
-    width: 100%;
-    height: 100%;
-    margin: 0;
     position: relative;
-    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    background-color: $gray;
+    opacity: 0.5;
 }
 
 .pic-container:hover .pic-overlay {
@@ -89,11 +92,11 @@
 }
 
 .pic-overlay .fa-window-close-o {
-    color: red;
+    color: $deleteColor;
 }
 
 .pic-overlay .fa-pencil-square-o {
-    color: blue;
+    color: $blue;
     font-size: 40px;
 }
 
@@ -109,39 +112,34 @@
     font-size: 45px;
 }
 
-
-.profile-page{
-    background: #fff;
-    opacity: 0.9;
-    border-radius: 25px;
+.profile-page {
     padding: 10px;
     font-size: 18px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+    background: $white;
+    border-radius: 25px;
+    opacity: 0.9;
 }
 
-#imgupload{
+#imgupload {
     display: none;
-}
-#OpenImgUpload{
-    border: none;
-    font-size: 25px;
 }
 
 .select-style {
-    border: 1px solid #ccc;
     width: 120px;
-    border-radius: 3px;
     overflow: hidden;
+    border: 1px solid $gray;
+    border-radius: 3px;
 }
 
 .select-style select {
-    padding: 5px 8px;
     width: 130%;
-    border: none;
-    box-shadow: none;
+    padding: 5px 8px;
     background: transparent;
     background-image: none;
-    -webkit-appearance: none;
+    border: none;
+    box-shadow: none;
+    appearance: none;
 }
 
 .select-style select:focus {

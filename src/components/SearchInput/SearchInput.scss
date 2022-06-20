@@ -2,43 +2,43 @@
 @import "../../styles/colors.scss";
 @import "../../styles/fonts.scss";
 
-
 .MainSearchWrapper {
-    width: $fullWidth;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: $fullWidth;
 }
 
 .MainSearchForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: $fullWidth;
     max-width: 950px;
     height: $inputGeneralHeight;
-    display: flex;
-    justify-content: space-between;
     padding: $inputPadding;
     background: $white;
-    align-items: center;
-    box-shadow: $inputShadow;
     border-radius: $r16;
+    box-shadow: $inputShadow;
 
     .search__icon {
-        transform: rotateY(180deg);
         width: 24px;
         height: 34px;
+        transform: rotateY(180deg);
         cursor: pointer;
     }
 }
 
 .MainSearchInput {
     width: $fullWidth;
-    font-size: $fontsize-18;
+    margin: 0;
+    font-size: $fontsize18;
     background-color: transparent;
     border: $noBord;
-    margin: 0;
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
+
     .MainSearchForm {
         height: $inputHeight;
         padding: $inputMobilePadding;
@@ -50,6 +50,6 @@
     }
 
     .MainSearchInput {
-        font-size: $fontsize-16;
+        font-size: $fontsize16;
     }
 }

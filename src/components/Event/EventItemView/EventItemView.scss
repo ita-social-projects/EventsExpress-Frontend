@@ -1,25 +1,27 @@
+@import "../../../styles/colors.scss";
+
 .text-block {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background-color: #252424a6;
-  color: white;
-  font-size: 28px;
-  padding-left: 20px;
-  padding-right: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: $white;
+    font-size: 28px;
+    background-color: $grayBlack;
 }
 
 .title {
-  font-size: 48px;
+    font-size: 48px;
 }
 
 .button-block {
     position: absolute;
-    bottom: 20px;
     right: 20px;
-    font-size: 28px;
-    padding-left: 20px;
+    bottom: 20px;
     padding-right: 20px;
+    padding-left: 20px;
+    font-size: 28px;
 }
 
 .join-leave {
@@ -27,48 +29,54 @@
 }
 
 .btn-edit {
-  font-size: 24px;
-  background: #da2121ab;
+    font-size: 24px;
+    background: $deleteColor;
 }
 
 .btn-edit:hover {
-  background: #da2121;
+    background: $deleteColor;
+    cursor: pointer;
 }
 
 .clear-backgroud {
-  background-color: white;
+    background-color: $white;
 }
 
 .clear-backgroud:hover {
-  background-color: #ebebeb;
+    background-color: $white;
+    cursor: pointer;
 }
 
 .text-box-big {
-    overflow-wrap: anywhere;    
+    overflow-wrap: anywhere;
     scroll-behavior: auto;
 }
+
 .cancel-text {
-  font-size: 24px;
+    font-size: 24px;
 }
+
 .change-event {
     position: absolute;
-    bottom: 15px;
     right: 15px;
+    bottom: 15px;
 }
+
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
 .dropdown-content {
-    display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    display: none;
+    min-width: 160px;
+    background-color: $white;
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
 }
+
 .dropdown-menu {
     background: transparent;
-    border: 0px;
+    border: 0;
 }

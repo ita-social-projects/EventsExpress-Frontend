@@ -1,13 +1,13 @@
 @import "../../styles/main.scss";
 
 .box.card {
-  border-radius: 0.75rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 0.75rem;
+    box-shadow: 0 0 10px rgb(0 0 0 / 30%);
 }
 
 .user_item_list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 10px;
-  padding-right: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+    padding-right: 10px;
 }

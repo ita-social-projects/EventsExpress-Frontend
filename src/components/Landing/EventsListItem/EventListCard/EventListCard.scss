@@ -4,248 +4,305 @@
 @import "../../../../styles/fonts.scss";
 
 .card-item-container {
-  @include flex(row, start, center);
-  .card-item {
-    @include flex(column, center, center);
-    height: 280px;
-    position: relative;
-    width: 700px;
-    max-width: 700px;
-    box-shadow: $boxshadow;
-    margin-bottom: 50px;
-    .content {
-      @include flex(row, start, flex-end);
-      width: $fullWidth;
-      height: 200px;
-      position: relative;
-      padding: 15px;
-      padding-bottom: 0;
-      .image-container {
-        @include flex(row, center, center);
-        top: -25px;
-        left: 25px;
-        width: 370px;
-        height: 200px;
-        overflow: hidden;
-        position: absolute;
-        box-shadow: $imageshadow;
-      }
-      .card-image {
-        position: absolute;
-        top: $halfWidth;
-        left: $halfWidth;
-        transform:translate($minusHalfWidth, $minusHalfWidth);
-        width: 370px;
-        height: 200px;
-        object-fit:cover;
-      }
-      .card-item-content {
-        @include flex(column, start, space-between);
-        width: 40%;
-        .card-item-header {
-          text-transform: uppercase;
-          font-weight: $bold;
-          font-size: $fontsize-20;
-          color: $lightThemeAccept;
-          position: relative;
+    @include flex(row, flex-start, center);
+
+    .card-item {
+        @include flex(column, center, center);
+
+        position: relative;
+        width: 700px;
+        max-width: 700px;
+        height: 280px;
+        margin-bottom: 50px;
+        box-shadow: $boxshadow;
+
+        .content {
+            @include flex(row, flex-start, flex-end);
+
+            position: relative;
+            width: $fullWidth;
+            height: 200px;
+            padding: 15px;
+            padding-bottom: 0;
+
+            .image-container {
+                @include flex(row, center, center);
+
+                position: absolute;
+                top: -25px;
+                left: 25px;
+                width: 370px;
+                height: 200px;
+                overflow: hidden;
+                box-shadow: $imageshadow;
+            }
+
+            .card-image {
+                position: absolute;
+                top: $halfWidth;
+                left: $halfWidth;
+                width: 370px;
+                height: 200px;
+                object-fit: cover;
+                transform: translate($minusHalfWidth, $minusHalfWidth);
+            }
+
+            .card-item-content {
+                @include flex(column, flex-start, space-between);
+
+                width: 40%;
+
+                .card-item-header {
+                    position: relative;
+                    color: $lightThemeAccept;
+                    font-weight: $bold;
+                    font-size: $fontsize20;
+                    text-transform: uppercase;
+                }
+
+                .card-item-ovner {
+                    @include flex(row, center, center);
+
+                    width: $fullWidth;
+                    padding: 5px;
+                    color: $black;
+                    font-weight: $bold;
+                    background-color: $lightPink;
+                    border-radius: 3px;
+                }
+
+                .card-item-description {
+                    padding-bottom: 15px;
+                    color: $lightThemeHeader;
+                    font-size: $fontsize14;
+                }
+            }
         }
-        .card-item-ovner {
-          @include flex(row, center, center);
-          width: $fullWidth;
-          color: $black;
-          background-color: $lightPink;
-          border-radius: 3px;
-          font-weight: $bold;
-          padding: 5px;
+
+        .card-item-bottom-row {
+            @include flex(row, center, flex-end);
+
+            width: $fullWidth;
+            padding-bottom: 15px;
+
+            .card-item-footer {
+                margin: 0 60px;
+            }
+
+            .card-item-footer:last-child {
+                margin: 0 15px 0 60px;
+            }
+
+            .heart-icon {
+                margin-bottom: 0;
+            }
+
+            .event-date {
+                @include flex(column, flex-start, flex-start);
+
+                position: absolute;
+                bottom: 25px;
+                left: 30px;
+
+                .day,
+                .month {
+                    height: 40px;
+                    color: $lightThemeAccept;
+                    font-family: $robinson;
+                }
+
+                .day {
+                    margin-bottom: 15px;
+                    font-weight: $bold;
+                    font-size: 100px;
+                    line-height: 30px;
+                    text-shadow: 0 0 20px $white;
+                }
+
+                .month {
+                    font-size: 45px;
+                    text-transform: uppercase;
+                }
+            }
+
+            .event-details-btn {
+                @include flex(row, center, flex-start);
+
+                color: $white;
+                background-color: $lightThemeAccept;
+            }
         }
-        .card-item-description {
-          font-size: $fontsize-14;
-          color: $lightThemeHeader;
-          padding-bottom: 15px;
-        }
-      }
     }
-    .card-item-bottom-row {
-      @include flex(row, center, flex-end);
-      width: $fullWidth;
-      padding-bottom: 15px;
-      .card-item-footer {
-        margin: 0 60px;
-      }
-      .card-item-footer:last-child {
-        margin: 0 15px 0 60px;
-      }
-      .heart-icon {
-        margin-bottom: 0;
-      }
-      .event-date {
-        @include flex(column, start, start);
-        position: absolute;
-        left: 30px;
-        bottom: 25px;
-        .day, .month {
-          color: $lightThemeAccept;
-          font-family: $robinson;
-          height: 40px;
-        }
-        .day {
-          text-shadow: 0 0 20px $white;
-          margin-bottom: 15px;
-          font-weight: $bold;
-          font-size: 100px;
-          line-height: 30px;
-        }
-        .month {
-          text-transform: uppercase;
-          font-size: 45px;
-        }
-      }
-      .event-details-btn {
-        @include flex(row, center, start);
-        background-color: $lightThemeAccept;
-        color: $white;
-      }
-    }
-  }
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
-    .card-item-container {
-    .card-item {
-      height: 235px;
-      justify-content: space-between;
-      .content {
-        margin-top: 10px;
-        padding-top: 0;
-        height: 130px;
-        .image-container {
-          width: 280px;
-          max-height: 150px;
-          top: -25px;
-          left: 20px;
-          .card-image {
-            min-width: 280px;
-            max-height: 150px;
-          }
-        }
-        .card-item-content {    
-          height: 200px;
-          justify-content: flex-start;
-          .card-item-header {
-            font-size: 12px;
-            padding-bottom: 10px;
-          }
-          .card-item-description {
-            font-size: 12px;
-            padding-bottom: 10px;
-          }
-        }
-      }
-      .card-item-bottom-row {
-        padding-bottom: 10px;
-        .event-date {
-          left: 20px;
-        }
 
-        .event-date {
-          position: absolute;
-          left: 30px;
-          bottom: 25px;
-          display: flex;
-          flex-direction: column;
-          
-          .day, .month {
-            color: $lightThemeAccept;
-            font-family: $robinson;
-            height: 40px;
-          }
-          .day {
-            text-shadow: 0 0 20px $white;
-            margin-bottom: 10px;
-            font-weight: $bold;
-            font-size: 80px;
-            line-height: 30px;
-          }
-          .month {
-            text-transform: uppercase;
-            font-size: 40px;
-          }
+    .card-item-container {
+
+        .card-item {
+            justify-content: space-between;
+            height: 235px;
+
+            .content {
+                height: 130px;
+                margin-top: 10px;
+                padding-top: 0;
+
+                .image-container {
+                    top: -25px;
+                    left: 20px;
+                    width: 280px;
+                    max-height: 150px;
+
+                    .card-image {
+                        min-width: 280px;
+                        max-height: 150px;
+                    }
+                }
+
+                .card-item-content {
+                    justify-content: flex-start;
+                    height: 200px;
+
+                    .card-item-header {
+                        padding-bottom: 10px;
+                        font-size: 12px;
+                    }
+
+                    .card-item-description {
+                        padding-bottom: 10px;
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .card-item-bottom-row {
+                padding-bottom: 10px;
+
+                .event-date {
+                    position: absolute;
+                    bottom: 25px;
+                    left: 20px;
+                    left: 30px;
+                    display: flex;
+                    flex-direction: column;
+
+                    .day,
+                    .month {
+                        height: 40px;
+                        color: $lightThemeAccept;
+                        font-family: $robinson;
+                    }
+
+                    .day {
+                        margin-bottom: 10px;
+                        font-weight: $bold;
+                        font-size: 80px;
+                        line-height: 30px;
+                        text-shadow: 0 0 20px $white;
+                    }
+
+                    .month {
+                        font-size: 40px;
+                        text-transform: uppercase;
+                    }
+                }
+
+                .card-item-footer {
+                    margin: 0 30px;
+                }
+
+                .card-item-footer:last-child {
+                    margin: 0 15px 0 30px;
+                }
+            }
         }
-        .card-item-footer {
-          margin: 0 30px;
-        }
-        .card-item-footer:last-child {
-          margin: 0 15px 0 30px;
-        }
-      }
     }
-  }
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
-  .card-item-container {
-    .card-item {
-      height: 220px;
-      width: 450px;
-      .content {
-        padding-top: 0;
-        @include flex(row, center, start);
-        height: 220px;
-        .image-container {
-          position: relative;
-          width: $fullWidth;
-          top: -20px;
-          left: 0;
-          padding-bottom: 0;
-          margin-bottom: 0;
-          .card-image {
-            width: $fullWidth;
-          }
+
+    .card-item-container {
+
+        .card-item {
+            width: 450px;
+            height: 220px;
+
+            .content {
+                height: 220px;
+                padding-top: 0;
+
+                @include flex(row, center, flex-start);
+
+                .image-container {
+                    position: relative;
+                    top: -20px;
+                    left: 0;
+                    width: $fullWidth;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+
+                    .card-image {
+                        width: $fullWidth;
+                    }
+                }
+
+                .card-item-content {
+                    width: 150px;
+                    height: 70px;
+
+                    @include flex(column, flex-start, center);
+
+                    .card-item-header {
+                        padding: 10px;
+                        font-size: $fontsize12;
+                    }
+
+                    .card-item-ovner {
+                        margin-left: 10px;
+                    }
+
+                    .card-item-description {
+                        display: none;
+                    }
+                }
+            }
+
+            .card-item-bottom-row {
+                padding-bottom: 10px;
+
+                .event-date {
+                    left: 20px;
+
+                    .day {
+                        margin-bottom: 10px;
+                        font-weight: $bold;
+                        font-size: 70px;
+                        line-height: 70px;
+                        text-shadow: 0 0 10px $lightThemeHeader;
+                    }
+
+                    .month {
+                        font-size: 40px;
+                        text-transform: uppercase;
+                    }
+                }
+
+                .card-item-footer {
+                    margin: 0 35px;
+                }
+
+                .card-item-footer:last-child {
+                    margin: 0 35px;
+                }
+            }
         }
-        .card-item-content {   
-          width: 150px;
-          height: 70px;
-          @include flex(column, start, center);
-          .card-item-header {
-            font-size: $fontsize-12;
-            padding: 10px;
-          }
-          .card-item-ovner {
-            margin-left: 10px;
-          }
-          .card-item-description {
-            display: none;
-          }
-        }
-      }
-      .card-item-bottom-row {
-        padding-bottom: 10px;
-        .event-date {
-          left: 20px;
-          .day {
-            text-shadow: 0 0 10px $lightThemeHeader;
-            margin-bottom: 10px;
-            font-weight: $bold;
-            font-size: 70px;
-            line-height: 70px;
-          }
-          .month {
-            text-transform: uppercase;
-            font-size: 40px;
-          }
-        }
-        .card-item-footer {
-          margin: 0 35px;
-        }
-        .card-item-footer:last-child {
-          margin: 0 35px 0 35px;
-        }
-      }
     }
-  }
 }
-@media screen and (max-width: $mobile-breakpoint) {
-  .event-location {
-    display: none;
-  }
+
+@media screen and (max-width: $mobileBreakpoint) {
+
+    .event-location {
+        display: none;
+    }
 }
