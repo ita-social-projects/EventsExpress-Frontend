@@ -6,15 +6,16 @@ import NoResult from "../shared/NoResult/NoResult";
 import EventCard from "../Landing/EventCard/EventCard";
 import { EVENT_NO_RESULT } from "../../constants/eventConstants";
 
-const EventSchedulesList = ({ events, getEvents, isDataFetched }) => {
+const EventSchedulesList = ({ events, getEvents, isDataFetched, isItemsAvaliable }) => {
   useEffect(() => {
     getEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  console.log('isItem', isItemsAvaliable);
   return (
     <div className="container">
       <SpinnerWrapper showContent={isDataFetched}>
-        {events.length > 0 ? (
+        {isItemsAvaliable ? (
           <div className="eventsBlock">
             {events.map(event => (
               <EventCard key={event.id} event={event} />
@@ -35,12 +36,14 @@ const EventSchedulesList = ({ events, getEvents, isDataFetched }) => {
 
 EventSchedulesList.propTypes = {
   isDataFetched: PropTypes.bool,
+  isItemsAvaliable: PropTypes.bool,
   events: PropTypes.array,
   getEvents: PropTypes.func,
 };
 
 EventSchedulesList.defaultProps = {
   isDataFetched: false,
+  isItemsAvaliable: false,
   events: [],
   getEvents: () => {},
 };

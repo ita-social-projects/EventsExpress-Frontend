@@ -3,27 +3,7 @@ import {
   GET_EVENTS_SCHEDULE_DATA,
   RESET_EVENTS_SCHEDULE,
 } from "../actions/eventSchedule/eventSchedule-list-action";
-
-const parseReccurentEvents = data =>
-  data.items.map(
-    ({
-      eventId: id,
-      frequency,
-      isActive,
-      lastRun,
-      nextRun,
-      periodicity,
-      title,
-    }) => ({
-      id,
-      frequency,
-      isActive,
-      lastRun,
-      nextRun,
-      periodicity,
-      title,
-    }),
-  );
+import parseReccurentEvents from "../components/helpers/parserEventSchedule";
 
 const reducer = (state = initialState.eventSchedules, action) => {
   switch (action.type) {

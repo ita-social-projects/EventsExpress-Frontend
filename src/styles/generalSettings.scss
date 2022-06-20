@@ -13,7 +13,20 @@ body {
   font-family: $mainFont;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
+}
+html {
+  font-size: 16px;
+}
+@media screen and (max-width: $mediaSecondTabletScreen) {
+  html{
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: $mediaMobileScreen) {
+  html{
+    font-size: 12px;
+  }
 }
 
 .container {

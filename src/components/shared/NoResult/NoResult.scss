@@ -2,17 +2,11 @@
 @import "../../../styles/colors.scss";
 @import "../../../styles/variables.scss";
 @import "../../../styles/animations.scss";
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import "../../../styles/mixins.scss";
 
 .container {
+    @include flex(column, center, center);
     width: $fullWidth;
-    display: flex;
-    flex-direction: column;
     text-align: center;
     padding-top: 120px;
 
@@ -28,17 +22,17 @@
         max-width: 180px;
         display: block;
         margin: 0 auto;
-        margin-top: 10px;
+        margin-top: 0.6rem;
         background: $white;
         border: $defaulBorder;
         border-radius: $defaultBorderRadius;
         color: $black;
-        padding: 10px 20px;
+        padding: 0.6rem 1.25rem;
         font-weight: $semiBold;
         font-family: $mainFont;
         transition: $defaultTransition;
         animation: $landingBannerAnimation;
-        font-size: $fontsize-16;
+        font-size: 1rem;
         cursor: pointer;
 
         &:hover {
@@ -53,59 +47,26 @@
     width: $fullWidth;
 
     .headText {
-        font-size: $fontsize-32;
+        font-size: 2rem;
         font-weight: $semiBold;
-        margin-bottom: 10px;
+        margin-bottom: 0.6rem;
     }
 
     .subTitleText {
-        font-size: $fontsize-20;
+        font-size: 1.25rem;
         font-weight: $thick;
     }
-
 }
 
 @media screen and (max-width: $mediaFirstTabletScreen) {
-    .container {
-        .image {
-            max-width: 350px;
-        }
-    }
-
-    .containerText {
-        .headText {
-            font-size: $fontsize-24;
-            margin-bottom: 10px;
-        }
-
-        .subTitleText {
-            font-size: $fontsize-18;
-        }
+    .container .image {
+        max-width: 350px;
     }
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
-    .container {
-        .image {
-            max-width: 300px;
-        }
-
-        .bannerButton {
-            max-width: 160px;
-            padding: 8px 15px;
-            font-size: $fontsize-16;
-        }
-    }
-
-    .containerText {
-        .headText {
-            font-size: $fontsize-20;
-            margin-bottom: 10px;
-        }
-
-        .subTitleText {
-            font-size: $fontsize-16;
-        }
+    .container .image {
+        max-width: 300px;
     }
 }
 
@@ -116,19 +77,6 @@
 
         .bannerButton {
             max-width: 140px;
-            padding: 5px 10px;
-            font-size: $fontsize-14;
-        }
-    }
-
-    .containerText {
-        .headText {
-            font-size: $fontsize-18;
-            margin-bottom: 10px;
-        }
-
-        .subTitleText {
-            font-size: $fontsize-14;
         }
     }
 }

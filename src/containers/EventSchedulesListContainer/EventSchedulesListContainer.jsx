@@ -5,6 +5,7 @@ import { getEventSchedules } from "../../actions/eventSchedule/eventSchedule-lis
 const mapStateToProps = state => {
   return {
     isDataFetched: state.eventSchedules.isDataFetched,
+    isItemsAvaliable: state.eventSchedules.events.length < 0,
     events: state.eventSchedules.events,
   };
 };
