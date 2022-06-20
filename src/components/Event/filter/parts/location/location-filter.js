@@ -119,7 +119,6 @@ LocationFilter.defaultProps = {
 const mapStateToProps = state => {
   return {
     ...state.eventsFilter.locationFilter,
-    // eslint-disable-next-line sonarjs/no-duplicate-string
     formValues: getFormValues("filter-form")(state),
   };
 };
