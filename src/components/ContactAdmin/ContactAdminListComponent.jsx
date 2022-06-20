@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import propTypes from "prop-types";
 import ContactAdminItemContainer from "../../containers/ContactAdminContainers/ContactAdminItemContainer";
 import RenderIssuesList from "./RenderIssuesList";
-import filterHelper from "../helpers/filterHelper";
+import { getQueryStringByFilter } from "../helpers/filterHelper/filterHelper";
 
 class ContactAdminList extends Component {
   pageChange = page => {
@@ -14,8 +14,7 @@ class ContactAdminList extends Component {
     else {
       const queryStringInObject = queryStringParse(history.location.search);
       queryStringInObject.page = page;
-      history.location.search =
-        filterHelper.getQueryStringByFilter(queryStringInObject);
+      history.location.search = getQueryStringByFilter(queryStringInObject);
       history.push(history.location.pathname + history.location.search);
     }
   };

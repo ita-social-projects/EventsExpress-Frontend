@@ -4,7 +4,10 @@ import { connect } from "react-redux";
 import { getFormValues, reset } from "redux-form";
 import { withRouter } from "react-router-dom";
 import ContactAdminFilter from "../../components/ContactAdmin/ContactAdminFilterComponent";
-import filterHelper from "../../components/helpers/filterHelper";
+import {
+  trimUndefinedKeys,
+  getQueryStringByFilter,
+} from "../../components/helpers/filterHelper/filterHelper";
 
 // TODO Take out some logic
 const ContactAdminFilterContainer = ({
@@ -19,7 +22,7 @@ const ContactAdminFilterContainer = ({
   };
 
   const onSubmit = filters => {
-    const filtersTrimUndefinedKeys = filterHelper.trimUndefinedKeys(filters);
+    const filtersTrimUndefinedKeys = trimUndefinedKeys(filters);
     const filterCopy = { ...contactAdminList.filter };
     Object.entries(filtersTrimUndefinedKeys).forEach(([key, value]) => {
       switch (key) {
@@ -40,13 +43,13 @@ const ContactAdminFilterContainer = ({
           break;
       }
     });
-    const queryString = filterHelper.getQueryStringByFilter(filterCopy);
+    const queryString = getQueryStringByFilter(filterCopy);
 
     history.push(history.location.pathname + queryString);
   };
 
   const buildInitialFormValues = () => {
-    const filter = filterHelper.trimUndefinedKeys(contactAdminList.filter);
+    const filter = trimUndefinedKeys(contactAdminList.filter);
     return { ...filter };
   };
 

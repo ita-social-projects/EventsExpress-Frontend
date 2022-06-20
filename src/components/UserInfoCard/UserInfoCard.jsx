@@ -2,20 +2,20 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import GENDERS from "../../constants/gendersVarietyConstants";
-import LABELS from "../../constants/labelConstants";
+import { NOT_SPECIFIED } from "../../constants/labelConstants";
 import { ATTITUDE_TYPES } from "../../constants/userConstants";
 import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../Rating/RatingAverage";
-import defineUserAge from "../helpers/defineUserAge";
-import getAttitudeToUser from "../helpers/getAttitudeToUser";
+import getAge from "../helpers/userAgeHelper/getUserAge";
+import getAttitudeToUser from "../helpers/attitudeToUserHelper/getAttitudeToUser";
 import AttitudeToolTip from "./AttitudeToolTip/AttitudeToolTip";
 import "./UserInfoCard.scss";
 
 const UserInfoCard = ({ id, username, gender, birthday, rating, attitude }) => {
   const attitudeToUser = getAttitudeToUser(attitude);
   const linkToUser = `/user/${id}`;
-  const userAge = defineUserAge(birthday);
-  const userGender = GENDERS[gender] || LABELS.NOT_SPECIFIED;
+  const userAge = getAge(birthday);
+  const userGender = GENDERS[gender] || NOT_SPECIFIED;
 
   return (
     <div className={`user_info_card ${attitudeToUser.bg}`}>

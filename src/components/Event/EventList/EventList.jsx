@@ -5,8 +5,8 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import RenderList from "../RenderList/RenderList";
 import EventCard from "../EventItem/EventItem";
-import getQueryStringByFilter from "../../helpers/filterHelper";
 import { EVENT_STATUS_ENUM } from "../../../constants/eventConstants";
+import { getQueryStringByFilter } from "../../helpers/filterHelper/filterHelper";
 import {
   resetEvents,
   updateEventsFilters,

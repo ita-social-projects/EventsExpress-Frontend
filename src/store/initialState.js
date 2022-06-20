@@ -1,4 +1,7 @@
-import filterHelper from "../components/helpers/filterHelper";
+import {
+  getDefaultEventFilter,
+  getDefaultContactAdminFilter,
+} from "../components/helpers/filterHelper/filterHelper";
 
 const initialState = {
   requestCount: {
@@ -89,7 +92,7 @@ const initialState = {
       items: [],
       pageViewModel: {},
     },
-    filter: filterHelper.getDefaultEventFilter(),
+    filter: getDefaultEventFilter(),
   },
   tracks: {
     isError: false,
@@ -153,7 +156,7 @@ const initialState = {
       items: [],
       pageViewModel: {},
     },
-    filter: filterHelper.getDefaultContactAdminFilter(),
+    filter: getDefaultContactAdminFilter(),
   },
   contactAdminItem: {
     data: [],

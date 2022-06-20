@@ -4,9 +4,9 @@ import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
 import { MultiCheckbox, renderDatePicker } from "../helpers/form-helpers";
 import parseEuDate from "../helpers/form-helpers/parseEuDate";
-import filterHelper from "../helpers/filterHelper";
-import "./ContactAdminFilter.scss";
 import { ISSUE_STATUS_ENUM } from "../../constants/issueConstants";
+import { compareObjects } from "../helpers/filterHelper/filterHelper";
+import "./ContactAdminFilter.scss";
 
 class ContactAdminFilter extends Component {
   constructor(props) {
@@ -20,10 +20,7 @@ class ContactAdminFilter extends Component {
     const initialValues = this.props.initialFormValues;
 
     if (
-      !filterHelper.compareObjects(
-        initialValues,
-        prevProps.initialFormValues,
-      ) ||
+      !compareObjects(initialValues, prevProps.initialFormValues) ||
       this.state.needInitializeValues
     ) {
       this.props.initialize({

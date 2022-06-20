@@ -9,13 +9,13 @@ import {
   renderMultiselect,
   parseEuDate,
 } from "../../helpers/form-helpers";
-import filterHelper from "../../helpers/filterHelper";
 import EventMapModal from "../MapModal/MapModal";
 import DisplayMap from "../Map/DisplayMap";
 import {
   EVENT_STATUS_ENUM,
   EVENTS_FILTER,
 } from "../../../constants/eventConstants";
+import { compareObjects } from "../../helpers/filterHelper/filterHelper";
 import "./EventFilter.scss";
 
 const {
@@ -46,10 +46,7 @@ class EventFilter extends Component {
     const { initialValues } = this.props;
 
     if (
-      !filterHelper.compareObjects(
-        initialValues,
-        prevProps.initialFormValues,
-      ) ||
+      !compareObjects(initialValues, prevProps.initialFormValues) ||
       this.state.needInitializeValues
     ) {
       this.props.initialize({

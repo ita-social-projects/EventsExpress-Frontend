@@ -1,9 +1,10 @@
 import {
   ATTITUDE_MESSAGES,
   ATTITUDE_ICONS,
-} from "../../constants/userConstants";
+} from "../../../constants/userConstants";
 
 const getAttitudeToUser = attitude => {
+  // Like = 0, Dislike = 1
   let attitudeToUser = {};
 
   switch (attitude) {
@@ -22,7 +23,7 @@ const getAttitudeToUser = attitude => {
       };
       break;
     default:
-      attitudeToUser = { color: null, message: null, thumb: null };
+      attitudeToUser = { bg: null, message: null, thumb: null };
   }
   return attitudeToUser;
 };
