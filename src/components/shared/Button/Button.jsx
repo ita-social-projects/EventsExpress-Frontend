@@ -12,13 +12,13 @@ const Button = ({ content, onClick, className, type, ...otherProps }) => {
 };
 
 Button.defaultProps = {
-  content: "",
+  content: {},
   onClick: () => {},
   className: "",
   type: "button",
 };
 Button.propTypes = {
-  content: PropTypes.string,
+  content: PropTypes.object,
   onClick: PropTypes.func,
   className: PropTypes.string,
   type: PropTypes.string,

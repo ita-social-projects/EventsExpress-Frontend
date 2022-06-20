@@ -7,6 +7,7 @@
 .wrapper {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: $fullWidth;
     height: $fullHeight;
     background-color: $backGroundModal;
@@ -17,7 +18,6 @@
 
     .container {
         width: 384px;
-        height: auto;
         box-shadow: $boxshadow;
         border-radius: $r16;
         padding: 20px;
@@ -44,6 +44,7 @@
 }
 
 .interact {
+    width: $fullWidth;
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
@@ -75,21 +76,17 @@
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
-    .wrapper {
-        .container {
-            width: 350px;
-            padding: 10px;
-        }
+    .wrapper .container {
+        width: 350px;
+        height: 160px;
+        padding: 10px;
     }
-
 
     .titleText {
         font-size: $fontsize20;
     }
 
-    .interact {
-        .interactBtn {
-            padding: 5px 15px;
-        }
+    .interact .interactBtn {
+        padding: 5px 15px;
     }
 }

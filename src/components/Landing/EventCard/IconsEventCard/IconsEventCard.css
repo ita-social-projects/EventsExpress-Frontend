@@ -1,0 +1,46 @@
+.heart__icon {
+  background: url("../../../../assets/icons/Imgheart.svg") no-repeat center;
+}
+
+.join-to-event__icon {
+  background: url("../../../../assets/icons/ImgJoinToEvent.svg") no-repeat center;
+}
+
+.heart__icon,
+.join-to-event__icon {
+  height: 40px;
+  width: 40px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.add-favorite-slider {
+  top: calc($position-icons-top + $position-top-for-icon-slider);
+  left: 30px;
+}
+
+.join-to-event-slider {
+  top: calc($position-icons-top + $position-top-for-icon-slider);
+  left: calc($position-icons-left + $position-left-from-heart-icon);
+}
+
+.add-favorite-matrix {
+  top: 0;
+  left: 0;
+}
+
+.join-to-event-matrix {
+  top: 205px;
+  left: calc($position-icons-left + $position-left-from-heart-icon);
+}
+
+.add-favorite-list {
+  top: -10px;
+  right: 75px;
+}
+
+.join-to-event-list {
+  top: -10px;
+  right: calc($postition-icons-list-right - $position-left-from-heart-icon);
+}
+/*# sourceMappingURL=IconsEventCard.css.map */
