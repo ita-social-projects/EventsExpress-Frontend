@@ -38,6 +38,7 @@ class EditEventContainer extends Component {
             onSubmit={this.onSubmit}
             onError={this.onError}
             initialValues={this.props.event}
+            userName={this.props.user_name}
             formValues={this.props.form_values}
             haveReccurentCheckBox
             eventId={this.props.event.id}
@@ -71,6 +72,7 @@ class EditEventContainer extends Component {
 
 const mapStateToProps = state => ({
   user_id: state.user.id,
+  user_name: state.user.name,
   add_event_status: state.add_event,
   all_categories: state.categories,
   form_values: getFormValues("event-form")(state),
@@ -98,6 +100,7 @@ EditEventContainer.propTypes = {
   editEvent: PropTypes.func,
   event: PropTypes.object,
   user_id: PropTypes.string,
+  user_name: PropTypes.string,
   history: PropTypes.object,
   handleFormError: PropTypes.func,
   all_categories: PropTypes.object,
@@ -107,6 +110,7 @@ EditEventContainer.propTypes = {
 EditEventContainer.defaultProps = {
   editEvent: () => {},
   user_id: "",
+  user_name: "",
   event: {},
   history: {},
   handleFormError: () => {},

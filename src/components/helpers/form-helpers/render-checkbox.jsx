@@ -7,7 +7,7 @@ const RenderFormCheckbox = ({ input, label }) => {
   return (
     <div>
       <FormControlLabel
-        control={<Checkbox checked={!!input.value} onChange={input.onChange} />}
+        control={<Checkbox checked={!input.value} onChange={input.onChange} />}
         label={label}
       />
     </div>
@@ -16,7 +16,7 @@ const RenderFormCheckbox = ({ input, label }) => {
 
 RenderFormCheckbox.propTypes = {
   input: PropTypes.shape({
-    value: PropTypes.string,
+    value: PropTypes.bool,
     onChange: PropTypes.func,
   }),
   label: PropTypes.string,
@@ -24,7 +24,7 @@ RenderFormCheckbox.propTypes = {
 
 RenderFormCheckbox.defaultProps = {
   input: {
-    value: "",
+    value: false,
     onChange: () => {},
   },
   label: "",

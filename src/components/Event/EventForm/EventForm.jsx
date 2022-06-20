@@ -17,7 +17,7 @@ import {
   parseEuDate,
 } from "../../helpers/form-helpers";
 import "./EventForm.scss";
-import asyncValidatePhoto from "../../helpers/asyncValidatePhoto";
+// import asyncValidatePhoto from "../../helpers/asyncValidatePhoto";
 import Location from "../../Location/Location";
 import { EVENT_STATUS_ENUM } from "../../../constants/eventConstants";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
@@ -39,6 +39,7 @@ const EventForm = ({
   onSubmit,
 }) => {
   const [checked, isChecked] = useState(false);
+  // const userName = initialValues.organizers[0].username;
   const periodicityListOptions = PERIODICITY.map(item => (
     <option value={item.value} key={item.value}>
       {" "}
@@ -207,7 +208,7 @@ EventForm.propTypes = {
   onSubmit: propTypes.func,
   handleSubmit: propTypes.func,
   error: propTypes.string,
-  eventId: propTypes.number,
+  eventId: propTypes.string,
   userName: propTypes.string,
   allCategories: propTypes.object,
   formValues: propTypes.object,
@@ -220,7 +221,7 @@ EventForm.defaultProps = {
   onSubmit: () => {},
   handleSubmit: () => {},
   error: "",
-  eventId: null,
+  eventId: "",
   userName: "",
   allCategories: {},
   formValues: {},
@@ -233,6 +234,6 @@ export default reduxForm({
   form: "event-form",
   enableReinitialize: true,
   touchOnChange: true,
-  asyncValidate: asyncValidatePhoto,
+  // asyncValidate: asyncValidatePhoto,
   asyncChangeFields: ["photo"],
 })(EventForm);
