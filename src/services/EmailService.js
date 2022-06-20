@@ -3,7 +3,7 @@ import isValidEmail from "../components/helpers/validators/email-address-validat
 
 const emailService = values => {
   const isValid = isValidEmail(values.email);
-  if (isValide) {
+  if (isValid) {
     emailjs.send(
       "service_hxod138",
       "template_1k257d8",
