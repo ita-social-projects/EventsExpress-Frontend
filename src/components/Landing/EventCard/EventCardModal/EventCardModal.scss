@@ -5,33 +5,32 @@
 @import "../../../../styles/animations.scss";
 
 .wrapper {
+    @include flexContainer(center, center);
     width: $fullWidth;
     height: $fullHeight;
     background-color: $backGroundModal;
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: 1;
 
     .container {
         width: 384px;
+        height: auto;
         box-shadow: $boxshadow;
         border-radius: $r16;
         padding: 20px;
+        margin: 10px;
         background-color: $white;
     }
 }
 
-.titleText {
-    text-align: center;
 
-    .title {
-        font-size: $fontsize-24;
-    }
+.titleText {
+    font-size: $fontsize-24;
+    text-align: center;
 }
+
 
 .inputBlock {
     display: flex;
@@ -71,5 +70,25 @@
     .interactBtn:last-child {
         background-color: $purple;
         color: $white;
+    }
+}
+
+@media screen and (max-width: $mediaMobileScreen) {
+    .wrapper {
+        .container {
+            width: 350px;
+            padding: 10px;
+        }
+    }
+
+
+    .titleText {
+        font-size: $fontsize-20;
+    }
+
+    .interact {
+        .interactBtn {
+            padding: 5px 15px;
+        }
     }
 }

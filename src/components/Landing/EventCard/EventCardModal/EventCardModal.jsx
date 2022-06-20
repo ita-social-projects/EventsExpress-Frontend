@@ -13,9 +13,7 @@ const EventCardModal = ({ closeModal, id, onClose, handleClick }) => {
   return (
     <div className="wrapper">
       <div className="container">
-        <div className="titleText">
-          <h4 className="title">{DELETE_DRAFT.MESSAGE}</h4>
-        </div>
+        <h4 className="titleText">{DELETE_DRAFT.MESSAGE}</h4>
         <div className="inputBlock">
           <input
             id="draftInput"

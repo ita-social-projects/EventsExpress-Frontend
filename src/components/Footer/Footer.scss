@@ -61,6 +61,7 @@
 
       .footer__input {
         @include form_input;
+        font-size: $fontsize-14;
       }
 
       .footer__subscribe__icon {

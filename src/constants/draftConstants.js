@@ -15,8 +15,3 @@ export const DELETE_DRAFT = {
   CANCEL: "Cancel",
   CONFIRM: "Confirm",
 };
-
-export const ICON_PROPERTIES = {
-  ICON_SIZE: 30,
-  CIRSOR_POINER: "pointer"
-}
