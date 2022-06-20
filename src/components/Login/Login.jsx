@@ -52,7 +52,7 @@ const Login = ({ handleSubmit, handleClose, error }) => {
           placeholder={PASSWORD_PLACEHOLDER}
           component={FormInput}
         />
-        <Button content={SIGN_IN} className="auth-btn" />
+        <Button content={SIGN_IN} type="submit" className="auth-btn" />
         <Button
           content={FORGOT_PASSWORD}
           onClick={handleRecoverClick}
