@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import UnitOfMeasuringAddWrapper from "../../containers/UnitsOfMeasuringContainer/UnitOfMeasuringAddContainer";
-import SpinnerWrapper from "../../containers/spinner";
+import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import UnitOfMeasuringListWrapper from "../../containers/UnitsOfMeasuringContainer/UnitOfMeasuringListContainer";
 import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
 
@@ -23,9 +23,9 @@ class UnitsOfMeasuring extends Component {
                 category: "",
               }}
             />
-            <SpinnerWrapper showContent={unitsOfMeasuring}>
+            <SpinnerContainer showContent={unitsOfMeasuring}>
               <UnitOfMeasuringListWrapper data={unitsOfMeasuring} />
-            </SpinnerWrapper>
+            </SpinnerContainer>
           </tbody>
         </table>
       </div>

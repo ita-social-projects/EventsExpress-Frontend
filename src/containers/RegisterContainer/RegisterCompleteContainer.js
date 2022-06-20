@@ -5,6 +5,7 @@ import fieldIsRequired from "../../components/helpers/validators/required-fields
 import isValidEmail from "../../components/helpers/validators/email-address-validator";
 import RegisterComplete from "../../components/Register/RegisterComplete";
 
+// TODO Take out validation logic
 const validate = values => {
   const errors = {};
   const requiredFields = ["birthday", "userName", "email", "phone", "gender"];

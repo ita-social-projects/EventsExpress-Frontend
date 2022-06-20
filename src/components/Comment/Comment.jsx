@@ -1,14 +1,14 @@
 ﻿import React from "react";
 import propTypes from "prop-types";
-import AddComment from "../../containers/add-comment";
-import CommentListWrapper from "../../containers/comment-list";
+import CommentContainer from "../../containers/CommentContainer/CommnetContainer";
+import CommentListContainer from "../../containers/CommentContainer/CommentListContainer";
 import "./Comment.scss";
 
 const Comment = props => {
   return (
     <div>
-      <AddComment />
-      <CommentListWrapper match={props.match} />
+      <CommentContainer />
+      <CommentListContainer match={props.match} />
     </div>
   );
 };
