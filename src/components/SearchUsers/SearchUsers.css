@@ -1,0 +1,35 @@
+.search_users_container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-right: 20px;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.search_users_container .search_users_input {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.search_users_container .search_users_pagination {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  bottom: 0;
+}
+
+.small_container {
+  height: calc(100vh - 280px);
+}
+/*# sourceMappingURL=SearchUsers.css.map */

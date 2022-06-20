@@ -1,0 +1,38 @@
+.menu-view-mode {
+  margin: 20px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.menu-view-mode__button {
+  width: 40px;
+  height: 40px;
+  margin: 0px 5px;
+}
+
+.menu-view-mode__button_matrix {
+  background: url("../../../assets/icons/ImgEventsViewModeMatrix.svg") no-repeat center;
+}
+
+.menu-view-mode__button_list {
+  background: url("../../../assets/icons/ImgEventsViewModeList.svg") no-repeat center;
+}
+
+.menu-view-mode__button_slider {
+  background: url("../../../assets/icons/ImgEventsViewModeSlider.svg") no-repeat center;
+}
+
+@media screen and (max-width: 575px) {
+  .menu-view-mode__button {
+    width: 32px;
+    height: 32px;
+  }
+}
+/*# sourceMappingURL=EventsViewMode.css.map */

@@ -17,7 +17,7 @@ $sidebarOffset: 5px;
     list-style: none;
     .left-sidebar__item {
       position: relative;
-      font-size: $fontsize-20;
+      font-size: $fontsize20;
       @include flex(row, center, center);
       padding: 15px;
       background-color: $purpleDark;
@@ -56,7 +56,7 @@ $sidebarOffset: 5px;
       .left-sidebar__link {
         color: $white;
         text-decoration: none;
-        font-size: $fontsize-16;
+        font-size: $fontsize16;
         &:hover {
           color: $white;
         }
@@ -80,7 +80,7 @@ $sidebarOffset: 5px;
         color: $white;
         text-decoration: none;
         font-weight: $bold;
-        font-size: $fontsize-16;
+        font-size: $fontsize16;
       }
     }
   }
@@ -106,7 +106,7 @@ $sidebarOffset: 5px;
     list-style: none;
     .left-sidebar__item {
       position: relative;
-      font-size: $fontsize-16;
+      font-size: $fontsize16;
       @include flex(row, center, center);
       width: $sidebarWidth;
       transition: transform $defaultTransition;
@@ -122,14 +122,14 @@ $sidebarOffset: 5px;
       background-color: $purpleDark;
       @include flex(row, center, center);
       border-radius: $borderRound;
-      font-size: $fontsize-20;
+      font-size: $fontsize20;
       .toggle-btn {
         width: $fullWidth;
         padding: 15px 0;
         cursor: pointer;
         color: $white;
         text-decoration: none;
-        font-size: $fontsize-16;
+        font-size: $fontsize16;
       }
     }
   }
@@ -146,7 +146,7 @@ $sidebarOffset: 5px;
     @include flex(column, center, center);
     .toggle-btn > svg {
       color: $white;
-      font-size: $fontsize-20;
+      font-size: $fontsize20;
     }
     .left-sidebar__item {
       opacity: $opacity1;
@@ -156,7 +156,7 @@ $sidebarOffset: 5px;
       .left-sidebar__link {
         @include flex(row, center, center);
         color: $white;
-        font-size: $fontsize-20;
+        font-size: $fontsize20;
         text-decoration: none;
         &:hover {
           .item__page-name {

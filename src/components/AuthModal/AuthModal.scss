@@ -23,7 +23,7 @@
         @include flex(row, center, center);
         background-color: $lightPink; 
         color: $black;
-        font-size: $fontsize-16;
+        font-size: $fontsize16;
         box-shadow: $authModalShadow;
         .switcher-btn {
             cursor: pointer;
@@ -36,7 +36,7 @@
         .modal-switcher {
           width: $width80;
           padding: 20px 30px;
-          font-size: $fontsize-16;
+          font-size: $fontsize16;
           flex-direction: column;
           .switcher-btn {
             margin-top: 5px;

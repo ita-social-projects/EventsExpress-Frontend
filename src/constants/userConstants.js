@@ -44,4 +44,6 @@ export const ATTITUDE_ICONS = {
   THUMB_DOWN: "fa-thumbs-down",
 };
 
+export const YOU_RATE_LABEL = "Your rate:";
+
 export const ATTITUDE_TYPES = [0, 1];

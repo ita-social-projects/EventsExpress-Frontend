@@ -1,29 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Rating from "@material-ui/lab/Rating";
+import { YOU_RATE_LABEL } from "../../constants/userConstants";
+import { LARGE_SIZE } from "../../constants/imageSizesConstants";
 
 const RatingSetter = ({ myRate, callback }) => {
   return (
     <div>
-      Your rate:
-      <Rating
-        value={Number(myRate)}
-        max={10}
-        size="large"
-        onChange={callback}
-      />
+      {YOU_RATE_LABEL}
+      <Rating value={myRate} max={10} size={LARGE_SIZE} onChange={callback} />
     </div>
   );
 };
 
 RatingSetter.defaultProps = {
   callback: () => {},
-  myRate: "",
+  myRate: 0,
 };
 
 RatingSetter.propTypes = {
   callback: PropTypes.func,
-  myRate: PropTypes.string,
+  myRate: PropTypes.number,
 };
 
 export default RatingSetter;

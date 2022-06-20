@@ -1,0 +1,20 @@
+.dropdown-toggle {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 2px;
+  padding: 0;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+@media (max-width: 426px) {
+  .dropdown-toggle {
+    margin-bottom: 2px;
+  }
+}
+/*# sourceMappingURL=toggleButton.css.map */
