@@ -12,6 +12,7 @@ const RenderList = ({
   isPages,
   totalPages,
   drafts,
+  isItemsFetched,
   isItemsAvaliable,
   handlePageChange,
   onDelete,
@@ -22,26 +23,26 @@ const RenderList = ({
 
   return (
     <div className="container">
-      <SpinnerWrapper showContent={isItemsAvaliable}>
-        {isItemsAvaliable ? (
+      {isItemsFetched ? (
+        <SpinnerWrapper showContent={isItemsAvaliable}>
           <div className="eventsBlock">
             {drafts.map(item => (
               <DraftEventCard key={item.id} event={item} onDelete={onDelete} />
             ))}
           </div>
-        ) : (
-          <NoResult
-            title={EMPTY_DRAFT.TITLE}
-            subTitle={EMPTY_DRAFT.SUB_TITLE}
-            photo={EMPTY_DRAFT.IMG}
-            btnTitle={EMPTY_DRAFT.BUTTON_TITLE}
-          />
-        )}
-      </SpinnerWrapper>
+        </SpinnerWrapper>
+      ) : (
+        <NoResult
+          title={EMPTY_DRAFT.TITLE}
+          subTitle={EMPTY_DRAFT.SUB_TITLE}
+          photo={EMPTY_DRAFT.IMG}
+          btnTitle={EMPTY_DRAFT.BUTTON_TITLE}
+        />
+      )}
       <div className="draftPagination">
-        {isPages && (
+        {isPages ? (
           <Pagination count={totalPages} page={page} onChange={pageChange} />
-        )}
+        ) : null}
       </div>
     </div>
   );
@@ -52,6 +53,7 @@ RenderList.propTypes = {
   totalPages: PropTypes.number,
   isPages: PropTypes.bool,
   drafts: PropTypes.array,
+  isItemsFetched: PropTypes.bool,
   isItemsAvaliable: PropTypes.bool,
   handlePageChange: PropTypes.func,
   onDelete: PropTypes.func,
@@ -62,6 +64,7 @@ RenderList.defaultProps = {
   totalPages: null,
   isPages: false,
   drafts: [],
+  isItemsFetched: false,
   isItemsAvaliable: false,
   handlePageChange: () => {},
   onDelete: () => {},

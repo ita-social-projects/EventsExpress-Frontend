@@ -12,6 +12,7 @@ const history = createBrowserHistory({ forceRefresh: true });
 const mapStateToProps = state => ({
   items: state.events.data.items,
   isItemsAvaliable: state.events.data.items.length > 0,
+  isItemsFetched: state.events.data.items !== null,
   isPages: state.events.data.pageViewModel.totalPages > 0,
   pageNumber: state.events.data.pageViewModel.pageNumber,
   totalPages: state.events.data.pageViewModel.totalPages,
