@@ -1,27 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
+import { SMALL_SIZE } from "../../constants/imageSizesConstants";
+import getRatingEffect from "../helpers/ratingHelper";
+import "./Rating.scss";
 
 const RatingAverage = ({ value, direction }) => {
-  let textColor = "";
-  if (value < 5) {
-    textColor = "text-danger";
-  } else if (value < 8) {
-    textColor = "text-warning";
-  } else {
-    textColor = "text-success";
-  }
+  const ratingEffect = getRatingEffect(value);
+  const displayStyle = direction === "row" ? "rating_average" : "rating_box";
 
-  const directionName = direction === "row" ? "flex-row" : "flex-column";
-
-  return value ? (
-    <div className={`${directionName} d-flex align-items-center`}>
-      <IconButton className={textColor} size="small" disabled>
-        <i className="far fa-star" />
-      </IconButton>
-      <div className={textColor}>{value.toFixed(1)}</div>
-    </div>
-  ) : null;
+  return (
+    value && (
+      <div className={displayStyle}>
+        <IconButton className={ratingEffect} size={SMALL_SIZE} disabled>
+          <i className="far fa-star" />
+        </IconButton>
+        <div className={ratingEffect}>{value.toFixed(1)}</div>
+      </div>
+    )
+  );
 };
 
 RatingAverage.defaultProps = {
