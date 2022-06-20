@@ -28,7 +28,7 @@
 
 
 .titleText {
-    font-size: $fontsize-24;
+    font-size: $fontsize24;
     text-align: center;
 }
 
@@ -39,7 +39,7 @@
     margin-top: 10px;
 
     .input {
-        @include form_input;
+        @include formInput;
     }
 }
 
@@ -49,7 +49,7 @@
     margin-top: 20px;
 
     .interactBtn {
-        font-size: $fontsize-14;
+        font-size: $fontsize14;
         font-family: $mainFont;
         font-weight: $thick;
         padding: 8px 20px;
@@ -84,7 +84,7 @@
 
 
     .titleText {
-        font-size: $fontsize-20;
+        font-size: $fontsize20;
     }
 
     .interact {

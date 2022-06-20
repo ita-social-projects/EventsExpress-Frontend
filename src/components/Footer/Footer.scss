@@ -33,7 +33,7 @@
   .footer__contacts {
     .contact__us {
       font-family: $mainFont;
-      font-size: $fontsize-24;
+      font-size: $fontsize24;
       font-weight: $semiBold;
       margin: 0px;
       margin-bottom: 10px;
@@ -41,7 +41,7 @@
 
     .contact__number {
       font-family: $mainFont;
-      font-size: $fontsize-18;
+      font-size: $fontsize18;
       font-weight: $semiBold;
     }
   }
@@ -49,7 +49,7 @@
   .footer__subscribe {
     .subscibe__us {
       font-family: $mainFont;
-      font-size: $fontsize-24;
+      font-size: $fontsize24;
       font-weight: $semiBold;
     }
 
@@ -59,8 +59,8 @@
       position: relative;
 
       .footer__input {
-        @include form_input;
-        font-size: $fontsize-14;
+        @include formInput;
+        font-size: $fontsize14;
       }
 
       .footer__subscribe__icon {
@@ -75,7 +75,7 @@
   .footer__social_links {
     .our__socials {
       font-family: $mainFont;
-      font-size: $fontsize-24;
+      font-size: $fontsize24;
       font-weight: $semiBold;
       margin: 0;
     }
@@ -96,7 +96,7 @@
 
   .footer__head {
     .head__text {
-      font-size: $fontsize-32;
+      font-size: $fontsize32;
     }
   }
 
