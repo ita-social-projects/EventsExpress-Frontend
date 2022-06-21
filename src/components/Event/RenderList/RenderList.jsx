@@ -17,33 +17,33 @@ const RenderList = ({
   handlePageChange,
   onDelete,
 }) => {
-  const pageChange = (event, value) => {
+  const pageChange = (_, value) => {
     handlePageChange(value);
   };
 
   return (
     <div className="container">
-      {isItemsFetched ? (
-        <SpinnerWrapper showContent={isItemsAvaliable}>
+      <SpinnerWrapper showContent={isItemsFetched}>
+        {isItemsAvaliable ? (
           <div className="eventsBlock">
             {drafts.map(item => (
               <DraftEventCard key={item.id} event={item} onDelete={onDelete} />
             ))}
           </div>
-        </SpinnerWrapper>
-      ) : (
-        <NoResult
-          title={EMPTY_DRAFT.TITLE}
-          subTitle={EMPTY_DRAFT.SUB_TITLE}
-          photo={EMPTY_DRAFT.IMG}
-          btnTitle={EMPTY_DRAFT.BUTTON_TITLE}
-        />
-      )}
-      <div className="draftPagination">
-        {isPages ? (
-          <Pagination count={totalPages} page={page} onChange={pageChange} />
-        ) : null}
-      </div>
+        ) : (
+          <NoResult
+            title={EMPTY_DRAFT.TITLE}
+            subTitle={EMPTY_DRAFT.SUB_TITLE}
+            photo={EMPTY_DRAFT.IMG}
+            btnTitle={EMPTY_DRAFT.BUTTON_TITLE}
+          />
+        )}
+        <div className="draftPagination">
+          {isPages ? (
+            <Pagination count={totalPages} page={page} onChange={pageChange} />
+          ) : null}
+        </div>
+      </SpinnerWrapper>
     </div>
   );
 };
