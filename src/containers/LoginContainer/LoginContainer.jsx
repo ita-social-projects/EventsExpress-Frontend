@@ -5,7 +5,10 @@ import Login from "../../components/Login/Login";
 import login from "../../actions/login/login-action";
 
 const LoginContainer = ({ loginDispatch, handleClose }) => {
-  const handleLogin = ({ email, password }) => loginDispatch(email, password);
+  const handleLogin = ({ email, password }) => {
+    loginDispatch(email, password);
+    handleClose();
+  };
   return <Login onSubmit={handleLogin} handleClose={handleClose} />;
 };
 

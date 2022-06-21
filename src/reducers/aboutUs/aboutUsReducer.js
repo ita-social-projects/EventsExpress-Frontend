@@ -17,7 +17,6 @@ const aboutUsReducer = (state = aboutUsInitalState, action) => {
     case GET_MEMBERS_SUCCESS:
       return {
         ...state,
-        isLoginSuccess: action.isLoginSuccess,
         members: action.members,
         loading: false,
         error: null,

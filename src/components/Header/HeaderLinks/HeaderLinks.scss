@@ -9,11 +9,11 @@
 
     .header-link-item {
         margin-left: $margin50;
-
+    
         .eng-link-wrapper {
             display: flex;
             align-items: center;
-            margin-top: 10px;
+            justify-content: center;
             margin-right: $margin50;
             font-weight: $bold;
             font-size: $fontsize20;
@@ -28,6 +28,14 @@
                 margin-top: 5px;
                 margin-left: 5px;
             }
+
+        }
+    }
+
+    .link-wrapper {
+        text-decoration: none;
+        &:hover {
+            color: $black;
         }
     }
 }

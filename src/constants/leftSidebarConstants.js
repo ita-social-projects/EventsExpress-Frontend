@@ -59,6 +59,11 @@ export const SIDEBAR_LIST_ITEMS = [
         faviconIconClass: CLONE_ICON,
         pageName: RECURRENT_EVENTS_NAME,
       },
+      {
+        link: CONTACT_ADMIN,
+        faviconIconClass: CIRCLE_ICON,
+        pageName: CONTACT_ADMIN_NAME,
+      },
     ],
   },
   {
