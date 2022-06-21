@@ -60,7 +60,7 @@
         transition: $defaultTransition;
 
         &:hover {
-            opacity: 1;
+            opacity: $opacity1;
         }
     }
 
@@ -77,8 +77,8 @@
 
 @media screen and (max-width: $mediaMobileScreen) {
     .wrapper .container {
-        width: 350px;
         height: 160px;
+        width: 350px;
         padding: 10px;
     }
 
