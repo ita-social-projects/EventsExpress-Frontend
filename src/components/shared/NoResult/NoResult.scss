@@ -10,7 +10,6 @@ $centeredContainer: 460px;
     @include flex(column, center, center);
     width: $fullWidth;
     text-align: center;
-    padding-top: 120px;
 
     .image {
         display: block;
@@ -73,11 +72,10 @@ $centeredContainer: 460px;
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
-    .container {
-        min-height: calc(100vh - $centeredContainer);
-        top: $halfHieght;
+    .containerText {
+        margin-top: 60px;
 
-        .bannerButton {
+        .container .bannerButton {
             max-width: 140px;
         }
     }
