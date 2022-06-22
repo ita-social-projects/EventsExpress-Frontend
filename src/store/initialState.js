@@ -82,6 +82,7 @@ const initialState = {
       items: [],
       pageViewModel: {},
     },
+    isDeleted: false,
     filter: getDefaultEventFilter(),
   },
   tracks: {

@@ -4,6 +4,7 @@ import RenderList from "../Event/RenderList/RenderList";
 
 const DraftList = ({
   items,
+  isDeleted,
   pageNumber,
   totalPages,
   isItemsAvaliable,
@@ -12,14 +13,9 @@ const DraftList = ({
   deleteEvent,
   getDraftsAction,
 }) => {
-  const handlePageChange = page => {
-    getDraftsAction(page);
-  };
-
   useEffect(() => {
     getDraftsAction(pageNumber);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isDeleted]);
   return (
     <RenderList
       isItemsAvaliable={isItemsAvaliable}
@@ -28,7 +24,7 @@ const DraftList = ({
       isItemsFetched={isItemsFetched}
       totalPages={totalPages}
       page={pageNumber}
-      handlePageChange={handlePageChange}
+      handlePageChange={getDraftsAction}
       onDelete={deleteEvent}
     />
   );
@@ -43,12 +39,14 @@ DraftList.propTypes = {
   deleteEvent: PropTypes.func,
   isItemsAvaliable: PropTypes.bool,
   isPages: PropTypes.bool,
+  isDeleted: PropTypes.bool,
 };
 
 DraftList.defaultProps = {
   getDraftsAction: () => {},
   deleteEvent: () => {},
   isItemsFetched: false,
+  isDeleted: false,
   items: [],
   totalPages: null,
   pageNumber: 1,

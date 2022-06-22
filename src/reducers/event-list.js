@@ -25,6 +25,11 @@ const reducer = (state = initialState.events, action) => {
       });
       return stateChangeEvent;
     }
+    case event.IS_DELETED:
+      return {
+        ...state,
+        isDeleted: action.payload,
+      };
     case RESET_EVENTS:
       return initialState.events;
     case UPDATE_EVENTS_FILTERS:
