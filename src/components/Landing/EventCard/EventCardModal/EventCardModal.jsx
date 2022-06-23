@@ -10,7 +10,6 @@ const EventCardModal = ({ id, onClose, onClick }) => {
     setReason("");
     onClose(null);
   };
-  console.log("ID", id);
   return (
     <div className="wrapper">
       <div className="container">

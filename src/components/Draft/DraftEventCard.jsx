@@ -5,9 +5,15 @@ import EventCard from "../Landing/EventCard/EventCard";
 import EventCardModal from "../Landing/EventCard/EventCardModal/EventCardModal";
 import { ICON_PROPERTIES } from "../../constants/draftConstants";
 
-const DraftEventCard = ({ event, id, stateId, setId, onDelete }) => {
+const DraftEventCard = ({
+  event,
+  id,
+  draftModalId,
+  setDraftModalId,
+  onDelete,
+}) => {
   const additionalButtons = [
-    <button type="button" key="buckect-btn" onClick={() => setId(id)}>
+    <button type="button" key="buckect-btn" onClick={() => setDraftModalId(id)}>
       <BsTrash
         cursor={ICON_PROPERTIES.CIRSOR_POINER}
         size={ICON_PROPERTIES.ICON_SIZE}
@@ -15,8 +21,12 @@ const DraftEventCard = ({ event, id, stateId, setId, onDelete }) => {
     </button>,
   ];
 
-  const additionalModal = stateId ? (
-    <EventCardModal id={stateId} onClose={setId} onClick={onDelete} />
+  const additionalModal = draftModalId ? (
+    <EventCardModal
+      id={draftModalId}
+      onClose={setDraftModalId}
+      onClick={onDelete}
+    />
   ) : null;
   return (
     <EventCard
@@ -31,17 +41,17 @@ const DraftEventCard = ({ event, id, stateId, setId, onDelete }) => {
 
 DraftEventCard.propTypes = {
   event: PropTypes.object,
-  stateId: PropTypes.string,
+  draftModalId: PropTypes.string,
   id: PropTypes.string,
-  setId: PropTypes.func,
+  setDraftModalId: PropTypes.func,
   onDelete: PropTypes.func,
 };
 
 DraftEventCard.defaultProps = {
   event: null,
-  stateId: "",
+  draftModalId: "",
   id: "",
-  setId: () => {},
+  setDraftModalId: () => {},
   onDelete: () => {},
 };
 

@@ -20,7 +20,7 @@ const RenderList = ({
   const pageChange = (_, value) => {
     handlePageChange(value);
   };
-  const [isId, setIsId] = useState(null);
+  const [draftModalId, setDraftModalId] = useState(null);
 
   return (
     <div className="container">
@@ -31,8 +31,8 @@ const RenderList = ({
               <DraftEventCard
                 key={item.id}
                 id={item.id}
-                stateId={isId}
-                setId={setIsId}
+                draftModalId={draftModalId}
+                setDraftModalId={setDraftModalId}
                 event={item}
                 onDelete={onDelete}
               />
