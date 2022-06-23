@@ -1,18 +1,13 @@
-﻿import React, { useState } from "react";
+﻿import React from "react";
 import PropTypes from "prop-types";
 import { BsTrash } from "react-icons/bs";
 import EventCard from "../Landing/EventCard/EventCard";
 import EventCardModal from "../Landing/EventCard/EventCardModal/EventCardModal";
 import { ICON_PROPERTIES } from "../../constants/draftConstants";
 
-const DraftEventCard = ({ event, onDelete }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const DraftEventCard = ({ event, id, stateId, setId, onDelete }) => {
   const additionalButtons = [
-    <button
-      type="button"
-      key="buckect-btn"
-      onClick={() => setIsOpen(prev => !prev)}
-    >
+    <button type="button" key="buckect-btn" onClick={() => setId(id)}>
       <BsTrash
         cursor={ICON_PROPERTIES.CIRSOR_POINER}
         size={ICON_PROPERTIES.ICON_SIZE}
@@ -20,13 +15,8 @@ const DraftEventCard = ({ event, onDelete }) => {
     </button>,
   ];
 
-  const additionalModal = isOpen ? (
-    <EventCardModal
-      closeModal={isOpen}
-      id={event.id}
-      onClose={setIsOpen}
-      onClick={onDelete}
-    />
+  const additionalModal = stateId ? (
+    <EventCardModal id={stateId} onClose={setId} onClick={onDelete} />
   ) : null;
   return (
     <EventCard
@@ -41,11 +31,17 @@ const DraftEventCard = ({ event, onDelete }) => {
 
 DraftEventCard.propTypes = {
   event: PropTypes.object,
+  stateId: PropTypes.string,
+  id: PropTypes.string,
+  setId: PropTypes.func,
   onDelete: PropTypes.func,
 };
 
 DraftEventCard.defaultProps = {
   event: null,
+  stateId: "",
+  id: "",
+  setId: () => {},
   onDelete: () => {},
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Pagination from "@material-ui/lab/Pagination";
 import SpinnerWrapper from "../../../containers/SpinnerContainer/SpinnerContainer";
@@ -20,6 +20,7 @@ const RenderList = ({
   const pageChange = (_, value) => {
     handlePageChange(value);
   };
+  const [isId, setIsId] = useState(null);
 
   return (
     <div className="container">
@@ -27,7 +28,14 @@ const RenderList = ({
         {isItemsAvaliable ? (
           <div className="eventsBlock">
             {drafts.map(item => (
-              <DraftEventCard key={item.id} event={item} onDelete={onDelete} />
+              <DraftEventCard
+                key={item.id}
+                id={item.id}
+                stateId={isId}
+                setId={setIsId}
+                event={item}
+                onDelete={onDelete}
+              />
             ))}
           </div>
         ) : (
@@ -39,9 +47,9 @@ const RenderList = ({
           />
         )}
         <div className="draftPagination">
-          {isPages ? (
+          {isPages && (
             <Pagination count={totalPages} page={page} onChange={pageChange} />
-          ) : null}
+          )}
         </div>
       </SpinnerWrapper>
     </div>
