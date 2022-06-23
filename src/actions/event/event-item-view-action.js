@@ -1,13 +1,18 @@
 /* eslint-disable consistent-return */
+import { createBrowserHistory } from "history";
+import { ALERT_MESSAGE_DELETE } from "../../constants/draftConstants";
 import { EventService } from "../../services";
-import { setErrorAllertFromResponse } from "../alert-action";
+import { setErrorAllertFromResponse, setSuccessAllert } from "../alert-action";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const GET_EVENT_DATA = "GET_EVENT_DATA";
 export const RESET_EVENT = "RESET_EVENT";
 
+const history = createBrowserHistory({ forceRefresh: true });
+
 export const event = {
   CHANGE_STATUS: "UPDATE_EVENT",
+  IS_DELETED: "IS_DELETED",
 };
 
 const apiService = new EventService();
@@ -33,6 +38,13 @@ function changeEventStatusData(id, eventStatus) {
     payload: { eventId: id, eventStatus },
   };
 }
+
+const isDeletedDraft = isDelete => {
+  return {
+    type: event.IS_DELETED,
+    payload: isDelete,
+  };
+};
 
 export function leave(userId, eventId) {
   return async dispatch => {
@@ -146,6 +158,9 @@ export function changeEventStatus(eventId, reason, eventStatus) {
       return Promise.reject();
     }
     dispatch(changeEventStatusData(eventId, eventStatus));
+    dispatch(setSuccessAllert(ALERT_MESSAGE_DELETE));
+    dispatch(isDeletedDraft(true));
+    history.push(`/drafts`);
     return Promise.resolve();
   };
 }

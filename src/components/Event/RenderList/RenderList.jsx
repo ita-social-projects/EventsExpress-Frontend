@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Pagination from "@material-ui/lab/Pagination";
 import SpinnerWrapper from "../../../containers/SpinnerContainer/SpinnerContainer";
@@ -17,33 +17,41 @@ const RenderList = ({
   handlePageChange,
   onDelete,
 }) => {
-  const pageChange = (event, value) => {
+  const pageChange = (_, value) => {
     handlePageChange(value);
   };
+  const [draftModalId, setDraftModalId] = useState(null);
 
   return (
     <div className="container">
-      {isItemsFetched ? (
-        <SpinnerWrapper showContent={isItemsAvaliable}>
+      <SpinnerWrapper showContent={isItemsFetched}>
+        {isItemsAvaliable ? (
           <div className="eventsBlock">
             {drafts.map(item => (
-              <DraftEventCard key={item.id} event={item} onDelete={onDelete} />
+              <DraftEventCard
+                key={item.id}
+                id={item.id}
+                draftModalId={draftModalId}
+                setDraftModalId={setDraftModalId}
+                event={item}
+                onDelete={onDelete}
+              />
             ))}
           </div>
-        </SpinnerWrapper>
-      ) : (
-        <NoResult
-          title={EMPTY_DRAFT.TITLE}
-          subTitle={EMPTY_DRAFT.SUB_TITLE}
-          photo={EMPTY_DRAFT.IMG}
-          btnTitle={EMPTY_DRAFT.BUTTON_TITLE}
-        />
-      )}
-      <div className="draftPagination">
-        {isPages ? (
-          <Pagination count={totalPages} page={page} onChange={pageChange} />
-        ) : null}
-      </div>
+        ) : (
+          <NoResult
+            title={EMPTY_DRAFT.TITLE}
+            subTitle={EMPTY_DRAFT.SUB_TITLE}
+            photo={EMPTY_DRAFT.IMG}
+            btnTitle={EMPTY_DRAFT.BUTTON_TITLE}
+          />
+        )}
+        <div className="draftPagination">
+          {isPages && (
+            <Pagination count={totalPages} page={page} onChange={pageChange} />
+          )}
+        </div>
+      </SpinnerWrapper>
     </div>
   );
 };

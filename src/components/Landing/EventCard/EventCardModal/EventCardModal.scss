@@ -20,15 +20,15 @@
         width: 384px;
         box-shadow: $boxshadow;
         border-radius: $r16;
-        padding: 20px;
-        margin: 10px;
+        padding: 1.25rem;
+        margin: 0.625rem;
         background-color: $white;
     }
 }
 
 
 .titleText {
-    font-size: $fontsize24;
+    font-size: 1.5rem;
     text-align: center;
 }
 
@@ -36,7 +36,7 @@
 .inputBlock {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 0.625rem;
 
     .input {
         @include formInput;
@@ -47,20 +47,20 @@
     width: $fullWidth;
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 
     .interactBtn {
-        font-size: $fontsize14;
+        font-size: 0.875rem;
         font-family: $mainFont;
         font-weight: $thick;
-        padding: 8px 20px;
+        padding: 0.5rem 1.25rem;
         border-radius: $r12;
         opacity: .9;
         cursor: pointer;
         transition: $defaultTransition;
 
         &:hover {
-            opacity: 1;
+            opacity: $opacity1;
         }
     }
 
@@ -77,16 +77,11 @@
 
 @media screen and (max-width: $mediaMobileScreen) {
     .wrapper .container {
-        width: 350px;
         height: 160px;
-        padding: 10px;
+        width: 350px;
     }
 
-    .titleText {
-        font-size: $fontsize20;
-    }
-
-    .interact .interactBtn {
-        padding: 5px 15px;
+    .inputBlock .input {
+        width: 100%;
     }
 }

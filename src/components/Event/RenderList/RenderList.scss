@@ -4,10 +4,9 @@
     width: $fullWidth;
     display: flex;
     justify-content: center;
-    padding-top: 60px;
 
     .draftPagination {
-        margin-top: 20px;
+        margin-top: 1.25rem;
         width: $fullWidth;
         display: flex;
         justify-content: center;
@@ -19,5 +18,5 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding-top: 50px;
+    padding-top: 1.25rem;
 }

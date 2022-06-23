@@ -3,12 +3,12 @@ import "./EventCardModal.scss";
 import PropTypes from "prop-types";
 import { DELETE_DRAFT } from "../../../../constants/draftConstants";
 
-const EventCardModal = ({ closeModal, id, onClose, onClick }) => {
+const EventCardModal = ({ id, onClose, onClick }) => {
   const [reason, setReason] = useState("");
   const deleteDraftEvent = () => {
     onClick(id, reason);
     setReason("");
-    onClose(!closeModal);
+    onClose(null);
   };
   return (
     <div className="wrapper">
@@ -25,7 +25,7 @@ const EventCardModal = ({ closeModal, id, onClose, onClick }) => {
         <div className="interact">
           <button
             className="interactBtn"
-            onClick={() => onClose(!closeModal)}
+            onClick={() => onClose(null)}
             type="button"
           >
             {DELETE_DRAFT.CANCEL}
@@ -44,13 +44,11 @@ const EventCardModal = ({ closeModal, id, onClose, onClick }) => {
 };
 
 EventCardModal.propTypes = {
-  closeModal: PropTypes.bool,
   id: PropTypes.string,
   onClose: PropTypes.func,
   onClick: PropTypes.func,
 };
 EventCardModal.defaultProps = {
-  closeModal: false,
   id: "",
   onClose: () => {},
   onClick: () => {},
