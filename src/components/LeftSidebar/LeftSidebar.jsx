@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { ImCross } from "react-icons/im";
 import "./LeftSidebar.scss";
-import LeftSidebarItemsSecurity from "./LeftSidebarItems/LeftSidebarItemsSecurity";
+import LeftSidebarNavigationSecurity from "./LeftSidebarNavigation/LeftSidebarNavigationSecurity";
 
 const LeftSidebar = ({ user, msgForRead }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -22,7 +22,7 @@ const LeftSidebar = ({ user, msgForRead }) => {
           {sidebarOpen ? <ImCross /> : <AiOutlineArrowRight />}
         </button>
       </li>
-      <LeftSidebarItemsSecurity
+      <LeftSidebarNavigationSecurity
         user={user}
         msgForRead={msgForRead}
         handleSidebarToggle={handleSidebarToggle}

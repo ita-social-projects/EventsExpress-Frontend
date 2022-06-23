@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import Badge from "@material-ui/core/Badge";
 
-const LeftSidebarListItem = ({
+const LeftSidebarNavigationItem = ({
   link,
   faviconIconClass,
   pageName,
@@ -27,7 +27,7 @@ const LeftSidebarListItem = ({
   );
 };
 
-LeftSidebarListItem.defaultProps = {
+LeftSidebarNavigationItem.defaultProps = {
   link: "",
   faviconIconClass: "",
   pageName: "",
@@ -35,7 +35,7 @@ LeftSidebarListItem.defaultProps = {
   badgeContent: 0,
 };
 
-LeftSidebarListItem.propTypes = {
+LeftSidebarNavigationItem.propTypes = {
   link: PropTypes.string,
   faviconIconClass: PropTypes.string,
   pageName: PropTypes.string,
@@ -43,4 +43,4 @@ LeftSidebarListItem.propTypes = {
   badgeContent: PropTypes.number,
 };
 
-export default LeftSidebarListItem;
+export default LeftSidebarNavigationItem;

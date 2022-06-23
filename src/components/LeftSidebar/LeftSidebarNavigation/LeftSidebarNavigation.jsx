@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LeftSidebarListItem from "./LeftSidebarListItem";
+import LeftSidebarNavigationItem from "./LeftSidebarNavigationItem";
 
-const LeftSidebarItems = ({ items, handleSidebarToggle }) => (
+const LeftSidebarNavigation = ({ items, handleSidebarToggle }) => (
   <>
     {items.map(item => (
-      <LeftSidebarListItem
+      <LeftSidebarNavigationItem
         key={item.pageName}
         handleSidebarToggle={handleSidebarToggle}
         {...item}
@@ -14,12 +14,12 @@ const LeftSidebarItems = ({ items, handleSidebarToggle }) => (
   </>
 );
 
-LeftSidebarItems.defaultProps = {
+LeftSidebarNavigation.defaultProps = {
   items: [],
   handleSidebarToggle: () => {},
 };
 
-LeftSidebarItems.propTypes = {
+LeftSidebarNavigation.propTypes = {
   handleSidebarToggle: PropTypes.func,
   items: PropTypes.arrayOf(
     PropTypes.shape({
@@ -30,4 +30,4 @@ LeftSidebarItems.propTypes = {
   ),
 };
 
-export default LeftSidebarItems;
+export default LeftSidebarNavigation;
