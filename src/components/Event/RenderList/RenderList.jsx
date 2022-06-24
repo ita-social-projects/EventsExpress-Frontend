@@ -30,7 +30,7 @@ const RenderList = ({
             {drafts.map(item => (
               <DraftEventCard
                 key={item.id}
-                id={item.id}
+                draftItemId={item.id}
                 draftModalId={draftModalId}
                 setDraftModalId={setDraftModalId}
                 event={item}

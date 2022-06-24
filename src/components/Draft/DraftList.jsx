@@ -53,5 +53,4 @@ DraftList.defaultProps = {
   isItemsAvaliable: false,
   isPages: false,
 };
-
 export default DraftList;

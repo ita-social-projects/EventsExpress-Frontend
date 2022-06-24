@@ -3,10 +3,10 @@ import "./EventCardModal.scss";
 import PropTypes from "prop-types";
 import { DELETE_DRAFT } from "../../../../constants/draftConstants";
 
-const EventCardModal = ({ id, onClose, onClick }) => {
+const EventCardModal = ({ id, onClose, onDelete }) => {
   const [reason, setReason] = useState("");
   const deleteDraftEvent = () => {
-    onClick(id, reason);
+    onDelete(id, reason);
     setReason("");
     onClose(null);
   };
@@ -46,11 +46,11 @@ const EventCardModal = ({ id, onClose, onClick }) => {
 EventCardModal.propTypes = {
   id: PropTypes.string,
   onClose: PropTypes.func,
-  onClick: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 EventCardModal.defaultProps = {
   id: "",
   onClose: () => {},
-  onClick: () => {},
+  onDelete: () => {},
 };
 export default EventCardModal;
