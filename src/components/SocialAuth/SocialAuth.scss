@@ -1,14 +1,16 @@
 @import "../../styles/fonts.scss";
 
 .social-auth {
-    margin-top: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 50px;
+
     .social-auth__title {
         margin-right: 30px;
         font-size: $fontsize18;
     }
+
     .btn-facebook {
         margin-right: 20px;
     }

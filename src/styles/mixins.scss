@@ -1,119 +1,120 @@
-@import './variables.scss';
-@import './fonts.scss';
-@import './colors.scss';
+@import "./variables.scss";
+@import "./fonts.scss";
+@import "./colors.scss";
 
 @mixin flex($flex-d, $align-a, $justify-c) {
-  display: flex;
-  flex-direction: $flex-d;
-  align-items: $align-a;
-  justify-content: $justify-c;
+    display: flex;
+    flex-direction: $flex-d;
+    align-items: $align-a;
+    justify-content: $justify-c;
 }
 
 @mixin centerAbsolute {
-  position: absolute;
-  top: $height50;
-  left: $width50;
-  transform: translate(-$width50, -$height50);
+    position: absolute;
+    top: $height50;
+    left: $width50;
+    transform: translate(-$width50, -$height50);
 }
 
 @mixin adaptiveStyles($maxWidth) {
-  @media (max-width: $maxWidth) {
-    @content;
-  }
+    @media (max-width: $maxWidth) {
+        @content;
+    }
 }
 
 @mixin formInput {
-  width: $inputWidth;
-  height: $inputHeight;
-  padding: $inputPadding;
-  border: $noBord;
-  border-radius: $r16;
-  outline: $unoutline;
-  box-shadow: $inputShadow;
+    width: $inputWidth;
+    height: $inputHeight;
+    padding: $inputPadding;
+    border: $noBord;
+    border-radius: $r16;
+    outline: $unoutline;
+    box-shadow: $inputShadow;
 
-  @media screen and (max-width: $mediaFirstTabletScreen) {
-    width: $inputLaptopWidth;
-  }
+    @media screen and (max-width: $mediaFirstTabletScreen) {
+        width: $inputLaptopWidth;
+    }
 
-  @media screen and (max-width: $mediaSecondTabletScreen) {
-    width: $inputTabletWidth;
-  }
+    @media screen and (max-width: $mediaSecondTabletScreen) {
+        width: $inputTabletWidth;
+    }
 
-  @media screen and (max-width: $mediaMobileScreen) {
-    width: $inputMobileWidth;
-    margin: 0;
-    font-size: $fontsize12;
-  }
+    @media screen and (max-width: $mediaMobileScreen) {
+        width: $inputMobileWidth;
+        margin: 0;
+        font-size: $fontsize12;
+    }
 }
 
-@mixin auth-form($name) {
-  .#{$name}-form {
-    position: relative;
-    width: 500px;
-    height: 550px;
-    padding: 50px 30px 20px 30px;
-    border-radius: $authModalBorderRadius;
-    @include flex(column, center, center);
-    background-color: $lightPink;
-    color: $black;
-    font-size: $fontsize20;
-    margin-bottom: 30px;
-    box-shadow: $authModalShadow;
-
-    .#{$name}-form__title {
-      font-size: $fontsize40;
-      font-weight: $bold;
-      margin-bottom: 50px;
-    }
-
-    .#{$name}-error {
-      margin-bottom: 20px;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 25px;
-      right: 25px;
-      cursor: pointer;
-    }
-
-    .auth-input {
-      max-width: $width80;
-      font-size: $fontsize20;
-    }
-
-    .auth-btn {
-      cursor: pointer;
-      padding: 10px 100px;
-      border-radius: $buttonBorderRadius;
-      color: $white;
-      background-color: $purpleDark;
-      font-size: $fontsize20;
-      font-weight: $bold;
-      margin-bottom: 10px;
-      margin-top: 20px;
-    }
-  }
-
-  @media screen and (max-width: $mediaMobileScreen) {
+@mixin authForm($name) {
     .#{$name}-form {
-      width: $width80;
+        position: relative;
+        width: 500px;
+        height: 550px;
+        margin-bottom: 30px;
+        padding: 50px 30px 20px;
+        color: $black;
+        font-size: $fontsize20;
+        background-color: $lightPink;
+        border-radius: $authModalBorderRadius;
+        box-shadow: $authModalShadow;
 
-      .#{$name}-form__title {
-        margin-bottom: 50px;
-      }
+        @include flex(column, center, center);
 
-      .auth-input {
-        font-size: $fontsize16;
-        max-width: $fullWidth;
-        text-align: center;
-      }
+        .#{$name}-form__title {
+            margin-bottom: 50px;
+            font-weight: $bold;
+            font-size: $fontsize40;
+        }
 
-      .auth-btn {
-        margin-top: 0;
-        padding: 10px 50px;
-        font-size: $fontsize16;
-      }
+        .#{$name}-error {
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            cursor: pointer;
+        }
+
+        .auth-input {
+            max-width: $width80;
+            font-size: $fontsize20;
+        }
+
+        .auth-btn {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding: 10px 100px;
+            color: $white;
+            font-weight: $bold;
+            font-size: $fontsize20;
+            background-color: $purpleDark;
+            border-radius: $buttonBorderRadius;
+            cursor: pointer;
+        }
     }
-  }
+
+    @media screen and (max-width: $mediaMobileScreen) {
+        .#{$name}-form {
+            width: $width80;
+
+            .#{$name}-form__title {
+                margin-bottom: 50px;
+            }
+
+            .auth-input {
+                max-width: $fullWidth;
+                font-size: $fontsize16;
+                text-align: center;
+            }
+
+            .auth-btn {
+                margin-top: 0;
+                padding: 10px 50px;
+                font-size: $fontsize16;
+            }
+        }
+    }
 }

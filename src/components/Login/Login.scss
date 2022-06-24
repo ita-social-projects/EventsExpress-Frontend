@@ -2,14 +2,14 @@
 @import "../../styles/fonts.scss";
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
+@include authForm("login");
 
-@include auth-form("login");
+.login-form {
 
-.login-form { 
     .recover-password-btn {
-        cursor: pointer;
-        text-decoration: underline;
-        font-size: $fontsize14;
         font-weight: $bold;
+        font-size: $fontsize14;
+        text-decoration: underline;
+        cursor: pointer;
     }
 }

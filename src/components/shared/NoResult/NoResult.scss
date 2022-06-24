@@ -8,70 +8,73 @@ $centeredContainer: 460px;
 
 .container {
     @include flex(column, center, center);
+
     width: $fullWidth;
     text-align: center;
 
     .image {
         display: block;
-        margin: 0 auto;
         width: $fullWidth;
         max-width: 400px;
+        margin: 0 auto;
     }
 
     .bannerButton {
+        display: block;
         width: $fullWidth;
         max-width: 180px;
-        display: block;
         margin: 0 auto;
         margin-top: 0.6rem;
+        padding: 0.6rem 1.25rem;
+        color: $black;
+        font-weight: $semiBold;
+        font-size: 1rem;
+        font-family: $mainFont;
         background: $white;
         border: $defaulBorder;
         border-radius: $defaultBorderRadius;
-        color: $black;
-        padding: 0.6rem 1.25rem;
-        font-weight: $semiBold;
-        font-family: $mainFont;
+        cursor: pointer;
         transition: $defaultTransition;
         animation: $landingBannerAnimation;
-        font-size: 1rem;
-        cursor: pointer;
 
         &:hover {
             box-shadow: $textShadowNeon;
             animation: none;
         }
     }
-
 }
 
 .containerText {
     width: $fullWidth;
 
     .headText {
-        font-size: 2rem;
-        font-weight: $semiBold;
         margin-bottom: 0.6rem;
+        font-weight: $semiBold;
+        font-size: 2rem;
     }
 
     .subTitleText {
-        font-size: 1.25rem;
         font-weight: $thick;
+        font-size: 1.25rem;
     }
 }
 
 @media screen and (max-width: $mediaFirstTabletScreen) {
+
     .container .image {
         max-width: 350px;
     }
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
+
     .container .image {
         max-width: 300px;
     }
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
+
     .containerText {
         margin-top: 60px;
 

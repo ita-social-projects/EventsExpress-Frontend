@@ -4,74 +4,84 @@
 @import "../../styles/fonts.scss";
 
 .problem-btn {
-  cursor: pointer;
-  border-radius: $defaultBorderRadius;
-  padding: 10px 50px;
-  text-align: center;
-  font-weight: $bold;
-  font-size: $bodyText;
-  transition: $defaultTransition;
+    padding: 10px 50px;
+    font-weight: $bold;
+    font-size: $bodyText;
+    text-align: center;
+    border-radius: $defaultBorderRadius;
+    cursor: pointer;
+    transition: $defaultTransition;
 }
 
 .report-form {
-  padding: 30px;
-  @include flex(column, center, center);
-  min-width: 500px;
+    min-width: 500px;
+    padding: 30px;
 
-  .problem-types {
-    width: $fullWidth;
-    @include flex(column, flex-start, center);
+    @include flex(column, center, center);
 
-    .problem-types__title {
-      font-size: $bodyText;
-      color: $purpleDark;
-      margin-bottom: 20px;
-    }
-  }
+    .problem-types {
+        width: $fullWidth;
 
-  .problem-description {
-    min-height: 200px;
-  }
+        @include flex(column, flex-start, center);
 
-  .buttons {
-    margin-top: 20px;
-    width: $fullWidth;
-    @include flex(row, center, space-between);
-
-    .btn-submit {
-      @extend .problem-btn;
-      background: $purpleDark;
-      color: $white;
+        .problem-types__title {
+            margin-bottom: 20px;
+            color: $purpleDark;
+            font-size: $bodyText;
+        }
     }
 
-    .btn-reset {
-      @extend .problem-btn;
-      border: 3px solid $deleteColor;
-      color: $deleteColor;
-      &:hover {
-        background: $deleteColor;
-        color: $white;
-      }
+    .problem-description {
+        min-height: 200px;
     }
-  }
+
+    .buttons {
+        width: $fullWidth;
+        margin-top: 20px;
+
+        @include flex(row, center, space-between);
+
+        .btn-submit {
+            @extend .problem-btn;
+
+            color: $white;
+            background: $purpleDark;
+        }
+
+        .btn-reset {
+            @extend .problem-btn;
+
+            color: $deleteColor;
+            border: 3px solid $deleteColor;
+
+            &:hover {
+                color: $white;
+                background: $deleteColor;
+            }
+        }
+    }
 }
 
 @media (max-width: $mediaFirstTabletScreen) {
-  .report-form {
-    min-width: 400px;
-  }
+
+    .report-form {
+        min-width: 400px;
+    }
 }
 
 @media (max-width: $mediaMobileScreen) {
-  .report-form {
-    min-width: unset;
-    padding: 20px;
-    box-sizing: border-box;
-    .buttons {
-      flex-direction: column;
-      .btn-reset {
-        margin-top: 15px;
-      }
+
+    .report-form {
+        box-sizing: border-box;
+        min-width: unset;
+        padding: 20px;
+
+        .buttons {
+            flex-direction: column;
+
+            .btn-reset {
+                margin-top: 15px;
+            }
+        }
     }
-  }
 }

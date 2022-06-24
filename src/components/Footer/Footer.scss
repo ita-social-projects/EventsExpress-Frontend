@@ -4,9 +4,9 @@
 @import "../../styles/mixins.scss";
 
 .footer__container {
-    width: $fullWidth;
     position: absolute;
     bottom: 0;
+    width: $fullWidth;
     margin-top: 30px;
     text-align: center;
 }
@@ -25,118 +25,44 @@
 }
 
 .footer__interact {
-  padding: 50px 0;
-  background-color: $white;
-  display: flex;
-  justify-content: space-around;
-
-  .footer__contacts {
-    .contact__us {
-      font-family: $mainFont;
-      font-size: $fontsize24;
-      font-weight: $semiBold;
-      margin: 0px;
-      margin-bottom: 10px;
-    }
-
-    .contact__number {
-      font-family: $mainFont;
-      font-size: $fontsize18;
-      font-weight: $semiBold;
-    }
-  }
-
-  .footer__subscribe {
-    .subscibe__us {
-      font-family: $mainFont;
-      font-size: $fontsize24;
-      font-weight: $semiBold;
-    }
-
-    .footer__form {
-      width: $fullWidth;
-      margin-top: 10px;
-      position: relative;
-
-      .footer__input {
-        @include formInput;
-        font-size: $fontsize14;
-      }
-
-      .footer__subscribe__icon {
-        position: absolute;
-        top: 13px;
-        right: 10px;
-        cursor: pointer;
-      }
-    }
-  }
-
-  .footer__social_links {
-    .our__socials {
-      font-family: $mainFont;
-      font-size: $fontsize24;
-      font-weight: $semiBold;
-      margin: 0;
-    }
-
-    .footer__social_links_icons {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-    }
-  }
-}
-
-
-@media screen and (max-width: $mediaFirstTabletScreen) {
-  .footer__container {
-    margin-top: 25px;
-  }
-
-  .footer__head {
-    .head__text {
-      font-size: $fontsize32;
-    }
-  }
-
-  .footer__interact {
-    padding: 40px 0;
-    padding: 50px 0;
-    background-color: $white;
     display: flex;
     justify-content: space-around;
+    padding: 50px 0;
+    background-color: $white;
 
     .footer__contacts {
+
         .contact__us {
-            font-family: $mainFont;
-            font-size: $fontsize24;
-            font-weight: $semiBold;
-            margin: 0px;
+            margin: 0;
             margin-bottom: 10px;
+            font-weight: $semiBold;
+            font-size: $fontsize24;
+            font-family: $mainFont;
         }
 
         .contact__number {
-            font-family: $mainFont;
-            font-size: $fontsize18;
             font-weight: $semiBold;
+            font-size: $fontsize18;
+            font-family: $mainFont;
         }
     }
 
     .footer__subscribe {
+
         .subscibe__us {
-            font-family: $mainFont;
-            font-size: $fontsize24;
             font-weight: $semiBold;
+            font-size: $fontsize24;
+            font-family: $mainFont;
         }
 
         .footer__form {
+            position: relative;
             width: $fullWidth;
             margin-top: 10px;
-            position: relative;
 
             .footer__input {
                 @include formInput;
+
                 font-size: $fontsize14;
             }
 
@@ -150,11 +76,12 @@
     }
 
     .footer__social_links {
+
         .our__socials {
-            font-family: $mainFont;
-            font-size: $fontsize24;
-            font-weight: $semiBold;
             margin: 0;
+            font-weight: $semiBold;
+            font-size: $fontsize24;
+            font-family: $mainFont;
         }
 
         .footer__social_links_icons {
@@ -163,16 +90,99 @@
             margin-top: 10px;
         }
     }
-    }
 }
 
-
 @media screen and (max-width: $mediaFirstTabletScreen) {
+
     .footer__container {
         margin-top: 25px;
     }
 
     .footer__head {
+
+        .head__text {
+            font-size: $fontsize32;
+        }
+    }
+
+    .footer__interact {
+        display: flex;
+        justify-content: space-around;
+        padding: 40px 0;
+        padding: 50px 0;
+        background-color: $white;
+
+        .footer__contacts {
+
+            .contact__us {
+                margin: 0;
+                margin-bottom: 10px;
+                font-weight: $semiBold;
+                font-size: $fontsize24;
+                font-family: $mainFont;
+            }
+
+            .contact__number {
+                font-weight: $semiBold;
+                font-size: $fontsize18;
+                font-family: $mainFont;
+            }
+        }
+
+        .footer__subscribe {
+
+            .subscibe__us {
+                font-weight: $semiBold;
+                font-size: $fontsize24;
+                font-family: $mainFont;
+            }
+
+            .footer__form {
+                position: relative;
+                width: $fullWidth;
+                margin-top: 10px;
+
+                .footer__input {
+                    @include formInput;
+
+                    font-size: $fontsize14;
+                }
+
+                .footer__subscribe__icon {
+                    position: absolute;
+                    top: 13px;
+                    right: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .footer__social_links {
+
+            .our__socials {
+                margin: 0;
+                font-weight: $semiBold;
+                font-size: $fontsize24;
+                font-family: $mainFont;
+            }
+
+            .footer__social_links_icons {
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mediaFirstTabletScreen) {
+
+    .footer__container {
+        margin-top: 25px;
+    }
+
+    .footer__head {
+
         .head__text {
             font-size: $fontsize32;
         }

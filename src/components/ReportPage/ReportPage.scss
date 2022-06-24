@@ -3,37 +3,44 @@
 @import "../../styles/mixins.scss";
 
 .report__container {
-  height: $absoluteHeight100;
-  @include flex(column, center, center);
+    height: $absoluteHeight100;
 
-  .report-container__title {
-    text-align: center;
-    font-size: $secondaryHeading;
-    font-weight: $bold;
-    margin-bottom: 20px;
-  }
+    @include flex(column, center, center);
+
+    .report-container__title {
+        margin-bottom: 20px;
+        font-weight: $bold;
+        font-size: $secondaryHeading;
+        text-align: center;
+    }
 }
 
 @media (max-width: $mediaFirstTabletScreen) {
-  .report__container {
-    .report-container__title {
-      font-size: $secondaryHeading;
+
+    .report__container {
+
+        .report-container__title {
+            font-size: $secondaryHeading;
+        }
     }
-  }
 }
 
 @media (max-width: $mediaSecondTabletScreen) {
-  .report__container {
-    .report-container__title {
-      font-size: $headerTextMobile;
+
+    .report__container {
+
+        .report-container__title {
+            font-size: $headerTextMobile;
+        }
     }
-  }
 }
 
 @media (max-width: $mediaMobileScreen) {
-  .report__container {
-    .report-container__title {
-      font-size: $secondaryHeadingMobile;
+
+    .report__container {
+
+        .report-container__title {
+            font-size: $secondaryHeadingMobile;
+        }
     }
-  }
 }

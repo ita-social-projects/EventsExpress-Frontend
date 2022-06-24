@@ -1,35 +1,37 @@
-﻿.btnFacebook {
-    max-width: 118px;
-    min-width: 118px;
-    height: 48px;
-    border: 0px transparent;
-    border-radius: 50px;
-    background: #3b5998;
-    color: white;
-    text-align: center;
-    margin: 0px 5px;
-    padding: 0px 18px;
+@import "../../styles/colors.scss";
+
+.btnFacebook {
     display: inline-block;
+    min-width: 118px;
+    max-width: 118px;
+    height: 48px;
+    margin: 0 5px;
+    padding: 0 18px;
+    color: $white;
+    text-align: center;
+    background: $lightBlue;
+    border: 0 transparent;
+    border-radius: 50px;
 }
 
 .btnGoogle {
-    background: white;
-    border: 0px transparent;
-    border-radius: 25px;
-    box-shadow: 0 0 2px rgba(0,0,0,0.6);
-    color: grey;
     display: inline-block;
-    height: 48px;
-    font-weight: 600;
-    margin: 0px 5px;
-    max-width: 118px;
     min-width: 118px;
-    padding: 0px 5px;
+    max-width: 118px;
+    height: 48px;
+    margin: 0 5px;
+    padding: 0 5px;
+    color: $middleGray;
+    font-weight: 600;
     text-align: center;
+    background: $white;
+    border: 0 transparent;
+    border-radius: 25px;
+    box-shadow: 0 0 2px rgb(0 0 0 / 60%);
 }
 
 .btnFacebook:hover {
-    background: #3b5998;
+    background: $lightBlue;
     opacity: 0.6;
 }
 
@@ -38,16 +40,17 @@
 }
 
 .fa-google.blue {
-    color: #3b5998;
     margin-right: 8px;
+    color: $lightBlue;
 }
 
 .fa-at.blue {
-    color: #3b5998;
     margin-right: 8px;
+    color: $lightBlue;
 }
 
 @media only screen and (max-width: 399px) {
+
     .btnFacebook,
     .btnGoogle {
         width: 100%;
@@ -55,14 +58,14 @@
 }
 
 h6 {
-    width: 100%; 
-    text-align: center; 
-    border-bottom: 1px solid #000; 
+    width: 100%;
+    margin: 20px 0;
     line-height: 0.1em;
-    margin: 20px 0; 
- } 
- 
- h6 span { 
-     background:#fff; 
-     padding:0 10px; 
- }
+    text-align: center;
+    border-bottom: 1px solid #000000;
+}
+
+h6 span {
+    padding: 0 10px;
+    background: $white;
+}

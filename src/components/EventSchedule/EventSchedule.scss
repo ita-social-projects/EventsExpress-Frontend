@@ -1,17 +1,17 @@
 @import "../../styles/variables.scss";
 
 .container {
-    width: $fullWidth;
     display: flex;
     justify-content: center;
+    width: $fullWidth;
     padding-top: 60px;
 }
 
 .eventsBlock {
-    width: $fullWidth;
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
+    width: $fullWidth;
 }
 
 .custom-center {

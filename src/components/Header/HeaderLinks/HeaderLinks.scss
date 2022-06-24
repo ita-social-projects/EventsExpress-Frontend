@@ -9,7 +9,7 @@
 
     .header-link-item {
         margin-left: $margin50;
-    
+
         .eng-link-wrapper {
             display: flex;
             align-items: center;
@@ -28,12 +28,12 @@
                 margin-top: 5px;
                 margin-left: 5px;
             }
-
         }
     }
 
     .link-wrapper {
         text-decoration: none;
+
         &:hover {
             color: $black;
         }
