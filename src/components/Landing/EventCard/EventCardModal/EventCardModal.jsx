@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./EventCardModal.scss";
 import PropTypes from "prop-types";
 import { DELETE_DRAFT } from "../../../../constants/draftConstants";
+import Button from "../../../shared/Button/Button";
 
 const EventCardModal = ({ id, onClose, onDelete }) => {
   const [reason, setReason] = useState("");
@@ -23,20 +24,18 @@ const EventCardModal = ({ id, onClose, onDelete }) => {
           />
         </div>
         <div className="interact">
-          <button
-            className="interactBtn"
+          <Button
+            content={DELETE_DRAFT.CANCEL}
             onClick={() => onClose(null)}
             type="button"
-          >
-            {DELETE_DRAFT.CANCEL}
-          </button>
-          <button
             className="interactBtn"
+          />
+          <Button
+            content={DELETE_DRAFT.CONFIRM}
             onClick={deleteDraftEvent}
             type="submit"
-          >
-            {DELETE_DRAFT.CONFIRM}
-          </button>
+            className="interactBtn"
+          />
         </div>
       </div>
     </div>

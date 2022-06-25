@@ -9,9 +9,7 @@
     top: 0;
     left: 0;
     z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex(row, center, center);
     width: $fullWidth;
     height: $fullHeight;
     background-color: $backGroundModal;
