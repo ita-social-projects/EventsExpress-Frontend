@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { ImCross } from "react-icons/im";
-import { Field } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import FormInput from "../../shared/FormInput/FormInput";
 import SocialAuth from "../../SocialAuth/SocialAuth";
@@ -14,6 +14,7 @@ import {
   PASSWORD_PLACEHOLDER,
   SIGN_IN,
 } from "../../../constants/authModalConstants";
+import { validate } from "../../helpers/validateHelper";
 
 const Login = ({ handleSubmit, handleClose, error }) => {
   const [isRecoverPassword, setIsRecoverPassword] = useState(false);
@@ -78,4 +79,7 @@ Login.propTypes = {
   handleClose: PropTypes.func,
 };
 
-export default Login;
+export default reduxForm({
+  form: "auth-form",
+  validate: validate(["email", "password"]),
+})(Login);
