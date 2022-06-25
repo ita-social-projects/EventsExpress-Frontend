@@ -1,6 +1,6 @@
-@import '../../../styles/colors.scss';
-@import '../../../styles/fonts.scss';
-@import '../../../styles/variables.scss';
+@import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
+@import "../../../styles/variables.scss";
 
 .form-group__textarea {
     width: $fullWidth;
@@ -10,22 +10,22 @@
 .form-textarea {
     width: $fullWidth;
     padding: 5px 20px;
-    border-radius: $defaultBorderRadius;
+    color: $purpleDark;
+    font-size: $bodyText;
+    text-align: left;
     background: $white;
     border: 2px solid $white;
-    box-shadow: 0px 4px 4px #00000040;
-    text-align: left;
-    font-size: $bodyText;
-    color: $purpleDark;
+    border-radius: $defaultBorderRadius;
+    box-shadow: 0 4px 4px #00000040;
 }
 
 .form-textarea__error {
     color: $deleteColor;
-    box-shadow: 0px 2px 2px $deleteColor;
+    box-shadow: 0 2px 2px $deleteColor;
 }
 
 .form-error {
+    margin-left: 15px;
     color: $deleteColor;
     font-size: $bodyText;
-    margin-left: 15px;
 }

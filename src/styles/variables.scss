@@ -1,4 +1,5 @@
 @import "./colors.scss";
+
 //screens
 $mediaPcScreen: 1180px;
 $mediaFirstTabletScreen: 991px;
@@ -10,7 +11,7 @@ $widthForContentSecondTabletScreen: 560px;
 $mobileBreakpoint: 426px;
 
 //modalBackground
-$backGroundModal: rgba(0, 0, 0, 0.4);
+$backGroundModal: rgb(0 0 0 / 40%);
 
 //width & height
 $fullWidth: 100%;
@@ -20,6 +21,7 @@ $maxDisplayWidth: 100vw;
 $maxDisplayHeight: 100vh;
 $fullHeight: 100%;
 $halfHieght: 50%;
+
 //radius
 $r16: 16px;
 $r12: 12px;
@@ -40,7 +42,6 @@ $unoutline: none;
 //border
 $defaultBorderRadius: 20px;
 $buttonBorderRadius: 10px;
-
 $defaulBorder: 1px solid $white;
 $margin50: 50px;
 $left160: 160px;
@@ -57,10 +58,8 @@ $width50: 50%;
 $height50: 50%;
 $width25: 25%;
 $defaultTransition: 0.5s ease-in-out;
-
 $opacity0: 0;
 $opacity1: 1;
-
 $landingBannerBgPattern: "https://i.pinimg.com/originals/4c/41/75/4c4175fc9f1274b6d732d5b5038f168d.jpg";
 $infoTextMaxWidth: $width50;
 $infoTextMaxWidth: $width50;

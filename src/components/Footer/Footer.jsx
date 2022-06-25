@@ -4,6 +4,7 @@ import { FOOTER_LABELS } from "../../constants/footerConstants";
 import SOCIAL_NAV_LINKS from "./FooterMapper";
 import emailService from "../../services/EmailService";
 import "./Footer.scss";
+import Button from "../shared/Button/Button";
 
 const {
   SUBSCRIBE_US,
@@ -55,9 +56,11 @@ const Footer = () => {
               placeholder={PASTE_YOUR_EMAIL}
               className="footer__input"
             />
-            <button type="submit" className="footer__subscribe__icon">
-              <IoMdSend />
-            </button>
+            <Button
+              content={<IoMdSend />}
+              type="submit"
+              className="footer__subscribe__icon"
+            />
           </form>
         </div>
         <div className="footer__social_links">

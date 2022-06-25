@@ -5,47 +5,54 @@
 
 .auth-modal {
     @include flex(column, center, center);
+
     position: fixed;
     top: $height50;
     left: $width50;
-    transform: translate(-$width50, -$height50);
     width: $fullWidth;
     min-height: $absoluteHeight100;
     overflow: hidden;
     background-color: $authModalOutsideColor;
+    transform: translate(-$width50, -$height50);
+
     &.closed {
         display: none;
     }
+
     .modal-switcher {
         width: 450px;
         padding: 30px 50px;
-        border-radius: $authModalBorderRadius;
-        @include flex(row, center, center);
-        background-color: $lightPink; 
         color: $black;
         font-size: $fontsize16;
+        background-color: $lightPink;
+        border-radius: $authModalBorderRadius;
         box-shadow: $authModalShadow;
+
+        @include flex(row, center, center);
+
         .switcher-btn {
-            cursor: pointer;
             margin-left: 15px;
             color: $purple;
             font-weight: $bold;
+            cursor: pointer;
         }
     }
+
     @media screen and (max-width: $mediaMobileScreen) {
+
         .modal-switcher {
-          width: $width80;
-          padding: 20px 30px;
-          font-size: $fontsize16;
-          flex-direction: column;
-          .switcher-btn {
-            margin-top: 5px;
-            margin-left: 0;
-          }
+            flex-direction: column;
+            width: $width80;
+            padding: 20px 30px;
+            font-size: $fontsize16;
+
+            .switcher-btn {
+                margin-top: 5px;
+                margin-left: 0;
+            }
         }
     }
 }
-
 
 .auth-form {
     position: relative;

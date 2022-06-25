@@ -3,7 +3,10 @@
     "stylelint-config-standard-scss",
     "stylelint-config-rational-order"
   ],
-  "plugins": ["stylelint-order", "stylelint-config-rational-order/plugin"],
+  "plugins": [
+    "stylelint-order",
+    "stylelint-config-rational-order/plugin"
+  ],
   "rules": {
     "indentation": 4,
     "string-quotes": "double",
@@ -44,6 +47,7 @@
     "plugin/rational-order": true,
     "selector-pseudo-element-no-unknown": null,
     "selector-pseudo-class-no-unknown": null,
-    "property-no-vendor-prefix": null
+    "property-no-vendor-prefix": null,
+    "no-missing-end-of-source-newline": true
   }
 }

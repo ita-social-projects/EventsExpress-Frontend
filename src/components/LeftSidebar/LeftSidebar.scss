@@ -7,171 +7,196 @@ $sidebarWidth: 50px;
 $sidebarOffset: 5px;
 
 @media (min-width: $mediaMobileScreen) {
-  .sidebar-menu {
-    z-index: 100;
-    width: fit-content;
-    position: fixed;
-    top: $height50;
-    transform: translateY(-$height50);
-    margin-left: 5px;
-    list-style: none;
-    .left-sidebar__item {
-      position: relative;
-      font-size: $fontsize20;
-      @include flex(row, center, center);
-      padding: 15px;
-      background-color: $purpleDark;
-      width: $sidebarWidth;
-      transition: transform $defaultTransition;
-      transform: translateX(-$sidebarWidth - $sidebarOffset);
 
-      .item__page-name {
-        display: none;
-        width: max-content;
-        padding: 0px 5px;
-        border-radius: 5px;
-        background-color: $black;
-        position: absolute;
-        left: calc($fullWidth + $sidebarOffset);
+    .sidebar-menu {
+        position: fixed;
         top: $height50;
+        z-index: 100;
+        width: fit-content;
+        margin-left: 5px;
+        list-style: none;
         transform: translateY(-$height50);
-        transition: $defaultTransition;
-        opacity: $opacity0;
-      }
 
-      &:hover {
-        .item__page-name {
-          opacity: $opacity1;
+        .left-sidebar__item {
+            position: relative;
+            width: $sidebarWidth;
+            padding: 15px;
+            font-size: $fontsize20;
+            background-color: $purpleDark;
+            transform: translateX(-$sidebarWidth - $sidebarOffset);
+            transition: transform $defaultTransition;
+
+            @include flex(row, center, center);
+
+            .item__page-name {
+                position: absolute;
+                top: $height50;
+                left: calc($fullWidth + $sidebarOffset);
+                display: none;
+                width: max-content;
+                padding: 0 5px;
+                background-color: $black;
+                border-radius: 5px;
+                transform: translateY(-$height50);
+                opacity: $opacity0;
+                transition: $defaultTransition;
+            }
+
+            &:hover {
+
+                .item__page-name {
+                    opacity: $opacity1;
+                }
+            }
+
+            &:first-child {
+                border-radius: 5px 5px 0 0;
+            }
+
+            &:last-child {
+                border-radius: 0 0 5px 5px;
+            }
+
+            .left-sidebar__link {
+                color: $white;
+                font-size: $fontsize16;
+                text-decoration: none;
+
+                &:hover {
+                    color: $white;
+                }
+
+                &.active {
+                    color: $green;
+                }
+            }
         }
-      }
 
-      &:first-child {
-        border-radius: 5px 5px 0 0;
-      }
+        .toggle {
+            margin-bottom: 10px;
+            background-color: $purpleDark;
+            border-radius: 5px;
+            cursor: pointer;
+            all: unset;
 
-      &:last-child {
-        border-radius: 0 0 5px 5px;
-      }
+            @include flex(row, center, center);
 
-      .left-sidebar__link {
-        color: $white;
-        text-decoration: none;
-        font-size: $fontsize16;
-        &:hover {
-          color: $white;
+            .toggle-btn {
+                padding: 15px;
+                color: $white;
+                font-weight: $bold;
+                font-size: $fontsize16;
+                text-decoration: none;
+                cursor: pointer;
+            }
         }
-        &.active {
-          color: $green;
-        }
-      }
     }
 
-    .toggle {
-      all: unset;
-      @include flex(row, center, center);
-      margin-bottom: 10px;
-      cursor: pointer;
-      background-color: $purpleDark;
-      border-radius: 5px;
+    .sidebar-menu.active {
 
-      .toggle-btn {
-        cursor: pointer;
-        padding: 15px;
-        color: $white;
-        text-decoration: none;
-        font-weight: $bold;
-        font-size: $fontsize16;
-      }
+        .left-sidebar__item {
+            transform: translateX(0);
+
+            .item__page-name {
+                display: flex;
+            }
+        }
     }
-  }
-
-  .sidebar-menu.active {
-    .left-sidebar__item {
-      transform: translateX(0);
-
-      .item__page-name {
-        display: flex;
-      }
-    }
-  }
 }
 
 @media (max-width: $mediaMobileScreen) {
-  .sidebar-menu {
-    z-index: 100;
-    position: fixed;
-    bottom: 50px;
-    margin-left: $sidebarOffset;
-    @include flex(row, center, center);
-    list-style: none;
-    .left-sidebar__item {
-      position: relative;
-      font-size: $fontsize16;
-      @include flex(row, center, center);
-      width: $sidebarWidth;
-      transition: transform $defaultTransition;
-      opacity: $opacity0;
-      transition: opacity $defaultTransition;
-      .item__page-name {
-        display: none;
-      }
-    }
-    .toggle {
-      all: unset;
-      width: $sidebarWidth;
-      background-color: $purpleDark;
-      @include flex(row, center, center);
-      border-radius: $borderRound;
-      font-size: $fontsize20;
-      .toggle-btn {
-        width: $fullWidth;
-        padding: 15px 0;
-        cursor: pointer;
-        color: $white;
-        text-decoration: none;
-        font-size: $fontsize16;
-      }
-    }
-  }
 
-  .sidebar-menu.active {
-    background-color: $purpleDark;
-    margin-left: 0;
-    clip-path: circle($width50);
-    transition: $defaultTransition;
-    width: $fullWidth;
-    height: $absoluteHeight100;
-    top: $height50;
-    transform: translateY(-$height50);
-    @include flex(column, center, center);
-    .toggle-btn > svg {
-      color: $white;
-      font-size: $fontsize20;
-    }
-    .left-sidebar__item {
-      opacity: $opacity1;
-      display: flex;
-      padding: 15px 0;
-      width: max-content;
-      .left-sidebar__link {
+    .sidebar-menu {
+        position: fixed;
+        bottom: 50px;
+        z-index: 100;
+        margin-left: $sidebarOffset;
+        list-style: none;
+
         @include flex(row, center, center);
-        color: $white;
-        font-size: $fontsize20;
-        text-decoration: none;
-        &:hover {
-          .item__page-name {
-            letter-spacing: 2px;
-          }
+
+        .left-sidebar__item {
+            position: relative;
+            width: $sidebarWidth;
+            font-size: $fontsize16;
+            opacity: $opacity0;
+            transition: transform $defaultTransition;
+            transition: opacity $defaultTransition;
+
+            @include flex(row, center, center);
+
+            .item__page-name {
+                display: none;
+            }
         }
-         &.active {
-           color: $green;
-         }
-      }
-      .item__page-name {
-        display: flex;
-        margin-left: 10px;
-        transition: $defaultTransition;
-      }
+
+        .toggle {
+            width: $sidebarWidth;
+            font-size: $fontsize20;
+            background-color: $purpleDark;
+            border-radius: $borderRound;
+            all: unset;
+
+            @include flex(row, center, center);
+
+            .toggle-btn {
+                width: $fullWidth;
+                padding: 15px 0;
+                color: $white;
+                font-size: $fontsize16;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
     }
-  }
+
+    .sidebar-menu.active {
+        top: $height50;
+        width: $fullWidth;
+        height: $absoluteHeight100;
+        margin-left: 0;
+        background-color: $purpleDark;
+        transform: translateY(-$height50);
+        transition: $defaultTransition;
+        clip-path: circle($width50);
+
+        @include flex(column, center, center);
+
+        .toggle-btn > svg {
+            color: $white;
+            font-size: $fontsize20;
+        }
+
+        .left-sidebar__item {
+            display: flex;
+            width: max-content;
+            padding: 15px 0;
+            opacity: $opacity1;
+
+            .left-sidebar__link {
+                @include flex(row, center, center);
+
+                color: $white;
+                font-size: $fontsize20;
+                text-decoration: none;
+
+                &:hover {
+
+                    .item__page-name {
+                        letter-spacing: 2px;
+                    }
+                }
+
+                &.active {
+                    color: $green;
+                }
+            }
+
+            .item__page-name {
+                display: flex;
+                margin-left: 10px;
+                transition: $defaultTransition;
+            }
+        }
+    }
 }
