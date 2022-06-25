@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Register from "../../components/Register/Register";
+import Register from "../../components/AuthModal/Register/Register";
 import register from "../../actions/register/register-action";
 
 const RegisterContainer = ({
@@ -14,7 +14,6 @@ const RegisterContainer = ({
     if (!registerError && isRegisterSuccess) {
       handleClose();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isRegisterSuccess]);
 
   const handleRegisterSubmit = (email, password) => {

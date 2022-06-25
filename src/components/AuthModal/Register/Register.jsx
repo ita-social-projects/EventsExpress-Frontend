@@ -2,26 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import { ImCross } from "react-icons/im";
-import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
-import "./Register.scss";
-import { validate } from "../helpers/validateHelper";
-import FormInput from "../shared/FormInput/FormInput";
-import SocialAuth from "../SocialAuth/SocialAuth";
-import Button from "../shared/Button/Button";
+import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
+import { validate } from "../../helpers/validateHelper";
+import FormInput from "../../shared/FormInput/FormInput";
+import SocialAuth from "../../SocialAuth/SocialAuth";
+import Button from "../../shared/Button/Button";
 import {
   CONFIRM_PASSWORD_PLACEHOLDER,
   EMAIL_PLACEHOLDER,
   PASSWORD_PLACEHOLDER,
   REGISTER,
   SIGN_UP,
-} from "../../constants/authModalConstants";
+} from "../../../constants/authModalConstants";
 
 const Register = ({ error, handleSubmit, handleClose }) => {
   return (
-    <form className="register-form" onSubmit={handleSubmit}>
-      <h2 className="register-form__title">{REGISTER}</h2>
+    <form className="auth-form" onSubmit={handleSubmit}>
+      <h2 className="auth-form__title">{REGISTER}</h2>
       {error && (
-        <ErrorMessages error={error} className="register-error text-center" />
+        <ErrorMessages error={error} className="auth-error text-center" />
       )}
       <Button
         content={<ImCross />}
@@ -70,7 +69,7 @@ Register.propTypes = {
 };
 
 export default reduxForm({
-  form: "register-form",
+  form: "auth-form",
   validate: validate(
     ["password", "email", "RepeatPassword"],
     [

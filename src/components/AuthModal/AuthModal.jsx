@@ -21,8 +21,12 @@ const AuthModal = ({ setIsOpen, isOpen }) => {
       onClose={handleClose}
       className={`auth-modal ${isOpen ? "" : "closed"}`}
     >
-      {isLogin && <LoginContainer handleClose={handleClose} />}
-      {!isLogin && <RegisterContainer handleClose={handleClose} />}
+      {isLogin ? (
+        <LoginContainer handleClose={handleClose} />
+      ) : (
+        <RegisterContainer handleClose={handleClose} />
+      )}
+
       <AuthSwitcher isLogin={isLogin} handleModeSwitch={handleModeSwitch} />
     </div>
   );

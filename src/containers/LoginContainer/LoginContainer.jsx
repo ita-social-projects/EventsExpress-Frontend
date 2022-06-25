@@ -1,8 +1,10 @@
-﻿import { connect } from "react-redux";
-import React from "react";
+﻿import React from "react";
 import PropTypes from "prop-types";
-import Login from "../../components/Login/Login";
+import { connect } from "react-redux";
+import { reduxForm } from "redux-form";
+import Login from "../../components/AuthModal/Login/Login";
 import login from "../../actions/login/login-action";
+import { validate } from "../../components/helpers/validateHelper";
 
 const LoginContainer = ({ loginDispatch, handleClose }) => {
   const handleLogin = ({ email, password }) => {
@@ -34,4 +36,12 @@ LoginContainer.defaultProps = {
   handleClose: () => {},
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(
+  reduxForm({
+    form: "auth-form",
+    validate: validate(["email", "password"]),
+  })(Login),
+);
