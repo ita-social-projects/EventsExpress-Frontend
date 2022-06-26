@@ -68,8 +68,8 @@ class ContactAdmin extends PureComponent {
                 <option value={ISSUE_TYPE_ENUM.OTHER}>Other</option>
               </Field>
 
-              {this.props.form_values !== undefined &&
-                this.props.form_values.subject === ISSUE_TYPE_ENUM.OTHER && (
+              {this.props.formValues !== undefined &&
+                this.props.formValues.subject === ISSUE_TYPE_ENUM.OTHER && (
                   <Field
                     name="title"
                     className="form-control"
@@ -119,7 +119,7 @@ ContactAdmin.propTypes = {
   user: propTypes.object,
   handleSubmit: propTypes.func,
   email: propTypes.string,
-  form_values: propTypes.object,
+  formValues: propTypes.object,
 };
 
 ContactAdmin.defaultProps = {
@@ -130,13 +130,13 @@ ContactAdmin.defaultProps = {
   user: {},
   handleSubmit: () => {},
   email: "",
-  form_values: {},
+  formValues: {},
 };
 
 const mapStateToProps = state => {
   return {
     initialValues: { email: state.user.email },
-    form_values: getFormValues("ContactAdmin")(state),
+    formValues: getFormValues("ContactAdmin")(state),
   };
 };
 

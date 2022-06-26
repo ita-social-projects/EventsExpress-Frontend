@@ -34,7 +34,7 @@ class Chat extends Component {
     }
 
     const msgIds = this.props.chat.data.messages
-      .filter(x => !x.seen && x.senderId !== this.props.current_user.id)
+      .filter(x => !x.seen && x.senderId !== this.props.currentUser.id)
       .map(x => x.id);
 
     if (msgIds.length > 0) {
@@ -88,7 +88,7 @@ class Chat extends Component {
 
   render() {
     const sender = this.props.chat.data.users.find(
-      y => y.id !== this.props.current_user.id,
+      y => y.id !== this.props.currentUser.id,
     );
     const { data } = this.props.chat;
     return (
@@ -155,7 +155,7 @@ Chat.propTypes = {
   chat: propTypes.object,
   concatNewMsg: propTypes.func,
   deleteOldNotififcation: propTypes.func,
-  current_user: propTypes.object,
+  currentUser: propTypes.object,
   resetChat: propTypes.func,
   // TODO: change hubConnection prop
   hubConnection: propTypes.any,
@@ -169,14 +169,14 @@ Chat.defaultProps = {
   chat: {},
   concatNewMsg: () => {},
   deleteOldNotififcation: () => {},
-  current_user: {},
+  currentUser: {},
   resetChat: () => {},
   hubConnection: {},
   resetForm: () => {},
 };
 
 const mapStateToProps = state => ({
-  current_user: state.user,
+  currentUser: state.user,
   hubConnection: state.hubConnections.chatHub,
   chat: state.chat,
   notification: state.notification,

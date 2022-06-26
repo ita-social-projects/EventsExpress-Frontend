@@ -19,7 +19,7 @@ class EditEventContainer extends Component {
   onSubmit = async values => {
     await this.props.editEvent({
       ...validateEventForm(values),
-      user_id: this.props.user_id,
+      userId: this.props.userId,
       id: this.props.event.id,
     });
 
@@ -34,11 +34,11 @@ class EditEventContainer extends Component {
         <div className="pl-md-4">
           <EventForm
             validate={eventEditValidateForm}
-            allCategories={this.props.all_categories}
+            allCategories={this.props.allCategories}
             onSubmit={this.onSubmit}
             onError={this.onError}
             initialValues={this.props.event}
-            formValues={this.props.form_values}
+            formValues={this.props.formValues}
             haveReccurentCheckBox={false}
             eventId={this.props.event.id}
           >
@@ -70,10 +70,10 @@ class EditEventContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  user_id: state.user.id,
-  add_event_status: state.add_event,
-  all_categories: state.categories,
-  form_values: getFormValues("event-form")(state),
+  userId: state.user.id,
+  addEventStatus: state.add_event,
+  allCategories: state.categories,
+  formValues: getFormValues("event-form")(state),
   event: state.event.data,
 });
 
@@ -97,21 +97,21 @@ const mapDispatchToProps = dispatch => {
 EditEventContainer.propTypes = {
   editEvent: PropTypes.func,
   event: PropTypes.object,
-  user_id: PropTypes.string,
+  userId: PropTypes.string,
   history: PropTypes.object,
   handleFormError: PropTypes.func,
-  all_categories: PropTypes.object,
-  form_values: PropTypes.object,
+  allCategories: PropTypes.object,
+  formValues: PropTypes.object,
 };
 
 EditEventContainer.defaultProps = {
   editEvent: () => {},
-  user_id: "",
+  userId: "",
   event: {},
   history: {},
   handleFormError: () => {},
-  all_categories: {},
-  form_values: {},
+  allCategories: {},
+  formValues: {},
 };
 
 export default withRouter(

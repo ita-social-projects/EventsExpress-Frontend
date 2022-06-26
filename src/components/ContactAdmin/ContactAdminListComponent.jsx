@@ -24,11 +24,11 @@ class ContactAdminList extends Component {
   );
 
   render() {
-    const changedProps = { ...this.props, dataList: this.props.data_list };
+    const changedProps = { ...this.props, dataList: this.props.dataList };
 
     return (
       <>
-        {this.props.data_list > 0 ? (
+        {this.props.dataList > 0 ? (
           <tr className="bg-light text-dark font-weight-bold text-center">
             <td className="justify-content-center">Title</td>
             <td className="d-flex align-items-center justify-content-center">
@@ -45,7 +45,7 @@ class ContactAdminList extends Component {
         ) : (
           ""
         )}
-        {this.props.data_list < 1 ? (
+        {this.props.dataList < 1 ? (
           <RenderIssuesList
             {...changedProps}
             renderSingleIssue={this.renderSingleIssue}
@@ -61,12 +61,12 @@ class ContactAdminList extends Component {
 
 ContactAdminList.propTypes = {
   history: propTypes.object,
-  data_list: propTypes.array,
+  dataList: propTypes.array,
 };
 
 ContactAdminList.defaultProps = {
   history: {},
-  data_list: [],
+  dataList: [],
 };
 
 export default withRouter(ContactAdminList);
