@@ -39,14 +39,14 @@ const reducer = (state = initialState.notification, action) => {
       newMsg = newMsg.concat(action.payload);
       return {
         ...state,
-        seen_messages: newMsg,
+        seenMessages: newMsg,
       };
     case DELETE_SEEN_MSG_NOTIFICATION:
       newMsg = state.seen_messages;
       newMsg = newMsg.filter(x => x.id !== action.payload);
       return {
         ...state,
-        seen_messages: newMsg,
+        seenMessages: newMsg,
       };
     case RESET_NOTIFICATION:
       return {

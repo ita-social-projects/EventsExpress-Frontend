@@ -73,7 +73,7 @@ UnitOfMeasuringAddWrapper.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  all_categories: state.categoriesOfMeasuring,
+  allCategories: state.categoriesOfMeasuring,
   status: state.add_unitOfMeasuring,
   editedUnitOfMeasuring: state.unitsOfMeasuring.editedUnitOfMeasuring,
 });
@@ -81,9 +81,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, props) => {
   return {
     add: data => dispatch(addUnitOfMeasuring(data)),
-    set_unitOfMeasuring_edited: () =>
+    setUnitOfMeasuringEdited: () =>
       dispatch(setUnitOfMeasuringEdited(props.item.id)),
-    get_CategoriesOfMeasuring: () => dispatch(getCategoriesOfMeasuring()),
+    getCategoryOfMeasuring: () => dispatch(getCategoriesOfMeasuring()),
   };
 };
 

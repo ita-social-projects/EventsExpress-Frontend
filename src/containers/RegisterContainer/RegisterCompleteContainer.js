@@ -16,7 +16,7 @@ const mapStateToProps = state => {
         birthday: "birthday" in profile ? profile.birthday : null,
         gender: "gender" in profile ? profile.gender : null,
       },
-      form_values: getFormValues("register-complete-form")(state),
+      formValues: getFormValues("register-complete-form")(state),
     };
   return null;
 };

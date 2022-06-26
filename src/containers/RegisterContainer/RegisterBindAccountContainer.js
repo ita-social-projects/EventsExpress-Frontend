@@ -9,7 +9,7 @@ const mapStateToProps = state => {
     initialValues: {
       type: profile.type,
     },
-    form_values: getFormValues("register-bind-account-form")(state),
+    formValues: getFormValues("register-bind-account-form")(state),
   };
 };
 

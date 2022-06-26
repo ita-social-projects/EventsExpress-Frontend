@@ -12,12 +12,12 @@ import NotificationTemplateForm from "../../components/NotificationTemplate/Noti
 class NotificationInfoWrapper extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.getTemplate(id);
-    this.props.get_properties(id);
+    this.props.getNotificationTemplate(id);
+    this.props.getProperties(id);
   }
 
   handleSubmit = async values => {
-    await this.props.updateTemplate(values);
+    await this.props.updateNotificationTemplate(values);
     this.props.history.push("/admin/notificationTemplates");
   };
 
@@ -41,25 +41,25 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  get_template: id => dispatch(getTemplate(id)),
-  get_properties: templateId => dispatch(getTemplateProperties(templateId)),
-  update_template: template => dispatch(updateTemplate(template)),
+  getNotificationTemplate: id => dispatch(getTemplate(id)),
+  getProperties: templateId => dispatch(getTemplateProperties(templateId)),
+  updateNotificationTemplate: template => dispatch(updateTemplate(template)),
 });
 
 NotificationInfoWrapper.propTypes = {
   match: PropTypes.object,
-  getTemplate: PropTypes.func,
-  get_properties: PropTypes.func,
-  updateTemplate: PropTypes.func,
+  getNotificationTemplate: PropTypes.func,
+  getProperties: PropTypes.func,
+  updateNotificationTemplate: PropTypes.func,
   history: PropTypes.array,
   notificationTemplate: PropTypes.object,
   availableProperties: PropTypes.bool,
 };
 NotificationInfoWrapper.defaultProps = {
   match: {},
-  getTemplate: () => {},
-  get_properties: () => {},
-  updateTemplate: () => {},
+  getNotificationTemplate: () => {},
+  getProperties: () => {},
+  updateNotificationTemplate: () => {},
   history: [],
   notificationTemplate: {},
   availableProperties: null,

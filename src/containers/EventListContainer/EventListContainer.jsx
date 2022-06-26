@@ -48,7 +48,7 @@ class EventListContainer extends Component {
 
   render() {
     const currentUser =
-      this.props.current_user.id !== null ? this.props.current_user : {};
+      this.props.currentUser.id !== null ? this.props.currentUser : {};
     const { data } = this.props.events;
     const { items } = this.props.events.data;
     return (
@@ -69,8 +69,8 @@ class EventListContainer extends Component {
 const mapStateToProps = state => {
   return {
     events: state.events,
-    current_user: state.user,
-    form_values: getFormValues("event-filter-form")(state),
+    currentUser: state.user,
+    formValues: getFormValues("event-filter-form")(state),
   };
 };
 
@@ -84,14 +84,14 @@ EventListContainer.propTypes = {
   history: PropTypes.object,
   events: PropTypes.object,
   getEvents: PropTypes.func,
-  current_user: PropTypes.object,
+  currentUser: PropTypes.object,
 };
 
 EventListContainer.defaultProps = {
   history: {},
   events: {},
   getEvents: () => {},
-  current_user: {},
+  currentUser: {},
 };
 
 export default withRouter(

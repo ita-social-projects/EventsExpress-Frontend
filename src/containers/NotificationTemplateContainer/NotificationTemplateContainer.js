@@ -21,7 +21,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  get_all_templates: () => dispatch(getAllTemplates()),
+  getAllTemplates: () => dispatch(getAllTemplates()),
 });
 
 NotificationTemplateWrapper.propTypes = {
