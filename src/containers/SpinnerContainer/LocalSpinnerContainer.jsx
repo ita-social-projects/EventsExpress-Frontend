@@ -3,10 +3,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../../components/Spinner/Spinner";
+import { ZERO_AMOUNT } from "../../constants/numberConstants";
 
 // TODO Drop and use sinple Spinner instead
 function LocalSpinnerContainer({ localCounter, children, showContent }) {
-  return localCounter > 0 || !showContent ? <Spinner /> : children;
+  return localCounter > ZERO_AMOUNT || !showContent ? <Spinner /> : children;
 }
 
 LocalSpinnerContainer.propTypes = {

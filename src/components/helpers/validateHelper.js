@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { isValidPhoneNumber } from "react-phone-number-input";
+import { GENDEX_MAX_VALUE } from "../../constants/validatorsConstants";
 import isValidEmail from "./validators/email-address-validator";
 import { maxLength, minLength } from "./validators/min-max-length-validators";
 import fieldIsRequired from "./validators/required-fields-validator";
@@ -39,7 +40,7 @@ const checkIfPhoneNumberIsValid = (errors, values) => {
 };
 
 const checkGenderIsValid = (errors, values) => {
-  if (values.gender && values.gender > 3) {
+  if (values.gender && values.gender > GENDEX_MAX_VALUE) {
     errors.gender = "Invalid gender";
   }
 };

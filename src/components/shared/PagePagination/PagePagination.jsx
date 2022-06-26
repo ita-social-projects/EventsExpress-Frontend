@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Pagination from "react-paginating";
 import PAGINATION_LABELS from "../../../constants/paginationConstants";
 import { renderEdgePage, renderPages } from "../../helpers/paginationUtils";
+import { DEFAULT_ONE_VALUE } from "../../../constants/numberConstants";
 
 const { FIRST, LAST, NEXT, PREV } = PAGINATION_LABELS;
 
@@ -35,7 +36,7 @@ const PagePagination = ({ callback }, props) => {
             {hasPreviousPage &&
               renderEdgePage(
                 handlePageChange,
-                1,
+                DEFAULT_ONE_VALUE,
                 FIRST,
                 previousPage,
                 PREV,

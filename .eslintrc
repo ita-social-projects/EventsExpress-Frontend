@@ -13,14 +13,14 @@
   "plugins": ["prettier", "import", "react"],
 
   "rules": {
-    "camelcase": [
-      "error",
-      {
-        "properties": "always",
-        "ignoreDestructuring": false,
-        "ignoreImports": false
-      }
-    ], // forbidden snake_case --------> ~ 140 errors
+    // "camelcase": [
+    //   "error",
+    //   {
+    //     "properties": "always",
+    //     "ignoreDestructuring": false,
+    //     "ignoreImports": false
+    //   }
+    // ], // forbidden snake_case --------> ~ 140 errors
     // "complexity": ["error", 12],
     
     "eol-last": ["error", "always"],
