@@ -9,12 +9,12 @@ import { getEvents } from "../../actions/event/event-list-action";
 
 class AdminEventListContainer extends Component {
   componentWillMount() {
-    this.props.getEvents(this.props.params);
+    this.props.getEventsForAdmin(this.props.params);
   }
 
   render() {
     const currentUser =
-      this.props.current_user.id !== null ? this.props.current_user : {};
+      this.props.currentUser.id !== null ? this.props.currentUser : {};
     const { data } = this.props.events;
     const { items } = data;
 
@@ -25,7 +25,7 @@ class AdminEventListContainer extends Component {
           dataList={items}
           page={data.pageViewModel.pageNumber}
           totalPages={data.pageViewModel.totalPages}
-          callback={this.props.getEvents}
+          callback={this.props.getEventsForAdmin}
         />
       </SpinnerContainer>
     );
@@ -35,19 +35,19 @@ class AdminEventListContainer extends Component {
 const mapStateToProps = state => {
   return {
     events: state.events,
-    current_user: state.user,
+    currentUser: state.user,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_events: page => dispatch(getEvents(page)),
+    getEventsForAdmin: page => dispatch(getEvents(page)),
   };
 };
 
 AdminEventListContainer.propTypes = {
-  getEvents: PropTypes.func,
-  current_user: PropTypes.object,
+  getEventsForAdmin: PropTypes.func,
+  currentUser: PropTypes.object,
   pageViewModel: PropTypes.object,
   data: PropTypes.object,
   params: PropTypes.string,
@@ -55,8 +55,8 @@ AdminEventListContainer.propTypes = {
 };
 
 AdminEventListContainer.defaultProps = {
-  getEvents: () => {},
-  current_user: {},
+  getEventsForAdmin: () => {},
+  currentUser: {},
   pageViewModel: {},
   data: {},
   params: "",

@@ -23,7 +23,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    add_event: () => dispatch(addEvent()),
+    addEvent: () => dispatch(addEvent()),
   };
 };
 

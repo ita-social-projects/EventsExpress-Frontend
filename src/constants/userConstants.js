@@ -46,4 +46,12 @@ export const ATTITUDE_ICONS = {
 
 export const YOU_RATE_LABEL = "Your rate:";
 
-export const ATTITUDE_TYPES = [0, 1];
+export const NEGATIVE_ATTITUDE = 1;
+export const POSITIVE_ATTITUDE = 0;
+
+export const ATTITUDE_TYPES = [POSITIVE_ATTITUDE, NEGATIVE_ATTITUDE];
+
+export const MIN_ALLOWABLE_AGE = 0;
+export const MAX_ALLOWABLE_AGE = 100;
+
+export const SUCCESS_WARNING_BORDER_RATING = 8;

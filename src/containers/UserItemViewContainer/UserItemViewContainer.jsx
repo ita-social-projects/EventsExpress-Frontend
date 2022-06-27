@@ -140,7 +140,7 @@ UserItemViewContainer.defaultProps = {
 const mapStateToProps = state => ({
   profile: state.profile,
   currentUser: state.user.id,
-  events: state.events_for_profile,
+  events: state.eventsForProfile,
 });
 
 const mapDispatchToProps = dispatch => {

@@ -61,7 +61,7 @@ AddFromParentEventContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  add_copy_event_status: state.add_copy_event,
+  addCopyEventStatus: state.add_copy_event,
   eventId: state.event.data.id,
 });
 

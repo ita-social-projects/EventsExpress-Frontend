@@ -11,11 +11,11 @@ import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
 class Msg extends Component {
   componentDidUpdate = () => {
     if (
-      this.props.notification.seen_messages
+      this.props.notification.seenMessages
         .map(x => x.id)
         .includes(this.props.item.id)
     ) {
-      this.props.item = this.props.notification.seen_messages.find(
+      this.props.item = this.props.notification.seenMessages.find(
         x => x.id === this.props.item.id,
       );
       this.props.deleteSeenMsgNotification(this.props.item.id);
@@ -23,7 +23,7 @@ class Msg extends Component {
   };
 
   render() {
-    const { user, item, seenItem, current_user: currentUser } = this.props;
+    const { user, item, seenItem, currentUser } = this.props;
     return (
       <>
         {user.id !== currentUser.id ? (
@@ -69,7 +69,7 @@ Msg.propTypes = {
   deleteSeenMsgNotification: propTypes.func,
   user: propTypes.object,
   seenItem: propTypes.bool,
-  current_user: propTypes.object,
+  currentUser: propTypes.object,
 };
 
 Msg.defaultProps = {
@@ -78,11 +78,11 @@ Msg.defaultProps = {
   user: {},
   item: {},
   seenItem: false,
-  current_user: {},
+  currentUser: {},
 };
 
 const mapStateToProps = state => ({
-  current_user: state.user,
+  currentUser: state.user,
   notification: state.notification,
 });
 

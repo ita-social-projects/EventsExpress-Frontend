@@ -82,7 +82,7 @@ ContactAdminListContainer.propTypes = {
 const mapStateToProps = state => {
   return {
     contactAdminList: state.contactAdminList,
-    form_values: getFormValues("contactAdmin-filter-form")(state),
+    formValues: getFormValues("contactAdmin-filter-form")(state),
   };
 };
 

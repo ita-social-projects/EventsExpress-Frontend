@@ -73,7 +73,7 @@ const initialState = {
       nextRun: null,
     },
   },
-  edit_event_from_parent: {
+  editEventFromParent: {
     isEventFromParentPending: false,
     isEventFromParentSuccess: false,
   },
@@ -105,7 +105,7 @@ const initialState = {
   profile: {
     data: null,
   },
-  events_for_profile: {
+  eventsForProfile: {
     data: {
       items: [],
       pageViewModel: {},
@@ -153,7 +153,7 @@ const initialState = {
   },
   notification: {
     messages: [],
-    seen_messages: [],
+    seenMessages: [],
     events: [],
   },
   notificationTypes: {

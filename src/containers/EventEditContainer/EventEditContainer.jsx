@@ -49,7 +49,7 @@ class EventEditContainer extends Component {
 
 const mapStateToProps = state => ({
   event: state.event,
-  current_user: state.user,
+  currentUser: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({

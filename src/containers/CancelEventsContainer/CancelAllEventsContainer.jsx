@@ -59,7 +59,7 @@ CancelAllEventsContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  cancel_all_eventSchedule_status: state.cancel_all_eventSchedules,
+  cancelAllEventScheduleStatus: state.cancel_all_eventSchedules,
   eventId: state.event.data.id,
 });
 

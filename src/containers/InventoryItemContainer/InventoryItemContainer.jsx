@@ -17,6 +17,10 @@ import {
   addItem,
   wantToTake,
 } from "../../actions/inventory/inventar-action";
+import {
+  DEFAULT_ZERO_VALUE,
+  ZERO_AMOUNT,
+} from "../../constants/numberConstants";
 
 // TODO Refactor class component
 class InventoryItemContainer extends Component {
@@ -118,7 +122,7 @@ class InventoryItemContainer extends Component {
     const itemsQuantity = usersInventories.data.find(
       e => e.userId === user.id && e.inventoryId === item.id,
     );
-    return itemsQuantity === undefined ? 0 : itemsQuantity.quantity;
+    return (!itemsQuantity && itemsQuantity.quantity) || ZERO_AMOUNT;
   }
 
   markItemAsEdit = () => {
@@ -136,8 +140,8 @@ class InventoryItemContainer extends Component {
     const { item, user, usersInventories, isMyEvent, disabledEdit } =
       this.props;
     const alreadyGet = usersInventories.data.reduce((acc, cur) => {
-      return cur.inventoryId === item.id ? acc + cur.quantity : acc + 0;
-    }, 0);
+      return cur.inventoryId === item.id ? acc + cur.quantity : acc;
+    }, DEFAULT_ZERO_VALUE);
     return (
       <div className="row p-1 d-flex align-items-center" key={item.id}>
         {this.state.isEdit && isMyEvent && (

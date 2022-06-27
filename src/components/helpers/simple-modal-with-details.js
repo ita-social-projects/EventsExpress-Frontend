@@ -7,12 +7,16 @@ import { DialogContent } from "@material-ui/core";
 import { Field, reduxForm } from "redux-form";
 import { renderTextField } from "./form-helpers";
 import fieldIsRequired from "./validators/required-fields-validator";
+import { MIN_DETAILS_LENGTH } from "../../constants/validatorsConstants";
 
 const validate = values => {
   const errors = {};
   const requiredFields = ["detailsString"];
 
-  if (values.detailsString && values.detailsString.length < 6) {
+  if (
+    values.detailsString &&
+    values.detailsString.length < MIN_DETAILS_LENGTH
+  ) {
     errors.detailsString = `Must be minimum 6 symbols`;
   }
   return {

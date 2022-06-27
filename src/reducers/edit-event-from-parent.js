@@ -5,7 +5,7 @@ import {
   SET_EVENT_FROM_PARENT_SUCCESS,
 } from "../actions/event/event-copy-with-edit-action";
 
-const reducer = (state = initialState.edit_event_from_parent, action) => {
+const reducer = (state = initialState.editEventFromParent, action) => {
   switch (action.type) {
     case SET_EVENT_FROM_PARENT_PENDING:
       return {

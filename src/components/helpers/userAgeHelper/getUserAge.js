@@ -1,5 +1,9 @@
 import moment from "moment";
 import { NOT_SPECIFIED } from "../../../constants/labelConstants";
+import {
+  MAX_ALLOWABLE_AGE,
+  MIN_ALLOWABLE_AGE,
+} from "../../../constants/userConstants";
 
 const getAge = birthday => {
   const birthDate = moment(birthday, "DD/MM/YYYY");
@@ -9,7 +13,7 @@ const getAge = birthday => {
 
   const today = moment(new Date(), "DD/MM/YYYY");
   const age = today.diff(birthDate, "years");
-  if (age <= 0 || age > 100) {
+  if (age <= MIN_ALLOWABLE_AGE || age > MAX_ALLOWABLE_AGE) {
     return NOT_SPECIFIED;
   }
 
