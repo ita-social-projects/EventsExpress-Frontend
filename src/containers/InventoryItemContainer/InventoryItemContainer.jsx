@@ -66,13 +66,13 @@ class InventoryItemContainer extends Component {
     this.props.changeDisableEdit(false);
 
     if (!values.id) {
-      return this.props.addItem(values, this.props.eventId);
+      return this.props.add(values, this.props.eventId);
     }
     const value = values;
     value.unitOfMeasuring = {
       id: values.unitOfMeasuring.id,
     };
-    return this.props.editItem(values, this.props.eventId);
+    return this.props.edit(values, this.props.eventId);
   };
 
   onCancel = () => {
@@ -92,9 +92,9 @@ class InventoryItemContainer extends Component {
 
     if (!this.state.isWillTake) {
       this.onAlreadyGet();
-      this.props.wantToTake(data);
+      this.props.wantToTakeHandle(data);
     } else {
-      this.props.editUsersInventory(data);
+      this.props.editUsersInventoryHandle(data);
     }
 
     this.setState({
@@ -114,7 +114,7 @@ class InventoryItemContainer extends Component {
       showAlreadyGetDetailed: false,
       isWillTake: false,
     });
-    this.props.deleteUsersInventory(data);
+    this.props.delUsersInventory(data);
   };
 
   getItemsTakenByUserQuantity() {
@@ -133,7 +133,7 @@ class InventoryItemContainer extends Component {
   };
 
   deleteItemFromList = inventar => {
-    this.props.deleteItem(inventar.id, this.props.eventId);
+    this.props.delete(inventar.id, this.props.eventId);
   };
 
   render() {
@@ -199,14 +199,14 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    delete_item: (itemId, eventId) => dispatch(deleteItem(itemId, eventId)),
-    edit_item: (item, eventId) => dispatch(editItem(item, eventId)),
-    add_item: (item, eventId) => dispatch(addItem(item, eventId)),
-    get_inventories_by_event_id: eventId =>
+    delete: (itemId, eventId) => dispatch(deleteItem(itemId, eventId)),
+    edit: (item, eventId) => dispatch(editItem(item, eventId)),
+    add: (item, eventId) => dispatch(addItem(item, eventId)),
+    getInventoriesByEventIdHandler: eventId =>
       dispatch(getInventoriesByEventId(eventId)),
-    delete_users_inventory: data => dispatch(deleteUsersInventory(data)),
-    edit_users_inventory: data => dispatch(editUsersInventory(data)),
-    want_to_take: data => dispatch(wantToTake(data)),
+    delUsersInventory: data => dispatch(deleteUsersInventory(data)),
+    editUsersInventoryHandle: data => dispatch(editUsersInventory(data)),
+    wantToTakeHandle: data => dispatch(wantToTake(data)),
   };
 };
 
@@ -217,13 +217,13 @@ InventoryItemContainer.propTypes = {
   user: PropTypes.object,
   item: PropTypes.object,
   changeDisableEdit: PropTypes.func,
-  addItem: PropTypes.func,
+  add: PropTypes.func,
   eventId: PropTypes.string,
-  editItem: PropTypes.func,
-  wantToTake: PropTypes.func,
-  editUsersInventory: PropTypes.func,
-  deleteUsersInventory: PropTypes.func,
-  deleteItem: PropTypes.func,
+  edit: PropTypes.func,
+  wantToTakeHandle: PropTypes.func,
+  editUsersInventoryHandle: PropTypes.func,
+  delUsersInventory: PropTypes.func,
+  delete: PropTypes.func,
   disabledEdit: PropTypes.bool,
   unitOfMeasuringState: PropTypes.object,
 };
@@ -231,16 +231,16 @@ InventoryItemContainer.defaultProps = {
   isNew: false,
   isMyEvent: false,
   usersInventories: {},
-  deleteUsersInventory: () => {},
-  deleteItem: () => {},
+  delUsersInventory: () => {},
+  delete: () => {},
   user: {},
   item: {},
   changeDisableEdit: () => {},
-  addItem: () => {},
+  add: () => {},
   eventId: "",
-  editItem: () => {},
-  wantToTake: () => {},
-  editUsersInventory: () => {},
+  edit: () => {},
+  wantToTakeHandle: () => {},
+  editUsersInventoryHandle: () => {},
   disabledEdit: false,
   unitOfMeasuringState: {},
 };
