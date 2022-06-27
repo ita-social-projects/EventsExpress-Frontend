@@ -68,7 +68,7 @@ class EventDraftContainer extends Component {
             <div className="row">
               <div className="col-12 py-3">
                 <div className="float-left">
-                  <h1>Edit event draft</h1>
+                  <h1>{"Edit event draft"}</h1>
                 </div>
                 <div className="d-flex flex-row align-items-center justify-content-center float-right">
                   <SimpleModalWithDetails
@@ -102,7 +102,7 @@ class EventDraftContainer extends Component {
                 color="primary"
                 onClick={this.onSave}
               >
-                Save
+                {"Save"}
               </Button>
             </div>
             <div className="col">
@@ -112,7 +112,7 @@ class EventDraftContainer extends Component {
                 color="primary"
                 type="submit"
               >
-                Publish
+                {"Publish"}
               </Button>
             </div>
             <div className="col">
@@ -122,7 +122,7 @@ class EventDraftContainer extends Component {
                 color="primary"
                 onClick={this.props.history.goBack}
               >
-                Cancel
+                {"Cancel"}
               </Button>
             </div>
           </EventForm>

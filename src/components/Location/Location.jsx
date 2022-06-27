@@ -68,7 +68,7 @@ class Location extends Component {
           )}
           {value !== "" && value.type === ENUM_LOCATION_TYPE.ONLINE && (
             <>
-              <span htmlFor="url">Enter an https:// URL:</span>
+              <span htmlFor="url">{"Enter an https:// URL:"}</span>
               <br />
               <TextField
                 name="onlineMeeting"

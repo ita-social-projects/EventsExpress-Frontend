@@ -20,14 +20,17 @@ const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
         <span className="icon">
           <i className="fas fa-plus" />
         </span>{" "}
-        Add item
+        {"Add item"}
       </button>
       <ul className="">
         {fields.map((item, index) => (
           <li className="" key={item.id}>
             <div className="d-flex flex-wrap justify-content-between align-items-center">
               <div className="p-2 bd-highlight align-self-end">
-                <span>{index + 1}.</span>
+                <span>
+                  {index + 1}
+                  {"."}
+                </span>
               </div>
               <div className="p-2 bd-highlight">
                 <Field
@@ -110,7 +113,7 @@ class Inventory extends Component {
           {this.props.syncErrors.inventories && !this.state.isOpen && (
             <span className="text-danger">
               <i className="fas fa-exclamation-circle text-danger" />
-              required
+              {"required"}
             </span>
           )}
         </div>

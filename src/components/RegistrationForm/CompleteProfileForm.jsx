@@ -18,12 +18,14 @@ const CompleteProfileForm = ({ handleSubmit }) => {
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
             <Grid item sm={6}>
-              <h1 style={{ fontSize: 20 }}>Step 2: Complete your profile. </h1>
+              <h1 style={{ fontSize: 20 }}>
+                {"Step 2: Complete your profile. "}
+              </h1>
             </Grid>
             <Grid item sm={6} />
 
             <Grid item sm={3}>
-              Choose your avatar:
+              {"Choose your avatar:"}
             </Grid>
             <Grid item sm={9}>
               <ChangeAvatarContainer />
@@ -89,9 +91,9 @@ const CompleteProfileForm = ({ handleSubmit }) => {
                 label="Gender"
               >
                 <option aria-label="None" value="" />
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Other</option>
+                <option value="1">{"Male"}</option>
+                <option value="2">{"Female"}</option>
+                <option value="3">{"Other"}</option>
               </Field>
             </Grid>
 
@@ -103,7 +105,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
                 variant="contained"
                 size="large"
               >
-                Continue
+                {"Continue"}
               </Button>
             </Grid>
           </Grid>

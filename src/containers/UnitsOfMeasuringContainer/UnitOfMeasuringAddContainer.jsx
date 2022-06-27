@@ -28,7 +28,7 @@ class UnitOfMeasuringAddWrapper extends React.Component {
       <tr>
         <td className="align-middle align-items-stretch" width="20%">
           <div className="d-flex align-items-center justify-content-left">
-            <p style={pStyle}>Add unit</p>
+            <p style={pStyle}>{"Add unit"}</p>
             <IconButton
               className="text-info"
               onClick={this.props.setUnitOfMeasuringEdited}

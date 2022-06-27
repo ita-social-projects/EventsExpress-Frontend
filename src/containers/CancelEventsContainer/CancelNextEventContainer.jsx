@@ -36,7 +36,9 @@ class CancelNextEventContainer extends Component {
   render() {
     return (
       <>
-        <Dropdown.Item onClick={this.handleClick}>Cancel once</Dropdown.Item>
+        <Dropdown.Item onClick={this.handleClick}>
+          {"Cancel once"}
+        </Dropdown.Item>
         <EventScheduleModal
           cancelHandler={this.cancelHandler}
           message="Are you sure you want to cancel the next event?"

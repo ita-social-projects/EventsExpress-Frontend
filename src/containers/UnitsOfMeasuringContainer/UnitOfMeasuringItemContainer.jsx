@@ -37,9 +37,11 @@ class UnitOfMeasuringItemWrapper extends Component {
       title: "Do you really want to remove this Unit Of Measuring?",
       message: (
         <div>
-          Unit name is {unitName}
+          {"Unit name is "}
+          {unitName}
           <br />
-          Short name is {shortName}
+          {"Short name is "}
+          {shortName}
         </div>
       ),
       buttons: [

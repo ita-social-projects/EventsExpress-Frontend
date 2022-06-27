@@ -30,12 +30,12 @@ class ContactAdminList extends Component {
       <>
         {this.props.dataList > 0 ? (
           <tr className="bg-light text-dark font-weight-bold text-center">
-            <td className="justify-content-center">Title</td>
+            <td className="justify-content-center">{"Title"}</td>
             <td className="d-flex align-items-center justify-content-center">
-              Date created
+              {"Date created"}
             </td>
-            <td className="justify-content-center">Status</td>
-            <td className="justify-content-center">Details</td>
+            <td className="justify-content-center">{"Status"}</td>
+            <td className="justify-content-center">{"Details"}</td>
             <RenderIssuesList
               {...changedProps}
               renderSingleIssue={this.renderSingleIssue}

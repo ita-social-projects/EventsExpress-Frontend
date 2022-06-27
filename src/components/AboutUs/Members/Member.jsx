@@ -6,7 +6,9 @@ const Member = ({ name, age, img, description }) => (
     <img className="member__image" src={img} alt={name} />
     <div className="member__info">
       <h2 className="member__name">
-        {name}, {age}
+        {name}
+        {", "}
+        {age}
       </h2>
       <p className="member__description">{description}</p>
     </div>

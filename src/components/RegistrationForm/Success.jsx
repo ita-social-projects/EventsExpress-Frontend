@@ -8,7 +8,7 @@ export class Success extends PureComponent {
     return (
       <>
         <Grid item sm={12}>
-          <h1 style={{ fontSize: 25 }}>Successful registration!</h1>
+          <h1 style={{ fontSize: 25 }}>{"Successful registration!"}</h1>
         </Grid>
         <div>
           <svg className="checkmark" viewBox="0 0 52 52">
@@ -40,7 +40,7 @@ export class Success extends PureComponent {
               variant="contained"
               size="large"
             >
-              Profile
+              {"Profile"}
             </Button>
           </Grid>
           <Grid item sm={3}>
@@ -51,7 +51,7 @@ export class Success extends PureComponent {
               variant="contained"
               size="large"
             >
-              Events
+              {"Events"}
             </Button>
           </Grid>
           <Grid item sm={3} />
