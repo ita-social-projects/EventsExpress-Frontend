@@ -48,7 +48,7 @@
                 margin-bottom: 15px;
                 color: $lightThemeAccept;
                 font-weight: $bold;
-                font-size: 80px;
+                font-size: $fontsize100;
                 font-family: $robinson;
                 text-shadow: 0 0 20px $white;
             }
@@ -105,7 +105,7 @@
         margin: 0 auto;
         padding: 10px;
         color: $lightThemeAccept;
-        font-size: 45px;
+        font-size: $fontsize45;
         font-family: $robinson;
         text-transform: uppercase;
     }

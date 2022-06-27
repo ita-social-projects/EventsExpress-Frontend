@@ -1,4 +1,5 @@
 @import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
 
 #frame {
     width: 95%;
@@ -19,7 +20,7 @@
 @media screen and (max-width: 360px) {
 
     #frame {
-        width: 100%;
+        width: $fullWidth;
         height: 100vh;
     }
 }
@@ -30,7 +31,7 @@
     width: 40%;
     min-width: 280px;
     max-width: 340px;
-    height: 100%;
+    height: $fullWidth;
     overflow: hidden;
     color: $chatWhite;
     background: $greyBlue;
@@ -52,7 +53,7 @@
 @media screen and (max-width: 735px) {
 
     #frame #sidepanel #profile {
-        width: 100%;
+        width: $fullWidth;
         margin: 0 auto;
         padding: 5px 0 0;
         background: $lightBlue;
@@ -100,7 +101,7 @@
     height: auto;
     padding: 3px;
     border: 2px solid $redOrange;
-    border-radius: 50%;
+    border-radius: $halfWidth;
     cursor: pointer;
     -moz-transition: 0.3s border ease;
     -o-transition: 0.3s border ease;
@@ -148,7 +149,7 @@
     float: right;
     margin-top: 23px;
     color: $chatBlueGrey;
-    font-size: 0.8em;
+    font-size: $fontsize08em;
     cursor: pointer;
 }
 
@@ -168,7 +169,7 @@
     background: $chatBlueGrey;
     border-radius: 6px;
     visibility: hidden;
-    opacity: 0;
+    opacity: $opacity0;
     -moz-transition: 0.3s all ease;
     -o-transition: 0.3s all ease;
     -webkit-transition: 0.3s all ease;
@@ -186,7 +187,7 @@
 #frame #sidepanel #profile .wrap #status-options.active {
     margin: 75px 0 0;
     visibility: visible;
-    opacity: 1;
+    opacity: $opacity1;
 }
 
 @media screen and (max-width: 735px) {
@@ -241,7 +242,7 @@
     width: 10px;
     height: 10px;
     margin: 5px 0 0;
-    border-radius: 50%;
+    border-radius: $halfWidth;
 }
 
 @media screen and (max-width: 735px) {
@@ -259,7 +260,7 @@
     height: 14px;
     margin: -3px 0 0 -3px;
     background: transparent;
-    border-radius: 50%;
+    border-radius: $halfWidth;
     content: "";
 }
 
@@ -328,7 +329,7 @@
 }
 
 #frame #sidepanel #profile .wrap #expanded input {
-    width: calc(100% - 43px);
+    width: calc($fullWidth - 43px);
     margin-bottom: 6px;
     padding: 7px;
     color: $chatWhite;
@@ -343,7 +344,7 @@
 }
 
 #frame #sidepanel #search {
-    font-weight: 300;
+    font-weight: $lightText;
     border-top: 1px solid $lightBlue;
     border-bottom: 1px solid $lightBlue;
 }
@@ -361,10 +362,10 @@
 }
 
 #frame #sidepanel #search input {
-    width: calc(100% - 25px);
+    width: calc($fullWidth - 25px);
     padding: 10px 0 10px 46px;
     color: $chatWhite;
-    font-family: proxima-nova, "Source Sans Pro", sans-serif;
+    font-family: $proximaNova;
     background: $lightBlue;
     border: none;
 }
@@ -391,7 +392,7 @@
 }
 
 #frame #sidepanel #contacts {
-    height: calc(100% - 177px);
+    height: calc($fullWidth - 177px);
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -399,7 +400,7 @@
 @media screen and (max-width: 735px) {
 
     #frame #sidepanel #contacts {
-        height: calc(100% - 149px);
+        height: calc($fullWidth - 149px);
         overflow-x: hidden;
         overflow-y: scroll;
     }
@@ -410,7 +411,7 @@
 }
 
 #frame #sidepanel #contacts.expanded {
-    height: calc(100% - 334px);
+    height: calc($fullWidth - 334px);
 }
 
 #frame #sidepanel #contacts::-webkit-scrollbar {
@@ -425,7 +426,7 @@
 #frame #sidepanel #contacts ul li.contact {
     position: relative;
     padding: 10px 0 15px;
-    font-size: 0.9em;
+    font-size: $fontsize09em;
     cursor: pointer;
 }
 
@@ -458,7 +459,7 @@
 @media screen and (max-width: 735px) {
 
     #frame #sidepanel #contacts ul li.contact .wrap {
-        width: 100%;
+        width: $fullWidth;
     }
 }
 
@@ -470,7 +471,7 @@
     margin: -2px 0 0 -2px;
     background: $chatMiddleGrey;
     border: 2px solid $greyBlue;
-    border-radius: 50%;
+    border-radius: $halfWidth;
 }
 
 #frame #sidepanel #contacts ul li.contact .wrap span.online {
@@ -489,7 +490,7 @@
     float: left;
     width: 40px;
     margin-right: 10px;
-    border-radius: 50%;
+    border-radius: $halfWidth;
 }
 
 @media screen and (max-width: 735px) {
@@ -511,14 +512,14 @@
 }
 
 #frame #sidepanel #contacts ul li.contact .wrap .meta .name {
-    font-weight: 600;
+    font-weight: $mibbleText;
 }
 
 #frame #sidepanel #contacts ul li.contact .wrap .meta .preview {
     margin: 5px 0 0;
     padding: 0 0 1px;
     overflow: hidden;
-    font-weight: 400;
+    font-weight: $headText;
     white-space: nowrap;
     text-overflow: ellipsis;
     -moz-transition: 1s all ease;
@@ -534,22 +535,22 @@
     background: none;
     border: none;
     border-radius: initial;
-    opacity: 0.5;
+    opacity: $opacity05;
 }
 
 #frame #sidepanel #bottom-bar {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: $fullWidth;
 }
 
 #frame #sidepanel #bottom-bar button {
     float: left;
-    width: 50%;
+    width: $halfWidth;
     padding: 10px 0;
     color: $chatWhite;
-    font-size: 0.85em;
-    font-family: proxima-nova, "Source Sans Pro", sans-serif;
+    font-size: $fontsize085em;
+    font-family: $proximaNova;
     background: $lightBlue;
     border: none;
     cursor: pointer;
@@ -559,7 +560,7 @@
 
     #frame #sidepanel #bottom-bar button {
         float: none;
-        width: 100%;
+        width: $fullWidth;
         padding: 15px 0;
     }
 }
@@ -586,13 +587,13 @@
 
 #frame #sidepanel #bottom-bar button i {
     margin-right: 3px;
-    font-size: 1em;
+    font-size: $fontsize1em;
 }
 
 @media screen and (max-width: 735px) {
 
     #frame #sidepanel #bottom-bar button i {
-        font-size: 1.3em;
+        font-size: $fontsize13em;
     }
 }
 
@@ -607,14 +608,14 @@
     position: relative;
     float: right;
     width: 60%;
-    height: 100%;
+    height: $fullWidth;
     overflow: hidden;
 }
 
 @media screen and (max-width: 735px) {
 
     #frame .content {
-        width: calc(100% - 58px);
+        width: calc($fullWidth - 58px);
         min-width: 300px !important;
     }
 }
@@ -622,12 +623,12 @@
 @media screen and (min-width: 900px) {
 
     #frame .content {
-        width: calc(100% - 340px);
+        width: calc($fullWidth - 340px);
     }
 }
 
 #frame .content .contact-profile {
-    width: 100%;
+    width: $fullWidth;
     height: 60px;
     line-height: 60px;
     background: $chatWhite;
@@ -637,7 +638,7 @@
     float: left;
     width: 40px;
     margin: 9px 12px 0 9px;
-    border-radius: 50%;
+    border-radius: $halfWidth;
 }
 
 #frame .content .contact-profile p {
@@ -663,8 +664,8 @@
 
 #frame .content .messages {
     height: auto;
-    min-height: calc(100% - 93px);
-    max-height: calc(100% - 93px);
+    min-height: calc($fullWidth - 93px);
+    max-height: calc($fullWidth - 93px);
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -672,7 +673,7 @@
 @media screen and (max-width: 735px) {
 
     #frame .content .messages {
-        max-height: calc(100% - 105px);
+        max-height: calc($fullWidth - 105px);
     }
 }
 
@@ -682,16 +683,16 @@
 }
 
 #frame .content .messages::-webkit-scrollbar-thumb {
-    background-color: rgb(0 0 0 / 30%);
+    background-color: $formTextArea;
 }
 
 #frame .content .messages ul li {
     display: inline-block;
     float: left;
     clear: both;
-    width: calc(100% - 25px);
+    width: calc($fullWidth - 25px);
     margin: 15px 15px 5px;
-    font-size: 0.9em;
+    font-size: $fontsize09em;
 }
 
 #frame .content .messages ul li:nth-last-child(1) {
@@ -720,7 +721,7 @@
 #frame .content .messages ul li img {
     float: left;
     width: 22px;
-    border-radius: 50%;
+    border-radius: $halfWidth;
 }
 
 #frame .content .messages ul li p {
@@ -742,7 +743,7 @@
     position: absolute;
     bottom: 0;
     z-index: 99;
-    width: 100%;
+    width: $fullWidth;
 }
 
 #frame .content .message-input .wrap {
@@ -751,11 +752,11 @@
 
 #frame .content .message-input .wrap input {
     float: left;
-    width: calc(100% - 90px);
+    width: calc($fullWidth - 90px);
     padding: 11px 32px 10px 8px;
     color: $lightBlue;
-    font-size: 0.8em;
-    font-family: proxima-nova, "Source Sans Pro", sans-serif;
+    font-size: $fontsize08em;
+    font-family: $proximaNova;
     border: none;
 }
 
@@ -776,9 +777,9 @@
     z-index: 4;
     margin-top: 10px;
     color: $chatBlueGrey;
-    font-size: 1.1em;
+    font-size: $fontsize11em;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: $opacity05;
 }
 
 @media screen and (max-width: 735px) {
@@ -790,7 +791,7 @@
 }
 
 #frame .content .message-input .wrap .attachment:hover {
-    opacity: 1;
+    opacity: $opacity1;
 }
 
 #frame .content .message-input .wrap button {
@@ -819,7 +820,7 @@
 }
 
 .limit-width {
-    max-width: 100%;
+    max-width: $fullWidth;
 }
 
 .wrap-text {

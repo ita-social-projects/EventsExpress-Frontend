@@ -5,9 +5,15 @@
   ],
   "plugins": [
     "stylelint-order",
-    "stylelint-config-rational-order/plugin"
+    "stylelint-config-rational-order/plugin",
+    "stylelint-declaration-use-variable"
   ],
   "rules": {
+    "declaration-property-value-disallowed-list": {
+      "/^[a-z][-[a-z]+/": ["/#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})/", "/100%/", "/50%/", "/rgb/"]
+    },
+    "length-zero-no-unit": null,
+    "sh-waqar/declaration-use-variable": [["/color/", "font-size", "font-weight", "font-family", "opacity", { "ignoreValues": ["exact", "transparent", "inherit"] }]],
     "indentation": 4,
     "string-quotes": "double",
     "no-descending-specificity": null,

@@ -1,5 +1,6 @@
 @import "../../styles/colors.scss";
 @import "../../styles/fonts.scss";
+@import "../../styles/variables.scss";
 
 .checkbox {
     margin: 0 2.5vw 0 0.5vw;
@@ -7,7 +8,7 @@
 
 .checkbox > label {
     font-weight: $bold;
-    font-size: 1.5rem;
+    font-size: $fontsize15rem;
     line-height: 1.3;
     vertical-align: sub;
 }
@@ -43,11 +44,11 @@ label > input[ type = "checkbox" ]::before {
     height: 0.65em;
     box-shadow: inset 1em 1em $white;
     transform: scale(0);
-    transform-origin: 50% 50%;
+    transform-origin: $halfWidth $halfWidth;
     transition: 120ms transform ease-in-out;
     content: "";
-    -webkit-clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    -webkit-clip-path: polygon(14% 44%, 0 65%, $halfWidth $fullWidth, $fullWidth 16%, 80% 0%, 43% 62%);
+    clip-path: polygon(14% 44%, 0 65%, $halfWidth $fullWidth, $fullWidth 16%, 80% 0%, 43% 62%);
 }
 
 label > input[ type = "checkbox" ]:checked {

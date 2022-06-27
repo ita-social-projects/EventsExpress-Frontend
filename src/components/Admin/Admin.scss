@@ -1,11 +1,12 @@
 @import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
 
 body {
     height: 100vh;
 }
 
 #root {
-    height: 100%;
+    height: $fullWidth;
 }
 
 .col-sm-10 {
@@ -14,7 +15,7 @@ body {
 
 .admin-panel {
     height: 100px;
-    background-color: rgb(0 0 0 / 54%);
+    background-color: $formTextArea;
 }
 
 .admin-panel > h3 {
@@ -25,25 +26,25 @@ body {
 .admin-sidebar {
     position: fixed;
     top: 22vh;
-    background-color: rgb(114 113 113 / 20%);
+    background-color: $greyLowOpacity;
 }
 
 .admin-sidebar ul li .link {
     display: block;
-    width: 100%;
+    width: $fullWidth;
     padding: 10px;
-    color: rgb(0 0 0 / 75%);
-    font-size: 1.1em;
+    color: $bannerImageGradient;
+    font-size: $fontsize11em;
 }
 
 .admin-sidebar ul li .link:hover {
-    color: rgb(0 0 0);
-    font-weight: 550;
+    color: $balck;
+    font-weight: $thick;
     background: $white;
-    border-bottom: 3px solid rgb(63 81 181);
+    border-bottom: 3px solid $middleBlue;
     transition: 0.1s;
 }
 
 #sub-nav div li a {
-    width: 100%;
+    width: $fullWidth;
 }

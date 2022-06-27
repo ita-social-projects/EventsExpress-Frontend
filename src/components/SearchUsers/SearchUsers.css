@@ -1,5 +1,5 @@
 .search_users_container {
-  width: 100%;
+  width:  $fullWidth;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,7 +18,7 @@
 }
 
 .search_users_container .search_users_pagination {
-  width: 100%;
+  width:  $fullWidth;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

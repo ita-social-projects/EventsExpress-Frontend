@@ -1,4 +1,5 @@
 @import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
 
 .chat {
     margin-top: auto;
@@ -37,7 +38,7 @@
 
 .search {
     color: $white !important;
-    background-color: rgb(0 0 0 / 30%) !important;
+    background-color: $formTextArea !important;
     border: 0 !important;
     border-radius: 15px 0 0 15px !important;
 }
@@ -51,7 +52,7 @@
     height: 60px !important;
     overflow-y: auto;
     color: $white !important;
-    background-color: rgb(0 0 0 / 30%) !important;
+    background-color: $formTextArea !important;
     border: 0 !important;
 }
 
@@ -62,7 +63,7 @@
 
 .attach_btn {
     color: $white !important;
-    background-color: rgb(0 0 0 / 30%) !important;
+    background-color: $formTextArea !important;
     border: 0 !important;
     border-radius: 15px 0 0 15px !important;
     cursor: pointer;
@@ -70,7 +71,7 @@
 
 .send_btn {
     color: $white !important;
-    background-color: rgb(0 0 0 / 30%) !important;
+    background-color: $formTextArea !important;
     border: 0 !important;
     border-radius: 0 15px 15px 0 !important;
     cursor: pointer;
@@ -78,7 +79,7 @@
 
 .search_btn {
     color: $white !important;
-    background-color: rgb(0 0 0 / 30%) !important;
+    background-color: $formTextArea !important;
     border: 0 !important;
     border-radius: 0 15px 15px 0 !important;
     cursor: pointer;
@@ -120,7 +121,7 @@
     height: 15px;
     background-color: $green;
     border: 1.5px solid $white;
-    border-radius: 50%;
+    border-radius: $halfWidth;
 }
 
 .offline {
@@ -135,12 +136,12 @@
 
 .user_info span {
     color: $white;
-    font-size: 20px;
+    font-size: $fontsize20;
 }
 
 .user_info p {
-    color: rgb(255 255 255 / 60%);
-    font-size: 10px;
+    color: $white;
+    font-size: $fontsize10;
 }
 
 .video_cam {
@@ -149,9 +150,9 @@
 }
 
 .video_cam span {
-    margin-right: 20px;
+    margin-right: $fontsize20;
     color: $white;
-    font-size: 20px;
+    font-size: $fontsize20;
     cursor: pointer;
 }
 
@@ -159,8 +160,8 @@
     position: relative;
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: 10px;
-    padding: 10px;
+    margin-left: $fontsize10;
+    padding: $fontsize10;
     background-color: $whiteBlue;
     border-radius: 25px;
 }
@@ -169,10 +170,10 @@
     position: relative;
     margin-top: auto;
     margin-bottom: auto;
-    padding: 10px;
+    padding: $fontsize10;
     background-color: $green;
 
-    /* margin-right: 10px; */
+    /* margin-right: $fontsize10; */
     border-radius: 25px;
 }
 
@@ -181,7 +182,7 @@
     bottom: -15px;
     left: 0;
     min-width: 100px;
-    font-size: 10px;
+    font-size: $fontsize10;
 }
 
 .msg_time_send {
@@ -191,7 +192,7 @@
     float: right;
     min-width: 100px;
     color: $black;
-    font-size: 10px;
+    font-size: $fontsize10;
 }
 
 .msg_head {

@@ -114,13 +114,13 @@
                 .day {
                     margin-bottom: 15px;
                     font-weight: $bold;
-                    font-size: 100px;
+                    font-size: $fontsize100;
                     line-height: 30px;
                     text-shadow: 0 0 20px $white;
                 }
 
                 .month {
-                    font-size: 45px;
+                    font-size: $fontsize45;
                     text-transform: uppercase;
                 }
             }
@@ -166,12 +166,12 @@
 
                     .card-item-header {
                         padding-bottom: 10px;
-                        font-size: 12px;
+                        font-size: $fontsize12;
                     }
 
                     .card-item-description {
                         padding-bottom: 10px;
-                        font-size: 12px;
+                        font-size: $fontsize12;
                     }
                 }
             }
@@ -197,13 +197,13 @@
                     .day {
                         margin-bottom: 10px;
                         font-weight: $bold;
-                        font-size: 80px;
+                        font-size: $fontsize80;
                         line-height: 30px;
                         text-shadow: 0 0 20px $white;
                     }
 
                     .month {
-                        font-size: 40px;
+                        font-size: $fontsize40;
                         text-transform: uppercase;
                     }
                 }
@@ -277,13 +277,13 @@
                     .day {
                         margin-bottom: 10px;
                         font-weight: $bold;
-                        font-size: 70px;
+                        font-size: $fontsize70;
                         line-height: 70px;
                         text-shadow: 0 0 10px $lightThemeHeader;
                     }
 
                     .month {
-                        font-size: 40px;
+                        font-size: $fontsize40;
                         text-transform: uppercase;
                     }
                 }

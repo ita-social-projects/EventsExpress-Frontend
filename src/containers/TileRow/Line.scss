@@ -1,8 +1,9 @@
 @import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
 
 .line {
     display: block;
-    width: 100%;
+    width: $fullWidth;
     margin: auto;
 }
 
