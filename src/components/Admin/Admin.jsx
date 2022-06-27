@@ -15,7 +15,7 @@ export default class Admin extends PureComponent {
     return (
       <>
         <div className="admin-panel row">
-          <h3>{"Admin Panel"}</h3>
+          <h3>Admin Panel</h3>
         </div>
         <div className="row h-100">
           <div className="admin-sidebar col-sm-2">

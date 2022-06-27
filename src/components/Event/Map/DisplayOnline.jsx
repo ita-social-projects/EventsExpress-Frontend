@@ -13,7 +13,7 @@ const DisplayOnline = ({ locationPath }) => {
         href={locationPath}
         rel="noreferrer"
       >
-        {"Online meeting here"}
+        Online meeting here
       </a>
     </div>
   );

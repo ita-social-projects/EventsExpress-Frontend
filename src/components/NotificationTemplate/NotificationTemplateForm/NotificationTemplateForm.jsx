@@ -52,7 +52,7 @@ class NotificationTemplateForm extends Component {
   renderProperties = properties => (
     <>
       <Typography variant="h6" className="m-0 mb-1 text-nowrap center">
-        {"Available properties"}
+        Available properties
       </Typography>
       <List className="d-flex flex-column align-items-center">
         {properties.map(property => (
@@ -125,7 +125,7 @@ class NotificationTemplateForm extends Component {
           />
           <div className="align-self-end">
             <Button type="submit" disabled={submitting} color="primary">
-              {"Save"}
+              Save
             </Button>
             <Button
               type="button"
@@ -133,7 +133,7 @@ class NotificationTemplateForm extends Component {
               disabled={pristine || submitting}
               onClick={reset}
             >
-              {"Reset"}
+              Reset
             </Button>
           </div>
         </form>

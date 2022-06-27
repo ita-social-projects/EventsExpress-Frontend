@@ -20,7 +20,7 @@
         "ignoreDestructuring": false,
         "ignoreImports": false
       }
-    ], // forbidden snake_case --------> ~ 140 errors
+    ],
     // "complexity": ["error", 12],
     
     "eol-last": ["error", "always"],

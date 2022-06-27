@@ -38,14 +38,14 @@ const PendingUsersActions = props => {
             className={classes.success}
             onClick={() => props.approveUser(user.id, props.eventId, true)}
           >
-            {"Approve"}
+            Approve
           </Button>
           <Button
             variant="contained"
             className={classes.danger}
             onClick={() => props.approveUser(user.id, props.eventId, false)}
           >
-            {"Deny"}
+            Deny
           </Button>
         </>
       )}

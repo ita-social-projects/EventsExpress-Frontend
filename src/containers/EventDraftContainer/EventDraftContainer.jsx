@@ -21,6 +21,8 @@ import {
   buildValidationState,
   handleFormError,
 } from "../../components/helpers/action-helpers";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
+import { EDIT_DRAFT_TITLE } from "../../constants/draftConstants";
 
 // TODO Refactor class component
 class EventDraftContainer extends Component {
@@ -68,7 +70,7 @@ class EventDraftContainer extends Component {
             <div className="row">
               <div className="col-12 py-3">
                 <div className="float-left">
-                  <h1>{"Edit event draft"}</h1>
+                  <h1>{EDIT_DRAFT_TITLE}</h1>
                 </div>
                 <div className="d-flex flex-row align-items-center justify-content-center float-right">
                   <SimpleModalWithDetails
@@ -102,7 +104,7 @@ class EventDraftContainer extends Component {
                 color="primary"
                 onClick={this.onSave}
               >
-                {"Save"}
+                {BUTTON_NAMES.SAVE}
               </Button>
             </div>
             <div className="col">
@@ -112,7 +114,7 @@ class EventDraftContainer extends Component {
                 color="primary"
                 type="submit"
               >
-                {"Publish"}
+                {BUTTON_NAMES.PUBLISH}
               </Button>
             </div>
             <div className="col">
@@ -122,7 +124,7 @@ class EventDraftContainer extends Component {
                 color="primary"
                 onClick={this.props.history.goBack}
               >
-                {"Cancel"}
+                {BUTTON_NAMES.CANCEL}
               </Button>
             </div>
           </EventForm>

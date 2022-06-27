@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import PagePagination from "../shared/PagePagination/PagePagination";
 import TrackItem from "./TrackItem";
+import { TRACKS_TABLE_FIELDS } from "../../constants/tracksConstants";
+import { NO_RESULT } from "../../constants/labelConstants";
 
 class TrackList extends Component {
   renderItems = arr => {
@@ -20,16 +22,16 @@ class TrackList extends Component {
               <thead>
                 <tr>
                   <th scope="col" className="text-center">
-                    {"Entity Name"}
+                    {TRACKS_TABLE_FIELDS.ENTITY_NAME}
                   </th>
                   <th scope="col" className="text-center">
-                    {"User name"}
+                    {TRACKS_TABLE_FIELDS.USER_NAME}
                   </th>
                   <th scope="col" className="text-center">
-                    {"Date"}
+                    {TRACKS_TABLE_FIELDS.DATE}
                   </th>
                   <th scope="col" className="text-center">
-                    {"Changes type"}
+                    {TRACKS_TABLE_FIELDS.CHANGES_TYPE}
                   </th>
                   <th aria-label="Data about user name" />
                 </tr>
@@ -41,7 +43,7 @@ class TrackList extends Component {
                   <div id="notfound" className="w-100">
                     <div className="notfound">
                       <div className="notfound-404">
-                        <div className="h1">{"No Results"}</div>
+                        <div className="h1">{NO_RESULT}</div>
                       </div>
                     </div>
                   </div>

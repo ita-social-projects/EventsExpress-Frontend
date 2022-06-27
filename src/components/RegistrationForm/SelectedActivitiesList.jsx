@@ -6,7 +6,7 @@ const SelectedActivitiesList = ({ data }) => {
   return (
     <>
       <Grid item sm={8}>
-        <h5 align="left">{"Selected activities"}</h5>
+        <h5 align="left">Selected activities</h5>
       </Grid>
       <Grid item sm={4} />
       <Grid container spacing={3} xs={12}>

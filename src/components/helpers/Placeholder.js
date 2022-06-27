@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { MdCloudUpload } from "react-icons/md";
+import { DRAG_IMG_PLACEHOLDER } from "../../constants/labelConstants";
 
 const Placeholder = ({ getInputProps, getRootProps, error, touched }) => {
   const iconStyle = {
@@ -23,9 +24,7 @@ const Placeholder = ({ getInputProps, getRootProps, error, touched }) => {
       <input {...getInputProps()} />
       <div className="cursor-pointer d-flex align-items-center justify-content-center">
         <MdCloudUpload style={iconStyle} />
-        <span style={spanStyle}>
-          {"Click or drag image file to this area to upload"}
-        </span>
+        <span style={spanStyle}>{DRAG_IMG_PLACEHOLDER}</span>
       </div>
     </div>
   );

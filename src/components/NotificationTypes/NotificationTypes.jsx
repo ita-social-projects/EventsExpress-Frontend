@@ -32,7 +32,7 @@ class SelectNotificationTypes extends Component {
 
           <div>
             <Button type="submit" color="primary" disabled={submitting}>
-              {"Save"}
+              Save
             </Button>
           </div>
         </form>

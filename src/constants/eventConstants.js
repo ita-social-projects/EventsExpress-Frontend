@@ -96,3 +96,8 @@ export const EVENT_NO_RESULT = {
     "https://res.cloudinary.com/wunu/image/upload/v1654537602/eventexpress/folder-is-empty-4064360-3363921_y9cgvg.png",
   BTN_TITLE: "Back",
 };
+
+export const CANCEL_EVENTS = {
+  CANCEL_ONE: "Cancel one",
+  CANCEL: "Cancel",
+};

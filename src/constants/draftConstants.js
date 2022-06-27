@@ -18,3 +18,5 @@ export const ICON_PROPERTIES = {
   ICON_SIZE: 30,
   CIRSOR_POINER: "pointer",
 };
+
+export const EDIT_DRAFT_TITLE = "Edit event draft";

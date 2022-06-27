@@ -13,7 +13,7 @@ class Authentication extends Component {
     return (
       <div className="mt-5 b-inline-block">
         <div className="h3 text-center alert alert-success">
-          {"Our congratulation, Your registration was successful!"}
+          Our congratulation, Your registration was successful!
         </div>
       </div>
     );

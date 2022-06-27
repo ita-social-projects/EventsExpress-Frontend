@@ -85,7 +85,7 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
           formValues.location.latitude &&
           formValues.location.longitude && (
             <div>
-              <p>{"Current position on the Map is:"}</p>
+              <p>Current position on the Map is:</p>
               <DisplayMap location={{ ...formValues.location }} />
             </div>
           )}

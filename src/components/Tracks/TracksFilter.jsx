@@ -9,6 +9,7 @@ import {
   renderMultiselect,
   parseEuDate,
 } from "../helpers/form-helpers";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 const TracksFilter = ({
   entityNames,
@@ -69,7 +70,7 @@ const TracksFilter = ({
             onClick={onReset}
             disabled={submitting}
           >
-            {"Reset"}
+            {BUTTON_NAMES.RESET}
           </Button>
           <Button
             fullWidth
@@ -77,7 +78,7 @@ const TracksFilter = ({
             color="primary"
             disabled={pristine || submitting}
           >
-            {"Search"}
+            {BUTTON_NAMES.SEARCH}
           </Button>
         </div>
       </form>

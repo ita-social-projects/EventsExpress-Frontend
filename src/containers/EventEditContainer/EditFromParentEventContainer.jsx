@@ -12,6 +12,7 @@ import editEventFromParent, {
 import eventEditValidateForm from "../../components/helpers/eventEditValidateForm ";
 import eventValidateForm from "../../components/helpers/eventValidateForm";
 import getCategories from "../../actions/category/category-list-action";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 // TODO Refactor class component
 class EditFromParentEventContainer extends Component {
@@ -69,7 +70,7 @@ class EditFromParentEventContainer extends Component {
         >
           <div className="col">
             <Button className="border" fullWidth color="primary" type="submit">
-              {"Publish"}
+              {BUTTON_NAMES.PUBLISH}
             </Button>
           </div>
           <div className="col">
@@ -79,7 +80,7 @@ class EditFromParentEventContainer extends Component {
               color="primary"
               onClick={this.props.onCancelEditing}
             >
-              {"Cancel"}
+              {BUTTON_NAMES.CANCEL}
             </Button>
           </div>
         </EventForm>

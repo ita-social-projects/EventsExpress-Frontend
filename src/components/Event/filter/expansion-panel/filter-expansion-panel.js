@@ -51,7 +51,7 @@ const FilterExpansionPanel = ({
           onClick={onClearClick}
           disabled={clearDisabled}
         >
-          {"Clear"}
+          Clear
         </Button>
       </FilterExpansionPanelSummary>
       <FilterExpansionPanelDetails>{children}</FilterExpansionPanelDetails>

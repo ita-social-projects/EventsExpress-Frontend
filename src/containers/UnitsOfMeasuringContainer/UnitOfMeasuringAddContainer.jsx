@@ -8,6 +8,7 @@ import {
 } from "../../actions/unitOfMeasuring/unitOfMeasuring-add-action";
 import UnitOfMeasuringEdit from "../../components/UnitOfMeasuring/UnitOfMeasuringEdit";
 import getCategoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
+import { ADD_UNIT } from "../../constants/unitOfMeasuringConstatns";
 
 const pStyle = {
   margin: "0px",
@@ -28,7 +29,7 @@ class UnitOfMeasuringAddWrapper extends React.Component {
       <tr>
         <td className="align-middle align-items-stretch" width="20%">
           <div className="d-flex align-items-center justify-content-left">
-            <p style={pStyle}>{"Add unit"}</p>
+            <p style={pStyle}>{ADD_UNIT}</p>
             <IconButton
               className="text-info"
               onClick={this.props.setUnitOfMeasuringEdited}

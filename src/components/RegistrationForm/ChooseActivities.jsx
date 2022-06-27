@@ -25,7 +25,7 @@ const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
     <>
       <div style={{ width: "97%", padding: "10px" }}>
         <h1 style={{ textAlign: "left", marginBottom: "20px" }}>
-          {"What are your reasons for joining EventsExpress?"}
+          What are your reasons for joining EventsExpress?
         </h1>
         <h4 style={{ textAlign: "left" }}>
           {"(you can skip this step and choose activities later in Profile"}
@@ -43,7 +43,7 @@ const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
                 variant="text"
                 size="large"
               >
-                {"Back"}
+                Back
               </Button>
               <Button
                 type="submit"
@@ -52,7 +52,7 @@ const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
                 variant="contained"
                 size="large"
               >
-                {"Continue"}
+                Continue
               </Button>
             </Grid>
           </Grid>

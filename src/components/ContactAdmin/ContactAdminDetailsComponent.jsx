@@ -16,7 +16,7 @@ export default class ContactAdminDetails extends Component {
     return (
       <div>
         <div>
-          <h1 className="text-center my-5">{"Issue description"}</h1>
+          <h1 className="text-center my-5">Issue description</h1>
           {items.description}
           <div className="text-center">
             <div className="btn-group mt-5">
@@ -25,7 +25,7 @@ export default class ContactAdminDetails extends Component {
                 className="btn btn-secondary btn-lg mr-5"
                 onClick={this.handleClose}
               >
-                {"Close"}
+                Close
               </button>
               {
                 <SimpleModalWithDetails
@@ -34,7 +34,7 @@ export default class ContactAdminDetails extends Component {
                       type="button"
                       className="btn btn-primary btn-lg mr-5"
                     >
-                      {"Mark as resolved"}
+                      Mark as resolved
                     </button>
                   }
                   submitCallback={this.props.onResolve}
@@ -48,7 +48,7 @@ export default class ContactAdminDetails extends Component {
                       type="button"
                       className="btn btn-primary btn-lg mr-5"
                     >
-                      {"Move in progress"}
+                      Move in progress
                     </button>
                   }
                   submitCallback={this.props.onInProgress}

@@ -144,7 +144,7 @@ const EventCard = props => {
                   >
                     {restCategories}
                   </Typography>
-                  {","}
+                  ,
                 </>
               )}
             </div>

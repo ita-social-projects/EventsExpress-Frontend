@@ -85,21 +85,21 @@ class InventoryList extends Component {
             <div className="container">
               <div className="row p-1">
                 <div className="col col-md-3">
-                  <b>{"Item name"}</b>
+                  <b>Item name</b>
                 </div>
                 <div className="col">
-                  <b>{"Already get"}</b>
+                  <b>Already get</b>
                 </div>
                 {!isMyEvent && (
                   <div className="col col-md-1">
-                    <b>{"Will take"}</b>
+                    <b>Will take</b>
                   </div>
                 )}
                 <div className="col col-md-2">
-                  <b>{"Count"}</b>
+                  <b>Count</b>
                 </div>
                 <div className="col col-md-2">
-                  <b>{"Units"}</b>
+                  <b>Units</b>
                 </div>
                 <div className="col col-md-2"></div>
               </div>

@@ -142,7 +142,7 @@ class Chat extends Component {
                     color="primary"
                     className="w-25"
                   >
-                    {"Send"}
+                    Send
                   </Button>
                 </form>
               </div>

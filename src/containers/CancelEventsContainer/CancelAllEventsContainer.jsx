@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Dropdown from "react-bootstrap/Dropdown";
 import EventScheduleModal from "../../components/EventSchedule/EventScheduleModal";
 import cancelAllEventSchedules from "../../actions/eventSchedule/eventSchedule-cancel-all-action";
+import { CANCEL_EVENTS } from "../../constants/eventConstants";
 
 // TODO Refactor class component
 class CancelAllEventsContainer extends Component {
@@ -36,7 +37,9 @@ class CancelAllEventsContainer extends Component {
   render() {
     return (
       <>
-        <Dropdown.Item onClick={this.handleClick}>{"Cancel"}</Dropdown.Item>
+        <Dropdown.Item onClick={this.handleClick}>
+          {CANCEL_EVENTS.CANCEL}
+        </Dropdown.Item>
         <EventScheduleModal
           cancelHandler={this.cancelHandler}
           message="Are you sure you want to cancel all events?"

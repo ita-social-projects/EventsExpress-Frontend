@@ -38,9 +38,7 @@ class UserChats extends Component {
                   <span className="text-info">{x.lastMessage}</span>
                 )}
                 {newMsg.length === 1 && (
-                  <span className="text-info">
-                    {"You have 1 unread message"}
-                  </span>
+                  <span className="text-info">You have 1 unread message</span>
                 )}
                 {newMsg.length > 1 && (
                   <span className="text-info">

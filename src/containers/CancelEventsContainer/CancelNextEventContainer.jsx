@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Dropdown from "react-bootstrap/Dropdown";
 import EventScheduleModal from "../../components/EventSchedule/EventScheduleModal";
 import cancelNextEventSchedule from "../../actions/eventSchedule/eventSchedule-cancel-next-action";
+import { CANCEL_EVENTS } from "../../constants/eventConstants";
 
 // TODO Refactor class component
 class CancelNextEventContainer extends Component {
@@ -37,7 +38,7 @@ class CancelNextEventContainer extends Component {
     return (
       <>
         <Dropdown.Item onClick={this.handleClick}>
-          {"Cancel once"}
+          {CANCEL_EVENTS.CANCEL_ONE}
         </Dropdown.Item>
         <EventScheduleModal
           cancelHandler={this.cancelHandler}

@@ -16,7 +16,7 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
   return (
     <>
       <div className="row">
-        <h5 className="m-3">{"Please, complete your registration"}</h5>
+        <h5 className="m-3">Please, complete your registration</h5>
       </div>
       <div className="row">
         <form onSubmit={handleSubmit} className="col-md-6">
@@ -55,9 +55,9 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
                 parse={Number}
               >
                 <option aria-label="None" value={0} />
-                <option value={1}>{"Male"}</option>
-                <option value={2}>{"Female"}</option>
-                <option value={3}>{"Other"}</option>
+                <option value={1}>Male</option>
+                <option value={2}>Female</option>
+                <option value={3}>Other</option>
               </Field>
             </div>
           </div>
@@ -71,7 +71,7 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
               color="primary"
               disabled={pristine || submitting}
             >
-              {"Complete"}
+              Complete
             </Button>
           </div>
         </form>

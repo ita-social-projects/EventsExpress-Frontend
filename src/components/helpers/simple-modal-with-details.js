@@ -8,6 +8,7 @@ import { Field, reduxForm } from "redux-form";
 import { renderTextField } from "./form-helpers";
 import fieldIsRequired from "./validators/required-fields-validator";
 import { MIN_DETAILS_LENGTH } from "../../constants/validatorsConstants";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 const validate = values => {
   const errors = {};
@@ -78,7 +79,7 @@ class SimpleModalWithDetails extends Component {
                 color="primary"
                 onClick={this.handleClose}
               >
-                {"Discard"}
+                {BUTTON_NAMES.DISCARD}
               </Button>
               <Button
                 fullWidth
@@ -86,7 +87,7 @@ class SimpleModalWithDetails extends Component {
                 disabled={pristine || submitting}
                 color="primary"
               >
-                {"Confirm"}
+                {BUTTON_NAMES.CONFIRM}
               </Button>
             </DialogActions>
           </form>

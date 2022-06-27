@@ -5,6 +5,7 @@ import Line from "./Line";
 import { MultiCheckbox } from "../../components/helpers/form-helpers";
 import "./CheckboxList.scss";
 import "./CustomCheckbox.scss";
+import { CHECKBOX_TITLE_HOBBIES } from "../../constants/buttonConsts";
 
 // TODO Refactor
 function CheckboxList(props) {
@@ -15,7 +16,7 @@ function CheckboxList(props) {
   return (
     <div className="checkbox-group">
       <Line index={props.index} />
-      <h2>{"Choose any hobbies from list (optional):"}</h2>
+      <h2>{CHECKBOX_TITLE_HOBBIES}</h2>
       <Field
         name="categories"
         component={MultiCheckbox}

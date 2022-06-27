@@ -17,7 +17,7 @@ const PlaceHolder = ({ handleSubmit, previousPage }) => {
               variant="text"
               size="large"
             >
-              {"Back"}
+              Back
             </Button>
             <Button
               type="submit"
@@ -26,7 +26,7 @@ const PlaceHolder = ({ handleSubmit, previousPage }) => {
               variant="contained"
               size="large"
             >
-              {"Continue"}
+              Continue
             </Button>
           </Grid>
         </Grid>

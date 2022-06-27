@@ -7,6 +7,7 @@ import AddGoogleLoginContainer from "./AddGoogleLoginContainer";
 import AddLocalLoginContainer from "./AddLocalLoginContainer";
 import LoginFacebook from "./LoginFacebook";
 import "./LinkedAuth.scss";
+import { ADD_MORE } from "../../constants/authModalConstants";
 
 // TODO Refactor class component
 class LinkedAuthsContainer extends Component {
@@ -22,7 +23,7 @@ class LinkedAuthsContainer extends Component {
           <LinkedAuths item={item} key={`${item.type}${item.email}`} />
         ))}
         <h6>
-          <span>{"Add more:"}</span>
+          <span>{ADD_MORE}</span>
         </h6>
         <div className="d-flex justify-content-around mb-3">
           <AddGoogleLoginContainer />

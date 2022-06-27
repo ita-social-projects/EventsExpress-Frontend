@@ -55,3 +55,6 @@ export const MIN_ALLOWABLE_AGE = 0;
 export const MAX_ALLOWABLE_AGE = 100;
 
 export const SUCCESS_WARNING_BORDER_RATING = 8;
+
+export const MIN_USER_AMOUNT = 10;
+export const MAX_USER_AMOUNT = 15;

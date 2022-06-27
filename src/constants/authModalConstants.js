@@ -21,3 +21,7 @@ export const OUR_ACTION_TO_USER_FORGOT_PASSWORD =
 
 export const NEW_PASSWORD_SENT_TO_USER_EMAIL =
   "New password sent to your email.";
+
+export const ADD_MORE = "Add more:";
+export const SUBSCRIBE = "Subscribe";
+export const OR_SIGN_WITH = "Or sign in with:";

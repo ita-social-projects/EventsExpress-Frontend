@@ -13,6 +13,7 @@ import {
   buildValidationState,
   handleFormError,
 } from "../../components/helpers/action-helpers";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 // TODO Refactor class component
 class EditEventContainer extends Component {
@@ -49,7 +50,7 @@ class EditEventContainer extends Component {
                 color="primary"
                 type="submit"
               >
-                {"Save"}
+                {BUTTON_NAMES.SAVE}
               </Button>
             </div>
             <div className="col">
@@ -59,7 +60,7 @@ class EditEventContainer extends Component {
                 color="primary"
                 onClick={this.props.history.goBack}
               >
-                {"Cancel"}
+                {BUTTON_NAMES.CANCEL}
               </Button>
             </div>
           </EventForm>
