@@ -9,18 +9,15 @@ const LeftSidebarNavigationSecurity = ({
   handleSidebarToggle,
   user,
   msgForRead,
-}) => (
-  <>
-    {sidebarNavigationAuth(msgForRead, user).map(({ securityState, items }) => (
-      <AuthComponent key={securityState} {...SECURITY_TYPES[securityState]}>
-        <LeftSidebarNavigation
-          items={items}
-          handleSidebarToggle={handleSidebarToggle}
-        />
-      </AuthComponent>
-    ))}
-  </>
-);
+}) =>
+  sidebarNavigationAuth(msgForRead, user).map(({ securityState, items }) => (
+    <AuthComponent key={securityState} {...SECURITY_TYPES[securityState]}>
+      <LeftSidebarNavigation
+        items={items}
+        handleSidebarToggle={handleSidebarToggle}
+      />
+    </AuthComponent>
+  ));
 
 LeftSidebarNavigationSecurity.defaultProps = {
   handleSidebarToggle: () => {},

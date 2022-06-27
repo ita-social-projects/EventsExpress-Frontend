@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { ImCross } from "react-icons/im";
-import { Field, reduxForm } from "redux-form";
+import { Field } from "redux-form";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import FormInput from "../../shared/FormInput/FormInput";
 import SocialAuth from "../../SocialAuth/SocialAuth";
@@ -14,9 +14,8 @@ import {
   PASSWORD_PLACEHOLDER,
   SIGN_IN,
 } from "../../../constants/authModalConstants";
-import { validate } from "../../helpers/validateHelper";
 
-const Login = ({ handleSubmit, handleClose, error }) => {
+const Login = ({ handleLogin, handleSubmit, handleClose, error }) => {
   const [isRecoverPassword, setIsRecoverPassword] = useState(false);
   const handleRecoverClick = () => {
     setIsRecoverPassword(true);
@@ -27,11 +26,13 @@ const Login = ({ handleSubmit, handleClose, error }) => {
   };
   return (
     <>
-      <form className="auth-form" onSubmit={handleSubmit} autoComplete="off">
+      <form
+        className="auth-form"
+        onSubmit={handleSubmit(handleLogin)}
+        autoComplete="off"
+      >
         <h2 className="auth-form__title">{LOGIN}</h2>
-        {error && (
-          <ErrorMessages error={error} className="auth-error text-center" />
-        )}
+        <ErrorMessages error={error} className="auth-error text-center" />
         <Button
           content={<ImCross />}
           className="close-btn"
@@ -58,11 +59,10 @@ const Login = ({ handleSubmit, handleClose, error }) => {
         />
         <SocialAuth />
       </form>
-      {isRecoverPassword && (
-        <RecoverPasswordContainer
-          handleRecoverClose={() => setIsRecoverPassword(false)}
-        />
-      )}
+      <RecoverPasswordContainer
+        isRecoverPassword={isRecoverPassword}
+        handleRecoverClose={() => setIsRecoverPassword(false)}
+      />
     </>
   );
 };
@@ -70,16 +70,15 @@ const Login = ({ handleSubmit, handleClose, error }) => {
 Login.defaultProps = {
   error: [],
   handleSubmit: () => {},
+  handleLogin: () => {},
   handleClose: () => {},
 };
 
 Login.propTypes = {
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   handleSubmit: PropTypes.func,
+  handleLogin: PropTypes.func,
   handleClose: PropTypes.func,
 };
 
-export default reduxForm({
-  form: "auth-form",
-  validate: validate(["email", "password"]),
-})(Login);
+export default Login;
