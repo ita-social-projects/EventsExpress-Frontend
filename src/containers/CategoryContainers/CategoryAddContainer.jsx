@@ -31,7 +31,7 @@ const CategoryAddContainer = ({
             className="btn btn-outline-primary ml-0"
             onClick={setCategoryEditedDispatch}
           >
-            Add category
+            {"Add category"}
           </button>
         </div>
       </td>

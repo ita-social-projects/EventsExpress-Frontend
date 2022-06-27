@@ -15,7 +15,7 @@ const Comment = props => {
         <DialogActions>
           <Button type="submit" value="Add" color="primary">
             {" "}
-            Add{" "}
+            {"Add"}{" "}
           </Button>
         </DialogActions>
       </form>

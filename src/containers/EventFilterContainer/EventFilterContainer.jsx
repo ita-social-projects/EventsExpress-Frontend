@@ -19,15 +19,15 @@ class EventFilterContainer extends Component {
   }
 
   onReset = () => {
-    this.props.reset_events();
+    this.props.resetEvents();
     this.props.history.push(`${this.props.history.location.pathname}?page=1`);
   };
 
   onLoadUserDefaults = () => {
-    this.props.reset_events();
+    this.props.resetEvents();
     const defaultFilter = {
       ...getDefaultEventFilter(),
-      categories: this.props.current_user.categories.map(item => item.id),
+      categories: this.props.currentUser.categories.map(item => item.id),
     };
     const favoriteFilter = getQueryStringByFilter(defaultFilter);
     this.props.history.push(
@@ -88,7 +88,7 @@ class EventFilterContainer extends Component {
     const values = { ...filter };
 
     if (filter.categories.length) {
-      values.categories = this.props.all_categories.data.filter(item =>
+      values.categories = this.props.allCategories.data.filter(item =>
         filter.categories.some(filterItem => filterItem === item.id),
       );
     }
@@ -100,12 +100,12 @@ class EventFilterContainer extends Component {
     return (
       <>
         <EventFilter
-          allCategories={this.props.all_categories}
+          allCategories={this.props.allCategories}
           onLoadUserDefaults={this.onLoadUserDefaults}
           onSubmit={this.onSubmit}
           onReset={this.onReset}
-          formValues={this.props.form_values}
-          currentUser={this.props.current_user}
+          formValues={this.props.formValues}
+          currentUser={this.props.currentUser}
           initialFormValues={initialFormValues}
         />
       </>
@@ -114,36 +114,36 @@ class EventFilterContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  all_categories: state.categories,
+  allCategories: state.categories,
   events: state.events,
-  form_values: getFormValues("event-filter-form")(state),
-  current_user: state.user,
+  formValues: getFormValues("event-filter-form")(state),
+  currentUser: state.user,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     getСategoriesList: () => dispatch(getСategoriesList()),
-    reset_events: () => dispatch(reset("event-filter-form")),
+    resetEvents: () => dispatch(reset("event-filter-form")),
   };
 };
 
 EventFilterContainer.propTypes = {
   getСategoriesList: PropTypes.func,
   history: PropTypes.array,
-  reset_events: PropTypes.func,
-  current_user: PropTypes.object,
+  resetEvents: PropTypes.func,
+  currentUser: PropTypes.object,
   events: PropTypes.object,
-  all_categories: PropTypes.object,
-  form_values: PropTypes.object,
+  allCategories: PropTypes.object,
+  formValues: PropTypes.object,
 };
 EventFilterContainer.defaultProps = {
   getСategoriesList: () => {},
-  reset_events: () => {},
+  resetEvents: () => {},
   history: [],
-  current_user: {},
+  currentUser: {},
   events: [],
-  all_categories: {},
-  form_values: {},
+  allCategories: {},
+  formValues: {},
 };
 
 export default withRouter(

@@ -22,7 +22,7 @@ class LinkedAuthsContainer extends Component {
           <LinkedAuths item={item} key={`${item.type}${item.email}`} />
         ))}
         <h6>
-          <span>Add more:</span>
+          <span>{"Add more:"}</span>
         </h6>
         <div className="d-flex justify-content-around mb-3">
           <AddGoogleLoginContainer />

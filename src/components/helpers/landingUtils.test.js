@@ -142,7 +142,7 @@ const treeWithEvents = viewMode =>
       <Provider store={store}>
         {viewModeSwitcher(events, viewMode, filterTitle)}
       </Provider>
-      ,
+      {","}
     </BrowserRouter>,
   );
 

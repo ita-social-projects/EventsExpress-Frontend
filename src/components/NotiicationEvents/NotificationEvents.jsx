@@ -17,7 +17,7 @@ class NotificationEvents extends Component {
     return (
       <SpinnerContainer showContent={data !== undefined}>
         {items.length === 0 && (
-          <p className="text-center h3">You don&#39;t have notifications</p>
+          <p className="text-center h3">{"You don&#39;t have notifications"}</p>
         )}
         <EventList
           current_user={currentUser}

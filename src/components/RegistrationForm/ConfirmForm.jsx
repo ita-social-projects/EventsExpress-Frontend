@@ -37,7 +37,9 @@ const ConfirmForm = props => {
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
             <Grid item sm={7}>
-              <h1 style={{ fontSize: 20 }}>Step 5: Confirm your user data.</h1>
+              <h1 style={{ fontSize: 20 }}>
+                {"Step 5: Confirm your user data."}
+              </h1>
             </Grid>
             <Grid item sm={5} />
             <Grid item xs={4}>
@@ -94,7 +96,7 @@ const ConfirmForm = props => {
               </List>
             </Grid>
             <Grid item xs={5}>
-              <h5>Some step 3/4 data</h5>
+              <h5>{"Some step 3/4 data"}</h5>
             </Grid>
 
             {areCategoriesSelected() && (
@@ -110,7 +112,7 @@ const ConfirmForm = props => {
                 variant="text"
                 size="large"
               >
-                Back
+                {"Back"}
               </Button>
               <Button
                 type="submit"
@@ -120,7 +122,7 @@ const ConfirmForm = props => {
                 variant="contained"
                 size="large"
               >
-                Confirm
+                {"Confirm"}
               </Button>
             </Grid>
           </Grid>

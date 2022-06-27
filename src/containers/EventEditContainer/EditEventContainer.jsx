@@ -49,7 +49,7 @@ class EditEventContainer extends Component {
                 color="primary"
                 type="submit"
               >
-                Save
+                {"Save"}
               </Button>
             </div>
             <div className="col">
@@ -59,7 +59,7 @@ class EditEventContainer extends Component {
                 color="primary"
                 onClick={this.props.history.goBack}
               >
-                Cancel
+                {"Cancel"}
               </Button>
             </div>
           </EventForm>

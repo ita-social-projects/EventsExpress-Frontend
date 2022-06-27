@@ -13,7 +13,7 @@ const RegisterBindAccount = ({ pristine, submitting, handleSubmit }) => {
   return (
     <>
       <div className="row">
-        <h5 className="m-3">Already have an account?</h5>
+        <h5 className="m-3">{"Already have an account?"}</h5>
       </div>
       <div className="row">
         <form onSubmit={handleSubmit} className="col-md-6">
@@ -42,7 +42,7 @@ const RegisterBindAccount = ({ pristine, submitting, handleSubmit }) => {
                 color="primary"
                 disabled={pristine || submitting}
               >
-                Bind
+                {"Bind"}
               </Button>
             </DialogActions>
           </div>

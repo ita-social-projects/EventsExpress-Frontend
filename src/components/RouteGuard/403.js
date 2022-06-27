@@ -8,9 +8,9 @@ export default class Forbidden extends PureComponent {
         <div id="notfound">
           <div className="notfound">
             <div className="notfound-404">
-              <h1>Oops!</h1>
+              <h1>{"Oops!"}</h1>
             </div>
-            <h2>403! - Forbidden</h2>
+            <h2>{"403! - Forbidden"}</h2>
           </div>
         </div>
       </>

@@ -16,7 +16,7 @@ const Filter = () => {
           <Icon className="fas fa-arrow-circle-left" />
         </IconButton>
         <Typography variant="h6" component="span">
-          Filters
+          {"Filters"}
         </Typography>
       </div>
       <Drawer

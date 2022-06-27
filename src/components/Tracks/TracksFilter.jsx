@@ -69,7 +69,7 @@ const TracksFilter = ({
             onClick={onReset}
             disabled={submitting}
           >
-            Reset
+            {"Reset"}
           </Button>
           <Button
             fullWidth
@@ -77,7 +77,7 @@ const TracksFilter = ({
             color="primary"
             disabled={pristine || submitting}
           >
-            Search
+            {"Search"}
           </Button>
         </div>
       </form>

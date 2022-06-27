@@ -41,7 +41,12 @@ class UserItemView extends Component {
   }
 
   renderCategories = arr =>
-    arr.map(item => <div key={item.id}>#{item.name}</div>);
+    arr.map(item => (
+      <div key={item.id}>
+        {"#"}
+        {item.name}
+      </div>
+    ));
 
   renderEvents = arr =>
     arr.map(item => (

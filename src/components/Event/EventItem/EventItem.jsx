@@ -43,7 +43,12 @@ const EventCard = props => {
   });
 
   const renderCategories = arr => {
-    return arr.map(x => <span key={x.id}>#{x.name}</span>);
+    return arr.map(x => (
+      <span key={x.id}>
+        {"#"}
+        {x.name}
+      </span>
+    ));
   };
   const classes = useStyles;
   const {
@@ -95,8 +100,9 @@ const EventCard = props => {
         {maxParticipants && (
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
-              {countVisitor}/{maxParticipants}{" "}
-              {EVENT_ITEM_CONSTANTS.PARTICIPANTS}
+              {countVisitor}
+              {"/"}
+              {maxParticipants} {EVENT_ITEM_CONSTANTS.PARTICIPANTS}
             </Typography>
           </CardContent>
         )}
@@ -129,7 +135,8 @@ const EventCard = props => {
                 displayedCategories
               ) : (
                 <>
-                  {displayedCategories},
+                  {displayedCategories}
+                  {","}
                   <Typography
                     variant="body2"
                     color="textSecondary"
@@ -137,7 +144,7 @@ const EventCard = props => {
                   >
                     {restCategories}
                   </Typography>
-                  ,
+                  {","}
                 </>
               )}
             </div>

@@ -46,7 +46,8 @@ const EventLeaveModal = props => {
         <DialogTitle id="alert-dialog-slide-title">{EXIT_EVENT}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            `{ALERT_LEAVE_EVENT}
+            {"`"}
+            {ALERT_LEAVE_EVENT}
           </DialogContentText>
         </DialogContent>
         <DialogActions>

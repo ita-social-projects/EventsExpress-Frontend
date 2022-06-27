@@ -53,15 +53,17 @@ class EventSchedulePopover extends Component {
           }}
         >
           <Typography style={{ maxWidth: "500px", padding: "15px" }}>
-            Click &quot;Create without editing&quot; to create the event without
-            editing.
+            {"Click "}&quot;{"Create without editing"}&quot;
+            {" to create the event without"}
+            {"editing."}
             <br />
-            Click &quot;Create with editing&quot; to create the event with
-            editing.
+            {"Click "}&quot;{"Create with editing"}&quot;
+            {" to create the event with"}
+            {"editing."}
             <br />
-            Click &quot;Cancel Once&quot; to cancel the next event.
+            {"Click "}&quot;{"Cancel Once"}&quot;{" to cancel the next event."}
             <br />
-            Click &quot;Cancel&quot; to cancel all events.
+            {"Click "}&quot;{"Cancel"}&quot;{" to cancel all events."}
             <br />
           </Typography>
         </Popover>

@@ -36,7 +36,7 @@ class CancelAllEventsContainer extends Component {
   render() {
     return (
       <>
-        <Dropdown.Item onClick={this.handleClick}>Cancel</Dropdown.Item>
+        <Dropdown.Item onClick={this.handleClick}>{"Cancel"}</Dropdown.Item>
         <EventScheduleModal
           cancelHandler={this.cancelHandler}
           message="Are you sure you want to cancel all events?"

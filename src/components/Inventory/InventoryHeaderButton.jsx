@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const InventoryHeaderButton = ({ isOpen, handleOnClickCaret }) => {
   return (
     <div className="d-flex justify-content-start align-items-center">
-      <h4>List of inventories</h4>
+      <h4>{"List of inventories"}</h4>
       {isOpen && (
         <button
           type="button"
