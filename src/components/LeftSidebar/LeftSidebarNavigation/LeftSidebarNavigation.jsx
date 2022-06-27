@@ -2,17 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import LeftSidebarNavigationItem from "./LeftSidebarNavigationItem";
 
-const LeftSidebarNavigation = ({ items, handleSidebarToggle }) => (
-  <>
-    {items.map(item => (
-      <LeftSidebarNavigationItem
-        key={item.pageName}
-        handleSidebarToggle={handleSidebarToggle}
-        {...item}
-      />
-    ))}
-  </>
-);
+const LeftSidebarNavigation = ({ items, handleSidebarToggle }) =>
+  items.map(item => (
+    <LeftSidebarNavigationItem
+      key={item.pageName}
+      handleSidebarToggle={handleSidebarToggle}
+      {...item}
+    />
+  ));
 
 LeftSidebarNavigation.defaultProps = {
   items: [],

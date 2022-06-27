@@ -81,7 +81,7 @@ class ContactAdminFilter extends Component {
                 onClick={onReset}
                 disabled={submitting}
               >
-                Reset
+                {"Reset"}
               </Button>
               <Button
                 fullWidth
@@ -89,7 +89,7 @@ class ContactAdminFilter extends Component {
                 color="primary"
                 disabled={submitting}
               >
-                Search
+                {"Search"}
               </Button>
             </div>
           </form>

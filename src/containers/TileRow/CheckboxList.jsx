@@ -15,7 +15,7 @@ function CheckboxList(props) {
   return (
     <div className="checkbox-group">
       <Line index={props.index} />
-      <h2>Choose any hobbies from list (optional):</h2>
+      <h2>{"Choose any hobbies from list (optional):"}</h2>
       <Field
         name="categories"
         component={MultiCheckbox}

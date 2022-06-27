@@ -108,8 +108,14 @@ class Chat extends Component {
                     </ButtonBase>
                   )}
                   <div className="user_info">
-                    <span>Chat with {sender != null && sender.username}</span>
-                    <p>{this.props.chat.data.messages.length} Messages</p>
+                    <span>
+                      {"Chat with "}
+                      {sender != null && sender.username}
+                    </span>
+                    <p>
+                      {this.props.chat.data.messages.length}
+                      {" Messages"}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -136,7 +142,7 @@ class Chat extends Component {
                     color="primary"
                     className="w-25"
                   >
-                    Send
+                    {"Send"}
                   </Button>
                 </form>
               </div>

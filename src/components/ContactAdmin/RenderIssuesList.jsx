@@ -16,7 +16,7 @@ class RenderIssuesList extends Component {
           <div id="notfound" className="w-100">
             <div className="notfound">
               <div className="notfound-404">
-                <div className="h1">No Results</div>
+                <div className="h1">{"No Results"}</div>
               </div>
             </div>
           </div>

@@ -28,8 +28,14 @@ export default class TrackItem extends Component {
       //! TODO : MAYBE, X.ID IS NOT DEFINED. IT NEED TO CHECK
       <tr key={x.id}>
         <td className="text-center">{x.entityName}</td>
-        <td className="text-center">Old value: {x.OldValue}</td>
-        <td className="text-center">New value: {x.NewValue}</td>
+        <td className="text-center">
+          {"Old value: "}
+          {x.OldValue}
+        </td>
+        <td className="text-center">
+          {"New value: "}
+          {x.NewValue}
+        </td>
       </tr>
     ));
   };

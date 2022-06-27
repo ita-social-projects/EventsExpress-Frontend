@@ -5,7 +5,7 @@ import Dialog from "@material-ui/core/Dialog";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Register from "../../components/Register/Register";
+import Register from "../../components/AuthModal/Register/Register";
 import { localLoginAdd } from "../../actions/redactProfile/linked-auths-add-action";
 import "./LinkedAuth.scss";
 
@@ -39,7 +39,7 @@ class AddLocalLoginContainer extends Component {
           disabled={false}
         >
           <i className="fas fa-at fa-lg blue" />
-          <span>Log in</span>
+          <span>{"Log in"}</span>
         </button>
         <Dialog
           open={this.state.isOpen}
@@ -47,11 +47,11 @@ class AddLocalLoginContainer extends Component {
           fullWidth
           maxWidth="xs"
         >
-          <DialogTitle>Subscribe</DialogTitle>
+          <DialogTitle>{"Subscribe"}</DialogTitle>
           <Paper square className="p-3">
             <Register onSubmit={this.submit} />
             <Button fullWidth onClick={this.handleClose} color="primary">
-              Cancel
+              {"Cancel"}
             </Button>
           </Paper>
         </Dialog>

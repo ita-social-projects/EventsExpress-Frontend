@@ -6,7 +6,7 @@ import "./SocialAuth.scss";
 const SocialAuth = () => {
   return (
     <div className="social-auth">
-      <span className="social-auth__title">Or sign in with:</span>
+      <span className="social-auth__title">{"Or sign in with:"}</span>
       <FacebookLogin />
       <GoogleLogin />
     </div>

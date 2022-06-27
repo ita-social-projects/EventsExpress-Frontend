@@ -28,9 +28,10 @@ const UsersFilters = ({ handleSubmit, submitting }) => {
         <option value="" aria-label="Decide rules" />
         <option value="Admin">
           {/* TODO: IT LOOKS WEIRD */}
-          Admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {"Admin"}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </option>
-        <option value="User">User</option>
+        <option value="User">{"User"}</option>
       </Field>
       <br />
       <Field
@@ -42,10 +43,11 @@ const UsersFilters = ({ handleSubmit, submitting }) => {
         <option value="" aria-label="Decide numbers" />
         <option value="5">
           {/* TODO: IT LOOKS WEIRD */}
-          5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {"5"}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </option>
-        <option value="10">10</option>
-        <option value="15">15</option>
+        <option value="10">{"10"}</option>
+        <option value="15">{"15"}</option>
       </Field>
       <br />
       <Field name="status" component={radioButton}>
@@ -54,7 +56,7 @@ const UsersFilters = ({ handleSubmit, submitting }) => {
         <FormControlLabel value="all" control={<Radio />} label="All" />
       </Field>
       <Button fullWidth type="submit" color="primary" disabled={submitting}>
-        Search
+        {"Search"}
       </Button>
     </form>
   );

@@ -24,7 +24,7 @@ const Placeholder = ({ getInputProps, getRootProps, error, touched }) => {
       <div className="cursor-pointer d-flex align-items-center justify-content-center">
         <MdCloudUpload style={iconStyle} />
         <span style={spanStyle}>
-          Click or drag image file to this area to upload
+          {"Click or drag image file to this area to upload"}
         </span>
       </div>
     </div>

@@ -37,7 +37,7 @@ class AddFromParentEventContainer extends Component {
     return (
       <>
         <Dropdown.Item onClick={this.handleClick}>
-          Create without editing
+          {"Create without editing"}
         </Dropdown.Item>
         <EventScheduleModal
           cancelHandler={this.cancelHandler}

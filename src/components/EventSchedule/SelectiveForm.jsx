@@ -47,7 +47,7 @@ export default class SelectiveForm extends Component {
               <DropdownButton title="Select Option For Event">
                 <Dropdown.Item as={AddFromParentEventContainer}></Dropdown.Item>
                 <Dropdown.Item onClick={this.onEdit}>
-                  Create with editing
+                  {"Create with editing"}
                 </Dropdown.Item>
                 <Dropdown.Item as={CancelNextEventContainer}></Dropdown.Item>
                 <Dropdown.Item as={CancelAllEventsContainer}></Dropdown.Item>

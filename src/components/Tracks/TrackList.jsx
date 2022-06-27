@@ -20,16 +20,16 @@ class TrackList extends Component {
               <thead>
                 <tr>
                   <th scope="col" className="text-center">
-                    Entity Name
+                    {"Entity Name"}
                   </th>
                   <th scope="col" className="text-center">
-                    User name
+                    {"User name"}
                   </th>
                   <th scope="col" className="text-center">
-                    Date
+                    {"Date"}
                   </th>
                   <th scope="col" className="text-center">
-                    Changes type
+                    {"Changes type"}
                   </th>
                   <th aria-label="Data about user name" />
                 </tr>
@@ -41,7 +41,7 @@ class TrackList extends Component {
                   <div id="notfound" className="w-100">
                     <div className="notfound">
                       <div className="notfound-404">
-                        <div className="h1">No Results</div>
+                        <div className="h1">{"No Results"}</div>
                       </div>
                     </div>
                   </div>

@@ -78,7 +78,7 @@ class SimpleModalWithDetails extends Component {
                 color="primary"
                 onClick={this.handleClose}
               >
-                Discard
+                {"Discard"}
               </Button>
               <Button
                 fullWidth
@@ -86,7 +86,7 @@ class SimpleModalWithDetails extends Component {
                 disabled={pristine || submitting}
                 color="primary"
               >
-                Confirm
+                {"Confirm"}
               </Button>
             </DialogActions>
           </form>

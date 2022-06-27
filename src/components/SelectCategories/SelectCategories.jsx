@@ -30,7 +30,7 @@ class SelectCategories extends Component {
           {error && <ErrorMessages error={error} className="text-center" />}
           <div>
             <Button type="submit" color="primary" disabled={submitting}>
-              Save
+              {"Save"}
             </Button>
           </div>
         </form>

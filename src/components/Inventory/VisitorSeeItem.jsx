@@ -34,7 +34,10 @@ const VisitorSeeItem = ({
               usersInventories.data.map(data => {
                 return data.inventoryId === item.id ? (
                   <div key={data.id}>
-                    {data.user.name}: {data.quantity};
+                    {data.user.name}
+                    {": "}
+                    {data.quantity}
+                    {";"}
                   </div>
                 ) : null;
               })}
