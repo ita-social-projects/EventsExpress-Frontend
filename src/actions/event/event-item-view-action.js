@@ -39,12 +39,10 @@ function changeEventStatusData(id, eventStatus) {
   };
 }
 
-const isDeletedDraft = isDelete => {
-  return {
-    type: event.IS_DELETED,
-    payload: isDelete,
-  };
-};
+const isDeletedDraft = isDelete => ({
+  type: event.IS_DELETED,
+  payload: isDelete,
+});
 
 export function leave(userId, eventId) {
   return async dispatch => {
