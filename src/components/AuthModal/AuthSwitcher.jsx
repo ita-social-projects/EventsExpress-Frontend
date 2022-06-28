@@ -5,7 +5,7 @@ import {
   AUTH_SWITCHER_HAVE_ACCOUNT,
   LOGIN,
   REGISTER,
-} from "../../constants/authModalConstants";
+} from "../../constants/authConstants";
 import Button from "../shared/Button/Button";
 
 const AuthSwitcher = ({ isLogin, handleModeSwitch }) => {

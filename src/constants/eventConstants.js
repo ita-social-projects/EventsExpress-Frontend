@@ -101,3 +101,19 @@ export const CANCEL_EVENTS = {
   CANCEL_ONE: "Cancel one",
   CANCEL: "Cancel",
 };
+
+export const CREATE_WITHOUT_EDITING = "Create without editing";
+export const ENTER_LOCATION = "Enter an https:// URL:";
+
+export const EVENT_ITEM_VIEW_CONSTS = {
+  YOU_GONNA_VISIT: "You are gonna visit.",
+  DENIED_PARTICIPATION: "Denied participation.",
+  WAIT_ADMIN_APROVE: "Wait until admin approve your request.",
+  YOU_NOT_IN_EVENT: "You are not in event yet.",
+  PARTICIPANTS: "Participants",
+  PUBLIC_EVENT: "Public event",
+  PRIVATE_EVENT: "Private event",
+  ADULT_LABEL: "18+",
+  EVENTS_FOR_ADULTS: "This event is only for adults.",
+  AGE_REQUIREMENTS: "You do not meet age requirements for this event.",
+};

@@ -8,7 +8,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Register from "../../components/Register/Register";
 import { localLoginAdd } from "../../actions/redactProfile/linked-auths-add-action";
 import "./LinkedAuth.scss";
-import { CLOSE, LOGIN, SUBSCRIBE } from "../../constants/authModalConstants";
+import { CLOSE, LOGIN, SUBSCRIBE } from "../../constants/authConstants";
 
 // TODO Refactor class component
 class AddLocalLoginContainer extends Component {

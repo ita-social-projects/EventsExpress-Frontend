@@ -16,7 +16,7 @@ import {
   LOGIN,
   PASSWORD_PLACEHOLDER,
   SIGN_IN,
-} from "../../constants/authModalConstants";
+} from "../../constants/authConstants";
 
 const Login = ({ handleSubmit, handleClose, error }) => {
   const [isRecoverPassword, setIsRecoverPassword] = useState(false);

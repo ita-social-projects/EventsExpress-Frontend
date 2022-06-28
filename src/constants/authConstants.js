@@ -25,3 +25,6 @@ export const NEW_PASSWORD_SENT_TO_USER_EMAIL =
 export const ADD_MORE = "Add more:";
 export const SUBSCRIBE = "Subscribe";
 export const OR_SIGN_WITH = "Or sign in with:";
+
+export const REGISTRATION_SUCCESSFUL = "Successful registration!";
+export const SELECTED_ACTIVITIES = "Selected activities";

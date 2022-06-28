@@ -1,4 +1,6 @@
 ﻿import React, { PureComponent } from "react";
+import { FORBIDDEN_MESSAGE } from "../../constants/httpCodesConstants";
+import { OOPS } from "../../constants/labelConstants";
 import "./RouteGuardErrors.scss";
 
 export default class Forbidden extends PureComponent {
@@ -8,9 +10,9 @@ export default class Forbidden extends PureComponent {
         <div id="notfound">
           <div className="notfound">
             <div className="notfound-404">
-              <h1>Oops!</h1>
+              <h1>{OOPS}</h1>
             </div>
-            <h2>403! - Forbidden</h2>
+            <h2>{FORBIDDEN_MESSAGE}</h2>
           </div>
         </div>
       </>

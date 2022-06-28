@@ -7,7 +7,7 @@ import AddGoogleLoginContainer from "./AddGoogleLoginContainer";
 import AddLocalLoginContainer from "./AddLocalLoginContainer";
 import LoginFacebook from "./LoginFacebook";
 import "./LinkedAuth.scss";
-import { ADD_MORE } from "../../constants/authModalConstants";
+import { ADD_MORE } from "../../constants/authConstants";
 
 // TODO Refactor class component
 class LinkedAuthsContainer extends Component {

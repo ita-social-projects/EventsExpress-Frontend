@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Dropdown from "react-bootstrap/Dropdown";
 import EventScheduleModal from "../../components/EventSchedule/EventScheduleModal";
 import addСopyEvent from "../../actions/event/event-copy-without-edit-action";
+import { CREATE_WITHOUT_EDITING } from "../../constants/eventConstants";
 
 // TODO Refactor class component
 class AddFromParentEventContainer extends Component {
@@ -37,7 +38,7 @@ class AddFromParentEventContainer extends Component {
     return (
       <>
         <Dropdown.Item onClick={this.handleClick}>
-          Create without editing
+          {CREATE_WITHOUT_EDITING}
         </Dropdown.Item>
         <EventScheduleModal
           cancelHandler={this.cancelHandler}

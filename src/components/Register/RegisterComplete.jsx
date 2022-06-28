@@ -10,13 +10,16 @@ import {
   renderDatePicker,
   renderTextField,
 } from "../helpers/form-helpers";
+import { PLS_COMPLETE_REGISTERATION } from "../../constants/registationConstants";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
+import { USER_GENDERS } from "../../constants/userConstants";
 
 // TODO: constansts
 const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
   return (
     <>
       <div className="row">
-        <h5 className="m-3">Please, complete your registration</h5>
+        <h5 className="m-3">{PLS_COMPLETE_REGISTERATION}</h5>
       </div>
       <div className="row">
         <form onSubmit={handleSubmit} className="col-md-6">
@@ -55,9 +58,9 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
                 parse={Number}
               >
                 <option aria-label="None" value={0} />
-                <option value={1}>Male</option>
-                <option value={2}>Female</option>
-                <option value={3}>Other</option>
+                <option value={1}>{USER_GENDERS.MALE}</option>
+                <option value={2}>{USER_GENDERS.FEMALE}</option>
+                <option value={3}>{USER_GENDERS.OTHER}</option>
               </Field>
             </div>
           </div>
@@ -71,7 +74,7 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
               color="primary"
               disabled={pristine || submitting}
             >
-              Complete
+              {BUTTON_NAMES.CONTINUE}
             </Button>
           </div>
         </form>

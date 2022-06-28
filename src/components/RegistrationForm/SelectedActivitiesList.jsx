@@ -1,12 +1,13 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import propTypes from "prop-types";
+import { SELECTED_ACTIVITIES } from "../../constants/authConstants";
 
 const SelectedActivitiesList = ({ data }) => {
   return (
     <>
       <Grid item sm={8}>
-        <h5 align="left">Selected activities</h5>
+        <h5 align="left">{SELECTED_ACTIVITIES}</h5>
       </Grid>
       <Grid item sm={4} />
       <Grid container spacing={3} xs={12}>

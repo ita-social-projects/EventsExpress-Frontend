@@ -6,6 +6,7 @@ import moment from "moment";
 import propTypes from "prop-types";
 import CheckboxGroup from "./CheckboxGroup";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 momentLocaliser(moment);
 
@@ -32,7 +33,7 @@ class SelectNotificationTypes extends Component {
 
           <div>
             <Button type="submit" color="primary" disabled={submitting}>
-              Save
+              {BUTTON_NAMES.SAVE}
             </Button>
           </div>
         </form>

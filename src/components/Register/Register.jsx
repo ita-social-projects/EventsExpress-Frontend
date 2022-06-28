@@ -14,7 +14,7 @@ import {
   PASSWORD_PLACEHOLDER,
   REGISTER,
   SIGN_UP,
-} from "../../constants/authModalConstants";
+} from "../../constants/authConstants";
 
 const Register = ({ error, handleSubmit, handleClose }) => {
   return (

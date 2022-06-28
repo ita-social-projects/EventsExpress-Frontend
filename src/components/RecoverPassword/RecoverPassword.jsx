@@ -14,7 +14,7 @@ import {
   SUBMIT,
   USER_FORGOT_PASSWORD_MESSAGE,
   USE_NEW_PASSWORD_TO_LOGIN,
-} from "../../constants/authModalConstants";
+} from "../../constants/authConstants";
 import Button from "../shared/Button/Button";
 
 const RecoverPassword = ({

@@ -8,6 +8,16 @@ export const BUTTON_NAMES = {
   CONFIRM: "Confirm",
   SEARCH: "Search",
   RESET: "RESET",
+  PROFILE_LINK: "Profile",
+  EVENTS_LINK: "Events",
+  BACK: "Back",
+  CONTINUE: "Continue",
+  DELETE: "DELETE",
+  EDIT: "Edit",
+  UNDO_CANCEL: "Undo Cancel",
+  JOIN: "Join",
+  CHANGE_EVENT_STATUS: "Change Event Status",
+  BIND: "BIND",
 };
 
 export const CHECKBOX_TITLE_HOBBIES =

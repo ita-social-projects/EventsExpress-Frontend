@@ -16,10 +16,12 @@ import DisplayLocation from "../Map/DisplayLocation";
 import { USER_STATUS_ENUM } from "../../../constants/userConstants";
 import {
   EVENT_DEFAULT_IMAGE,
+  EVENT_ITEM_VIEW_CONSTS,
   EVENT_STATUS_ENUM,
 } from "../../../constants/eventConstants";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
 import PhotoService from "../../../services/PhotoService";
+import { BUTTON_NAMES } from "../../../constants/buttonConsts";
 
 const photoService = new PhotoService();
 
@@ -62,19 +64,19 @@ export default class EventItemView extends Component {
         case USER_STATUS_ENUM.APPROVED:
           return (
             <span className="alert alert-success shadow" role="alert">
-              You are gonna visit.
+              {EVENT_ITEM_VIEW_CONSTS.YOU_GONNA_VISIT}
             </span>
           );
         case USER_STATUS_ENUM.DENIED:
           return (
             <span className="alert alert-danger shadow" role="alert">
-              Denied participation.
+              {EVENT_ITEM_VIEW_CONSTS.DENIED_PARTICIPATION}
             </span>
           );
         case USER_STATUS_ENUM.PENDING:
           return (
             <span className="alert alert-warning shadow" role="alert">
-              Wait until admin approve your request.
+              {EVENT_ITEM_VIEW_CONSTS.WAIT_ADMIN_APROVE}
             </span>
           );
         default:
@@ -83,7 +85,7 @@ export default class EventItemView extends Component {
     }
     return (
       <span className="alert alert-secondary shadow" role="alert">
-        You are not in event yet.
+        {EVENT_ITEM_VIEW_CONSTS.YOU_NOT_IN_EVENT}
       </span>
     );
   };
@@ -161,9 +163,9 @@ export default class EventItemView extends Component {
                   <span className="title">{title}</span>
                   <br />
                   {isPublic ? (
-                    <span>Public event</span>
+                    <span>{EVENT_ITEM_VIEW_CONSTS.PUBLIC_EVENT}</span>
                   ) : (
-                    <span>Private event</span>
+                    <span>{EVENT_ITEM_VIEW_CONSTS.PRIVATE_EVENT}</span>
                   )}
                   <br />
                   {maxParticipants < INT32_MAX_VALUE ? (
@@ -171,12 +173,16 @@ export default class EventItemView extends Component {
                       {visitorsEnum.approvedUsers.length}
                       {"/"}
                       {maxParticipants}
-                      <span className="pl-2">Participants</span>
+                      <span className="pl-2">
+                        {EVENT_ITEM_VIEW_CONSTS.PARTICIPANTS}
+                      </span>
                     </span>
                   ) : (
                     <span className="maxParticipants">
                       {visitorsEnum.approvedUsers.length}
-                      <span className="pl-2">Participants</span>
+                      <span className="pl-2">
+                        {EVENT_ITEM_VIEW_CONSTS.PARTICIPANTS}
+                      </span>
                     </span>
                   )}
                   <br />
@@ -186,7 +192,6 @@ export default class EventItemView extends Component {
                     </Moment>
                     {dateTo !== dateFrom && (
                       <>
-                        -
                         <Moment format="D MMM YYYY" withTitle>
                           {dateTo}
                         </Moment>
@@ -209,13 +214,13 @@ export default class EventItemView extends Component {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    Change Event Status
+                    {BUTTON_NAMES.CHANGE_EVENT_STATUS}
                   </button>
                   <div className="dropdown-menu">
                     {canEdit && (
                       <Link to={`/editEvent/${id}`}>
                         <button type="button" className="btn btn-danger mb-1">
-                          Edit
+                          {BUTTON_NAMES.EDIT}
                         </button>
                       </Link>
                     )}
@@ -223,7 +228,7 @@ export default class EventItemView extends Component {
                       <SimpleModalWithDetails
                         button={
                           <button type="button" className="btn btn-danger ">
-                            Cancel
+                            {BUTTON_NAMES.CANCEL}
                           </button>
                         }
                         submitCallback={this.props.onCancel}
@@ -234,7 +239,7 @@ export default class EventItemView extends Component {
                       <SimpleModalWithDetails
                         button={
                           <button type="button" className="btn btn-danger ">
-                            Delete
+                            {BUTTON_NAMES.DELETE}
                           </button>
                         }
                         submitCallback={this.props.onDelete}
@@ -245,7 +250,7 @@ export default class EventItemView extends Component {
                       <SimpleModalWithDetails
                         button={
                           <button type="button" className="btn btn-danger ">
-                            Undo cancel
+                            {BUTTON_NAMES.UNDO_CANCEL}
                           </button>
                         }
                         submitCallback={this.props.onUnCancel}
@@ -267,9 +272,11 @@ export default class EventItemView extends Component {
               )}
               {isOnlyForAdults && (
                 <div className="text-box-big overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
-                  <span className="font-weight-bold font">18+</span>
+                  <span className="font-weight-bold font">
+                    {EVENT_ITEM_VIEW_CONSTS.ADULT_LABEL}
+                  </span>
                   <br />
-                  This event is only for adults.
+                  {EVENT_ITEM_VIEW_CONSTS.EVENTS_FOR_ADULTS}
                 </div>
               )}
               <div className="text-box-big overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
@@ -302,7 +309,7 @@ export default class EventItemView extends Component {
                       )
                     ) : (
                       <span className="alert alert-warning shadow" role="alert">
-                        You do not meet age requirements for this event.
+                        {EVENT_ITEM_VIEW_CONSTS.AGE_REQUIREMENTS}
                       </span>
                     )}
                   </div>
@@ -315,7 +322,7 @@ export default class EventItemView extends Component {
                         className="btn btn-success join-leave"
                         variant="contained"
                       >
-                        Join
+                        {BUTTON_NAMES.JOIN}
                       </button>
                     </div>
                   )}

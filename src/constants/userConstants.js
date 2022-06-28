@@ -44,6 +44,12 @@ export const ATTITUDE_ICONS = {
   THUMB_DOWN: "fa-thumbs-down",
 };
 
+export const USER_GENDERS = {
+  MALE: "Male",
+  FEMALE: "Female",
+  OTHER: "Other",
+};
+
 export const YOU_RATE_LABEL = "Your rate:";
 
 export const NEGATIVE_ATTITUDE = 1;

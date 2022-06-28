@@ -3,6 +3,11 @@ import { Grid, List, ListItem, ListItemText, Button } from "@material-ui/core";
 import PropTypes from "prop-types";
 import moment from "moment";
 import SelectedActivitiesList from "./SelectedActivitiesList";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
+import {
+  SOME_STEP_DATA,
+  STEP_5_TITLE,
+} from "../../constants/registationConstants";
 
 const gendersArray = ["", "Male", "Female", "Other"];
 
@@ -37,7 +42,7 @@ const ConfirmForm = props => {
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
             <Grid item sm={7}>
-              <h1 style={{ fontSize: 20 }}>Step 5: Confirm your user data.</h1>
+              <h1 style={{ fontSize: 20 }}>{STEP_5_TITLE}</h1>
             </Grid>
             <Grid item sm={5} />
             <Grid item xs={4}>
@@ -94,7 +99,7 @@ const ConfirmForm = props => {
               </List>
             </Grid>
             <Grid item xs={5}>
-              <h5>Some step 3/4 data</h5>
+              <h5>{SOME_STEP_DATA}</h5>
             </Grid>
 
             {areCategoriesSelected() && (
@@ -110,7 +115,7 @@ const ConfirmForm = props => {
                 variant="text"
                 size="large"
               >
-                Back
+                {BUTTON_NAMES.BACK}
               </Button>
               <Button
                 type="submit"
@@ -120,7 +125,7 @@ const ConfirmForm = props => {
                 variant="contained"
                 size="large"
               >
-                Confirm
+                {BUTTON_NAMES.CONTINUE}
               </Button>
             </Grid>
           </Grid>

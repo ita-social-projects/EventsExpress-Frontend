@@ -10,6 +10,9 @@ import {
   parseEuDate,
 } from "../helpers/form-helpers";
 import ChangeAvatarContainer from "../../containers/EditProfileContainers/ChangeAvatarContainer";
+import { CHOOSE_AVATAR } from "../../constants/registationConstants";
+import { USER_GENDERS } from "../../constants/userConstants";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 const CompleteProfileForm = ({ handleSubmit }) => {
   return (
@@ -25,7 +28,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
             <Grid item sm={6} />
 
             <Grid item sm={3}>
-              Choose your avatar:
+              {CHOOSE_AVATAR}
             </Grid>
             <Grid item sm={9}>
               <ChangeAvatarContainer />
@@ -91,9 +94,9 @@ const CompleteProfileForm = ({ handleSubmit }) => {
                 label="Gender"
               >
                 <option aria-label="None" value="" />
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Other</option>
+                <option value="1">{USER_GENDERS.MALE}</option>
+                <option value="2">{USER_GENDERS.FEMALE}</option>
+                <option value="3">{USER_GENDERS.OTHER}</option>
               </Field>
             </Grid>
 
@@ -105,7 +108,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
                 variant="contained"
                 size="large"
               >
-                Continue
+                {BUTTON_NAMES.CONTINUE}
               </Button>
             </Grid>
           </Grid>
