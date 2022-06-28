@@ -1,5 +1,6 @@
 @import "../../styles/colors.scss";
 @import "../../styles/variables.scss";
+@import "../../styles/fonts.scss";
 
 body {
     height: 100vh;
@@ -38,7 +39,7 @@ body {
 }
 
 .admin-sidebar ul li .link:hover {
-    color: $balck;
+    color: $black;
     font-weight: $thick;
     background: $white;
     border-bottom: 3px solid $middleBlue;

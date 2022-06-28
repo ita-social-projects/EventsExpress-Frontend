@@ -32,7 +32,6 @@ $bannerImageGradient: #00000080;
 $formTextArea: #00000030;
 $inputBoxShadow: 0 4px 4px $formTextArea;
 $bannerBgGradient: linear-gradient(0deg, $gradientColor, $gradientColor);
-$darkenLight15: darken($color: $lightThemeAccept, $amount: 15%);
 $bropDownContentShadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
 $buttonShadow: 0 0 2px rgb(0 0 0 / 60%);
 $quarterOpacityBlack: rgb(0 0 0 / 25%);
@@ -71,3 +70,5 @@ $chatGreen: #2ecc71;
 $authModalShadow: 0 0 15px $white;
 $authModalOutsideColor: #000000e6;
 $recoverPasswordButtonCloseShadow: 0 0 10px $purpleDark;
+
+$darkenLight15: darken($color: $lightThemeAccept, $amount: 15%);
