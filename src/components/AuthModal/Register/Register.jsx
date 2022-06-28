@@ -12,11 +12,7 @@ import {
   PASSWORD_PLACEHOLDER,
   REGISTER,
   SIGN_UP,
-<<<<<<< HEAD:src/components/Register/Register.jsx
-} from "../../constants/authConstants";
-=======
-} from "../../../constants/authModalConstants";
->>>>>>> 3f448ab4ca0f61936b518bcae967e261567a6c0b:src/components/AuthModal/Register/Register.jsx
+} from "../../../constants/authConstants";
 
 const Register = ({ error, handleSubmit, handleRegister, handleClose }) => {
   return (

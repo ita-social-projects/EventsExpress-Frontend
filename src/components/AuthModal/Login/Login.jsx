@@ -13,11 +13,7 @@ import {
   LOGIN,
   PASSWORD_PLACEHOLDER,
   SIGN_IN,
-<<<<<<< HEAD:src/components/Login/Login.jsx
-} from "../../constants/authConstants";
-=======
-} from "../../../constants/authModalConstants";
->>>>>>> 3f448ab4ca0f61936b518bcae967e261567a6c0b:src/components/AuthModal/Login/Login.jsx
+} from "../../../constants/authConstants";
 
 const Login = ({ handleLogin, handleSubmit, handleClose, error }) => {
   const [isRecoverPassword, setIsRecoverPassword] = useState(false);
