@@ -3,14 +3,14 @@
     top: inherit;
     right: 0;
     width: 15em;
-    height: 100%;
+    height: $fullWidth;
     margin: 0;
     padding: 0;
     overflow: auto;
 }
 
 .events-container {
-    width: 100%;
+    width: $fullWidth;
     padding-right: 15em;
 }
 
@@ -18,7 +18,7 @@
 
     .sidebar-filter {
         position: relative !important;
-        width: 100% !important;
+        width: $fullWidth !important;
         height: auto !important;
     }
 

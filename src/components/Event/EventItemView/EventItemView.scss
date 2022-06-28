@@ -1,35 +1,36 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
 
 .text-block {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
-    padding-right: 20px;
-    padding-left: 20px;
+    bottom: $fontsize20;
+    left: $fontsize20;
+    padding-right: $fontsize20;
+    padding-left: $fontsize20;
     color: $white;
-    font-size: 28px;
+    font-size: $fontsize28;
     background-color: $grayBlack;
 }
 
 .title {
-    font-size: 48px;
+    font-size: $fontsize45;
 }
 
 .button-block {
     position: absolute;
-    right: 20px;
-    bottom: 20px;
-    padding-right: 20px;
-    padding-left: 20px;
-    font-size: 28px;
+    right: $fontsize20;
+    bottom: $fontsize20;
+    padding-right: $fontsize20;
+    padding-left: $fontsize20;
+    font-size: $fontsize28;
 }
 
 .join-leave {
-    font-size: 20px;
+    font-size: $fontsize20;
 }
 
 .btn-edit {
-    font-size: 24px;
+    font-size: $fontsize24;
     background: $deleteColor;
 }
 
@@ -53,7 +54,7 @@
 }
 
 .cancel-text {
-    font-size: 24px;
+    font-size: $fontsize24;
 }
 
 .change-event {
@@ -73,7 +74,7 @@
     display: none;
     min-width: 160px;
     background-color: $white;
-    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+    box-shadow: $bropDownContentShadow;
 }
 
 .dropdown-menu {

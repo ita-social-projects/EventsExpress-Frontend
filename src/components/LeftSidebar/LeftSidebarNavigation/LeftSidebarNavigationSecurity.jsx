@@ -2,27 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import { SECURITY_TYPES } from "../../../constants/leftSidebarConstants";
 import AuthComponent from "../../../security/authComponent";
-import LeftSidebarItems from "./LeftSidebarNavigation";
+import LeftSidebarNavigation from "./LeftSidebarNavigation";
 import { sidebarNavigationAuth } from "../../helpers/leftSidebarAuthHelper";
 
 const LeftSidebarNavigationSecurity = ({
   handleSidebarToggle,
   user,
   msgForRead,
-}) => (
-  <>
-    {sidebarNavigationAuth(msgForRead, user).map(({ securityState, items }) => {
-      return (
-        <AuthComponent key={securityState} {...SECURITY_TYPES[securityState]}>
-          <LeftSidebarItems
-            items={items}
-            handleSidebarToggle={handleSidebarToggle}
-          />
-        </AuthComponent>
-      );
-    })}
-  </>
-);
+}) =>
+  sidebarNavigationAuth(msgForRead, user).map(({ securityState, items }) => (
+    <AuthComponent key={securityState} {...SECURITY_TYPES[securityState]}>
+      <LeftSidebarNavigation
+        items={items}
+        handleSidebarToggle={handleSidebarToggle}
+      />
+    </AuthComponent>
+  ));
 
 LeftSidebarNavigationSecurity.defaultProps = {
   handleSidebarToggle: () => {},

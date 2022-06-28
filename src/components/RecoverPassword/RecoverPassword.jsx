@@ -25,9 +25,14 @@ const RecoverPassword = ({
   error,
   handleRecoverClose,
   status,
-}) => {
-  return (
-    <form className="recover-password-form" onSubmit={handleSubmit}>
+  handleRecoverPassword,
+  isRecoverPassword,
+}) =>
+  isRecoverPassword && (
+    <form
+      className="recover-password-form"
+      onSubmit={handleSubmit(handleRecoverPassword)}
+    >
       <h4 className="recover-heading">
         {USER_FORGOT_PASSWORD_MESSAGE} <br />
         {OUR_ACTION_TO_USER_FORGOT_PASSWORD}
@@ -62,7 +67,6 @@ const RecoverPassword = ({
       />
     </form>
   );
-};
 
 RecoverPassword.defaultProps = {
   handleSubmit: () => {},
@@ -72,6 +76,8 @@ RecoverPassword.defaultProps = {
   error: [],
   handleRecoverClose: () => {},
   status: {},
+  handleRecoverPassword: () => {},
+  isRecoverPassword: false,
 };
 
 RecoverPassword.propTypes = {
@@ -82,6 +88,8 @@ RecoverPassword.propTypes = {
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   handleRecoverClose: PropTypes.func,
   status: PropTypes.object,
+  handleRecoverPassword: PropTypes.func,
+  isRecoverPassword: PropTypes.bool,
 };
 
 export default reduxForm({

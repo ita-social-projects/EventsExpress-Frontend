@@ -5,7 +5,7 @@ import Dialog from "@material-ui/core/Dialog";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Register from "../../components/Register/Register";
+import Register from "../../components/AuthModal/Register/Register";
 import { localLoginAdd } from "../../actions/redactProfile/linked-auths-add-action";
 import "./LinkedAuth.scss";
 import { CLOSE, LOGIN, SUBSCRIBE } from "../../constants/authConstants";

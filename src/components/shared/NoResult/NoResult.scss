@@ -28,7 +28,7 @@ $centeredContainer: 460px;
         padding: 0.6rem 1.25rem;
         color: $black;
         font-weight: $semiBold;
-        font-size: 1rem;
+        font-size: $fontsize1rem;
         font-family: $mainFont;
         background: $white;
         border: $defaulBorder;
@@ -50,12 +50,12 @@ $centeredContainer: 460px;
     .headText {
         margin-bottom: 0.6rem;
         font-weight: $semiBold;
-        font-size: 2rem;
+        font-size: $fontsize2rem;
     }
 
     .subTitleText {
         font-weight: $thick;
-        font-size: 1.25rem;
+        font-size: $fontsize125rem;
     }
 }
 

@@ -1,47 +1,25 @@
-import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import Register from "../../components/Register/Register";
+import { reduxForm } from "redux-form";
+import Register from "../../components/AuthModal/Register/Register";
 import register from "../../actions/register/register-action";
-
-const RegisterContainer = ({
-  registerDispatch,
-  registerError,
-  isRegisterSuccess,
-  handleClose,
-}) => {
-  useEffect(() => {
-    if (!registerError && isRegisterSuccess) {
-      handleClose();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isRegisterSuccess]);
-
-  const handleRegisterSubmit = (email, password) => {
-    registerDispatch(email, password);
-    handleClose();
-  };
-  return <Register onSubmit={handleRegisterSubmit} handleClose={handleClose} />;
-};
-
-RegisterContainer.propTypes = {
-  registerError: PropTypes.bool,
-  isRegisterSuccess: PropTypes.bool,
-  handleClose: PropTypes.func,
-  registerDispatch: PropTypes.func,
-};
-
-RegisterContainer.defaultProps = {
-  registerError: false,
-  isRegisterSuccess: false,
-  handleClose: () => {},
-  registerDispatch: () => {},
-};
+import { validate } from "../../components/helpers/validateHelper";
 
 const mapDispatchToProps = dispatch => {
   return {
-    registerDispatch: (email, password) => dispatch(register(email, password)),
+    handleRegister: ({ email, password }) =>
+      dispatch(register(email, password)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(RegisterContainer);
+const RegisterForm = reduxForm({
+  form: "auth-form",
+  validate: validate(
+    ["password", "email", "RepeatPassword"],
+    [
+      { field: "password", minLen: 6, maxLen: 15 },
+      { field: "RepeatPassword", minLen: 6, maxLen: 15 },
+    ],
+  ),
+})(Register);
+
+export default connect(null, mapDispatchToProps)(RegisterForm);

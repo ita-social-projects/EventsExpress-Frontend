@@ -10,7 +10,6 @@ const Members = ({ members, hasMembers, showContent, getMembers }) => {
     if (!hasMembers) {
       getMembers();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

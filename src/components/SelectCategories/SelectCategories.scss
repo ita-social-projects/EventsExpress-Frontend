@@ -4,6 +4,7 @@ $fontColor: #666666 !default;
 $fontPlaceholderColor: #8a8a8a !default;
 $fontDisabledColor: #dedede !default;
 $primaryColor: #5897fb !default;
+$primaryColorLow: rgba($primaryColor, 0.1);
 $borderColor: #dcdee2 !default;
 $searchHighlightColor: #fffb8c !default;
 $borderRadius: 4px !default;
@@ -14,14 +15,14 @@ $spacingS: 4px !default;
 .ss-main {
     position: relative;
     display: inline-block;
-    width: 100%;
+    width: $fullWidth;
     color: $fontColor;
     user-select: none;
 
     .ss-single-selected {
         display: flex;
         box-sizing: border-box;
-        width: 100%;
+        width: $fullWidth;
         height: $height;
         padding: $spacingM;
         background-color: $white;
@@ -48,9 +49,9 @@ $spacingS: 4px !default;
 
         .placeholder {
             display: flex;
-            flex: 1 1 100%;
+            flex: 1 1  $fullWidth;
             align-items: center;
-            width: calc(100% - 30px);
+            width: calc($fullWidth - 30px);
             overflow: hidden;
             line-height: 1em;
             white-space: nowrap;
@@ -119,7 +120,7 @@ $spacingS: 4px !default;
         display: flex;
         flex-direction: row;
         box-sizing: border-box;
-        width: 100%;
+        width: $fullWidth;
         min-height: $height;
         padding: 0 0 0 3px;
         background-color: $white;
@@ -160,15 +161,15 @@ $spacingS: 4px !default;
 
         .ss-values {
             display: flex;
-            flex: 1 1 100%;
+            flex: 1 1  $fullWidth;
             flex-wrap: wrap;
             justify-content: flex-start;
-            width: calc(100% - 30px);
+            width: calc($fullWidth - 30px);
 
             .ss-disabled {
                 display: flex;
                 align-items: center;
-                width: 100%;
+                width: $fullWidth;
                 margin: 2px 0;
                 padding: 4px 5px;
                 overflow: hidden;
@@ -182,12 +183,12 @@ $spacingS: 4px !default;
 
                 0% {
                     transform: scale(0);
-                    opacity: 0;
+                    opacity: $opacity0;
                 }
 
                 100% {
                     transform: scale(1);
-                    opacity: 1;
+                    opacity: $opacity1;
                 }
             }
 
@@ -195,12 +196,12 @@ $spacingS: 4px !default;
 
                 0% {
                     transform: scale(1);
-                    opacity: 1;
+                    opacity: $opacity1;
                 }
 
                 100% {
                     transform: scale(0);
-                    opacity: 0;
+                    opacity: $opacity0;
                 }
             }
 
@@ -210,7 +211,7 @@ $spacingS: 4px !default;
                 margin: 3px 5px 3px 0;
                 padding: 3px 5px;
                 color: $white;
-                font-size: 12px;
+                font-size: $fontsize12;
                 background-color: $primaryColor;
                 border-radius: $borderRadius;
                 animation-name: scaleIn;
@@ -235,7 +236,7 @@ $spacingS: 4px !default;
         .ss-add {
             display: flex;
             flex: 0 1 3px;
-            margin: 9px 12px 0 5px;
+            margin: 9px $fontsize12 0 5px;
 
             .ss-plus {
                 position: relative;
@@ -268,19 +269,19 @@ $spacingS: 4px !default;
         position: absolute;
         z-index: 1010;
         box-sizing: border-box;
-        width: 100%;
+        width: $fullWidth;
         margin: -1px 0 0;
         background-color: $white;
         border: solid 1px $borderColor;
         transform: scaleY(0);
         transform-origin: center top;
-        opacity: 0;
+        opacity: $opacity0;
         transition: transform 0.2s, opacity 0.2s;
 
         &.ss-open {
             display: block;
             transform: scaleY(1);
-            opacity: 1;
+            opacity: $opacity1;
         }
 
         .ss-search {
@@ -292,13 +293,13 @@ $spacingS: 4px !default;
                 height: 0;
                 margin: 0;
                 padding: 0;
-                opacity: 0;
+                opacity: $opacity0;
 
                 input {
                     height: 0;
                     margin: 0;
                     padding: 0;
-                    opacity: 0;
+                    opacity: $opacity0;
                 }
             }
 
@@ -307,7 +308,7 @@ $spacingS: 4px !default;
                 flex: 1 1 auto;
                 -webkit-box-sizing: border-box;
                 box-sizing: border-box;
-                width: 100%;
+                width: $fullWidth;
                 min-width: 0;
                 height: 30px;
                 margin: 0;
@@ -340,7 +341,7 @@ $spacingS: 4px !default;
                 height: 30px;
                 margin: 0 0 0 8px;
                 font-weight: $bold;
-                font-size: 22px;
+                font-size: $fontsize22;
                 border: 1px solid $borderColor;
                 border-radius: $borderRadius;
                 cursor: pointer;
@@ -401,7 +402,7 @@ $spacingS: 4px !default;
 
                 &:not(.ss-disabled).ss-option-selected {
                     color: $fontColor;
-                    background-color: rgba($primaryColor, 0.1);
+                    background-color: $primaryColorLow;
                 }
 
                 &.ss-hide {

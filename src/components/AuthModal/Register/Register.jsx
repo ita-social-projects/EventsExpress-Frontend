@@ -1,28 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Field, reduxForm } from "redux-form";
+import { Field } from "redux-form";
 import { ImCross } from "react-icons/im";
-import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
-import "./Register.scss";
-import { validate } from "../helpers/validateHelper";
-import FormInput from "../shared/FormInput/FormInput";
-import SocialAuth from "../SocialAuth/SocialAuth";
-import Button from "../shared/Button/Button";
+import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
+import FormInput from "../../shared/FormInput/FormInput";
+import SocialAuth from "../../SocialAuth/SocialAuth";
+import Button from "../../shared/Button/Button";
 import {
   CONFIRM_PASSWORD_PLACEHOLDER,
   EMAIL_PLACEHOLDER,
   PASSWORD_PLACEHOLDER,
   REGISTER,
   SIGN_UP,
+<<<<<<< HEAD:src/components/Register/Register.jsx
 } from "../../constants/authConstants";
+=======
+} from "../../../constants/authModalConstants";
+>>>>>>> 3f448ab4ca0f61936b518bcae967e261567a6c0b:src/components/AuthModal/Register/Register.jsx
 
-const Register = ({ error, handleSubmit, handleClose }) => {
+const Register = ({ error, handleSubmit, handleRegister, handleClose }) => {
   return (
-    <form className="register-form" onSubmit={handleSubmit}>
-      <h2 className="register-form__title">{REGISTER}</h2>
-      {error && (
-        <ErrorMessages error={error} className="register-error text-center" />
-      )}
+    <form className="auth-form" onSubmit={handleSubmit(handleRegister)}>
+      <h2 className="auth-form__title">{REGISTER}</h2>
+      <ErrorMessages error={error} className="auth-error text-center" />
       <Button
         content={<ImCross />}
         className="close-btn"
@@ -61,21 +61,14 @@ Register.defaultProps = {
   error: "",
   handleSubmit: () => {},
   handleClose: () => {},
+  handleRegister: () => {},
 };
 
 Register.propTypes = {
   error: PropTypes.string,
   handleSubmit: PropTypes.func,
   handleClose: PropTypes.func,
+  handleRegister: PropTypes.func,
 };
 
-export default reduxForm({
-  form: "register-form",
-  validate: validate(
-    ["password", "email", "RepeatPassword"],
-    [
-      { field: "password", minLen: 6, maxLen: 15 },
-      { field: "RepeatPassword", minLen: 6, maxLen: 15 },
-    ],
-  ),
-})(Register);
+export default Register;

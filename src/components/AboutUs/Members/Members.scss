@@ -41,7 +41,7 @@
         text-align: center;
 
         @include adaptiveStyles($mediaFirstTabletScreen) {
-            max-width: 80%;
+            max-width: $width80;
             margin-bottom: 30px;
             padding: 20px;
 
@@ -69,8 +69,8 @@
         border-radius: $borderRound;
 
         @include adaptiveStyles($mediaMobileScreen) {
-            width: 80%;
-            height: 80%;
+            width: $width80;
+            height: $height80;
         }
     }
 

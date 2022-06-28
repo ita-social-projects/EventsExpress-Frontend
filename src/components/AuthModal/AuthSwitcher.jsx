@@ -8,32 +8,26 @@ import {
 } from "../../constants/authConstants";
 import Button from "../shared/Button/Button";
 
-const AuthSwitcher = ({ isLogin, handleModeSwitch }) => {
-  return (
-    <>
-      {isLogin && (
-        <h4 className="modal-switcher">
-          {AUTH_SWITCHER_DONT_HAVE_ACCOUNT}
-          <Button
-            content={REGISTER}
-            onClick={handleModeSwitch}
-            className="switcher-btn"
-          />
-        </h4>
-      )}
-      {!isLogin && (
-        <h4 className="modal-switcher">
-          {AUTH_SWITCHER_HAVE_ACCOUNT}
-          <Button
-            content={LOGIN}
-            onClick={handleModeSwitch}
-            className="switcher-btn"
-          />
-        </h4>
-      )}
-    </>
+const AuthSwitcher = ({ isLogin, handleModeSwitch }) =>
+  isLogin ? (
+    <h4 className="modal-switcher">
+      {AUTH_SWITCHER_DONT_HAVE_ACCOUNT}
+      <Button
+        content={REGISTER}
+        onClick={handleModeSwitch}
+        className="switcher-btn"
+      />
+    </h4>
+  ) : (
+    <h4 className="modal-switcher">
+      {AUTH_SWITCHER_HAVE_ACCOUNT}
+      <Button
+        content={LOGIN}
+        onClick={handleModeSwitch}
+        className="switcher-btn"
+      />
+    </h4>
   );
-};
 
 AuthSwitcher.propTypes = {
   isLogin: PropTypes.bool,

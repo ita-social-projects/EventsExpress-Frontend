@@ -5,32 +5,32 @@
 html,
 body,
 #root {
-    height: 100%;
+    height: $fullWidth;
 }
 
 body {
     box-sizing: border-box;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: $thick;
+    font-size: $fontsize16;
     font-family: $mainFont;
     font-style: normal;
 }
 
 html {
-    font-size: 16px;
+    font-size: $fontsize16;
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
 
     html {
-        font-size: 14px;
+        font-size: $fontsize14;
     }
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
 
     html {
-        font-size: 12px;
+        font-size: $fontsize12;
     }
 }
 
@@ -60,15 +60,15 @@ html {
     padding: 10px;
     color: $lightThemeAccept;
     font-weight: $bold;
-    font-size: 14px;
+    font-size: $fontsize14;
     border: 2px solid $lightThemeAccept;
     border-radius: $buttonBorderRadius;
     cursor: pointer;
 
     &:hover {
-        color: darken($color: $lightThemeAccept, $amount: 15%);
+        color: $darkenLight15;
         text-decoration: none;
         background-color: $white;
-        border-color: darken($color: $lightThemeAccept, $amount: 15%);
+        border-color: $darkenLight15;
     }
 }

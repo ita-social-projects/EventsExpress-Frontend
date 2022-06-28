@@ -1,7 +1,8 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
 
 body {
-    font-family: Helvetica, sans-serif;
+    font-family: $helvita;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 }
@@ -10,7 +11,7 @@ body {
     position: static;
     display: inline-block;
     padding: 8px 20px;
-    font-weight: 600;
+    font-weight: $mibbleText;
     background: $lightBlue;
     border-radius: 3px;
 }
@@ -30,6 +31,6 @@ body {
 #fb-share-button span {
     padding: 0 3px;
     color: $white;
-    font-size: 14px;
+    font-size: $fontsize14;
     vertical-align: middle;
 }

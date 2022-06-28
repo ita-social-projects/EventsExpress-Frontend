@@ -1,6 +1,7 @@
 $black: #000000;
 $white: #ffffff;
 $gray: #f2f2f2;
+$greyLowOpacity: rgb(114 113 113 / 20%);
 $grayBlack: #212529 !important;
 $middleGray: #505050;
 $purple: #581184;
@@ -8,6 +9,7 @@ $purpleDark: #180c30;
 $lightPink: #f0eaf4;
 $deleteColor: #c91212;
 $redOrange: #f44336;
+$redLight: lighten($deleteColor, 30%);
 $lightRed: #ffc6c2;
 $blue: #0000ff;
 $middleBlue: #0046d5;
@@ -27,7 +29,12 @@ $mainColor: $white;
 $secondaryColor: $purpleDark;
 $gradientColor: #000000cc;
 $bannerImageGradient: #00000080;
+$formTextArea: #00000030;
+$inputBoxShadow: 0 4px 4px $formTextArea;
 $bannerBgGradient: linear-gradient(0deg, $gradientColor, $gradientColor);
+$bropDownContentShadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+$buttonShadow: 0 0 2px rgb(0 0 0 / 60%);
+$quarterOpacityBlack: rgb(0 0 0 / 25%);
 $textShadowNeon: 0 0 5px $white,
     0 0 10px $white,
     0 0 20px $white,
@@ -63,3 +70,5 @@ $chatGreen: #2ecc71;
 $authModalShadow: 0 0 15px $white;
 $authModalOutsideColor: #000000e6;
 $recoverPasswordButtonCloseShadow: 0 0 10px $purpleDark;
+
+$darkenLight15: darken($color: $lightThemeAccept, $amount: 15%);

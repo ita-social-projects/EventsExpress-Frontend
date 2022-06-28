@@ -1,8 +1,9 @@
 @import "../../styles/colors.scss";
-@import "../../styles//fonts.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/variables.scss";
 
 .funkyradio label {
-    width: 100%;
+    width: $fullWidth;
     font-weight: $headText;
     border: 1px solid $gray;
     border-radius: 3px;
@@ -118,7 +119,7 @@
 }
 
 .user-profile-avatar:hover {
-    opacity: 0.5;
+    opacity: $opacity05;
 }
 
 .mb-5,

@@ -18,7 +18,7 @@
         justify-content: flex-end;
 
         &.collapsed {
-            opacity: 0.6;
+            opacity: $opacity05;
 
             & > *:not(.option-button) {
                 display: none;
@@ -26,7 +26,7 @@
         }
 
         & > div:not(.option-button) {
-            width: 100%;
+            width: $fullWidth;
         }
     }
 
@@ -36,8 +36,8 @@
         padding: 0 128px;
 
         .discover-button {
-            width: 180px;
-            height: 40px;
+            width: $fontsize100;
+            height: $fontsize40;
             padding: 8px 24px;
             font-weight: $bold;
             font-size: inherit;
@@ -52,27 +52,27 @@
             }
 
             &__icon {
-                font-size: 20px;
+                font-size: $fontsize20;
             }
 
             &:hover {
-                color: darken($color: $lightThemeAccept, $amount: 15%);
+                color: $darkenLight15;
                 text-decoration: none;
                 background-color: $gray;
-                border-color: darken($color: $lightThemeAccept, $amount: 15%);
+                border-color: $darkenLight15;
             }
         }
     }
 
     .collapse-button-icon {
-        font-size: 40px;
+        font-size: $fontsize40;
     }
 
     .option-button {
         position: absolute;
-        top: calc(50% - 20px);
-        width: 40px;
-        height: 40px;
+        top: calc($halfWidth - $fontsize20);
+        width: $fontsize40;
+        height: $fontsize40;
     }
 
     .left-side {
@@ -80,14 +80,14 @@
         background-color: $gray;
 
         &.full-size > .left-side__text {
-            font-size: 96px;
+            font-size: $fontsize90;
         }
 
         &__text {
-            padding: 16px 40px 68px 80px;
+            padding: 16px $fontsize40 68px $fontsize100;
             color: $black;
             font-weight: $bold;
-            font-size: 80px;
+            font-size: $fontsize100;
             line-height: 92px;
             user-select: none;
 
@@ -104,7 +104,7 @@
                     top: 12px;
                     z-index: -1;
                     width: 152px;
-                    height: 80px;
+                    height: $fontsize100;
                     background-color: $lightThemeAccept;
                     content: "";
                 }
@@ -143,10 +143,10 @@
                 border-radius: $buttonBorderRadius;
 
                 &:hover {
-                    color: darken($color: $lightThemeAccept, $amount: 15%);
+                    color: $darkenLight15;
                     text-decoration: none;
                     background-color: $gray;
-                    border-color: darken($color: $lightThemeAccept, $amount: 15%);
+                    border-color: $darkenLight15;
                 }
             }
         }
@@ -168,10 +168,10 @@
                 border-radius: $buttonBorderRadius;
 
                 &:hover {
-                    color: darken($color: $lightThemeAccept, $amount: 15%);
+                    color: $darkenLight15;
                     text-decoration: none;
                     background-color: $lightThemeAccept;
-                    border-color: darken($color: $lightThemeAccept, $amount: 15%);
+                    border-color: $darkenLight15;
                 }
             }
         }
@@ -183,11 +183,11 @@
             margin: auto;
 
             & > div {
-                width: calc(100% - 112px - 100px);
-                padding: 20px;
+                width: calc($fullWidth - 112px - 100px);
+                padding: $fontsize20;
                 color: $white;
-                font-weight: 900;
-                font-size: 48px;
+                font-weight: $bold;
+                font-size: $fontsize45;
                 background: $transparentBlackBackground;
                 user-select: none;
             }
@@ -212,7 +212,7 @@
             .discover-button {
 
                 &__about {
-                    font-size: 13px;
+                    font-size: $fontsize13;
                 }
             }
         }
@@ -223,7 +223,7 @@
 
                 & > div {
                     padding: 30px;
-                    font-size: 25px;
+                    font-size: $fontsize24;
                     line-height: 32px;
                 }
             }
@@ -235,7 +235,7 @@
         &__text {
             padding-top: 93px;
             padding-left: 70px;
-            font-size: 45px;
+            font-size: $fontsize45;
             line-height: 82px;
 
             &__highlights {
@@ -262,7 +262,7 @@
             .discover-button {
 
                 &__about {
-                    font-size: 13px;
+                    font-size: $fontsize13;
                 }
             }
         }
@@ -273,7 +273,7 @@
 
                 & > div {
                     padding: 30px;
-                    font-size: 25px;
+                    font-size: $fontsize24;
                     line-height: 32px;
                 }
             }
@@ -285,7 +285,7 @@
         &__text {
             padding-top: 93px;
             padding-left: 70px;
-            font-size: 45px;
+            font-size: $fontsize45;
             line-height: 82px;
 
             &__highlights {
@@ -313,30 +313,30 @@
         }
 
         >.right-side {
-            width: 100% !important;
+            width: $fullWidth !important;
 
             & > .header-text {
                 width: auto;
                 padding: auto;
 
                 & > div {
-                    width: calc(100% - 72px);
+                    width: calc($fullWidth - 72px);
                     padding: 36px;
-                    font-size: 38px;
+                    font-size: $fontsize36;
                     line-height: 46px;
                 }
             }
 
             .discover-button-container {
-                width: 180px;
+                width: $fontsize100;
                 height: unset;
-                margin: 32px auto 80px;
+                margin: 32px auto $fontsize100;
                 padding: unset;
 
                 .discover-button {
 
                     &__about {
-                        font-size: 13px;
+                        font-size: $fontsize13;
                     }
                 }
             }

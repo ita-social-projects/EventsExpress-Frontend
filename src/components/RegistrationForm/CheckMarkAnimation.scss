@@ -15,7 +15,7 @@
     width: 186px;
     height: 186px;
     margin: 10% auto;
-    border-radius: 50%;
+    border-radius: $halfWidth;
     box-shadow: inset 0 0 0 $olive;
     animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
     stroke: $white;
@@ -25,7 +25,7 @@
 
 .checkmark__check {
     color: $olive;
-    transform-origin: 50% 50%;
+    transform-origin: $halfWidth $halfWidth;
     stroke-dasharray: 48;
     stroke-dashoffset: 48;
     animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
@@ -45,7 +45,7 @@
         transform: none;
     }
 
-    50% {
+    100% {
         transform: scale3d(1.11, 1.11, 1);
     }
 }
