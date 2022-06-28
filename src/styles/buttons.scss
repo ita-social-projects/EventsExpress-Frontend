@@ -10,10 +10,10 @@
     transition: 0.5s all;
 
     &:hover {
-        color: darken($color: $lightThemeAccept, $amount: 15%);
+        color: $darkenLight15;
         text-decoration: none;
         background-color: $gray;
-        border-color: darken($color: $lightThemeAccept, $amount: 15%);
+        border-color: $darkenLight15;
     }
 }
 

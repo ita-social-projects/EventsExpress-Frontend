@@ -54,7 +54,7 @@
 @media screen and (max-width: $mediaMobileScreen) {
 
     .user_info_card {
-        max-width: 100%;
+        max-width: $fullWidth;
         margin: 5px;
     }
 }
@@ -64,5 +64,5 @@
 }
 
 .attitude_bg_red {
-    background-color: lighten($deleteColor, 30%);
+    background-color: $redLight;
 }

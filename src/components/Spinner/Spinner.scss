@@ -1,28 +1,29 @@
 @import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
 
 @keyframes ldsRolling {
 
     0% {
-        -webkit-transform: translate(-50%, -50%) rotate(0deg);
-        transform: translate(-50%, -50%) rotate(0deg);
+        -webkit-transform: translate($minusHalfWidth, $minusHalfWidth) rotate(0deg);
+        transform: translate($minusHalfWidth, $minusHalfWidth) rotate(0deg);
     }
 
     100% {
-        -webkit-transform: translate(-50%, -50%) rotate(360deg);
-        transform: translate(-50%, -50%) rotate(360deg);
+        -webkit-transform: translate($minusHalfWidth, $minusHalfWidth) rotate(360deg);
+        transform: translate($minusHalfWidth, $minusHalfWidth) rotate(360deg);
     }
 }
 
 @keyframes ldsRolling {
 
     0% {
-        -webkit-transform: translate(-50%, -50%) rotate(0deg);
-        transform: translate(-50%, -50%) rotate(0deg);
+        -webkit-transform: translate($minusHalfWidth, $minusHalfWidth) rotate(0deg);
+        transform: translate($minusHalfWidth, $minusHalfWidth) rotate(0deg);
     }
 
     100% {
-        -webkit-transform: translate(-50%, -50%) rotate(360deg);
-        transform: translate(-50%, -50%) rotate(360deg);
+        -webkit-transform: translate($minusHalfWidth, $minusHalfWidth) rotate(360deg);
+        transform: translate($minusHalfWidth, $minusHalfWidth) rotate(360deg);
     }
 }
 
@@ -33,12 +34,12 @@
     height: 120px;
     border: 20px solid $whiteBlue;
     border-top-color: transparent;
-    border-radius: 50%;
+    border-radius: $halfWidth;
 }
 
 .ldsRolling div {
     top: 100px;
-    left: 50%;
+    left: $halfWidth;
     -webkit-animation: ldsrolling 1s linear infinite;
     animation: ldsRolling 1s linear infinite;
 }
@@ -63,17 +64,17 @@
 
 #spinner-align .spinner-align {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    top: $halfWidth;
+    left: $halfWidth;
+    -webkit-transform: translate($minusHalfWidth, $minusHalfWidth);
+    -ms-transform: translate($minusHalfWidth, $minusHalfWidth);
+    transform: translate($minusHalfWidth, $minusHalfWidth);
 }
 
 .spinner-align {
     position: relative;
     z-index: 0;
-    width: 100%;
+    width: $fullWidth;
     max-width: 180px;
     height: 180px;
     text-align: center;

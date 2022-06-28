@@ -15,12 +15,15 @@ $backGroundModal: rgb(0 0 0 / 40%);
 
 //width & height
 $fullWidth: 100%;
+$fullHeight: 100%;
+$minusFullWidth: -100%;
 $halfWidth: 50%;
+$halfHieght: 50%;
 $minusHalfWidth: -50%;
+$hundredAndFifty: 150%;
+$minusHundredAndFifty: -150%;
 $maxDisplayWidth: 100vw;
 $maxDisplayHeight: 100vh;
-$fullHeight: 100%;
-$halfHieght: 50%;
 
 //radius
 $r16: 16px;
@@ -51,8 +54,6 @@ $mediumPaddingTop: 50px;
 $mediumPaddingTop: 50px;
 $borderRound: 100%;
 $absoluteHeight100: 100vh;
-$fullWidth: 100%;
-$fullHeight: 100%;
 $width80: 80%;
 $width50: 50%;
 $height80: 80%;
@@ -60,6 +61,8 @@ $height50: 50%;
 $width25: 25%;
 $defaultTransition: 0.5s ease-in-out;
 $opacity0: 0;
+$opacity05: 0.5;
+$opacity09: 0.9;
 $opacity1: 1;
 $landingBannerBgPattern: "https://i.pinimg.com/originals/4c/41/75/4c4175fc9f1274b6d732d5b5038f168d.jpg";
 $infoTextMaxWidth: $width50;

@@ -71,6 +71,7 @@
 		"redux-thunk": "2.3.0",
 		"sass": "^1.49.7",
 		"slick-carousel": "^1.8.1",
+		"stylelint-declaration-use-variable": "^1.7.3",
 		"webpack": "^4.44.2"
 	},
 	"devDependencies": {

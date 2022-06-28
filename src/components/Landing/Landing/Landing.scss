@@ -36,9 +36,9 @@
 .button-container {
     position: relative;
     top: 35%;
-    left: 50%;
+    left: $halfWidth;
     width: fit-content;
-    transform: translate(-50%, -50%);
+    transform: translate($minusHalfWidth, $minusHalfWidth);
 }
 
 // TODO: move this style to HeadArticleButton
@@ -52,7 +52,7 @@
 .btn {
     width: fit-content;
     margin: 0 !important;
-    font-size: 1.3em;
+    font-size: $fontsize13em;
 }
 
 .buttons {
@@ -71,7 +71,7 @@
 .icons-wrapper {
     display: flex;
     justify-content: space-around;
-    font-size: 4em;
+    font-size: $fontsize4em;
 }
 
 .events-article {

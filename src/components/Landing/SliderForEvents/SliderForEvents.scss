@@ -1,10 +1,11 @@
 @import "../../../styles/colors.scss";
 @import "../../../styles/mixins.scss";
+@import "../../../styles/variables.scss";
 
-$slickBeforeTransformOrigin: 100% 100%;
-$slickAfterTransformOrigin: 100% 0%;
-$slickTranslate: translate(-75%, -50%);
-$slickPrevAfterTranslate: translate(-75%, 50%);
+$slickBeforeTransformOrigin: $fullWidth  $fullWidth;
+$slickAfterTransformOrigin: $fullWidth 0%;
+$slickTranslate: translate(-75%, $minusHalfWidth);
+$slickPrevAfterTranslate: translate(-75%, $halfWidth);
 $slickPrevRotate: 135deg;
 $slickNextRotate: 45deg;
 
@@ -42,11 +43,11 @@ $slickNextRotate: 45deg;
 
 .slick-prev {
     left: -40px;
-    transform: translate(150%, -50%);
+    transform: translate($hundredAndFifty, $minusHalfWidth);
 }
 
 .slick-next {
-    transform: translate(-150%, -50%);
+    transform: translate(-$minusHundredAndFifty, $minusHalfWidth);
 }
 
 .container {
@@ -72,7 +73,7 @@ $slickNextRotate: 45deg;
     width: 40px;
     height: 4px;
     background: $gray;
-    opacity: 1;
+    opacity: $opacity1;
     content: "";
 }
 
@@ -80,7 +81,7 @@ $slickNextRotate: 45deg;
     width: 40px;
     height: 4px;
     background: $lightThemeAccept;
-    opacity: 1;
+    opacity: $opacity1;
     content: "";
 }
 

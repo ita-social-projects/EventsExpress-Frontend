@@ -9,7 +9,9 @@
     top: 0;
     left: 0;
     z-index: 1;
+
     @include flex(row, center, center);
+
     width: $fullWidth;
     height: $fullHeight;
     background-color: $backGroundModal;
@@ -25,7 +27,7 @@
 }
 
 .titleText {
-    font-size: 1.5rem;
+    font-size: $fontsize15rem;
     text-align: center;
 }
 
@@ -48,11 +50,11 @@
     .interactBtn {
         padding: 0.5rem 1.25rem;
         font-weight: $thick;
-        font-size: 0.875rem;
+        font-size: $fontsize0875rem;
         font-family: $mainFont;
         border-radius: $r12;
         cursor: pointer;
-        opacity: 0.9;
+        opacity: $opacity09;
         transition: $defaultTransition;
 
         &:hover {

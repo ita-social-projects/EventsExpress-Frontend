@@ -28,7 +28,7 @@ input {
 }
 
 .preview-container.valid {
-    border: 1px solid rgb(114 113 113 / 32.9%);
+    border: 1px solid $middleGray;
 }
 
 .preview-container.invalid {

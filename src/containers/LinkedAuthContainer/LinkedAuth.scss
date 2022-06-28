@@ -1,4 +1,5 @@
 @import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
 
 .btnFacebook {
     display: inline-block;
@@ -22,21 +23,21 @@
     margin: 0 5px;
     padding: 0 5px;
     color: $middleGray;
-    font-weight: 600;
+    font-weight: $mibbleText;
     text-align: center;
     background: $white;
     border: 0 transparent;
     border-radius: 25px;
-    box-shadow: 0 0 2px rgb(0 0 0 / 60%);
+    box-shadow: $buttonShadow;
 }
 
 .btnFacebook:hover {
     background: $lightBlue;
-    opacity: 0.6;
+    opacity: $opacity05;
 }
 
 .btnGoogle:hover {
-    opacity: 0.6;
+    opacity: $opacity05;
 }
 
 .fa-google.blue {
@@ -53,16 +54,16 @@
 
     .btnFacebook,
     .btnGoogle {
-        width: 100%;
+        width: $fullWidth;
     }
 }
 
 h6 {
-    width: 100%;
+    width: $fullWidth;
     margin: 20px 0;
     line-height: 0.1em;
     text-align: center;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid $black;
 }
 
 h6 span {

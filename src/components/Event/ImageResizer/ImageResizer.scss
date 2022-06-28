@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 body {
     margin: 0;
     padding: 0;
@@ -20,12 +22,12 @@ body {
 .controls {
     position: absolute;
     bottom: 0;
-    left: 50%;
+    left: $halfWidth;
     display: flex;
     align-items: center;
-    width: 50%;
+    width: $halfWidth;
     height: 80px;
-    transform: translateX(-50%);
+    transform: translateX($minusHalfWidth);
 }
 
 .slider {
