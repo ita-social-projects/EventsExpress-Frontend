@@ -7,6 +7,7 @@ import {
   FilterExpansionPanelWrapper,
 } from "./filter-expansion-panel-parts";
 import useFilterExpansionPanelStyles from "./filter-expansion-panel-styles";
+import { BUTTON_NAMES } from "../../../../constants/buttonConsts";
 
 const FilterExpansionPanel = ({
   title,
@@ -51,7 +52,7 @@ const FilterExpansionPanel = ({
           onClick={onClearClick}
           disabled={clearDisabled}
         >
-          Clear
+          {BUTTON_NAMES.CLEAR}
         </Button>
       </FilterExpansionPanelSummary>
       <FilterExpansionPanelDetails>{children}</FilterExpansionPanelDetails>

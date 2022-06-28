@@ -6,7 +6,7 @@ import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import PropTypes from "prop-types";
-import { ENUM_LOCATION_TYPE } from "../../../../../constants/eventConstants";
+import { CURRENT_POSITION_ON_MAP, ENUM_LOCATION_TYPE } from "../../../../../constants/eventConstants";
 import FilterExpansionPanel from "../../expansion-panel/filter-expansion-panel";
 import { LocationMapWithCircle } from "../../../../helpers/form-helpers/location";
 import DisplayMap from "../../../Map/DisplayMap";
@@ -85,7 +85,7 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
           formValues.location.latitude &&
           formValues.location.longitude && (
             <div>
-              <p>Current position on the Map is:</p>
+              <p>{CURRENT_POSITION_ON_MAP}</p>
               <DisplayMap location={{ ...formValues.location }} />
             </div>
           )}

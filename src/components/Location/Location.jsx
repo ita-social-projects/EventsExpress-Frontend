@@ -7,7 +7,10 @@ import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import TextField from "@material-ui/core/TextField";
 import { renderFieldError } from "../helpers/form-helpers";
-import { ENTER_LOCATION, ENUM_LOCATION_TYPE } from "../../constants/eventConstants";
+import {
+  ENTER_LOCATION,
+  ENUM_LOCATION_TYPE,
+} from "../../constants/eventConstants";
 import { LocationMapWithMarker } from "../helpers/form-helpers/location";
 
 class Location extends Component {

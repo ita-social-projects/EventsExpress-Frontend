@@ -16,7 +16,6 @@ const treeWithViewMode = (store, viewMode) =>
       <Provider store={store}>
         <IconsEventCard styleForIcon={viewMode} />
       </Provider>
-      ,
     </BrowserRouter>,
   );
 

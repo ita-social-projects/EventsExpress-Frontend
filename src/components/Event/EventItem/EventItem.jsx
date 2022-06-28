@@ -136,7 +136,6 @@ const EventCard = props => {
               ) : (
                 <>
                   {displayedCategories}
-                  {","}
                   <Typography
                     variant="body2"
                     color="textSecondary"
@@ -144,7 +143,6 @@ const EventCard = props => {
                   >
                     {restCategories}
                   </Typography>
-                  ,
                 </>
               )}
             </div>

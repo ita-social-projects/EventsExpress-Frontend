@@ -18,6 +18,7 @@ export const BUTTON_NAMES = {
   JOIN: "Join",
   CHANGE_EVENT_STATUS: "Change Event Status",
   BIND: "BIND",
+  CLEAR: "Clear",
 };
 
 export const CHECKBOX_TITLE_HOBBIES =

@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { LIST_OF_INVENTORIES } from "../../constants/inventoryConstatns";
 
 const InventoryHeaderButton = ({ isOpen, handleOnClickCaret }) => {
   return (
     <div className="d-flex justify-content-start align-items-center">
-      <h4>List of inventories</h4>
+      <h4>{LIST_OF_INVENTORIES}</h4>
       {isOpen && (
         <button
           type="button"

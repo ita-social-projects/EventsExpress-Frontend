@@ -103,7 +103,10 @@ export const CANCEL_EVENTS = {
 };
 
 export const CREATE_WITHOUT_EDITING = "Create without editing";
+
 export const ENTER_LOCATION = "Enter an https:// URL:";
+export const CURRENT_POSITION_ON_MAP = "Current position on the Map is:";
+export const ONLINE_MEETING_HERE = "Online meeting here";
 
 export const EVENT_ITEM_VIEW_CONSTS = {
   YOU_GONNA_VISIT: "You are gonna visit.",
