@@ -7,6 +7,7 @@ import parseEuDate from "../helpers/form-helpers/parseEuDate";
 import { ISSUE_STATUS_ENUM } from "../../constants/issueConstants";
 import { compareObjects } from "../helpers/filterHelper/filterHelper";
 import "./ContactAdminFilter.scss";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 class ContactAdminFilter extends Component {
   constructor(props) {
@@ -81,7 +82,7 @@ class ContactAdminFilter extends Component {
                 onClick={onReset}
                 disabled={submitting}
               >
-                {"Reset\r"}
+                {BUTTON_NAMES.RESET}
               </Button>
               <Button
                 fullWidth
@@ -89,7 +90,7 @@ class ContactAdminFilter extends Component {
                 color="primary"
                 disabled={submitting}
               >
-                {"Search\r"}
+                {BUTTON_NAMES.SUBMIT}
               </Button>
             </div>
           </form>

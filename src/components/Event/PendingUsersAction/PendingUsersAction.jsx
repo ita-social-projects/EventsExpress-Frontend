@@ -7,6 +7,7 @@ import {
   promoteToOwner,
   approveUser,
 } from "../../../actions/event/event-item-view-action";
+import { BUTTON_NAMES } from "../../../constants/buttonConsts";
 
 const useStyles = makeStyles(() => ({
   success: {
@@ -38,14 +39,14 @@ const PendingUsersActions = props => {
             className={classes.success}
             onClick={() => props.approveUser(user.id, props.eventId, true)}
           >
-            {"Approve\r"}
+            {BUTTON_NAMES.APROVE}
           </Button>
           <Button
             variant="contained"
             className={classes.danger}
             onClick={() => props.approveUser(user.id, props.eventId, false)}
           >
-            {"Deny\r"}
+            {BUTTON_NAMES.DENY}
           </Button>
         </>
       )}

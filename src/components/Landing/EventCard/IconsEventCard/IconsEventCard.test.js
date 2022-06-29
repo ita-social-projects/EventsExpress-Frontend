@@ -12,6 +12,7 @@ const mockStore = configureStore([]);
 
 const treeWithViewMode = (store, viewMode) =>
   renderer.create(
+    // eslint-disable-next-line react/jsx-filename-extension
     <BrowserRouter>
       <Provider store={store}>
         <IconsEventCard styleForIcon={viewMode} />

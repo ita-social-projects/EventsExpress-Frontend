@@ -22,6 +22,7 @@ const store = configureStore(history, initialState);
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
+  // eslint-disable-next-line react/jsx-filename-extension
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <App />

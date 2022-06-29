@@ -1,6 +1,7 @@
 export const NOT_SPECIFIED = "Not Specified";
 export const NO_RESULT = "No Results";
 
+export const REQUIRED_LABEL = "Label";
 export const LOGO_TITLE = "EXPRESS";
 export const USER_LABEL = "User";
 export const OOPS = "Oops!";

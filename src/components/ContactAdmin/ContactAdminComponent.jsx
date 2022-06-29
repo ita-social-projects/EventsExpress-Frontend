@@ -9,6 +9,8 @@ import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import isValidEmail from "../helpers/validators/email-address-validator";
 import { maxLength30 } from "../helpers/validators/min-max-length-validators";
 import fieldIsRequired from "../helpers/validators/required-fields-validator";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
+import { CONTACT_ADMIN_COMP_CONSTS } from "../../constants/adminConstants";
 
 const validate = values => {
   const errors = {};
@@ -30,7 +32,7 @@ class ContactAdmin extends PureComponent {
     return (
       <div id="notfound">
         <div className="notfound">
-          <h1 className="f1">{"Contact Us"}</h1>
+          <h1 className="f1">{CONTACT_ADMIN_COMP_CONSTS.CONTACT_US}</h1>
           <form className="notfound-404" onSubmit={this.props.handleSubmit}>
             <div className="box text text-2 pl-md-4 ">
               {this.props.user.role === "User" ? (
@@ -52,7 +54,9 @@ class ContactAdmin extends PureComponent {
               <p />
               <p />
               <p />
-              <div className="text-left mb-2">{"Problem Type"}</div>
+              <div className="text-left mb-2">
+                {CONTACT_ADMIN_COMP_CONSTS.PROBLEM_TYPE}
+              </div>
               <Field
                 name="subject"
                 className="form-control"
@@ -60,12 +64,20 @@ class ContactAdmin extends PureComponent {
                 parse={value => Number(value)}
               >
                 <option value={ISSUE_TYPE_ENUM.NEWCATEGORY}>
-                  {"New Category\r"}
+                  {CONTACT_ADMIN_COMP_CONSTS.NEW_CATEGORY}
                 </option>
-                <option value={ISSUE_TYPE_ENUM.BADUSER}>{"Bug Report"}</option>
-                <option value={ISSUE_TYPE_ENUM.BADEVENT}>{"Bad Event"}</option>
-                <option value={ISSUE_TYPE_ENUM.BADUSER}>{"Bad User"}</option>
-                <option value={ISSUE_TYPE_ENUM.OTHER}>{"Other"}</option>
+                <option value={ISSUE_TYPE_ENUM.BADUSER}>
+                  {CONTACT_ADMIN_COMP_CONSTS.BUG_REPORT}
+                </option>
+                <option value={ISSUE_TYPE_ENUM.BADEVENT}>
+                  {CONTACT_ADMIN_COMP_CONSTS.BAD_EVENT}
+                </option>
+                <option value={ISSUE_TYPE_ENUM.BADUSER}>
+                  {CONTACT_ADMIN_COMP_CONSTS.BAD_USER}
+                </option>
+                <option value={ISSUE_TYPE_ENUM.OTHER}>
+                  {CONTACT_ADMIN_COMP_CONSTS.OTHER}
+                </option>
               </Field>
 
               {this.props.formValues !== undefined &&
@@ -94,7 +106,7 @@ class ContactAdmin extends PureComponent {
               color="primary"
               disabled={pristine || submitting}
             >
-              {"Submit\r"}
+              {BUTTON_NAMES.SUBMIT}
             </Button>
             <Button
               type="button"
@@ -102,7 +114,7 @@ class ContactAdmin extends PureComponent {
               disabled={pristine || submitting}
               onClick={reset}
             >
-              {"Clear\r"}
+              {BUTTON_NAMES.CLEAR}
             </Button>
           </form>
         </div>

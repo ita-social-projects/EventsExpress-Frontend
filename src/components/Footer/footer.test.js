@@ -6,6 +6,7 @@ import Footer from "./Footer";
 describe("test Footer", () => {
   it("check Footer component", () => {
     const div = document.createElement("div");
+    // eslint-disable-next-line react/jsx-filename-extension
     ReactDOM.render(<Footer />, div);
     ReactDOM.unmountComponentAtNode(div);
   });

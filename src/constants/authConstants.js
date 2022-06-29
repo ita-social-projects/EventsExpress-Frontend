@@ -28,3 +28,5 @@ export const OR_SIGN_WITH = "Or sign in with:";
 
 export const REGISTRATION_SUCCESSFUL = "Successful registration!";
 export const SELECTED_ACTIVITIES = "Selected activities";
+export const CONGRATULATION_CAUSE_REGISTER =
+  "Our congratulation, Your registration was successful!";

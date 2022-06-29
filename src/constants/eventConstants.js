@@ -104,10 +104,16 @@ export const CANCEL_EVENTS = {
 };
 
 export const CREATE_WITHOUT_EDITING = "Create without editing";
-
+export const CREATE_WITH_EDITING = "Create with editing";
+export const CONFIRMATION = "Confirmation";
 export const ENTER_LOCATION = "Enter an https:// URL:";
 export const CURRENT_POSITION_ON_MAP = "Current position on the Map is:";
 export const ONLINE_MEETING_HERE = "Online meeting here";
+export const RUN = {
+  LAST: "Last run",
+  NEXT: "Next run",
+};
+export const FILTERS = "Filters";
 
 export const EVENT_ITEM_VIEW_CONSTS = {
   YOU_GONNA_VISIT: "You are gonna visit.",
@@ -120,4 +126,15 @@ export const EVENT_ITEM_VIEW_CONSTS = {
   ADULT_LABEL: "18+",
   EVENTS_FOR_ADULTS: "This event is only for adults.",
   AGE_REQUIREMENTS: "You do not meet age requirements for this event.",
+};
+
+export const EVENT_SCHEDULE_CONSTS = {
+  CLICK: "Click",
+  CANCEL_ONE: "Cancel Once",
+  CANCEL: "Cancel",
+  EDITING: "editing.",
+  TO_CREATE_WITH: "to create the event with",
+  TO_CREATE_WITHOUT: "to create the event without",
+  TO_CANCEL_ALL: "to cancel all events.",
+  TO_CANCEL_NEXT: "to cancel the next event.",
 };

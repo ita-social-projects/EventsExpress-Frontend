@@ -2,6 +2,7 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { loginAfterEmailConfirmation } from "../../actions/login/login-action";
+import { CONGRATULATION_CAUSE_REGISTER } from "../../constants/authConstants";
 
 class Authentication extends Component {
   componentWillMount = () => {
@@ -13,7 +14,7 @@ class Authentication extends Component {
     return (
       <div className="mt-5 b-inline-block">
         <div className="h3 text-center alert alert-success">
-          {"Our congratulation, Your registration was successful!\r"}
+          {CONGRATULATION_CAUSE_REGISTER}
         </div>
       </div>
     );

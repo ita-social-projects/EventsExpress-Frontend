@@ -5,6 +5,7 @@ import propTypes from "prop-types";
 import ContactAdminItemContainer from "../../containers/ContactAdminContainers/ContactAdminItemContainer";
 import RenderIssuesList from "./RenderIssuesList";
 import { getQueryStringByFilter } from "../helpers/filterHelper/filterHelper";
+import { CONTACT_ADMIN_CONSTS } from "../../constants/adminConstants";
 
 class ContactAdminList extends Component {
   pageChange = page => {
@@ -30,12 +31,18 @@ class ContactAdminList extends Component {
       <>
         {this.props.dataList > 0 ? (
           <tr className="bg-light text-dark font-weight-bold text-center">
-            <td className="justify-content-center">{"Title"}</td>
-            <td className="d-flex align-items-center justify-content-center">
-              {"Date created\r"}
+            <td className="justify-content-center">
+              {CONTACT_ADMIN_CONSTS.TITLE}
             </td>
-            <td className="justify-content-center">{"Status"}</td>
-            <td className="justify-content-center">{"Details"}</td>
+            <td className="d-flex align-items-center justify-content-center">
+              {CONTACT_ADMIN_CONSTS.DATE_CREATED}
+            </td>
+            <td className="justify-content-center">
+              {CONTACT_ADMIN_CONSTS.STATUS}
+            </td>
+            <td className="justify-content-center">
+              {CONTACT_ADMIN_CONSTS.DETAILS}
+            </td>
             <RenderIssuesList
               {...changedProps}
               renderSingleIssue={this.renderSingleIssue}

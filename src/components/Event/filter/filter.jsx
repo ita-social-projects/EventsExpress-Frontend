@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Drawer, Icon, IconButton, Typography } from "@material-ui/core";
 import useFilterStyles from "./filter-styles";
 import FilterForm from "./form/filter-form";
+import { FILTERS } from "../../../constants/eventConstants";
 
 const Filter = () => {
   const [open, setOpen] = useState(false);
@@ -16,7 +17,7 @@ const Filter = () => {
           <Icon className="fas fa-arrow-circle-left" />
         </IconButton>
         <Typography variant="h6" component="span">
-          {"Filters\r"}
+          {FILTERS}
         </Typography>
       </div>
       <Drawer

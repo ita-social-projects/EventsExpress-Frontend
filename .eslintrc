@@ -24,7 +24,7 @@
     // "complexity": ["error", 12],
     
     "eol-last": ["error", "always"],
-    // "import/no-unresolved": [2, { "caseSensitive": true }], // check if imported file can be resolved
+    "import/no-unresolved": [2, { "caseSensitive": true }],
     // "no-magic-numbers": [
     //   "error",
     //   { "ignoreDefaultValues": true }
@@ -52,20 +52,20 @@
     "react/jsx-props-no-spreading": "off", // forbid to pass props via spread operator ~ 30
     "react/jsx-curly-newline": 0, // formatting rule have to be off
 
-    "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".js"] }], // files with jsx inside must have .jsx extension
-    "react-hooks/rules-of-hooks": "error", // should be here
-    "react-hooks/exhaustive-deps": "off", // skip required useEffect dependency
-    // "react/jsx-max-depth": ["error", { "max": 4 }], // max deep in jsx --------> ~ 140 errors ~ 25components
+    "react/jsx-filename-extension": [1, { "extensions": [".jsx"] }], // files with jsx inside must have .jsx extension
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "off",
+    // "react/jsx-max-depth": ["error", { "max": 6 }], // max deep in jsx --------> ~ 140 errors ~ 25components
     // "react/no-unstable-nested-components": "error", // forbidden to create component inside another
-    // "react/no-array-index-key": "error", // forbidden element index as key
-    // "react/no-multi-comp": ["error", { "ignoreStateless": false }], // one file - one component
+    "react/no-array-index-key": "error", // forbidden element index as key
+    "react/no-multi-comp": ["error", { "ignoreStateless": false }], // one file - one component
     "react/jsx-curly-brace-presence": [
       "error",
       {
         "props": "never",
         "children": "always"
       }
-    ], // requires constants in jsx  --------> ~ 230 errors
+    ],
 
     "jsx-a11y/label-has-for": [
       "error",

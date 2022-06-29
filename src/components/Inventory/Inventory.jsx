@@ -7,6 +7,7 @@ import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-
 import InventoryHeaderButton from "./InventoryHeaderButton";
 import "./Inventory.scss";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
+import { REQUIRED_LABEL } from "../../constants/labelConstants";
 
 const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
   return (
@@ -27,10 +28,7 @@ const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
           <li className="" key={item.id}>
             <div className="d-flex flex-wrap justify-content-between align-items-center">
               <div className="p-2 bd-highlight align-self-end">
-                <span>
-                  {index + 1}
-                  {"."}
-                </span>
+                <span>{index + 1}</span>
               </div>
               <div className="p-2 bd-highlight">
                 <Field
@@ -113,7 +111,7 @@ class Inventory extends Component {
           {this.props.syncErrors.inventories && !this.state.isOpen && (
             <span className="text-danger">
               <i className="fas fa-exclamation-circle text-danger" />
-              {"required\r"}
+              {REQUIRED_LABEL}
             </span>
           )}
         </div>

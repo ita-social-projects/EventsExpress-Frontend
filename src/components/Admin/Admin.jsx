@@ -8,6 +8,7 @@ import UnitOfMeasuring from "../UnitOfMeasuring/UnitOfMeasuring";
 import NotificationTemplateWrapper from "../../containers/NotificationTemplateContainer/NotificationTemplateContainer";
 import NotificationInfoWrapper from "../../containers/NotificationTemplateContainer/NotificationInfoContainer";
 import Track from "../Tracks/Tracks";
+import { ADMIN_PANEL } from "../../constants/adminConstants";
 
 // TODO Rename to function component
 export default class Admin extends PureComponent {
@@ -15,7 +16,7 @@ export default class Admin extends PureComponent {
     return (
       <>
         <div className="admin-panel row">
-          <h3>{"Admin Panel"}</h3>
+          <h3>{ADMIN_PANEL}</h3>
         </div>
         <div className="row h-100">
           <div className="admin-sidebar col-sm-2">

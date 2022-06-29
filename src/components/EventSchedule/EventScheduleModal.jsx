@@ -3,6 +3,8 @@ import Modal from "react-bootstrap/Modal";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import "./EventSchedule.scss";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
+import { CONFIRMATION } from "../../constants/eventConstants";
 
 const EventScheduleModal = ({
   show,
@@ -19,15 +21,15 @@ const EventScheduleModal = ({
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>{"Confirmation"}</Modal.Title>
+          <Modal.Title>{CONFIRMATION}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{message}</Modal.Body>
         <Modal.Footer>
           <Button color="primary" variant="outlined" onClick={cancelHandler}>
-            {"Cancel\r"}
+            {BUTTON_NAMES.CANCEL}
           </Button>
           <Button color="primary" variant="contained" onClick={submitHandler}>
-            {"Submit\r"}
+            {BUTTON_NAMES.SUBMIT}
           </Button>
         </Modal.Footer>
       </Modal>
