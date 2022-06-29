@@ -6,6 +6,7 @@ import { AiFillEdit } from "react-icons/ai";
 import EventCard from "../Landing/EventCard/EventCard";
 import EventCardModal from "../Landing/EventCard/EventCardModal/EventCardModal";
 import { ICON_PROPERTIES } from "../../constants/draftConstants";
+import { CARD_TYPE } from "../../constants/eventConstants";
 
 const DraftEventCard = ({
   event,
@@ -41,14 +42,19 @@ const DraftEventCard = ({
       onDelete={onDelete}
     />
   ) : null;
+
+  const getCardButtons = type => {
+    return type === CARD_TYPE.HOME
+      ? additionalButtons[1]
+      : additionalButtons[0];
+  };
+
   return (
     <EventCard
       key={event.id}
       event={event}
       handleClick={onDelete}
-      additionalButtons={
-        cardType === "home" ? additionalButtons[1] : additionalButtons[0]
-      }
+      additionalButtons={getCardButtons(cardType)}
       additionalModal={additionalModal}
     />
   );
