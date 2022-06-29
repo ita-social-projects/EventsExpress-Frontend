@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { EVENT_FILTER_Z_INDEX } from "../../../constants/eventConstants";
 
 const drawerWidth = 320;
 const drawerIndex = 250;
@@ -28,7 +29,7 @@ const useFilterStyles = makeStyles({
     position: "sticky",
     top: 0,
     backgroundColor: "#fff",
-    zIndex: drawerIndex + 2,
+    zIndex: drawerIndex + EVENT_FILTER_Z_INDEX,
   },
   filterHeaderPart: {
     display: "flex",

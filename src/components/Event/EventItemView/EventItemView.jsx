@@ -13,7 +13,7 @@ import EventLeaveModal from "../EventLeaveModal/EventLeaveModal";
 import InventoryList from "../../Inventory/InventoryList";
 import DisplayLocation from "../Map/DisplayLocation";
 
-import { USER_STATUS_ENUM } from "../../../constants/userConstants";
+import { ADULT_AGE, USER_STATUS_ENUM } from "../../../constants/userConstants";
 import {
   EVENT_DEFAULT_IMAGE,
   EVENT_ITEM_VIEW_CONSTS,
@@ -112,6 +112,7 @@ export default class EventItemView extends Component {
     const visitorsEnum = {
       approvedUsers: visitors.filter(x => x.userStatusEvent === 0),
       deniedUsers: visitors.filter(x => x.userStatusEvent === 1),
+      // eslint-disable-next-line no-magic-numbers
       pendingUsers: visitors.filter(x => x.userStatusEvent === 2),
     };
 
@@ -120,7 +121,8 @@ export default class EventItemView extends Component {
     const isMyEvent = owners.find(x => x.id === currentUser.id) !== undefined;
     const isFreePlace = visitorsEnum.approvedUsers.length < maxParticipants;
     const isAdult =
-      moment.duration(today.diff(moment(currentUser.birthday))).asYears() >= 18;
+      moment.duration(today.diff(moment(currentUser.birthday))).asYears() >=
+      ADULT_AGE;
 
     const canEdit = isFutureEvent && isMyEvent;
     const isAppropriateAge = !isOnlyForAdults || isAdult;

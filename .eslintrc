@@ -25,10 +25,10 @@
     
     "eol-last": ["error", "always"],
     "import/no-unresolved": [2, { "caseSensitive": true }],
-    // "no-magic-numbers": [
-    //   "error",
-    //   { "ignoreDefaultValues": true }
-    // ], // magic number becides 0,1 --------> ~ 100 errors
+    "no-magic-numbers": [
+      "error",
+      { "ignoreDefaultValues": true, "ignoreArrayIndexes": true ,"ignore": [-1,0,1]  }
+    ],
 
     "import/no-cycle": [
       "off", // error
@@ -37,14 +37,14 @@
       }
     ], // forbidden cycle dependency  --------> ~ 15 errors
 
-    "import/extensions": ["error", "never"], // no need to import with file extension
-    // "import/no-named-as-default": ["error"], // import name === export name
+    "import/extensions": ["error", "never"], 
+    "import/no-named-as-default": ["error"],
     // "import/no-unused-modules": [
     //   "error",
     //   { "missingExports": true, "unusedExports": true }
-    // ], // check if file is imported somewhere --------> ~ 110 errors
+    // ],
 
-    // "react/destructuring-assignment": 2, // require props destructuring inside component ~ 600
+    // "react/destructuring-assignment": 2, // require props destructuring inside component ~ 600 // need to refactor all CC
     "react/destructuring-assignment": "off",
     "react/forbid-prop-types": "off", // forbid propTypes.object
     "react/no-did-update-set-state": "off", // needed till we have class components
@@ -52,13 +52,13 @@
     "react/jsx-props-no-spreading": "off", // forbid to pass props via spread operator ~ 30
     "react/jsx-curly-newline": 0, // formatting rule have to be off
 
-    "react/jsx-filename-extension": [1, { "extensions": [".jsx"] }], // files with jsx inside must have .jsx extension
+    "react/jsx-filename-extension": [1, { "extensions": [".jsx"] }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "off",
-    // "react/jsx-max-depth": ["error", { "max": 6 }], // max deep in jsx --------> ~ 140 errors ~ 25components
-    // "react/no-unstable-nested-components": "error", // forbidden to create component inside another
-    "react/no-array-index-key": "error", // forbidden element index as key
-    "react/no-multi-comp": ["error", { "ignoreStateless": false }], // one file - one component
+    // "react/jsx-max-depth": ["error", { "max": 6 }], // max deep in jsx --------> ~ 7 components
+    "react/no-unstable-nested-components": "error",
+    "react/no-array-index-key": "error",
+    "react/no-multi-comp": ["error", { "ignoreStateless": false }],
     "react/jsx-curly-brace-presence": [
       "error",
       {
