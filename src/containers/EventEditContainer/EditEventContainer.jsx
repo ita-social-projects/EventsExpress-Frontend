@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -15,16 +15,19 @@ import {
 } from "../../components/helpers/action-helpers";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
-// TODO Refactor class component
 const EditEventContainer = ({
   event,
+  editEventForm,
   userId,
+  userName,
   history,
   allCategories,
   formValues,
+  handleEventFormError,
 }) => {
+  const { SAVE, CANCEL } = BUTTON_NAMES;
   const onSubmit = async values => {
-    await editEvent({
+    await editEventForm({
       ...validateEventForm(values),
       userId,
       id: event.id,
@@ -33,7 +36,7 @@ const EditEventContainer = ({
     history.goBack();
   };
 
-  const onError = error => handleFormError(error);
+  const onError = error => handleEventFormError(error);
 
   return (
     <>
@@ -44,13 +47,14 @@ const EditEventContainer = ({
           onSubmit={onSubmit}
           onError={onError}
           initialValues={event}
+          userName={userName}
           formValues={formValues}
-          haveReccurentCheckBox={false}
+          haveReccurentCheckBox
           eventId={event.id}
         >
           <div className="col">
             <Button className="border" fullWidth color="primary" type="submit">
-              {BUTTON_NAMES.SAVE}
+              {SAVE}
             </Button>
           </div>
           <div className="col">
@@ -60,7 +64,7 @@ const EditEventContainer = ({
               color="primary"
               onClick={history.goBack}
             >
-              {BUTTON_NAMES.CANCEL}
+              {CANCEL}
             </Button>
           </div>
         </EventForm>
@@ -71,7 +75,7 @@ const EditEventContainer = ({
 
 const mapStateToProps = state => ({
   userId: state.user.id,
-  addEventStatus: state.add_event,
+  userName: state.user.name,
   allCategories: state.categories,
   formValues: getFormValues("event-form")(state),
   event: state.event.data,
@@ -79,7 +83,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    editEvent: data =>
+    editEventForm: data =>
       dispatch(
         editEvent(
           data,
@@ -90,22 +94,28 @@ const mapDispatchToProps = dispatch => {
         ),
       ),
     alert: msg => dispatch(setSuccessAllert(msg)),
-    handleFormError: error => dispatch(handleFormError(error)),
+    handleEventFormError: error => dispatch(handleFormError(error)),
   };
 };
 
 EditEventContainer.propTypes = {
+  editEventForm: PropTypes.func,
   event: PropTypes.object,
   userId: PropTypes.string,
+  userName: PropTypes.string,
   history: PropTypes.object,
+  handleEventFormError: PropTypes.func,
   allCategories: PropTypes.object,
   formValues: PropTypes.object,
 };
 
 EditEventContainer.defaultProps = {
+  editEventForm: () => {},
   userId: "",
+  userName: "",
   event: {},
   history: {},
+  handleEventFormError: () => {},
   allCategories: {},
   formValues: {},
 };
