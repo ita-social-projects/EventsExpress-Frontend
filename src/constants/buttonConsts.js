@@ -19,6 +19,14 @@ export const BUTTON_NAMES = {
   CHANGE_EVENT_STATUS: "Change Event Status",
   BIND: "BIND",
   CLEAR: "Clear",
+  SUBMIT: "Submit",
+  APPLY: "Apply",
+  APROVE: "Aprove",
+  DENY: "Deny",
+  CLOSE: "Close",
+  MARK_RESOLVED: "Mark as resolved",
+  MOVE_IN_PROGRESS: "Move in progress",
+  SEND: "Send",
 };
 
 export const CHECKBOX_TITLE_HOBBIES =

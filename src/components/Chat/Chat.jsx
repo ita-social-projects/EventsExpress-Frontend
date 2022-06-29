@@ -15,6 +15,7 @@ import getChat, {
 import Msg from "./Msg";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import CustomAvatarContainer from "../CustomAvatar/CustomAvatar";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 class Chat extends Component {
   componentWillMount = () => {
@@ -142,7 +143,7 @@ class Chat extends Component {
                     color="primary"
                     className="w-25"
                   >
-                    Send
+                    {BUTTON_NAMES.SEND}
                   </Button>
                 </form>
               </div>

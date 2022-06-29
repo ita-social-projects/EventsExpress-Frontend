@@ -11,6 +11,8 @@ import {
   resetFilters,
 } from "../../../../actions/events/filter/actions";
 import LocationFilter from "../parts/location/location-filter";
+import { BUTTON_NAMES } from "../../../../constants/buttonConsts";
+import { FILTERS } from "../../../../constants/eventConstants";
 
 const FilterForm = ({
   handleSubmit,
@@ -34,7 +36,7 @@ const FilterForm = ({
           <IconButton onClick={toggleOpen}>
             <Icon className="fas fa-arrow-circle-right" />
           </IconButton>
-          <h5 className={classes.filterHeading}>Filters</h5>
+          <h5 className={classes.filterHeading}>{FILTERS}</h5>
         </div>
         <div className={classes.filterHeaderPart}>
           <Button
@@ -43,10 +45,10 @@ const FilterForm = ({
             disableElevation
             onClick={onReset}
           >
-            Reset
+            {BUTTON_NAMES.RESET}
           </Button>
           <GreenButton type="submit" disabled={pristine}>
-            Apply
+            {BUTTON_NAMES.APPLY}
           </GreenButton>
         </div>
       </div>
