@@ -138,6 +138,7 @@ const store = mockStore({
 
 const treeWithEvents = viewMode =>
   renderer.create(
+    // eslint-disable-next-line react/jsx-filename-extension
     <BrowserRouter>
       <Provider store={store}>
         {viewModeSwitcher(events, viewMode, filterTitle)}
