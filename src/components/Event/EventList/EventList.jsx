@@ -25,7 +25,6 @@ const EventList = ({ items, getEvents }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     getEvents();
   }, []);
-  console.log(items);
   return (
     <RenderList
       cardType={CARD_TYPE.HOME}

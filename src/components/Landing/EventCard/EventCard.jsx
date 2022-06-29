@@ -62,13 +62,13 @@ const EventCard = ({ event, additionalButtons, additionalModal }) => {
 
 EventCard.propTypes = {
   event: PropTypes.object,
-  additionalButtons: PropTypes.array,
+  additionalButtons: PropTypes.object,
   additionalModal: PropTypes.object,
 };
 
 EventCard.defaultProps = {
   event: {},
-  additionalButtons: [],
+  additionalButtons: {},
   additionalModal: null,
 };
 export default EventCard;
