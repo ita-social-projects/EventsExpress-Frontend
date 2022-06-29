@@ -11,9 +11,9 @@ import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
-import profileConstants from "../../../constants/profileConstants";
+import PROFILE_CONSTANTS from "../../../constants/profileConstants";
 
-const { fields, fieldsLabel, PASSWORD_NOT_MATCH } = profileConstants;
+const { FIELDS, FIELDS_LABEL, PASSWORD_NOT_MATCH } = PROFILE_CONSTANTS;
 
 const validate = values => {
   const errors = {};
@@ -21,7 +21,7 @@ const validate = values => {
     errors.repeatPassword = PASSWORD_NOT_MATCH;
   }
   return {
-    ...fieldIsRequired(values, fields),
+    ...fieldIsRequired(values, FIELDS),
     ...errors,
   };
 };
@@ -39,7 +39,7 @@ const ChangePassword = ({
     setExpanded(isExpanded ? panel : false);
   };
 
-  const { SUBMIT, CLEAR, CHANGE_PASSWORD, PANEL5 } = profileConstants;
+  const { SUBMIT, CLEAR, CHANGE_PASSWORD, PANEL5 } = PROFILE_CONSTANTS;
   return (
     <Accordion expanded={expanded === PANEL5} onChange={handleChange(PANEL5)}>
       <AccordionSummary
@@ -54,11 +54,11 @@ const ChangePassword = ({
           <MuiThemeProvider>
             <form onSubmit={handleSubmit}>
               <div className="d-flex flex-column">
-                {fields.map((field, index) => (
+                {FIELDS.map((field, index) => (
                   <Field
                     key={field}
                     name={field}
-                    label={fieldsLabel[index]}
+                    label={FIELDS_LABEL[index]}
                     component={renderTextField}
                     type="password"
                     className="mb-3"

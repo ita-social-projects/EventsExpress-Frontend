@@ -1,4 +1,4 @@
-const profileConstants = {
+const PROFILE_CONSTANTS = {
   TYPE_LIST: "list",
   TYPE_AVATAR: "avatar",
   TYPE_TEXT: "text",
@@ -25,9 +25,9 @@ const profileConstants = {
   CHANGE_PASSWORD: "Change Password",
   PASSWORD_NOT_MATCH: "Password do not match",
   DATE_INCORRECT: "Date is incorrect",
-  genders: ["Male", "Female", "Other"],
-  fields: ["oldPassword", "newPassword", "repeatPassword"],
-  fieldsLabel: [
+  GENDERS: ["Male", "Female", "Other"],
+  FIELDS: ["oldPassword", "newPassword", "repeatPassword"],
+  FIELDS_LABEL: [
     "Input current password",
     "Input new password",
     "Repeat new password",
@@ -36,4 +36,4 @@ const profileConstants = {
   YOUNGEST_DATE_OF_CHOICE: 14,
 };
 
-export default profileConstants;
+export default PROFILE_CONSTANTS;

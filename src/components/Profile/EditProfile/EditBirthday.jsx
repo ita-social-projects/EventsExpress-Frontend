@@ -5,13 +5,13 @@ import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
-import profileConstants from "../../../constants/profileConstants";
+import PROFILE_CONSTANTS from "../../../constants/profileConstants";
 import setRangeForSelectBirthday from "../../helpers/validators/setRangeForSelectBirthday";
 
 const validate = values => {
   const errors = {};
   const requiredFields = ["birthday"];
-  const { DATE_INCORRECT } = profileConstants;
+  const { DATE_INCORRECT } = PROFILE_CONSTANTS;
   const birthdayDate = new Date(values.Birthday).getTime();
   const currentDate = Date.now();
 
@@ -26,7 +26,7 @@ const validate = values => {
 
 const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
   const { SUBMIT, CLEAR, OLDEST_DATE_OF_CHOICE, YOUNGEST_DATE_OF_CHOICE } =
-    profileConstants;
+    PROFILE_CONSTANTS;
 
   const { minValue, maxValue } = setRangeForSelectBirthday(
     OLDEST_DATE_OF_CHOICE,

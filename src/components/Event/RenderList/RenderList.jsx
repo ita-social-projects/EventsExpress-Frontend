@@ -16,6 +16,7 @@ const RenderList = ({
   isItemsAvaliable,
   handlePageChange,
   onDelete,
+  cardType,
 }) => {
   const pageChange = (_, value) => {
     handlePageChange(value);
@@ -35,6 +36,7 @@ const RenderList = ({
                 setDraftModalId={setDraftModalId}
                 event={item}
                 onDelete={onDelete}
+                cardType={cardType}
               />
             ))}
           </div>
@@ -57,6 +59,7 @@ const RenderList = ({
 };
 
 RenderList.propTypes = {
+  cardType: PropTypes.string,
   page: PropTypes.number,
   totalPages: PropTypes.number,
   isPages: PropTypes.bool,
@@ -68,6 +71,7 @@ RenderList.propTypes = {
 };
 
 RenderList.defaultProps = {
+  cardType: "",
   page: null,
   totalPages: null,
   isPages: false,

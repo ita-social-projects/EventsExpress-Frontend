@@ -4,10 +4,10 @@ import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
-import profileConstants from "../../../constants/profileConstants";
+import PROFILE_CONSTANTS from "../../../constants/profileConstants";
 
 const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
-  const { SUBMIT, CLEAR } = profileConstants;
+  const { SUBMIT, CLEAR } = PROFILE_CONSTANTS;
   return (
     <form onSubmit={handleSubmit}>
       <Field name="userName" component={renderTextField} label="UserName" />
