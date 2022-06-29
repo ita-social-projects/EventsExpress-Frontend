@@ -29,10 +29,10 @@ export function updateEventsFilters(data) {
     payload: data,
   };
 }
-export function getEvents(filters) {
+export function getEvents() {
   return async dispatch => {
     dispatch(getRequestInc());
-    const response = await apiService.getAllEvents(filters);
+    const response = await apiService.getAllEvents();
     dispatch(getRequestDec());
     if (!response.ok) {
       dispatch(setErrorAllertFromResponse(response));
@@ -41,7 +41,7 @@ export function getEvents(filters) {
     // TODO: MOCKUP
     const jsonRes = await response.json();
 
-    dispatch(getEventsData({ ...jsonRes, items: eventMockup }));
+    dispatch(getEventsData(jsonRes));
     return Promise.resolve();
   };
 }

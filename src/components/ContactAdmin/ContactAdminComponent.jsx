@@ -30,7 +30,7 @@ class ContactAdmin extends PureComponent {
     return (
       <div id="notfound">
         <div className="notfound">
-          <h1 className="f1">Contact Us</h1>
+          <h1 className="f1">{"Contact Us"}</h1>
           <form className="notfound-404" onSubmit={this.props.handleSubmit}>
             <div className="box text text-2 pl-md-4 ">
               {this.props.user.role === "User" ? (
@@ -52,7 +52,7 @@ class ContactAdmin extends PureComponent {
               <p />
               <p />
               <p />
-              <div className="text-left mb-2">Problem Type</div>
+              <div className="text-left mb-2">{"Problem Type"}</div>
               <Field
                 name="subject"
                 className="form-control"
@@ -60,12 +60,12 @@ class ContactAdmin extends PureComponent {
                 parse={value => Number(value)}
               >
                 <option value={ISSUE_TYPE_ENUM.NEWCATEGORY}>
-                  New Category
+                  {"New Category\r"}
                 </option>
-                <option value={ISSUE_TYPE_ENUM.BADUSER}>Bug Report</option>
-                <option value={ISSUE_TYPE_ENUM.BADEVENT}>Bad Event</option>
-                <option value={ISSUE_TYPE_ENUM.BADUSER}>Bad User</option>
-                <option value={ISSUE_TYPE_ENUM.OTHER}>Other</option>
+                <option value={ISSUE_TYPE_ENUM.BADUSER}>{"Bug Report"}</option>
+                <option value={ISSUE_TYPE_ENUM.BADEVENT}>{"Bad Event"}</option>
+                <option value={ISSUE_TYPE_ENUM.BADUSER}>{"Bad User"}</option>
+                <option value={ISSUE_TYPE_ENUM.OTHER}>{"Other"}</option>
               </Field>
 
               {this.props.formValues !== undefined &&
@@ -94,7 +94,7 @@ class ContactAdmin extends PureComponent {
               color="primary"
               disabled={pristine || submitting}
             >
-              Submit
+              {"Submit\r"}
             </Button>
             <Button
               type="button"
@@ -102,7 +102,7 @@ class ContactAdmin extends PureComponent {
               disabled={pristine || submitting}
               onClick={reset}
             >
-              Clear
+              {"Clear\r"}
             </Button>
           </form>
         </div>

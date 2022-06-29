@@ -6,7 +6,10 @@ import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import PropTypes from "prop-types";
-import { CURRENT_POSITION_ON_MAP, ENUM_LOCATION_TYPE } from "../../../../../constants/eventConstants";
+import {
+  CURRENT_POSITION_ON_MAP,
+  ENUM_LOCATION_TYPE,
+} from "../../../../../constants/eventConstants";
 import FilterExpansionPanel from "../../expansion-panel/filter-expansion-panel";
 import { LocationMapWithCircle } from "../../../../helpers/form-helpers/location";
 import DisplayMap from "../../../Map/DisplayMap";

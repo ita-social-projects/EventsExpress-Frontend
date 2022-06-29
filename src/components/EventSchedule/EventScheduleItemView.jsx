@@ -68,13 +68,13 @@ class EventScheduleItemView extends Component {
                 <CardContent>
                   <div className="title"> {title} </div>
                   <div>
-                    Last Run
+                    {"Last Run\r"}
                     <Moment className="ml-2" format="D MMM YYYY" withTitle>
                       {lastRun}
                     </Moment>
                   </div>
                   <div>
-                    Next Run
+                    {"Next Run\r"}
                     <Moment className="ml-2" format="D MMM YYYY" withTitle>
                       {nextRun}
                     </Moment>

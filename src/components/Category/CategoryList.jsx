@@ -12,12 +12,12 @@ export default class CategoryList extends Component {
     return (
       <>
         <tr>
-          <td>Name</td>
-          <td className="justify-content-center">Group</td>
+          <td>{"Name"}</td>
+          <td className="justify-content-center">{"Group"}</td>
           <td className="d-flex align-items-center justify-content-center">
-            Users
+            {"Users\r"}
           </td>
-          <td className="justify-content-center">Events</td>
+          <td className="justify-content-center">{"Events"}</td>
           <td></td>
           <td></td>
         </tr>

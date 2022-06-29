@@ -14,7 +14,12 @@ const EventCard = ({ event, additionalButtons, additionalModal }) => {
   const { id, title, dateFrom } = event;
   const photoService = new PhotoService();
   const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
-  const sliceLength = title.length > 35 ? `${title.slice(0, 35)}...` : title;
+  const titleText = title == null ? "No title" : title.slice(0, 30);
+  const day =
+    dateFrom == null ? "?" : moment(dateFrom).format(FORMATS.DAY_FORMAT);
+  const month =
+    dateFrom == null ? "?" : moment(dateFrom).format(FORMATS.MONTH_FORMAT);
+
   useEffect(() => {
     photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {
       if (eventPreviewImage !== null) {
@@ -36,25 +41,19 @@ const EventCard = ({ event, additionalButtons, additionalModal }) => {
         />
         <div className="card-content">
           <div className="card-date date-container">
-            <span className="day">
-              {moment(dateFrom).format(FORMATS.DAY_FORMAT)}
-            </span>
+            <span className="day">{day}</span>
           </div>
           <div className="card-info">
-            <span className="card-info-header">
-              {title !== null ? sliceLength : "No title"}
-            </span>
+            <span className="card-info-header">{titleText}</span>
             <div className="card-buttons">
-              {additionalButtons.map(button => button)}
+              {additionalButtons}
               <NavLink to={`/home/events/${id}`} className="more bttn">
                 <BiRightArrowAlt size={30} />
               </NavLink>
             </div>
           </div>
         </div>
-        <span className="month">
-          {moment(dateFrom).format(FORMATS.MONTH_FORMAT)}
-        </span>
+        <span className="month">{month}</span>
       </div>
       {additionalModal}
     </>

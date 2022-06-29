@@ -34,7 +34,7 @@ const FilterForm = ({
           <IconButton onClick={toggleOpen}>
             <Icon className="fas fa-arrow-circle-right" />
           </IconButton>
-          <h5 className={classes.filterHeading}>Filters</h5>
+          <h5 className={classes.filterHeading}>{"Filters"}</h5>
         </div>
         <div className={classes.filterHeaderPart}>
           <Button
@@ -43,10 +43,10 @@ const FilterForm = ({
             disableElevation
             onClick={onReset}
           >
-            Reset
+            {"Reset\r"}
           </Button>
           <GreenButton type="submit" disabled={pristine}>
-            Apply
+            {"Apply\r"}
           </GreenButton>
         </div>
       </div>

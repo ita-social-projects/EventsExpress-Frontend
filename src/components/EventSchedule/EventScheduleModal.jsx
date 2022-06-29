@@ -19,15 +19,15 @@ const EventScheduleModal = ({
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Confirmation</Modal.Title>
+          <Modal.Title>{"Confirmation"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{message}</Modal.Body>
         <Modal.Footer>
           <Button color="primary" variant="outlined" onClick={cancelHandler}>
-            Cancel
+            {"Cancel\r"}
           </Button>
           <Button color="primary" variant="contained" onClick={submitHandler}>
-            Submit
+            {"Submit\r"}
           </Button>
         </Modal.Footer>
       </Modal>

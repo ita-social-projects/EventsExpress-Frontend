@@ -113,7 +113,7 @@ class Inventory extends Component {
           {this.props.syncErrors.inventories && !this.state.isOpen && (
             <span className="text-danger">
               <i className="fas fa-exclamation-circle text-danger" />
-              required
+              {"required\r"}
             </span>
           )}
         </div>
