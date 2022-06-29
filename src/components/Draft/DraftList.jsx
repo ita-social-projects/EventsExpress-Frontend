@@ -20,7 +20,7 @@ const DraftList = ({
     <RenderList
       isItemsAvaliable={isItemsAvaliable}
       isPages={isPages}
-      drafts={items}
+      events={items}
       isItemsFetched={isItemsFetched}
       totalPages={totalPages}
       page={pageNumber}

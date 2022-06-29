@@ -11,7 +11,7 @@ const RenderList = ({
   page,
   isPages,
   totalPages,
-  drafts,
+  events,
   isItemsFetched,
   isItemsAvaliable,
   handlePageChange,
@@ -27,10 +27,10 @@ const RenderList = ({
       <SpinnerWrapper showContent={isItemsFetched}>
         {isItemsAvaliable ? (
           <div className="eventsBlock">
-            {drafts.map(item => (
+            {events.map(item => (
               <DraftEventCard
                 key={item.id}
-                draftItemId={item.id}
+                eventId={item.id}
                 draftModalId={draftModalId}
                 setDraftModalId={setDraftModalId}
                 event={item}
@@ -60,7 +60,7 @@ RenderList.propTypes = {
   page: PropTypes.number,
   totalPages: PropTypes.number,
   isPages: PropTypes.bool,
-  drafts: PropTypes.array,
+  events: PropTypes.array,
   isItemsFetched: PropTypes.bool,
   isItemsAvaliable: PropTypes.bool,
   handlePageChange: PropTypes.func,
@@ -71,7 +71,7 @@ RenderList.defaultProps = {
   page: null,
   totalPages: null,
   isPages: false,
-  drafts: [],
+  events: [],
   isItemsFetched: false,
   isItemsAvaliable: false,
   handlePageChange: () => {},

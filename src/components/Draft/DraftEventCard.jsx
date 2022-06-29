@@ -7,7 +7,7 @@ import { ICON_PROPERTIES } from "../../constants/draftConstants";
 
 const DraftEventCard = ({
   event,
-  draftItemId,
+  eventId,
   draftModalId,
   setDraftModalId,
   onDelete,
@@ -16,7 +16,7 @@ const DraftEventCard = ({
     <button
       type="button"
       key="buckect-btn"
-      onClick={() => setDraftModalId(draftItemId)}
+      onClick={() => setDraftModalId(eventId)}
     >
       <BsTrash
         cursor={ICON_PROPERTIES.CIRSOR_POINER}
@@ -24,7 +24,6 @@ const DraftEventCard = ({
       />
     </button>,
   ];
-
   const additionalModal = draftModalId ? (
     <EventCardModal
       id={draftModalId}
@@ -46,7 +45,7 @@ const DraftEventCard = ({
 DraftEventCard.propTypes = {
   event: PropTypes.object,
   draftModalId: PropTypes.string,
-  draftItemId: PropTypes.string,
+  eventId: PropTypes.string,
   setDraftModalId: PropTypes.func,
   onDelete: PropTypes.func,
 };
@@ -54,7 +53,7 @@ DraftEventCard.propTypes = {
 DraftEventCard.defaultProps = {
   event: null,
   draftModalId: "",
-  draftItemId: "",
+  eventId: "",
   setDraftModalId: () => {},
   onDelete: () => {},
 };
