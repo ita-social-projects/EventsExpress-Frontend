@@ -5,10 +5,8 @@ import Button from "@material-ui/core/Button";
 import DropZoneField from "../../helpers/DropZoneField";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import PhotoService from "../../../services/PhotoService";
-import profileConstants from "../../../constants/profileConstants";
+import PROFILE_CONSTANTS from "../../../constants/profileConstants";
 import validateAvatarForProfile from "../../helpers/validateAvatar";
-
-const photoService = new PhotoService();
 
 const ChangeAvatar = ({
   handleSubmit,
@@ -18,7 +16,7 @@ const ChangeAvatar = ({
   error,
   initialValues,
 }) => {
-  const { SUBMIT } = profileConstants;
+  const { SUBMIT } = PROFILE_CONSTANTS;
   return (
     <form name="change-avatar" onSubmit={handleSubmit}>
       <Field
@@ -27,7 +25,7 @@ const ChangeAvatar = ({
         type="file"
         crop
         cropShape="round"
-        loadImage={() => photoService.getUserPhoto(initialValues.userId)}
+        loadImage={() => new PhotoService().getUserPhoto(initialValues.userId)}
       />
       {error && <ErrorMessages error={error} className="text-center" />}
       <Button

@@ -6,26 +6,15 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import { AccordionSummary } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import profileConstants from "../../constants/profileConstants";
+import PROFILE_CONSTANTS from "../../constants/profileConstants";
+import getContentByType from "../helpers/getContentByType";
+import "./ProfileItem.scss";
 
-const { TYPE_LIST } = profileConstants;
+const { TYPE_LIST } = PROFILE_CONSTANTS;
 
-const getContentByType = (type, content) => {
-  if (type === TYPE_LIST) {
-    return (
-      <>
-        {content.map(({ id, name }) => (
-          <div key={id}>{name}</div>
-        ))}
-      </>
-    );
-  }
-
-  return content;
-};
 const ProfileItem = ({ item, handleChange, expanded }) => {
   const { panelId, title, type, content, accordionDetailsContent } = item;
-  const acrodionContent = getContentByType(type, content);
+  const acrodionContent = getContentByType(type, content, TYPE_LIST);
   const hasContent =
     acrodionContent || (type === TYPE_LIST && acrodionContent.length !== 0);
 
@@ -36,7 +25,7 @@ const ProfileItem = ({ item, handleChange, expanded }) => {
         aria-controls={panelId}
         id={panelId}
       >
-        <Typography style={{ flexBasis: "33.33%" }}>{title}</Typography>
+        <Typography className="title">{title}</Typography>
         {hasContent && (
           <Typography component="div">{acrodionContent}</Typography>
         )}

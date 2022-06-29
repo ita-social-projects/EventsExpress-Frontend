@@ -7,7 +7,7 @@ import EditBirthdayContainer from "../../containers/EditProfileContainers/EditBi
 import SelectCategoriesWrapper from "../../containers/CategoryContainers/SelectCategoriesContainer";
 import SelectNotificationTypesWrapper from "../../containers/NotificationTypesContainer/NotificationTypesContainer";
 import LinkedAuthsWrapper from "../../containers/LinkedAuthContainer/LinkedAuthsContainer";
-import profileConstants from "../../constants/profileConstants";
+import PROFILE_CONSTANTS from "../../constants/profileConstants";
 
 const useProfileData = (
   name,
@@ -35,7 +35,7 @@ const useProfileData = (
     MANAGE_NOTIFICATIONS,
     LINKED_ACCOUNTS,
     BIRTH_DATE_FORMAT,
-  } = profileConstants;
+  } = PROFILE_CONSTANTS;
   return [
     {
       panelId: PANEL0,
