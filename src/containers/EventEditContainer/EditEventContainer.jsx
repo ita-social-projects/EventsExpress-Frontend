@@ -1,4 +1,4 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -16,59 +16,58 @@ import {
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 // TODO Refactor class component
-class EditEventContainer extends Component {
-  onSubmit = async values => {
-    await this.props.editEvent({
+const EditEventContainer = ({
+  event,
+  userId,
+  history,
+  allCategories,
+  formValues,
+}) => {
+  const onSubmit = async values => {
+    await editEvent({
       ...validateEventForm(values),
-      userId: this.props.userId,
-      id: this.props.event.id,
+      userId,
+      id: event.id,
     });
 
-    this.props.history.goBack();
+    history.goBack();
   };
 
-  onError = error => this.props.handleFormError(error);
+  const onError = error => handleFormError(error);
 
-  render() {
-    return (
-      <>
-        <div className="pl-md-4">
-          <EventForm
-            validate={eventEditValidateForm}
-            allCategories={this.props.allCategories}
-            onSubmit={this.onSubmit}
-            onError={this.onError}
-            initialValues={this.props.event}
-            formValues={this.props.formValues}
-            haveReccurentCheckBox={false}
-            eventId={this.props.event.id}
-          >
-            <div className="col">
-              <Button
-                className="border"
-                fullWidth
-                color="primary"
-                type="submit"
-              >
-                {BUTTON_NAMES.SAVE}
-              </Button>
-            </div>
-            <div className="col">
-              <Button
-                className="border"
-                fullWidth
-                color="primary"
-                onClick={this.props.history.goBack}
-              >
-                {BUTTON_NAMES.CANCEL}
-              </Button>
-            </div>
-          </EventForm>
-        </div>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <div className="pl-md-4">
+        <EventForm
+          validate={eventEditValidateForm}
+          allCategories={allCategories}
+          onSubmit={onSubmit}
+          onError={onError}
+          initialValues={event}
+          formValues={formValues}
+          haveReccurentCheckBox={false}
+          eventId={event.id}
+        >
+          <div className="col">
+            <Button className="border" fullWidth color="primary" type="submit">
+              {BUTTON_NAMES.SAVE}
+            </Button>
+          </div>
+          <div className="col">
+            <Button
+              className="border"
+              fullWidth
+              color="primary"
+              onClick={history.goBack}
+            >
+              {BUTTON_NAMES.CANCEL}
+            </Button>
+          </div>
+        </EventForm>
+      </div>
+    </>
+  );
+};
 
 const mapStateToProps = state => ({
   userId: state.user.id,
@@ -96,21 +95,17 @@ const mapDispatchToProps = dispatch => {
 };
 
 EditEventContainer.propTypes = {
-  editEvent: PropTypes.func,
   event: PropTypes.object,
   userId: PropTypes.string,
   history: PropTypes.object,
-  handleFormError: PropTypes.func,
   allCategories: PropTypes.object,
   formValues: PropTypes.object,
 };
 
 EditEventContainer.defaultProps = {
-  editEvent: () => {},
   userId: "",
   event: {},
   history: {},
-  handleFormError: () => {},
   allCategories: {},
   formValues: {},
 };
