@@ -8,6 +8,7 @@ import { ISSUE_STATUS_ENUM } from "../../constants/issueConstants";
 import { compareObjects } from "../helpers/filterHelper/filterHelper";
 import "./ContactAdminFilter.scss";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
+import { ADMIN_MIN_DATE_FILTER_YEAR } from "../../constants/adminConstants";
 
 class ContactAdminFilter extends Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class ContactAdminFilter extends Component {
                 <Field
                   name="dateFrom"
                   label="From"
-                  minValue={new Date(2000, 1, 1)}
+                  minValue={new Date(ADMIN_MIN_DATE_FILTER_YEAR, 1, 1)}
                   component={renderDatePicker}
                   parse={parseEuDate}
                 />

@@ -22,6 +22,10 @@ import {
   EVENT_DEFAULT_IMAGE,
   EVENT_STATUS_ENUM,
   EVENT_ITEM_CONSTANTS,
+  EVENT_OPACITY,
+  EVENT_SLICE_CATEGORIES_PARAM,
+  EVENT_ITEM_DESC_SLICE,
+  EVENT_ITEM_MAX_DESC,
 } from "../../../constants/eventConstants";
 
 const useStyles = useStyle;
@@ -66,9 +70,12 @@ const EventCard = props => {
     members,
   } = item;
 
-  const categoriesNotDisplayed = categories.length - 2;
+  const categoriesNotDisplayed =
+    categories.length - EVENT_SLICE_CATEGORIES_PARAM;
   const restCategories = ` ... ${categoriesNotDisplayed} more`;
-  const displayedCategories = renderCategories(categories.slice(0, 2));
+  const displayedCategories = renderCategories(
+    categories.slice(0, EVENT_SLICE_CATEGORIES_PARAM),
+  );
 
   return (
     <div className="col-12 col-sm-8 col-md-6 col-xl-4 mt-3">
@@ -77,7 +84,10 @@ const EventCard = props => {
         style={{
           backgroundColor:
             eventStatus === EVENT_STATUS_ENUM.BLOCKED ? "gold" : "",
-          opacity: eventStatus === EVENT_STATUS_ENUM.CANCELED ? 0.5 : 1,
+          opacity:
+            eventStatus === EVENT_STATUS_ENUM.CANCELED
+              ? EVENT_OPACITY.HALF
+              : EVENT_OPACITY.FULL,
         }}
       >
         <EventHeader
@@ -110,8 +120,8 @@ const EventCard = props => {
           {description && (
             <Tooltip
               title={
-                description.substr(0, 570) +
-                (description.length > 570 ? "..." : "")
+                description.substr(0, EVENT_ITEM_DESC_SLICE) +
+                (description.length > EVENT_ITEM_DESC_SLICE ? "..." : "")
               }
               classes={{ tooltip: "description-tooltip" }}
             >
@@ -121,7 +131,7 @@ const EventCard = props => {
                 className="description"
                 component="p"
               >
-                {description.substr(0, 128)}
+                {description.substr(0, EVENT_ITEM_MAX_DESC)}
               </Typography>
             </Tooltip>
           )}
@@ -131,7 +141,7 @@ const EventCard = props => {
             {item.location && <DisplayLocation location={item.location} />}
             <br />
             <div className="float-left">
-              {categories.length <= 2 ? (
+              {categories.length <= EVENT_SLICE_CATEGORIES_PARAM ? (
                 displayedCategories
               ) : (
                 <>

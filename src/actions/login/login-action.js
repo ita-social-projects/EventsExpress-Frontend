@@ -9,6 +9,7 @@ import { initialConnection } from "../chat/chat-action";
 import { getUnreadMessages } from "../chat/chats-action";
 import { jwtStorageKey } from "../../constants/constants";
 import { getRequestInc, getRequestDec } from "../request-count-action";
+import { NO_CONTENT } from "../../constants/httpCodesConstants";
 
 export const SET_LOGIN_PENDING = "SET_LOGIN_PENDING";
 export const SET_LOGIN_SUCCESS = "SET_LOGIN_SUCCESS";
@@ -33,7 +34,7 @@ export function getUserInfo(profile) {
     }
 
     if (
-      response.status === 204 &&
+      response.status === NO_CONTENT &&
       history.location.pathname !== "/registerComplete"
     ) {
       history.push("/registerComplete", { profile });

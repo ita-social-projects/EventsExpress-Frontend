@@ -102,6 +102,7 @@ export default function register() {
   }
 }
 
+// eslint-disable-next-line import/no-unused-modules
 export function unregister() {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.ready.then(registration => {

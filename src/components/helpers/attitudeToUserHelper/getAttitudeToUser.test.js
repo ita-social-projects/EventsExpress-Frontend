@@ -1,3 +1,4 @@
+/* eslint-disable */
 import getAttitudeToUser from "./getAttitudeToUser";
 import {
   ATTITUDE_MESSAGES,

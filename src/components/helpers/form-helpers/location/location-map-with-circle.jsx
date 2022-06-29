@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import { Circle } from "react-leaflet";
 import { LocationMap } from ".";
+import { RADIUS_MULTIPLIER } from "../../../../constants/locationConstants";
 
 const LocationMapWithCircle = props => {
   let initialPos = { lat: 50.4547, lng: 30.5238 };
@@ -34,7 +35,7 @@ const LocationMapWithCircle = props => {
         <Circle
           center={location}
           pathOptions={{ color: "blue" }}
-          radius={props.radius * 1000}
+          radius={props.radius * RADIUS_MULTIPLIER}
         />
       )}
     </Field>

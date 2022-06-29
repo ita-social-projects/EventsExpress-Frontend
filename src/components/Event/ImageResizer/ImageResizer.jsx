@@ -4,7 +4,10 @@ import Cropper from "react-easy-crop";
 import PropTypes from "prop-types";
 import "./ImageResizer.scss";
 import Button from "@material-ui/core/Button";
-import imageConstants from "../../../constants/imageResizerConstants";
+import {
+  DISPLAY_RATIO_PARAMS,
+  imageConstants,
+} from "../../../constants/imageResizerConstants";
 import {
   cropImage,
   onCropChange,
@@ -29,7 +32,9 @@ const ImageResizer = ({
 
   useEffect(() => {
     const isRound = cropShape === ROUND;
-    setAspect(isRound ? 1 : 16 / 9);
+    setAspect(
+      isRound ? 1 : DISPLAY_RATIO_PARAMS.WIDTH / DISPLAY_RATIO_PARAMS.HEIGHT,
+    );
     setShowGrid(!isRound);
     // TODO
     // eslint-disable-next-line react-hooks/exhaustive-deps
