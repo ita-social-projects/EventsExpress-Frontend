@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { reduxForm, Field } from "redux-form";
+import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import DropZoneField from "../../helpers/DropZoneField";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import PhotoService from "../../../services/PhotoService";
 import PROFILE_CONSTANTS from "../../../constants/profileConstants";
-import validateAvatarForProfile from "../../helpers/validateAvatar";
 
 const ChangeAvatar = ({
   handleSubmit,
@@ -57,8 +56,4 @@ ChangeAvatar.defaultProps = {
   initialValues: {},
 };
 
-export default reduxForm({
-  form: "change-avatar",
-  enableReinitialize: true,
-  validateAvatarForProfile,
-})(ChangeAvatar);
+export default ChangeAvatar;

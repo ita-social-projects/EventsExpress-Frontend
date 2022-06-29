@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import ChangeAvatar from "../../components/Profile/EditProfile/ChangeAvatar";
+import ChangeAvatar from "../EditProfileContainer/ChangeAvatarContainer";
 import changeAvatar from "../../actions/redactProfile/avatar-change-action";
 import AuthComponent from "../../security/authComponent";
 
@@ -27,11 +27,9 @@ const mapStateToProps = state => ({
   userId: state.user.id,
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    changeAvatarAction: data => dispatch(changeAvatar(data)),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  changeAvatarAction: data => dispatch(changeAvatar(data)),
+});
 
 ChangeAvatarContainer.propTypes = {
   userId: PropTypes.string,

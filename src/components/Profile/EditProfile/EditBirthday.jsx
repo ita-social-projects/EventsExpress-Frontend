@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import { Field, reduxForm } from "redux-form";
+import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
@@ -8,7 +8,7 @@ import fieldIsRequired from "../../helpers/validators/required-fields-validator"
 import PROFILE_CONSTANTS from "../../../constants/profileConstants";
 import setRangeForSelectBirthday from "../../helpers/validators/setRangeForSelectBirthday";
 
-const validate = values => {
+export const validate = values => {
   const errors = {};
   const requiredFields = ["birthday"];
   const { DATE_INCORRECT } = PROFILE_CONSTANTS;
@@ -77,7 +77,4 @@ EditBirthday.propTypes = {
   handleSubmit: PropTypes.func,
 };
 
-export default reduxForm({
-  form: "EditBirthday",
-  validate,
-})(EditBirthday);
+export default EditBirthday;
