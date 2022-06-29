@@ -13,14 +13,14 @@
 
 .events-container {
     width: $fullWidth;
-    padding-right: 15em;
+    // padding-right: 15em;
 }
 
 @media (max-width: 768px) {
 
     .sidebar-filter {
         position: relative !important;
-        width: $fullWidth !important;
+        width: $fullWidth  !important;
         height: auto !important;
     }
 

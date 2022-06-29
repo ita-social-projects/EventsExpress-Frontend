@@ -87,6 +87,7 @@ export const EVENT_VISITORS = {
 export const CARD_TYPE = {
   DRAFT: "draft",
   LANDING: "landing",
+  HOME: "home",
   RECCURENT_EVENTS: "eventSchedules",
 };
 export const EVENT_NO_RESULT = {
