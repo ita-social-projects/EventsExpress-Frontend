@@ -3,6 +3,7 @@ import { Field } from "redux-form";
 import { Marker, Popup } from "react-leaflet";
 import PropTypes from "prop-types";
 import LocationMap from "./location-map";
+import { PARSE_OPTION } from "../../../../constants/locationConstants";
 
 const LocationMapWithMarker = ({ latitude, longitude, onChangeValues }) => {
   let initialPos = { lat: 50.4547, lng: 30.5238 };
@@ -34,7 +35,7 @@ const LocationMapWithMarker = ({ latitude, longitude, onChangeValues }) => {
     >
       <Marker position={location} draggable onDragend={updateMarker}>
         <Popup position={location}>
-          <pre>{JSON.stringify(location, null, 2)}</pre>
+          <pre>{JSON.stringify(location, null, PARSE_OPTION)}</pre>
         </Popup>
       </Marker>
     </Field>

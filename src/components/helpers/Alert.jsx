@@ -11,6 +11,7 @@ import SnackbarContent from "@material-ui/core/SnackbarContent";
 import WarningIcon from "@material-ui/icons/Warning";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
+import { ALERT_DELAY } from "../../constants/alertConstants";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -63,7 +64,7 @@ function MySnackbar(props) {
     if (autoHideDuration) {
       timeToShow = autoHideDuration;
     } else {
-      timeToShow = 5000;
+      timeToShow = ALERT_DELAY;
     }
   }
 

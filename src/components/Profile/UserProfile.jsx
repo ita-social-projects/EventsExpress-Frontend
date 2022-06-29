@@ -1,4 +1,5 @@
-﻿import React, { Component } from "react";
+﻿/* eslint-disable no-magic-numbers */
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
 import "moment-timezone";

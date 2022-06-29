@@ -12,7 +12,11 @@ import {
 } from "../helpers/form-helpers";
 import { PLS_COMPLETE_REGISTERATION } from "../../constants/registationConstants";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
-import { USER_GENDERS } from "../../constants/userConstants";
+import {
+  MAX_ALLOWABLE_AGE,
+  MIN_ALLOWABLE_AGE,
+  USER_GENDERS,
+} from "../../constants/userConstants";
 
 // TODO: constansts
 const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
@@ -44,8 +48,14 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
                 name="birthday"
                 id="date"
                 label="Birthday"
-                minValue={moment(new Date()).subtract(115, "years")}
-                maxValue={moment(new Date()).subtract(15, "years")}
+                minValue={moment(new Date()).subtract(
+                  MAX_ALLOWABLE_AGE,
+                  "years",
+                )}
+                maxValue={moment(new Date()).subtract(
+                  MIN_ALLOWABLE_AGE,
+                  "years",
+                )}
                 component={renderDatePicker}
               />
             </div>

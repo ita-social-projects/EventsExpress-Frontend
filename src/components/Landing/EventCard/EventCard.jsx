@@ -6,6 +6,7 @@ import moment from "moment";
 import "./EventCard.scss";
 import PhotoService from "../../../services/PhotoService";
 import {
+  EVENT_CARD_TITLE_SLICE,
   EVENT_DEFAULT_IMAGE,
   FORMATS,
 } from "../../../constants/eventConstants";
@@ -14,7 +15,8 @@ const EventCard = ({ event, additionalButtons, additionalModal }) => {
   const { id, title, dateFrom } = event;
   const photoService = new PhotoService();
   const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
-  const titleText = title == null ? "No title" : title.slice(0, 30);
+  const titleText =
+    title == null ? "No title" : title.slice(0, EVENT_CARD_TITLE_SLICE);
   const day =
     dateFrom == null ? "?" : moment(dateFrom).format(FORMATS.DAY_FORMAT);
   const month =

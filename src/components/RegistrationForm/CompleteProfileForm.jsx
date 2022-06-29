@@ -11,7 +11,11 @@ import {
 } from "../helpers/form-helpers";
 import ChangeAvatarContainer from "../../containers/EditProfileContainers/ChangeAvatarContainer";
 import { CHOOSE_AVATAR } from "../../constants/registationConstants";
-import { USER_GENDERS } from "../../constants/userConstants";
+import {
+  MAX_ALLOWABLE_AGE,
+  MIN_ALLOWABLE_AGE,
+  USER_GENDERS,
+} from "../../constants/userConstants";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 const CompleteProfileForm = ({ handleSubmit }) => {
@@ -60,8 +64,14 @@ const CompleteProfileForm = ({ handleSubmit }) => {
               <Field
                 name="birthDate"
                 label="Birth Date"
-                minValue={moment(new Date()).subtract(115, "years")}
-                maxValue={moment(new Date()).subtract(14, "years")}
+                minValue={moment(new Date()).subtract(
+                  MAX_ALLOWABLE_AGE,
+                  "years",
+                )}
+                maxValue={moment(new Date()).subtract(
+                  MIN_ALLOWABLE_AGE,
+                  "years",
+                )}
                 component={renderDatePicker}
                 parse={parseEuDate}
               />

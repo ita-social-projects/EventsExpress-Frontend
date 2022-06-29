@@ -1,16 +1,17 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import "./Line.scss";
+import { TILE_PARAMS } from "../../constants/tileConstants";
 
 // TODO: strange component
 const Line = props => {
   const definePath = () => {
-    const param = props.index * 40;
+    const param = props.index * TILE_PARAMS.DEFAULT;
 
     const start = `M 0 3`;
-    const second = `L ${param + 18} 3`;
-    const third = `L ${param + 20} 1`;
-    const fourth = `L ${param + 22} 3`;
+    const second = `L ${param + TILE_PARAMS.SECOND} 3`;
+    const third = `L ${param + TILE_PARAMS.THIRD} 1`;
+    const fourth = `L ${param + TILE_PARAMS.FOURTH} 3`;
 
     return `${start} ${second} ${third} ${fourth} L 120 3`;
   };

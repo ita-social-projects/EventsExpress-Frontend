@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import constantsSplitScreens from "../../constants/splitScreensConstants";
 import CollapseButton from "./CollapseButton";
 import Options from "../shared/Options/Options";
+import { SQUARE_STANDART } from "../../constants/imageSizesConstants";
 
 const SplitPanels = () => {
   const {
@@ -31,7 +32,7 @@ const SplitPanels = () => {
     <Split
       direction="horizontal"
       collapsed={collapsedIndex}
-      sizes={[50, 50]}
+      sizes={[SQUARE_STANDART, SQUARE_STANDART]}
       className="split-panels"
       style={{ height: "780px" }}
     >

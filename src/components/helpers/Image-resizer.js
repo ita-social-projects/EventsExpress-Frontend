@@ -1,3 +1,5 @@
+import { HALF_ZOOM, TWO } from "../../constants/imageResizerConstants";
+
 export const onCropChange = (crop, setCrop) => setCrop(crop);
 
 export const onZoomChange = (zoom, setZoom) => setZoom(zoom);
@@ -22,18 +24,18 @@ const getCroppedImg = async (imageSrc, pixelCrop) => {
   const ctx = canvas.getContext("2d");
 
   const maxSize = Math.max(image.width, image.height);
-  const safeArea = 2 * ((maxSize / 2) * Math.sqrt(2));
+  const safeArea = TWO * ((maxSize / TWO) * Math.sqrt(TWO));
 
   canvas.width = safeArea;
   canvas.height = safeArea;
 
-  ctx.translate(safeArea / 2, safeArea / 2);
-  ctx.translate(-safeArea / 2, -safeArea / 2);
+  ctx.translate(safeArea / TWO, safeArea / TWO);
+  ctx.translate(-safeArea / TWO, -safeArea / TWO);
 
   ctx.drawImage(
     image,
-    safeArea / 2 - image.width * 0.5,
-    safeArea / 2 - image.height * 0.5,
+    safeArea / TWO - image.width * HALF_ZOOM,
+    safeArea / TWO - image.height * HALF_ZOOM,
   );
   const data = ctx.getImageData(0, 0, safeArea, safeArea);
 
@@ -42,8 +44,8 @@ const getCroppedImg = async (imageSrc, pixelCrop) => {
 
   ctx.putImageData(
     data,
-    Math.round(0 - safeArea / 2 + image.width * 0.5 - pixelCrop.x),
-    Math.round(0 - safeArea / 2 + image.height * 0.5 - pixelCrop.y),
+    Math.round(0 - safeArea / TWO + image.width * HALF_ZOOM - pixelCrop.x),
+    Math.round(0 - safeArea / TWO + image.height * HALF_ZOOM - pixelCrop.y),
   );
 
   return canvas.toDataURL("image/jpeg");

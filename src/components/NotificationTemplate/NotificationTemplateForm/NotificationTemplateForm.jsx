@@ -17,7 +17,10 @@ import {
 } from "../../helpers/validators/min-max-length-validators";
 import "./NotificationTemplateForm.scss";
 import { BUTTON_NAMES } from "../../../constants/buttonConsts";
-import { AVAILABLE_PROPS } from "../../../constants/notificationConstants";
+import {
+  AVAILABLE_PROPS,
+  NOTIFICATION_TIMEOUT,
+} from "../../../constants/notificationConstants";
 
 // TODO remake to functional component
 class NotificationTemplateForm extends Component {
@@ -35,7 +38,7 @@ class NotificationTemplateForm extends Component {
       this.setState({
         copiedPropName: null,
       });
-    }, 1000);
+    }, NOTIFICATION_TIMEOUT);
   };
 
   renderField = ({ input, meta: { error }, ...props }) => {

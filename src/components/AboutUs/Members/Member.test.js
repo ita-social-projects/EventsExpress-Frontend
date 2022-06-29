@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import React from "react";
 import renderer from "react-test-renderer";
 import Member from "./Member";
