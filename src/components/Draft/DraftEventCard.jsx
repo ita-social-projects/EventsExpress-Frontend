@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { BsTrash } from "react-icons/bs";
+import { BsTrash, BsHeart } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import EventCard from "../Landing/EventCard/EventCard";
 import EventCardModal from "../Landing/EventCard/EventCardModal/EventCardModal";
@@ -29,11 +29,16 @@ const DraftEventCard = ({
     </button>,
     <Link to={`/editEvent/${eventId}`} key={eventId}>
       <AiFillEdit
-        key={5}
+        key={eventId}
         cursor={ICON_PROPERTIES.CIRSOR_POINER}
         size={ICON_PROPERTIES.ICON_SIZE}
       />
     </Link>,
+    <BsHeart
+      key={eventId}
+      cursor={ICON_PROPERTIES.CIRSOR_POINER}
+      size={ICON_PROPERTIES.ICON_SIZE}
+    />,
   ];
   const additionalModal = draftModalId ? (
     <EventCardModal
@@ -44,9 +49,13 @@ const DraftEventCard = ({
   ) : null;
 
   const getCardButtons = type => {
-    return type === CARD_TYPE.HOME
-      ? additionalButtons[1]
-      : additionalButtons[0];
+    if (type === CARD_TYPE.LANDING) {
+      return additionalButtons[2];
+    }
+    if (type === CARD_TYPE.HOME) {
+      return additionalButtons[1];
+    }
+    return additionalButtons[0];
   };
 
   return (
