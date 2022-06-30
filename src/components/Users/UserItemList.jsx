@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import UserInfoCard from "../UserInfoCard/UserInfoCard";
 import PagePagination from "../shared/PagePagination/PagePagination";
 import "./Users.scss";
+import { PAGINATION_PAGES_TRIGGER } from "../../constants/paginationConstants";
 
 const UserItemList = ({ page, totalPages, users, callback }) => {
   const handlePageChange = pageEl => {
@@ -20,7 +21,7 @@ const UserItemList = ({ page, totalPages, users, callback }) => {
         ))}
       </div>
 
-      {totalPages > 1 && (
+      {totalPages > PAGINATION_PAGES_TRIGGER && (
         <PagePagination
           currentPage={page}
           totalPages={totalPages}

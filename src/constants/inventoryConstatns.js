@@ -7,3 +7,6 @@ export const INVENTORY_HEADER_COLS = {
   COUNT: "Count",
   UNITS: "Units",
 };
+
+export const EMPTY_INVENTORIES_ARRAY = 0;
+export const ITEM_OPTION = 0;

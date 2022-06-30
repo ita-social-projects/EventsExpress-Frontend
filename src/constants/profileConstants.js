@@ -1,4 +1,4 @@
-const PROFILE_CONSTANTS = {
+export const PROFILE_CONSTANTS = {
   TYPE_LIST: "list",
   TYPE_AVATAR: "avatar",
   TYPE_TEXT: "text",
@@ -36,4 +36,4 @@ const PROFILE_CONSTANTS = {
   YOUNGEST_DATE_OF_CHOICE: 14,
 };
 
-export default PROFILE_CONSTANTS;
+export const EMPTY_ACCORDION_CONTENT = 0;

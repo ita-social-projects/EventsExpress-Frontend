@@ -139,6 +139,7 @@ export const EVENT_SCHEDULE_CONSTS = {
   TO_CANCEL_NEXT: "to cancel the next event.",
 };
 
+export const EVENT_LIST_START_SLICE = 0;
 export const EVENT_CARD_TITLE_SLICE = 30;
 export const EVENT_LIST_TITLE_SLICE = 35;
 export const EVENT_LIST_DESC_SLICE = 100;
@@ -154,3 +155,4 @@ export const EVENT_OPACITY = {
 export const EVENT_FILTER_Z_INDEX = 2;
 
 export const EVENT_SLICE_CATEGORIES_PARAM = 2;
+export const FIRST_ORGANIZER = 0;

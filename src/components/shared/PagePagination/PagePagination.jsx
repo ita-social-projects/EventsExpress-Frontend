@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Pagination from "react-paginating";
-import PAGINATION_LABELS from "../../../constants/paginationConstants";
+import { PAGINATION_LABELS } from "../../../constants/paginationConstants";
 import { renderEdgePage, renderPages } from "../../helpers/paginationUtils";
 import { DEFAULT_ONE_VALUE } from "../../../constants/numberConstants";
 
