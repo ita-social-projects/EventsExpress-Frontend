@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import { reset } from "redux-form";
 import PropTypes from "prop-types";
-import ChangePassword from "../../components/Profile/EditProfile/ChangePassword";
+import ChangePassword from "../EditProfileContainer/ChangePasswordContainer";
 import changePassword from "../../actions/redactProfile/password-change-action";
 
 // TODO Refactor class component

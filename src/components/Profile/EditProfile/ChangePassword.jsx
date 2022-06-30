@@ -1,6 +1,6 @@
 ﻿import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Field, reduxForm } from "redux-form";
+import { Field } from "redux-form";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import { AccordionSummary } from "@material-ui/core";
@@ -15,7 +15,7 @@ import PROFILE_CONSTANTS from "../../../constants/profileConstants";
 
 const { FIELDS, FIELDS_LABEL, PASSWORD_NOT_MATCH } = PROFILE_CONSTANTS;
 
-const validate = values => {
+export const validate = values => {
   const errors = {};
   if (values.newPassword !== values.repeatPassword) {
     errors.repeatPassword = PASSWORD_NOT_MATCH;
@@ -89,27 +89,6 @@ const ChangePassword = ({
   );
 };
 
-ChangePassword.defaultProps = {
-  pristine: false,
-  reset: () => {},
-  submitting: false,
-  error: "",
-  handleSubmit: () => {},
-};
-
-ChangePassword.propTypes = {
-  pristine: PropTypes.bool,
-  reset: PropTypes.func,
-  submitting: PropTypes.bool,
-  error: PropTypes.string,
-  handleSubmit: PropTypes.func,
-};
-
-export default reduxForm({
-  form: "ChangePassword",
-  validate,
-})(ChangePassword);
-
 ChangePassword.propTypes = {
   handleSubmit: PropTypes.func,
   pristine: PropTypes.bool,
@@ -125,3 +104,5 @@ ChangePassword.defaultProps = {
   submitting: false,
   error: [],
 };
+
+export default ChangePassword;
