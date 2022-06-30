@@ -1,40 +1,43 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
 .radius-slider {
-    -webkit-appearance: none;
-    width: 100%;
+    width: $fullWidth;
     height: 10px;
-    border-radius: 5px;
-    background: #ccdee6;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;    
-    padding-top: 0px;
-    padding-bottom: 0px;
     margin-bottom: 20px;
-  }
-  
-  .radius-slider:hover {
-    opacity: 1;
-  }
-  
-  .radius-slider::-webkit-slider-thumb {
+    padding-top: 0;
+    padding-bottom: 0;
+    background: $gray;
+    border-radius: 5px;
+    outline: none;
+    opacity: $opacity05;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    -webkit-appearance: none;
+}
+
+.radius-slider:hover {
+    opacity: $opacity1;
+}
+
+.radius-slider::-webkit-slider-thumb {
+    width: 25px;
+    height: 25px;
+    background: $middleBlue;
+    border-radius: $halfWidth;
+    cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
+}
+
+.radius-slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
-    border-radius: 50%;
-    background: #4d7bdd;
+    background: $middleBlue;
+    border-radius: $halfWidth;
     cursor: pointer;
-  }
-  
-  .radius-slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #4d7bdd;
-    cursor: pointer;
-  }
-  .slidecontainer {
-    width: 100%;
-  }
-  
+}
+
+.slidecontainer {
+    width: $fullWidth;
+}

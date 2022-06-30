@@ -1,9 +1,12 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
 #main-content {
-    margin-left: 16.66667%;
+    margin-left: 16.6667%;
 }
 
 .box {
-    margin:10px;
+    margin: 10px;
 }
 
 .text-box {
@@ -20,14 +23,14 @@ input {
 }
 
 .preview-container {
-    border-radius: 15px;
     padding: 10px;
+    border-radius: 15px;
 }
 
 .preview-container.valid {
-    border: 1px solid rgba(114, 113, 113, 0.329);
+    border: 1px solid $middleGray;
 }
 
 .preview-container.invalid {
-    border: 1px solid #f44336;
+    border: 1px solid $deleteColor;
 }

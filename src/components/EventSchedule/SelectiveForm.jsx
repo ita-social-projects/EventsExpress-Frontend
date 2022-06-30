@@ -8,6 +8,7 @@ import CancelNextEventContainer from "../../containers/CancelEventsContainer/Can
 import CancelAllEventsContainer from "../../containers/CancelEventsContainer/CancelAllEventsContainer";
 import EventSchedulePopover from "./EventSchedulePopover";
 import EventScheduleModal from "./EventScheduleModal";
+import { CREATE_WITH_EDITING } from "../../constants/eventConstants";
 
 export default class SelectiveForm extends Component {
   constructor() {
@@ -47,7 +48,7 @@ export default class SelectiveForm extends Component {
               <DropdownButton title="Select Option For Event">
                 <Dropdown.Item as={AddFromParentEventContainer}></Dropdown.Item>
                 <Dropdown.Item onClick={this.onEdit}>
-                  Create with editing
+                  {CREATE_WITH_EDITING}
                 </Dropdown.Item>
                 <Dropdown.Item as={CancelNextEventContainer}></Dropdown.Item>
                 <Dropdown.Item as={CancelAllEventsContainer}></Dropdown.Item>

@@ -8,12 +8,14 @@ import {
   maxLength15,
 } from "../helpers/validators/min-max-length-validators";
 import { renderTextField } from "../helpers/form-helpers";
+import { ALREADY_HAVE_ACC } from "../../constants/registationConstants";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 const RegisterBindAccount = ({ pristine, submitting, handleSubmit }) => {
   return (
     <>
       <div className="row">
-        <h5 className="m-3">Already have an account?</h5>
+        <h5 className="m-3">{ALREADY_HAVE_ACC}</h5>
       </div>
       <div className="row">
         <form onSubmit={handleSubmit} className="col-md-6">
@@ -42,7 +44,7 @@ const RegisterBindAccount = ({ pristine, submitting, handleSubmit }) => {
                 color="primary"
                 disabled={pristine || submitting}
               >
-                Bind
+                {BUTTON_NAMES.BIND}
               </Button>
             </DialogActions>
           </div>

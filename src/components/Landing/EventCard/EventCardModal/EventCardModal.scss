@@ -1,0 +1,86 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/fonts.scss";
+@import "../../../../styles/colors.scss";
+@import "../../../../styles/mixins.scss";
+@import "../../../../styles/animations.scss";
+
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    @include flex(row, center, center);
+
+    width: $fullWidth;
+    height: $fullHeight;
+    background-color: $backGroundModal;
+
+    .container {
+        width: 384px;
+        margin: 0.625rem;
+        padding: 1.25rem;
+        background-color: $white;
+        border-radius: $r16;
+        box-shadow: $boxshadow;
+    }
+}
+
+.titleText {
+    font-size: $fontsize15rem;
+    text-align: center;
+}
+
+.inputBlock {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.625rem;
+
+    .input {
+        @include formInput;
+    }
+}
+
+.interact {
+    display: flex;
+    justify-content: space-around;
+    width: $fullWidth;
+    margin-top: 1.25rem;
+
+    .interactBtn {
+        padding: 0.5rem 1.25rem;
+        font-weight: $thick;
+        font-size: $fontsize0875rem;
+        font-family: $mainFont;
+        border-radius: $r12;
+        cursor: pointer;
+        opacity: $opacity09;
+        transition: $defaultTransition;
+
+        &:hover {
+            opacity: $opacity1;
+        }
+    }
+
+    .interactBtn:first-child {
+        color: $black;
+        background-color: $lightPink;
+    }
+
+    .interactBtn:last-child {
+        color: $white;
+        background-color: $purple;
+    }
+}
+
+@media screen and (max-width: $mediaMobileScreen) {
+
+    .wrapper .container {
+        width: 350px;
+        height: 160px;
+    }
+
+    .inputBlock .input {
+        width: $fullWidth;
+    }
+}

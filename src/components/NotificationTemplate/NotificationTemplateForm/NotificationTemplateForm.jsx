@@ -16,6 +16,11 @@ import {
   minLength20,
 } from "../../helpers/validators/min-max-length-validators";
 import "./NotificationTemplateForm.scss";
+import { BUTTON_NAMES } from "../../../constants/buttonConsts";
+import {
+  AVAILABLE_PROPS,
+  NOTIFICATION_TIMEOUT,
+} from "../../../constants/notificationConstants";
 
 // TODO remake to functional component
 class NotificationTemplateForm extends Component {
@@ -33,7 +38,7 @@ class NotificationTemplateForm extends Component {
       this.setState({
         copiedPropName: null,
       });
-    }, 1000);
+    }, NOTIFICATION_TIMEOUT);
   };
 
   renderField = ({ input, meta: { error }, ...props }) => {
@@ -52,7 +57,7 @@ class NotificationTemplateForm extends Component {
   renderProperties = properties => (
     <>
       <Typography variant="h6" className="m-0 mb-1 text-nowrap center">
-        Available properties
+        {AVAILABLE_PROPS}
       </Typography>
       <List className="d-flex flex-column align-items-center">
         {properties.map(property => (
@@ -125,7 +130,7 @@ class NotificationTemplateForm extends Component {
           />
           <div className="align-self-end">
             <Button type="submit" disabled={submitting} color="primary">
-              Save
+              {BUTTON_NAMES.SAVE}
             </Button>
             <Button
               type="button"
@@ -133,7 +138,7 @@ class NotificationTemplateForm extends Component {
               disabled={pristine || submitting}
               onClick={reset}
             >
-              Reset
+              {BUTTON_NAMES.RESET}
             </Button>
           </div>
         </form>

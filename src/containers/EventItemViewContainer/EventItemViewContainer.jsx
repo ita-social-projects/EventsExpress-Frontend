@@ -29,11 +29,11 @@ class EventItemViewContainer extends Component {
   }
 
   onJoin = () => {
-    this.props.join(this.props.current_user.id, this.props.event.data.id);
+    this.props.join(this.props.currentUser.id, this.props.event.data.id);
   };
 
   onLeave = () => {
-    this.props.leave(this.props.current_user.id, this.props.event.data.id);
+    this.props.leave(this.props.currentUser.id, this.props.event.data.id);
   };
 
   onCancel = (reason, eventStatus) => {
@@ -61,7 +61,7 @@ class EventItemViewContainer extends Component {
           onCancel={this.onCancel}
           onUnCancel={this.onUnCancel}
           onDelete={this.onDelete}
-          currentUser={this.props.current_user}
+          currentUser={this.props.currentUser}
         />
       </SpinnerContainer>
     );
@@ -70,7 +70,7 @@ class EventItemViewContainer extends Component {
 
 const mapStateToProps = state => ({
   event: state.event,
-  current_user: state.user,
+  currentUser: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -102,7 +102,7 @@ EventItemViewContainer.propTypes = {
   getUnitsOfMeasuring: PropTypes.func,
   unCancel: PropTypes.func,
   leave: PropTypes.func,
-  current_user: PropTypes.func,
+  currentUser: PropTypes.func,
   getInventoriesByEventId: PropTypes.func,
   getUsersInventoriesByEventId: PropTypes.func,
 };
@@ -118,7 +118,7 @@ EventItemViewContainer.defaultProps = {
   delete: () => {},
   unCancel: () => {},
   leave: () => {},
-  current_user: () => {},
+  currentUser: () => {},
   getInventoriesByEventId: () => {},
   getUsersInventoriesByEventId: () => {},
 };

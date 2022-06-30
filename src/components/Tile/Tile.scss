@@ -1,37 +1,39 @@
-﻿.tile {
-  display: flex;
-  background-color: #d4d4d4;
-  border-radius: 12px;
-  flex-direction: row-reverse;
-  align-items: flex-start;
-  min-height: 16vh;
-  cursor: pointer;
+@import "../.././styles/colors.scss";
+
+.tile {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    min-height: 16vh;
+    background-color: $gray;
+    border-radius: 12px;
+    cursor: pointer;
 }
 
 .tile:hover {
-  background-color: #aaaaaa;
+    background-color: $middleGray;
 }
 
 .tri-state-checkbox {
-  margin: 25 px;
+    margin: 25 px;
 }
 
 .cover_6d0202cf-b64b-48e6-aaf0-08d99263d7ce,
 .cover_1436b7b6-297e-441c-aaf2-08d99263d7ce,
 .cover_51073798-e46d-4045-aaf1-08d99263d7ce {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .cover_6d0202cf-b64b-48e6-aaf0-08d99263d7ce {
-  background-image: url("../../assets/covers/tile-cover_1436b7b6-297e-441c-aaf2-08d99263d7ce.jpg");
+    background-image: url("../../assets/covers/tile-cover_1436b7b6-297e-441c-aaf2-08d99263d7ce.jpg");
 }
 
 .cover_1436b7b6-297e-441c-aaf2-08d99263d7ce {
-  background-image: url("../../assets/covers/tile-cover_1436b7b6-297e-441c-aaf2-08d99263d7ce.jpg");
+    background-image: url("../../assets/covers/tile-cover_1436b7b6-297e-441c-aaf2-08d99263d7ce.jpg");
 }
 
 .cover_51073798-e46d-4045-aaf1-08d99263d7ce {
-  background-image: url("../../assets/covers/tile-cover_51073798-e46d-4045-aaf1-08d99263d7ce.jpg");
+    background-image: url("../../assets/covers/tile-cover_51073798-e46d-4045-aaf1-08d99263d7ce.jpg");
 }

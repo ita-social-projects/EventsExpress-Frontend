@@ -1,48 +1,54 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import EventSchedule from "./EventScheduleItem";
+import "./EventSchedule.scss";
+import SpinnerWrapper from "../../containers/SpinnerContainer/SpinnerContainer";
+import NoResult from "../shared/NoResult/NoResult";
+import EventCard from "../Landing/EventCard/EventCard";
+import { EVENT_NO_RESULT } from "../../constants/eventConstants";
 
-class EventSchedulesList extends Component {
-  renderItems = arr =>
-    arr.map(item => (
-      <EventSchedule
-        key={item.id}
-        item={item}
-        current_user={this.props.currentUser}
-      />
-    ));
-
-  render() {
-    const items = this.renderItems(this.props.dataList);
-    const { dataList } = this.props;
-    return (
-      <>
-        <div className="row">
-          {dataList.length > 0 ? (
-            items
-          ) : (
-            <div id="notfound" className="w-100">
-              <div className="notfound">
-                <div className="notfound-404">
-                  <div className="h1">No Results</div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </>
-    );
-  }
-}
+const EventSchedulesList = ({
+  events,
+  getEvents,
+  isDataFetched,
+  isItemsAvaliable,
+}) => {
+  useEffect(() => {
+    getEvents();
+  }, []);
+  return (
+    <div className="container">
+      <SpinnerWrapper showContent={isDataFetched}>
+        {isItemsAvaliable ? (
+          <div className="eventsBlock">
+            {events.map(event => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        ) : (
+          <NoResult
+            title={EVENT_NO_RESULT.TITLE}
+            subTitle={EVENT_NO_RESULT.SUB_TITLE}
+            photo={EVENT_NO_RESULT.PHOTO}
+            btnTitle={EVENT_NO_RESULT.BTN_TITLE}
+          />
+        )}
+      </SpinnerWrapper>
+    </div>
+  );
+};
 
 EventSchedulesList.propTypes = {
-  dataList: PropTypes.array,
-  currentUser: PropTypes.object,
+  isDataFetched: PropTypes.bool,
+  isItemsAvaliable: PropTypes.bool,
+  events: PropTypes.array,
+  getEvents: PropTypes.func,
 };
 
 EventSchedulesList.defaultProps = {
-  dataList: [],
-  currentUser: {},
+  isDataFetched: false,
+  isItemsAvaliable: false,
+  events: [],
+  getEvents: () => {},
 };
 
 export default EventSchedulesList;

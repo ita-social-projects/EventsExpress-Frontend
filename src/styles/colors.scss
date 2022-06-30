@@ -1,46 +1,74 @@
 $black: #000000;
 $white: #ffffff;
 $gray: #f2f2f2;
+$greyLowOpacity: rgb(114 113 113 / 20%);
+$grayBlack: #212529 !important;
+$middleGray: #505050;
 $purple: #581184;
 $purpleDark: #180c30;
 $lightPink: #f0eaf4;
 $deleteColor: #c91212;
+$redOrange: #f44336;
+$redLight: lighten($deleteColor, 30%);
+$lightRed: #ffc6c2;
+$blue: #0000ff;
+$middleBlue: #0046d5;
+$lightBlue: #3b5998;
+$greyBlue: #213a6f;
+$whiteBlue: #93dbe9;
+$lightGreen: #c2ffc2;
 $green: #0eff7c;
-
+$darkGray: rgb(108 103 103);
+$olive: #7ac142;
+$middleGreen: #008554;
+$yellow: #ffc627;
+$orange: #ffa500;
+$orangeBrown: #ffc10762;
 $text: $black;
 $mainColor: $white;
 $secondaryColor: $purpleDark;
-
 $gradientColor: #000000cc;
 $bannerImageGradient: #00000080;
+$formTextArea: #00000030;
+$inputBoxShadow: 0 4px 4px $formTextArea;
 $bannerBgGradient: linear-gradient(0deg, $gradientColor, $gradientColor);
+$bropDownContentShadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+$buttonShadow: 0 0 2px rgb(0 0 0 / 60%);
+$quarterOpacityBlack: rgb(0 0 0 / 25%);
 $textShadowNeon: 0 0 5px $white,
-0 0 10px $white,
-0 0 20px $white,
-0 0 40px $purple;
+    0 0 10px $white,
+    0 0 20px $white,
+    0 0 40px $purple;
 $boxShadowImage: 0 0 5px $white,
-0 0 10px $white,
-0 0 20px $white,
-0 0 10px $purple;
-
+    0 0 10px $white,
+    0 0 20px $white,
+    0 0 10px $purple;
+$disabledColor: $darkGray;
 
 //Old Variables
 $lightThemeBackground: $white;
 $lightThemeAccept: #6c488a;
 $lightThemeHeader: #696969;
 $darkThemeBackground: #180c30;
-
 $transparentBlackBackground: #00000054;
 $headerBackground: #f7f4f466;
 $mainSearchGrey: #c4c4c475;
 $transparentGreyBackground: #74747466;
-
-//shadows
 $imageshadow: 10px 10px 40px 0 $lightThemeHeader;
 $boxshadow: 0 0 10px $transparentBlackBackground;
-$dropDownGradient:linear-gradient(to right top,#4C5584,#DD6085);
-$dropDownItemBackground:#CFBDD8;
-$dropDownItemColor:#535684;
+$dropDownGradient: linear-gradient(to right top, #4c5584, #dd6085);
+$dropDownItemBackground: #cfbdd8;
+$dropDownItemColor: #535684;
+$logoTextShadow: 0 0 3px $gray, 0 0 5px $lightThemeAccept;
+$chatLightGrey: #e6eaea;
+$chatWhite: #f5f5f5;
+$chatMiddleGrey: #95a5a6;
+$chatBlueGrey: #435f7a;
+$chatGreen: #2ecc71;
 
-$logoTextShadow:0 0 3px $gray, 0 0 5px $lightThemeAccept;
+//Auth Modal
+$authModalShadow: 0 0 15px $white;
+$authModalOutsideColor: #000000e6;
+$recoverPasswordButtonCloseShadow: 0 0 10px $purpleDark;
 
+$darkenLight15: darken($color: $lightThemeAccept, $amount: 15%);

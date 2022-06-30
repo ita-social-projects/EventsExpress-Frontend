@@ -10,9 +10,8 @@ import "moment-timezone";
 import renderPeriod from "./render-period";
 import useStyles from "./CardStyleConst";
 import SelectiveForm from "./SelectiveForm";
-// import "../Layout/Colorlib.scss";
 import getEvent from "../../actions/event/event-item-view-action";
-import { EVENT_DEFAULT_IMAGE } from "../../constants/eventConstants";
+import { EVENT_DEFAULT_IMAGE, RUN } from "../../constants/eventConstants";
 import PhotoService from "../../services/PhotoService";
 
 const photoService = new PhotoService();
@@ -69,13 +68,13 @@ class EventScheduleItemView extends Component {
                 <CardContent>
                   <div className="title"> {title} </div>
                   <div>
-                    Last Run
+                    {RUN.LAST}
                     <Moment className="ml-2" format="D MMM YYYY" withTitle>
                       {lastRun}
                     </Moment>
                   </div>
                   <div>
-                    Next Run
+                    {RUN.NEXT}
                     <Moment className="ml-2" format="D MMM YYYY" withTitle>
                       {nextRun}
                     </Moment>

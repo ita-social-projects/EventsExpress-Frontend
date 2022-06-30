@@ -1,32 +1,8 @@
-﻿import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+﻿import { connect } from "react-redux";
+import { reduxForm } from "redux-form";
 import RecoverPassword from "../../components/RecoverPassword/RecoverPassword";
 import recoverPassword from "../../actions/redactProfile/password-recover-action";
-
-// TODO Refactor class component
-class RecoverPasswordContainer extends React.Component {
-  submit = value => {
-    return this.props.recoverPassword(value);
-  };
-
-  render() {
-    const { status } = this.props;
-
-    return (
-      <>
-        <RecoverPassword onSubmit={this.submit} />
-        {status.isError !== undefined && !status.isError && (
-          <p className="text-success text-center">
-            New password sent by your email.
-            <br />
-            Please use it to sign in.
-          </p>
-        )}
-      </>
-    );
-  }
-}
+import { validate } from "../../components/helpers/validateHelper";
 
 const mapStateToProps = state => {
   return {
@@ -36,21 +12,16 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    recoverPassword: data => dispatch(recoverPassword(data)),
+    handleRecoverPassword: email => dispatch(recoverPassword(email)),
   };
 };
 
-RecoverPasswordContainer.propTypes = {
-  status: PropTypes.object,
-  recoverPassword: PropTypes.func,
-};
-
-RecoverPasswordContainer.defaultProps = {
-  status: {},
-  recoverPassword: () => {},
-};
+const RecoverPasswordForm = reduxForm({
+  form: "recoverPassword",
+  validate: validate(["email"]),
+})(RecoverPassword);
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RecoverPasswordContainer);
+)(RecoverPasswordForm);

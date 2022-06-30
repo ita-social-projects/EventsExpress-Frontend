@@ -1,0 +1,22 @@
+@import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
+
+.rating_box {
+    @include flex(column, center, flex-start);
+}
+
+.rating_average {
+    @include flex(column, center, flex-start);
+}
+
+.rating_success {
+    color: $green;
+}
+
+.rating_warning {
+    color: $orange;
+}
+
+.rating_danger {
+    color: $deleteColor;
+}

@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import userViewAttitude from "../../helpers/userViewUtils";
 import CustomAvatar from "../../CustomAvatar/CustomAvatar";
-import "./UserView.scss";
-import getAge from "../../helpers/get-age-string";
 import { USER_VIEW_LABELS } from "../../../constants/userConstants";
+import getAge from "../../helpers/userAgeHelper/getUserAge";
+import "./UserView.scss";
 
 const { AGE, YOU, THIS_USER } = USER_VIEW_LABELS;
 

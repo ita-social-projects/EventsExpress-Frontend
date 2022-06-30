@@ -1,47 +1,51 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+@import "../../styles/fonts.scss";
+
 body {
-  height: 100vh;
+    height: 100vh;
 }
 
 #root {
-  height: 100%;
+    height: $fullWidth;
 }
 
 .col-sm-10 {
-  left: 15.5vw;
+    left: 15.5vw;
 }
 
 .admin-panel {
-  height: 100px;
-  background-color: rgba(0, 0, 0, 0.54);
+    height: 100px;
+    background-color: $formTextArea;
 }
 
 .admin-panel > h3 {
-  padding: 30px 0 0 25px;
-  color: white;
+    padding: 30px 0 0 25px;
+    color: $white;
 }
 
 .admin-sidebar {
-  background-color: rgba(114, 113, 113, 0.2);
-  position: fixed;
-  top: 22vh;
+    position: fixed;
+    top: 22vh;
+    background-color: $greyLowOpacity;
 }
 
 .admin-sidebar ul li .link {
-  padding: 10px;
-  font-size: 1.1em;
-  color: rgba(0, 0, 0, 0.75);
-  display: block;
-  width: 100%;
+    display: block;
+    width: $fullWidth;
+    padding: 10px;
+    color: $bannerImageGradient;
+    font-size: $fontsize11em;
 }
 
 .admin-sidebar ul li .link:hover {
-  color: rgb(0, 0, 0);
-  background: #fff;
-  font-weight: 550;
-  border-bottom: 3px solid rgb(63, 81, 181);
-  transition: 0.1s;
+    color: $black;
+    font-weight: $thick;
+    background: $white;
+    border-bottom: 3px solid $middleBlue;
+    transition: 0.1s;
 }
 
 #sub-nav div li a {
-  width: 100%;
+    width: $fullWidth;
 }

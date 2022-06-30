@@ -1,4 +1,7 @@
-import filterHelper from "../components/helpers/filterHelper";
+import {
+  getDefaultEventFilter,
+  getDefaultContactAdminFilter,
+} from "../components/helpers/filterHelper/filterHelper";
 
 const initialState = {
   requestCount: {
@@ -51,16 +54,6 @@ const initialState = {
     isPending: false,
     data: [],
   },
-  users: {
-    status: null,
-    count: null,
-    editedUser: null,
-    userSearchFilter: null,
-    data: {
-      items: [],
-      pageViewModel: {},
-    },
-  },
   comments: {
     data: {
       items: [],
@@ -80,7 +73,7 @@ const initialState = {
       nextRun: null,
     },
   },
-  edit_event_from_parent: {
+  editEventFromParent: {
     isEventFromParentPending: false,
     isEventFromParentSuccess: false,
   },
@@ -89,7 +82,8 @@ const initialState = {
       items: [],
       pageViewModel: {},
     },
-    filter: filterHelper.getDefaultEventFilter(),
+    isDeleted: false,
+    filter: getDefaultEventFilter(),
   },
   tracks: {
     isError: false,
@@ -105,14 +99,13 @@ const initialState = {
     data: [],
   },
   eventSchedules: {
-    data: {
-      items: [],
-    },
+    events: [],
+    isDataFetched: false,
   },
   profile: {
     data: null,
   },
-  events_for_profile: {
+  eventsForProfile: {
     data: {
       items: [],
       pageViewModel: {},
@@ -153,14 +146,14 @@ const initialState = {
       items: [],
       pageViewModel: {},
     },
-    filter: filterHelper.getDefaultContactAdminFilter(),
+    filter: getDefaultContactAdminFilter(),
   },
   contactAdminItem: {
     data: [],
   },
   notification: {
     messages: [],
-    seen_messages: [],
+    seenMessages: [],
     events: [],
   },
   notificationTypes: {

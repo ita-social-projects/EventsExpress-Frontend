@@ -12,6 +12,7 @@ import editEventFromParent, {
 import eventEditValidateForm from "../../components/helpers/eventEditValidateForm ";
 import eventValidateForm from "../../components/helpers/eventValidateForm";
 import getCategories from "../../actions/category/category-list-action";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 // TODO Refactor class component
 class EditFromParentEventContainer extends Component {
@@ -21,8 +22,8 @@ class EditFromParentEventContainer extends Component {
 
   componentDidUpdate = () => {
     if (
-      !this.props.edit_event_from_parent_status.eventFromParentError &&
-      this.props.editEventFromParent_status.isEventFromParentSuccess
+      !this.props.getEventFromParentStatus.eventFromParentError &&
+      this.props.editEventFromParentStatus.isEventFromParentSuccess
     ) {
       this.props.reset();
     }
@@ -39,7 +40,7 @@ class EditFromParentEventContainer extends Component {
     }
     this.props.editEventFromParent({
       ...eventValidateForm(valuesCopy),
-      user_id: this.props.user_id,
+      userId: this.props.userId,
     });
   };
 
@@ -59,17 +60,17 @@ class EditFromParentEventContainer extends Component {
       <>
         <EventForm
           validate={eventEditValidateForm}
-          allCategories={this.props.all_categories}
+          allCategories={this.props.allCategories}
           onSubmit={this.onSubmit}
           initialValues={initialValues}
-          formValues={this.props.form_values}
+          formValues={this.props.formValues}
           haveReccurentCheckBox={false}
           disabledDate
           eventId={this.props.event.id}
         >
           <div className="col">
             <Button className="border" fullWidth color="primary" type="submit">
-              Publish
+              {BUTTON_NAMES.PUBLISH}
             </Button>
           </div>
           <div className="col">
@@ -79,7 +80,7 @@ class EditFromParentEventContainer extends Component {
               color="primary"
               onClick={this.props.onCancelEditing}
             >
-              Cancel
+              {BUTTON_NAMES.CANCEL}
             </Button>
           </div>
         </EventForm>
@@ -89,10 +90,10 @@ class EditFromParentEventContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  user_id: state.user.id,
-  edit_event_from_parent_status: state.editEventFromParent,
-  all_categories: state.categories,
-  form_values: getFormValues("event-form")(state),
+  userId: state.user.id,
+  editEventFromParentStatus: state.editEventFromParent,
+  allCategories: state.categories,
+  formValues: getFormValues("event-form")(state),
   eventSchedule: state.eventSchedule.data,
   event: state.event.data,
 });
@@ -110,29 +111,29 @@ const mapDispatchToProps = dispatch => {
 };
 EditFromParentEventContainer.propTypes = {
   getCategories: PropTypes.func,
-  edit_event_from_parent_status: PropTypes.object,
+  getEventFromParentStatus: PropTypes.func,
   reset: PropTypes.func,
   editEventFromParent: PropTypes.func,
-  user_id: PropTypes.string,
+  userId: PropTypes.string,
   eventSchedule: PropTypes.object,
   event: PropTypes.object,
-  all_categories: PropTypes.object,
+  allCategories: PropTypes.object,
   onCancelEditing: PropTypes.func,
-  form_values: PropTypes.object,
-  editEventFromParent_status: PropTypes.object,
+  formValues: PropTypes.object,
+  editEventFromParentStatus: PropTypes.object,
 };
 EditFromParentEventContainer.defaultProps = {
   getCategories: () => {},
-  edit_event_from_parent_status: () => {},
+  getEventFromParentStatus: () => {},
   reset: () => {},
   editEventFromParent: () => {},
-  user_id: "",
+  userId: "",
   eventSchedule: {},
   event: {},
-  all_categories: {},
+  allCategories: {},
   onCancelEditing: () => {},
-  form_values: {},
-  editEventFromParent_status: {},
+  formValues: {},
+  editEventFromParentStatus: {},
 };
 
 export default connect(

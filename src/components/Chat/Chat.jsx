@@ -15,6 +15,7 @@ import getChat, {
 import Msg from "./Msg";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import CustomAvatarContainer from "../CustomAvatar/CustomAvatar";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 class Chat extends Component {
   componentWillMount = () => {
@@ -34,7 +35,7 @@ class Chat extends Component {
     }
 
     const msgIds = this.props.chat.data.messages
-      .filter(x => !x.seen && x.senderId !== this.props.current_user.id)
+      .filter(x => !x.seen && x.senderId !== this.props.currentUser.id)
       .map(x => x.id);
 
     if (msgIds.length > 0) {
@@ -88,7 +89,7 @@ class Chat extends Component {
 
   render() {
     const sender = this.props.chat.data.users.find(
-      y => y.id !== this.props.current_user.id,
+      y => y.id !== this.props.currentUser.id,
     );
     const { data } = this.props.chat;
     return (
@@ -108,8 +109,14 @@ class Chat extends Component {
                     </ButtonBase>
                   )}
                   <div className="user_info">
-                    <span>Chat with {sender != null && sender.username}</span>
-                    <p>{this.props.chat.data.messages.length} Messages</p>
+                    <span>
+                      {"Chat with "}
+                      {sender != null && sender.username}
+                    </span>
+                    <p>
+                      {this.props.chat.data.messages.length}
+                      {" Messages"}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -136,7 +143,7 @@ class Chat extends Component {
                     color="primary"
                     className="w-25"
                   >
-                    Send
+                    {BUTTON_NAMES.SEND}
                   </Button>
                 </form>
               </div>
@@ -155,7 +162,7 @@ Chat.propTypes = {
   chat: propTypes.object,
   concatNewMsg: propTypes.func,
   deleteOldNotififcation: propTypes.func,
-  current_user: propTypes.object,
+  currentUser: propTypes.object,
   resetChat: propTypes.func,
   // TODO: change hubConnection prop
   hubConnection: propTypes.any,
@@ -169,14 +176,14 @@ Chat.defaultProps = {
   chat: {},
   concatNewMsg: () => {},
   deleteOldNotififcation: () => {},
-  current_user: {},
+  currentUser: {},
   resetChat: () => {},
   hubConnection: {},
   resetForm: () => {},
 };
 
 const mapStateToProps = state => ({
-  current_user: state.user,
+  currentUser: state.user,
   hubConnection: state.hubConnections.chatHub,
   chat: state.chat,
   notification: state.notification,

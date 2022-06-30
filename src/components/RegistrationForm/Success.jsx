@@ -2,13 +2,15 @@ import React, { PureComponent } from "react";
 import "./CheckMarkAnimation.scss";
 import { Button, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { REGISTRATION_SUCCESSFUL } from "../../constants/authConstants";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 export class Success extends PureComponent {
   render() {
     return (
       <>
         <Grid item sm={12}>
-          <h1 style={{ fontSize: 25 }}>Successful registration!</h1>
+          <h1 style={{ fontSize: 25 }}>{REGISTRATION_SUCCESSFUL}</h1>
         </Grid>
         <div>
           <svg className="checkmark" viewBox="0 0 52 52">
@@ -40,7 +42,7 @@ export class Success extends PureComponent {
               variant="contained"
               size="large"
             >
-              Profile
+              {BUTTON_NAMES.PROFILE_LINK}
             </Button>
           </Grid>
           <Grid item sm={3}>
@@ -51,7 +53,7 @@ export class Success extends PureComponent {
               variant="contained"
               size="large"
             >
-              Events
+              {BUTTON_NAMES.EVENTS_LINK}
             </Button>
           </Grid>
           <Grid item sm={3} />

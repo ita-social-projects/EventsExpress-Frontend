@@ -7,6 +7,7 @@ import getChatsAction from "../../actions/chat/chats-action";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import "./UserChats.scss";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
+import { U_HAVE_UNREAD_MSG } from "../../constants/chatConstants";
 
 class UserChats extends Component {
   componentWillMount = () => {
@@ -15,7 +16,7 @@ class UserChats extends Component {
 
   renderChats = arr => {
     return arr.map(x => {
-      const user = x.users.find(y => y.id !== this.props.current_user.id);
+      const user = x.users.find(y => y.id !== this.props.currentUser.id);
       const newMsg = this.props.notification.messages.filter(
         y => y.chatRoomId === x.id,
       );
@@ -38,11 +39,12 @@ class UserChats extends Component {
                   <span className="text-info">{x.lastMessage}</span>
                 )}
                 {newMsg.length === 1 && (
-                  <span className="text-info">You have 1 unread message</span>
+                  <span className="text-info">{U_HAVE_UNREAD_MSG}</span>
                 )}
                 {newMsg.length > 1 && (
                   <span className="text-info">
-                    You have {newMsg.length} unread messages
+                    {"You have "}
+                    {newMsg.length} {"unread messages"}
                   </span>
                 )}
               </div>
@@ -75,14 +77,14 @@ class UserChats extends Component {
 
 UserChats.propTypes = {
   getChats: propTypes.func,
-  current_user: propTypes.object,
+  currentUser: propTypes.object,
   notification: propTypes.object,
   chats: propTypes.object,
 };
 
 UserChats.defaultProps = {
   getChats: () => {},
-  current_user: {},
+  currentUser: {},
   notification: {},
   chats: {},
 };
@@ -90,7 +92,7 @@ UserChats.defaultProps = {
 const mapStateToProps = state => ({
   chats: state.chats,
   chat: state.chat,
-  current_user: state.user,
+  currentUser: state.user,
   notification: state.notification,
 });
 

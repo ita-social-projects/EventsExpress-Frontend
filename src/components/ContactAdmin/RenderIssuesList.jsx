@@ -1,6 +1,7 @@
 ﻿import React, { Component } from "react";
 import propTypes from "prop-types";
 import PagePagination from "../shared/PagePagination/PagePagination";
+import { NO_RESULT } from "../../constants/labelConstants";
 
 class RenderIssuesList extends Component {
   renderIssues = arr => arr.map(item => this.props.renderSingleIssue(item));
@@ -16,7 +17,7 @@ class RenderIssuesList extends Component {
           <div id="notfound" className="w-100">
             <div className="notfound">
               <div className="notfound-404">
-                <div className="h1">No Results</div>
+                <div className="h1">{NO_RESULT}</div>
               </div>
             </div>
           </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Split from "react-split";
-import PropTypes from "prop-types";
 import "./SplitPanels.scss";
 import {
   IoIosArrowForward,
@@ -11,6 +10,8 @@ import {
 import { Link } from "react-router-dom";
 import constantsSplitScreens from "../../constants/splitScreensConstants";
 import CollapseButton from "./CollapseButton";
+import Options from "../shared/Options/Options";
+import { SQUARE_STANDART } from "../../constants/imageSizesConstants";
 
 const SplitPanels = () => {
   const {
@@ -31,7 +32,7 @@ const SplitPanels = () => {
     <Split
       direction="horizontal"
       collapsed={collapsedIndex}
-      sizes={[50, 50]}
+      sizes={[SQUARE_STANDART, SQUARE_STANDART]}
       className="split-panels"
       style={{ height: "780px" }}
     >
@@ -119,22 +120,6 @@ const SplitPanels = () => {
       </div>
     </Split>
   );
-};
-
-const Options = ({ children }) => {
-  return (
-    <div className="options-div">
-      <div>{children}</div>
-    </div>
-  );
-};
-
-Options.propTypes = {
-  children: PropTypes.object,
-};
-
-Options.defaultProps = {
-  children: {},
 };
 
 export default SplitPanels;

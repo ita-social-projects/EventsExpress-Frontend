@@ -1,23 +1,25 @@
+@import "../../../styles/fonts.scss";
+
 .description {
-    white-space: nowrap; 
-    overflow: hidden;     
-    text-overflow: ellipsis; 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .title {
     overflow-wrap: anywhere;
 }
 
-.description-tooltip{
+.description-tooltip {
     overflow-wrap: anywhere;
 }
 
 .age-icon {
-    font-size: 20px;
-    padding: 1px 5px 0 5px;
+    padding: 1px 5px 0;
+    font-size: $fontsize20;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
     -o-user-select: none;
-    user-select: none; 
+    user-select: none;
 }

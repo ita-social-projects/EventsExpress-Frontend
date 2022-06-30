@@ -1,11 +1,13 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import { Field, reduxForm } from "redux-form";
+import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderTextField } from "../../helpers/form-helpers";
+import PROFILE_CONSTANTS from "../../../constants/profileConstants";
 
 const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
+  const { SUBMIT, CLEAR } = PROFILE_CONSTANTS;
   return (
     <form onSubmit={handleSubmit}>
       <Field name="userName" component={renderTextField} label="UserName" />
@@ -13,7 +15,7 @@ const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
 
       <div>
         <Button type="submit" color="primary" disabled={pristine || submitting}>
-          Submit
+          {SUBMIT}
         </Button>
         <Button
           type="button"
@@ -21,7 +23,7 @@ const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
           disabled={pristine || submitting}
           onClick={reset}
         >
-          Clear
+          {CLEAR}
         </Button>
       </div>
     </form>
@@ -44,6 +46,4 @@ EditUsername.propTypes = {
   handleSubmit: PropTypes.func,
 };
 
-export default reduxForm({
-  form: "EditUsername",
-})(EditUsername);
+export default EditUsername;

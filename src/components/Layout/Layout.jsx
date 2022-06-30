@@ -8,9 +8,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <LeftSidebarContainer />
-      <div id="main" className="container-fluid h-100 pl-5">
-        {children}
-      </div>
+      <div className="main">{children}</div>
     </>
   );
 };

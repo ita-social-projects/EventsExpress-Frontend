@@ -10,6 +10,13 @@ import {
   parseEuDate,
 } from "../helpers/form-helpers";
 import ChangeAvatarContainer from "../../containers/EditProfileContainers/ChangeAvatarContainer";
+import { CHOOSE_AVATAR } from "../../constants/registationConstants";
+import {
+  MAX_ALLOWABLE_AGE,
+  MIN_ALLOWABLE_AGE,
+  USER_GENDERS,
+} from "../../constants/userConstants";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 const CompleteProfileForm = ({ handleSubmit }) => {
   return (
@@ -18,12 +25,14 @@ const CompleteProfileForm = ({ handleSubmit }) => {
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
             <Grid item sm={6}>
-              <h1 style={{ fontSize: 20 }}>Step 2: Complete your profile. </h1>
+              <h1 style={{ fontSize: 20 }}>
+                {"Step 2: Complete your profile. "}
+              </h1>
             </Grid>
             <Grid item sm={6} />
 
             <Grid item sm={3}>
-              Choose your avatar:
+              {CHOOSE_AVATAR}
             </Grid>
             <Grid item sm={9}>
               <ChangeAvatarContainer />
@@ -55,8 +64,14 @@ const CompleteProfileForm = ({ handleSubmit }) => {
               <Field
                 name="birthDate"
                 label="Birth Date"
-                minValue={moment(new Date()).subtract(115, "years")}
-                maxValue={moment(new Date()).subtract(14, "years")}
+                minValue={moment(new Date()).subtract(
+                  MAX_ALLOWABLE_AGE,
+                  "years",
+                )}
+                maxValue={moment(new Date()).subtract(
+                  MIN_ALLOWABLE_AGE,
+                  "years",
+                )}
                 component={renderDatePicker}
                 parse={parseEuDate}
               />
@@ -89,9 +104,9 @@ const CompleteProfileForm = ({ handleSubmit }) => {
                 label="Gender"
               >
                 <option aria-label="None" value="" />
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Other</option>
+                <option value="1">{USER_GENDERS.MALE}</option>
+                <option value="2">{USER_GENDERS.FEMALE}</option>
+                <option value="3">{USER_GENDERS.OTHER}</option>
               </Field>
             </Grid>
 
@@ -103,7 +118,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
                 variant="contained"
                 size="large"
               >
-                Continue
+                {BUTTON_NAMES.CONTINUE}
               </Button>
             </Grid>
           </Grid>

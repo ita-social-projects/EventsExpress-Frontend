@@ -6,6 +6,7 @@ import InventoryHeaderButton from "./InventoryHeaderButton";
 import { getInventoryData } from "../../actions/inventory/inventory-list-action";
 import InventoryItemContainer from "../../containers/InventoryItemContainer/InventoryItemContainer";
 import { editUsersInventory } from "../../actions/users/users-inventories-action";
+import { INVENTORY_HEADER_COLS } from "../../constants/inventoryConstatns";
 
 class InventoryList extends Component {
   constructor() {
@@ -79,27 +80,27 @@ class InventoryList extends Component {
                 <span className="icon">
                   <i className="fa-sm fas fa-plus"></i>
                 </span>{" "}
-                &nbsp; Add item
+                &nbsp;{" Add item"}
               </IconButton>
             )}
             <div className="container">
               <div className="row p-1">
                 <div className="col col-md-3">
-                  <b>Item name</b>
+                  <b>{INVENTORY_HEADER_COLS.ITEM_NAME}</b>
                 </div>
                 <div className="col">
-                  <b>Already get</b>
+                  <b>{INVENTORY_HEADER_COLS.ALREADY_GET}</b>
                 </div>
                 {!isMyEvent && (
                   <div className="col col-md-1">
-                    <b>Will take</b>
+                    <b>{INVENTORY_HEADER_COLS.WILL_TAKE}</b>
                   </div>
                 )}
                 <div className="col col-md-2">
-                  <b>Count</b>
+                  <b>{INVENTORY_HEADER_COLS.COUNT}</b>
                 </div>
                 <div className="col col-md-2">
-                  <b>Units</b>
+                  <b>{INVENTORY_HEADER_COLS.UNITS}</b>
                 </div>
                 <div className="col col-md-2"></div>
               </div>

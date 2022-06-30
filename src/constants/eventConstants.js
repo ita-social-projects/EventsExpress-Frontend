@@ -83,3 +83,74 @@ export const EVENT_VISITORS = {
   PENDING_USERS: "Pending users",
   DENIED_USERS: "Denied users",
 };
+
+export const CARD_TYPE = {
+  DRAFT: "draft",
+  LANDING: "landing",
+  HOME: "home",
+  RECCURENT_EVENTS: "eventSchedules",
+};
+export const EVENT_NO_RESULT = {
+  TITLE: "Нou have no events yet",
+  SUB_TITLE: "You have not yet created events with the ability to repeat them",
+  PHOTO:
+    "https://res.cloudinary.com/wunu/image/upload/v1654537602/eventexpress/folder-is-empty-4064360-3363921_y9cgvg.png",
+  BTN_TITLE: "Back",
+};
+
+export const CANCEL_EVENTS = {
+  CANCEL_ONE: "Cancel one",
+  CANCEL: "Cancel",
+};
+
+export const CREATE_WITHOUT_EDITING = "Create without editing";
+export const CREATE_WITH_EDITING = "Create with editing";
+export const CONFIRMATION = "Confirmation";
+export const ENTER_LOCATION = "Enter an https:// URL:";
+export const CURRENT_POSITION_ON_MAP = "Current position on the Map is:";
+export const ONLINE_MEETING_HERE = "Online meeting here";
+export const RUN = {
+  LAST: "Last run",
+  NEXT: "Next run",
+};
+export const FILTERS = "Filters";
+
+export const EVENT_ITEM_VIEW_CONSTS = {
+  YOU_GONNA_VISIT: "You are gonna visit.",
+  DENIED_PARTICIPATION: "Denied participation.",
+  WAIT_ADMIN_APROVE: "Wait until admin approve your request.",
+  YOU_NOT_IN_EVENT: "You are not in event yet.",
+  PARTICIPANTS: "Participants",
+  PUBLIC_EVENT: "Public event",
+  PRIVATE_EVENT: "Private event",
+  ADULT_LABEL: "18+",
+  EVENTS_FOR_ADULTS: "This event is only for adults.",
+  AGE_REQUIREMENTS: "You do not meet age requirements for this event.",
+};
+
+export const EVENT_SCHEDULE_CONSTS = {
+  CLICK: "Click",
+  CANCEL_ONE: "Cancel Once",
+  CANCEL: "Cancel",
+  EDITING: "editing.",
+  TO_CREATE_WITH: "to create the event with",
+  TO_CREATE_WITHOUT: "to create the event without",
+  TO_CANCEL_ALL: "to cancel all events.",
+  TO_CANCEL_NEXT: "to cancel the next event.",
+};
+
+export const EVENT_CARD_TITLE_SLICE = 30;
+export const EVENT_LIST_TITLE_SLICE = 35;
+export const EVENT_LIST_DESC_SLICE = 100;
+
+export const EVENT_ITEM_DESC_SLICE = 570;
+export const EVENT_ITEM_MAX_DESC = 128;
+
+export const EVENT_OPACITY = {
+  HALF: 0.5,
+  FULL: 1,
+};
+
+export const EVENT_FILTER_Z_INDEX = 2;
+
+export const EVENT_SLICE_CATEGORIES_PARAM = 2;

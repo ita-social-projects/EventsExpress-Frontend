@@ -24,7 +24,7 @@ class EventScheduleItemViewContainer extends Component {
       <SpinnerContainer showContent={data !== undefined}>
         <EventScheduleItemView
           eventSchedule={this.props.eventSchedule}
-          current_user={this.props.current_user}
+          current_user={this.props.currentUser}
         />
       </SpinnerContainer>
     );
@@ -33,7 +33,7 @@ class EventScheduleItemViewContainer extends Component {
 
 const mapStateToProps = state => ({
   eventSchedule: state.eventSchedule,
-  current_user: state.user,
+  currentUser: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -46,7 +46,7 @@ EventScheduleItemViewContainer.propTypes = {
   reset: PropTypes.func,
   eventSchedule: PropTypes.object,
   getEventSchedule: PropTypes.func,
-  current_user: PropTypes.object,
+  currentUser: PropTypes.object,
 };
 
 EventScheduleItemViewContainer.defaultProps = {
@@ -54,7 +54,7 @@ EventScheduleItemViewContainer.defaultProps = {
   reset: () => {},
   eventSchedule: {},
   getEventSchedule: () => {},
-  current_user: {},
+  currentUser: {},
 };
 
 export default connect(

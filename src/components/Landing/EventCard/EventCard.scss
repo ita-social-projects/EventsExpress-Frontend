@@ -3,88 +3,110 @@
 @import "../../../styles/fonts.scss";
 
 .event-card {
-  width: 300px;
-  margin: 15px;
-  box-shadow: $imageshadow;
-  background-color: $white;
-  .card-image-container {
-    @include flex(row, center, center);
-    width: $fullWidth;
-    height: 150px;
-    overflow: hidden;
-    position: relative;
-  }
-  .card-image{
     width: 300px;
-    height: 150px;
-    object-fit:cover;
-  }
-  .card-content {
-    @include flex(row, start, start);
-    width: $fullWidth;
-    height: 150px;
-    padding: 5px;
-    .card-date {
-      width: 150px;
-      position: relative;
-      padding: 5px;
-    }
-    .date-container {
-      @include flex(row, center, center);
-      height: $fullWidth;
-      .day {
+    margin: 15px;
+    background-color: $white;
+    box-shadow: $imageshadow;
+
+    .card-image-container {
         @include flex(row, center, center);
-        color: $lightThemeAccept;
-        font-family: $robinson;
-        height: 100px;
-        text-shadow: 0 0 20px $white;
-        margin-bottom: 15px;
-        font-weight: $bold;
-        font-size: 80px;
-      }
+
+        position: relative;
+        width: $fullWidth;
+        height: 150px;
+        overflow: hidden;
     }
-    .card-info {
-      @include flex(column, start, space-between);
-      padding: 5px;
-      width: $fullWidth;
-      .card-info-header {
-        @include flex(row, center, center);
+
+    .card-image {
+        width: 300px;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        @include flex(row, flex-start, flex-start);
+
         width: $fullWidth;
+        height: 150px;
         padding: 5px;
-        height: 100px;
-        text-transform: uppercase;
-        font-weight: $bold;
-        font-size: $fontsize-20;
-        color: $black;
-      }
-      .card-buttons {
-        @include flex(row, center, flex-end);
+
+        .card-date {
+            position: relative;
+            width: 150px;
+            padding: 5px;
+        }
+
+        .date-container {
+            @include flex(row, center, center);
+
+            height: $fullWidth;
+
+            .day {
+                @include flex(row, center, center);
+
+                height: 100px;
+                margin-bottom: 15px;
+                color: $lightThemeAccept;
+                font-weight: $bold;
+                font-size: $fontsize100;
+                font-family: $robinson;
+                text-shadow: 0 0 20px $white;
+            }
+        }
+
+        .card-info {
+            @include flex(column, flex-start, space-between);
+
+            width: $fullWidth;
+            padding: 5px;
+
+            .card-info-header {
+                @include flex(row, center, center);
+
+                width: $fullWidth;
+                height: 100px;
+                padding: 5px;
+                color: $black;
+                font-weight: $bold;
+                font-size: $fontsize20;
+                text-transform: uppercase;
+            }
+
+            .card-buttons {
+                @include flex(row, center, flex-end);
+
+                width: $fullWidth;
+                height: 40px;
+                padding: 5px;
+
+                .like,
+                .more {
+                    @include flex(row, center, center);
+
+                    width: 40px;
+                    height: 40px;
+                    padding: 5px;
+                }
+
+                .more {
+                    margin-left: 15px;
+                    color: $white;
+                    background-color: $lightThemeAccept;
+
+                    @include flex(row, center, flex-start);
+                }
+            }
+        }
+    }
+
+    .month {
         width: $fullWidth;
-        padding: 5px;
         height: 40px;
-        .like, .more {
-          @include flex(row, center, center);
-          width: 40px;
-          height: 40px;
-          padding: 5px;
-        }
-        .more {
-          margin-left: 15px;
-          background-color: $lightThemeAccept;
-          color: $white;
-          @include flex(row, center, start);
-        }
-      }
+        margin: 0 auto;
+        padding: 10px;
+        color: $lightThemeAccept;
+        font-size: $fontsize45;
+        font-family: $robinson;
+        text-transform: uppercase;
     }
-  }
-  .month {
-    padding: 5px;
-    color: $lightThemeAccept;
-    font-family: $robinson;
-    height: 40px;
-    text-transform: uppercase;
-    font-size: 45px;
-    width: $fullWidth;
-    margin: 0 auto;
-  }
 }

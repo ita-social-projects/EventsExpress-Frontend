@@ -1,4 +1,6 @@
-﻿body {
+@import "../../../styles/variables.scss";
+
+body {
     margin: 0;
     padding: 0;
 }
@@ -12,22 +14,22 @@
 .crop-container {
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 80px;
+    left: 0;
 }
 
 .controls {
     position: absolute;
     bottom: 0;
-    left: 50%;
-    width: 50%;
-    transform: translateX(-50%);
-    height: 80px;
+    left: $halfWidth;
     display: flex;
     align-items: center;
+    width: $halfWidth;
+    height: 80px;
+    transform: translateX($minusHalfWidth);
 }
 
 .slider {
-    padding: 22px 0px;
+    padding: 22px 0;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { ONLINE_MEETING_HERE } from "../../../constants/eventConstants";
 
 const DisplayOnline = ({ locationPath }) => {
   return (
@@ -13,7 +14,7 @@ const DisplayOnline = ({ locationPath }) => {
         href={locationPath}
         rel="noreferrer"
       >
-        Online meeting here
+        {ONLINE_MEETING_HERE}
       </a>
     </div>
   );

@@ -1,95 +1,100 @@
-﻿
+@import "../../styles/colors.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/variables.scss";
 
 .funkyradio label {
-    width: 100%;
+    width: $fullWidth;
+    font-weight: $headText;
+    border: 1px solid $gray;
     border-radius: 3px;
-    border: 1px solid #D1D3D4;
-    font-weight: normal;
 }
 
-.funkyradio input[type="radio"]:empty,
-.funkyradio input[type="checkbox"]:empty {
+.funkyradio input[ type = "radio" ]:empty,
+.funkyradio input[ type = "checkbox" ]:empty {
     display: none;
 }
 
-    .funkyradio input[type="radio"]:empty ~ label,
-    .funkyradio input[type="checkbox"]:empty ~ label {
-        position: relative;
-        line-height: 2.5em;
-        text-indent: 3.25em;
-        margin-top: 2em;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-        .funkyradio input[type="radio"]:empty ~ label:before,
-        .funkyradio input[type="checkbox"]:empty ~ label:before {
-            position: absolute;
-            display: block;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            content: '';
-            width: 2.5em;
-            background: #D1D3D4;
-            border-radius: 3px 0 0 3px;
-        }
-
-.funkyradio input[type="radio"]:hover:not(:checked) ~ label,
-.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
-    color: #888;
+.funkyradio input[ type = "radio" ]:empty ~ label,
+.funkyradio input[ type = "checkbox" ]:empty ~ label {
+    position: relative;
+    margin-top: 2em;
+    line-height: 2.5em;
+    text-indent: 3.25em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-    .funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
-    .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
-        content: '\2714';
-        text-indent: .9em;
-        color: #C2C2C2;
-    }
-
-.funkyradio input[type="radio"]:checked ~ label,
-.funkyradio input[type="checkbox"]:checked ~ label {
-    color: #777;
+.funkyradio input[ type = "radio" ]:empty ~ label::before,
+.funkyradio input[ type = "checkbox" ]:empty ~ label::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 2.5em;
+    background: $gray;
+    border-radius: 3px 0 0 3px;
+    content: "";
 }
 
-    .funkyradio input[type="radio"]:checked ~ label:before,
-    .funkyradio input[type="checkbox"]:checked ~ label:before {
-        content: '\2714';
-        text-indent: .9em;
-        color: #333;
-        background-color: #ccc;
-    }
+.funkyradio input[ type = "radio" ]:hover:not(:checked) ~ label,
+.funkyradio input[ type = "checkbox" ]:hover:not(:checked) ~ label {
+    color: $grayBlack;
+}
 
-.funkyradio input[type="radio"]:focus ~ label:before,
-.funkyradio input[type="checkbox"]:focus ~ label:before {
-    box-shadow: 0 0 0 3px #999;
+.funkyradio input[ type = "radio" ]:hover:not(:checked) ~ label::before,
+.funkyradio input[ type = "checkbox" ]:hover:not(:checked) ~ label::before {
+    color: $gray;
+    text-indent: 0.9em;
+    content: "\2714";
 }
-.funkyradio-primary input[type="radio"]:checked ~ label:before,
-.funkyradio-primary input[type="checkbox"]:checked ~ label:before {
-    color: #fff;
-    background-color: #337ab7;
+
+.funkyradio input[ type = "radio" ]:checked ~ label,
+.funkyradio input[ type = "checkbox" ]:checked ~ label {
+    color: $middleGray;
 }
-.funkyradio-info input[type="radio"]:checked ~ label:before,
-.funkyradio-info input[type="checkbox"]:checked ~ label:before {
-    color: #fff;
-    background-color: #5bc0de;
+
+.funkyradio input[ type = "radio" ]:checked ~ label::before,
+.funkyradio input[ type = "checkbox" ]:checked ~ label::before {
+    color: $grayBlack;
+    text-indent: 0.9em;
+    background-color: $middleGray;
+    content: "\2714";
 }
+
+.funkyradio input[ type = "radio" ]:focus ~ label::before,
+.funkyradio input[ type = "checkbox" ]:focus ~ label::before {
+    box-shadow: 0 0 0 3px $middleGray;
+}
+
+.funkyradio-primary input[ type = "radio" ]:checked ~ label::before,
+.funkyradio-primary input[ type = "checkbox" ]:checked ~ label::before {
+    color: $white;
+    background-color: $lightBlue;
+}
+
+.funkyradio-info input[ type = "radio" ]:checked ~ label::before,
+.funkyradio-info input[ type = "checkbox" ]:checked ~ label::before {
+    color: $white;
+    background-color: $whiteBlue;
+}
+
 .info {
-    padding-top: 10px;
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: space-around;
-    flex-direction: row-reverse;
-    
+    padding-top: 10px;
 }
 
-@media (max-width: 768px){
-    .info {        
-        flex-direction: column
-    } 
+@media (max-width: 768px) {
+
+    .info {
+        flex-direction: column;
+    }
 }
 
 .attitude {
@@ -102,21 +107,22 @@
 }
 
 .check {
-   padding-top: 35px;
+    padding-top: 35px;
 }
 
 .user {
-     margin-top: -10px;
+    margin-top: -10px;
 }
 
-.user-profile-avatar{
+.user-profile-avatar {
     position: relative;
 }
 
-.user-profile-avatar:hover{
-    opacity: 0.5;
+.user-profile-avatar:hover {
+    opacity: $opacity05;
 }
 
-.mb-5, .my-5 {
-    margin-top: 3rem!important;
+.mb-5,
+.my-5 {
+    margin-top: 3rem !important;
 }

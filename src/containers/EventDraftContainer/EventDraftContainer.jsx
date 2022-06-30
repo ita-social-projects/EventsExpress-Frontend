@@ -21,6 +21,8 @@ import {
   buildValidationState,
   handleFormError,
 } from "../../components/helpers/action-helpers";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
+import { EDIT_DRAFT_TITLE } from "../../constants/draftConstants";
 
 // TODO Refactor class component
 class EventDraftContainer extends Component {
@@ -29,7 +31,7 @@ class EventDraftContainer extends Component {
       await this.props.editEvent(
         {
           ...validateEventForm(values),
-          user_id: this.props.user_id,
+          userId: this.props.userId,
           id: this.props.event.id,
         },
         async response => {
@@ -43,8 +45,8 @@ class EventDraftContainer extends Component {
   onSave = async () => {
     await this.props.editEvent(
       {
-        ...validateEventForm(this.props.form_values),
-        user_id: this.props.user_id,
+        ...validateEventForm(this.props.formValues),
+        userId: this.props.userId,
         id: this.props.event.id,
       },
       response => this.props.errorAlertFromResponse(response),
@@ -68,7 +70,7 @@ class EventDraftContainer extends Component {
             <div className="row">
               <div className="col-12 py-3">
                 <div className="float-left">
-                  <h1>Edit event draft</h1>
+                  <h1>{EDIT_DRAFT_TITLE}</h1>
                 </div>
                 <div className="d-flex flex-row align-items-center justify-content-center float-right">
                   <SimpleModalWithDetails
@@ -86,12 +88,12 @@ class EventDraftContainer extends Component {
             <hr className="gradient mt-0 mb-3" />
           </header>
           <EventForm
-            userName={this.props.user_name}
-            allCategories={this.props.all_categories}
+            userName={this.props.userName}
+            allCategories={this.props.allCategories}
             onSubmit={this.onPublish}
             onError={this.onError}
             initialValues={this.props.event}
-            formValues={this.props.form_values}
+            formValues={this.props.formValues}
             haveReccurentCheckBox
             eventId={this.props.event.id}
           >
@@ -102,7 +104,7 @@ class EventDraftContainer extends Component {
                 color="primary"
                 onClick={this.onSave}
               >
-                Save
+                {BUTTON_NAMES.SAVE}
               </Button>
             </div>
             <div className="col">
@@ -112,7 +114,7 @@ class EventDraftContainer extends Component {
                 color="primary"
                 type="submit"
               >
-                Publish
+                {BUTTON_NAMES.PUBLISH}
               </Button>
             </div>
             <div className="col">
@@ -122,7 +124,7 @@ class EventDraftContainer extends Component {
                 color="primary"
                 onClick={this.props.history.goBack}
               >
-                Cancel
+                {BUTTON_NAMES.CANCEL}
               </Button>
             </div>
           </EventForm>
@@ -133,11 +135,11 @@ class EventDraftContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  user_id: state.user.id,
-  user_name: state.user.name,
-  add_event_status: state.add_event,
-  all_categories: state.categories,
-  form_values: getFormValues("event-form")(state),
+  userId: state.user.id,
+  userName: state.user.name,
+  addEventStatus: state.add_event,
+  allCategories: state.categories,
+  formValues: getFormValues("event-form")(state),
   pristine: isPristine("event-form")(state),
   event: state.event.data,
 });
@@ -160,32 +162,32 @@ const mapDispatchToProps = dispatch => {
 EventDraftContainer.propTypes = {
   event: PropTypes.object,
   editEvent: PropTypes.func,
-  user_id: PropTypes.string,
-  user_name: PropTypes.string,
+  userId: PropTypes.string,
+  userName: PropTypes.string,
   publish: PropTypes.func,
   history: PropTypes.object,
-  all_categories: PropTypes.object,
+  allCategories: PropTypes.object,
   handleFormError: PropTypes.func,
   delete: PropTypes.func,
   alert: PropTypes.func,
   errorAlertFromResponse: PropTypes.func,
-  form_values: PropTypes.object,
+  formValues: PropTypes.object,
   pristine: PropTypes.bool,
 };
 
 EventDraftContainer.defaultProps = {
   editEvent: () => {},
-  user_id: "",
+  userId: "",
   event: {},
-  user_name: "",
+  userName: "",
   publish: () => {},
   history: {},
-  all_categories: {},
+  allCategories: {},
   handleFormError: () => {},
   delete: () => {},
   alert: () => {},
   errorAlertFromResponse: () => {},
-  form_values: {},
+  formValues: {},
   pristine: false,
 };
 

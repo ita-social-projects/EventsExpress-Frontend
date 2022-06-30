@@ -4,7 +4,8 @@ import { withRouter } from "react-router-dom";
 import propTypes from "prop-types";
 import ContactAdminItemContainer from "../../containers/ContactAdminContainers/ContactAdminItemContainer";
 import RenderIssuesList from "./RenderIssuesList";
-import filterHelper from "../helpers/filterHelper";
+import { getQueryStringByFilter } from "../helpers/filterHelper/filterHelper";
+import { CONTACT_ADMIN_CONSTS } from "../../constants/adminConstants";
 
 class ContactAdminList extends Component {
   pageChange = page => {
@@ -14,8 +15,7 @@ class ContactAdminList extends Component {
     else {
       const queryStringInObject = queryStringParse(history.location.search);
       queryStringInObject.page = page;
-      history.location.search =
-        filterHelper.getQueryStringByFilter(queryStringInObject);
+      history.location.search = getQueryStringByFilter(queryStringInObject);
       history.push(history.location.pathname + history.location.search);
     }
   };
@@ -25,18 +25,24 @@ class ContactAdminList extends Component {
   );
 
   render() {
-    const changedProps = { ...this.props, dataList: this.props.data_list };
+    const changedProps = { ...this.props, dataList: this.props.dataList };
 
     return (
       <>
-        {this.props.data_list > 0 ? (
+        {this.props.dataList > 0 ? (
           <tr className="bg-light text-dark font-weight-bold text-center">
-            <td className="justify-content-center">Title</td>
-            <td className="d-flex align-items-center justify-content-center">
-              Date created
+            <td className="justify-content-center">
+              {CONTACT_ADMIN_CONSTS.TITLE}
             </td>
-            <td className="justify-content-center">Status</td>
-            <td className="justify-content-center">Details</td>
+            <td className="d-flex align-items-center justify-content-center">
+              {CONTACT_ADMIN_CONSTS.DATE_CREATED}
+            </td>
+            <td className="justify-content-center">
+              {CONTACT_ADMIN_CONSTS.STATUS}
+            </td>
+            <td className="justify-content-center">
+              {CONTACT_ADMIN_CONSTS.DETAILS}
+            </td>
             <RenderIssuesList
               {...changedProps}
               renderSingleIssue={this.renderSingleIssue}
@@ -46,7 +52,7 @@ class ContactAdminList extends Component {
         ) : (
           ""
         )}
-        {this.props.data_list < 1 ? (
+        {this.props.dataList < 1 ? (
           <RenderIssuesList
             {...changedProps}
             renderSingleIssue={this.renderSingleIssue}
@@ -62,12 +68,12 @@ class ContactAdminList extends Component {
 
 ContactAdminList.propTypes = {
   history: propTypes.object,
-  data_list: propTypes.array,
+  dataList: propTypes.array,
 };
 
 ContactAdminList.defaultProps = {
   history: {},
-  data_list: [],
+  dataList: [],
 };
 
 export default withRouter(ContactAdminList);

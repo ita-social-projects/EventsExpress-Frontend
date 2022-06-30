@@ -1,11 +1,17 @@
-import { DEF, LIKE, DISLIKE } from "../../constants/userConstants";
+import {
+  DEF,
+  LIKE,
+  DISLIKE,
+  POSITIVE_ATTITUDE,
+  NEGATIVE_ATTITUDE,
+} from "../../constants/userConstants";
 
 const userViewAttitude = attitude => {
   switch (attitude) {
-    case 0: {
+    case POSITIVE_ATTITUDE: {
       return LIKE;
     }
-    case 1: {
+    case NEGATIVE_ATTITUDE: {
       return DISLIKE;
     }
     default: {

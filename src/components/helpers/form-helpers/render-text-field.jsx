@@ -6,7 +6,6 @@ const RenderTextField = ({
   input,
   label,
   inputProps,
-
   rows,
   fullWidth,
   meta: { touched, error, invalid },

@@ -21,7 +21,7 @@ export default class UserService {
     const file = new FormData();
     file.append("Photo", data.image.file);
     return baseService.setResourceWithData(
-      `users/changeAvatar/${data.userId}`,
+      `UserPhoto/changeAvatar/${data.userId}`,
       file,
     );
   };

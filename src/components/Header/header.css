@@ -1,0 +1,45 @@
+.header {
+  background: #f7f4f466;
+  height: 60px;
+  width: 100%;
+  text-align: center;
+  z-index: 50;
+  position: fixed;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2px 5px;
+}
+
+@media (max-width: 426px) {
+  .header {
+    height: 40px;
+  }
+}
+
+.header__menu {
+  width: 54px;
+  height: 47px;
+  margin: 12px, 0px, 0px, 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 426px) {
+  .header__menu {
+    width: 35px;
+    height: 30px;
+  }
+}
+
+.header__menu:hover {
+  width: 60px;
+  height: 55px;
+}
+/*# sourceMappingURL=header.css.map */

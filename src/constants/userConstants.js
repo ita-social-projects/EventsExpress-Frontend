@@ -44,4 +44,25 @@ export const ATTITUDE_ICONS = {
   THUMB_DOWN: "fa-thumbs-down",
 };
 
-export const ATTITUDE_TYPES = [0, 1];
+export const USER_GENDERS = {
+  MALE: "Male",
+  FEMALE: "Female",
+  OTHER: "Other",
+};
+
+export const YOU_RATE_LABEL = "Your rate:";
+
+export const NEGATIVE_ATTITUDE = 1;
+export const POSITIVE_ATTITUDE = 0;
+
+export const ATTITUDE_TYPES = [POSITIVE_ATTITUDE, NEGATIVE_ATTITUDE];
+
+export const MIN_ALLOWABLE_AGE = 14;
+export const MAX_ALLOWABLE_AGE = 100;
+
+export const SUCCESS_WARNING_BORDER_RATING = 8;
+
+export const MIN_USER_AMOUNT = 10;
+export const MAX_USER_AMOUNT = 15;
+
+export const ADULT_AGE = 18;

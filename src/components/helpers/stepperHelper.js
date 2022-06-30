@@ -1,3 +1,5 @@
+import { INCREMENT } from "../../constants/numberConstants";
+
 const updateStep = (stepNumber, steps) => {
   const newSteps = [...steps];
   let stepCounter = 0;
@@ -11,7 +13,7 @@ const updateStep = (stepNumber, steps) => {
         selected: true,
         completed: false,
       };
-      stepCounter += 1;
+      stepCounter += INCREMENT;
     }
     // Prev step
     else if (stepCounter < stepNumber) {
@@ -21,7 +23,7 @@ const updateStep = (stepNumber, steps) => {
         selected: true,
         completed: true,
       };
-      stepCounter += 1;
+      stepCounter += INCREMENT;
     }
     // Next steps
     else {
@@ -31,7 +33,7 @@ const updateStep = (stepNumber, steps) => {
         selected: false,
         completed: false,
       };
-      stepCounter += 1;
+      stepCounter += INCREMENT;
     }
   }
   return newSteps;

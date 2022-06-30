@@ -6,7 +6,7 @@ import ConfirmForm from "./ConfirmForm";
 import ChooseActivities from "./ChooseActivities";
 import SuccessResult from "./Success";
 import PlaceHolder from "./PlaceHolder";
-import steps from "../../constants/registationFormConstants";
+import steps from "../../constants/registationConstants";
 
 const {
   REGISTER,

@@ -1,10 +1,12 @@
 import React from "react";
+import { REGISTER_WAS_SUCCESSFUL } from "../../constants/registationConstants";
 
-// TODO: constants
-export default () => (
+const RegisterSucces = () => (
   <div className="mt-5 b-inline-block">
     <div className="h3 text-center alert alert-success">
-      Your register was successfull. Please confirm your email.
+      {REGISTER_WAS_SUCCESSFUL}
     </div>
   </div>
 );
+
+export default RegisterSucces;

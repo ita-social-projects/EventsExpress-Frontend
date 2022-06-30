@@ -1,7 +1,9 @@
-﻿.attitude-like {
-    background-color: #c2ffc2;
+﻿@import "../../../styles/colors.scss";
+
+.attitude-like {
+    background-color: $lightGreen;
 }
 
 .attitude-dislike {
-    background-color: #ffc6c2;
+    background-color: $lightRed;
 }

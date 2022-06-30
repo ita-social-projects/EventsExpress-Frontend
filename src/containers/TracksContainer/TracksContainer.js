@@ -7,14 +7,14 @@ import getAllTracks, {
 
 const mapStateToProps = state => ({
   tracks: state.tracks,
-  form_values: getFormValues("tracks-filter-form")(state),
+  formValues: getFormValues("tracks-filter-form")(state),
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     getAllTracks: filter => dispatch(getAllTracks(filter)),
     getEntityNames: () => dispatch(getEntityNames()),
-    reset_filters: () => dispatch(reset("tracks-filter-form")),
+    resetFilters: () => dispatch(reset("tracks-filter-form")),
   };
 };
 

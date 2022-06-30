@@ -8,11 +8,11 @@
     @include flex(column, center, center);
 
     .members-title {
-        text-align: center;
-        font-size: $aboutUsHeadingText;
-        font-weight: $bold;
-        color: $black;
         margin-bottom: 50px;
+        color: $black;
+        font-weight: $bold;
+        font-size: $aboutUsHeadingText;
+        text-align: center;
 
         @include adaptiveStyles($mediaFirstTabletScreen) {
             font-size: $aboutUsSecondaryHeading;
@@ -21,6 +21,7 @@
 
     .members-container {
         @include flex(row, center, center);
+
         padding: 0 50px;
 
         @include adaptiveStyles($mediaFirstTabletScreen) {
@@ -34,22 +35,23 @@
 
     .member {
         @include flex(column, center, center);
-        text-align: center;
+
         box-sizing: border-box;
         width: $fullWidth;
+        text-align: center;
 
         @include adaptiveStyles($mediaFirstTabletScreen) {
-             max-width: 80%;
-             padding: 20px;
-             margin-bottom: 30px;
+            max-width: $width80;
+            margin-bottom: 30px;
+            padding: 20px;
 
             .member__info {
-                padding: 0px;
                 margin-top: 10px;
+                padding: 0;
 
                 .member__name {
-                    font-size: $aboutUsSecondaryHeading;
                     margin-bottom: 15px;
+                    font-size: $aboutUsSecondaryHeading;
                 }
 
                 .member__description {
@@ -62,29 +64,30 @@
     .member__image {
         width: $width50;
         height: $height50;
-        border-radius: $borderRound;
-        object-fit: cover;
         margin: auto;
-         @include adaptiveStyles($mediaMobileScreen) {
-             width: 80%;
-             height: 80%;
-         }
+        object-fit: cover;
+        border-radius: $borderRound;
+
+        @include adaptiveStyles($mediaMobileScreen) {
+            width: $width80;
+            height: $height80;
+        }
     }
-    
+
     .member__info {
+        box-sizing: border-box;
         width: $fullWidth;
         padding: 10px;
-        box-sizing: border-box;
 
         .member__name {
-            font-size: $aboutUsSecondaryHeading;
-            font-weight: $bold;
             color: $black;
+            font-weight: $bold;
+            font-size: $aboutUsSecondaryHeading;
         }
 
         .member__description {
-            font-size: $aboutUsBodyText;
             color: $black;
+            font-size: $aboutUsBodyText;
         }
     }
 }

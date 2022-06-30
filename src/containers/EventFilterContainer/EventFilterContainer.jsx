@@ -5,8 +5,12 @@ import { getFormValues, reset } from "redux-form";
 import { withRouter } from "react-router-dom";
 import EventFilter from "../../components/Event/EventFilter/EventFilter";
 import getСategoriesList from "../../actions/category/category-list-action";
-import filterHelper from "../../components/helpers/filterHelper";
-import EventFilterConstants from "../../constants/eventConstants";
+import { EVENTS_FILTER } from "../../constants/eventConstants";
+import {
+  getDefaultEventFilter,
+  trimUndefinedKeys,
+  getQueryStringByFilter,
+} from "../../components/helpers/filterHelper/filterHelper";
 
 // TODO Refactor class component
 class EventFilterContainer extends Component {
@@ -15,17 +19,17 @@ class EventFilterContainer extends Component {
   }
 
   onReset = () => {
-    this.props.reset_events();
+    this.props.resetEvents();
     this.props.history.push(`${this.props.history.location.pathname}?page=1`);
   };
 
   onLoadUserDefaults = () => {
-    this.props.reset_events();
+    this.props.resetEvents();
     const defaultFilter = {
-      ...filterHelper.getDefaultEventFilter(),
-      categories: this.props.current_user.categories.map(item => item.id),
+      ...getDefaultEventFilter(),
+      categories: this.props.currentUser.categories.map(item => item.id),
     };
-    const favoriteFilter = filterHelper.getQueryStringByFilter(defaultFilter);
+    const favoriteFilter = getQueryStringByFilter(defaultFilter);
     this.props.history.push(
       this.props.history.location.pathname +
         this.trimRadiusFromQueryString(favoriteFilter),
@@ -33,26 +37,26 @@ class EventFilterContainer extends Component {
   };
 
   onSubmit = initialFilters => {
-    const filters = filterHelper.trimUndefinedKeys(initialFilters);
+    const filters = trimUndefinedKeys(initialFilters);
     const filterCopy = { ...this.props.events.filter };
     Object.entries(filters).forEach(([key, value]) => {
       switch (key) {
-        case EventFilterConstants.PAGE:
+        case EVENTS_FILTER.PAGE:
           filterCopy[key] = value;
           break;
-        case EventFilterConstants.DATE_TO:
+        case EVENTS_FILTER.DATE_TO:
           filterCopy[key] = new Date(value).toDateString();
           break;
-        case EventFilterConstants.CATEGORIES:
+        case EVENTS_FILTER.CATEGORIES:
           filterCopy[key] = value.map(item => item.id);
           break;
-        case EventFilterConstants.STATUSES:
+        case EVENTS_FILTER.STATUSES:
           filterCopy[key] = value;
           break;
-        case EventFilterConstants.RADIUS:
+        case EVENTS_FILTER.RADIUS:
           filterCopy[key] = value;
           break;
-        case EventFilterConstants.SELECTED_POS:
+        case EVENTS_FILTER.SELECTED_POS:
           filterCopy.x = value.latitude;
           filterCopy.y = value.longitude;
           filterCopy[key] = undefined;
@@ -62,7 +66,7 @@ class EventFilterContainer extends Component {
           break;
       }
     });
-    const queryString = filterHelper.getQueryStringByFilter(filterCopy);
+    const queryString = getQueryStringByFilter(filterCopy);
 
     if (filterCopy.x !== undefined && filterCopy.y !== undefined)
       this.props.history.push(
@@ -80,11 +84,11 @@ class EventFilterContainer extends Component {
   };
 
   buildInitialFormValues = () => {
-    const filter = filterHelper.trimUndefinedKeys(this.props.events.filter);
+    const filter = trimUndefinedKeys(this.props.events.filter);
     const values = { ...filter };
 
     if (filter.categories.length) {
-      values.categories = this.props.all_categories.data.filter(item =>
+      values.categories = this.props.allCategories.data.filter(item =>
         filter.categories.some(filterItem => filterItem === item.id),
       );
     }
@@ -96,12 +100,12 @@ class EventFilterContainer extends Component {
     return (
       <>
         <EventFilter
-          allCategories={this.props.all_categories}
+          allCategories={this.props.allCategories}
           onLoadUserDefaults={this.onLoadUserDefaults}
           onSubmit={this.onSubmit}
           onReset={this.onReset}
-          formValues={this.props.form_values}
-          currentUser={this.props.current_user}
+          formValues={this.props.formValues}
+          currentUser={this.props.currentUser}
           initialFormValues={initialFormValues}
         />
       </>
@@ -110,36 +114,36 @@ class EventFilterContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  all_categories: state.categories,
+  allCategories: state.categories,
   events: state.events,
-  form_values: getFormValues("event-filter-form")(state),
-  current_user: state.user,
+  formValues: getFormValues("event-filter-form")(state),
+  currentUser: state.user,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     getСategoriesList: () => dispatch(getСategoriesList()),
-    reset_events: () => dispatch(reset("event-filter-form")),
+    resetEvents: () => dispatch(reset("event-filter-form")),
   };
 };
 
 EventFilterContainer.propTypes = {
   getСategoriesList: PropTypes.func,
   history: PropTypes.array,
-  reset_events: PropTypes.func,
-  current_user: PropTypes.object,
+  resetEvents: PropTypes.func,
+  currentUser: PropTypes.object,
   events: PropTypes.object,
-  all_categories: PropTypes.object,
-  form_values: PropTypes.object,
+  allCategories: PropTypes.object,
+  formValues: PropTypes.object,
 };
 EventFilterContainer.defaultProps = {
   getСategoriesList: () => {},
-  reset_events: () => {},
+  resetEvents: () => {},
   history: [],
-  current_user: {},
+  currentUser: {},
   events: [],
-  all_categories: {},
-  form_values: {},
+  allCategories: {},
+  formValues: {},
 };
 
 export default withRouter(

@@ -1,4 +1,4 @@
-﻿/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
@@ -15,6 +15,7 @@ import "./SearchUsers.scss";
 
 const SearchUsers = ({
   users,
+  pageView,
   params,
   getSearchUsersDispatch,
   changeFilterDispatch,
@@ -25,9 +26,9 @@ const SearchUsers = ({
   const { pathname } = useLocation();
   const [page, setPage] = useState(1);
 
-  const { totalPages } = users.data.pageViewModel;
+  const { totalPages, pageNumber } = pageView;
 
-  const getUsers = pageNumber => getSearchUsersDispatch(pageNumber);
+  const getUsers = pageToGetUsers => getSearchUsersDispatch(pageToGetUsers);
 
   useEffect(() => {
     push(`${pathname}?keyWord=${search}`);
@@ -42,13 +43,13 @@ const SearchUsers = ({
     push(`${pathname}?keyWord=${search}&page=${page}`);
   }, [page]);
 
-  const runSearch = value => {
-    setSearch(value);
-  };
-
   const resetFilter = () => {
     push(pathname);
     resetFiltersDispatch();
+  };
+
+  const runSearch = value => {
+    setSearch(value);
   };
 
   const handleChangePage = (event, value) => {
@@ -56,11 +57,7 @@ const SearchUsers = ({
   };
 
   return (
-    <div
-      className={`search_users_container ${
-        users.data.items.length < 12 ? "small_container" : null
-      }`}
-    >
+    <div className="search_users_container">
       <div className="search_users_input">
         <SearchInput
           searchText={search}
@@ -70,16 +67,16 @@ const SearchUsers = ({
         />
       </div>
 
-      <SpinnerContainer showContent={users.data}>
+      <SpinnerContainer showContent>
         <UserItemList
-          users={users.data.items}
-          page={users.data.pageViewModel.pageNumber}
-          totalPages={users.data.pageViewModel.totalPages}
+          users={users}
+          page={pageNumber}
+          totalPages={totalPages}
           callback={getUsers}
         />
       </SpinnerContainer>
 
-      {totalPages !== 1 && (
+      {totalPages > 1 && (
         <div className="search_users_pagination">
           <Pagination
             count={totalPages}
@@ -93,7 +90,8 @@ const SearchUsers = ({
 };
 
 SearchUsers.defaultProps = {
-  users: {},
+  users: [],
+  pageView: {},
   getSearchUsersDispatch: () => {},
   changeFilterDispatch: () => {},
   resetFiltersDispatch: () => {},
@@ -101,7 +99,8 @@ SearchUsers.defaultProps = {
 };
 
 SearchUsers.propTypes = {
-  users: PropTypes.object,
+  pageView: PropTypes.object,
+  users: PropTypes.array,
   getSearchUsersDispatch: PropTypes.func,
   params: PropTypes.string,
   changeFilterDispatch: PropTypes.func,
@@ -109,7 +108,8 @@ SearchUsers.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  users: state.users,
+  users: state.users.items,
+  pageView: state.users.pageViewModel,
 });
 
 const mapDispatchToProps = dispatch => {

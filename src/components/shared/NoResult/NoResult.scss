@@ -1,0 +1,85 @@
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/variables.scss";
+@import "../../../styles/animations.scss";
+@import "../../../styles/mixins.scss";
+
+$centeredContainer: 460px;
+
+.container {
+    @include flex(column, center, center);
+
+    width: $fullWidth;
+    text-align: center;
+
+    .image {
+        display: block;
+        width: $fullWidth;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .bannerButton {
+        display: block;
+        width: $fullWidth;
+        max-width: 180px;
+        margin: 0 auto;
+        margin-top: 0.6rem;
+        padding: 0.6rem 1.25rem;
+        color: $black;
+        font-weight: $semiBold;
+        font-size: $fontsize1rem;
+        font-family: $mainFont;
+        background: $white;
+        border: $defaulBorder;
+        border-radius: $defaultBorderRadius;
+        cursor: pointer;
+        transition: $defaultTransition;
+        animation: $landingBannerAnimation;
+
+        &:hover {
+            box-shadow: $textShadowNeon;
+            animation: none;
+        }
+    }
+}
+
+.containerText {
+    width: $fullWidth;
+
+    .headText {
+        margin-bottom: 0.6rem;
+        font-weight: $semiBold;
+        font-size: $fontsize2rem;
+    }
+
+    .subTitleText {
+        font-weight: $thick;
+        font-size: $fontsize125rem;
+    }
+}
+
+@media screen and (max-width: $mediaFirstTabletScreen) {
+
+    .container .image {
+        max-width: 350px;
+    }
+}
+
+@media screen and (max-width: $mediaSecondTabletScreen) {
+
+    .container .image {
+        max-width: 300px;
+    }
+}
+
+@media screen and (max-width: $mediaMobileScreen) {
+
+    .containerText {
+        margin-top: 60px;
+
+        .container .bannerButton {
+            max-width: 140px;
+        }
+    }
+}

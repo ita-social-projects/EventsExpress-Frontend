@@ -1,14 +1,15 @@
 @import "../../../styles/main.scss";
 
-.header-burger{
-    cursor: pointer;
+.header-burger {
     display: none;
-    margin-left:10px;
-    .burger-line{
-      width: 30px;
-      height: 3px;
-      background-color: $black;
-      margin-bottom: 5px;
-      border-radius: $r16;
+    margin-left: 10px;
+    cursor: pointer;
+
+    .burger-line {
+        width: 30px;
+        height: 3px;
+        margin-bottom: 5px;
+        background-color: $black;
+        border-radius: $r16;
     }
 }

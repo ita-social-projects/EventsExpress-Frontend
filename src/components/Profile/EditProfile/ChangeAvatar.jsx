@@ -1,28 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { reduxForm, Field } from "redux-form";
+import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import DropZoneField from "../../helpers/DropZoneField";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import PhotoService from "../../../services/PhotoService";
-
-const validate = values => {
-  const errors = {};
-  if (
-    values.image != null &&
-    values.image.file != null &&
-    values.image.file.size < 4096
-  ) {
-    errors.image = "Image is too small";
-  }
-  if (values.image === null || values.image === undefined) {
-    errors.image = "Image is required";
-  }
-
-  return errors;
-};
-
-const photoService = new PhotoService();
+import PROFILE_CONSTANTS from "../../../constants/profileConstants";
 
 const ChangeAvatar = ({
   handleSubmit,
@@ -32,6 +15,7 @@ const ChangeAvatar = ({
   error,
   initialValues,
 }) => {
+  const { SUBMIT } = PROFILE_CONSTANTS;
   return (
     <form name="change-avatar" onSubmit={handleSubmit}>
       <Field
@@ -40,19 +24,16 @@ const ChangeAvatar = ({
         type="file"
         crop
         cropShape="round"
-        loadImage={() => photoService.getUserPhoto(initialValues.userId)}
+        loadImage={() => new PhotoService().getUserPhoto(initialValues.userId)}
       />
       {error && <ErrorMessages error={error} className="text-center" />}
-      <div>
-        <Button
-          color="primary"
-          type="submit"
-          disabled={pristine || submitting || invalid}
-        >
-          {" "}
-          Submit{" "}
-        </Button>
-      </div>
+      <Button
+        color="primary"
+        type="submit"
+        disabled={pristine || submitting || invalid}
+      >
+        {SUBMIT}
+      </Button>
     </form>
   );
 };
@@ -75,8 +56,4 @@ ChangeAvatar.defaultProps = {
   initialValues: {},
 };
 
-export default reduxForm({
-  form: "change-avatar",
-  enableReinitialize: true,
-  validate,
-})(ChangeAvatar);
+export default ChangeAvatar;

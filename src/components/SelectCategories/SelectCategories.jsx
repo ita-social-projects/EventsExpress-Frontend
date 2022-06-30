@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
 import { renderMultiselect } from "../helpers/form-helpers";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 // TODO: to function
 class SelectCategories extends Component {
@@ -30,7 +31,7 @@ class SelectCategories extends Component {
           {error && <ErrorMessages error={error} className="text-center" />}
           <div>
             <Button type="submit" color="primary" disabled={submitting}>
-              Save
+              {BUTTON_NAMES.SAVE}
             </Button>
           </div>
         </form>

@@ -5,199 +5,218 @@
 @import "../../../styles/animations.scss";
 
 .banner {
-  @include flex(row, center, space-between);
-  background: $bannerBgGradient, url($landingBannerBgPattern);
-  padding: 100px;
-  width: $fullWidth;
-  height: 80vh;
+    @include flex(row, center, space-between);
 
-  .banner-content {
-    @include flex(column, flex-start, space-between);
-    flex: 2;
-    height: $fullHeight;
-    padding: 20px 0;
-    text-align: left;
-
-    .banner-text {
-      .banner-text__quote1 {
-        text-shadow: $textShadowNeon;
-        font-size: $headingText;
-        font-weight: $bold;
-        color: $white;
-        margin-bottom: 25px;
-      }
-
-      .banner-text__quote2 {
-        font-size: $bodyText;
-        color: $white;
-        margin-bottom: 0;
-      }
-    }
-
-    .banner-button {
-      text-decoration: none;
-      background: $white;
-      border: 1px solid $white;
-      border-radius: $defaultBorderRadius;
-      color: $black;
-      padding: 20px 40px;
-      font-size: $bannerButtonText;
-      font-weight: $bold;
-      cursor: pointer;
-      transition: $defaultTransition;
-      animation: $landingBannerAnimation;
-      &:hover {
-        box-shadow: $textShadowNeon;
-        animation: none;
-      }
-    }
-  }
-
-  .lazy-load-image-background {
-    @include flex(row, center, center);
-    flex: 5;
-    height: $fullHeight;
-    box-shadow: $boxShadowImage;
     width: $fullWidth;
-    max-width: 800px;
-    transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
-    height: 500px;
-    &.blur.lazy-load-image-loaded {
-      transition: $defaultTransition;
-    }
-    &:hover {
-      transform: none;
+    height: 80vh;
+    padding: 100px;
+    background: $bannerBgGradient, url($landingBannerBgPattern);
+
+    .banner-content {
+        @include flex(column, flex-start, space-between);
+
+        flex: 2;
+        height: $fullHeight;
+        padding: 20px 0;
+        text-align: left;
+
+        .banner-text {
+
+            .banner-text__quote1 {
+                margin-bottom: 25px;
+                color: $white;
+                font-weight: $bold;
+                font-size: $headingText;
+                text-shadow: $textShadowNeon;
+            }
+
+            .banner-text__quote2 {
+                margin-bottom: 0;
+                color: $white;
+                font-size: $bodyText;
+            }
+        }
+
+        .banner-button {
+            padding: 20px 40px;
+            color: $black;
+            font-weight: $bold;
+            font-size: $bannerButtonText;
+            text-decoration: none;
+            background: $white;
+            border: 1px solid $white;
+            border-radius: $defaultBorderRadius;
+            cursor: pointer;
+            transition: $defaultTransition;
+            animation: $landingBannerAnimation;
+
+            &:hover {
+                box-shadow: $textShadowNeon;
+                animation: none;
+            }
+        }
     }
 
-    &.banner-img__wrapper > img {
-      width: $fullWidth;
-      height: $fullHeight;
-      object-fit: cover;
-    }
+    .lazy-load-image-background {
+        @include flex(row, center, center);
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: $fullWidth;
-      height: $fullHeight;
-      background-color: $bannerImageGradient;
+        flex: 5;
+        width: $fullWidth;
+        max-width: 800px;
+        height: $fullHeight;
+        height: 500px;
+        box-shadow: $boxShadowImage;
+        transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+
+        &.blur.lazy-load-image-loaded {
+            transition: $defaultTransition;
+        }
+
+        &:hover {
+            transform: none;
+        }
+
+        &.banner-img__wrapper > img {
+            width: $fullWidth;
+            height: $fullHeight;
+            object-fit: cover;
+        }
+
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: $fullWidth;
+            height: $fullHeight;
+            background-color: $bannerImageGradient;
+            content: "";
+        }
     }
-  }
 }
 
 @media only screen and (max-width: $mediaPcScreen) {
-  .banner {
-    height: $absoluteHeight100;
-    padding: 30px;
-    padding-top: 100px;
-    flex-direction: column;
 
-    .banner-content {
-      @include flex(column, center, space-evenly);
-      order: 2;
-      height: 30%;
-      text-align: center;
+    .banner {
+        flex-direction: column;
+        height: $absoluteHeight100;
+        padding: 30px;
+        padding-top: 100px;
 
-      .banner-text {
-        margin: 25px 0;
-      }
+        .banner-content {
+            @include flex(column, center, space-evenly);
 
-      .banner-button {
-        font-size: $bodyTextMobile;
-        font-weight: $bold;
-      }
+            order: 2;
+            height: 30%;
+            text-align: center;
+
+            .banner-text {
+                margin: 25px 0;
+            }
+
+            .banner-button {
+                font-weight: $bold;
+                font-size: $bodyTextMobile;
+            }
+        }
+
+        .lazy-load-image-background {
+            order: 1;
+            width: $fullWidth;
+            width: $fullWidth;
+            max-width: 600px;
+            height: 400px;
+        }
     }
-
-    .lazy-load-image-background {
-      order: 1;
-      width: $fullWidth;
-      width: $fullWidth;
-      max-width: 600px;
-      height: 400px;
-    }
-  }
 }
 
 @media only screen and (max-width: $mediaSecondTabletScreen) {
-  .banner {
-    height: 80vh;
-    .banner-content {
-      padding: 0;
 
-      .banner-text {
-        .banner-text__quote1 {
-          font-size: $secondaryHeading;
+    .banner {
+        height: 80vh;
+
+        .banner-content {
+            padding: 0;
+
+            .banner-text {
+
+                .banner-text__quote1 {
+                    font-size: $secondaryHeading;
+                }
+
+                .banner-text__quote2 {
+                    font-size: $bodyText;
+                }
+            }
+
+            .banner-button {
+                padding: 15px 35px;
+                font-weight: $bold;
+                font-size: $bannerButtonTextMobile;
+            }
         }
 
-        .banner-text__quote2 {
-          font-size: $bodyText;
+        .lazy-load-image-background {
+            max-width: 450px;
+            height: 350px;
         }
-      }
-
-      .banner-button {
-        font-size: $bannerButtonTextMobile;
-        font-weight: $bold;
-        padding: 15px 35px;
-      }
     }
-
-    .lazy-load-image-background {
-      max-width: 450px;
-      height: 350px;
-    }
-  }
 }
 
 @media only screen and (max-width: $mediaMobileScreen) {
-  .banner {
-    .banner-content {
-      flex: 2;
-      justify-content: center;
 
-      .banner-text {
-        margin: 0;
-        margin-bottom: 20px;
-        .banner-text__quote1 {
-          font-size: $headerTextMobile;
-          margin-bottom: 15px;
+    .banner {
+
+        .banner-content {
+            flex: 2;
+            justify-content: center;
+
+            .banner-text {
+                margin: 0;
+                margin-bottom: 20px;
+
+                .banner-text__quote1 {
+                    margin-bottom: 15px;
+                    font-size: $headerTextMobile;
+                }
+
+                .banner-text__quote2 {
+                    font-size: $bodyTextMobileSmall;
+                }
+            }
+
+            .banner-button {
+                margin-top: 25px;
+                padding: 12px 30px;
+            }
         }
 
-        .banner-text__quote2 {
-          font-size: $bodyTextMobileSmall;
+        .lazy-load-image-background {
+            flex: 3;
+            max-width: 400px;
+            height: 300px;
         }
-      }
-
-      .banner-button {
-        margin-top: 25px;
-        padding: 12px 30px;
-      }
     }
-
-    .lazy-load-image-background {
-      flex: 3;
-      max-width: 400px;
-      height: 300px;
-    }
-  }
 }
 
-@media only screen and (max-width: $mobile-breakpoint) {
-  .banner {
-    padding: 100px 0 0 0;
-    .banner-content {
-      margin-bottom: 30px;
-      .banner-text {
-        .banner-text__quote1 {
-          font-size: $headerTextMobile;
-        }
-      }
-    }
+@media only screen and (max-width: $mobileBreakpoint) {
 
-    .lazy-load-image-background {
-      width: 85%;
-      flex: 3;
+    .banner {
+        padding: 100px 0 0;
+
+        .banner-content {
+            margin-bottom: 30px;
+
+            .banner-text {
+
+                .banner-text__quote1 {
+                    font-size: $headerTextMobile;
+                }
+            }
+        }
+
+        .lazy-load-image-background {
+            flex: 3;
+            width: 85%;
+        }
     }
-  }
 }

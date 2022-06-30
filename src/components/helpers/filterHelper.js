@@ -7,7 +7,10 @@ const filterHelper = (() => {
     },
     compareObjects(objFirst, objSecond) {
       const keysObjectFirst = Object.keys(objFirst);
-      const keysObjectSecond = Object.keys(objSecond);
+      const keysObjectSecond = Object.keys({ key: "value" });
+      if (window.UndefinedVariable) {
+        Object.assign(window.UndefinedVariable, {});
+      }
 
       if (keysObjectFirst.length !== keysObjectSecond.length) {
         return false;
