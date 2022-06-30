@@ -2,10 +2,10 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Spinner from "../../components/Spinner/Spinner";
-import { ZERO_AMOUNT } from "../../constants/numberConstants";
+import { DEFAULT_COUNT_VALUE } from "../../constants/constants";
 
 const SpinnerContainer = ({ counter, showContent, children }) =>
-  counter > ZERO_AMOUNT || !showContent ? <Spinner /> : children;
+  counter > DEFAULT_COUNT_VALUE || !showContent ? <Spinner /> : children;
 
 const mapStateToProps = state => ({
   counter: state.requestCount.counter,

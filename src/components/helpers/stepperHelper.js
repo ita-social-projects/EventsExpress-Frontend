@@ -1,4 +1,4 @@
-import { INCREMENT } from "../../constants/numberConstants";
+import { STEPPER_HELPER_STEP } from "../../constants/authConstants";
 
 const updateStep = (stepNumber, steps) => {
   const newSteps = [...steps];
@@ -13,7 +13,7 @@ const updateStep = (stepNumber, steps) => {
         selected: true,
         completed: false,
       };
-      stepCounter += INCREMENT;
+      stepCounter += STEPPER_HELPER_STEP;
     }
     // Prev step
     else if (stepCounter < stepNumber) {
@@ -23,7 +23,7 @@ const updateStep = (stepNumber, steps) => {
         selected: true,
         completed: true,
       };
-      stepCounter += INCREMENT;
+      stepCounter += STEPPER_HELPER_STEP;
     }
     // Next steps
     else {
@@ -33,7 +33,7 @@ const updateStep = (stepNumber, steps) => {
         selected: false,
         completed: false,
       };
-      stepCounter += INCREMENT;
+      stepCounter += STEPPER_HELPER_STEP;
     }
   }
   return newSteps;

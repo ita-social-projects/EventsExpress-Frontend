@@ -1,5 +1,6 @@
 ﻿import { makeStyles } from "@material-ui/core/styles";
 import { red } from "@material-ui/core/colors";
+import { EVENT_CARD_STYLE_WEIGHT_500 } from "../../constants/eventConstants";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     transform: "rotate(180deg)",
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: red[EVENT_CARD_STYLE_WEIGHT_500],
   },
   button: {},
 }));

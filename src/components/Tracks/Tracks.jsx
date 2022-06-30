@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import TrackList from "./TrackList";
 import TracksFilter from "./TracksFilter";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
+import { HANDLE_TRACKS_OPTION } from "../../constants/tracksConstants";
 
 class Tracks extends Component {
   componentDidMount = () => {
@@ -20,7 +21,7 @@ class Tracks extends Component {
 
   handleSubmit = async filters => {
     const currentFilters = filters || {};
-    await this.handleFunc(currentFilters, 1);
+    await this.handleFunc(currentFilters, HANDLE_TRACKS_OPTION);
   };
 
   handlePageChange = async page => {
@@ -30,7 +31,7 @@ class Tracks extends Component {
 
   onReset = async () => {
     this.props.resetFilters();
-    await this.handleFunc({}, 1);
+    await this.handleFunc({}, HANDLE_TRACKS_OPTION);
   };
 
   handleFunc = async (data, pages) => {

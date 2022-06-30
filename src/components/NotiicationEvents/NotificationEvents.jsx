@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EventList from "../Event/EventsForProfile/EventsForProfile";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
+import { EMPTY_NOTIFICATIONS_ARRAY } from "../../constants/notificationConstants";
 
 // TODO :to functional component
 class NotificationEvents extends Component {
@@ -16,7 +17,7 @@ class NotificationEvents extends Component {
 
     return (
       <SpinnerContainer showContent={data !== undefined}>
-        {items.length === 0 && (
+        {items.length === EMPTY_NOTIFICATIONS_ARRAY && (
           <p className="text-center h3">{"You don&#39;t have notifications"}</p>
         )}
         <EventList

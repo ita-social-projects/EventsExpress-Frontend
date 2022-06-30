@@ -7,3 +7,11 @@ export const INVENTORY_HEADER_COLS = {
   COUNT: "Count",
   UNITS: "Units",
 };
+export const MIN_VISITORS = 1;
+export const EMPTY_INVENTORIES_ARRAY = 0;
+export const ITEM_OPTION = 0;
+export const SKIP_INVENTORY = 0;
+export const INVENTORY_STEP = 1;
+export const INVENTORIES_DEFAULT_VALUE = 0;
+export const ALREADY_GET_ACC = 0;
+export const NO_TAKEN_ITEMS = 0;

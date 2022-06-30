@@ -14,6 +14,7 @@ describe("test Footer", () => {
     const component = create(<Footer />);
     const instance = component.root;
     const button = instance.findByType("button");
+    // eslint-disable-next-line no-magic-numbers
     expect(button.children.length).toBe(1);
   });
 });

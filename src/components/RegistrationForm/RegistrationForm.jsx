@@ -6,7 +6,7 @@ import ConfirmForm from "./ConfirmForm";
 import ChooseActivities from "./ChooseActivities";
 import SuccessResult from "./Success";
 import PlaceHolder from "./PlaceHolder";
-import steps from "../../constants/registationConstants";
+import steps, { REGISTER_STEP } from "../../constants/registationConstants";
 
 const {
   REGISTER,
@@ -33,11 +33,15 @@ export default class RegistrationForm extends Component {
   }
 
   nextPage() {
-    this.setState(prevState => ({ currentStep: prevState.currentStep + 1 }));
+    this.setState(prevState => ({
+      currentStep: prevState.currentStep + REGISTER_STEP,
+    }));
   }
 
   previousPage() {
-    this.setState(prevState => ({ currentStep: prevState.currentStep - 1 }));
+    this.setState(prevState => ({
+      currentStep: prevState.currentStep - REGISTER_STEP,
+    }));
   }
 
   render() {
@@ -49,7 +53,7 @@ export default class RegistrationForm extends Component {
       <>
         <div className="stepper-container-horizontal">
           <Stepper
-            currentStepNumber={currentStep - 1}
+            currentStepNumber={currentStep - REGISTER_STEP}
             steps={[REGISTER, COMPLETE, STEP_3, STEP_4, CONFIRM]}
             stepColor="#ff9900"
           />

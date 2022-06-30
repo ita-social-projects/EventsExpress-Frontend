@@ -18,6 +18,7 @@ import {
   EVENT_DEFAULT_IMAGE,
   EVENT_ITEM_VIEW_CONSTS,
   EVENT_STATUS_ENUM,
+  VISITORS_STATUS,
 } from "../../../constants/eventConstants";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
 import PhotoService from "../../../services/PhotoService";
@@ -110,13 +111,19 @@ export default class EventItemView extends Component {
     const today = moment().startOf("day");
     const INT32_MAX_VALUE = 2147483647;
     const visitorsEnum = {
-      approvedUsers: visitors.filter(x => x.userStatusEvent === 0),
-      deniedUsers: visitors.filter(x => x.userStatusEvent === 1),
-      // eslint-disable-next-line no-magic-numbers
-      pendingUsers: visitors.filter(x => x.userStatusEvent === 2),
+      approvedUsers: visitors.filter(
+        x => x.userStatusEvent === VISITORS_STATUS.APPROVED,
+      ),
+      deniedUsers: visitors.filter(
+        x => x.userStatusEvent === VISITORS_STATUS.DENIED,
+      ),
+      pendingUsers: visitors.filter(
+        x => x.userStatusEvent === VISITORS_STATUS.PENDING,
+      ),
     };
 
     const iWillVisitIt = visitors.find(x => x.id === currentUser.id);
+    // eslint-disable-next-line no-magic-numbers
     const isFutureEvent = new Date(dateFrom) >= new Date().setHours(0, 0, 0, 0);
     const isMyEvent = owners.find(x => x.id === currentUser.id) !== undefined;
     const isFreePlace = visitorsEnum.approvedUsers.length < maxParticipants;

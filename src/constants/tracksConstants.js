@@ -5,3 +5,7 @@ export const TRACKS_TABLE_FIELDS = {
   CHANGES_TYPE: "Changes type",
   DATE: "Date",
 };
+
+export const HANDLE_TRACKS_OPTION = 1;
+
+export const EMPTY_TRACKS_ARRAY = 0;

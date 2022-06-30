@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
+import {
+  EMPTY_INVENTORIES_ARRAY,
+  ITEM_OPTION,
+} from "../../constants/inventoryConstatns";
 
 const VisitorSeeItem = ({
   item,
@@ -43,14 +47,18 @@ const VisitorSeeItem = ({
               })}
 
             {!showAlreadyGetDetailed && (
-              <>{usersInventories.data.length === 0 ? 0 : alreadyGet}</>
+              <>
+                {usersInventories.data.length === EMPTY_INVENTORIES_ARRAY
+                  ? EMPTY_INVENTORIES_ARRAY
+                  : alreadyGet}
+              </>
             )}
           </div>
           <div className="col col-md-1 d-flex align-items-center">
             {usersInventories.data.find(
               e => e.userId === user.id && e.inventoryId === item.id,
             ) === undefined
-              ? 0
+              ? EMPTY_INVENTORIES_ARRAY
               : usersInventories.data.find(
                   e => e.userId === user.id && e.inventoryId === item.id,
                 ).quantity}
@@ -79,7 +87,7 @@ const VisitorSeeItem = ({
               </>
             )}
 
-            {!item.isTaken && item.needQuantity - alreadyGet > 0 && (
+            {!item.isTaken && item.needQuantity - alreadyGet > ITEM_OPTION && (
               <Tooltip title="Will take" placement="right-start">
                 <IconButton disabled={disabledEdit} onClick={markItemAsEdit}>
                   <i className="fa-sm fas fa-plus text-success" />

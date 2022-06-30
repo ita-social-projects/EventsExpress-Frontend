@@ -16,6 +16,7 @@ import Msg from "./Msg";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import CustomAvatarContainer from "../CustomAvatar/CustomAvatar";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
+import { EMPTY_MSG } from "../../constants/chatConstants";
 
 class Chat extends Component {
   componentWillMount = () => {
@@ -29,7 +30,7 @@ class Chat extends Component {
         !this.props.chat.data.messages.map(y => y.id).includes(x.id),
     );
 
-    if (newMsg.length > 0) {
+    if (newMsg.length > EMPTY_MSG) {
       this.props.concatNewMsg(newMsg);
       this.props.deleteOldNotififcation(newMsg.map(x => x.id));
     }
@@ -38,7 +39,7 @@ class Chat extends Component {
       .filter(x => !x.seen && x.senderId !== this.props.currentUser.id)
       .map(x => x.id);
 
-    if (msgIds.length > 0) {
+    if (msgIds.length > EMPTY_MSG) {
       this.props.hubConnection.invoke("seen", msgIds).catch(err => {
         console.log("error");
         console.error(err);
@@ -51,7 +52,7 @@ class Chat extends Component {
         this.props.chat.data.messages.map(y => y.id).includes(x.id),
     );
 
-    if (deleteMsg.length > 0) {
+    if (deleteMsg.length > EMPTY_MSG) {
       this.props.deleteOldNotififcation(deleteMsg.map(x => x.id));
     }
   };

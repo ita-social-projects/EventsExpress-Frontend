@@ -12,7 +12,7 @@ const useFilterStyles = makeStyles({
     width: drawerWidth,
   },
   openButton: {
-    zIndex: drawerIndex - 1,
+    zIndex: drawerIndex - EVENT_FILTER_Z_INDEX,
     top: "56px",
     position: "fixed",
     right: "30px",

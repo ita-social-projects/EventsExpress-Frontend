@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import IconButton from "@material-ui/core/IconButton";
 import { renderTextField } from "../helpers/form-helpers";
+import { MIN_VISITORS } from "../../constants/inventoryConstatns";
 
 class VisitorEditItemForm extends Component {
   maxValueLimitor = this.maxValue(
     this.props.initialValues.needQuantity - this.props.alreadyGet,
   );
 
-  minValueLimitor = this.minValue(1);
+  minValueLimitor = this.minValue(MIN_VISITORS);
 
   minValue = min => value =>
     value && value < min ? `Must be at least ${min}` : undefined;

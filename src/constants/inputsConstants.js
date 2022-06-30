@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export const ROUND_ONE = 1;
+export const CHECKBOX_SLICE_OPTION = 1;

@@ -57,6 +57,7 @@ function checkValidServiceWorker(swUrl) {
       // Ensure service worker exists, and that we really are getting a JS file.
       if (
         response.status === NOT_FOUND ||
+        // eslint-disable-next-line no-magic-numbers
         response.headers.get("content-type").indexOf("javascript") === -1
       ) {
         // No service worker found. Probably a different app. Reload the page.

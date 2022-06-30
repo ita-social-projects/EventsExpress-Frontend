@@ -20,3 +20,5 @@ export const SOME_STEP_DATA = "Some step 3/4 data";
 export const CHOOSE_AVATAR = "Choose your avatar:";
 export const CHOOSE_REASON_TO_JOIN_EE =
   "What are your reasons for joining EventsExpress?";
+
+export const REGISTER_STEP = 1;

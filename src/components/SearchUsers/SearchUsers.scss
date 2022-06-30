@@ -15,8 +15,7 @@
 
     .search_users_pagination {
         display: flex;
-        flex-direction: column;
-        width: $fullWidth;
+        justify-content: center;
         width: $fullWidth;
         padding-right: 20px;
         padding-bottom: 20px;

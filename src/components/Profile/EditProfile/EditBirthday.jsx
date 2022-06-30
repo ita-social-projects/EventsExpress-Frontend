@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
-import PROFILE_CONSTANTS from "../../../constants/profileConstants";
+import { PROFILE_CONSTANTS } from "../../../constants/profileConstants";
 import setRangeForSelectBirthday from "../../helpers/validators/setRangeForSelectBirthday";
 
 export const validate = values => {

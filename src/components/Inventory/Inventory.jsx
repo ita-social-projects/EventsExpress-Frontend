@@ -8,6 +8,7 @@ import InventoryHeaderButton from "./InventoryHeaderButton";
 import "./Inventory.scss";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import { REQUIRED_LABEL } from "../../constants/labelConstants";
+import { INVENTORY_STEP } from "../../constants/inventoryConstatns";
 
 const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
   return (
@@ -28,7 +29,7 @@ const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
           <li className="" key={item.id}>
             <div className="d-flex flex-wrap justify-content-between align-items-center">
               <div className="p-2 bd-highlight align-self-end">
-                <span>{index + 1}</span>
+                <span>{index + INVENTORY_STEP}</span>
               </div>
               <div className="p-2 bd-highlight">
                 <Field

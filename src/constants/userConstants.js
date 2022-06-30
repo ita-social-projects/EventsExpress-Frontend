@@ -66,3 +66,4 @@ export const MIN_USER_AMOUNT = 10;
 export const MAX_USER_AMOUNT = 15;
 
 export const ADULT_AGE = 18;
+export const NEXT_GENDER_STEP = 1;

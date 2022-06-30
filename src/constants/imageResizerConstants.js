@@ -4,9 +4,15 @@ export const imageConstants = {
 };
 
 export const HALF_ZOOM = 0.5;
-export const TWO = 2;
+export const CROP_SIZE = 2;
 
 export const DISPLAY_RATIO_PARAMS = {
   WIDTH: 16,
   HEIGHT: 9,
 };
+
+export const DEFAULT_ZOOM = 1;
+export const DEFAULT_ASPECT = 1;
+
+export const ORIGIN_X = 0;
+export const ORIGIN_Y = 0;

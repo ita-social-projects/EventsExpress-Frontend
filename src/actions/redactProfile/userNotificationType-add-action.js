@@ -3,6 +3,7 @@ import { UserService } from "../../services";
 import { setSuccessAllert } from "../alert-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
+import { ONLY_NOTIFICATION_TYPE } from "../../constants/notificationConstants";
 
 export const addUserNotificationTypeStates = {
   UPDATE: "UPDATE_NOTIFICATION_TYPES",
@@ -27,7 +28,7 @@ const setUserNotificationTypes = data => {
     dispatch(getRequestDec());
     dispatch(updateNotificationTypes(data));
     const textMessage = `Favorite notification type${
-      data.notificationTypes.length > 1 ? "s have" : " has"
+      data.notificationTypes.length > ONLY_NOTIFICATION_TYPE ? "s have" : " has"
     } been updated`;
     dispatch(setSuccessAllert(textMessage));
     return Promise.resolve();

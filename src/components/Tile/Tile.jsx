@@ -4,6 +4,7 @@ import { getFormValues, change } from "redux-form";
 import { connect } from "react-redux";
 import ThreeStateCheckbox from "../ThreeStateCheckbox/ThreeStateCheckbox";
 import "./Tile.scss";
+import { EMPTY_TILES_ARRAY } from "../../constants/tileConstants";
 
 // TODO: check logic(strange)
 const Tile = ({
@@ -40,7 +41,7 @@ const Tile = ({
         opts.includes(item),
       );
 
-      if (values.length === 0) return false;
+      if (values.length === EMPTY_TILES_ARRAY) return false;
       if (values.length === opts.length) return true;
       return null;
     }

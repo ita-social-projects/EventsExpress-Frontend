@@ -18,10 +18,9 @@ import {
   wantToTake,
 } from "../../actions/inventory/inventar-action";
 import {
-  DEFAULT_ZERO_VALUE,
-  ZERO_AMOUNT,
-} from "../../constants/numberConstants";
-
+  ALREADY_GET_ACC,
+  NO_TAKEN_ITEMS,
+} from "../../constants/inventoryConstatns";
 // TODO Refactor class component
 class InventoryItemContainer extends Component {
   constructor(props) {
@@ -122,7 +121,7 @@ class InventoryItemContainer extends Component {
     const itemsQuantity = usersInventories.data.find(
       e => e.userId === user.id && e.inventoryId === item.id,
     );
-    return (!itemsQuantity && itemsQuantity.quantity) || ZERO_AMOUNT;
+    return (!itemsQuantity && itemsQuantity.quantity) || NO_TAKEN_ITEMS;
   }
 
   markItemAsEdit = () => {
@@ -141,7 +140,7 @@ class InventoryItemContainer extends Component {
       this.props;
     const alreadyGet = usersInventories.data.reduce((acc, cur) => {
       return cur.inventoryId === item.id ? acc + cur.quantity : acc;
-    }, DEFAULT_ZERO_VALUE);
+    }, ALREADY_GET_ACC);
     return (
       <div className="row p-1 d-flex align-items-center" key={item.id}>
         {this.state.isEdit && isMyEvent && (

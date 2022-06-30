@@ -27,7 +27,7 @@
     "import/no-unresolved": [2, { "caseSensitive": true }],
     "no-magic-numbers": [
       "error",
-      { "ignoreDefaultValues": true, "ignoreArrayIndexes": true ,"ignore": [-1,0,1]  }
+      { "ignoreDefaultValues": true }
     ],
 
     "import/no-cycle": [
@@ -98,7 +98,14 @@
       }
     ]
   },
+  "overrides": [{
+    "files": ["src/containers/**/*.jsx", "src/containers/**/*.js"],
+    "rules": {
+      "react/destructuring-assignment": 0
+    }
+  }],
   "settings": {
     "import/extensions": [".js", ".jsx", ".json"]
   }
 }
+

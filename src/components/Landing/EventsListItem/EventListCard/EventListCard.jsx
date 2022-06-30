@@ -9,12 +9,14 @@ import PhotoService from "../../../../services/PhotoService";
 import {
   EVENT_DEFAULT_IMAGE,
   EVENT_LIST_DESC_SLICE,
+  EVENT_LIST_START_SLICE,
   EVENT_LIST_TITLE_SLICE,
+  FIRST_ORGANIZER,
 } from "../../../../constants/eventConstants";
 
 const EventListCard = ({ event }) => {
   const { id, title, description, location, dateFrom } = event;
-  const ovner = event.organizers[0].username;
+  const ovner = event.organizers[FIRST_ORGANIZER].username;
 
   const photoService = useMemo(() => new PhotoService(), []);
   const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
@@ -43,12 +45,18 @@ const EventListCard = ({ event }) => {
           <div className="card-item-content">
             <h2 className="card-item-header">
               {title.length > EVENT_LIST_TITLE_SLICE
-                ? `${title.slice(0, EVENT_LIST_TITLE_SLICE)}...`
+                ? `${title.slice(
+                    EVENT_LIST_START_SLICE,
+                    EVENT_LIST_TITLE_SLICE,
+                  )}...`
                 : title}
             </h2>
             <p className="card-item-ovner">{`By ${ovner}`}</p>
             <p className="card-item-description">
-              {`${description.slice(0, EVENT_LIST_DESC_SLICE)}...`}
+              {`${description.slice(
+                EVENT_LIST_START_SLICE,
+                EVENT_LIST_DESC_SLICE,
+              )}...`}
             </p>
           </div>
         </div>

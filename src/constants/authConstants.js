@@ -30,3 +30,6 @@ export const REGISTRATION_SUCCESSFUL = "Successful registration!";
 export const SELECTED_ACTIVITIES = "Selected activities";
 export const CONGRATULATION_CAUSE_REGISTER =
   "Our congratulation, Your registration was successful!";
+
+export const FIRST_ROLE = 0;
+export const STEPPER_HELPER_STEP = 1;

@@ -1,6 +1,8 @@
 import {
   ATTITUDE_MESSAGES,
   ATTITUDE_ICONS,
+  NEGATIVE_ATTITUDE,
+  POSITIVE_ATTITUDE,
 } from "../../../constants/userConstants";
 
 const getAttitudeToUser = attitude => {
@@ -8,14 +10,14 @@ const getAttitudeToUser = attitude => {
   let attitudeToUser = {};
 
   switch (attitude) {
-    case 0:
+    case POSITIVE_ATTITUDE:
       attitudeToUser = {
         bg: "attitude_bg_green",
         message: ATTITUDE_MESSAGES.LIKE,
         thumb: ATTITUDE_ICONS.THUMB_UP,
       };
       break;
-    case 1:
+    case NEGATIVE_ATTITUDE:
       attitudeToUser = {
         bg: "attitude_bg_red",
         message: ATTITUDE_MESSAGES.DISLIKE,
