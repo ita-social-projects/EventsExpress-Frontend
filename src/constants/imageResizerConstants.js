@@ -11,5 +11,8 @@ export const DISPLAY_RATIO_PARAMS = {
   HEIGHT: 9,
 };
 
+export const DEFAULT_ZOOM = 1;
+export const DEFAULT_ASPECT = 1;
+
 export const ORIGIN_X = 0;
 export const ORIGIN_Y = 0;

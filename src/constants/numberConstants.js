@@ -9,3 +9,5 @@ export const ONE_AMOUNT = 1;
 
 export const DEFAULT_ZERO_VALUE = 0;
 export const DEFAULT_ONE_VALUE = 1;
+
+export const ROUND_ONE = 1;

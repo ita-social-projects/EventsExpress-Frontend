@@ -2,6 +2,8 @@
 import propTypes from "prop-types";
 import PagePagination from "../shared/PagePagination/PagePagination";
 import { NO_RESULT } from "../../constants/labelConstants";
+import { PAGINATION_PAGES_TRIGGER } from "../../constants/paginationConstants";
+import { EMPTY_ISSUES_ARRAY } from "../../constants/adminConstants";
 
 class RenderIssuesList extends Component {
   renderIssues = arr => arr.map(item => this.props.renderSingleIssue(item));
@@ -11,7 +13,7 @@ class RenderIssuesList extends Component {
 
     return (
       <>
-        {dataList.length > 0 ? (
+        {dataList.length > EMPTY_ISSUES_ARRAY ? (
           this.renderIssues(dataList)
         ) : (
           <div id="notfound" className="w-100">
@@ -23,7 +25,7 @@ class RenderIssuesList extends Component {
           </div>
         )}
         <br />
-        {totalPages > 1 && (
+        {totalPages > PAGINATION_PAGES_TRIGGER && (
           <PagePagination
             currentPage={page}
             totalPages={totalPages}

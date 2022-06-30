@@ -42,7 +42,7 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
         <FormControl name="location.type">
           <RadioGroup onChange={onChangeLocationType}>
             <FormControlLabel
-              value={String(0)}
+              value="0"
               control={<Radio />}
               label="Map"
               checked={
@@ -52,7 +52,7 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
               }
             />
             <FormControlLabel
-              value={String(1)}
+              value="1"
               control={<Radio />}
               label="Online"
               checked={

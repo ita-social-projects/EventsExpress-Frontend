@@ -1,10 +1,14 @@
-﻿import "./Attitude.scss";
+﻿import {
+  NEGATIVE_ATTITUDE,
+  POSITIVE_ATTITUDE,
+} from "../../../constants/userConstants";
+import "./Attitude.scss";
 
 const getAttitudeClassName = attitude => {
   switch (attitude) {
-    case 0:
+    case POSITIVE_ATTITUDE:
       return "attitude-like";
-    case 1:
+    case NEGATIVE_ATTITUDE:
       return "attitude-dislike";
     default:
       return "";

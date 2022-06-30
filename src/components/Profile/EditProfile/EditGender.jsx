@@ -4,7 +4,7 @@ import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import { renderSelectField } from "../../helpers/form-helpers";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
-import PROFILE_CONSTANTS from "../../../constants/profileConstants";
+import { PROFILE_CONSTANTS } from "../../../constants/profileConstants";
 import { NEXT_GENDER_STEP } from "../../../constants/userConstants";
 
 const EditGender = ({ handleSubmit, pristine, submitting, error }) => {

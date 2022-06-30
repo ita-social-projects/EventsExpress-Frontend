@@ -26,6 +26,7 @@ import {
   EVENT_SLICE_CATEGORIES_PARAM,
   EVENT_ITEM_DESC_SLICE,
   EVENT_ITEM_MAX_DESC,
+  START_SLICE,
 } from "../../../constants/eventConstants";
 
 const useStyles = useStyle;
@@ -74,7 +75,7 @@ const EventCard = props => {
     categories.length - EVENT_SLICE_CATEGORIES_PARAM;
   const restCategories = ` ... ${categoriesNotDisplayed} more`;
   const displayedCategories = renderCategories(
-    categories.slice(0, EVENT_SLICE_CATEGORIES_PARAM),
+    categories.slice(START_SLICE, EVENT_SLICE_CATEGORIES_PARAM),
   );
 
   return (
@@ -120,7 +121,7 @@ const EventCard = props => {
           {description && (
             <Tooltip
               title={
-                description.substr(0, EVENT_ITEM_DESC_SLICE) +
+                description.substr(START_SLICE, EVENT_ITEM_DESC_SLICE) +
                 (description.length > EVENT_ITEM_DESC_SLICE ? "..." : "")
               }
               classes={{ tooltip: "description-tooltip" }}
@@ -131,7 +132,7 @@ const EventCard = props => {
                 className="description"
                 component="p"
               >
-                {description.substr(0, EVENT_ITEM_MAX_DESC)}
+                {description.substr(START_SLICE, EVENT_ITEM_MAX_DESC)}
               </Typography>
             </Tooltip>
           )}

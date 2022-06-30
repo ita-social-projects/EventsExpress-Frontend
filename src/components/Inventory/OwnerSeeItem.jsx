@@ -1,6 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
+import {
+  EMPTY_INVENTORIES_ARRAY,
+  INVENTORIES_DEFAULT_VALUE,
+  SKIP_INVENTORY,
+} from "../../constants/inventoryConstatns";
 
 const OwnerSeeItem = ({
   item,
@@ -41,13 +46,13 @@ const OwnerSeeItem = ({
 
             {!showAlreadyGetDetailed && (
               <>
-                {usersInventories.data.length === 0
-                  ? 0
+                {usersInventories.data.length === EMPTY_INVENTORIES_ARRAY
+                  ? EMPTY_INVENTORIES_ARRAY
                   : usersInventories.data.reduce((acc, cur) => {
                       return cur.inventoryId === item.id
                         ? acc + cur.quantity
-                        : acc + 0;
-                    }, 0)}
+                        : acc + SKIP_INVENTORY;
+                    }, INVENTORIES_DEFAULT_VALUE)}
               </>
             )}
           </div>

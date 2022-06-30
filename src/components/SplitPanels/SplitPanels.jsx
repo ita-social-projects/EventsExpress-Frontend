@@ -8,7 +8,11 @@ import {
   IoIosArrowRoundForward,
 } from "react-icons/io";
 import { Link } from "react-router-dom";
-import constantsSplitScreens from "../../constants/splitScreensConstants";
+import {
+  COLLAPSED_INDEX_OFF,
+  COLLAPSED_INDEX_ON,
+  SPLIT_SCREENS,
+} from "../../constants/splitScreensConstants";
 import CollapseButton from "./CollapseButton";
 import Options from "../shared/Options/Options";
 import { SQUARE_STANDART } from "../../constants/imageSizesConstants";
@@ -24,7 +28,7 @@ const SplitPanels = () => {
     RIGTH_HEADER,
     RIGTH_TEXT,
     DISCOVER_MORE,
-  } = constantsSplitScreens;
+  } = SPLIT_SCREENS;
 
   const [collapsedIndex, setCollapsedIndex] = useState(null);
 
@@ -38,7 +42,7 @@ const SplitPanels = () => {
     >
       <div
         className={`left-side ${
-          collapsedIndex === 0 ? "collapsed" : "full-size"
+          collapsedIndex === COLLAPSED_INDEX_OFF ? "collapsed" : "full-size"
         }`}
       >
         <div className="left-side__text header-text">
@@ -68,9 +72,9 @@ const SplitPanels = () => {
         <div className="option-button">
           <Options>
             <CollapseButton
-              onClick={() => setCollapsedIndex(1)}
+              onClick={() => setCollapsedIndex(COLLAPSED_INDEX_ON)}
               icon={
-                collapsedIndex === 0 ? (
+                collapsedIndex === COLLAPSED_INDEX_OFF ? (
                   <IoIosArrowForward className="collapse-button-icon" />
                 ) : (
                   <IoIosArrowBack className="collapse-button-icon" />
@@ -80,13 +84,17 @@ const SplitPanels = () => {
           </Options>
         </div>
       </div>
-      <div className={`right-side ${collapsedIndex === 1 ? "collapsed" : ""}`}>
+      <div
+        className={`right-side ${
+          collapsedIndex === COLLAPSED_INDEX_ON ? "collapsed" : ""
+        }`}
+      >
         <div className="option-button">
           <Options>
             <CollapseButton
-              onClick={() => setCollapsedIndex(0)}
+              onClick={() => setCollapsedIndex(COLLAPSED_INDEX_OFF)}
               icon={
-                collapsedIndex === 1 ? (
+                collapsedIndex === COLLAPSED_INDEX_ON ? (
                   <IoIosArrowBack
                     className="collapse-button-icon"
                     style={{ color: "white" }}

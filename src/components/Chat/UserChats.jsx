@@ -7,7 +7,10 @@ import getChatsAction from "../../actions/chat/chats-action";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import "./UserChats.scss";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
-import { U_HAVE_UNREAD_MSG } from "../../constants/chatConstants";
+import {
+  ONE_UNREAD_MSG,
+  U_HAVE_UNREAD_MSG,
+} from "../../constants/chatConstants";
 
 class UserChats extends Component {
   componentWillMount = () => {
@@ -20,7 +23,7 @@ class UserChats extends Component {
       const newMsg = this.props.notification.messages.filter(
         y => y.chatRoomId === x.id,
       );
-      const chatBg = newMsg.length > 0 ? "new-msgs" : "";
+      const chatBg = newMsg.length ? "new-msgs" : "";
 
       return (
         <div key={x.id} className="w-100">
@@ -35,13 +38,13 @@ class UserChats extends Component {
               </ButtonBase>
               <div className="my-auto ml-5 wrap-text">
                 <h5>{user.username}</h5>
-                {newMsg.length === 0 && (
+                {newMsg.length < ONE_UNREAD_MSG && (
                   <span className="text-info">{x.lastMessage}</span>
                 )}
-                {newMsg.length === 1 && (
+                {newMsg.length === ONE_UNREAD_MSG && (
                   <span className="text-info">{U_HAVE_UNREAD_MSG}</span>
                 )}
-                {newMsg.length > 1 && (
+                {newMsg.length > ONE_UNREAD_MSG && (
                   <span className="text-info">
                     {"You have "}
                     {newMsg.length} {"unread messages"}

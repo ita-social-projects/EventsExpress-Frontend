@@ -2,6 +2,7 @@
 import propTypes from "prop-types";
 import DeleteCommentContainer from "../../containers/CommentContainer/DeleteCommentContainer";
 import PagePagination from "../shared/PagePagination/PagePagination";
+import { PAGINATION_PAGES_TRIGGER } from "../../constants/paginationConstants";
 
 export default class CommentList extends Component {
   handlePageChange = page => {
@@ -19,7 +20,7 @@ export default class CommentList extends Component {
     return (
       <>
         {items}
-        {totalPages > 1 && (
+        {totalPages > PAGINATION_PAGES_TRIGGER && (
           <PagePagination
             currentPage={page}
             totalPages={totalPages}

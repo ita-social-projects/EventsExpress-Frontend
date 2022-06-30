@@ -12,11 +12,12 @@ import {
   renderMembers,
   handleSetAnchorEl,
 } from "../../helpers/EventItemHeaderUtils";
+import { FIRST_MEMBER } from "../../../constants/eventConstants";
 
 const EventHeader = ({ members, countVisitor, owners, dateFrom, title }) => {
   const [anchorElM, setAnchorElM] = useState(null);
   const [anchorElO, setAnchorElO] = useState(null);
-  const firstMember = members ? members[0] : null;
+  const firstMember = members ? members[FIRST_MEMBER] : null;
   const { avatar } = useStyle;
   const MAPPER = [
     {

@@ -140,6 +140,7 @@ export const EVENT_SCHEDULE_CONSTS = {
 };
 
 export const EVENT_LIST_START_SLICE = 0;
+export const EVENT_CARD_START_SLICE = 0;
 export const EVENT_CARD_TITLE_SLICE = 30;
 export const EVENT_LIST_TITLE_SLICE = 35;
 export const EVENT_LIST_DESC_SLICE = 100;
@@ -147,12 +148,31 @@ export const EVENT_LIST_DESC_SLICE = 100;
 export const EVENT_ITEM_DESC_SLICE = 570;
 export const EVENT_ITEM_MAX_DESC = 128;
 
+export const ANY_APPROVED_USERS = 0;
+export const ANY_PENDING_USERS = 0;
+export const ANY_DENIED_USERS = 0;
+
+export const START_SLICE = 0;
+export const EVENT_SLICE_CATEGORIES_PARAM = 2;
+
 export const EVENT_OPACITY = {
   HALF: 0.5,
   FULL: 1,
 };
 
-export const EVENT_FILTER_Z_INDEX = 2;
+export const VISITORS_STATUS = {
+  APPROVED: 0,
+  DENIED: 1,
+  PENDING: 2,
+};
 
-export const EVENT_SLICE_CATEGORIES_PARAM = 2;
+export const FIRST_MEMBER = 0;
+
+export const EVENT_FILTER_Z_INDEX = 2;
 export const FIRST_ORGANIZER = 0;
+
+export const EVENT_PERIODICITY = 1;
+
+export const EVENT_CARD_STYLE_WEIGHT_500 = 500;
+export const EVENT_BUTTON_STYLE_WEIGHT_500 = 500;
+export const EVENT_BUTTON_STYLE_WEIGHT_700 = 700;

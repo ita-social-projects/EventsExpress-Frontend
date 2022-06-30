@@ -1,3 +1,5 @@
+import isEmpty from "lodash.isempty";
+import { DEFAULT_LOCATION_TYPE } from "../../constants/locationConstants";
 import numberField from "./validators/number-fields-validator";
 import fieldIsRequired from "./validators/required-fields-validator";
 
@@ -11,20 +13,22 @@ const validate = values => {
     }
   });
 
-  if (values.categories != null && values.categories.length === 0) {
+  const { categories, selectedPos, maxParticipants, location } = values;
+
+  if (isEmpty(categories)) {
     errors.categories = "Required";
   }
-  if (!values.selectedPos || values.selectedPos === "") {
+  if (isEmpty(selectedPos)) {
     errors.selectedPos = "Required";
   }
-  if (values.maxParticipants && values.maxParticipants < 1) {
+  if (isEmpty(maxParticipants)) {
     errors.maxParticipants = `Invalid data`;
   }
 
   if (
-    values.location !== null &&
-    values.location.type === 1 &&
-    values.location.onlineMeeting === null
+    location &&
+    !location.onlineMeeting &&
+    location.type === DEFAULT_LOCATION_TYPE
   ) {
     errors.location = {};
     errors.location.onlineMeeting = "URL cannot be empty";

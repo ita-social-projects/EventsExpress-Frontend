@@ -6,7 +6,10 @@ import InventoryHeaderButton from "./InventoryHeaderButton";
 import { getInventoryData } from "../../actions/inventory/inventory-list-action";
 import InventoryItemContainer from "../../containers/InventoryItemContainer/InventoryItemContainer";
 import { editUsersInventory } from "../../actions/users/users-inventories-action";
-import { INVENTORY_HEADER_COLS } from "../../constants/inventoryConstatns";
+import {
+  EMPTY_INVENTORIES_ARRAY,
+  INVENTORY_HEADER_COLS,
+} from "../../constants/inventoryConstatns";
 
 class InventoryList extends Component {
   constructor() {
@@ -58,7 +61,7 @@ class InventoryList extends Component {
             usersInventories.data.filter(
               dataItem =>
                 user.id === dataItem.userId && item.id === dataItem.inventoryId,
-            ).length > 0,
+            ).length > EMPTY_INVENTORIES_ARRAY,
         };
       });
     }

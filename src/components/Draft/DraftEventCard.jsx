@@ -5,7 +5,12 @@ import { BsTrash, BsHeart } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import EventCard from "../Landing/EventCard/EventCard";
 import EventCardModal from "../Landing/EventCard/EventCardModal/EventCardModal";
-import { ICON_PROPERTIES } from "../../constants/draftConstants";
+import {
+  FIRST_ADDITIONAL_BTN,
+  ICON_PROPERTIES,
+  SECOND_ADDITIONAL_BTN,
+  THIRD_ADDITIONAL_BTN,
+} from "../../constants/draftConstants";
 import { CARD_TYPE } from "../../constants/eventConstants";
 
 const DraftEventCard = ({
@@ -50,12 +55,12 @@ const DraftEventCard = ({
 
   const getCardButtons = type => {
     if (type === CARD_TYPE.LANDING) {
-      return additionalButtons[2];
+      return additionalButtons[THIRD_ADDITIONAL_BTN];
     }
     if (type === CARD_TYPE.HOME) {
-      return additionalButtons[1];
+      return additionalButtons[SECOND_ADDITIONAL_BTN];
     }
-    return additionalButtons[0];
+    return additionalButtons[FIRST_ADDITIONAL_BTN];
   };
 
   return (

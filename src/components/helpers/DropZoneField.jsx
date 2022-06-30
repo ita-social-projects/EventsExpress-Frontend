@@ -6,7 +6,7 @@ import ImagePreview from "./ImagePreview";
 import Placeholder from "./Placeholder";
 import ImageResizer from "../Event/ImageResizer/ImageResizer";
 import renderFieldError from "./form-helpers/render-field-error";
-import profileConstants from "../../constants/profileConstants";
+import { PROFILE_CONSTANTS } from "../../constants/profileConstants";
 import {
   FILE_LENGTH,
   FIRST_FILE,
@@ -21,7 +21,7 @@ const DropZoneField = ({
   meta: { touched, error },
   input: { onChange },
 }) => {
-  const { CLEAR } = profileConstants;
+  const { CLEAR } = PROFILE_CONSTANTS;
   const [imageFile, setImage] = useState(null);
   const [isCropped, setIsCropped] = useState(false);
 
