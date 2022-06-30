@@ -39,8 +39,10 @@ import RequestCount from "./request-index-count";
 import RequestLocalCount from "./request-index-local-count";
 import CategoriesOfMeasuring from "./categoryOfMeasuring-list";
 import EventsFilter from "./events-filter/index";
+import aboutUsReducer from "./aboutUs/aboutUsReducer";
 
 const rootReducers = {
+  aboutUs: aboutUsReducer,
   requestLocalCount: RequestLocalCount,
   requestCount: RequestCount,
   account: Account,
@@ -49,7 +51,7 @@ const rootReducers = {
   routing: routerReducer,
   form: formReducer,
   login: LoginReducer,
-  edit_event_from_parent: EditEventFromParent,
+  editEventFromParent: EditEventFromParent,
   events: Events,
   eventsFilter: EventsFilter,
   eventSchedules: EventSchedules,
@@ -66,7 +68,7 @@ const rootReducers = {
   tracks: Tracks,
   roles: Roles,
   profile: Profile,
-  events_for_profile: EventsForProfile,
+  eventsForProfile: EventsForProfile,
   recoverPassword: RecoverPassword,
   chats: Chats,
   chat: Chat,

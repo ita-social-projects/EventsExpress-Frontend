@@ -24,12 +24,12 @@ class Tracks extends Component {
   };
 
   handlePageChange = async page => {
-    const currentFilters = this.props.form_values || {};
+    const currentFilters = this.props.formValues || {};
     await this.handleFunc(currentFilters, page);
   };
 
   onReset = async () => {
-    this.props.reset_filters();
+    this.props.resetFilters();
     await this.handleFunc({}, 1);
   };
 
@@ -64,7 +64,7 @@ class Tracks extends Component {
                   entityNames={entityNames}
                   onSubmit={this.handleSubmit}
                   onReset={this.onReset}
-                  formValues={this.props.form_values}
+                  formValues={this.props.formValues}
                 />
               </div>
             </div>
@@ -77,18 +77,18 @@ class Tracks extends Component {
 
 Tracks.defaultProps = {
   tracks: {},
-  reset_filters: () => {},
+  resetFilters: () => {},
   getAllTracks: () => {},
   getEntityNames: () => {},
-  form_values: {},
+  formValues: {},
 };
 
 Tracks.propTypes = {
   tracks: PropTypes.object,
-  reset_filters: PropTypes.func,
+  resetFilters: PropTypes.func,
   getAllTracks: PropTypes.func,
   getEntityNames: PropTypes.func,
-  form_values: PropTypes.object,
+  formValues: PropTypes.object,
 };
 
 export default Tracks;

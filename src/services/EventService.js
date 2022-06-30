@@ -5,7 +5,7 @@ const baseService = new EventsExpressService();
 export default class EventService {
   getEvent = id => baseService.getResource(`event/${id}`);
 
-  getAllEvents = filters => baseService.getResource(`event/all${filters}`);
+  getAllEvents = () => baseService.getResource(`event/all`);
 
   getUpcomingEvents = () => baseService.getResource(`event/Upcoming`);
 

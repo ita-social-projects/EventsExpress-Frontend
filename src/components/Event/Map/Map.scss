@@ -1,20 +1,23 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
+
 .search-control-icon-button {
-    height: 33px !important;
     width: 33px !important;
+    height: 33px !important;
 }
 
-.error-text{
-    color: #f44336;
-    font-size: 0.75rem;
-    margin-top: 8px;
+.error-text {
     min-height: 1em;
-    text-align: left;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
+    margin-top: 8px;
+    color: $redOrange;
+    font-weight: $headText;
+    font-size: $fontsize075rem;
+    font-family: $roboto;
     line-height: 1em;
-    letter-spacing: 0.03333em;
+    letter-spacing: 0.0333em;
+    text-align: left;
 }
 
-button.search-control-close-button{
+button.search-control-close-button {
     display: none;
 }

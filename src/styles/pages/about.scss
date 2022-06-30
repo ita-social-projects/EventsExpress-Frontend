@@ -1,16 +1,14 @@
 $gradientColor: #00000099;
 $aboutUsBannerGradient: linear-gradient(0deg, $gradientColor, $gradientColor);
 $aboutUsBannerImage: url("https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170");
-$aboutUsBannerBtnShadow: 0px 5px 55px $lightPink;
+$aboutUsBannerBtnShadow: 0 5px 55px $lightPink;
 $infoImagesBrightness: 40%;
 $infoImagesHoverBrightness: 70%;
 $aboutUsBannerHeight: 80vh;
-
 $aboutUsQuote: 50px;
 $aboutUsHeadingText: 46px;
 $aboutUsSecondaryHeading: 36px;
 $aboutUsBodyText: 18px;
-
 $aboutUsQuoteMobile: 35px;
 $aboutUsHeaderTextMobile: 30px;
 $aboutUsSecondaryHeadingMobile: 24px;

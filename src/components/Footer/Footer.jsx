@@ -4,6 +4,7 @@ import { FOOTER_LABELS } from "../../constants/footerConstants";
 import SOCIAL_NAV_LINKS from "./FooterMapper";
 import emailService from "../../services/EmailService";
 import "./Footer.scss";
+import Button from "../shared/Button/Button";
 
 const {
   SUBSCRIBE_US,
@@ -46,7 +47,7 @@ const Footer = () => {
         </div>
         <div className="footer__subscribe">
           <h4 className="subscibe__us">{SUBSCRIBE_US}</h4>
-          <form className="footer__form">
+          <form className="footer__form" onSubmit={subscribeWithEmail}>
             <input
               type="email"
               name="email"
@@ -55,8 +56,9 @@ const Footer = () => {
               placeholder={PASTE_YOUR_EMAIL}
               className="footer__input"
             />
-            <IoMdSend
-              onClick={subscribeWithEmail}
+            <Button
+              content={<IoMdSend />}
+              type="submit"
               className="footer__subscribe__icon"
             />
           </form>

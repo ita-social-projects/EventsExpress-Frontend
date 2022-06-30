@@ -1,4 +1,5 @@
 import { jwtStorageKey } from "../constants/constants";
+import { UNAUTHORIZED } from "../constants/httpCodesConstants";
 
 export default class EventsExpressService {
   baseUrl = "api/";
@@ -16,7 +17,7 @@ export default class EventsExpressService {
       });
 
     let res = await call(url);
-    if (res.status === 401 && (await this.refreshHandler())) {
+    if (res.status === UNAUTHORIZED && (await this.refreshHandler())) {
       // one more try:
       res = await call(url);
     }
@@ -48,7 +49,7 @@ export default class EventsExpressService {
 
     let res = await call(Url, data);
 
-    if (res.status === 401 && (await this.refreshHandler())) {
+    if (res.status === UNAUTHORIZED && (await this.refreshHandler())) {
       // one more try:
       res = await call(Url, data);
     }
@@ -68,7 +69,7 @@ export default class EventsExpressService {
 
     let res = await call(Url, data);
 
-    if (res.status === 401 && (await this.refreshHandler())) {
+    if (res.status === UNAUTHORIZED && (await this.refreshHandler())) {
       // one more try:
       res = await call(Url, data);
     }

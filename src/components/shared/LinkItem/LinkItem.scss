@@ -3,39 +3,45 @@
 
 .link__icon {
     margin-right: 15px;
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 
     &:last-child {
-        margin-right: 0px;
+        margin-right: 0;
     }
 
     .social__icon {
-        font-size: $fontsize-24;
+        font-size: $fontsize24;
         cursor: pointer;
     }
 }
 
 @media screen and (max-width: $mediaFirstTabletScreen) {
+
     .link__icon {
+
         .social__icon {
-            font-size: $fontsize-24;
+            font-size: $fontsize24;
         }
     }
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
+
     .link__icon {
+
         .social__icon {
-            font-size: $fontsize-20;
+            font-size: $fontsize20;
         }
     }
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
+
     .link__icon {
+
         .social__icon {
-            font-size: $fontsize-16;
+            font-size: $fontsize16;
         }
     }
 }

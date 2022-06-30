@@ -2,6 +2,7 @@ import React from "react";
 import propTypes from "prop-types";
 import { Grid, Button } from "@material-ui/core";
 import { reduxForm } from "redux-form";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 const PlaceHolder = ({ handleSubmit, previousPage }) => {
   return (
@@ -17,7 +18,7 @@ const PlaceHolder = ({ handleSubmit, previousPage }) => {
               variant="text"
               size="large"
             >
-              Back
+              {BUTTON_NAMES.BACK}
             </Button>
             <Button
               type="submit"
@@ -26,7 +27,7 @@ const PlaceHolder = ({ handleSubmit, previousPage }) => {
               variant="contained"
               size="large"
             >
-              Continue
+              {BUTTON_NAMES.CONTINUE}
             </Button>
           </Grid>
         </Grid>

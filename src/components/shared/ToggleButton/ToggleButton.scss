@@ -2,14 +2,14 @@
 @import "../../../styles/colors.scss";
 
 .dropdown-toggle {
-  align-items: center;
-  flex-direction: row;
-  margin: 2px;
-  padding: 0;
-  cursor: pointer;
-  color: $white;
+    flex-direction: row;
+    align-items: center;
+    margin: 2px;
+    padding: 0;
+    color: $white;
+    cursor: pointer;
 
-  @media (max-width: $mobile-breakpoint) {
-    margin-bottom: 2px;
-  }
+    @media (max-width: $mobileBreakpoint) {
+        margin-bottom: 2px;
+    }
 }

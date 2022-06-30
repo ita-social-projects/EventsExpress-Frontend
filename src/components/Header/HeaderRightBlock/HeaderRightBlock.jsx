@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ModalWind from "../../ModalWind/ModalWind";
+import AuthModalContainer from "../../../containers/AuthModalContainer/AuthModalContainer";
 import AuthComponent from "../../../security/authComponent";
 import DropdownMenu from "../../../containers/DropDownMenuContainer/DropdownMenuContainer";
 import { TogleOpenWind } from "../../../actions/modalWind-action";
@@ -21,7 +21,7 @@ const HeaderRightBlock = ({ openModal }) => {
         >
           {SIGN_IN}
         </button>
-        <ModalWind />
+        <AuthModalContainer />
       </AuthComponent>
       <DropdownMenu />
     </li>

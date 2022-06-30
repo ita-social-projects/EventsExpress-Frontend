@@ -1,4 +1,5 @@
-﻿import React, { Component } from "react";
+﻿/* eslint-disable no-magic-numbers */
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
 import "moment-timezone";
@@ -15,8 +16,8 @@ import RatingAverage from "../Rating/RatingAverage";
 import "./UserProfile.scss";
 import Events from "./Events";
 import AuthComponent from "../../security/authComponent";
-import getAge from "../helpers/get-age-string";
 import indexToTabName from "../../constants/indexToTabNameConstants";
+import getAge from "../helpers/userAgeHelper/getUserAge";
 
 class UserItemView extends Component {
   constructor(props) {
@@ -41,7 +42,12 @@ class UserItemView extends Component {
   }
 
   renderCategories = arr =>
-    arr.map(item => <div key={item.id}>#{item.name}</div>);
+    arr.map(item => (
+      <div key={item.id}>
+        {"#"}
+        {item.name}
+      </div>
+    ));
 
   renderEvents = arr =>
     arr.map(item => (

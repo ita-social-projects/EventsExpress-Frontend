@@ -3,12 +3,13 @@ import { createBrowserHistory } from "history";
 import { AuthenticationService } from "../../services";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 import { setErrorAllertFromResponse } from "../alert-action";
-import filterHelper from "../../components/helpers/filterHelper";
+import { getDefaultEventFilter } from "../../components/helpers/filterHelper/filterHelper";
 import { updateEventsFilters } from "../event/event-list-action";
 import { initialConnection } from "../chat/chat-action";
 import { getUnreadMessages } from "../chat/chats-action";
 import { jwtStorageKey } from "../../constants/constants";
 import { getRequestInc, getRequestDec } from "../request-count-action";
+import { NO_CONTENT } from "../../constants/httpCodesConstants";
 
 export const SET_LOGIN_PENDING = "SET_LOGIN_PENDING";
 export const SET_LOGIN_SUCCESS = "SET_LOGIN_SUCCESS";
@@ -33,7 +34,7 @@ export function getUserInfo(profile) {
     }
 
     if (
-      response.status === 204 &&
+      response.status === NO_CONTENT &&
       history.location.pathname !== "/registerComplete"
     ) {
       history.push("/registerComplete", { profile });
@@ -42,7 +43,7 @@ export function getUserInfo(profile) {
 
     const userInfo = await response.json();
     const eventFilter = {
-      ...filterHelper.getDefaultEventFilter(),
+      ...getDefaultEventFilter(),
       categories: userInfo.categories.map(item => item.id),
     };
     dispatch(setUser(userInfo));

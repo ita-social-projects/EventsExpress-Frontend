@@ -1,241 +1,368 @@
-@import '../../styles/colors.scss';
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
-@import '../../styles/mixins.scss';
-
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
 
 .footer__container {
-  position: absolute;
-  bottom: 0;
-  width: $fullWidth;
-  text-align: center;
-  margin-top: 30px;
+    position: absolute;
+    bottom: 0;
+    width: $fullWidth;
+    margin-top: 30px;
+    text-align: center;
 }
 
 .footer__head {
-  background-color: $purpleDark;
-  padding: 10px;
+    padding: 10px;
+    background-color: $purpleDark;
 
-  .head__text {
-    color: $lightPink;
-    font-family: $quoteFont;
-    font-size: $fontsize-40;
-    font-weight: $headText;
-    margin: 0;
-  }
+    .head__text {
+        margin: 0;
+        color: $lightPink;
+        font-weight: $headText;
+        font-size: $fontsize40;
+        font-family: $quoteFont;
+    }
 }
 
 .footer__interact {
-  padding: 50px 0;
-  background-color: $white;
-  display: flex;
-  justify-content: space-around;
-
-  .footer__contacts {
-    .contact__us {
-      font-family: $mainFont;
-      font-size: $fontsize-24;
-      font-weight: $semiBold;
-      margin: 0px;
-      margin-bottom: 10px;
-    }
-
-    .contact__number {
-      font-family: $mainFont;
-      font-size: $fontsize-18;
-      font-weight: $semiBold;
-    }
-  }
-
-  .footer__subscribe {
-    .subscibe__us {
-      font-family: $mainFont;
-      font-size: $fontsize-24;
-      font-weight: $semiBold;
-    }
-
-    .footer__form {
-      width: $fullWidth;
-      margin-top: 10px;
-      position: relative;
-
-      .footer__input {
-        @include form_input;
-      }
-
-      .footer__subscribe__icon {
-        position: absolute;
-        top: 13px;
-        right: 10px;
-        cursor: pointer;
-      }
-    }
-  }
-
-  .footer__social_links {
-    .our__socials {
-      font-family: $mainFont;
-      font-size: $fontsize-24;
-      font-weight: $semiBold;
-      margin: 0;
-    }
-
-    .footer__social_links_icons {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-    }
-  }
-}
-
-
-@media screen and (max-width: $mediaFirstTabletScreen) {
-  .footer__container {
-    margin-top: 25px;
-  }
-
-  .footer__head {
-    .head__text {
-      font-size: $fontsize-32;
-    }
-  }
-
-  .footer__interact {
-    padding: 40px 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0;
+    background-color: $white;
 
     .footer__contacts {
-      .contact__us {
-        font-size: $fontsize-20;
-      }
 
-      .contact__number {
-        font-size: $fontsize-16;
-        margin-top: 8px;
-      }
+        .contact__us {
+            margin: 0;
+            margin-bottom: 10px;
+            font-weight: $semiBold;
+            font-size: $fontsize24;
+            font-family: $mainFont;
+        }
+
+        .contact__number {
+            font-weight: $semiBold;
+            font-size: $fontsize18;
+            font-family: $mainFont;
+        }
     }
 
     .footer__subscribe {
-      .subscibe__us {
-        font-size: $fontsize-20;
-      }
 
-      .footer__form {
-        .footer__input {
-          @include form_input;
+        .subscibe__us {
+            font-weight: $semiBold;
+            font-size: $fontsize24;
+            font-family: $mainFont;
         }
-      }
+
+        .footer__form {
+            position: relative;
+            width: $fullWidth;
+            margin-top: 10px;
+
+            .footer__input {
+                @include formInput;
+
+                font-size: $fontsize14;
+            }
+
+            .footer__subscribe__icon {
+                position: absolute;
+                top: 13px;
+                right: 10px;
+                cursor: pointer;
+            }
+        }
     }
 
     .footer__social_links {
-      .our__socials {
-        font-size: $fontsize-20;
-      }
+
+        .our__socials {
+            margin: 0;
+            font-weight: $semiBold;
+            font-size: $fontsize24;
+            font-family: $mainFont;
+        }
+
+        .footer__social_links_icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
     }
-  }
+}
+
+@media screen and (max-width: $mediaFirstTabletScreen) {
+
+    .footer__container {
+        margin-top: 25px;
+    }
+
+    .footer__head {
+
+        .head__text {
+            font-size: $fontsize32;
+        }
+    }
+
+    .footer__interact {
+        display: flex;
+        justify-content: space-around;
+        padding: 40px 0;
+        padding: 50px 0;
+        background-color: $white;
+
+        .footer__contacts {
+
+            .contact__us {
+                margin: 0;
+                margin-bottom: 10px;
+                font-weight: $semiBold;
+                font-size: $fontsize24;
+                font-family: $mainFont;
+            }
+
+            .contact__number {
+                font-weight: $semiBold;
+                font-size: $fontsize18;
+                font-family: $mainFont;
+            }
+        }
+
+        .footer__subscribe {
+
+            .subscibe__us {
+                font-weight: $semiBold;
+                font-size: $fontsize24;
+                font-family: $mainFont;
+            }
+
+            .footer__form {
+                position: relative;
+                width: $fullWidth;
+                margin-top: 10px;
+
+                .footer__input {
+                    @include formInput;
+
+                    font-size: $fontsize14;
+                }
+
+                .footer__subscribe__icon {
+                    position: absolute;
+                    top: 13px;
+                    right: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .footer__social_links {
+
+            .our__socials {
+                margin: 0;
+                font-weight: $semiBold;
+                font-size: $fontsize24;
+                font-family: $mainFont;
+            }
+
+            .footer__social_links_icons {
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mediaFirstTabletScreen) {
+
+    .footer__container {
+        margin-top: 25px;
+    }
+
+    .footer__head {
+
+        .head__text {
+            font-size: $fontsize32;
+        }
+    }
+
+    .footer__interact {
+        padding: 40px 0;
+
+        .footer__contacts {
+
+            .contact__us {
+                margin: 0;
+                margin-bottom: 10px;
+                font-weight: $semiBold;
+                font-size: $fontsize24;
+                font-family: $mainFont;
+            }
+
+            .contact__number {
+                font-weight: $semiBold;
+                font-size: $fontsize18;
+                font-family: $mainFont;
+            }
+        }
+
+        .footer__subscribe {
+
+            .subscibe__us {
+                font-weight: $semiBold;
+                font-size: $fontsize24;
+                font-family: $mainFont;
+            }
+
+            .footer__form {
+                position: relative;
+                width: $fullWidth;
+                margin-top: 10px;
+
+                .footer__input {
+                    @include formInput;
+                }
+
+                .footer__subscribe__icon {
+                    position: absolute;
+                    top: 13px;
+                    right: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .footer__social_links {
+
+            .our__socials {
+                margin: 0;
+                font-weight: $semiBold;
+                font-size: $fontsize24;
+                font-family: $mainFont;
+            }
+
+            .footer__social_links_icons {
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
-  .footer__container {
-    margin-top: $fontsize-20;
-  }
 
-  .footer__head {
-    .head__text {
-      font-size: $fontsize-24;
-    }
-  }
-
-  .footer__interact {
-    padding: 30px 0;
-
-    .footer__contacts {
-      .contact__us {
-        font-size: $fontsize-16;
-      }
-
-      .contact__number {
-        font-size: $fontsize-14;
-        margin-top: 5px;
-      }
+    .footer__container {
+        margin-top: $fontsize20;
     }
 
-    .footer__subscribe {
-      .subscibe__us {
-        font-size: $fontsize-16;
-      }
+    .footer__head {
 
-      .footer__form {
-        .footer__input {
-          @include form_input;
+        .head__text {
+            font-size: $fontsize24;
         }
-      }
     }
 
-    .footer__social_links {
-      .our__socials {
-        font-size: $fontsize-16;
-      }
+    .footer__interact {
+        padding: 30px 0;
+
+        .footer__contacts {
+
+            .contact__us {
+                font-size: $fontsize16;
+            }
+
+            .contact__number {
+                margin-top: 5px;
+                font-size: $fontsize14;
+            }
+        }
+
+        .footer__subscribe {
+
+            .subscibe__us {
+                font-size: $fontsize16;
+            }
+
+            .footer__form {
+
+                .footer__input {
+                    @include formInput;
+                }
+            }
+        }
+
+        .footer__social_links {
+
+            .our__socials {
+                font-size: $fontsize16;
+            }
+        }
     }
-  }
 }
 
 @media screen and (max-width: $mediaMobileScreen) {
-  .footer__container {
-    margin-top: 15px;
-  }
 
-  .footer__head {
-    .head__text {
-      font-size: $fontsize-20;
-    }
-  }
-
-  .footer__interact {
-    padding: 15px 0;
-    flex-direction: column;
-
-    .footer__contacts {
-      .contact__us {
-        font-size: $fontsize-14;
-      }
-
-      .contact__number {
-        font-size: $fontsize-12;
-        margin-top: 5px;
-      }
+    .footer__container {
+        margin-top: 15px;
     }
 
-    .footer__subscribe {
-      margin-top: 20px;
+    .footer__head {
 
-      .subscibe__us {
-        font-size: $fontsize-14;
-        margin: 0;
-      }
+        .head__text {
+            font-size: $fontsize20;
+        }
+    }
 
-      .footer__form {
-        margin: 0;
+    .footer__interact {
+        flex-direction: column;
+        padding: 15px 0;
 
-        .footer__input {
-          @include form_input;
+        .footer__contacts {
+
+            .contact__us {
+                font-size: $fontsize14;
+            }
+
+            .contact__number {
+                margin-top: 5px;
+                font-size: $fontsize12;
+            }
         }
 
-        .footer__subscribe__icon {
-          right: 12%;
+        .footer__subscribe {
+            margin-top: 20px;
+
+            .subscibe__us {
+                margin: 0;
+                font-size: $fontsize14;
+            }
+
+            .footer__form {
+                margin: 0;
+
+                .footer__input {
+                    @include formInput;
+                }
+
+                .footer__subscribe__icon {
+                    right: 12%;
+                }
+            }
         }
-      }
+
+        .footer__social_links {
+            margin-top: 20px;
+
+            .our__socials {
+                font-size: $fontsize14;
+            }
+
+            .footer__social_links_icons {
+                margin: 0;
+            }
+        }
     }
-
-    .footer__social_links {
-      margin-top: 20px;
-
-      .our__socials {
-        font-size: $fontsize-14;
-      }
-
-      .footer__social_links_icons {
-        margin: 0;
-      }
-    }
-  }
 }

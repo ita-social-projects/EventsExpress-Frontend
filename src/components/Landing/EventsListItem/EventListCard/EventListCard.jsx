@@ -6,7 +6,11 @@ import moment from "moment";
 import IconsEventCard from "../../EventCard/IconsEventCard/IconsEventCard";
 import "./EventListCard.scss";
 import PhotoService from "../../../../services/PhotoService";
-import { EVENT_DEFAULT_IMAGE } from "../../../../constants/eventConstants";
+import {
+  EVENT_DEFAULT_IMAGE,
+  EVENT_LIST_DESC_SLICE,
+  EVENT_LIST_TITLE_SLICE,
+} from "../../../../constants/eventConstants";
 
 const EventListCard = ({ event }) => {
   const { id, title, description, location, dateFrom } = event;
@@ -27,7 +31,6 @@ const EventListCard = ({ event }) => {
       URL.revokeObjectURL(eventImage);
     };
     // TODO Disabled this rule in eslint config
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -39,11 +42,13 @@ const EventListCard = ({ event }) => {
           </div>
           <div className="card-item-content">
             <h2 className="card-item-header">
-              {title.length > 35 ? `${title.slice(0, 35)}...` : title}
+              {title.length > EVENT_LIST_TITLE_SLICE
+                ? `${title.slice(0, EVENT_LIST_TITLE_SLICE)}...`
+                : title}
             </h2>
             <p className="card-item-ovner">{`By ${ovner}`}</p>
             <p className="card-item-description">
-              {`${description.slice(0, 100)}...`}
+              {`${description.slice(0, EVENT_LIST_DESC_SLICE)}...`}
             </p>
           </div>
         </div>

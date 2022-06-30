@@ -1,18 +1,22 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import { Field, reduxForm } from "redux-form";
+import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
-import moment from "moment";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
+import PROFILE_CONSTANTS from "../../../constants/profileConstants";
+import setRangeForSelectBirthday from "../../helpers/validators/setRangeForSelectBirthday";
 
-const validate = values => {
+export const validate = values => {
   const errors = {};
   const requiredFields = ["birthday"];
+  const { DATE_INCORRECT } = PROFILE_CONSTANTS;
+  const birthdayDate = new Date(values.Birthday).getTime();
+  const currentDate = Date.now();
 
-  if (new Date(values.Birthday).getTime() >= Date.now()) {
-    errors.Birthday = "Date is incorrect";
+  if (birthdayDate >= currentDate) {
+    errors.Birthday = { DATE_INCORRECT };
   }
   return {
     ...fieldIsRequired(values, requiredFields),
@@ -21,8 +25,13 @@ const validate = values => {
 };
 
 const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
-  const minValue = moment(new Date()).subtract(115, "years");
-  const maxValue = moment(new Date()).subtract(14, "years");
+  const { SUBMIT, CLEAR, OLDEST_DATE_OF_CHOICE, YOUNGEST_DATE_OF_CHOICE } =
+    PROFILE_CONSTANTS;
+
+  const { minValue, maxValue } = setRangeForSelectBirthday(
+    OLDEST_DATE_OF_CHOICE,
+    YOUNGEST_DATE_OF_CHOICE,
+  );
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -36,19 +45,18 @@ const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
         />
         {error && <ErrorMessages error={error} className="text-center" />}
       </div>
-      <div>
-        <Button type="submit" color="primary" disabled={pristine || submitting}>
-          Submit
-        </Button>
-        <Button
-          type="button"
-          color="primary"
-          disabled={pristine || submitting}
-          onClick={reset}
-        >
-          Clear
-        </Button>
-      </div>
+
+      <Button type="submit" color="primary" disabled={pristine || submitting}>
+        {SUBMIT}
+      </Button>
+      <Button
+        type="button"
+        color="primary"
+        disabled={pristine || submitting}
+        onClick={reset}
+      >
+        {CLEAR}
+      </Button>
     </form>
   );
 };
@@ -69,7 +77,4 @@ EditBirthday.propTypes = {
   handleSubmit: PropTypes.func,
 };
 
-export default reduxForm({
-  form: "EditBirthday",
-  validate,
-})(EditBirthday);
+export default EditBirthday;

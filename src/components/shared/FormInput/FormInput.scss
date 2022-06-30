@@ -1,0 +1,31 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/variables.scss";
+@import "../../../styles/fonts.scss";
+
+.form-group__input {
+    width: $fullWidth;
+    margin-bottom: 30px;
+}
+
+.form-input {
+    width: $fullWidth;
+    padding: 5px 20px;
+    color: $purpleDark;
+    font-size: $bodyText;
+    text-align: left;
+    background: $white;
+    border: 2px solid $white;
+    border-radius: $defaultBorderRadius;
+    box-shadow: $inputBoxShadow;
+}
+
+.form-input__error {
+    color: $deleteColor;
+    box-shadow: 0 2px 2px $deleteColor;
+}
+
+.form-error {
+    margin-left: 15px;
+    color: $deleteColor;
+    font-size: $bodyText;
+}

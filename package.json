@@ -17,6 +17,7 @@
 		"date-fns": "^2.28.0",
 		"esri-leaflet": "2.5.1",
 		"esri-leaflet-geocoder": "2.3.3",
+		"final-form": "^4.20.7",
 		"history": "^5.2.0",
 		"jquery": "3.5.1",
 		"jsonwebtoken": "8.5.1",
@@ -28,6 +29,8 @@
 		"moment": "2.24.0",
 		"moment-timezone": "0.5.26",
 		"normalize.css": "^8.0.1",
+		"postcss": "^8.4.14",
+		"postcss-scss": "^4.0.4",
 		"prop-types": "^15.8.1",
 		"query-string": "7.0.1",
 		"react": "16.8.6",
@@ -35,12 +38,13 @@
 		"react-bootstrap": "1.4.0",
 		"react-confirm-alert": "2.7.0",
 		"react-copy-to-clipboard": "5.0.4",
-		"react-datepicker": "2.8.0",
+		"react-datepicker": "^2.8.0",
 		"react-dom": "16.8.6",
 		"react-dropzone": "10.1.5",
 		"react-easy-crop": "3.3.1",
 		"react-facebook": "8.0.4",
 		"react-facebook-login": "4.1.1",
+		"react-final-form": "^6.5.9",
 		"react-google-login": "5.0.5",
 		"react-icons": "^3.11.0",
 		"react-images-upload": "1.2.7",
@@ -67,8 +71,9 @@
 		"redux-thunk": "2.3.0",
 		"sass": "^1.49.7",
 		"slick-carousel": "^1.8.1",
+		"stylelint-declaration-use-variable": "^1.7.3",
 		"webpack": "^4.44.2"
-	  },
+	},
 	"devDependencies": {
 		"@commitlint/cli": "^16.2.3",
 		"@commitlint/config-conventional": "^16.2.1",
@@ -85,14 +90,17 @@
 		"eslint-plugin-import": "^2.25.2",
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-react": "^7.26.1",
-		"eslint-plugin-sonarjs": "0.10.0",
 		"husky": "^8.0.0",
 		"lint-staged": "^12.3.7",
 		"prettier": "^2.6.0",
 		"react-error-overlay": "^6.0.10",
 		"react-test-renderer": "16.8.6",
 		"redux-mock-store": "^1.5.4",
-		"rimraf": "2.6.2"
+		"rimraf": "2.6.2",
+		"stylelint": "^14.9.1",
+		"stylelint-config-rational-order": "^0.1.2",
+		"stylelint-config-standard-scss": "^4.0.0",
+		"stylelint-order": "^5.0.0"
 	},
 	"scripts": {
 		"start": "rimraf ./build && react-scripts start",
@@ -102,12 +110,13 @@
 		"lint": "eslint src --ext .js,.jsx",
 		"lint:fix": "eslint src --fix --ext .js,.jsx",
 		"prepare": "husky install",
-		"husky:pre-commit": "lint-staged"
+		"husky:pre-commit": "lint-staged",
+		"stylelint": "stylelint \"**/*.scss\"",
+		"stylelint:fix": "stylelint \"**/*.scss\" --fix"
 	},
 	"lint-staged": {
 		"*.{js,jsx}": [
-			"eslint src --fix --ext .js,.jsx",
-			"git diff --exit-code --stat"
+			"eslint src --fix --ext .js,.jsx"
 		]
 	},
 	"config": {

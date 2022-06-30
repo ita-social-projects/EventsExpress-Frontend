@@ -5,6 +5,7 @@ import addCategory, {
   setCategoryEdited,
 } from "../../actions/category/category-add-action";
 import CategoryEdit from "../../components/Category/CategoryEdit";
+import { ADD_CATEGORY } from "../../constants/categoriesConstatns";
 
 const CategoryAddContainer = ({
   add,
@@ -31,7 +32,7 @@ const CategoryAddContainer = ({
             className="btn btn-outline-primary ml-0"
             onClick={setCategoryEditedDispatch}
           >
-            Add category
+            {ADD_CATEGORY}
           </button>
         </div>
       </td>

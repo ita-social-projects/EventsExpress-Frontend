@@ -8,6 +8,7 @@ import {
 } from "../../actions/unitOfMeasuring/unitOfMeasuring-add-action";
 import UnitOfMeasuringEdit from "../../components/UnitOfMeasuring/UnitOfMeasuringEdit";
 import getCategoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
+import { ADD_UNIT } from "../../constants/unitOfMeasuringConstatns";
 
 const pStyle = {
   margin: "0px",
@@ -28,7 +29,7 @@ class UnitOfMeasuringAddWrapper extends React.Component {
       <tr>
         <td className="align-middle align-items-stretch" width="20%">
           <div className="d-flex align-items-center justify-content-left">
-            <p style={pStyle}>Add unit</p>
+            <p style={pStyle}>{ADD_UNIT}</p>
             <IconButton
               className="text-info"
               onClick={this.props.setUnitOfMeasuringEdited}
@@ -73,7 +74,7 @@ UnitOfMeasuringAddWrapper.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  all_categories: state.categoriesOfMeasuring,
+  allCategories: state.categoriesOfMeasuring,
   status: state.add_unitOfMeasuring,
   editedUnitOfMeasuring: state.unitsOfMeasuring.editedUnitOfMeasuring,
 });
@@ -81,9 +82,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, props) => {
   return {
     add: data => dispatch(addUnitOfMeasuring(data)),
-    set_unitOfMeasuring_edited: () =>
+    setUnitOfMeasuringEdited: () =>
       dispatch(setUnitOfMeasuringEdited(props.item.id)),
-    get_CategoriesOfMeasuring: () => dispatch(getCategoriesOfMeasuring()),
+    getCategoryOfMeasuring: () => dispatch(getCategoriesOfMeasuring()),
   };
 };
 

@@ -1,36 +1,20 @@
-﻿import { connect } from "react-redux";
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Login from "../../components/Login/Login";
+﻿import { reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import Login from "../../components/AuthModal/Login/Login";
 import login from "../../actions/login/login-action";
+import { validate } from "../../components/helpers/validateHelper";
 
-// TODO Refactor class component
-class LoginContainer extends Component {
-  submit = values => this.props.login(values.email, values.password);
+const mapStateToProps = state => ({
+  loginStatus: state.login,
+});
 
-  render() {
-    return <Login onSubmit={this.submit} />;
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  handleLogin: ({ email, password }) => dispatch(login(email, password)),
+});
 
-const mapStateToProps = state => {
-  return {
-    loginStatus: state.login,
-  };
-};
+const LoginForm = reduxForm({
+  form: "auth-form",
+  validate: validate(["email", "password"]),
+})(Login);
 
-const mapDispatchToProps = dispatch => {
-  return {
-    login: (email, password) => dispatch(login(email, password)),
-  };
-};
-
-LoginContainer.propTypes = {
-  login: PropTypes.func,
-};
-
-LoginContainer.defaultProps = {
-  login: () => {},
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

@@ -1,11 +1,13 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import { Field, reduxForm } from "redux-form";
+import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import { renderSelectField } from "../../helpers/form-helpers";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
+import PROFILE_CONSTANTS from "../../../constants/profileConstants";
 
 const EditGender = ({ handleSubmit, pristine, submitting, error }) => {
+  const { GENDERS, SUBMIT } = PROFILE_CONSTANTS;
   return (
     <form name="EditGender" onSubmit={handleSubmit}>
       <div>
@@ -16,18 +18,18 @@ const EditGender = ({ handleSubmit, pristine, submitting, error }) => {
           label="Gender"
         >
           <option aria-label="None" value="" />
-          <option value="1">Male</option>
-          <option value="2">Female</option>
-          <option value="3">Other</option>
+          {GENDERS.map((gender, index) => (
+            <option key={gender} value={index + 1}>
+              {gender}
+            </option>
+          ))}
         </Field>
         {error && <ErrorMessages error={error} className="text-center" />}
       </div>
 
-      <div>
-        <Button type="submit" color="primary" disabled={pristine || submitting}>
-          Submit
-        </Button>
-      </div>
+      <Button type="submit" color="primary" disabled={pristine || submitting}>
+        {SUBMIT}
+      </Button>
     </form>
   );
 };
@@ -46,20 +48,4 @@ EditGender.propTypes = {
   handleSubmit: PropTypes.func,
 };
 
-export default reduxForm({
-  form: "EditGender",
-})(EditGender);
-
-EditGender.propTypes = {
-  handleSubmit: PropTypes.func,
-  pristine: PropTypes.bool,
-  submitting: PropTypes.bool,
-  error: PropTypes.array,
-};
-
-EditGender.defaultProps = {
-  handleSubmit: () => {},
-  pristine: false,
-  submitting: false,
-  error: [],
-};
+export default EditGender;

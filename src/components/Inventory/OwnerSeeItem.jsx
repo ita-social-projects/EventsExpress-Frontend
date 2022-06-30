@@ -31,7 +31,10 @@ const OwnerSeeItem = ({
               usersInventories.data.map(data => {
                 return data.inventoryId === item.id ? (
                   <div key={data.inventoryId}>
-                    {data.user.name}: {data.quantity};
+                    {data.user.name}
+                    {": "}
+                    {data.quantity}
+                    {";"}
                   </div>
                 ) : null;
               })}

@@ -1,24 +1,22 @@
-import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { ZERO_INDEX } from "../constants/numberConstants";
 
-class AuthComponent extends Component {
-  render() {
-    const { id, roles, rolesMatch, children, onlyAnonymous } = this.props;
-    if (rolesMatch) {
-      if (id && roles[0] === rolesMatch) {
-        return children;
-      }
-    } else if (onlyAnonymous) {
-      if (!id) {
-        return children;
-      }
-    } else if (id) {
+const AuthComponent = ({ id, roles, rolesMatch, children, onlyAnonymous }) => {
+  if (rolesMatch) {
+    if (id && roles[ZERO_INDEX] === rolesMatch) {
       return children;
     }
-    return <> </>;
+  } else if (onlyAnonymous) {
+    if (!id) {
+      return children;
+    }
+  } else if (id) {
+    return children;
   }
-}
+  return null;
+};
+
 AuthComponent.propTypes = {
   id: PropTypes.string,
   roles: PropTypes.array,

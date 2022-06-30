@@ -1,96 +1,23 @@
-﻿import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+﻿import { connect } from "react-redux";
 import DraftList from "../../components/Draft/DraftList";
-import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
-import { getDrafts, resetEvents } from "../../actions/event/event-list-action";
-import filterHelper from "../../components/helpers/filterHelper";
+import { getDrafts } from "../../actions/event/event-list-action";
+import { changeEventStatus } from "../../actions/event/event-item-view-action";
+import { EVENT_STATUS_ENUM } from "../../constants/eventConstants";
+import { ZERO_AMOUNT } from "../../constants/numberConstants";
 
-// TODO Refactor class component
-class EventDraftListContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.objCurrentQueryParams = Object.create(null);
-  }
-
-  componentDidMount() {
-    this.props.getDrafts(1);
-  }
-
-  componentDidUpdate() {
-    const objFilterParams = filterHelper.trimUndefinedKeys(
-      this.props.events.filter,
-    );
-    if (this.hasUpdateSearchParams(objFilterParams)) {
-      this.objCurrentQueryParams = objFilterParams;
-    }
-  }
-
-  hasUpdateSearchParams = objFilterParams => {
-    return !filterHelper.compareObjects(
-      objFilterParams,
-      this.objCurrentQueryParams,
-    );
-  };
-
-  render() {
-    const currentUser =
-      this.props.currentUser.id !== null ? this.props.currentUser : {};
-    const { data } = this.props.events;
-    const { items } = this.props.events.data;
-
-    return (
-      <SpinnerContainer showContent={data !== undefined}>
-        <DraftList
-          currentUser={currentUser}
-          data_list={items}
-          filter={this.props.events.filter}
-          page={data.pageViewModel.pageNumber}
-          totalPages={data.pageViewModel.totalPages}
-          reset_events={this.props.resetEvents}
-          get_drafts={this.props.getDrafts}
-          match={this.props.match}
-        />
-      </SpinnerContainer>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    events: state.events,
-    currentUser: state.user,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    get_drafts: page => dispatch(getDrafts(page)),
-    reset_events: () => dispatch(resetEvents()),
-  };
-};
-
-EventDraftListContainer.propTypes = {
-  getDrafts: PropTypes.func,
-  pageViewModel: PropTypes.object,
-  resetEvents: PropTypes.func,
-  events: PropTypes.object,
-  currentUser: PropTypes.object,
-  pageNumber: PropTypes.number,
-  match: PropTypes.object,
-};
-
-EventDraftListContainer.defaultProps = {
-  getDrafts: () => {},
-  pageViewModel: {},
-  resetEvents: () => {},
-  events: {},
-  currentUser: {},
-  pageNumber: null,
-  match: {},
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(EventDraftListContainer);
+const mapStateToProps = state => ({
+  items: state.events.data.items,
+  isItemsAvaliable: state.events.data.items.length > ZERO_AMOUNT,
+  isItemsFetched: state.events.data.items !== null,
+  isPages: state.events.data.pageViewModel.totalPages > ZERO_AMOUNT,
+  pageNumber: state.events.data.pageViewModel.pageNumber,
+  totalPages: state.events.data.pageViewModel.totalPages,
+  isDeleted: state.events.isDeleted,
+});
+const mapDispatchToProps = dispatch => ({
+  getDraftsAction: page => dispatch(getDrafts(page)),
+  deleteEvent: (eventId, reason) => {
+    dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.DELETED));
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(DraftList);

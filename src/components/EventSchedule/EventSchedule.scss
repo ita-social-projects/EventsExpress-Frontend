@@ -1,9 +1,24 @@
-.custom-center {
-    position: fixed;
-    top: 50%;
-    left: 55%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+@import "../../styles/variables.scss";
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: $fullWidth;
+    padding-top: 60px;
 }
 
+.eventsBlock {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: $fullWidth;
+}
+
+.custom-center {
+    position: fixed;
+    top: $halfWidth;
+    left: 55%;
+    -webkit-transform: translate($minusHalfWidth, $minusHalfWidth);
+    -ms-transform: translate($minusHalfWidth, $minusHalfWidth);
+    transform: translate($minusHalfWidth, $minusHalfWidth);
+}

@@ -1,141 +1,90 @@
-﻿import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Moment from "react-moment";
-import "moment-timezone";
-import Card from "@material-ui/core/Card";
-import { Button } from "@material-ui/core";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Typography from "@material-ui/core/Typography";
-import Tooltip from "@material-ui/core/Tooltip";
-import Badge from "@material-ui/core/Badge";
-import IconButton from "@material-ui/core/IconButton";
+﻿import React from "react";
 import PropTypes from "prop-types";
-import CustomAvatar from "../CustomAvatar/CustomAvatar";
-import "./EventItem.scss";
-import useStyle from "../Event/CardStyle/CardStyle";
-import SimpleModalWithDetails from "../helpers/simple-modal-with-details";
-import PhotoService from "../../services/PhotoService";
-import { EVENT_DEFAULT_IMAGE } from "../../constants/eventConstants";
+import { Link } from "react-router-dom";
+import { BsTrash, BsHeart } from "react-icons/bs";
+import { AiFillEdit } from "react-icons/ai";
+import EventCard from "../Landing/EventCard/EventCard";
+import EventCardModal from "../Landing/EventCard/EventCardModal/EventCardModal";
+import { ICON_PROPERTIES } from "../../constants/draftConstants";
+import { CARD_TYPE } from "../../constants/eventConstants";
 
-const useStyles = useStyle;
-const photoService = new PhotoService();
+const DraftEventCard = ({
+  event,
+  eventId,
+  draftModalId,
+  setDraftModalId,
+  onDelete,
+  cardType,
+}) => {
+  const additionalButtons = [
+    <button
+      type="button"
+      key="buckect-btn"
+      onClick={() => setDraftModalId(eventId)}
+    >
+      <BsTrash
+        cursor={ICON_PROPERTIES.CIRSOR_POINER}
+        size={ICON_PROPERTIES.ICON_SIZE}
+      />
+    </button>,
+    <Link to={`/editEvent/${eventId}`} key={eventId}>
+      <AiFillEdit
+        key={eventId}
+        cursor={ICON_PROPERTIES.CIRSOR_POINER}
+        size={ICON_PROPERTIES.ICON_SIZE}
+      />
+    </Link>,
+    <BsHeart
+      key={eventId}
+      cursor={ICON_PROPERTIES.CIRSOR_POINER}
+      size={ICON_PROPERTIES.ICON_SIZE}
+    />,
+  ];
+  const additionalModal = draftModalId ? (
+    <EventCardModal
+      id={draftModalId}
+      onClose={setDraftModalId}
+      onDelete={onDelete}
+    />
+  ) : null;
 
-export default class DraftEventCard extends Component {
-  constructor(props) {
-    super(props);
+  const getCardButtons = type => {
+    if (type === CARD_TYPE.LANDING) {
+      return additionalButtons[2];
+    }
+    if (type === CARD_TYPE.HOME) {
+      return additionalButtons[1];
+    }
+    return additionalButtons[0];
+  };
 
-    this.state = {
-      eventImage: EVENT_DEFAULT_IMAGE,
-    };
-  }
-
-  componentDidMount() {
-    photoService
-      .getPreviewEventPhoto(this.props.item.id)
-      .then(eventPreviewImage => {
-        if (eventPreviewImage != null) {
-          this.setState({ eventImage: URL.createObjectURL(eventPreviewImage) });
-        }
-      });
-  }
-
-  componentWillUnmount() {
-    URL.revokeObjectURL(this.state.eventImage);
-  }
-
-  render() {
-    const classes = useStyles;
-    const { id, title, dateFrom, description, owners } = this.props.item;
-    return (
-      <div className="col-12 col-sm-8 col-md-6 col-xl-4 mt-3">
-        <Card className={classes.card}>
-          <Link to={`/editEvent/${id}`} className="text-dark">
-            <CardHeader
-              avatar={
-                <Button title={owners[0].username} className="btn-custom">
-                  <Badge
-                    overlap="circle"
-                    badgeContent={owners.length}
-                    color="primary"
-                  >
-                    <CustomAvatar
-                      className={classes.avatar}
-                      userId={owners[0].id}
-                      name={owners[0].username}
-                    />
-                  </Badge>
-                </Button>
-              }
-              title={title}
-              subheader={
-                <Moment format="D MMM YYYY" withTitle>
-                  {dateFrom}
-                </Moment>
-              }
-              classes={{ title: "title" }}
-            />
-            <CardMedia
-              className={`${classes.media} d-flex justify-content-center`}
-              title={title}
-            >
-              <img
-                src={this.state.eventImage}
-                id={`eventPreviewPhotoImg${id}`}
-                alt="Event"
-                className="w-100"
-              />
-            </CardMedia>
-            <CardContent className="py-2">
-              {description && (
-                <Tooltip
-                  title={
-                    description.substr(0, 570) +
-                    (description.length > 570 ? "..." : "")
-                  }
-                  classes={{ tooltip: "description-tooltip" }}
-                >
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    className="description"
-                    component="p"
-                  >
-                    {description.substr(0, 128)}
-                  </Typography>
-                </Tooltip>
-              )}
-            </CardContent>
-          </Link>
-          <CardActions disableSpacing>
-            <div className="w-100">
-              <div className="d-flex flex-row align-items-center justify-content-center float-right">
-                <SimpleModalWithDetails
-                  submitCallback={reason => this.props.onDelete(id, reason)}
-                  data="Are you sure?"
-                  button={
-                    <IconButton className="text-danger" size="medium">
-                      <i className="fas fa-trash" />
-                    </IconButton>
-                  }
-                />
-              </div>
-            </div>
-          </CardActions>
-        </Card>
-      </div>
-    );
-  }
-}
-
-DraftEventCard.defaultProps = {
-  item: {},
-  onDelete: () => {},
+  return (
+    <EventCard
+      key={event.id}
+      event={event}
+      handleClick={onDelete}
+      additionalButtons={getCardButtons(cardType)}
+      additionalModal={additionalModal}
+    />
+  );
 };
 
 DraftEventCard.propTypes = {
-  item: PropTypes.object,
+  cardType: PropTypes.string,
+  event: PropTypes.object,
+  draftModalId: PropTypes.string,
+  eventId: PropTypes.string,
+  setDraftModalId: PropTypes.func,
   onDelete: PropTypes.func,
 };
+
+DraftEventCard.defaultProps = {
+  cardType: "",
+  event: null,
+  draftModalId: "",
+  eventId: "",
+  setDraftModalId: () => {},
+  onDelete: () => {},
+};
+
+export default DraftEventCard;

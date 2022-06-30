@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import ChangeAvatar from "../../components/Profile/EditProfile/ChangeAvatar";
+import ChangeAvatar from "../EditProfileContainer/ChangeAvatarContainer";
 import changeAvatar from "../../actions/redactProfile/avatar-change-action";
 import AuthComponent from "../../security/authComponent";
 
 // TODO Refactor class component
 class ChangeAvatarContainer extends Component {
   submit = values => {
-    return this.props.changeAvatar(values);
+    return this.props.changeAvatarAction(values);
   };
 
   render() {
@@ -27,19 +27,17 @@ const mapStateToProps = state => ({
   userId: state.user.id,
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    changeAvatar: data => dispatch(changeAvatar(data)),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  changeAvatarAction: data => dispatch(changeAvatar(data)),
+});
 
 ChangeAvatarContainer.propTypes = {
   userId: PropTypes.string,
-  changeAvatar: PropTypes.func,
+  changeAvatarAction: PropTypes.func,
 };
 ChangeAvatarContainer.defaultProps = {
   userId: "",
-  changeAvatar: () => {},
+  changeAvatarAction: () => {},
 };
 
 export default connect(

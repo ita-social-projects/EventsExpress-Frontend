@@ -3,6 +3,8 @@ import { Grid, Button } from "@material-ui/core";
 import PropTypes from "prop-types";
 // eslint-disable-next-line import/no-named-as-default
 import TileGroupContainer from "../../containers/TileContainer/TileGroupContainer";
+import { CHOOSE_REASON_TO_JOIN_EE } from "../../constants/registationConstants";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
   useEffect(() => {
@@ -25,11 +27,11 @@ const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
     <>
       <div style={{ width: "97%", padding: "10px" }}>
         <h1 style={{ textAlign: "left", marginBottom: "20px" }}>
-          What are your reasons for joining EventsExpress?
+          {CHOOSE_REASON_TO_JOIN_EE}
         </h1>
         <h4 style={{ textAlign: "left" }}>
-          (you can skip this step and choose activities later in Profile
-          Settings)
+          {"(you can skip this step and choose activities later in Profile"}
+          {"Settings)"}
         </h4>
         <form onSubmit={handleSubmit}>
           <TileGroupContainer data={mapToCategories()} />
@@ -43,7 +45,7 @@ const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
                 variant="text"
                 size="large"
               >
-                Back
+                {BUTTON_NAMES.BACK}
               </Button>
               <Button
                 type="submit"
@@ -52,7 +54,7 @@ const ChooseActivities = ({ handleSubmit, previousPage, ...props }) => {
                 variant="contained"
                 size="large"
               >
-                Continue
+                {BUTTON_NAMES.CONTINUE}
               </Button>
             </Grid>
           </Grid>

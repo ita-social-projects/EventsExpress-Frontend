@@ -1,93 +1,202 @@
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/fonts.scss";
 
-body {
-    font-family: 'Poppins', sans-serif;
-}
+$sidebarWidth: 50px;
+$sidebarOffset: 5px;
 
-.left-sidebar {
-    position: fixed;
-    z-index: 101;
-    top: 55px;
-    left: 0;
-    background-color: rgb(255, 255, 255);
-    overflow-x: hidden;
-    transition: 0.5s;
-}
+@media (min-width: $mediaMobileScreen) {
 
-.left-sidebar-opened {
-    width: 15em;
-}
+    .sidebar-menu {
+        position: fixed;
+        top: $height50;
+        z-index: 100;
+        width: fit-content;
+        margin-left: 5px;
+        list-style: none;
+        transform: translateY(-$height50);
 
-.left-sidebar-closed {
-    width: 0;
-}
+        .left-sidebar__item {
+            position: relative;
+            width: $sidebarWidth;
+            padding: 15px;
+            font-size: $fontsize20;
+            background-color: $purpleDark;
+            transform: translateX(-$sidebarWidth - $sidebarOffset);
+            transition: transform $defaultTransition;
 
-#open-close-zone {
-    display: none;
-    /* position: fixed;
-    height: 100%;
-    z-index: 100;
-    overflow-x: hidden;
-    transition: 0.5s; */
-}
+            @include flex(row, center, center);
 
-#open-close-zone.left-sidebar-opened {
-    width: 100%;
-    padding-left: 15em;
-    background-color: rgba(0, 0, 0, 0.75);
-}
+            .item__page-name {
+                position: absolute;
+                top: $height50;
+                left: calc($fullWidth + $sidebarOffset);
+                display: none;
+                width: max-content;
+                padding: 0 5px;
+                background-color: $black;
+                border-radius: 5px;
+                transform: translateY(-$height50);
+                opacity: $opacity0;
+                transition: $defaultTransition;
+            }
 
-#open-close-zone.left-sidebar-closed {
-    width: auto;
-}
+            &:hover {
 
-.open-close-btn {
-    font-size: 20px;
-    cursor: pointer;
-    padding: 10px 5px;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.2);
-}
+                .item__page-name {
+                    opacity: $opacity1;
+                }
+            }
 
-.open-close-btn:hover {
-    color: white;
-}
+            &:first-child {
+                border-radius: 5px 5px 0 0;
+            }
 
+            &:last-child {
+                border-radius: 0 0 5px 5px;
+            }
 
-.left-sidebar ul li .link {
-    padding: 10px;
-    font-size: 1.1em;
-    color: rgba(0, 0, 0, 0.75);
-    display: block;
-}
+            .left-sidebar__link {
+                color: $white;
+                font-size: $fontsize16;
+                text-decoration: none;
 
-.left-sidebar ul li .link:hover {
-    color: rgb(0, 0, 0);
-    background: #fff;
-    font-weight: 550;
-    border-bottom: 3px solid rgb(63, 81, 181);
-    transition: 0.1s;
-}
+                &:hover {
+                    color: $white;
+                }
 
-.list-unstyled li a {
-    width: 100%;
-}
+                &.active {
+                    color: $green;
+                }
+            }
+        }
 
+        .toggle {
+            all: unset;
+            margin-bottom: 10px;
+            background-color: $purpleDark;
+            border-radius: 5px;
+            cursor: pointer;
 
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
+            @include flex(row, center, center);
 
-@media screen and (min-width:575px) {
-    #open-close-zone {
-        display: none !important;
+            .toggle-btn {
+                padding: 15px;
+                color: $white;
+                font-weight: $bold;
+                font-size: $fontsize16;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
     }
 
-    .left-sidebar {
-        width: 15em !important;
+    .sidebar-menu.active {
+
+        .left-sidebar__item {
+            transform: translateX(0);
+
+            .item__page-name {
+                display: flex;
+            }
+        }
+    }
+}
+
+@media (max-width: $mediaMobileScreen) {
+
+    .sidebar-menu {
+        position: fixed;
+        bottom: 50px;
+        z-index: 100;
+        margin-left: $sidebarOffset;
+        list-style: none;
+
+        @include flex(row, center, center);
+
+        .left-sidebar__item {
+            position: relative;
+            width: $sidebarWidth;
+            font-size: $fontsize16;
+            opacity: $opacity0;
+            transition: transform $defaultTransition;
+            transition: opacity $defaultTransition;
+
+            @include flex(row, center, center);
+
+            .item__page-name {
+                display: none;
+            }
+        }
+
+        .toggle {
+            all: unset;
+            width: $sidebarWidth;
+            font-size: $fontsize20;
+            background-color: $purpleDark;
+            border-radius: $borderRound;
+            
+            @include flex(row, center, center);
+
+            .toggle-btn {
+                width: $fullWidth;
+                padding: 15px 0;
+                color: $white;
+                font-size: $fontsize16;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
     }
 
-    #main {
-        padding-left: 17em !important;
+    .sidebar-menu.active {
+        top: $height50;
+        width: $fullWidth;
+        height: $absoluteHeight100;
+        margin-left: 0;
+        background-color: $purpleDark;
+        transform: translateY(-$height50);
+        transition: $defaultTransition;
+        clip-path: circle($width50);
+
+        @include flex(column, center, center);
+
+        .toggle-btn > svg {
+            color: $white;
+            font-size: $fontsize20;
+        }
+
+        .left-sidebar__item {
+            display: flex;
+            width: max-content;
+            padding: 15px 0;
+            opacity: $opacity1;
+
+            .left-sidebar__link {
+                @include flex(row, center, center);
+
+                color: $white;
+                font-size: $fontsize20;
+                text-decoration: none;
+
+                &:hover {
+
+                    .item__page-name {
+                        letter-spacing: 2px;
+                    }
+                }
+
+                &.active {
+                    color: $green;
+                }
+            }
+
+            .item__page-name {
+                display: flex;
+                margin-left: 10px;
+                transition: $defaultTransition;
+            }
+        }
     }
 }

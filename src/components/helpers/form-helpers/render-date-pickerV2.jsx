@@ -11,7 +11,6 @@ const RenderDatePicker = ({
   input: { onChange, value, ...inputProps },
   meta: { touched, invalid, error },
   minValue,
-  maxValue,
   label,
   disabled,
 }) => {
@@ -30,7 +29,6 @@ const RenderDatePicker = ({
           onChange={onChange}
           disabled={disabled}
           minDate={minValue ? moment(minValue) : undefined}
-          maxDate={maxValue ? moment(maxValue) : undefined}
         />
       </MuiPickersUtilsProvider>
     </>
@@ -43,7 +41,6 @@ RenderDatePicker.defaultProps = {
   input: {},
   meta: {},
   minValue: {},
-  maxValue: {},
   label: "",
   disabled: false,
 };
@@ -52,7 +49,6 @@ RenderDatePicker.propTypes = {
   input: PropTypes.object,
   meta: PropTypes.object,
   minValue: PropTypes.object,
-  maxValue: PropTypes.object,
   label: PropTypes.string,
   disabled: PropTypes.bool,
 };

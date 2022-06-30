@@ -9,6 +9,12 @@ import {
   renderTextField,
   radioButton,
 } from "../helpers/form-helpers";
+import { BUTTON_NAMES } from "../../constants/buttonConsts";
+import { USER_LABEL } from "../../constants/labelConstants";
+import {
+  MAX_USER_AMOUNT,
+  MIN_USER_AMOUNT,
+} from "../../constants/userConstants";
 
 const UsersFilters = ({ handleSubmit, submitting }) => {
   return (
@@ -28,9 +34,10 @@ const UsersFilters = ({ handleSubmit, submitting }) => {
         <option value="" aria-label="Decide rules" />
         <option value="Admin">
           {/* TODO: IT LOOKS WEIRD */}
-          Admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {"Admin"}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </option>
-        <option value="User">User</option>
+        <option value="User">{USER_LABEL}</option>
       </Field>
       <br />
       <Field
@@ -42,10 +49,11 @@ const UsersFilters = ({ handleSubmit, submitting }) => {
         <option value="" aria-label="Decide numbers" />
         <option value="5">
           {/* TODO: IT LOOKS WEIRD */}
-          5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {"5"}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </option>
-        <option value="10">10</option>
-        <option value="15">15</option>
+        <option value="10">{MIN_USER_AMOUNT}</option>
+        <option value="15">{MAX_USER_AMOUNT}</option>
       </Field>
       <br />
       <Field name="status" component={radioButton}>
@@ -54,7 +62,7 @@ const UsersFilters = ({ handleSubmit, submitting }) => {
         <FormControlLabel value="all" control={<Radio />} label="All" />
       </Field>
       <Button fullWidth type="submit" color="primary" disabled={submitting}>
-        Search
+        {BUTTON_NAMES.SEARCH}
       </Button>
     </form>
   );

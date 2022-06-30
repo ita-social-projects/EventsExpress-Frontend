@@ -1,4 +1,4 @@
-import filterHelper from "../../components/helpers/filterHelper";
+import { getDefaultEventFilter } from "../../components/helpers/filterHelper/filterHelper";
 import { AuthenticationService } from "../../services";
 import { reset } from "../chat/chat-action";
 import { resetNotification } from "../chat/chats-action";
@@ -16,7 +16,7 @@ function setLogout() {
 
 const logout = () => {
   return async dispatch => {
-    dispatch(updateEventsFilters(filterHelper.getDefaultEventFilter()));
+    dispatch(updateEventsFilters(getDefaultEventFilter()));
     dispatch(reset());
     dispatch(setLogout());
     dispatch(resetNotification());

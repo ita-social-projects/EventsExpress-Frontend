@@ -1,13 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import EventCard from "../EventCard/EventCard";
 import "./EventMatrix.scss";
+import { CARD_TYPE } from "../../../constants/eventConstants";
+import DraftEventCard from "../../Draft/DraftEventCard";
 
 export default function EventMatrix({ events }) {
   return (
     <div className="event-matrix">
       {events.map(event => (
-        <EventCard key={event.id} event={event} />
+        <DraftEventCard
+          key={event.id}
+          event={event}
+          cardType={CARD_TYPE.LANDING}
+        />
       ))}
     </div>
   );

@@ -3,16 +3,17 @@
 @import "../../../styles/fonts.scss";
 
 .login-link {
-  font-family: $mainFont;
-  font-style: normal;
-  font-weight: $bold;
-  font-size: $fontsize-14;
-  text-decoration: none;
-  cursor: pointer;
+    font-weight: $bold;
+    font-size: $fontsize14;
+    font-family: $mainFont;
+    font-style: normal;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: $mediaSecondTabletScreen) {
-  .login-link {
-    display: none;
-  }
+
+    .login-link {
+        display: none;
+    }
 }

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import EventIcon from "@material-ui/icons/Event";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
@@ -30,11 +30,13 @@ const DropDownItem = ({ link, className, icon, title, callback }) =>
   );
 
 const DropdownMenu = ({ user, hub, logout, addEvent }) => {
+  const history = useHistory();
   const logoutReset = () => {
     if (hub) {
       hub.stop();
     }
     logout();
+    history.push("/landing")
   };
 
   const { id } = user.id ? user : {};

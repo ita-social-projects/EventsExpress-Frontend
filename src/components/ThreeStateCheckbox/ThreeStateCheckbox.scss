@@ -1,50 +1,52 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
 .tri-state-checkbox {
-  appearance: none;
-  background-color: rgba(255, 255, 255, 0.555);
-  margin: 0.50vw;
-  font: inherit;
-  color: #505050;
-  width: 1.75em;
-  height: 1.75em;
-  border: 0.15em solid #505050;
-  border-radius: 50px;
-  transform: translateY(0.03em);
-  display: inline-grid;
-  place-content: center;
+    display: inline-grid;
+    width: 1.75em;
+    height: 1.75em;
+    margin: 0.5vw;
+    color: $middleGray;
+    font: inherit;
+    background-color: $white;
+    border: 0.15em solid $middleGray;
+    border-radius: 50px;
+    transform: translateY(0.03em);
+    appearance: none;
+    place-content: center;
 }
 
 .tri-state-checkbox:hover {
-  cursor: pointer;
-  border-color: rgb(255, 153, 0);
+    border-color: $orange;
+    cursor: pointer;
 }
 
 .tri-state-checkbox::before {
-  content: "";
-  width: 0.85em;
-  height: 0.85em;
-  transform: scale(0);
-  transform-origin: 50% 50%;
-  transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em #fff;
+    width: 0.85em;
+    height: 0.85em;
+    box-shadow: inset 1em 1em $white;
+    transform: scale(0);
+    transform-origin: $halfWidth $halfWidth;
+    transition: 120ms transform ease-in-out;
+    content: "";
 }
 
 .tri-state-checkbox:checked {
-  background-color: rgb(255, 153, 0);
-  border-color: rgb(255, 153, 0);
+    background-color: $orange;
+    border-color: $orange;
 }
 
 .tri-state-checkbox:checked::before {
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-  transform: scale(1);
+    transform: scale(1);
+    clip-path: polygon(14% 44%, 0 65%, $halfWidth  $fullWidth, $fullWidth 16%, 80% 0%, 43% 62%);
 }
 
 .tri-state-checkbox:indeterminate {
-  background-color: rgb(255, 153, 0);
-  border-color: rgb(255, 153, 0);
+    background-color: $orange;
+    border-color: $orange;
 }
 
 .tri-state-checkbox:indeterminate::before {
-  clip-path: polygon(0% 30%, 100% 30%, 100% 60%, 0% 60%);
-  transform: scale(1);
+    transform: scale(1);
+    clip-path: polygon(0% 30%, $fullWidth 30%, $fullWidth 60%, 0% 60%);
 }
-

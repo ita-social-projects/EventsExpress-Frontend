@@ -1,74 +1,83 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
+
 .text-block {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background-color: #252424a6;
-  color: white;
-  font-size: 28px;
-  padding-left: 20px;
-  padding-right: 20px;
+    position: absolute;
+    bottom: $fontsize20;
+    left: $fontsize20;
+    padding-right: $fontsize20;
+    padding-left: $fontsize20;
+    color: $white;
+    font-size: $fontsize28;
+    background-color: $grayBlack;
 }
 
 .title {
-  font-size: 48px;
+    font-size: $fontsize45;
 }
 
 .button-block {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 28px;
-    padding-left: 20px;
-    padding-right: 20px;
+    right: $fontsize20;
+    bottom: $fontsize20;
+    padding-right: $fontsize20;
+    padding-left: $fontsize20;
+    font-size: $fontsize28;
 }
 
 .join-leave {
-    font-size: 20px;
+    font-size: $fontsize20;
 }
 
 .btn-edit {
-  font-size: 24px;
-  background: #da2121ab;
+    font-size: $fontsize24;
+    background: $deleteColor;
 }
 
 .btn-edit:hover {
-  background: #da2121;
+    background: $deleteColor;
+    cursor: pointer;
 }
 
 .clear-backgroud {
-  background-color: white;
+    background-color: $white;
 }
 
 .clear-backgroud:hover {
-  background-color: #ebebeb;
+    background-color: $white;
+    cursor: pointer;
 }
 
 .text-box-big {
-    overflow-wrap: anywhere;    
+    overflow-wrap: anywhere;
     scroll-behavior: auto;
 }
+
 .cancel-text {
-  font-size: 24px;
+    font-size: $fontsize24;
 }
+
 .change-event {
     position: absolute;
-    bottom: 15px;
     right: 15px;
+    bottom: 15px;
 }
+
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
 .dropdown-content {
-    display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    display: none;
+    min-width: 160px;
+    background-color: $white;
+    box-shadow: $bropDownContentShadow;
 }
+
 .dropdown-menu {
     background: transparent;
-    border: 0px;
+    border: 0;
 }

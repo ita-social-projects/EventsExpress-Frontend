@@ -5,13 +5,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Slide from "@material-ui/core/Slide";
 import PropTypes from "prop-types";
+import Transition from "../../shared/Transition/Transition";
 import { LEAVE_MODAL } from "../../../constants/eventConstants";
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 const { LEAVE, EXIT_EVENT, ALERT_LEAVE_EVENT, AGREE, DISAGREE } = LEAVE_MODAL;
 const EventLeaveModal = props => {
@@ -46,7 +42,8 @@ const EventLeaveModal = props => {
         <DialogTitle id="alert-dialog-slide-title">{EXIT_EVENT}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            `{ALERT_LEAVE_EVENT}
+            {"`"}
+            {ALERT_LEAVE_EVENT}
           </DialogContentText>
         </DialogContent>
         <DialogActions>

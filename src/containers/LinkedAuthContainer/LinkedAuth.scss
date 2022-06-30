@@ -1,68 +1,73 @@
-﻿.btnFacebook {
-    max-width: 118px;
-    min-width: 118px;
-    height: 48px;
-    border: 0px transparent;
-    border-radius: 50px;
-    background: #3b5998;
-    color: white;
-    text-align: center;
-    margin: 0px 5px;
-    padding: 0px 18px;
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+@import "../../styles/fonts.scss";
+
+.btnFacebook {
     display: inline-block;
+    min-width: 118px;
+    max-width: 118px;
+    height: 48px;
+    margin: 0 5px;
+    padding: 0 18px;
+    color: $white;
+    text-align: center;
+    background: $lightBlue;
+    border: 0 transparent;
+    border-radius: 50px;
 }
 
 .btnGoogle {
-    background: white;
-    border: 0px transparent;
-    border-radius: 25px;
-    box-shadow: 0 0 2px rgba(0,0,0,0.6);
-    color: grey;
     display: inline-block;
-    height: 48px;
-    font-weight: 600;
-    margin: 0px 5px;
-    max-width: 118px;
     min-width: 118px;
-    padding: 0px 5px;
+    max-width: 118px;
+    height: 48px;
+    margin: 0 5px;
+    padding: 0 5px;
+    color: $middleGray;
+    font-weight: $mibbleText;
     text-align: center;
+    background: $white;
+    border: 0 transparent;
+    border-radius: 25px;
+    box-shadow: $buttonShadow;
 }
 
 .btnFacebook:hover {
-    background: #3b5998;
-    opacity: 0.6;
+    background: $lightBlue;
+    opacity: $opacity05;
 }
 
 .btnGoogle:hover {
-    opacity: 0.6;
+    opacity: $opacity05;
 }
 
 .fa-google.blue {
-    color: #3b5998;
     margin-right: 8px;
+    color: $lightBlue;
 }
 
 .fa-at.blue {
-    color: #3b5998;
     margin-right: 8px;
+    color: $lightBlue;
 }
 
 @media only screen and (max-width: 399px) {
+
     .btnFacebook,
     .btnGoogle {
-        width: 100%;
+        width: $fullWidth;
     }
 }
 
 h6 {
-    width: 100%; 
-    text-align: center; 
-    border-bottom: 1px solid #000; 
+    width: $fullWidth;
+    margin: 20px 0;
     line-height: 0.1em;
-    margin: 20px 0; 
- } 
- 
- h6 span { 
-     background:#fff; 
-     padding:0 10px; 
- }
+    text-align: center;
+    border-bottom: 1px solid $black;
+}
+
+h6 span {
+    padding: 0 10px;
+    background: $white;
+}

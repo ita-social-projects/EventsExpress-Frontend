@@ -23,7 +23,7 @@ class UnitOfMeasuringItemWrapper extends Component {
     ) {
       this.props.editCancel();
     } else {
-      return this.props.saveUnitOfMeasuring({
+      return this.props.saveUnit({
         ...values,
         id: this.props.item.id,
       });
@@ -37,9 +37,11 @@ class UnitOfMeasuringItemWrapper extends Component {
       title: "Do you really want to remove this Unit Of Measuring?",
       message: (
         <div>
-          Unit name is {unitName}
+          {"Unit name is "}
+          {unitName}
           <br />
-          Short name is {shortName}
+          {"Short name is "}
+          {shortName}
         </div>
       ),
       buttons: [
@@ -57,7 +59,7 @@ class UnitOfMeasuringItemWrapper extends Component {
   };
 
   render() {
-    const { setUnitsOfMeasuringEdited, editCancel } = this.props;
+    const { setUnitEdited, editCancel } = this.props;
 
     return (
       <tr>
@@ -72,7 +74,7 @@ class UnitOfMeasuringItemWrapper extends Component {
         ) : (
           <UnitOfMeasuringItem
             item={this.props.item}
-            callback={setUnitsOfMeasuringEdited}
+            callback={setUnitEdited}
           />
         )}
         <td className="align-middle align-items-stretch">
@@ -97,21 +99,21 @@ class UnitOfMeasuringItemWrapper extends Component {
 UnitOfMeasuringItemWrapper.propTypes = {
   item: PropTypes.object,
   editCancel: PropTypes.func,
-  saveUnitOfMeasuring: PropTypes.func,
+  saveUnit: PropTypes.func,
   deleteUnitOfMeasuring: PropTypes.func,
   allCategories: PropTypes.array,
   editedUnitOfMeasuring: PropTypes.string,
-  setUnitsOfMeasuringEdited: PropTypes.func,
+  setUnitEdited: PropTypes.func,
 };
 
 UnitOfMeasuringItemWrapper.defaultProps = {
   item: {},
   editCancel: () => {},
-  saveUnitOfMeasuring: () => {},
+  saveUnit: () => {},
   deleteUnitOfMeasuring: () => {},
   allCategories: [],
   editedUnitOfMeasuring: "",
-  setUnitsOfMeasuringEdited: () => {},
+  setUnitEdited: () => {},
 };
 
 const mapStateToProps = state => {
@@ -124,12 +126,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    get_categoriesOfMeasuring: () => dispatch(getCategoriesOfMeasuring()),
-    delete_unitOfMeasuring: () =>
-      dispatch(deleteUnitOfMeasuring(props.item.id)),
-    save_unitOfMeasuring: data => dispatch(addUnitOfMeasuring(data)),
-    set_unitOfMeasuring_edited: () =>
-      dispatch(setUnitOfMeasuringEdited(props.item.id)),
+    getCategories: () => dispatch(getCategoriesOfMeasuring()),
+    deleteUnit: () => dispatch(deleteUnitOfMeasuring(props.item.id)),
+    saveUnit: data => dispatch(addUnitOfMeasuring(data)),
+    setUnitEdited: () => dispatch(setUnitOfMeasuringEdited(props.item.id)),
     editСancel: () => dispatch(setUnitOfMeasuringEdited(null)),
   };
 };

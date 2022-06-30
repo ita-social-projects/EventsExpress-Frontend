@@ -50,9 +50,9 @@ UserRoleContainer.defaultProps = {
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
-  set_new_role: (uid, role) => dispatch(changeUserRole(uid, role)),
-  set_mode_display: () => dispatch(setEditedUser()),
-  set_mode_edit: () => dispatch(setEditedUser(props.user.id)),
+  setNewRole: (uid, role) => dispatch(changeUserRole(uid, role)),
+  setModeDisplay: () => dispatch(setEditedUser()),
+  setModeEdit: () => dispatch(setEditedUser(props.user.id)),
 });
 
 export default connect(null, mapDispatchToProps)(UserRoleContainer);
