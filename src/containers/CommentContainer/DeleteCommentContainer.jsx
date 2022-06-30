@@ -8,8 +8,7 @@ import "../../components/Comment/Comment.scss";
 import CommentList from "../../components/Comment/CommentList";
 import CommnetContainer from "./CommnetContainer";
 import { setAlert } from "../../actions/alert-action";
-import { ZERO_AMOUNT } from "../../constants/numberConstants";
-
+import { NO_MESSAGES } from "../../constants/chatConstants";
 // TODO Refactor class component
 class DeleteCommentContainer extends React.Component {
   constructor(props) {
@@ -70,7 +69,7 @@ class DeleteCommentContainer extends React.Component {
         </div>
         {!this.state.info && <CommnetContainer parentId={id} />}
         <div className="children">
-          {this.props.item.children.length !== ZERO_AMOUNT &&
+          {this.props.item.children.length !== NO_MESSAGES &&
           this.props.item.children !== null ? (
             <CommentList dataList={this.props.item.children} />
           ) : null}

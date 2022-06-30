@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { ZERO_INDEX } from "../constants/numberConstants";
+import { FIRST_ROLE } from "../constants/authConstants";
 
 const AuthComponent = ({ id, roles, rolesMatch, children, onlyAnonymous }) => {
   if (rolesMatch) {
-    if (id && roles[ZERO_INDEX] === rolesMatch) {
+    if (id && roles[FIRST_ROLE] === rolesMatch) {
       return children;
     }
   } else if (onlyAnonymous) {

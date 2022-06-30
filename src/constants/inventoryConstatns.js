@@ -13,3 +13,5 @@ export const ITEM_OPTION = 0;
 export const SKIP_INVENTORY = 0;
 export const INVENTORY_STEP = 1;
 export const INVENTORIES_DEFAULT_VALUE = 0;
+export const ALREADY_GET_ACC = 0;
+export const NO_TAKEN_ITEMS = 0;

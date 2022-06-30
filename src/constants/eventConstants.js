@@ -167,6 +167,7 @@ export const VISITORS_STATUS = {
 };
 
 export const FIRST_MEMBER = 0;
+export const FIRST_OWNER = 0;
 
 export const EVENT_FILTER_Z_INDEX = 2;
 export const FIRST_ORGANIZER = 0;
@@ -176,3 +177,7 @@ export const EVENT_PERIODICITY = 1;
 export const EVENT_CARD_STYLE_WEIGHT_500 = 500;
 export const EVENT_BUTTON_STYLE_WEIGHT_500 = 500;
 export const EVENT_BUTTON_STYLE_WEIGHT_700 = 700;
+
+export const EMPTY_EVENT_SCHEDULE = 0;
+export const EMPTY_DRAFT_LIST = 0;
+export const EMPTY_EVENT_LIST = 0;

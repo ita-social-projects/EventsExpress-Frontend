@@ -24,3 +24,5 @@ export const INFO_CARDS = [
   { img: aboutImg3, text: HAVE_FUN_TOGETHER },
   { img: aboutImg4, text: NEW_CONTACTS },
 ];
+
+export const NO_MEMBERS = 0;
