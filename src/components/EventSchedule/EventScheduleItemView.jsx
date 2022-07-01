@@ -64,23 +64,21 @@ class EventScheduleItemView extends Component {
                   className="w-100"
                 />
               </CardMedia>
-              <div className="text-block">
-                <CardContent>
-                  <div className="title"> {title} </div>
-                  <div>
-                    {RUN.LAST}
-                    <Moment className="ml-2" format="D MMM YYYY" withTitle>
-                      {lastRun}
-                    </Moment>
-                  </div>
-                  <div>
-                    {RUN.NEXT}
-                    <Moment className="ml-2" format="D MMM YYYY" withTitle>
-                      {nextRun}
-                    </Moment>
-                  </div>
-                </CardContent>
-              </div>
+              <CardContent className="text-block">
+                <div className="title"> {title} </div>
+                <div>
+                  {RUN.LAST}
+                  <Moment className="ml-2" format="D MMM YYYY" withTitle>
+                    {lastRun}
+                  </Moment>
+                </div>
+                <div>
+                  {RUN.NEXT}
+                  <Moment className="ml-2" format="D MMM YYYY" withTitle>
+                    {nextRun}
+                  </Moment>
+                </div>
+              </CardContent>
             </Card>
           </div>
           <div className="col-8 col-sm-10 col-md-8 col-xl-8 mt-3">

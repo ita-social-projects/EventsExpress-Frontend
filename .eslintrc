@@ -55,7 +55,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".jsx"] }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "off",
-    // "react/jsx-max-depth": ["error", { "max": 6 }], // max deep in jsx --------> ~ 7 components
+    "react/jsx-max-depth": ["error", { "max": 6 }], // max deep in jsx --------> ~ 7 components
     "react/no-unstable-nested-components": "error",
     "react/no-array-index-key": "error",
     "react/no-multi-comp": ["error", { "ignoreStateless": false }],
