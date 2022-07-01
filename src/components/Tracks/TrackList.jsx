@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import PagePagination from "../shared/PagePagination/PagePagination";
+import Pagination from "@material-ui/lab/Pagination";
 import TrackItem from "./TrackItem";
 import { TRACKS_TABLE_FIELDS } from "../../constants/tracksConstants";
 import { NO_RESULT } from "../../constants/labelConstants";
@@ -51,10 +51,10 @@ class TrackList extends Component {
               </tbody>
             </table>
             {dataList?.pageViewModel?.totalPages > 1 && (
-              <PagePagination
-                currentPage={dataList?.pageViewModel?.pageNumber}
-                totalPages={dataList?.pageViewModel?.totalPages}
-                callback={handlePageChange}
+              <Pagination
+                page={dataList?.pageViewModel?.pageNumber}
+                count={dataList?.pageViewModel?.totalPages}
+                onChange={handlePageChange}
               />
             )}
           </div>

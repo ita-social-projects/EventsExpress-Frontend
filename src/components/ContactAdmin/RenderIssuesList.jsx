@@ -1,6 +1,6 @@
 ﻿import React, { Component } from "react";
 import propTypes from "prop-types";
-import PagePagination from "../shared/PagePagination/PagePagination";
+import Pagination from "@material-ui/lab/Pagination";
 import { NO_RESULT } from "../../constants/labelConstants";
 
 class RenderIssuesList extends Component {
@@ -24,10 +24,10 @@ class RenderIssuesList extends Component {
         )}
         <br />
         {totalPages > 1 && (
-          <PagePagination
-            currentPage={page}
-            totalPages={totalPages}
-            callback={this.props.handlePageChange}
+          <Pagination
+            page={page}
+            count={totalPages}
+            onChange={this.props.handlePageChange}
           />
         )}
       </>

@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Pagination from "@material-ui/lab/Pagination";
 import UserInfoContainer from "../../containers/UserInfoContainer/UserInfoContainer";
-import PagePagination from "../shared/PagePagination/PagePagination";
 import "./Users.scss";
 
 const Users = ({ page, totalPages, users, callback }) => {
-  const handlePageChange = pageEl => {
+  const handlePageChange = (_, pageEl) => {
     callback(
       window.location.search.replace(/(page=)[0-9]+/gm, `page=${pageEl}`),
     );
@@ -23,10 +23,10 @@ const Users = ({ page, totalPages, users, callback }) => {
         <tbody>{renderUsers(users)}</tbody>
       </table>
       {totalPages > 1 && (
-        <PagePagination
-          currentPage={page}
-          totalPages={totalPages}
-          callback={handlePageChange}
+        <Pagination
+          page={page}
+          count={totalPages}
+          onChange={handlePageChange}
         />
       )}
     </>

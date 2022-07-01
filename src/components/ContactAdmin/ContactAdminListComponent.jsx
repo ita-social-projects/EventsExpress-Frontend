@@ -8,7 +8,7 @@ import { getQueryStringByFilter } from "../helpers/filterHelper/filterHelper";
 import { CONTACT_ADMIN_CONSTS } from "../../constants/adminConstants";
 
 class ContactAdminList extends Component {
-  pageChange = page => {
+  pageChange = (_, page) => {
     const { history } = this.props;
     if (history.location.search === "")
       history.push(`${history.location.pathname}?page=${page}`);

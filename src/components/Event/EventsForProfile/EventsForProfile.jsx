@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import PagePagination from "../../shared/PagePagination/PagePagination";
+import Pagination from "@material-ui/lab/Pagination";
 import LocalSpinnerContainer from "../../../containers/SpinnerContainer/LocalSpinnerContainer";
 import renderItems from "../../helpers/eventsForProfileUtils";
 
@@ -20,12 +20,12 @@ const EventsForProfile = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handlePageChange = pageEl => {
-    setCurrentPage(pageEl);
+  const handlePageChange = (_, pageElement) => {
+    setCurrentPage(pageElement);
     if (notificationEvents !== null) {
-      callback(notificationEvents, pageEl);
+      callback(notificationEvents, pageElement);
     } else {
-      callback(pageEl);
+      callback(pageElement);
     }
   };
 
@@ -35,10 +35,10 @@ const EventsForProfile = ({
         <div className="row">{renderItems(dataList, currentUser)}</div>
         <br />
         {totalPages > 1 && (
-          <PagePagination
-            currentPage={page}
-            totalPages={totalPages}
-            callback={handlePageChange}
+          <Pagination
+            page={page}
+            count={totalPages}
+            onChange={handlePageChange}
           />
         )}
       </LocalSpinnerContainer>

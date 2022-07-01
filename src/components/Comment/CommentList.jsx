@@ -1,10 +1,10 @@
 ﻿import React, { Component } from "react";
 import propTypes from "prop-types";
+import Pagination from "@material-ui/lab/Pagination";
 import DeleteCommentContainer from "../../containers/CommentContainer/DeleteCommentContainer";
-import PagePagination from "../shared/PagePagination/PagePagination";
 
 export default class CommentList extends Component {
-  handlePageChange = page => {
+  handlePageChange = (_, page) => {
     this.props.callback(this.props.evId, page);
   };
 
@@ -20,10 +20,10 @@ export default class CommentList extends Component {
       <>
         {items}
         {totalPages > 1 && (
-          <PagePagination
-            currentPage={page}
-            totalPages={totalPages}
-            callback={this.handlePageChange}
+          <Pagination
+            count={totalPages}
+            page={page}
+            onChange={this.handlePageChange}
           />
         )}
       </>

@@ -1,11 +1,11 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
+import Pagination from "@material-ui/lab/Pagination";
 import UserInfoCard from "../UserInfoCard/UserInfoCard";
-import PagePagination from "../shared/PagePagination/PagePagination";
 import "./Users.scss";
 
 const UserItemList = ({ page, totalPages, users, callback }) => {
-  const handlePageChange = pageEl => {
+  const handlePageChange = (_, pageEl) => {
     callback(
       // eslint-disable-next-line
       window.location.search.replace(/(page=)[0-9]+/gm, `page=${pageEl}`)
@@ -21,10 +21,10 @@ const UserItemList = ({ page, totalPages, users, callback }) => {
       </div>
 
       {totalPages > 1 && (
-        <PagePagination
-          currentPage={page}
-          totalPages={totalPages}
-          callback={handlePageChange}
+        <Pagination
+          page={page}
+          count={totalPages}
+          onChange={handlePageChange}
         />
       )}
     </>

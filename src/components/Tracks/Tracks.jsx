@@ -23,7 +23,7 @@ class Tracks extends Component {
     await this.handleFunc(currentFilters, 1);
   };
 
-  handlePageChange = async page => {
+  handlePageChange = async (_, page) => {
     const currentFilters = this.props.formValues || {};
     await this.handleFunc(currentFilters, page);
   };
