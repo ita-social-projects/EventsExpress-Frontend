@@ -21,7 +21,7 @@
         "ignoreImports": false
       }
     ],
-    // "complexity": ["error", 12],
+    "complexity": ["error", 12],
     
     "eol-last": ["error", "always"],
     "import/no-unresolved": [2, { "caseSensitive": true }],

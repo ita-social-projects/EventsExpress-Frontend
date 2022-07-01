@@ -16,6 +16,7 @@ import DisplayMap from "../../../Map/DisplayMap";
 import "../../../Slider.scss";
 
 const LocationFilter = ({ dispatch, formValues, ...props }) => {
+  const formIsFull = formValues !== null && formValues.location !== null;
   const clear = () => props.clear({ type: null });
 
   const onChangeLocationType = event => {
@@ -46,8 +47,7 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
               control={<Radio />}
               label="Map"
               checked={
-                formValues !== null &&
-                formValues.location !== null &&
+                formIsFull &&
                 formValues.location.type === ENUM_LOCATION_TYPE.MAP
               }
             />
@@ -56,35 +56,31 @@ const LocationFilter = ({ dispatch, formValues, ...props }) => {
               control={<Radio />}
               label="Online"
               checked={
-                formValues !== null &&
-                formValues.location !== null &&
+                formIsFull &&
                 formValues.location.type === ENUM_LOCATION_TYPE.ONLINE
               }
             />
           </RadioGroup>
         </FormControl>
-        {formValues !== null &&
-          formValues.location !== null &&
-          formValues.location.radius && (
-            <div className="slidecontainer">
-              <label htmlFor="location">
-                {"Radius is "}
-                {formValues.location.radius} {"km"}
-              </label>
-              <Field
-                name="location.radius"
-                component="input"
-                type="range"
-                min="1"
-                max="1000"
-                value={formValues.location.radius}
-                step="1"
-                className="radius-slider"
-              />
-            </div>
-          )}
-        {formValues !== null &&
-          formValues.location &&
+        {formIsFull && formValues.location.radius && (
+          <div className="slidecontainer">
+            <label htmlFor="location">
+              {"Radius is "}
+              {formValues.location.radius} {"km"}
+            </label>
+            <Field
+              name="location.radius"
+              component="input"
+              type="range"
+              min="1"
+              max="1000"
+              value={formValues.location.radius}
+              step="1"
+              className="radius-slider"
+            />
+          </div>
+        )}
+        {formIsFull &&
           formValues.location.latitude &&
           formValues.location.longitude && (
             <div>
