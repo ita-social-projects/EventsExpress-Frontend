@@ -12,21 +12,21 @@ import {
 const gendersArray = ["", "Male", "Female", "Other"];
 
 // TODO: Lot of strange logic
-const ConfirmForm = props => {
+const ConfirmForm = ({ formValues, categoryGroups, categories, ...props }) => {
   const { handleSubmit, pristine, previousPage, submitting } = props;
 
   const areCategoriesSelected = () => {
-    return props.formValues.categories !== undefined;
+    return formValues.categories !== undefined;
   };
 
   const getSelectedCategories = () => {
-    const selected = props.formValues.categories;
+    const selected = formValues.categories;
 
-    const filteredCategories = props.categories.filter(el =>
+    const filteredCategories = categories.filter(el =>
       selected.includes(el.id),
     );
 
-    return props.categoryGroups
+    return categoryGroups
       .map(g => ({
         group: g.title,
         categories: filteredCategories
@@ -53,23 +53,21 @@ const ConfirmForm = props => {
                 <ListItem>
                   <ListItemText
                     primary="First Name"
-                    secondary={props.formValues.firstName}
+                    secondary={formValues.firstName}
                   />
                 </ListItem>
                 <ListItem>
                   <ListItemText
                     primary="Last Name"
-                    secondary={props.formValues.lastName}
+                    secondary={formValues.lastName}
                   />
                 </ListItem>
                 <ListItem>
                   <ListItemText
                     primary="Birth Date"
                     secondary={
-                      props.formValues.birthDate
-                        ? moment(props.formValues.birthDate).format(
-                            "DD-MM-YYYY",
-                          )
+                      formValues.birthDate
+                        ? moment(formValues.birthDate).format("DD-MM-YYYY")
                         : "Not entered."
                     }
                   />
@@ -81,20 +79,17 @@ const ConfirmForm = props => {
                 <ListItem>
                   <ListItemText
                     primary="Gender"
-                    secondary={gendersArray[props.formValues.gender]}
+                    secondary={gendersArray[formValues.gender]}
                   />
                 </ListItem>
                 <ListItem>
                   <ListItemText
                     primary="Country"
-                    secondary={props.formValues.country}
+                    secondary={formValues.country}
                   />
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary="City"
-                    secondary={props.formValues.city}
-                  />
+                  <ListItemText primary="City" secondary={formValues.city} />
                 </ListItem>
               </List>
             </Grid>

@@ -5,20 +5,20 @@ import { Circle } from "react-leaflet";
 import { LocationMap } from ".";
 import { RADIUS_MULTIPLIER } from "../../../../constants/locationConstants";
 
-const LocationMapWithCircle = props => {
+const LocationMapWithCircle = ({ input, radius }) => {
   let initialPos = { lat: 50.4547, lng: 30.5238 };
-  if (props.input.value.latitude !== undefined) {
+  if (input.value.latitude !== undefined) {
     initialPos = {
-      lat: props.input.value.latitude,
-      lng: props.input.value.longitude,
+      lat: input.value.latitude,
+      lng: input.value.longitude,
     };
   }
   const [location, setLocation] = React.useState(initialPos);
 
   const handleChange = latlng => {
     setLocation(latlng);
-    props.input.onChange({
-      ...props.input.value,
+    input.onChange({
+      ...input.value,
       latitude: latlng.lat,
       longitude: latlng.lng,
     });
@@ -31,11 +31,11 @@ const LocationMapWithCircle = props => {
       onUpdate={handleChange}
       component={LocationMap}
     >
-      {props.input.value.latitude && (
+      {input.value.latitude && (
         <Circle
           center={location}
           pathOptions={{ color: "blue" }}
-          radius={props.radius * RADIUS_MULTIPLIER}
+          radius={radius * RADIUS_MULTIPLIER}
         />
       )}
     </Field>

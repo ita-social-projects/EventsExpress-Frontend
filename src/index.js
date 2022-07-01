@@ -5,9 +5,9 @@ import { ConnectedRouter } from "react-router-redux";
 import { createBrowserHistory } from "history";
 import "./styles/main.scss";
 import configureStore from "./store/configureStore";
-import App from "./components/app/app";
 import registerServiceWorker from "./registerServiceWorker";
 import { ZERO_INDEX } from "./constants/numberConstants";
+import AppContainer from "./containers/AppContainer/AppContainer";
 
 // Create browser history to use in the Redux store
 const baseUrl = document
@@ -25,7 +25,7 @@ ReactDOM.render(
   // eslint-disable-next-line react/jsx-filename-extension
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      <AppContainer />
     </ConnectedRouter>
   </Provider>,
   rootElement,
