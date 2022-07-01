@@ -25,9 +25,7 @@ export default class commentItem extends PureComponent {
             <div className="mybutton">
               <p>
                 <Link to={`/user/${userId}`} className="btn-custom">
-                  <a className="float-left" href={`/user/${userId}`}>
-                    <strong className="text-primary">{userName}</strong>
-                  </a>
+                  <strong className="text-primary">{userName}</strong>
                 </Link>
               </p>
               <div className="clearfix"></div>

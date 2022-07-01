@@ -7,8 +7,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
-import Zoom from "@material-ui/core/Zoom";
 import GENDERS from "../../constants/gendersVarietyConstants";
 import Event from "../Event/EventItem/EventItem";
 import CustomAvatar from "../CustomAvatar/CustomAvatar";
@@ -18,6 +16,7 @@ import Events from "./Events";
 import AuthComponent from "../../security/authComponent";
 import indexToTabName from "../../constants/indexToTabNameConstants";
 import getAge from "../helpers/userAgeHelper/getUserAge";
+import UserInteraction from "./UserInteraction";
 
 class UserItemView extends Component {
   constructor(props) {
@@ -102,50 +101,13 @@ class UserItemView extends Component {
                   <CustomAvatar size="big" name={name} userId={id} />
                 </div>
                 <RatingAverage value={rating} direction="row" />
-
-                <div className="row justify-content-center">
-                  <Tooltip
-                    title="Like this user"
-                    placement="bottom"
-                    TransitionComponent={Zoom}
-                  >
-                    <IconButton
-                      className={!attitude ? "text-success" : ""}
-                      onClick={
-                        attitude ? this.props.onLike : this.props.onReset
-                      }
-                    >
-                      <i className="fas fa-thumbs-up" />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip
-                    title="Dislike this user"
-                    placement="bottom"
-                    TransitionComponent={Zoom}
-                  >
-                    <IconButton
-                      className={attitude === 1 ? "text-danger" : ""}
-                      onClick={
-                        attitude !== 1
-                          ? this.props.onDislike
-                          : this.props.onReset
-                      }
-                    >
-                      <i className="fas fa-thumbs-down" />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip
-                    title="Start chat!"
-                    placement="bottom"
-                    TransitionComponent={Zoom}
-                  >
-                    <Link to={`/chat/${id}`}>
-                      <IconButton>
-                        <i className="far fa-comments" />
-                      </IconButton>
-                    </Link>
-                  </Tooltip>
-                </div>
+                <UserInteraction
+                  attitude={attitude}
+                  id={id}
+                  onDislike={this.props.onDislike}
+                  onLike={this.props.onLike}
+                  onReset={this.props.onReset}
+                />
               </div>
             </div>
           </AuthComponent>
