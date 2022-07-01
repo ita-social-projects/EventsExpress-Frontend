@@ -7,7 +7,6 @@ import "./UserProfile.scss";
 
 const Events = ({ events, currentUser, typeOfEvents }) => {
   const { data } = events;
-
   const { NO_RESULTS } = eventsProfile;
   return (
     <div className="shadow pl-2 pr-2 pb-2 mb-5 bg-white rounded">
@@ -15,6 +14,7 @@ const Events = ({ events, currentUser, typeOfEvents }) => {
         dataList={data.items}
         page={data.pageViewModel.pageNumber}
         totalPages={data.pageViewModel.totalPages}
+        pageNumber={data.pageViewModel.pageNumber}
         currentUser={currentUser}
         callback={typeOfEvents}
       />
