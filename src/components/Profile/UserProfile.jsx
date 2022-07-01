@@ -62,8 +62,6 @@ const UserProfile = ({
     };
   }, []);
 
-  console.log("Profile:", profile, "data:", data, "user:", currentUser);
-
   // componentWillUpdate = newProps => {
   //   if (newProps.match.params.id !== this.props.match.params.id)
   //     this.props.getUser(newProps.match.params.id);

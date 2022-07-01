@@ -12,7 +12,6 @@ import EventScheduleItemViewContainer from "../../containers/EventScheduleItemVi
 import EventSchedulesListContainer from "../../containers/EventSchedulesListContainer/EventSchedulesListContainer";
 import Layout from "../Layout/Layout";
 import UsersSearchContainer from "../../containers/UsersContainer/UsersSearchContainer";
-import Authentication from "../Authentication/Authentication";
 import Chat from "../Chat/Chat";
 import Admin from "../Admin/Admin";
 import NotFound from "../RouteGuard/404";
@@ -31,6 +30,7 @@ import AboutUs from "../AboutUs/AboutUs";
 import SplitPanels from "../SplitPanels/SplitPanels";
 import ReportPage from "../ReportPage/ReportPage";
 import UserChatsContainer from "../../containers/UsersContainer/UserChatsContainer";
+import AuthContainer from "../../containers/AuthContainer/AuthContainer";
 
 const App = ({ authUser, getConfig }) => {
   const UserRoleSecurity = withAuthRedirect(["User"]);
@@ -106,7 +106,7 @@ const App = ({ authUser, getConfig }) => {
                 />
                 <Route
                   path="/authentication/:id/:token"
-                  component={Authentication}
+                  component={AuthContainer}
                 />
                 <Route
                   path="/chat/:chatId"

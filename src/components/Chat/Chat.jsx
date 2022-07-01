@@ -16,6 +16,7 @@ import Msg from "./Msg";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import CustomAvatarContainer from "../CustomAvatar/CustomAvatar";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
+import MsgContainer from "../../containers/MsgContainer/MsgContainer";
 
 class Chat extends Component {
   componentWillMount = () => {
@@ -76,7 +77,12 @@ class Chat extends Component {
         const sender = arr.users.find(y => y.id === x.senderId);
         if (arr.id === x.chatRoomId) {
           return (
-            <Msg key={x.id + x.seen} user={sender} seenItem={x.seen} item={x} />
+            <MsgContainer
+              key={x.id + x.seen}
+              user={sender}
+              seenItem={x.seen}
+              item={x}
+            />
           );
         }
 
