@@ -26,8 +26,6 @@ const RenderTextField = ({
   );
 };
 
-export default RenderTextField;
-
 RenderTextField.defaultProps = {
   input: {},
   inputProps: {},
@@ -47,3 +45,5 @@ RenderTextField.propTypes = {
   fullWidth: PropTypes.number,
   label: PropTypes.string,
 };
+
+export default RenderTextField;

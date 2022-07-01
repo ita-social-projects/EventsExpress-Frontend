@@ -8,17 +8,15 @@ export default class CommentList extends Component {
     this.props.callback(this.props.evId, page);
   };
 
-  renderItems = arr =>
-    arr.map(item => <DeleteCommentContainer key={item.id} item={item} />);
-
   render() {
     const { dataList } = this.props;
-    const items = this.renderItems(dataList);
     const { page, totalPages } = this.props;
 
     return (
       <>
-        {items}
+        {dataList.map(item => (
+          <DeleteCommentContainer key={item.id} item={item} />
+        ))}
         {totalPages > 1 && (
           <PagePagination
             currentPage={page}

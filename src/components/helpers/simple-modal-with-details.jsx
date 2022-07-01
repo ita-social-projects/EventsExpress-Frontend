@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import { DialogContent } from "@material-ui/core";
 import { Field, reduxForm } from "redux-form";
-import { renderTextField } from "./form-helpers";
+import RenderTextField from "./form-helpers/render-text-field";
 import fieldIsRequired from "./validators/required-fields-validator";
 import { MIN_DETAILS_LENGTH } from "../../constants/validatorsConstants";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
@@ -67,7 +67,7 @@ class SimpleModalWithDetails extends Component {
               <Field
                 className="form-control"
                 name="detailsString"
-                component={renderTextField}
+                component={RenderTextField}
                 type="text"
                 label={data}
               />

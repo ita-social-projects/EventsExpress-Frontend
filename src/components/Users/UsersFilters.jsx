@@ -4,11 +4,9 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import Radio from "@material-ui/core/Radio";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import {
-  renderSelectField,
-  renderTextField,
-  radioButton,
-} from "../helpers/form-helpers";
+import RenderRadioButton from "../helpers/form-helpers/render-radio-button";
+import RenderSelectField from "../helpers/form-helpers/render-select-field";
+import RenderTextField from "../helpers/form-helpers/render-text-field";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
 import { USER_LABEL } from "../../constants/labelConstants";
 import {
@@ -21,14 +19,14 @@ const UsersFilters = ({ handleSubmit, submitting }) => {
     <form onSubmit={handleSubmit} className="box">
       <Field
         name="search"
-        component={renderTextField}
+        component={RenderTextField}
         type="input"
         label="Search:"
       />
       <Field
         minWidth={150}
         name="role"
-        component={renderSelectField}
+        component={RenderSelectField}
         label="Role"
       >
         <option value="" aria-label="Decide rules" />
@@ -43,7 +41,7 @@ const UsersFilters = ({ handleSubmit, submitting }) => {
       <Field
         minWidth={150}
         name="PageSize"
-        component={renderSelectField}
+        component={RenderSelectField}
         label="PageSize"
       >
         <option value="" aria-label="Decide numbers" />
@@ -56,7 +54,7 @@ const UsersFilters = ({ handleSubmit, submitting }) => {
         <option value="15">{MAX_USER_AMOUNT}</option>
       </Field>
       <br />
-      <Field name="status" component={radioButton}>
+      <Field name="status" component={RenderRadioButton}>
         <FormControlLabel value="blocked" control={<Radio />} label="Blocked" />
         <FormControlLabel value="active" control={<Radio />} label="Active" />
         <FormControlLabel value="all" control={<Radio />} label="All" />

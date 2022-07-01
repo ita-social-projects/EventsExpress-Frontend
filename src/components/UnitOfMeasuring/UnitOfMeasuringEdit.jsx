@@ -2,7 +2,8 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
-import { renderTextField, renderSelectField } from "../helpers/form-helpers";
+import RenderTextField from "../helpers/form-helpers/render-text-field";
+import RenderSelectField from "../helpers/form-helpers/render-select-field";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 
 const divStyle = {
@@ -29,17 +30,17 @@ const UnitOfMeasuringEdit = ({
               className="form-control w-25"
               name="unitName"
               label="Unit name"
-              component={renderTextField}
+              component={RenderTextField}
             />
             <Field
               className="form-control w-25"
               name="shortName"
               label="Short name"
-              component={renderTextField}
+              component={RenderTextField}
             />
             <Field
               minWidth={150}
-              component={renderSelectField}
+              component={RenderSelectField}
               className="min-vw-50"
               name="categoryId"
               label="Category"

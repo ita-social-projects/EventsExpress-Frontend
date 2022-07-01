@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import { Circle } from "react-leaflet";
-import { LocationMap } from ".";
+import LocationMap from "./location-map";
 import { RADIUS_MULTIPLIER } from "../../../../constants/locationConstants";
 
 const LocationMapWithCircle = props => {

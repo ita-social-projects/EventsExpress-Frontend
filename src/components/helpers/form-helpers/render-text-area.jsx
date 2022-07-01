@@ -22,8 +22,6 @@ const RenderTextArea = ({
   );
 };
 
-export default RenderTextArea;
-
 RenderTextArea.defaultProps = {
   input: {},
   meta: {},
@@ -35,3 +33,5 @@ RenderTextArea.propTypes = {
   meta: PropTypes.object,
   label: PropTypes.string,
 };
+
+export default RenderTextArea;

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
-import { renderFieldError } from ".";
+import RenderFieldError from "./render-field-error";
 
 const RenderRadioButton = ({
   input,
@@ -16,7 +16,7 @@ const RenderRadioButton = ({
       <RadioGroup {...input} {...rest}>
         {children}
       </RadioGroup>
-      {renderFieldError({ touched, error })}
+      {RenderFieldError({ touched, error })}
     </FormControl>
   );
 };

@@ -3,7 +3,8 @@ import { reduxForm, Field, getFormValues } from "redux-form";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
-import { renderTextField, renderTextArea } from "../helpers/form-helpers";
+import RenderTextArea from "../helpers/form-helpers/render-text-area";
+import RenderTextField from "../helpers/form-helpers/render-text-field";
 import { ISSUE_TYPE_ENUM } from "../../constants/issueConstants";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import isValidEmail from "../helpers/validators/email-address-validator";
@@ -39,7 +40,7 @@ class ContactAdmin extends PureComponent {
                 <Field
                   name="email"
                   className="form-control"
-                  component={renderTextField}
+                  component={RenderTextField}
                   value={this.props.email}
                   label="Your e-mail:"
                 />
@@ -47,7 +48,7 @@ class ContactAdmin extends PureComponent {
                 <Field
                   name="email"
                   className="form-control"
-                  component={renderTextField}
+                  component={RenderTextField}
                   label="Your e-mail:"
                 />
               )}
@@ -85,7 +86,7 @@ class ContactAdmin extends PureComponent {
                   <Field
                     name="title"
                     className="form-control"
-                    component={renderTextField}
+                    component={RenderTextField}
                     label="Enter problem type:"
                   />
                 )}
@@ -96,7 +97,7 @@ class ContactAdmin extends PureComponent {
               <Field
                 name="description"
                 className="form-control"
-                component={renderTextArea}
+                component={RenderTextArea}
                 type="input"
               />
             </div>

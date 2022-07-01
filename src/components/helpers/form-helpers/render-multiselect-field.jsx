@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Multiselect from "react-widgets/lib/Multiselect";
-import { renderFieldError } from ".";
+import RenderFieldError from "./render-field-error";
 
 const RenderMultiselectField = ({
   input,
@@ -21,7 +21,7 @@ const RenderMultiselectField = ({
       textField={textField}
       placeholder={placeholder}
     />
-    {renderFieldError({ touched, error })}
+    {RenderFieldError({ touched, error })}
   </>
 );
 
