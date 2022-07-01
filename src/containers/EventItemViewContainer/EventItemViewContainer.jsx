@@ -102,7 +102,7 @@ EventItemViewContainer.propTypes = {
   getUnitsOfMeasuring: PropTypes.func,
   unCancel: PropTypes.func,
   leave: PropTypes.func,
-  currentUser: PropTypes.func,
+  currentUser: PropTypes.object,
   getInventoriesByEventId: PropTypes.func,
   getUsersInventoriesByEventId: PropTypes.func,
 };
@@ -118,7 +118,7 @@ EventItemViewContainer.defaultProps = {
   delete: () => {},
   unCancel: () => {},
   leave: () => {},
-  currentUser: () => {},
+  currentUser: {},
   getInventoriesByEventId: () => {},
   getUsersInventoriesByEventId: () => {},
 };
