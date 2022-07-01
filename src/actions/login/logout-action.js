@@ -14,7 +14,7 @@ function setLogout() {
   };
 }
 
-const logout = () => {
+const logOut = () => {
   return async dispatch => {
     dispatch(updateEventsFilters(getDefaultEventFilter()));
     dispatch(reset());
@@ -24,4 +24,4 @@ const logout = () => {
     return apiService.revokeToken();
   };
 };
-export default logout;
+export default logOut;

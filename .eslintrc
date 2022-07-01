@@ -126,17 +126,17 @@
       }
     ]
   },
-  // "overrides": [
-  //   {
-  //     "files": [
-  //       "src/containers/**/*.jsx",
-  //       "src/containers/**/*.js"
-  //     ],
-  //     "rules": {
-  //       "react/destructuring-assignment": 0
-  //     }
-  //   }
-  // ],
+  "overrides": [
+    {
+      "files": [
+        "src/containers/**/*.jsx",
+        "src/containers/**/*.js"
+      ],
+      "rules": {
+        "react/destructuring-assignment": 0
+      }
+    }
+  ],
   "settings": {
     "import/extensions": [
       ".js",

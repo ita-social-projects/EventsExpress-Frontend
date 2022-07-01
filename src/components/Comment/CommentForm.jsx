@@ -7,10 +7,10 @@ import { renderTextField } from "../helpers/form-helpers";
 import "./Comment.scss";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 
-const Comment = props => {
+const Comment = ({ handleSubmit, error }) => {
   return (
     <>
-      <form name="addComment" onSubmit={props.handleSubmit}>
+      <form name="addComment" onSubmit={handleSubmit}>
         <Field name="text" component={renderTextField} label="Comment:" />
         <DialogActions>
           <Button type="submit" value="Add" color="primary">
@@ -19,9 +19,7 @@ const Comment = props => {
           </Button>
         </DialogActions>
       </form>
-      {props.error && (
-        <ErrorMessages error={props.error} className="text-center" />
-      )}
+      {error && <ErrorMessages error={error} className="text-center" />}
     </>
   );
 };

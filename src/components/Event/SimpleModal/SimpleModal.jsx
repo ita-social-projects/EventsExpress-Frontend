@@ -6,8 +6,7 @@ import { DialogContent } from "@material-ui/core";
 import PropTypes from "prop-types";
 import simpleModalConstants from "../../../constants/sipleModalConstants";
 
-const SimpleModal = props => {
-  const { data, button } = props;
+const SimpleModal = ({ data, button, action }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onOpen = () => {
@@ -19,7 +18,7 @@ const SimpleModal = props => {
   };
 
   const onConfirm = () => {
-    props.action();
+    action();
     setIsOpen(false);
   };
 
