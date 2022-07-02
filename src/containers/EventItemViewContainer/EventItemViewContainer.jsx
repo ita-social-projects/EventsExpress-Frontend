@@ -108,6 +108,7 @@ const mapDispatchToProps = dispatch => ({
 EventItemViewContainer.propTypes = {
   match: PropTypes.object,
   event: PropTypes.object,
+  currentUser: PropTypes.object,
   deleteEvent: PropTypes.func,
   unCancel: PropTypes.func,
   joinEvent: PropTypes.func,
@@ -115,7 +116,6 @@ EventItemViewContainer.propTypes = {
   getEventProp: PropTypes.func,
   getUnitsOfMeasuringProp: PropTypes.func,
   leaveEvent: PropTypes.func,
-  currentUser: PropTypes.func,
   getInventoriesByEventIdProp: PropTypes.func,
   getUsersInventoriesByEventIdProp: PropTypes.func,
 };
@@ -123,6 +123,7 @@ EventItemViewContainer.propTypes = {
 EventItemViewContainer.defaultProps = {
   match: {},
   event: {},
+  currentUser: {},
   unCancel: () => {},
   getEventProp: () => {},
   joinEvent: () => {},
@@ -130,7 +131,6 @@ EventItemViewContainer.defaultProps = {
   getUnitsOfMeasuringProp: () => {},
   deleteEvent: () => {},
   leaveEvent: () => {},
-  currentUser: () => {},
   getInventoriesByEventIdProp: () => {},
   getUsersInventoriesByEventIdProp: () => {},
 };

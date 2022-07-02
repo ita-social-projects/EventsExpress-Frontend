@@ -12,12 +12,12 @@ function LocalSpinnerContainer({ localCounter, children, showContent }) {
 
 LocalSpinnerContainer.propTypes = {
   showContent: PropTypes.bool,
-  children: PropTypes.array,
+  children: PropTypes.object,
   localCounter: PropTypes.number,
 };
 LocalSpinnerContainer.defaultProps = {
   showContent: false,
-  children: [],
+  children: {},
   localCounter: null,
 };
 

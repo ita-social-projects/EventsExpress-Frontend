@@ -18,16 +18,16 @@ const CommentContainer = ({ add, userId, eventId, parentId }) => {
 
 CommentContainer.defaultProps = {
   add: () => {},
-  userId: null,
-  eventId: null,
-  parentId: null,
+  userId: "",
+  eventId: "",
+  parentId: "",
 };
 
 CommentContainer.propTypes = {
   add: PropTypes.func,
-  userId: PropTypes.number,
-  eventId: PropTypes.number,
-  parentId: PropTypes.number,
+  userId: PropTypes.string,
+  eventId: PropTypes.string,
+  parentId: PropTypes.string,
 };
 
 const mapStateToProps = state => ({

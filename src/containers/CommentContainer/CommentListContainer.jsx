@@ -31,14 +31,14 @@ class CommentListContainer extends Component {
 
 CommentListContainer.defaultProps = {
   getComments: () => {},
-  eventId: null,
+  eventId: "",
   comments: {},
   match: {},
 };
 
 CommentListContainer.propTypes = {
   getComments: PropTypes.func,
-  eventId: PropTypes.number,
+  eventId: PropTypes.string,
   comments: PropTypes.object,
   match: PropTypes.object,
 };

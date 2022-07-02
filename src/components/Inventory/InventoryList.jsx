@@ -162,21 +162,21 @@ const mapDispatchToProps = dispatch => {
 };
 
 InventoryList.defaultProps = {
-  inventories: [],
+  inventories: {},
   event: {},
   user: {},
-  usersInventories: [],
-  getInventories: [],
-  eventId: null,
+  usersInventories: {},
+  getInventories: () => {},
+  eventId: "",
 };
 
 InventoryList.propTypes = {
-  inventories: PropTypes.array,
+  inventories: PropTypes.object,
   event: PropTypes.object,
   user: PropTypes.object,
-  usersInventories: PropTypes.array,
-  getInventories: PropTypes.array,
-  eventId: PropTypes.number,
+  usersInventories: PropTypes.object,
+  getInventories: PropTypes.func,
+  eventId: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(InventoryList);
