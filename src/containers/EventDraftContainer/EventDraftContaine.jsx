@@ -15,12 +15,10 @@ import { changeEventStatus } from "../../actions/event/event-item-view-action";
 import {
   setErrorAllertFromResponse,
   setSuccessAllert,
+  handleFormError,
 } from "../../actions/alert-action";
 import "./EventDraftContainer.scss";
-import {
-  buildValidationState,
-  handleFormError,
-} from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../components/helpers/action-helpers";
 import { EDIT_DRAFT_TITLE } from "../../constants/draftConstants";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
 

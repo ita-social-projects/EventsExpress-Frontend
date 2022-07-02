@@ -7,7 +7,7 @@ import {
   minLength6,
   maxLength15,
 } from "../helpers/validators/min-max-length-validators";
-import { renderTextField } from "../helpers/form-helpers";
+import RenderTextField from "../helpers/form-helpers/render-text-field";
 import { ALREADY_HAVE_ACC } from "../../constants/registationConstants";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
@@ -22,7 +22,7 @@ const RegisterBindAccount = ({ pristine, submitting, handleSubmit }) => {
           <div className="form-group">
             <Field
               name="email"
-              component={renderTextField}
+              component={RenderTextField}
               label="E-mail:"
               type="email"
             />
@@ -30,7 +30,7 @@ const RegisterBindAccount = ({ pristine, submitting, handleSubmit }) => {
           <div className="form-group">
             <Field
               name="password"
-              component={renderTextField}
+              component={RenderTextField}
               label="Password:"
               type="password"
               validate={[maxLength15, minLength6]}

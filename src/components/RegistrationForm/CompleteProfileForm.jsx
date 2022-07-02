@@ -3,12 +3,10 @@ import { Grid, Button } from "@material-ui/core";
 import { Field } from "redux-form";
 import moment from "moment";
 import PropTypes from "prop-types";
-import {
-  renderDatePicker,
-  renderTextField,
-  renderSelectField,
-  parseEuDate,
-} from "../helpers/form-helpers";
+import RenderTextField from "../helpers/form-helpers/render-text-field";
+import RenderSelectField from "../helpers/form-helpers/render-select-field";
+import RenderDatePicker from "../helpers/form-helpers/render-date-pickerV2";
+import parseEuDate from "../helpers/form-helpers/parseEuDate";
 import ChangeAvatarContainer from "../../containers/EditProfileContainers/ChangeAvatarContainer";
 import { CHOOSE_AVATAR } from "../../constants/registationConstants";
 import {
@@ -45,7 +43,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
               <Field
                 name="firstName"
                 variant="outlined"
-                component={renderTextField}
+                component={RenderTextField}
                 type="input"
                 label="First Name"
               />
@@ -54,7 +52,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
               <Field
                 name="lastName"
                 variant="outlined"
-                component={renderTextField}
+                component={RenderTextField}
                 type="input"
                 label="Last Name"
               />
@@ -72,7 +70,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
                   MIN_ALLOWABLE_AGE,
                   "years",
                 )}
-                component={renderDatePicker}
+                component={RenderDatePicker}
                 parse={parseEuDate}
               />
             </Grid>
@@ -80,7 +78,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
               <Field
                 name="country"
                 variant="outlined"
-                component={renderTextField}
+                component={RenderTextField}
                 type="input"
                 label="County"
               />
@@ -89,7 +87,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
               <Field
                 name="city"
                 variant="outlined"
-                component={renderTextField}
+                component={RenderTextField}
                 type="input"
                 label="City"
               />
@@ -100,7 +98,7 @@ const CompleteProfileForm = ({ handleSubmit }) => {
               <Field
                 minWidth={140}
                 name="gender"
-                component={renderSelectField}
+                component={RenderSelectField}
                 label="Gender"
               >
                 <option aria-label="None" value="" />

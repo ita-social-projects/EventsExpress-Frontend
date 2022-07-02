@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import IconButton from "@material-ui/core/IconButton";
-import { renderMultiselect } from "../helpers/form-helpers";
+import RenderMultiselectField from "../helpers/form-helpers/render-multiselect-field";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 
 // TODO: to function
@@ -21,7 +21,7 @@ class UserRoleEdit extends Component {
             <Field
               className="form-control"
               name="roles"
-              component={renderMultiselect}
+              component={RenderMultiselectField}
               data={roles}
               valueField="id"
               textField="name"

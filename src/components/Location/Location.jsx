@@ -6,12 +6,12 @@ import Radio from "@material-ui/core/Radio";
 import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import TextField from "@material-ui/core/TextField";
-import { renderFieldError } from "../helpers/form-helpers";
+import RenderFieldError from "../helpers/form-helpers/render-field-error";
 import {
   ENTER_LOCATION,
   ENUM_LOCATION_TYPE,
 } from "../../constants/eventConstants";
-import { LocationMapWithMarker } from "../helpers/form-helpers/location";
+import LocationMapWithMarker from "../helpers/form-helpers/location/location-map-with-marker";
 
 class Location extends Component {
   onChangeLocationType = event => {
@@ -85,7 +85,7 @@ class Location extends Component {
             </>
           )}
         </div>
-        {renderFieldError({ touched, error })}
+        {RenderFieldError({ touched, error })}
       </span>
     );
   }
