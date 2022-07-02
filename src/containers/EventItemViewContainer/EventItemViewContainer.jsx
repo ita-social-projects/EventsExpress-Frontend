@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import EventItemView from "../../components/Event/EventItemView/EventItemView";
@@ -14,59 +14,73 @@ import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-
 import { getInventoriesByEventId } from "../../actions/inventory/inventory-list-action";
 import { getUsersInventoriesByEventId } from "../../actions/users/users-inventories-action";
 
-// TODO Refactor class component
-class EventItemViewContainer extends Component {
-  componentWillMount() {
-    const { id } = this.props.match.params;
-    this.props.getEvent(id);
-    this.props.getUnitsOfMeasuring();
-    this.props.getInventoriesByEventId(id);
-    this.props.getUsersInventoriesByEventId(id);
-  }
+const EventItemViewContainer = props => {
+  const {
+    match,
+    event,
+    unCancel,
+    reset,
+    currentUser,
+    joinEvent,
+    getEventProp,
+    getUnitsOfMeasuringProp,
+    leaveEvent,
+    getInventoriesByEventIdProp,
+    getUsersInventoriesByEventIdProp,
+    deleteEvent,
+  } = props;
 
-  componentWillUnmount() {
-    this.props.reset();
-  }
+  const { data } = event;
 
-  onJoin = () => {
-    this.props.join(this.props.currentUser.id, this.props.event.data.id);
+  useEffect(() => {
+    const { id } = match.params;
+    getEventProp(id);
+    getUnitsOfMeasuringProp();
+    getInventoriesByEventIdProp(id);
+    getUsersInventoriesByEventIdProp(id);
+    // eslint-disable-next-line prettier/prettier
+  },[])  
+
+  useEffect(() => {
+    reset();
+    // eslint-disable-next-line prettier/prettier
+  },[])
+
+  const onJoin = () => {
+    joinEvent(currentUser.id, event.data.id);
   };
 
-  onLeave = () => {
-    this.props.leave(this.props.currentUser.id, this.props.event.data.id);
+  const onLeave = () => {
+    leaveEvent(currentUser.id, event.data.id);
   };
 
-  onCancel = (reason, eventStatus) => {
-    this.props.cancel(this.props.event.data.id, reason, eventStatus);
+  const onCancel = (reason, eventStatus) => {
+    unCancel(event.data.id, reason, eventStatus);
   };
 
-  onUnCancel = (reason, eventStatus) => {
-    this.props.unCancel(this.props.event.data.id, reason, eventStatus);
+  const onUnCancel = (reason, eventStatus) => {
+    unCancel(event.data.id, reason, eventStatus);
   };
 
-  onDelete = (reason, eventStatus) => {
-    this.props.delete(this.props.event.data.id, reason, eventStatus);
+  const onDelete = (reason, eventStatus) => {
+    deleteEvent(data.id, reason, eventStatus);
   };
 
-  render() {
-    const { data } = this.props.event;
-
-    return (
-      <SpinnerContainer showContent={data !== undefined}>
-        <EventItemView
-          event={this.props.event}
-          match={this.props.match}
-          onLeave={this.onLeave}
-          onJoin={this.onJoin}
-          onCancel={this.onCancel}
-          onUnCancel={this.onUnCancel}
-          onDelete={this.onDelete}
-          currentUser={this.props.currentUser}
-        />
-      </SpinnerContainer>
-    );
-  }
-}
+  return (
+    <SpinnerContainer showContent={data !== undefined}>
+      <EventItemView
+        event={event}
+        match={match}
+        onLeave={onLeave}
+        onJoin={onJoin}
+        onCancel={onCancel}
+        onUnCancel={onUnCancel}
+        onDelete={onDelete}
+        currentUser={currentUser}
+      />
+    </SpinnerContainer>
+  );
+};
 
 const mapStateToProps = state => ({
   event: state.event,
@@ -74,53 +88,51 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getEvent: id => dispatch(getEvent(id)),
-  join: (userId, eventId) => dispatch(join(userId, eventId)),
-  leave: (userId, eventId) => dispatch(leave(userId, eventId)),
+  getEventProp: id => dispatch(getEvent(id)),
+  joinEvent: (userId, eventId) => dispatch(join(userId, eventId)),
+  leaveEvent: (userId, eventId) => dispatch(leave(userId, eventId)),
   cancel: (eventId, reason) =>
     dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.CANCELED)),
   unCancel: (eventId, reason) =>
     dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.ACTIVE)),
-  delete: (eventId, reason) =>
+  deleteEvent: (eventId, reason) =>
     dispatch(changeEventStatus(eventId, reason, EVENT_STATUS_ENUM.DELETED)),
   getUsersInventoriesByEventId: eventId =>
     dispatch(getUsersInventoriesByEventId(eventId)),
-  getInventoriesByEventId: eventId =>
+  getInventoriesByEventIdProp: eventId =>
     dispatch(getInventoriesByEventId(eventId)),
-  getUnitsOfMeasuring: () => dispatch(getUnitsOfMeasuring()),
+  getUnitsOfMeasuringProp: () => dispatch(getUnitsOfMeasuring()),
   reset: () => dispatch(resetEvent()),
 });
 
 EventItemViewContainer.propTypes = {
   match: PropTypes.object,
   event: PropTypes.object,
-  delete: PropTypes.func,
-  cancel: PropTypes.func,
-  join: PropTypes.func,
-  reset: PropTypes.func,
-  getEvent: PropTypes.func,
-  getUnitsOfMeasuring: PropTypes.func,
+  deleteEvent: PropTypes.func,
   unCancel: PropTypes.func,
-  leave: PropTypes.func,
-  currentUser: PropTypes.object,
-  getInventoriesByEventId: PropTypes.func,
-  getUsersInventoriesByEventId: PropTypes.func,
+  joinEvent: PropTypes.func,
+  reset: PropTypes.func,
+  getEventProp: PropTypes.func,
+  getUnitsOfMeasuringProp: PropTypes.func,
+  leaveEvent: PropTypes.func,
+  currentUser: PropTypes.func,
+  getInventoriesByEventIdProp: PropTypes.func,
+  getUsersInventoriesByEventIdProp: PropTypes.func,
 };
 
 EventItemViewContainer.defaultProps = {
   match: {},
   event: {},
-  cancel: () => {},
-  getEvent: () => {},
-  join: () => {},
-  reset: () => {},
-  getUnitsOfMeasuring: () => {},
-  delete: () => {},
   unCancel: () => {},
-  leave: () => {},
-  currentUser: {},
-  getInventoriesByEventId: () => {},
-  getUsersInventoriesByEventId: () => {},
+  getEventProp: () => {},
+  joinEvent: () => {},
+  reset: () => {},
+  getUnitsOfMeasuringProp: () => {},
+  deleteEvent: () => {},
+  leaveEvent: () => {},
+  currentUser: () => {},
+  getInventoriesByEventIdProp: () => {},
+  getUsersInventoriesByEventIdProp: () => {},
 };
 
 export default connect(
