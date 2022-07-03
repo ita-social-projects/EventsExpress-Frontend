@@ -18,7 +18,13 @@ const Members = ({ members, hasMembers, showContent, getMembers }) => {
         <h3 className="members-title">{MEMBERS_TITLE}</h3>
         <div className="members-container">
           {members.map(member => (
-            <Member key={member.id} {...member} />
+            <Member
+              key={member.id}
+              name={member.name}
+              age={member.age}
+              img={member.img}
+              description={member.description}
+            />
           ))}
         </div>
       </div>

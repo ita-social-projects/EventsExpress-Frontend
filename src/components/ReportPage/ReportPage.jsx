@@ -25,7 +25,15 @@ const ReportPage = ({ handleReportFormSubmit }) => {
           ["email", "description"],
           [{ field: "title", maxLen: 30 }],
         )}
-        render={formProps => <ReportForm {...formProps} />}
+        render={formProps => (
+          <ReportForm
+            handleSubmit={formProps.handleSubmit}
+            pristine={formProps.pristine}
+            submitting={formProps.submitting}
+            form={formProps.form}
+            values={formProps.values}
+          />
+        )}
       />
     </div>
   );
