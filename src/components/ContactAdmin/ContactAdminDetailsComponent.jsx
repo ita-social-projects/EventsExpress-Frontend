@@ -66,3 +66,5 @@ ContactAdminDetails.defaultProps = {
   onInProgress: () => {},
   onResolve: () => {},
 };
+
+export default ContactAdminDetails;
