@@ -1,4 +1,4 @@
-﻿import React, { Component } from "react";
+﻿import React, { useState } from "react";
 import PropTypes from "prop-types";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
@@ -26,76 +26,74 @@ const validate = values => {
   };
 };
 
-class SimpleModalWithDetails extends Component {
-  constructor(props) {
-    super(props);
+const SimpleModalWithDetails = ({
+  handleSubmit,
+  pristine,
+  submitting,
+  data,
+  button,
+  submitCallback,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    this.state = {
-      isOpen: false,
-    };
-  }
-
-  handleClickOpen = () => {
-    this.setState({ isOpen: true });
+  const handleClickOpen = () => {
+    setIsOpen(true);
   };
 
-  handleClose = () => {
-    this.setState({ isOpen: false });
+  const handleClose = () => {
+    setIsOpen(false);
   };
 
-  submit = values => {
-    this.props.submitCallback(values.detailsString);
-    this.handleClose();
+  const submit = values => {
+    submitCallback(values.detailsString);
+    handleClose();
   };
 
-  render() {
-    const { handleSubmit, pristine, submitting, data } = this.props;
-    return (
-      <>
-        <div
-          onClick={this.handleClickOpen}
-          onKeyPress={this.handleKeyPress}
-          role="button"
-          tabIndex="0"
-        >
-          {this.props.button}
-        </div>
-        <Dialog open={this.state.isOpen} onClose={this.handleClose}>
-          <form onSubmit={handleSubmit(this.submit)}>
-            <DialogContent>
-              <h4>{data}</h4>
-              <Field
-                className="form-control"
-                name="detailsString"
-                component={renderTextField}
-                type="text"
-                label={data}
-              />
-            </DialogContent>
-            <DialogActions>
-              <Button
-                fullWidth
-                type="button"
-                color="primary"
-                onClick={this.handleClose}
-              >
-                {BUTTON_NAMES.DISCARD}
-              </Button>
-              <Button
-                fullWidth
-                type="submit"
-                disabled={pristine || submitting}
-                color="primary"
-              >
-                {BUTTON_NAMES.CONFIRM}
-              </Button>
-            </DialogActions>
-          </form>
-        </Dialog>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <div
+        onClick={handleClickOpen}
+        onKeyPress={handleClickOpen}
+        role="button"
+        tabIndex="0"
+      >
+        {button}
+      </div>
+      <Dialog open={isOpen} onClose={handleClose}>
+        <form onSubmit={handleSubmit(submit)}>
+          <DialogContent>
+            <h4>{data}</h4>
+            <Field
+              className="form-control"
+              name="detailsString"
+              component={renderTextField}
+              type="text"
+              label={data}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button
+              fullWidth
+              type="button"
+              color="primary"
+              onClick={handleClose}
+            >
+              {BUTTON_NAMES.DISCARD}
+            </Button>
+            <Button
+              fullWidth
+              type="submit"
+              disabled={pristine || submitting}
+              color="primary"
+            >
+              {BUTTON_NAMES.CONFIRM}
+            </Button>
+          </DialogActions>
+        </form>
+      </Dialog>
+    </>
+  );
+};
 
 SimpleModalWithDetails.defaultProps = {
   submitCallback: () => {},
