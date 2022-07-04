@@ -54,7 +54,7 @@ class ContactAdminListContainer extends Component {
           <table className="table w-100 m-auto">
             <tbody>
               <ContactAdminList
-                data_list={items}
+                dataList={items}
                 filter={this.props.contactAdminList.filter}
                 page={data.pageViewModel.pageNumber}
                 totalPages={data.pageViewModel.totalPages}
@@ -79,18 +79,14 @@ ContactAdminListContainer.propTypes = {
   contactAdminList: PropTypes.object,
 };
 
-const mapStateToProps = state => {
-  return {
-    contactAdminList: state.contactAdminList,
-    formValues: getFormValues("contactAdmin-filter-form")(state),
-  };
-};
+const mapStateToProps = state => ({
+  contactAdminList: state.contactAdminList,
+  formValues: getFormValues("contactAdmin-filter-form")(state),
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getIssues: filter => dispatch(getIssues(filter)),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  getIssues: filter => dispatch(getIssues(filter)),
+});
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(ContactAdminListContainer),
