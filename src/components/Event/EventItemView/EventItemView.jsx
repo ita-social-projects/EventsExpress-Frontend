@@ -10,9 +10,8 @@ import "../../Layout/Colorlib.scss";
 import "./EventItemView.scss";
 import EventVisitors from "../EventVisitors/EventVisitors";
 import EventLeaveModal from "../EventLeaveModal/EventLeaveModal";
-import InventoryList from "../../Inventory/InventoryList";
+import InventoryListContainer from "../../../containers/InventoryContainer/InvetoryListContainer";
 import DisplayLocation from "../Map/DisplayLocation";
-
 import { ADULT_AGE, USER_STATUS_ENUM } from "../../../constants/userConstants";
 import {
   EVENT_DEFAULT_IMAGE,
@@ -293,7 +292,7 @@ export default class EventItemView extends Component {
                 {description}
               </div>
               <div className="shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
-                <InventoryList eventId={id} />
+                <InventoryListContainer eventId={id} />
               </div>
 
               <div className="overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">

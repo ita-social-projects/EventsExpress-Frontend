@@ -1,15 +1,14 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Field, FieldArray, getFormSyncErrors } from "redux-form";
-import { connect } from "react-redux";
+import { Field, FieldArray } from "redux-form";
 import { renderSelectField, renderTextField } from "../helpers/form-helpers";
-import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
 import InventoryHeaderButton from "./InventoryHeaderButton";
-import "./Inventory.scss";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import { REQUIRED_LABEL } from "../../constants/labelConstants";
+import "./Inventory.scss";
 
-const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
+const renderInventories = props => {
+  const { fields, unitOfMeasuringState, error } = props;
   return (
     <div className="form-group">
       <button
@@ -79,63 +78,41 @@ const renderInventories = ({ fields, unitOfMeasuringState, error }) => {
   );
 };
 
-class Inventory extends Component {
-  constructor() {
-    super();
+const Inventory = props => {
+  const { getUnitsOfMeasuring, syncErrors } = props;
+  const [isOpen, setIsOpen] = useState(true);
 
-    this.state = {
-      isOpen: true,
-    };
+  useEffect(() => {
+    getUnitsOfMeasuring();
+  }, []);
 
-    this.handleOnClickCaret = this.handleOnClickCaret.bind(this);
-  }
-
-  componentWillMount() {
-    this.props.getUnitsOfMeasuring();
-  }
-
-  handleOnClickCaret() {
-    this.setState(state => ({
-      isOpen: !state.isOpen,
-    }));
-  }
-
-  render() {
-    return (
-      <div>
-        <div className="d-flex justify-content-start align-items-center">
-          <InventoryHeaderButton
-            isOpen={this.state.isOpen}
-            handleOnClickCaret={this.handleOnClickCaret}
-          />
-          {this.props.syncErrors.inventories && !this.state.isOpen && (
-            <span className="text-danger">
-              <i className="fas fa-exclamation-circle text-danger" />
-              {REQUIRED_LABEL}
-            </span>
-          )}
-        </div>
-        <div className={this.state.isOpen ? "d-block" : "d-none"}>
-          <FieldArray
-            name="inventories"
-            props={this.props}
-            component={renderInventories}
-          />
-        </div>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = state => ({
-  unitOfMeasuringState: state.unitsOfMeasuring,
-  syncErrors: getFormSyncErrors("event-form")(state),
-});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getUnitsOfMeasuring: () => dispatch(getUnitsOfMeasuring()),
+  const handleOnClickCaret = () => {
+    setIsOpen(!isOpen);
   };
+
+  return (
+    <div>
+      <div className="d-flex justify-content-start align-items-center">
+        <InventoryHeaderButton
+          isOpen={isOpen}
+          handleOnClickCaret={handleOnClickCaret}
+        />
+        {syncErrors.inventories && !isOpen && (
+          <span className="text-danger">
+            <i className="fas fa-exclamation-circle text-danger" />
+            {REQUIRED_LABEL}
+          </span>
+        )}
+      </div>
+      <div className={isOpen ? "d-block" : "d-none"}>
+        <FieldArray
+          name="inventories"
+          props={props}
+          component={renderInventories}
+        />
+      </div>
+    </div>
+  );
 };
 
 Inventory.defaultProps = {
@@ -148,4 +125,4 @@ Inventory.propTypes = {
   getUnitsOfMeasuring: PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Inventory);
+export default Inventory;
