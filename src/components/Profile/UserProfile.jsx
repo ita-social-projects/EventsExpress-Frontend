@@ -1,43 +1,29 @@
 ﻿/* eslint-disable no-magic-numbers */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "moment-timezone";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 import GENDERS from "../../constants/gendersVarietyConstants";
-// import Event from "../Event/EventItem/EventItem";
 import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../Rating/RatingAverage";
 import "./UserProfile.scss";
-import Events from "./Events";
 import AuthComponent from "../../security/authComponent";
-import indexToTabName from "../../constants/indexToTabNameConstants";
 import getAge from "../helpers/userAgeHelper/getUserAge";
+import UserProfileTabs from "./UserProfileTabs";
+import UserProfileRoutes from "./UserProfileRoutes";
+import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 
 const UserProfile = ({
-  profile,
   currentUser,
   events,
   data,
-  getUser,
   setAttitude,
-  getPastEvents,
-  getFutureEvents,
-  getVisitedEvents,
-  getEventsTogo,
-  resetUser,
-  ...props
+  getEventsByType,
+  history,
 }) => {
-  const [state, setState] = useState(null);
-  const splitPath = path => {
-    const n = path.toLowerCase().split("/");
-    return n[n.length - 1];
-  };
   // const useComponentWillMount = () => {
   //   const { id } = props.match.params;
   //   const willMount = useRef(true);
@@ -46,21 +32,16 @@ const UserProfile = ({
 
   //   willMount.current = false;
   // };
-
-  useEffect(() => {
-    // DidMount
-    setState({
-      value: indexToTabName[splitPath(props.history.location.pathname)],
-    });
-
-    // WillMount
-    // useComponentWillMount();
-
-    // UnMount
-    return () => {
-      resetUser();
-    };
-  }, []);
+  const {
+    name,
+    email,
+    birthday,
+    gender,
+    categories,
+    id: userId,
+    attitude,
+    rating,
+  } = data;
 
   // componentWillUpdate = newProps => {
   //   if (newProps.match.params.id !== this.props.match.params.id)
@@ -78,7 +59,7 @@ const UserProfile = ({
   const onLike = () => {
     setAttitude({
       userFromId: currentUser,
-      userToId: data.id,
+      userToId: userId,
       attitude: 0,
     });
   };
@@ -86,7 +67,7 @@ const UserProfile = ({
   const onDislike = () => {
     setAttitude({
       userFromId: currentUser,
-      userToId: data.id,
+      userToId: userId,
       attitude: 1,
     });
   };
@@ -94,25 +75,9 @@ const UserProfile = ({
   const onReset = () => {
     setAttitude({
       userFromId: currentUser,
-      userToId: data.id,
+      userToId: userId,
       attitude: 2,
     });
-  };
-
-  const onFuture = page => {
-    getFutureEvents(data.id, page);
-  };
-
-  const onPast = page => {
-    getPastEvents(data.id, page);
-  };
-
-  const onVisited = page => {
-    getVisitedEvents(data.id, page);
-  };
-
-  const onToGo = page => {
-    getEventsTogo(data.id, page);
   };
 
   const renderCategories = arr =>
@@ -129,30 +94,6 @@ const UserProfile = ({
   //       <Event item={item} />
   //     </div>
   //   ));
-
-  const handleChange = (event, value) => {
-    setState({ value });
-    switch (value) {
-      case 0:
-        onFuture();
-        break;
-      case 1:
-        onPast();
-        break;
-      case 2:
-        onVisited();
-        break;
-      case 3:
-        onToGo();
-        break;
-      default:
-        setState({ value });
-    }
-  };
-
-  const { name, email, birthday, gender, categories, id, attitude, rating } =
-    data;
-  const userId = data.id;
   const categoriesList = renderCategories(categories);
   const renderProp = (propName, value) => (
     <div className="row mb-3 font-weight-bold">
@@ -161,13 +102,13 @@ const UserProfile = ({
     </div>
   );
   return (
-    <>
+    <SpinnerContainer showContent={data !== null}>
       <div className="info">
         <AuthComponent>
           <div className="col-4 user">
             <div className="d-flex flex-column justify-content-center align-items-center">
               <div className="user-profile-avatar">
-                <CustomAvatar size="big" name={name} userId={id} />
+                <CustomAvatar size="big" name={name} userId={userId} />
               </div>
               <RatingAverage value={rating} direction="row" />
 
@@ -201,7 +142,7 @@ const UserProfile = ({
                   placement="bottom"
                   TransitionComponent={Zoom}
                 >
-                  <Link to={`/chat/${id}`}>
+                  <Link to={`/chat/${userId}`}>
                     <IconButton>
                       <i className="far fa-comments" />
                     </IconButton>
@@ -220,143 +161,38 @@ const UserProfile = ({
         </div>
       </div>
       <div className="mt-2">
-        <AppBar position="static" color="inherit">
-          <Tabs
-            className="w-100"
-            value={state.value}
-            onChange={handleChange}
-            variant="fullWidth"
-            scrollButtons="on"
-            indicatorColor="primary"
-            textColor="primary"
-          >
-            <Tab
-              label="Future events"
-              icon={
-                <IconButton color={state.value === 0 ? "default" : "primary"}>
-                  <i className="far fa-calendar-alt" />
-                </IconButton>
-              }
-              component={Link}
-              to={`/user/${userId}/FutureEvents`}
-            />
-            <Tab
-              label="Archive events"
-              icon={
-                <IconButton color={state.value === 1 ? "default" : "primary"}>
-                  <i className="fas fa-archive" />
-                </IconButton>
-              }
-              component={Link}
-              to={`/user/${userId}/ArchiveEvents`}
-            />
-            <Tab
-              label="Visited events"
-              icon={
-                <IconButton color={state.value === 2 ? "default" : "primary"}>
-                  <i className="fas fa-history" />
-                </IconButton>
-              }
-              component={Link}
-              to={`/user/${userId}/VisitedEvents`}
-            />
-            <Tab
-              label="Events to go"
-              icon={
-                <IconButton color={state.value === 3 ? "default" : "primary"}>
-                  <i className="fas fa-map-marker-alt" />
-                </IconButton>
-              }
-              component={Link}
-              to={`/user/${userId}/EventsToGo`}
-            />
-          </Tabs>
-        </AppBar>
-
-        <Switch>
-          <Route
-            exact
-            path="/user/:id"
-            render={() => <Redirect to={`/user/${userId}/FutureEvents`} />}
-          />
-
-          <Route
-            path="/user/:id/FutureEvents"
-            render={() => (
-              <Events
-                events={events}
-                currentUser={currentUser}
-                typeOfEvents={onFuture}
-              />
-            )}
-          />
-
-          <Route
-            path="/user/:id/ArchiveEvents"
-            render={() => (
-              <Events
-                events={events}
-                currentUser={currentUser}
-                typeOfEvents={onPast}
-              />
-            )}
-          />
-
-          <Route
-            path="/user/:id/VisitedEvents"
-            render={() => (
-              <Events
-                events={events}
-                currentUser={currentUser}
-                typeOfEvents={onVisited}
-              />
-            )}
-          />
-
-          <Route
-            path="/user/:id/EventsToGo"
-            render={() => (
-              <Events
-                events={events}
-                currentUser={currentUser}
-                typeOfEvents={onToGo}
-              />
-            )}
-          />
-        </Switch>
+        <UserProfileTabs
+          userId={userId}
+          getEventsByType={getEventsByType}
+          history={history}
+        />
+        <UserProfileRoutes
+          events={events}
+          currentUser={currentUser}
+          userId={userId}
+          getEventsByType={getEventsByType}
+        />
       </div>
-    </>
+    </SpinnerContainer>
   );
 };
 
 UserProfile.propTypes = {
-  profile: PropTypes.object,
   history: PropTypes.object,
   data: PropTypes.object,
   events: PropTypes.object,
   currentUser: PropTypes.string,
-  getUser: PropTypes.func,
   setAttitude: PropTypes.func,
-  getPastEvents: PropTypes.func,
-  getFutureEvents: PropTypes.func,
-  getVisitedEvents: PropTypes.func,
-  getEventsTogo: PropTypes.func,
-  resetUser: PropTypes.func,
+  getEventsByType: PropTypes.func,
 };
 
 UserProfile.defaultProps = {
-  profile: {},
   history: {},
   data: {},
   events: {},
   currentUser: "",
-  getUser: () => {},
   setAttitude: () => {},
-  getPastEvents: () => {},
-  getFutureEvents: () => {},
-  getVisitedEvents: () => {},
-  getEventsTogo: () => {},
-  resetUser: () => {},
+  getEventsByType: () => {},
 };
 
-export default withRouter(UserProfile);
+export default UserProfile;
