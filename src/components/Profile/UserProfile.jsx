@@ -1,64 +1,52 @@
-﻿/* eslint-disable no-magic-numbers */
-import React from "react";
+﻿import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "moment-timezone";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
-import GENDERS from "../../constants/gendersVarietyConstants";
 import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../Rating/RatingAverage";
 import "./UserProfile.scss";
 import AuthComponent from "../../security/authComponent";
-import getAge from "../helpers/userAgeHelper/getUserAge";
 import UserProfileTabs from "./UserProfileTabs";
 import UserProfileRoutes from "./UserProfileRoutes";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
+import UserProfileInfo from "./UserProfileInfo";
 
 const UserProfile = ({
-  currentUser,
+  currentUserId,
+  isDataReady,
+  getUser,
+  resetUser,
   events,
-  data,
+  name,
+  email,
+  birthday,
+  gender,
+  categories,
+  userId,
+  attitude,
+  rating,
   setAttitude,
   getEventsByType,
   history,
 }) => {
-  // const useComponentWillMount = () => {
-  //   const { id } = props.match.params;
-  //   const willMount = useRef(true);
+  useEffect(() => {
+    if (!isDataReady) {
+      getUser(currentUserId);
+    }
 
-  //   if (willMount.current) getUser(id);
+    return () => {
+      resetUser();
+    };
+  }, []);
 
-  //   willMount.current = false;
-  // };
-  const {
-    name,
-    email,
-    birthday,
-    gender,
-    categories,
-    id: userId,
-    attitude,
-    rating,
-  } = data;
-
-  // componentWillUpdate = newProps => {
-  //   if (newProps.match.params.id !== this.props.match.params.id)
-  //     this.props.getUser(newProps.match.params.id);
-  //   if (newProps.currentUser !== this.props.currentUser)
-  //     this.props.getUser(newProps.match.params.id);
-  // };
-
-  // componentDidUpdate(_, prevState) {
-  //   const tabName =
-  //     indexToTabName[this.splitPath(this.props.history.location.pathname)];
-  //   if (prevState.value !== tabName) this.handleChange(_, tabName);
-  // }
+  // How to fix userID
 
   const onLike = () => {
     setAttitude({
-      userFromId: currentUser,
+      userFromId: currentUserId,
       userToId: userId,
       attitude: 0,
     });
@@ -66,7 +54,7 @@ const UserProfile = ({
 
   const onDislike = () => {
     setAttitude({
-      userFromId: currentUser,
+      userFromId: currentUserId,
       userToId: userId,
       attitude: 1,
     });
@@ -74,35 +62,13 @@ const UserProfile = ({
 
   const onReset = () => {
     setAttitude({
-      userFromId: currentUser,
+      userFromId: currentUserId,
       userToId: userId,
       attitude: 2,
     });
   };
-
-  const renderCategories = arr =>
-    arr.map(item => (
-      <div key={item.id}>
-        {"#"}
-        {item.name}
-      </div>
-    ));
-
-  // const renderEvents = arr =>
-  //   arr.map(item => (
-  //     <div className="col-4" key={item.id}>
-  //       <Event item={item} />
-  //     </div>
-  //   ));
-  const categoriesList = renderCategories(categories);
-  const renderProp = (propName, value) => (
-    <div className="row mb-3 font-weight-bold">
-      <div className="col-4">{`${propName}:`}</div>
-      <div className="col-8">{value || ""}</div>
-    </div>
-  );
   return (
-    <SpinnerContainer showContent={data !== null}>
+    <SpinnerContainer showContent={isDataReady}>
       <div className="info">
         <AuthComponent>
           <div className="col-4 user">
@@ -152,24 +118,24 @@ const UserProfile = ({
             </div>
           </div>
         </AuthComponent>
-        <div className="col-sm-12  col-md-6">
-          {renderProp("User Name", name)}
-          {renderProp("Age", getAge(birthday))}
-          {renderProp("Gender", GENDERS[gender])}
-          {renderProp("Email", email)}
-          {renderProp("Interests", categoriesList)}
-        </div>
+        <UserProfileInfo
+          name={name}
+          email={email}
+          birthday={birthday}
+          gender={gender}
+          categories={categories}
+        />
       </div>
       <div className="mt-2">
         <UserProfileTabs
-          userId={userId}
+          userId={currentUserId}
           getEventsByType={getEventsByType}
           history={history}
         />
         <UserProfileRoutes
           events={events}
-          currentUser={currentUser}
-          userId={userId}
+          currentUser={currentUserId}
+          userId={currentUserId}
           getEventsByType={getEventsByType}
         />
       </div>
@@ -179,20 +145,40 @@ const UserProfile = ({
 
 UserProfile.propTypes = {
   history: PropTypes.object,
-  data: PropTypes.object,
   events: PropTypes.object,
-  currentUser: PropTypes.string,
+  currentUserId: PropTypes.string,
+  name: PropTypes.string,
+  userId: PropTypes.string,
+  email: PropTypes.string,
   setAttitude: PropTypes.func,
   getEventsByType: PropTypes.func,
+  getUser: PropTypes.func,
+  resetUser: PropTypes.func,
+  isDataReady: PropTypes.bool,
+  birthday: PropTypes.string,
+  gender: PropTypes.number,
+  rating: PropTypes.number,
+  attitude: PropTypes.number,
+  categories: PropTypes.array,
 };
 
 UserProfile.defaultProps = {
   history: {},
-  data: {},
   events: {},
-  currentUser: "",
+  currentUserId: "",
+  name: "",
+  userId: "",
+  email: "",
   setAttitude: () => {},
+  getUser: () => {},
+  resetUser: () => {},
   getEventsByType: () => {},
+  isDataReady: false,
+  birthday: "",
+  gender: 0,
+  rating: 0,
+  attitude: 0,
+  categories: [],
 };
 
 export default UserProfile;

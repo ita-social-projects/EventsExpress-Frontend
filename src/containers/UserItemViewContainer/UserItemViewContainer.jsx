@@ -4,12 +4,22 @@ import getUser, {
   resetUser,
 } from "../../actions/user/user-item-view-action";
 import { getEventsByType } from "../../actions/events/events-for-profile-action";
-import UserProfileWrapper from "../../components/Profile/UserProfileWrapper";
+import UserProfile from "../../components/Profile/UserProfile";
+
+// USER_ID always " "
 
 const mapStateToProps = state => ({
-  currentUser: state.user.id,
+  currentUserId: state.user.id,
   events: state.eventsForProfile,
-  data: state.profile.data,
+  isDataReady: state.profile.data !== null,
+  name: state.profile.data?.name,
+  email: state.profile.data?.email,
+  birthday: state.profile.data?.birthday,
+  gender: state.profile.data?.gender,
+  categories: state.profile.data?.categories,
+  userId: state.profile.data?.userId,
+  attitude: state.profile.data?.attitude,
+  rating: state.profile.data?.rating,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,4 +30,4 @@ const mapDispatchToProps = dispatch => ({
   resetUser: () => dispatch(resetUser()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfileWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
