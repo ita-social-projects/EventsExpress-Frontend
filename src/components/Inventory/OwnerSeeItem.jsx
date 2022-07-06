@@ -63,7 +63,7 @@ const OwnerSeeItem = ({
             </IconButton>
             <IconButton
               disabled={disabledEdit}
-              onClick={deleteItemFromList(item)}
+              onClick={() => deleteItemFromList(item)}
             >
               <i className="fa-sm fas fa-trash text-danger" />
             </IconButton>

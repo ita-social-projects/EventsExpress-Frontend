@@ -6,6 +6,8 @@ import getRatingEffect from "../helpers/ratingHelper";
 import "./Rating.scss";
 
 const RatingAverage = ({ value, direction }) => {
+  // eslint-disable-next-line no-param-reassign
+  if (typeof value === "object") value = 0;
   const ratingEffect = getRatingEffect(value);
   const displayStyle = direction === "row" ? "rating_average" : "rating_box";
 
@@ -22,7 +24,7 @@ const RatingAverage = ({ value, direction }) => {
 };
 
 RatingAverage.defaultProps = {
-  value: null,
+  value: 0,
   direction: "",
 };
 

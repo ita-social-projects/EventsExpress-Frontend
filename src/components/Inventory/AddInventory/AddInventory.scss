@@ -1,0 +1,31 @@
+.add-inventory-form {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    .form-group__input {
+        all:unset;
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .form-input {
+       all: unset;
+       width: 100%;
+       text-align: center;
+       
+    }
+    .form-select  {
+        all: unset;
+        width: 20%;
+        text-align: center;
+    }
+    .inventory-field {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+}

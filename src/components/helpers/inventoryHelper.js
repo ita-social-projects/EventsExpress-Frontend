@@ -1,7 +1,7 @@
 import { DEFAULT_ZERO_VALUE } from "../../constants/numberConstants";
 
 export const isUserEvent = (organizers, user) =>
-  organizers.find(x => x.id === user.id) !== undefined;
+  !!organizers.find(({ id }) => id === user.id);
 
 export const getUpdatedInventories = (inventories, usersInventories, user) =>
   inventories.items

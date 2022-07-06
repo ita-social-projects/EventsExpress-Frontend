@@ -12,10 +12,11 @@ const OwnerEditItemForm = ({
   alreadyGet,
   error,
   onSubmit,
+  handleSubmit,
   onCancel,
 }) => {
   return (
-    <form onSubmit={onSubmit} className="form-inline w-100">
+    <form onSubmit={handleSubmit(onSubmit)} className="form-inline w-100">
       <div className="col col-md-3 d-flex align-items-center">
         <Field
           name="itemName"
@@ -68,6 +69,7 @@ OwnerEditItemForm.defaultProps = {
   error: "",
   onSubmit: () => {},
   onCancel: () => {},
+  handleSubmit: () => {},
 };
 
 OwnerEditItemForm.propTypes = {
@@ -77,6 +79,7 @@ OwnerEditItemForm.propTypes = {
   error: PropTypes.string,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
+  handleSubmit: PropTypes.func,
 };
 
 export default reduxForm({
@@ -84,3 +87,18 @@ export default reduxForm({
   validate,
   enableReinitialize: true,
 })(OwnerEditItemForm);
+//   const onSubmit = values => {
+//     setIsEdit(false);
+//     changeDisableEdit(false);
+
+//     if (!values.id) {
+//       return add(values, eventId);
+//     }
+
+//     const value = values;
+//     value.unitOfMeasuring = {
+//       id: values.unitOfMeasuring.id,
+//     };
+
+//     return edit(values, eventId);
+//   };
