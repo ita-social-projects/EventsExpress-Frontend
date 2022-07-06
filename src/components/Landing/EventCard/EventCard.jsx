@@ -12,15 +12,19 @@ import {
 } from "../../../constants/eventConstants";
 
 const EventCard = ({ event, additionalButtons, additionalModal }) => {
-  const { id, title, dateFrom } = event;
+  const { id, title, dateFrom, nextRun } = event;
   const photoService = new PhotoService();
   const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
   const titleText =
-    title == null ? "No title" : title.slice(0, EVENT_CARD_TITLE_SLICE);
+    title === null ? "No title" : title.slice(0, EVENT_CARD_TITLE_SLICE);
   const day =
-    dateFrom == null ? "?" : moment(dateFrom).format(FORMATS.DAY_FORMAT);
+    dateFrom === undefined
+      ? moment(nextRun).format(FORMATS.DAY_FORMAT)
+      : moment(dateFrom).format(FORMATS.DAY_FORMAT);
   const month =
-    dateFrom == null ? "?" : moment(dateFrom).format(FORMATS.MONTH_FORMAT);
+    dateFrom === undefined
+      ? moment(nextRun).format(FORMATS.MONTH_FORMAT)
+      : moment(dateFrom).format(FORMATS.MONTH_FORMAT);
 
   useEffect(() => {
     photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {

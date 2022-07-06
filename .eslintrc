@@ -64,7 +64,7 @@
     //   "error",
     //   { "missingExports": true, "unusedExports": true }
     // ],
-    //"react/destructuring-assignment": 2, // require props destructuring inside component ~ 600 // need to refactor all CC
+    // "react/destructuring-assignment": 2, // require props destructuring inside component ~ 600 // need to refactor all CC
     "react/destructuring-assignment": "off",
     "react/forbid-prop-types": "off", // forbid propTypes.object
     "react/no-did-update-set-state": "off", // needed till we have class components

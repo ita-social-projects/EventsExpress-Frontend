@@ -55,6 +55,9 @@ const DraftEventCard = ({
     if (type === CARD_TYPE.HOME) {
       return additionalButtons[1];
     }
+    if (type === CARD_TYPE.RECCURENT_EVENTS) {
+      return <></>;
+    }
     return additionalButtons[0];
   };
 

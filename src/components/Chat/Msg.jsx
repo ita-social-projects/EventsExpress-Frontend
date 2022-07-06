@@ -12,10 +12,10 @@ const Msg = ({
   deleteSeenMsgNotification,
   props,
 }) => {
-  const { user, item, seenItem } = props;
+  const { user, msgItem, seenMsg } = props;
   useEffect(() => {
-    if (notification.seenMessages.map(x => x.id).includes(item.id)) {
-      const newItem = notification.seenMessages.find(x => x.id === item.id);
+    if (notification.seenMessages.map(x => x.id).includes(msgItem.id)) {
+      const newItem = notification.seenMessages.find(x => x.id === msgItem.id);
       deleteSeenMsgNotification(newItem.id);
     }
   }, []);
@@ -33,20 +33,20 @@ const Msg = ({
             </ButtonBase>
           </Link>
           <div className="msg_cotainer">
-            {item.text}
+            {msgItem.text}
             <br />
             <span className="msg_time">
-              {getTimeDifferenceFromNull(item.dateCreated)}
+              {getTimeDifferenceFromNull(msgItem.dateCreated)}
             </span>
           </div>
         </div>
       ) : (
         <div className="d-flex justify-content-end mb-4">
           <div className="msg_cotainer_send">
-            {item.text} {seenItem && <i className="fa fa-check" />}
+            {msgItem.text} {seenMsg && <i className="fa fa-check" />}
             <br />
             <span className="msg_time_send text-center">
-              {getTimeDifferenceFromNull(item.dateCreated)}
+              {getTimeDifferenceFromNull(msgItem.dateCreated)}
             </span>
           </div>
         </div>
@@ -59,10 +59,10 @@ const Msg = ({
 
 Msg.propTypes = {
   notification: propTypes.object,
-  item: propTypes.object,
+  msgItem: propTypes.object,
   deleteSeenMsgNotification: propTypes.func,
   user: propTypes.object,
-  seenItem: propTypes.bool,
+  seenMsg: propTypes.bool,
   currentUser: propTypes.object,
   props: propTypes.object,
 };
@@ -71,8 +71,8 @@ Msg.defaultProps = {
   notification: {},
   deleteSeenMsgNotification: () => {},
   user: {},
-  item: {},
-  seenItem: false,
+  msgItem: {},
+  seenMsg: false,
   currentUser: {},
   props: {},
 };

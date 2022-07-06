@@ -80,8 +80,8 @@ class Chat extends Component {
             <MsgContainer
               key={x.id + x.seen}
               user={sender}
-              seenItem={x.seen}
-              item={x}
+              seenMsg={x.seen}
+              msgItem={x}
             />
           );
         }
