@@ -16,12 +16,6 @@ function getTracks(data) {
   return { type: GET_TRACKS_DATA, payload: data };
 }
 
-export function resetTracks() {
-  return {
-    type: RESET_TRACKS,
-  };
-}
-
 export default function getAllTracks(filter) {
   return async dispatch => {
     dispatch(getRequestInc());

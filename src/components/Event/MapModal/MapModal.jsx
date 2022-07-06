@@ -23,7 +23,7 @@ const {
   APPLY,
 } = constants;
 
-export const MapModal = ({ initialize, values }) => {
+const MapModal = ({ initialize, values }) => {
   const [open, setOpen] = useState(false);
 
   const { longitude, latitude } = values.selectedPos;

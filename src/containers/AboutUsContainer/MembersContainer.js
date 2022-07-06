@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Members from "../../components/AboutUs/Members/Members";
-import { getMembersAction } from "../../actions/aboutUs/membersActions";
+import getMembersAction from "../../actions/aboutUs/membersActions";
 import { ZERO_AMOUNT } from "../../constants/numberConstants";
 
 const mapStateToProps = state => ({

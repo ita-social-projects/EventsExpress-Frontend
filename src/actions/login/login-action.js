@@ -18,7 +18,7 @@ export const SET_USER = "SET_USER";
 const history = createBrowserHistory({ forceRefresh: true });
 const apiService = new AuthenticationService();
 
-export function setUser(data) {
+function setUser(data) {
   return {
     type: SET_USER,
     payload: data,
@@ -105,23 +105,6 @@ export function loginFacebook(profile) {
     birthday: profile.birthday,
     gender: profile.gender,
     type: 1,
-  });
-}
-
-export function loginTwitter(data) {
-  const res = () =>
-    apiService.setTwitterLogin({
-      TokenId: data.oauth_token,
-      TokenSecret: data.oauth_token_secret,
-      UserId: data.user_id,
-      Email: data.email,
-      Name: typeof data.name !== "undefined" ? data.name : data.screen_name,
-      PhotoUrl: data.image_url,
-    });
-  return loginResponseHandler(res, {
-    email: data.email,
-    name: typeof data.name !== "undefined" ? data.name : data.screen_name,
-    type: 2,
   });
 }
 

@@ -2,7 +2,7 @@ import { UserService } from "../../../services";
 
 export const SET_USERS = "SET_ORGANIZERS";
 
-export const setUsers = users => ({
+const setUsers = users => ({
   type: SET_USERS,
   payload: users,
 });

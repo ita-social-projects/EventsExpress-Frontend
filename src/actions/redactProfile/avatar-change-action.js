@@ -12,7 +12,7 @@ export const changeAvatarStates = {
 
 const apiService = new UserService();
 
-export function updateAvatar() {
+function updateAvatar() {
   return {
     type: changeAvatarStates.UPDATE,
   };

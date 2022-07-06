@@ -24,7 +24,7 @@ export function getUnreadMessages(userId) {
   };
 }
 
-export function getChatsSuccess(data) {
+function getChatsSuccess(data) {
   return {
     type: GET_CHATS_DATA,
     payload: data,
