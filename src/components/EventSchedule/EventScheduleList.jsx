@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import "./EventSchedule.scss";
 import SpinnerWrapper from "../../containers/SpinnerContainer/SpinnerContainer";
 import NoResult from "../shared/NoResult/NoResult";
-import EventCard from "../Landing/EventCard/EventCard";
-import { EVENT_NO_RESULT } from "../../constants/eventConstants";
+import { CARD_TYPE, EVENT_NO_RESULT } from "../../constants/eventConstants";
+import DraftEventCard from "../Draft/DraftEventCard";
 
 const EventSchedulesList = ({
   events,
@@ -21,7 +21,12 @@ const EventSchedulesList = ({
         {isItemsAvaliable ? (
           <div className="eventsBlock">
             {events.map(event => (
-              <EventCard key={event.id} event={event} />
+              <DraftEventCard
+                key={event.id}
+                eventId={event.id}
+                event={event}
+                cardType={CARD_TYPE.RECCURENT_EVENTS}
+              />
             ))}
           </div>
         ) : (
