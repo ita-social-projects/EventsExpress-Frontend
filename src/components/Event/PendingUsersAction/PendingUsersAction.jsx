@@ -9,25 +9,24 @@ import {
 } from "../../../actions/event/event-item-view-action";
 import { BUTTON_NAMES } from "../../../constants/buttonConsts";
 
-const useStyles = makeStyles(() => ({
-  success: {
-    color: "#fff",
-    backgroundColor: "#4caf50",
-    "&:hover": {
-      backgroundColor: "#388e3c",
+const PendingUsersActions = ({ user, isMyEvent, eventId }) => {
+  const useStyles = makeStyles(() => ({
+    success: {
+      color: "#fff",
+      backgroundColor: "#4caf50",
+      "&:hover": {
+        backgroundColor: "#388e3c",
+      },
     },
-  },
-  danger: {
-    color: "#fff",
-    backgroundColor: "#f44336",
-    "&:hover": {
-      backgroundColor: "#d32f2f",
+    danger: {
+      color: "#fff",
+      backgroundColor: "#f44336",
+      "&:hover": {
+        backgroundColor: "#d32f2f",
+      },
     },
-  },
-}));
+  }));
 
-const PendingUsersActions = props => {
-  const { user, isMyEvent } = props;
   const classes = useStyles();
 
   return (
@@ -37,14 +36,14 @@ const PendingUsersActions = props => {
           <Button
             variant="contained"
             className={classes.success}
-            onClick={() => props.approveUser(user.id, props.eventId, true)}
+            onClick={() => approveUser(user.id, eventId, true)}
           >
             {BUTTON_NAMES.APROVE}
           </Button>
           <Button
             variant="contained"
             className={classes.danger}
-            onClick={() => props.approveUser(user.id, props.eventId, false)}
+            onClick={() => approveUser(user.id, eventId, false)}
           >
             {BUTTON_NAMES.DENY}
           </Button>
@@ -68,14 +67,12 @@ const mapDispatchToProps = dispatch => ({
 PendingUsersActions.propTypes = {
   user: PropTypes.object,
   isMyEvent: PropTypes.bool,
-  approveUser: PropTypes.func,
   eventId: PropTypes.number,
 };
 
 PendingUsersActions.defaultProps = {
   user: {},
   isMyEvent: false,
-  approveUser: () => {},
   eventId: null,
 };
 

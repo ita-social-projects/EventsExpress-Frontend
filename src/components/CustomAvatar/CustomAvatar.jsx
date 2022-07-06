@@ -1,4 +1,4 @@
-﻿import React, { Component } from "react";
+﻿import React, { useEffect, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
@@ -8,58 +8,38 @@ import "./CustomAvatar.scss";
 
 const photoService = new PhotoService();
 
-class CustomAvatar extends Component {
-  constructor(props) {
-    super(props);
+const CustomAvatar = ({ userId, name, size, changeAvatarCounter }) => {
+  const [avatarImage, setAvatarImage] = useState(null);
 
-    this.state = {
-      avatarImage: null,
-    };
-  }
-
-  componentDidMount() {
-    this.uploadPhoto();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.changeAvatarCounter !== prevProps.changeAvatarCounter)
-      this.uploadPhoto();
-  }
-
-  componentWillUnmount() {
-    URL.revokeObjectURL(this.state.avatarImage);
-  }
-
-  uploadPhoto() {
-    photoService.getUserPhoto(this.props.userId).then(avatarImage => {
-      if (avatarImage != null) {
-        this.setState({ avatarImage: URL.createObjectURL(avatarImage) });
+  useEffect(() => {
+    photoService.getUserPhoto(userId).then(avatar => {
+      if (avatar != null) {
+        setAvatarImage(URL.createObjectURL(avatar));
       }
     });
-  }
+    return () => {
+      URL.revokeObjectURL(avatarImage);
+    };
+  }, [changeAvatarCounter]);
 
-  render() {
-    const { name } = this.props;
+  const sizeAvatar = `${size}Avatar`;
 
-    const size = `${this.props.size}Avatar`;
-
-    return (
-      <>
-        <Avatar
-          alt={`${name}avatar`}
-          src={this.state.avatarImage}
-          className={size}
-          imgProps={{
-            onError: e => {
-              e.target.onerror = null;
-              e.target.src = `${USER_DEFAULT_IMAGE}`;
-            },
-          }}
-        />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Avatar
+        alt={`${name}avatar`}
+        src={avatarImage}
+        className={sizeAvatar}
+        imgProps={{
+          onError: e => {
+            e.target.onerror = null;
+            e.target.src = `${USER_DEFAULT_IMAGE}`;
+          },
+        }}
+      />
+    </>
+  );
+};
 
 // TODO: change size and changeAvatarCounter in actual props
 CustomAvatar.propTypes = {

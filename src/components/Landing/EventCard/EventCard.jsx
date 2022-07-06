@@ -26,6 +26,13 @@ const EventCard = ({ event, additionalButtons, additionalModal }) => {
       ? moment(nextRun).format(FORMATS.MONTH_FORMAT)
       : moment(dateFrom).format(FORMATS.MONTH_FORMAT);
 
+  const isInvalidDate = value => {
+    if (value === "Invalid date") {
+      return "?";
+    }
+    return value;
+  };
+
   useEffect(() => {
     photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {
       if (eventPreviewImage !== null) {
@@ -47,7 +54,7 @@ const EventCard = ({ event, additionalButtons, additionalModal }) => {
         />
         <div className="card-content">
           <div className="card-date date-container">
-            <span className="day">{day}</span>
+            <span className="day">{isInvalidDate(day)}</span>
           </div>
           <div className="card-info">
             <span className="card-info-header">{titleText}</span>
@@ -59,7 +66,7 @@ const EventCard = ({ event, additionalButtons, additionalModal }) => {
             </div>
           </div>
         </div>
-        <span className="month">{month}</span>
+        <span className="month">{isInvalidDate(month)}</span>
       </div>
       {additionalModal}
     </>

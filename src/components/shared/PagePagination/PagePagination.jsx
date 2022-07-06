@@ -7,7 +7,7 @@ import { DEFAULT_ONE_VALUE } from "../../../constants/numberConstants";
 
 const { FIRST, LAST, NEXT, PREV } = PAGINATION_LABELS;
 
-const PagePagination = ({ callback }, props) => {
+const PagePagination = ({ callback, totalPages, currentPage }) => {
   const limit = 6;
   const pageCount = 4;
 
@@ -17,18 +17,20 @@ const PagePagination = ({ callback }, props) => {
   return (
     <ul className="pagination justify-content-center">
       <Pagination
-        total={props.totalPages * limit}
+        total={totalPages * limit}
         limit={limit}
         pageCount={pageCount}
-        currentPage={props.currentPage}
+        currentPage={currentPage}
       >
         {({
           pages,
+          // eslint-disable-next-line no-shadow
           currentPage,
           hasNextPage,
           hasPreviousPage,
           previousPage,
           nextPage,
+          // eslint-disable-next-line no-shadow
           totalPages,
           getPageItemProps,
         }) => (
