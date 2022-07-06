@@ -5,7 +5,7 @@ export const GET_LINKED_AUTHS_SUCCESS = "GET_LINKED_AUTHS_SUCCESS";
 
 const apiService = new AccountService();
 
-export function pushToStateLinkedAuths(data) {
+function pushToStateLinkedAuths(data) {
   return {
     type: GET_LINKED_AUTHS_SUCCESS,
     payload: data,

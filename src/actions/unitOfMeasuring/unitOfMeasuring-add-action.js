@@ -5,8 +5,6 @@ import { buildValidationState } from "../../components/helpers/action-helpers";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 
 export const SET_UNIT_OF_MEASURING_EDITED = "SET_UNIT_OF_MEASURING_EDITED";
-export const SET_UNIT_OF_MEASURING_PENDING = "SET_UNIT_OF_MEASURING_PENDING";
-export const SET_UNIT_OF_MEASURING_SUCCESS = "SET_UNIT_OF_MEASURING_SUCCESS";
 
 const apiService = new UnitOfMeasuringService();
 
@@ -14,20 +12,6 @@ export function setUnitOfMeasuringEdited(id) {
   return {
     type: SET_UNIT_OF_MEASURING_EDITED,
     payload: id,
-  };
-}
-
-export function setUnitOfMeasuringPending(data) {
-  return {
-    type: SET_UNIT_OF_MEASURING_PENDING,
-    payload: data,
-  };
-}
-
-export function setUnitOfMeasuringSuccess(data) {
-  return {
-    type: SET_UNIT_OF_MEASURING_SUCCESS,
-    payload: data,
   };
 }
 

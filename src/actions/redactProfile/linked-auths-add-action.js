@@ -48,11 +48,3 @@ export function facebookLoginAdd(email) {
     });
   return loginResponseHandler(call);
 }
-
-export function twitterLoginAdd(email) {
-  const res = () =>
-    apiService.setTwitterLoginAdd({
-      Email: email,
-    });
-  return loginResponseHandler(res);
-}

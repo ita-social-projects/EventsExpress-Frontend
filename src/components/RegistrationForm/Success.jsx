@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { REGISTRATION_SUCCESSFUL } from "../../constants/authConstants";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
-export class Success extends PureComponent {
+class Success extends PureComponent {
   render() {
     return (
       <>
