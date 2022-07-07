@@ -15,7 +15,7 @@ const splitPath = path => {
 };
 
 const UserProfileTabs = ({ getEventsByType, userId, history }) => {
-  const [selectedTab, setSelectedTab] = useState(null);
+  const [selectedTab, setSelectedTab] = useState(0);
   const EVENT_NUM = {
     FUTURE: 0,
     PAST: 1,
@@ -24,14 +24,6 @@ const UserProfileTabs = ({ getEventsByType, userId, history }) => {
   };
   useEffect(() => {
     setSelectedTab(indexToTabName[splitPath(history.location.pathname)]);
-  }, []);
-
-  useEffect(() => {
-    // componentDidUpdate(_, prevState) {
-    //   const tabName =
-    //     indexToTabName[this.splitPath(this.props.history.location.pathname)];
-    //   if (prevState.value !== tabName) this.handleChange(_, tabName);
-    // }
   }, [selectedTab]);
 
   const handleChange = (event, value) => {

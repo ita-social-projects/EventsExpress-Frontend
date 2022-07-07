@@ -16,10 +16,10 @@
     .search_users_pagination {
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: $fullWidth;
         width: $fullWidth;
-        padding-right: 20px;
-        padding-bottom: 20px;
+        padding: 20px 0px;
 
         .search_users_input {
             margin-top: 50px;

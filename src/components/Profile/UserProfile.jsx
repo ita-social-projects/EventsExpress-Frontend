@@ -31,23 +31,22 @@ const UserProfile = ({
   setAttitude,
   getEventsByType,
   history,
+  ...props
 }) => {
+  const { id } = props.match.params;
   useEffect(() => {
     if (!isDataReady) {
-      getUser(currentUserId);
+      getUser(id);
     }
-
     return () => {
       resetUser();
     };
   }, []);
 
-  // How to fix userID
-
   const onLike = () => {
     setAttitude({
       userFromId: currentUserId,
-      userToId: userId,
+      userToId: id,
       attitude: 0,
     });
   };
@@ -55,7 +54,7 @@ const UserProfile = ({
   const onDislike = () => {
     setAttitude({
       userFromId: currentUserId,
-      userToId: userId,
+      userToId: id,
       attitude: 1,
     });
   };
@@ -63,7 +62,7 @@ const UserProfile = ({
   const onReset = () => {
     setAttitude({
       userFromId: currentUserId,
-      userToId: userId,
+      userToId: id,
       attitude: 2,
     });
   };
@@ -74,7 +73,7 @@ const UserProfile = ({
           <div className="col-4 user">
             <div className="d-flex flex-column justify-content-center align-items-center">
               <div className="user-profile-avatar">
-                <CustomAvatar size="big" name={name} userId={userId} />
+                <CustomAvatar size="big" name={name} userId={id} />
               </div>
               <RatingAverage value={rating} direction="row" />
 
@@ -108,7 +107,7 @@ const UserProfile = ({
                   placement="bottom"
                   TransitionComponent={Zoom}
                 >
-                  <Link to={`/chat/${userId}`}>
+                  <Link to={`/chat/${id}`}>
                     <IconButton>
                       <i className="far fa-comments" />
                     </IconButton>
@@ -128,14 +127,14 @@ const UserProfile = ({
       </div>
       <div className="mt-2">
         <UserProfileTabs
-          userId={currentUserId}
+          userId={id}
           getEventsByType={getEventsByType}
           history={history}
         />
         <UserProfileRoutes
           events={events}
           currentUser={currentUserId}
-          userId={currentUserId}
+          userId={id}
           getEventsByType={getEventsByType}
         />
       </div>
@@ -160,6 +159,7 @@ UserProfile.propTypes = {
   rating: PropTypes.number,
   attitude: PropTypes.number,
   categories: PropTypes.array,
+  match: PropTypes.object,
 };
 
 UserProfile.defaultProps = {
@@ -179,6 +179,7 @@ UserProfile.defaultProps = {
   rating: 0,
   attitude: 0,
   categories: [],
+  match: {},
 };
 
 export default UserProfile;

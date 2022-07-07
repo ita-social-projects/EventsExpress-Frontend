@@ -30,6 +30,8 @@ const SearchUsers = ({
 
   const getUsers = pageToGetUsers => getSearchUsersDispatch(pageToGetUsers);
 
+  console.log(pathname, typeof page);
+
   useEffect(() => {
     push(`${pathname}?keyWord=${search}`);
     changeFilterDispatch(search);
@@ -67,7 +69,7 @@ const SearchUsers = ({
         />
       </div>
 
-      <SpinnerContainer showContent>
+      <SpinnerContainer showContent={users !== null}>
         <UserItemList
           users={users}
           page={pageNumber}
