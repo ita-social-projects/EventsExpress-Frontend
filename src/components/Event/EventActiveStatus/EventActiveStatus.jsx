@@ -16,7 +16,7 @@ const EventActiveStatus = ({ eventStatus, eventId, onBlock, onUnBlock }) => {
     case EVENT_STATUS_ENUM.ACTIVE:
       return (
         <SimpleModalWithDetails
-          key={eventId + eventStatus}
+          key={eventId}
           data="Are you sure?"
           submitCallback={reason => onBlock(eventId, reason, eventStatus)}
           button={RenderEventButton(
@@ -29,7 +29,7 @@ const EventActiveStatus = ({ eventStatus, eventId, onBlock, onUnBlock }) => {
     case EVENT_STATUS_ENUM.BLOCKED:
       return (
         <SimpleModalWithDetails
-          key={eventId + eventStatus}
+          key={eventId}
           data="Are you sure?"
           submitCallback={reason => onUnBlock(eventId, reason)}
           button={RenderEventButton(

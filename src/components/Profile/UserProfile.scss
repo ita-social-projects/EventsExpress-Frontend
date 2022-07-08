@@ -116,10 +116,7 @@
 
 .user-profile-avatar {
     position: relative;
-}
-
-.user-profile-avatar:hover {
-    opacity: $opacity05;
+    display: flex;
 }
 
 .mb-5,

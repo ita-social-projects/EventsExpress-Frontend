@@ -74,8 +74,8 @@ const UserProfile = ({
             <div className="d-flex flex-column justify-content-center align-items-center">
               <div className="user-profile-avatar">
                 <CustomAvatar size="big" name={name} userId={id} />
+                <RatingAverage value={rating} direction="row" />
               </div>
-              <RatingAverage value={rating} direction="row" />
 
               <div className="row justify-content-center">
                 <Tooltip

@@ -8,7 +8,7 @@ import "./CustomAvatar.scss";
 
 const photoService = new PhotoService();
 
-const CustomAvatar = ({ userId, name, size, changeAvatarCounter }) => {
+const CustomAvatar = ({ userId, name, changeAvatarCounter }) => {
   const [avatarImage, setAvatarImage] = useState(null);
 
   useEffect(() => {
@@ -22,14 +22,12 @@ const CustomAvatar = ({ userId, name, size, changeAvatarCounter }) => {
     };
   }, [changeAvatarCounter]);
 
-  const sizeAvatar = `${size}Avatar`;
-
   return (
     <>
       <Avatar
         alt={`${name}avatar`}
         src={avatarImage}
-        className={sizeAvatar}
+        className="avatar"
         imgProps={{
           onError: e => {
             e.target.onerror = null;
@@ -45,14 +43,12 @@ const CustomAvatar = ({ userId, name, size, changeAvatarCounter }) => {
 CustomAvatar.propTypes = {
   userId: propTypes.string,
   name: propTypes.string,
-  size: propTypes.any,
   changeAvatarCounter: propTypes.any,
 };
 
 CustomAvatar.defaultProps = {
   userId: "",
   name: "",
-  size: "",
   changeAvatarCounter: "change this",
 };
 
