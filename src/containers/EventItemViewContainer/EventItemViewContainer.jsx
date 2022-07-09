@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
 import EventItemView from "../../components/Event/EventItemView/EventItemView";
 import { EVENT_STATUS_ENUM } from "../../constants/eventConstants";
-import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import getEvent, {
   join,
   leave,
@@ -13,74 +10,6 @@ import getEvent, {
 import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
 import { getInventoriesByEventId } from "../../actions/inventory/inventory-list-action";
 import { getUsersInventoriesByEventId } from "../../actions/users/users-inventories-action";
-
-const EventItemViewContainer = props => {
-  const {
-    match,
-    event,
-    unCancel,
-    reset,
-    currentUser,
-    joinEvent,
-    getEventProp,
-    getUnitsOfMeasuringProp,
-    leaveEvent,
-    getInventoriesByEventIdProp,
-    getUsersInventoriesByEventIdProp,
-    deleteEvent,
-  } = props;
-
-  const { data } = event;
-
-  useEffect(() => {
-    const { id } = match.params;
-    getEventProp(id);
-    getUnitsOfMeasuringProp();
-    getInventoriesByEventIdProp(id);
-    getUsersInventoriesByEventIdProp(id);
-    // eslint-disable-next-line prettier/prettier
-  },[])  
-
-  useEffect(() => {
-    reset();
-    // eslint-disable-next-line prettier/prettier
-  },[])
-
-  const onJoin = () => {
-    joinEvent(currentUser.id, event.data.id);
-  };
-
-  const onLeave = () => {
-    leaveEvent(currentUser.id, event.data.id);
-  };
-
-  const onCancel = (reason, eventStatus) => {
-    unCancel(event.data.id, reason, eventStatus);
-  };
-
-  const onUnCancel = (reason, eventStatus) => {
-    unCancel(event.data.id, reason, eventStatus);
-  };
-
-  const onDelete = (reason, eventStatus) => {
-    deleteEvent(data.id, reason, eventStatus);
-  };
-
-  return (
-    <SpinnerContainer showContent={data !== undefined}>
-      <EventItemView
-        event={event}
-        match={match}
-        onLeave={onLeave}
-        onJoin={onJoin}
-        onCancel={onCancel}
-        onUnCancel={onUnCancel}
-        onDelete={onDelete}
-        currentUser={currentUser}
-      />
-    </SpinnerContainer>
-  );
-};
 
 const mapStateToProps = state => ({
   event: state.event,
@@ -105,37 +34,4 @@ const mapDispatchToProps = dispatch => ({
   reset: () => dispatch(resetEvent()),
 });
 
-EventItemViewContainer.propTypes = {
-  match: PropTypes.object,
-  event: PropTypes.object,
-  currentUser: PropTypes.object,
-  deleteEvent: PropTypes.func,
-  unCancel: PropTypes.func,
-  joinEvent: PropTypes.func,
-  reset: PropTypes.func,
-  getEventProp: PropTypes.func,
-  getUnitsOfMeasuringProp: PropTypes.func,
-  leaveEvent: PropTypes.func,
-  getInventoriesByEventIdProp: PropTypes.func,
-  getUsersInventoriesByEventIdProp: PropTypes.func,
-};
-
-EventItemViewContainer.defaultProps = {
-  match: {},
-  event: {},
-  currentUser: {},
-  unCancel: () => {},
-  getEventProp: () => {},
-  joinEvent: () => {},
-  reset: () => {},
-  getUnitsOfMeasuringProp: () => {},
-  deleteEvent: () => {},
-  leaveEvent: () => {},
-  getInventoriesByEventIdProp: () => {},
-  getUsersInventoriesByEventIdProp: () => {},
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(EventItemViewContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(EventItemView);

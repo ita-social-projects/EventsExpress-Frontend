@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import RatingContainer from "../../../containers/RatingContainer/RatingContainer";
 import Comment from "../../Comment/Comment";
 import "moment-timezone";
@@ -11,6 +11,7 @@ import EventVisitors from "../EventVisitors/EventVisitors";
 import EventLeaveModal from "../EventLeaveModal/EventLeaveModal";
 import InventoryList from "../../Inventory/InventoryList";
 import DisplayLocation from "../Map/DisplayLocation";
+import SpinnerContainer from "../../../containers/SpinnerContainer/SpinnerContainer";
 
 import { ADULT_AGE } from "../../../constants/userConstants";
 import {
@@ -43,11 +44,15 @@ const EventItemView = ({
   currentUser,
   event,
   match,
-  onCancel,
-  onDelete,
-  onUnCancel,
-  onJoin,
-  onLeave,
+  joinEvent,
+  leaveEvent,
+  unCancel,
+  deleteEvent,
+  getEventProp,
+  reset,
+  getUnitsOfMeasuringProp,
+  getInventoriesByEventIdProp,
+  getUsersInventoriesByEventIdProp,
 }) => {
   const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
   const {
@@ -65,26 +70,6 @@ const EventItemView = ({
     organizers,
   } = event.data;
 
-  useEffect(() => {
-    photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {
-      if (eventPreviewImage !== null) {
-        setEventImage(URL.createObjectURL(eventPreviewImage));
-      }
-    });
-    return () => {
-      URL.revokeObjectURL(eventImage);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const renderCategories = arr => {
-    return arr.map(x => (
-      <span key={x.id}>
-        {"#"}
-        {x.name}
-      </span>
-    ));
-  };
   const today = moment().startOf("day");
   const visitorsEnum = {
     approvedUsers: visitors.filter(x => x.userStatusEvent === 0),
@@ -98,209 +83,268 @@ const EventItemView = ({
     moment.duration(today.diff(moment(currentUser.birthday))).asYears() >=
     ADULT_AGE;
 
+  const onJoin = () => {
+    joinEvent(currentUser.id, event.data.id);
+  };
+
+  const onLeave = () => {
+    leaveEvent(currentUser.id, event.data.id);
+  };
+
+  const onCancel = (reason, status) => {
+    unCancel(event.data.id, reason, status);
+  };
+
+  const onUnCancel = (reason, status) => {
+    unCancel(event.data.id, reason, status);
+  };
+
+  const onDelete = (reason, status) => {
+    deleteEvent(event.data.id, reason, status);
+  };
+
+  useEffect(() => {
+    photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {
+      if (eventPreviewImage !== null) {
+        setEventImage(URL.createObjectURL(eventPreviewImage));
+      }
+    });
+    return () => {
+      URL.revokeObjectURL(eventImage);
+    };
+  }, []);
+
+  useEffect(() => {
+    const { id: matchId } = match.params;
+    getEventProp(matchId);
+    getUnitsOfMeasuringProp();
+    getInventoriesByEventIdProp(matchId);
+    getUsersInventoriesByEventIdProp(matchId);
+    reset();
+  }, []);
+
+  const renderCategories = arr => {
+    return arr.map(x => (
+      <span key={x.id}>
+        {"#"}
+        {x.name}
+      </span>
+    ));
+  };
+
   return (
-    <div className="container-fluid mt-1">
-      <div className="row">
-        <div className="col-9">
-          <div className="col-12">
-            <img
-              src={eventImage}
-              id={`eventFullPhotoImg${id}`}
-              alt="Event"
-              className="w-100"
-            />
-            <div className="text-block">
-              <span className="title">{title}</span>
-              <br />
-              {eventStatusBlock(isPublic)}
-              <br />
-              {maxParticipantsBlock(maxParticipants, visitors)}
-              <br />
-              {dateBlock(dateTo, dateFrom)}
-              <br />
-              {event.data.location && (
-                <DisplayLocation location={event.data.location} />
-              )}
-              {renderCategories(categories)}
-            </div>
-            <div className="btn-group dropup change-event">
-              <button
-                type="button"
-                className="btn btn-danger dropdown-toggle btn-lg"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {BUTTON_NAMES.CHANGE_EVENT_STATUS}
-              </button>
-              <div className="dropdown-menu">
-                {canEdit(isFutureEvent, isMyEvent) && (
-                  <Link to={`/editEvent/${id}`}>
-                    <button type="button" className="btn btn-danger mb-1">
-                      {BUTTON_NAMES.EDIT}
-                    </button>
-                  </Link>
+    <SpinnerContainer showContent={event.data !== undefined}>
+      <div className="container-fluid mt-1">
+        <div className="row">
+          <div className="col-9">
+            <div className="col-12">
+              <img
+                src={eventImage}
+                id={`eventFullPhotoImg${id}`}
+                alt="Event"
+                className="w-100"
+              />
+              <div className="text-block">
+                <span className="title">{title}</span>
+                <br />
+                {eventStatusBlock(isPublic)}
+                <br />
+                {maxParticipantsBlock(maxParticipants, visitors)}
+                <br />
+                {dateBlock(dateTo, dateFrom)}
+                <br />
+                {event.data.location && (
+                  <DisplayLocation location={event.data.location} />
                 )}
-                {canCancel(
-                  isFutureEvent,
-                  currentUser,
-                  isMyEvent,
-                  eventStatus,
-                ) && (
-                  <SimpleModalWithDetails
-                    button={
-                      <button type="button" className="btn btn-danger ">
-                        {BUTTON_NAMES.CANCEL}
+                {renderCategories(categories)}
+              </div>
+              <div className="btn-group dropup change-event">
+                <button
+                  type="button"
+                  className="btn btn-danger dropdown-toggle btn-lg"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  {BUTTON_NAMES.CHANGE_EVENT_STATUS}
+                </button>
+                <div className="dropdown-menu">
+                  {canEdit(isFutureEvent, isMyEvent) && (
+                    <Link to={`/editEvent/${id}`}>
+                      <button type="button" className="btn btn-danger mb-1">
+                        {BUTTON_NAMES.EDIT}
                       </button>
-                    }
-                    submitCallback={onCancel}
-                    data="Are you sure?"
-                  />
-                )}
-                {canDeleted(isMyEvent, eventStatus) && (
-                  <SimpleModalWithDetails
-                    button={
-                      <button type="button" className="btn btn-danger ">
-                        {BUTTON_NAMES.DELETE}
-                      </button>
-                    }
-                    submitCallback={onDelete}
-                    data="Are you sure?"
-                  />
-                )}
-                {canUncancel(isFutureEvent) && (
-                  <SimpleModalWithDetails
-                    button={
-                      <button type="button" className="btn btn-danger ">
-                        {BUTTON_NAMES.UNDO_CANCEL}
-                      </button>
-                    }
-                    submitCallback={onUnCancel}
-                    data="Are you sure?"
-                  />
-                )}
+                    </Link>
+                  )}
+                  {canCancel(
+                    isFutureEvent,
+                    currentUser,
+                    isMyEvent,
+                    eventStatus,
+                  ) && (
+                    <SimpleModalWithDetails
+                      button={
+                        <button type="button" className="btn btn-danger ">
+                          {BUTTON_NAMES.CANCEL}
+                        </button>
+                      }
+                      submitCallback={onCancel}
+                      data="Are you sure?"
+                    />
+                  )}
+                  {canDeleted(isMyEvent, eventStatus) && (
+                    <SimpleModalWithDetails
+                      button={
+                        <button type="button" className="btn btn-danger ">
+                          {BUTTON_NAMES.DELETE}
+                        </button>
+                      }
+                      submitCallback={onDelete}
+                      data="Are you sure?"
+                    />
+                  )}
+                  {canUncancel(isFutureEvent) && (
+                    <SimpleModalWithDetails
+                      button={
+                        <button type="button" className="btn btn-danger ">
+                          {BUTTON_NAMES.UNDO_CANCEL}
+                        </button>
+                      }
+                      submitCallback={onUnCancel}
+                      data="Are you sure?"
+                    />
+                  )}
+                </div>
               </div>
             </div>
-          </div>
 
-          {!isFutureEvent && (
-            <div className="text-box overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
-              <RatingContainer
-                iWillVisitIt={iWillVisitIt}
-                eventId={id}
-                userId={currentUser.id}
-              />
-            </div>
-          )}
-          {isOnlyForAdults && (
-            <div className="text-box-big overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
-              <span className="font-weight-bold font">
-                {EVENT_ITEM_VIEW_CONSTS.ADULT_LABEL}
-              </span>
-              <br />
-              {EVENT_ITEM_VIEW_CONSTS.EVENTS_FOR_ADULTS}
-            </div>
-          )}
-          <div className="text-box-big overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
-            {eventStatus === EVENT_STATUS_ENUM.CANCELED && (
-              <div className="text-center text-uppercase cancel-text">
-                <i className="fas fa-exclamation-triangle text-warning" />
-                <span>{" This event is canceled "}</span>
-                <i className="fas fa-exclamation-triangle text-warning" />
-                <br />
+            {!isFutureEvent && (
+              <div className="text-box overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
+                <RatingContainer
+                  iWillVisitIt={iWillVisitIt}
+                  eventId={id}
+                  userId={currentUser.id}
+                />
               </div>
             )}
-            {description}
-          </div>
-          <div className="shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
-            <InventoryList eventId={id} />
-          </div>
-
-          <div className="overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
-            <Comment match={match} />
-          </div>
-        </div>
-
-        <div className="col-3 overflow-auto shadow p-3 mb-5 bg-white rounded">
-          {!isMyEvent && (
-            <div className="text-box overflow-auto shadow p-3 mb-5 mt-2 bg-white rounded">
-              {isAppropriateAgeBlock(
-                isOnlyForAdults,
-                isAdult,
-                visitors,
-                currentUser,
-              )}
-              {canJoin(
-                isFutureEvent,
-                isFreePlace,
-                iWillVisitIt,
-                isMyEvent,
-                eventStatus,
-                isOnlyForAdults,
-                isAdult,
-              ) && (
-                <div>
+            {isOnlyForAdults && (
+              <div className="text-box-big overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
+                <span className="font-weight-bold font">
+                  {EVENT_ITEM_VIEW_CONSTS.ADULT_LABEL}
+                </span>
+                <br />
+                {EVENT_ITEM_VIEW_CONSTS.EVENTS_FOR_ADULTS}
+              </div>
+            )}
+            <div className="text-box-big overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
+              {eventStatus === EVENT_STATUS_ENUM.CANCELED && (
+                <div className="text-center text-uppercase cancel-text">
+                  <i className="fas fa-exclamation-triangle text-warning" />
+                  <span>{" This event is canceled "}</span>
+                  <i className="fas fa-exclamation-triangle text-warning" />
                   <br />
-                  <button
-                    onClick={onJoin}
-                    type="button"
-                    className="btn btn-success join-leave"
-                    variant="contained"
-                  >
-                    {BUTTON_NAMES.JOIN}
-                  </button>
                 </div>
               )}
-              {canLeave(
-                isFutureEvent,
-                isMyEvent,
-                iWillVisitIt,
-                currentUser,
-                visitors,
-                eventStatus,
-              ) && (
-                <EventLeaveModal
-                  data={{}}
-                  submitLeave={onLeave}
-                  status={false}
-                />
-              )}
+              {description}
             </div>
-          )}
-          <EventVisitors
-            data={{}}
-            admins={organizers}
-            visitors={visitorsEnum}
-            isMyPrivateEvent={isMyPrivateEvent(isMyEvent, isPublic)}
-            isMyEvent={isMyEvent}
-            current_user_id={currentUser.id}
-          />
+            <div className="shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
+              <InventoryList eventId={id} />
+            </div>
+
+            <div className="overflow-auto shadow p-3 mx-3 mb-5 mt-2 bg-white rounded">
+              <Comment match={match} />
+            </div>
+          </div>
+
+          <div className="col-3 overflow-auto shadow p-3 mb-5 bg-white rounded">
+            {!isMyEvent && (
+              <div className="text-box overflow-auto shadow p-3 mb-5 mt-2 bg-white rounded">
+                {isAppropriateAgeBlock(
+                  isOnlyForAdults,
+                  isAdult,
+                  visitors,
+                  currentUser,
+                )}
+                {canJoin(
+                  isFutureEvent,
+                  isFreePlace,
+                  iWillVisitIt,
+                  isMyEvent,
+                  eventStatus,
+                  isOnlyForAdults,
+                  isAdult,
+                ) && (
+                  <div>
+                    <br />
+                    <button
+                      onClick={onJoin}
+                      type="button"
+                      className="btn btn-success join-leave"
+                      variant="contained"
+                    >
+                      {BUTTON_NAMES.JOIN}
+                    </button>
+                  </div>
+                )}
+                {canLeave(
+                  isFutureEvent,
+                  isMyEvent,
+                  iWillVisitIt,
+                  currentUser,
+                  visitors,
+                  eventStatus,
+                ) && (
+                  <EventLeaveModal
+                    data={{}}
+                    submitLeave={onLeave}
+                    status={false}
+                  />
+                )}
+              </div>
+            )}
+            <EventVisitors
+              data={{}}
+              admins={organizers}
+              visitors={visitorsEnum}
+              isMyPrivateEvent={isMyPrivateEvent(isMyEvent, isPublic)}
+              isMyEvent={isMyEvent}
+              current_user_id={currentUser.id}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </SpinnerContainer>
   );
 };
 
 EventItemView.propTypes = {
-  currentUser: propTypes.object,
-  event: propTypes.object,
-  match: propTypes.object,
-  onCancel: propTypes.func,
-  onDelete: propTypes.func,
-  onUnCancel: propTypes.func,
-  onJoin: propTypes.func,
-  onLeave: propTypes.func,
+  currentUser: PropTypes.object,
+  event: PropTypes.object,
+  match: PropTypes.object,
+  joinEvent: PropTypes.func,
+  leaveEvent: PropTypes.func,
+  unCancel: PropTypes.func,
+  deleteEvent: PropTypes.func,
+  reset: PropTypes.func,
+  getEventProp: PropTypes.func,
+  getUnitsOfMeasuringProp: PropTypes.func,
+  getInventoriesByEventIdProp: PropTypes.func,
+  getUsersInventoriesByEventIdProp: PropTypes.func,
 };
 
 EventItemView.defaultProps = {
   currentUser: {},
   event: {},
   match: {},
-  onCancel: () => {},
-  onDelete: () => {},
-  onUnCancel: () => {},
-  onJoin: () => {},
-  onLeave: () => {},
+  joinEvent: () => {},
+  leaveEvent: () => {},
+  unCancel: () => {},
+  deleteEvent: () => {},
+  reset: () => {},
+  getEventProp: () => {},
+  getUnitsOfMeasuringProp: () => {},
+  getInventoriesByEventIdProp: () => {},
+  getUsersInventoriesByEventIdProp: () => {},
 };
 
 export default EventItemView;
