@@ -4,9 +4,6 @@ import { AuthenticationService } from "../../services";
 import { getRequestInc, getRequestDec } from "../request-count-action";
 import { buildValidationState } from "../../components/helpers/action-helpers";
 
-export const SET_REGISTER_PENDING = "SET_REGISTER_PENDING";
-export const SET_REGISTER_SUCCESS = "SET_REGISTER_SUCCESS";
-
 const apiService = new AuthenticationService();
 const history = createBrowserHistory({ forceRefresh: true });
 

@@ -7,7 +7,7 @@ export const RESET_CONTACT_ADMIN = "RESET_CONTACT_ADMIN";
 
 const apiService = new ContactAdminService();
 
-export function getListOfIssues(data) {
+function getListOfIssues(data) {
   return {
     type: GET_CONTACT_ADMIN_DATA,
     payload: data,

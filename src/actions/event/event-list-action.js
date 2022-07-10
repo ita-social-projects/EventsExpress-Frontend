@@ -10,7 +10,7 @@ export const UPDATE_EVENTS_FILTERS = "UPDATE_EVENTS_FILTERS";
 
 const apiService = new EventService();
 
-export function getEventsData(data) {
+function getEventsData(data) {
   return {
     type: GET_EVENTS_DATA,
     payload: data,

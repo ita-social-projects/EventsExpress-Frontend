@@ -8,16 +8,10 @@ export const RESET_EVENTS_SCHEDULE = "RESET_EVENTS_SCHEDULE";
 const apiService = new EventScheduleService();
 
 // TODO: cnahge import in \src\containers\eventSchedules-list.js
-export function getEventSchedulesData(data) {
+function getEventSchedulesData(data) {
   return {
     type: GET_EVENTS_SCHEDULE_DATA,
     payload: data,
-  };
-}
-
-export function resetEventsSchedule() {
-  return {
-    type: RESET_EVENTS_SCHEDULE,
   };
 }
 

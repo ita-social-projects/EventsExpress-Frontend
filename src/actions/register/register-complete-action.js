@@ -9,7 +9,7 @@ import { jwtStorageKey } from "../../constants/constants";
 const apiService = new AuthenticationService();
 const history = createBrowserHistory({ forceRefresh: true });
 
-export function getAccountIdFromJWT() {
+function getAccountIdFromJWT() {
   const token = localStorage.getItem(jwtStorageKey);
   const decoded = jwt.decode(token);
   return decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid"];

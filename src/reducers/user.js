@@ -12,7 +12,7 @@ import {
 import { GET_USER_NOTIFICATION_TYPES_DATA } from "../actions/notificationType/userNotificationType-action";
 import { GET_USER_CATEGORIES_DATA } from "../actions/category/userCategory-action";
 
-export const reducer = (state = initialState.user, action) => {
+const reducer = (state = initialState.user, action) => {
   switch (action.type) {
     case SET_USER:
       return action.payload;

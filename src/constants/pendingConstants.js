@@ -1,4 +1,4 @@
-export const PENDING_USERS_ACTION_BUTTON = {
+const PENDING_USERS_ACTION_BUTTON = {
   APPROVE: "Aprove",
   DENY: "Deny",
 };
