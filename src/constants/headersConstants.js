@@ -23,7 +23,6 @@ export const HEADER_CONSTS = {
   WHAT_DO_YOU_WANT_TO_DO: "What do you want to do?",
 };
 
-export const PLACEHOLDER_INPUT = "Search for events, users, etc...";
 export const BANNER_TITLE = "Don’t stay at home!";
 export const BANNER_SUBTITLE = "Join Us To Have Fun And Improve Yourself";
 export const BANNER_BUTTON_TEXT = "Look For Events";

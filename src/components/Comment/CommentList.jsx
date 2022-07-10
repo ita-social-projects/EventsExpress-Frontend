@@ -33,7 +33,7 @@ export default class CommentList extends Component {
 
 CommentList.propTypes = {
   callback: propTypes.func,
-  evId: propTypes.number,
+  evId: propTypes.string,
   dataList: propTypes.array,
   page: propTypes.number,
   totalPages: propTypes.number,
@@ -41,7 +41,7 @@ CommentList.propTypes = {
 
 CommentList.defaultProps = {
   callback: () => {},
-  evId: null,
+  evId: "",
   dataList: [],
   page: null,
   totalPages: null,

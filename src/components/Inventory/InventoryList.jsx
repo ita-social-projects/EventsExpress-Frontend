@@ -48,7 +48,8 @@ class InventoryList extends Component {
 
   render() {
     const { inventories, event, user, usersInventories } = this.props;
-    const isMyEvent = event.owners.find(x => x.id === user.id) !== undefined;
+    const isMyEvent =
+      event.organizers.find(x => x.id === user.id) !== undefined;
     let updateList = [];
     if (inventories.items) {
       updateList = inventories.items.map(item => {
@@ -161,21 +162,21 @@ const mapDispatchToProps = dispatch => {
 };
 
 InventoryList.defaultProps = {
-  inventories: [],
+  inventories: {},
   event: {},
   user: {},
-  usersInventories: [],
-  getInventories: [],
-  eventId: null,
+  usersInventories: {},
+  getInventories: () => {},
+  eventId: "",
 };
 
 InventoryList.propTypes = {
-  inventories: PropTypes.array,
+  inventories: PropTypes.object,
   event: PropTypes.object,
   user: PropTypes.object,
-  usersInventories: PropTypes.array,
-  getInventories: PropTypes.array,
-  eventId: PropTypes.number,
+  usersInventories: PropTypes.object,
+  getInventories: PropTypes.func,
+  eventId: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(InventoryList);

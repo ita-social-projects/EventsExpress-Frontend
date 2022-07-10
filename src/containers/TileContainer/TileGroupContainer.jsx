@@ -5,7 +5,7 @@ import TileRow from "../TileRow/TileRow";
 import { TILE_ROW_STEP } from "../../constants/tileConstants";
 
 // TODO Refactor
-export const TileGroupContainer = props => {
+const TileGroupContainer = props => {
   const renderRows = data => {
     const rows = [];
     for (let i = 0; i < data.length; i += TILE_ROW_STEP) {

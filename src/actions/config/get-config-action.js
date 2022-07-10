@@ -6,7 +6,7 @@ export const GET_CONFIG_DATA = "GET_CONFIG_DATA";
 
 const apiService = new ConfigService();
 
-export function getConfigSuccess(data) {
+function getConfigSuccess(data) {
   return {
     type: GET_CONFIG_DATA,
     payload: data,

@@ -9,7 +9,7 @@ export const GET_USERSINVENTORIES_DATA = "GET_USERSINVENTORIES_SUCCESS";
 
 const apiService = new InventoryService();
 
-export function getUsersInventoriesSuccess(data) {
+function getUsersInventoriesSuccess(data) {
   return {
     type: GET_USERSINVENTORIES_DATA,
     payload: data,

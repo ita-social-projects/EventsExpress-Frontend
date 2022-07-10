@@ -21,7 +21,7 @@
         "ignoreImports": false
       }
     ],
-    // "complexity": ["error", 12],
+    "complexity": ["error", 12],
     
     "eol-last": ["error", "always"],
     "import/no-unresolved": [2, { "caseSensitive": true }],
@@ -39,10 +39,6 @@
 
     "import/extensions": ["error", "never"], 
     "import/no-named-as-default": ["error"],
-    // "import/no-unused-modules": [
-    //   "error",
-    //   { "missingExports": true, "unusedExports": true }
-    // ],
 
     // "react/destructuring-assignment": 2, // require props destructuring inside component ~ 600 // need to refactor all CC
     "react/destructuring-assignment": "off",
