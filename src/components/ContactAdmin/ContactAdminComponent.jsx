@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { reduxForm, Field, getFormValues } from "redux-form";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
@@ -26,102 +26,108 @@ const validate = values => {
   };
 };
 
-class ContactAdmin extends PureComponent {
-  render() {
-    const { pristine, reset, submitting, error } = this.props;
-    return (
-      <div id="notfound">
-        <div className="notfound">
-          <h1 className="f1">{CONTACT_ADMIN_COMP_CONSTS.CONTACT_US}</h1>
-          <form className="notfound-404" onSubmit={this.props.handleSubmit}>
-            <div className="box text text-2 pl-md-4 ">
-              {this.props.user.role === "User" ? (
+const ContactAdmin = ({
+  pristine,
+  reset,
+  submitting,
+  error,
+  handleSubmit,
+  user,
+  email,
+  formValues,
+}) => {
+  return (
+    <div id="notfound">
+      <div className="notfound">
+        <h1 className="f1">{CONTACT_ADMIN_COMP_CONSTS.CONTACT_US}</h1>
+        <form className="notfound-404" onSubmit={handleSubmit}>
+          <div className="box text text-2 pl-md-4 ">
+            {user.role === "User" ? (
+              <Field
+                name="email"
+                className="form-control"
+                component={renderTextField}
+                value={email}
+                label="Your e-mail:"
+              />
+            ) : (
+              <Field
+                name="email"
+                className="form-control"
+                component={renderTextField}
+                label="Your e-mail:"
+              />
+            )}
+            <p />
+            <p />
+            <p />
+            <div className="text-left mb-2">
+              {CONTACT_ADMIN_COMP_CONSTS.PROBLEM_TYPE}
+            </div>
+            <Field
+              name="subject"
+              className="form-control"
+              component="select"
+              parse={value => Number(value)}
+            >
+              <option value={ISSUE_TYPE_ENUM.NEWCATEGORY}>
+                {CONTACT_ADMIN_COMP_CONSTS.NEW_CATEGORY}
+              </option>
+              <option value={ISSUE_TYPE_ENUM.BADUSER}>
+                {CONTACT_ADMIN_COMP_CONSTS.BUG_REPORT}
+              </option>
+              <option value={ISSUE_TYPE_ENUM.BADEVENT}>
+                {CONTACT_ADMIN_COMP_CONSTS.BAD_EVENT}
+              </option>
+              <option value={ISSUE_TYPE_ENUM.BADUSER}>
+                {CONTACT_ADMIN_COMP_CONSTS.BAD_USER}
+              </option>
+              <option value={ISSUE_TYPE_ENUM.OTHER}>
+                {CONTACT_ADMIN_COMP_CONSTS.OTHER}
+              </option>
+            </Field>
+
+            {formValues !== undefined &&
+              formValues.subject === ISSUE_TYPE_ENUM.OTHER && (
                 <Field
-                  name="email"
+                  name="title"
                   className="form-control"
                   component={renderTextField}
-                  value={this.props.email}
-                  label="Your e-mail:"
-                />
-              ) : (
-                <Field
-                  name="email"
-                  className="form-control"
-                  component={renderTextField}
-                  label="Your e-mail:"
+                  label="Enter problem type:"
                 />
               )}
-              <p />
-              <p />
-              <p />
-              <div className="text-left mb-2">
-                {CONTACT_ADMIN_COMP_CONSTS.PROBLEM_TYPE}
-              </div>
-              <Field
-                name="subject"
-                className="form-control"
-                component="select"
-                parse={value => Number(value)}
-              >
-                <option value={ISSUE_TYPE_ENUM.NEWCATEGORY}>
-                  {CONTACT_ADMIN_COMP_CONSTS.NEW_CATEGORY}
-                </option>
-                <option value={ISSUE_TYPE_ENUM.BADUSER}>
-                  {CONTACT_ADMIN_COMP_CONSTS.BUG_REPORT}
-                </option>
-                <option value={ISSUE_TYPE_ENUM.BADEVENT}>
-                  {CONTACT_ADMIN_COMP_CONSTS.BAD_EVENT}
-                </option>
-                <option value={ISSUE_TYPE_ENUM.BADUSER}>
-                  {CONTACT_ADMIN_COMP_CONSTS.BAD_USER}
-                </option>
-                <option value={ISSUE_TYPE_ENUM.OTHER}>
-                  {CONTACT_ADMIN_COMP_CONSTS.OTHER}
-                </option>
-              </Field>
 
-              {this.props.formValues !== undefined &&
-                this.props.formValues.subject === ISSUE_TYPE_ENUM.OTHER && (
-                  <Field
-                    name="title"
-                    className="form-control"
-                    component={renderTextField}
-                    label="Enter problem type:"
-                  />
-                )}
-
-              <p />
-              <p />
-              <p />
-              <Field
-                name="description"
-                className="form-control"
-                component={renderTextArea}
-                type="input"
-              />
-            </div>
-            {error && <ErrorMessages error={error} className="text-center" />}
-            <Button
-              type="submit"
-              color="primary"
-              disabled={pristine || submitting}
-            >
-              {BUTTON_NAMES.SUBMIT}
-            </Button>
-            <Button
-              type="button"
-              color="primary"
-              disabled={pristine || submitting}
-              onClick={reset}
-            >
-              {BUTTON_NAMES.CLEAR}
-            </Button>
-          </form>
-        </div>
+            <p />
+            <p />
+            <p />
+            <Field
+              name="description"
+              className="form-control"
+              component={renderTextArea}
+              type="input"
+            />
+          </div>
+          {error && <ErrorMessages error={error} className="text-center" />}
+          <Button
+            type="submit"
+            color="primary"
+            disabled={pristine || submitting}
+          >
+            {BUTTON_NAMES.SUBMIT}
+          </Button>
+          <Button
+            type="button"
+            color="primary"
+            disabled={pristine || submitting}
+            onClick={reset}
+          >
+            {BUTTON_NAMES.CLEAR}
+          </Button>
+        </form>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 ContactAdmin.propTypes = {
   pristine: propTypes.bool,

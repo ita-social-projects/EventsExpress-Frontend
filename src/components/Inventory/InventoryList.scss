@@ -1,0 +1,69 @@
+@import "../../styles/colors.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.inventory {
+    padding: 0 20px;
+}
+
+.add-inventory-btn {
+    margin-top: 20px;
+    font-size: $fontsize18;
+    font-weight: $bold;
+    color: $purple;
+    cursor: pointer;
+    &:disabled {
+        color: $middleGray;
+        cursor: default;
+    }
+}
+
+.inventory-header {
+    width: $fullWidth;
+    display: flex;
+    .header-title {
+        font-size: $fontsize28;
+        font-weight: $bold;
+        margin-right: 10px;
+    }
+}
+
+.inventory-list-header, .inventory-body-item {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+   .inventory-header-item, .body-field {
+        @include flex(row, center, center);
+        font-weight: $bold;
+   }
+   &.member-item {
+    grid-template-columns: repeat(6, 1fr);
+   }
+}
+
+
+.inventory-form {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 20px;
+    .form-group__input {
+        all: unset;
+        @include flex(row, center, center);
+    }
+
+    .inventory-field {
+        @include flex(row, center, center);
+    }
+
+    .form-input, .form-select {
+        all: unset;
+        border-bottom: 2px solid $middleGray;
+        width: $halfWidth;
+        text-align: center;
+    }
+
+    &.member-form {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}

@@ -1,95 +1,80 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import propTypes from "prop-types";
-import { deleteSeenMsgNotification } from "../../actions/chat/chat-action";
 import "./Msg.scss";
 import getTimeDifferenceFromNull from "../helpers/TimeHelper";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
 
-class Msg extends Component {
-  componentDidUpdate = () => {
-    if (
-      this.props.notification.seenMessages
-        .map(x => x.id)
-        .includes(this.props.item.id)
-    ) {
-      this.props.item = this.props.notification.seenMessages.find(
-        x => x.id === this.props.item.id,
-      );
-      this.props.deleteSeenMsgNotification(this.props.item.id);
+const Msg = ({
+  currentUser,
+  notification,
+  deleteSeenMsgNotification,
+  props,
+}) => {
+  const { user, msgItem, seenMsg } = props;
+  useEffect(() => {
+    if (notification.seenMessages.map(x => x.id).includes(msgItem.id)) {
+      const newItem = notification.seenMessages.find(x => x.id === msgItem.id);
+      deleteSeenMsgNotification(newItem.id);
     }
-  };
-
-  render() {
-    const { user, item, seenItem, currentUser } = this.props;
-    return (
-      <>
-        {user.id !== currentUser.id ? (
-          <div className="d-flex justify-content-start mb-4">
-            <Link to={`/user/${user.id}`}>
-              <ButtonBase>
-                <ContainerCustomAvatar
-                  size="Small"
-                  userId={user.id}
-                  name={user.name}
-                />
-              </ButtonBase>
-            </Link>
-            <div className="msg_cotainer">
-              {item.text}
-              <br />
-              <span className="msg_time">
-                {getTimeDifferenceFromNull(item.dateCreated)}
-              </span>
-            </div>
+  }, []);
+  return (
+    <>
+      {user.id !== currentUser.id ? (
+        <div className="d-flex justify-content-start mb-4">
+          <Link to={`/user/${user.id}`}>
+            <ButtonBase>
+              <ContainerCustomAvatar
+                size="Small"
+                userId={user.id}
+                name={user.name}
+              />
+            </ButtonBase>
+          </Link>
+          <div className="msg_cotainer">
+            {msgItem.text}
+            <br />
+            <span className="msg_time">
+              {getTimeDifferenceFromNull(msgItem.dateCreated)}
+            </span>
           </div>
-        ) : (
-          <div className="d-flex justify-content-end mb-4">
-            <div className="msg_cotainer_send">
-              {item.text} {seenItem && <i className="fa fa-check" />}
-              <br />
-              <span className="msg_time_send text-center">
-                {getTimeDifferenceFromNull(item.dateCreated)}
-              </span>
-            </div>
+        </div>
+      ) : (
+        <div className="d-flex justify-content-end mb-4">
+          <div className="msg_cotainer_send">
+            {msgItem.text} {seenMsg && <i className="fa fa-check" />}
+            <br />
+            <span className="msg_time_send text-center">
+              {getTimeDifferenceFromNull(msgItem.dateCreated)}
+            </span>
           </div>
-        )}
-      </>
-    );
-  }
-}
+        </div>
+      )}
+    </>
+  );
+};
 
 // TODO: See seemItem and maybe change type or default.
 
 Msg.propTypes = {
   notification: propTypes.object,
-  item: propTypes.object,
+  msgItem: propTypes.object,
   deleteSeenMsgNotification: propTypes.func,
   user: propTypes.object,
-  seenItem: propTypes.bool,
+  seenMsg: propTypes.bool,
   currentUser: propTypes.object,
+  props: propTypes.object,
 };
 
 Msg.defaultProps = {
   notification: {},
   deleteSeenMsgNotification: () => {},
   user: {},
-  item: {},
-  seenItem: false,
+  msgItem: {},
+  seenMsg: false,
   currentUser: {},
+  props: {},
 };
 
-const mapStateToProps = state => ({
-  currentUser: state.user,
-  notification: state.notification,
-});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    deleteSeenMsgNotification: id => dispatch(deleteSeenMsgNotification(id)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Msg);
+export default Msg;

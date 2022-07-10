@@ -2,15 +2,16 @@
 import { connect } from "react-redux";
 import propTypes from "prop-types";
 import { TogleOpenWind, isOpen } from "../../actions/modalWind-action";
-import logout from "../../actions/login/logout-action";
+import logOut from "../../actions/login/logout-action";
 import { OOPS } from "../../constants/labelConstants";
 import { UNAUTHORIZED_MESSAGE } from "../../constants/httpCodesConstants";
 
 class Unauthorized extends Component {
   componentWillMount = () => {
-    this.props.resetError();
-    this.props.logout();
-    this.props.setStatus(true);
+    const { resetError, logout, setStatus } = this.props;
+    resetError();
+    logout();
+    setStatus(true);
   };
 
   render() {
@@ -46,7 +47,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => {
-      dispatch(logout());
+      dispatch(logOut());
     },
     setStatus: data => dispatch(TogleOpenWind(data)),
     resetError: () => {

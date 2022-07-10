@@ -2,13 +2,13 @@ import React, { PureComponent } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import "./Admin.scss";
 import NavItem from "../NavItem/NavItem";
-import Category from "../Category/Categories";
 import UsersContainer from "../../containers/UsersContainer/UsersContainer";
 import UnitOfMeasuring from "../UnitOfMeasuring/UnitOfMeasuring";
 import NotificationTemplateWrapper from "../../containers/NotificationTemplateContainer/NotificationTemplateContainer";
 import NotificationInfoWrapper from "../../containers/NotificationTemplateContainer/NotificationInfoContainer";
 import Track from "../Tracks/Tracks";
 import { ADMIN_PANEL } from "../../constants/adminConstants";
+import CategoriesContainer from "../../containers/CategoryContainers/CategoriesContainer";
 
 // TODO Rename to function component
 export default class Admin extends PureComponent {
@@ -67,7 +67,10 @@ export default class Admin extends PureComponent {
                 path="/admin"
                 render={() => <Redirect to="/admin/categories" />}
               />
-              <Route path="/admin/categories/" component={Category} />
+              <Route
+                path="/admin/categories/"
+                component={CategoriesContainer}
+              />
               <Route
                 path="/admin/unitsOfMeasuring"
                 component={UnitOfMeasuring}

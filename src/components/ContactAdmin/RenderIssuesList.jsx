@@ -1,39 +1,41 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
 import propTypes from "prop-types";
 import PagePagination from "../shared/PagePagination/PagePagination";
 import { NO_RESULT } from "../../constants/labelConstants";
 
-class RenderIssuesList extends Component {
-  renderIssues = arr => arr.map(item => this.props.renderSingleIssue(item));
+const RenderIssuesList = ({
+  renderSingleIssue,
+  handlePageChange,
+  ...props
+}) => {
+  const renderIssues = arr => arr.map(item => renderSingleIssue(item));
 
-  render() {
-    const { page, totalPages, dataList } = this.props;
+  const { page, totalPages, dataList } = props;
 
-    return (
-      <>
-        {dataList.length > 0 ? (
-          this.renderIssues(dataList)
-        ) : (
-          <div id="notfound" className="w-100">
-            <div className="notfound">
-              <div className="notfound-404">
-                <div className="h1">{NO_RESULT}</div>
-              </div>
+  return (
+    <>
+      {dataList.length > 0 ? (
+        renderIssues(dataList)
+      ) : (
+        <div id="notfound" className="w-100">
+          <div className="notfound">
+            <div className="notfound-404">
+              <div className="h1">{NO_RESULT}</div>
             </div>
           </div>
-        )}
-        <br />
-        {totalPages > 1 && (
-          <PagePagination
-            currentPage={page}
-            totalPages={totalPages}
-            callback={this.props.handlePageChange}
-          />
-        )}
-      </>
-    );
-  }
-}
+        </div>
+      )}
+      <br />
+      {totalPages > 1 && (
+        <PagePagination
+          currentPage={page}
+          totalPages={totalPages}
+          callback={handlePageChange}
+        />
+      )}
+    </>
+  );
+};
 
 RenderIssuesList.propTypes = {
   renderSingleIssue: propTypes.func,

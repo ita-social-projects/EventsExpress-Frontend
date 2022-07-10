@@ -44,7 +44,7 @@ const EventCard = props => {
     return () => {
       URL.revokeObjectURL(eventImage);
     };
-  });
+  }, []);
 
   const renderCategories = arr => {
     return arr.map(x => (

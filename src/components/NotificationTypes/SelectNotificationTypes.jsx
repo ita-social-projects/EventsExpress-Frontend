@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import momentLocaliser from "react-widgets-moment";
@@ -11,36 +11,40 @@ import { BUTTON_NAMES } from "../../constants/buttonConsts";
 momentLocaliser(moment);
 
 // TODO: to function
-class SelectNotificationTypes extends Component {
-  componentDidMount() {
-    this.props.initialize({
-      notificationTypes: this.props.initialValues.notificationTypes,
+const SelectNotificationTypes = ({
+  initialize,
+  initialValues,
+  handleSubmit,
+  submitting,
+  items,
+  error,
+}) => {
+  useEffect(() => {
+    initialize({
+      notificationTypes: initialValues.notificationTypes,
     });
-  }
+  }, []);
 
-  render() {
-    const { handleSubmit, submitting, items, error } = this.props;
-    return (
-      <div>
-        <form onSubmit={handleSubmit}>
-          <Field
-            name="notificationTypes"
-            component={CheckboxGroup}
-            options={items}
-          />
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <Field
+          name="notificationTypes"
+          component={CheckboxGroup}
+          options={items}
+        />
 
-          {error && <ErrorMessages error={error} className="text-center" />}
+        {error && <ErrorMessages error={error} className="text-center" />}
 
-          <div>
-            <Button type="submit" color="primary" disabled={submitting}>
-              {BUTTON_NAMES.SAVE}
-            </Button>
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
+        <div>
+          <Button type="submit" color="primary" disabled={submitting}>
+            {BUTTON_NAMES.SAVE}
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+};
 
 SelectNotificationTypes.propTypes = {
   initialize: propTypes.func,

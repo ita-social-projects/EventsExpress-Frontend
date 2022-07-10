@@ -53,10 +53,9 @@ const useStyles1 = makeStyles(theme => ({
   },
 }));
 
-function MySnackbar(props) {
+function MySnackbar({ onClose, alert }) {
   const classes = useStyles1();
-  const { onClose } = props;
-  const { message, open, variant, autoHideDuration } = props.alert;
+  const { message, open, variant, autoHideDuration } = alert;
   const Icon = variantIcon[variant];
   let timeToShow;
 

@@ -1,17 +1,9 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import UserInfoCard from "../UserInfoCard/UserInfoCard";
-import PagePagination from "../shared/PagePagination/PagePagination";
 import "./Users.scss";
 
-const UserItemList = ({ page, totalPages, users, callback }) => {
-  const handlePageChange = pageEl => {
-    callback(
-      // eslint-disable-next-line
-      window.location.search.replace(/(page=)[0-9]+/gm, `page=${pageEl}`)
-    );
-  };
-
+const UserItemList = ({ users }) => {
   return (
     <>
       <div className="user_item_list">
@@ -19,14 +11,6 @@ const UserItemList = ({ page, totalPages, users, callback }) => {
           <UserInfoCard key={user.id} {...user} />
         ))}
       </div>
-
-      {totalPages > 1 && (
-        <PagePagination
-          currentPage={page}
-          totalPages={totalPages}
-          callback={handlePageChange}
-        />
-      )}
     </>
   );
 };

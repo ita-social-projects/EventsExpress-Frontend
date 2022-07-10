@@ -12,15 +12,26 @@ import {
 } from "../../../constants/eventConstants";
 
 const EventCard = ({ event, additionalButtons, additionalModal }) => {
-  const { id, title, dateFrom } = event;
+  const { id, title, dateFrom, nextRun } = event;
   const photoService = new PhotoService();
   const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
   const titleText =
-    title == null ? "No title" : title.slice(0, EVENT_CARD_TITLE_SLICE);
+    title === null ? "No title" : title.slice(0, EVENT_CARD_TITLE_SLICE);
   const day =
-    dateFrom == null ? "?" : moment(dateFrom).format(FORMATS.DAY_FORMAT);
+    dateFrom === undefined
+      ? moment(nextRun).format(FORMATS.DAY_FORMAT)
+      : moment(dateFrom).format(FORMATS.DAY_FORMAT);
   const month =
-    dateFrom == null ? "?" : moment(dateFrom).format(FORMATS.MONTH_FORMAT);
+    dateFrom === undefined
+      ? moment(nextRun).format(FORMATS.MONTH_FORMAT)
+      : moment(dateFrom).format(FORMATS.MONTH_FORMAT);
+
+  const isInvalidDate = value => {
+    if (value === "Invalid date") {
+      return "?";
+    }
+    return value;
+  };
 
   useEffect(() => {
     photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {
@@ -43,7 +54,7 @@ const EventCard = ({ event, additionalButtons, additionalModal }) => {
         />
         <div className="card-content">
           <div className="card-date date-container">
-            <span className="day">{day}</span>
+            <span className="day">{isInvalidDate(day)}</span>
           </div>
           <div className="card-info">
             <span className="card-info-header">{titleText}</span>
@@ -55,7 +66,7 @@ const EventCard = ({ event, additionalButtons, additionalModal }) => {
             </div>
           </div>
         </div>
-        <span className="month">{month}</span>
+        <span className="month">{isInvalidDate(month)}</span>
       </div>
       {additionalModal}
     </>

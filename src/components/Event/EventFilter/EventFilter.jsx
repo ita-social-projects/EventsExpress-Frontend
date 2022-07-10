@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
@@ -32,169 +32,151 @@ const {
   OPTIONS_CANCELED,
 } = EVENTS_FILTER;
 
-class EventFilter extends Component {
-  constructor(props) {
-    super(props);
+const EventFilter = ({
+  submitting,
+  formValues,
+  initialFormValues,
+  initialValues,
+  currentUser,
+  allCategories,
+  initialize,
+  handleSubmit,
+  onReset,
+  onLoadUserDefaults,
+}) => {
+  const [viewMore, setViewMore] = useState(false);
+  const [needInitializeValues, setInitializeValues] = useState(false);
 
-    this.state = {
-      viewMore: false,
-      needInitializeValues: true,
-    };
-  }
-
-  componentDidUpdate(prevProps) {
-    const { initialValues } = this.props;
-
+  useEffect(() => {
     if (
-      !compareObjects(initialValues, prevProps.initialFormValues) ||
-      this.state.needInitializeValues
+      !compareObjects(initialValues, initialFormValues) ||
+      needInitializeValues
     ) {
-      this.props.initialize({
+      initialize({
         ...initialValues,
         selectedPos: initialValues.selectedPos
           ? initialValues.selectedPos
           : { latitude: null, longitude: null },
       });
-      this.setState({
-        needInitializeValues: false,
-      });
+      setInitializeValues(false);
     }
-  }
+  }, [initialFormValues]);
 
-  handlerViewMore = () => this.setState(state => !state.viewMore);
+  const handlerViewMore = () => setViewMore(!viewMore);
 
-  render() {
-    const {
-      allCategories,
-      formValues,
-      currentUser,
-      handleSubmit,
-      onReset,
-      initialize,
-      submitting,
-      onLoadUserDefaults,
-    } = this.props;
-    const { viewMore } = this.state;
+  const values = formValues || { selectedPos: {} };
+  const options = [
+    { value: EVENT_STATUS_ENUM.ACTIVE, text: OPTIONS_ACTIVE },
+    { value: EVENT_STATUS_ENUM.BLOCKED, text: OPTIONS_BLOCKED },
+    { value: EVENT_STATUS_ENUM.CANCELED, text: OPTIONS_CANCELED },
+  ];
 
-    const values = formValues || { selectedPos: {} };
-    const options = [
-      { value: EVENT_STATUS_ENUM.ACTIVE, text: OPTIONS_ACTIVE },
-      { value: EVENT_STATUS_ENUM.BLOCKED, text: OPTIONS_BLOCKED },
-      { value: EVENT_STATUS_ENUM.CANCELED, text: OPTIONS_CANCELED },
-    ];
-
-    return (
-      <div className="sidebar-filter">
-        <form onSubmit={handleSubmit} className="box">
-          <div className="form-group">
-            <Field
-              name="keyWord"
-              component={renderTextField}
-              type="input"
-              label="Keyword"
-            />
-          </div>
-          {viewMore && (
-            <>
-              <div className="form-group">
+  return (
+    <div className="sidebar-filter">
+      <form onSubmit={handleSubmit} className="box">
+        <div className="form-group">
+          <Field
+            name="keyWord"
+            component={renderTextField}
+            type="input"
+            label="Keyword"
+          />
+        </div>
+        {viewMore && (
+          <>
+            <div className="form-group">
+              <Field
+                name="dateFrom"
+                label="From"
+                minValue={new Date()}
+                component={renderDatePicker}
+                parse={parseEuDate}
+              />
+            </div>
+            <div className="form-group">
+              <Field
+                name="dateTo"
+                label="To"
+                minValue={new Date(values.dateFrom)}
+                component={renderDatePicker}
+                parse={parseEuDate}
+              />
+            </div>
+            <div className="form-group">
+              <Field
+                name="categories"
+                component={renderMultiselect}
+                data={allCategories.data}
+                valueField="id"
+                textField="name"
+                className="form-control mt-2"
+                placeholder="#hashtags"
+              />
+            </div>
+            <div className="form-group">
+              {currentUser.roles.includes("Admin") && (
                 <Field
-                  name="dateFrom"
-                  label="From"
-                  minValue={new Date()}
-                  component={renderDatePicker}
-                  parse={parseEuDate}
+                  name="statuses"
+                  component={MultiCheckbox}
+                  options={options}
                 />
-              </div>
-              <div className="form-group">
-                <Field
-                  name="dateTo"
-                  label="To"
-                  minValue={new Date(values.dateFrom)}
-                  component={renderDatePicker}
-                  parse={parseEuDate}
-                />
-              </div>
-              <div className="form-group">
-                <Field
-                  name="categories"
-                  component={renderMultiselect}
-                  data={allCategories.data}
-                  valueField="id"
-                  textField="name"
-                  className="form-control mt-2"
-                  placeholder="#hashtags"
-                />
-              </div>
-              <div className="form-group">
-                {currentUser.roles.includes("Admin") && (
-                  <Field
-                    name="statuses"
-                    component={MultiCheckbox}
-                    options={options}
-                  />
-                )}
-              </div>
-              <div>
-                <EventMapModal
-                  initialize={initialize}
-                  values={values}
-                  reset={onReset}
-                />
-              </div>
-              <div className="d-flex">
-                {values.selectedPos && values.selectedPos.latitude && (
-                  <div className="mt-2">
-                    <p>{`${RADIUS} ${values.radius} ${RADIUS_KM}`}</p>
-                    <p>{LOCATION}</p>
-                    <DisplayMap location={{ ...values.selectedPos }} />
-                  </div>
-                )}
-              </div>
-            </>
+              )}
+            </div>
+            <div>
+              <EventMapModal
+                initialize={initialize}
+                values={values}
+                reset={onReset}
+              />
+            </div>
+            <div className="d-flex">
+              {values.selectedPos && values.selectedPos.latitude && (
+                <div className="mt-2">
+                  <p>{`${RADIUS} ${values.radius} ${RADIUS_KM}`}</p>
+                  <p>{LOCATION}</p>
+                  <DisplayMap location={{ ...values.selectedPos }} />
+                </div>
+              )}
+            </div>
+          </>
+        )}
+        <div>
+          <Button
+            key={viewMore}
+            fullWidth
+            color="secondary"
+            onClick={handlerViewMore}
+          >
+            {viewMore ? BUTTON_LESS : BUTTON_MORE_FILTERS}
+          </Button>
+        </div>
+        <div className="d-flex">
+          <Button
+            fullWidth
+            color="primary"
+            onClick={onReset}
+            disabled={submitting}
+          >
+            {BUTTON_RESET}
+          </Button>
+          {currentUser.id && (
+            <Button
+              fullWidth
+              color="primary"
+              onClick={onLoadUserDefaults}
+              disabled={submitting}
+            >
+              {BUTTON_FAVORITE}
+            </Button>
           )}
-          <div>
-            <Button
-              key={viewMore}
-              fullWidth
-              color="secondary"
-              onClick={this.handlerViewMore}
-            >
-              {viewMore ? BUTTON_LESS : BUTTON_MORE_FILTERS}
-            </Button>
-          </div>
-          <div className="d-flex">
-            <Button
-              fullWidth
-              color="primary"
-              onClick={onReset}
-              disabled={submitting}
-            >
-              {BUTTON_RESET}
-            </Button>
-            {currentUser.id && (
-              <Button
-                fullWidth
-                color="primary"
-                onClick={onLoadUserDefaults}
-                disabled={submitting}
-              >
-                {BUTTON_FAVORITE}
-              </Button>
-            )}
-            <Button
-              fullWidth
-              type="submit"
-              color="primary"
-              disabled={submitting}
-            >
-              {BUTTON_SEARCH}
-            </Button>
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
+          <Button fullWidth type="submit" color="primary" disabled={submitting}>
+            {BUTTON_SEARCH}
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+};
 
 EventFilter.propTypes = {
   submitting: propTypes.bool,

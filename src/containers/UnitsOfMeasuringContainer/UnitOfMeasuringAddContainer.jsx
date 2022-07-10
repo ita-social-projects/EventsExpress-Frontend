@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
@@ -10,48 +10,44 @@ import UnitOfMeasuringEdit from "../../components/UnitOfMeasuring/UnitOfMeasurin
 import getCategoriesOfMeasuring from "../../actions/categoryOfMeasuring/categoryOfMeasuring-list-action";
 import { ADD_UNIT } from "../../constants/unitOfMeasuringConstatns";
 
-const pStyle = {
-  margin: "0px",
-};
+const UnitOfMeasuringAddWrapper = ({
+  item,
+  add,
+  editCancel,
+  allCategories,
+  editedUnitOfMeasuring,
+}) => {
+  useEffect(() => {
+    getCategoriesOfMeasuring();
+  }, []);
 
-// TODO Refactor class component
-class UnitOfMeasuringAddWrapper extends React.Component {
-  componentDidMount() {
-    this.props.getCategoriesOfMeasuring();
-  }
-
-  submit = values => {
-    return this.props.add({ ...values });
+  const submit = values => {
+    return add({ ...values });
   };
 
-  render() {
-    return this.props.item.id !== this.props.editedUnitOfMeasuring ? (
-      <tr>
-        <td className="align-middle align-items-stretch" width="20%">
-          <div className="d-flex align-items-center justify-content-left">
-            <p style={pStyle}>{ADD_UNIT}</p>
-            <IconButton
-              className="text-info"
-              onClick={this.props.setUnitOfMeasuringEdited}
-            >
-              <i className="fas fa-plus-circle" />
-            </IconButton>
-          </div>
-        </td>
-      </tr>
-    ) : (
-      <tr>
-        <UnitOfMeasuringEdit
-          item={this.props.item}
-          onSubmit={this.submit}
-          cancel={this.props.editCancel}
-          allCategories={this.props.allCategories}
-        />
-        <td />
-      </tr>
-    );
-  }
-}
+  return item.id !== editedUnitOfMeasuring ? (
+    <tr>
+      <td className="align-middle align-items-stretch" width="20%">
+        <div className="d-flex align-items-center justify-content-left">
+          <p>{ADD_UNIT}</p>
+          <IconButton className="text-info" onClick={setUnitOfMeasuringEdited}>
+            <i className="fas fa-plus-circle" />
+          </IconButton>
+        </div>
+      </td>
+    </tr>
+  ) : (
+    <tr>
+      <UnitOfMeasuringEdit
+        item={item}
+        onSubmit={submit}
+        cancel={editCancel}
+        allCategories={allCategories}
+      />
+      <td />
+    </tr>
+  );
+};
 
 UnitOfMeasuringAddWrapper.propTypes = {
   item: PropTypes.object,
@@ -59,8 +55,6 @@ UnitOfMeasuringAddWrapper.propTypes = {
   editCancel: PropTypes.bool,
   allCategories: PropTypes.array,
   editedUnitOfMeasuring: PropTypes.number,
-  setUnitOfMeasuringEdited: PropTypes.func,
-  getCategoriesOfMeasuring: PropTypes.func,
 };
 
 UnitOfMeasuringAddWrapper.defaultProps = {
@@ -69,8 +63,6 @@ UnitOfMeasuringAddWrapper.defaultProps = {
   editCancel: false,
   allCategories: [],
   editedUnitOfMeasuring: null,
-  setUnitOfMeasuringEdited: () => {},
-  getCategoriesOfMeasuring: () => {},
 };
 
 const mapStateToProps = state => ({
