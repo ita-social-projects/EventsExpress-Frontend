@@ -1,3 +1,6 @@
+// TODO!: split this file
+/* eslint-disable no-const-assign */
+/* eslint-disable complexity */
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -69,12 +72,15 @@ const EventItemView = ({
 
   const today = moment().startOf("day");
   const visitorsEnum = {
-    approvedUsers: visitors.filter(x => x.userStatusEvent === 0),
+    approvedUsers: visitors
+      ? visitors.filter(x => x.userStatusEvent === 0)
+      : [],
   };
 
-  const iWillVisitIt = visitors.find(x => x.id === currentUser.id);
+  const iWillVisitIt = visitors && visitors.find(x => x.id === currentUser.id);
   const isFutureEvent = new Date(dateFrom) >= new Date().setHours(0, 0, 0, 0);
-  const isMyEvent = organizers.find(x => x.id === currentUser.id) !== undefined;
+  const isMyEvent =
+    organizers && organizers.find(x => x.id === currentUser.id) !== undefined;
   const isFreePlace = visitorsEnum.approvedUsers.length < maxParticipants;
   const isAdult =
     moment.duration(today.diff(moment(currentUser.birthday))).asYears() >=
@@ -121,6 +127,7 @@ const EventItemView = ({
   }, []);
 
   const renderCategories = arr => {
+    if (!arr) return null;
     return arr.map(x => (
       <span key={x.id}>
         {"#"}

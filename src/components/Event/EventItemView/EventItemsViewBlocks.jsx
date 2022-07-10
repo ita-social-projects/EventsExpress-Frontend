@@ -81,7 +81,9 @@ export const isAppropriateAgeBlock = (
   return (
     <div className="d-flex justify-content-center">
       {isAppropriateAge(isOnlyForAdults, isAdult) ? (
-        getUserEventStatus(visitors.find(x => x.id === currentUser.id))
+        getUserEventStatus(
+          visitors ? visitors.find(x => x.id === currentUser.id) : [],
+        )
       ) : (
         <span className="alert alert-warning shadow" role="alert">
           {EVENT_ITEM_VIEW_CONSTS.AGE_REQUIREMENTS}
