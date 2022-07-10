@@ -8,7 +8,15 @@ const UserItemList = ({ users }) => {
     <>
       <div className="user_item_list">
         {users.map(user => (
-          <UserInfoCard key={user.id} {...user} />
+          <UserInfoCard
+            key={user.id}
+            id={user.id}
+            username={user.username}
+            gender={user.gender}
+            birthday={user.birthday}
+            rating={user.rating}
+            attitude={user.attitude}
+          />
         ))}
       </div>
     </>
@@ -16,16 +24,10 @@ const UserItemList = ({ users }) => {
 };
 
 UserItemList.defaultProps = {
-  callback: () => {},
-  totalPages: null,
-  page: null,
   users: [],
 };
 
 UserItemList.propTypes = {
-  callback: PropTypes.func,
-  totalPages: PropTypes.number,
-  page: PropTypes.number,
   users: PropTypes.array,
 };
 
