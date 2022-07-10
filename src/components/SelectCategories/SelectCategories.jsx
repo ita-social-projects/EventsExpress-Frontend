@@ -2,7 +2,7 @@
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
-import { renderMultiselect } from "../helpers/form-helpers";
+import RenderMultiselectField from "../helpers/form-helpers/render-multiselect-field";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
@@ -25,7 +25,7 @@ const SelectCategories = ({
       <form name="SelectCategories" onSubmit={handleSubmit}>
         <Field
           name="categories"
-          component={renderMultiselect}
+          component={RenderMultiselectField}
           data={items}
           valueField="id"
           textField="name"

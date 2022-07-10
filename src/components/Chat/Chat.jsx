@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import { reduxForm, Field, reset as resetForm } from "redux-form";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import propTypes from "prop-types";
-import { renderTextArea } from "../helpers/form-helpers";
+import RenderTextArea from "../helpers/form-helpers/render-text-area";
 import getChat, {
   initialConnection,
   reset,
@@ -138,7 +138,7 @@ const Chat = ({
               <form className="w-100 d-flex" autoComplete="off" onSubmit={Send}>
                 <Field
                   name="msg"
-                  component={renderTextArea}
+                  component={RenderTextArea}
                   type="input"
                   autocomplete="off"
                   label="Type your message..."

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
-import { MultiCheckbox, renderDatePicker } from "../helpers/form-helpers";
+import MultiCheckbox from "../helpers/form-helpers/MultiCheckbox";
+import RenderDatePicker from "../helpers/form-helpers/render-date-pickerV2";
 import parseEuDate from "../helpers/form-helpers/parseEuDate";
 import { ISSUE_STATUS_ENUM } from "../../constants/issueConstants";
 import { compareObjects } from "../helpers/filterHelper/filterHelper";
@@ -52,7 +53,7 @@ const ContactAdminFilter = ({
                 name="dateFrom"
                 label="From"
                 minValue={new Date(ADMIN_MIN_DATE_FILTER_YEAR, 1, 1)}
-                component={renderDatePicker}
+                component={RenderDatePicker}
                 parse={parseEuDate}
               />
             </div>
@@ -61,7 +62,7 @@ const ContactAdminFilter = ({
                 name="dateTo"
                 label="To"
                 minValue={new Date(values.dateFrom)}
-                component={renderDatePicker}
+                component={RenderDatePicker}
                 parse={parseEuDate}
               />
             </div>

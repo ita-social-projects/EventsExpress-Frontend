@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
-import { renderSelectField } from "../../helpers/form-helpers";
+import RenderSelectField from "../../helpers/form-helpers/render-select-field";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import PROFILE_CONSTANTS from "../../../constants/profileConstants";
 
@@ -14,7 +14,7 @@ const EditGender = ({ handleSubmit, pristine, submitting, error }) => {
         <Field
           minWidth={210}
           name="gender"
-          component={renderSelectField}
+          component={RenderSelectField}
           label="Gender"
         >
           <option aria-label="None" value="" />

@@ -3,13 +3,10 @@ import { Field } from "redux-form";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import moment from "moment";
-
-import {
-  renderSelectField,
-  renderPhoneInput,
-  renderDatePicker,
-  renderTextField,
-} from "../helpers/form-helpers";
+import RenderPhoneInput from "../helpers/form-helpers/render-phone-input";
+import RenderTextField from "../helpers/form-helpers/render-text-field";
+import RenderSelectField from "../helpers/form-helpers/render-select-field";
+import RenderDatePicker from "../helpers/form-helpers/render-date-pickerV2";
 import { PLS_COMPLETE_REGISTERATION } from "../../constants/registationConstants";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
 import {
@@ -30,7 +27,7 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
           <div className="form-group">
             <Field
               name="email"
-              component={renderTextField}
+              component={RenderTextField}
               label="E-mail:"
               type="email"
             />
@@ -38,7 +35,7 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
           <div className="form-group">
             <Field
               name="userName"
-              component={renderTextField}
+              component={RenderTextField}
               label="User name"
             />
           </div>
@@ -56,14 +53,14 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
                   MIN_ALLOWABLE_AGE,
                   "years",
                 )}
-                component={renderDatePicker}
+                component={RenderDatePicker}
               />
             </div>
             <div className="form-group col">
               <Field
                 minWidth={210}
                 name="gender"
-                component={renderSelectField}
+                component={RenderSelectField}
                 label="Gender"
                 parse={Number}
               >
@@ -75,7 +72,7 @@ const RegisterComplete = ({ pristine, submitting, handleSubmit }) => {
             </div>
           </div>
           <div className="form-group">
-            <Field component={renderPhoneInput} name="phone" label="Phone" />
+            <Field component={RenderPhoneInput} name="phone" label="Phone" />
           </div>
           <div className="form-group">
             <Button

@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
-import {
-  renderDatePicker,
-  MultiCheckbox,
-  renderTextField,
-  renderMultiselect,
-  parseEuDate,
-} from "../../helpers/form-helpers";
+import MultiCheckbox from "../../helpers/form-helpers/MultiCheckbox";
+import RenderDatePicker from "../../helpers/form-helpers/render-date-pickerV2";
+import RenderTextField from "../../helpers/form-helpers/render-text-field";
+import RenderMultiselectField from "../../helpers/form-helpers/render-multiselect-field";
+import parseEuDate from "../../helpers/form-helpers/parseEuDate";
 import EventMapModal from "../MapModal/MapModal";
 import DisplayMap from "../Map/DisplayMap";
 import {
@@ -77,7 +75,7 @@ const EventFilter = ({
         <div className="form-group">
           <Field
             name="keyWord"
-            component={renderTextField}
+            component={RenderTextField}
             type="input"
             label="Keyword"
           />
@@ -89,7 +87,7 @@ const EventFilter = ({
                 name="dateFrom"
                 label="From"
                 minValue={new Date()}
-                component={renderDatePicker}
+                component={RenderDatePicker}
                 parse={parseEuDate}
               />
             </div>
@@ -98,14 +96,14 @@ const EventFilter = ({
                 name="dateTo"
                 label="To"
                 minValue={new Date(values.dateFrom)}
-                component={renderDatePicker}
+                component={RenderDatePicker}
                 parse={parseEuDate}
               />
             </div>
             <div className="form-group">
               <Field
                 name="categories"
-                component={renderMultiselect}
+                component={RenderMultiselectField}
                 data={allCategories.data}
                 valueField="id"
                 textField="name"

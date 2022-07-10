@@ -35,8 +35,6 @@ const RenderDatePicker = ({
   );
 };
 
-export default RenderDatePicker;
-
 RenderDatePicker.defaultProps = {
   input: {},
   meta: {},
@@ -52,3 +50,5 @@ RenderDatePicker.propTypes = {
   label: PropTypes.string,
   disabled: PropTypes.bool,
 };
+
+export default RenderDatePicker;

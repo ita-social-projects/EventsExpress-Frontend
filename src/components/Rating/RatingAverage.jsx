@@ -6,6 +6,7 @@ import getRatingEffect from "../helpers/ratingHelper";
 import "./Rating.scss";
 
 const RatingAverage = ({ value, direction }) => {
+  // TODO: check why value is object
   // eslint-disable-next-line no-param-reassign
   if (typeof value === "object") value = 0;
   const ratingEffect = getRatingEffect(value);

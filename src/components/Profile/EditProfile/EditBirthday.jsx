@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
-import { renderDatePicker, parseEuDate } from "../../helpers/form-helpers";
+import RenderDatePicker from "../../helpers/form-helpers/render-date-pickerV2";
+import parseEuDate from "../../helpers/form-helpers/parseEuDate";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
 import PROFILE_CONSTANTS from "../../../constants/profileConstants";
 import setRangeForSelectBirthday from "../../helpers/validators/setRangeForSelectBirthday";
@@ -40,7 +41,7 @@ const EditBirthday = ({ handleSubmit, pristine, reset, submitting, error }) => {
           label="Birthday"
           minValue={minValue}
           maxValue={maxValue}
-          component={renderDatePicker}
+          component={RenderDatePicker}
           parse={parseEuDate}
         />
         {error && <ErrorMessages error={error} className="text-center" />}

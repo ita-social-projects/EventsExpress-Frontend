@@ -48,7 +48,7 @@
       }
     ],
     "import/no-cycle": [
-      "off", // error
+      "error",
       {
         "maxDepth": 2
       }

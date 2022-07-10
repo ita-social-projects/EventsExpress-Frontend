@@ -4,7 +4,8 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import IconButton from "@material-ui/core/IconButton";
 import propTypes from "prop-types";
-import { renderTextField, renderSelectField } from "../helpers/form-helpers";
+import RenderTextField from "../helpers/form-helpers/render-text-field";
+import RenderSelectField from "../helpers/form-helpers/render-select-field";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 import fieldIsRequired from "../helpers/validators/required-fields-validator";
 
@@ -35,7 +36,7 @@ const CategoryEdit = ({
               className="form-control"
               name="name"
               label="Name"
-              component={renderTextField}
+              component={RenderTextField}
             />
             {error && <ErrorMessages error={error} className="text-center" />}
           </div>
@@ -44,7 +45,7 @@ const CategoryEdit = ({
               className="form-control"
               name="categoryGroup"
               label="Select a group"
-              component={renderSelectField}
+              component={RenderSelectField}
               defaultValue={JSON.stringify(initialValues?.categoryGroup)}
             >
               <option value="" id="CategoryEditOption" disabled></option>

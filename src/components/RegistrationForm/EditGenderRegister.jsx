@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { USER_GENDERS } from "../../constants/userConstants";
-import { renderSelectField } from "../helpers/form-helpers";
+import RenderSelectField from "../helpers/form-helpers/render-select-field";
 import ErrorMessages from "../shared/ErrorMessage/ErrorMessage";
 
 const editGenderRegister = props => {
@@ -12,7 +12,7 @@ const editGenderRegister = props => {
         <Field
           minWidth={140}
           name="gender"
-          component={renderSelectField}
+          component={RenderSelectField}
           label="Gender"
         >
           <option aria-label="None" value="" />

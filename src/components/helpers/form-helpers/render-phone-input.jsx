@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import InputLabel from "@material-ui/core/InputLabel";
-import { renderFieldError } from ".";
+import RenderFieldError from "./render-field-error";
 
 const RenderPhoneInput = ({
   input,
@@ -25,7 +25,7 @@ const RenderPhoneInput = ({
         error={touched && invalid}
         {...custom}
       />
-      {renderFieldError({ touched, error })}
+      {RenderFieldError({ touched, error })}
     </div>
   );
 };
