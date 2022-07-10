@@ -58,18 +58,14 @@ const EventScheduleItemView = ({ eventSchedule, currentUser }) => {
             <div className="text-block">
               <CardContent>
                 <div className="title"> {title} </div>
-                <div>
-                  {RUN.LAST}
-                  <Moment className="ml-2" format="D MMM YYYY" withTitle>
-                    {lastRun}
-                  </Moment>
-                </div>
-                <div>
-                  {RUN.NEXT}
-                  <Moment className="ml-2" format="D MMM YYYY" withTitle>
-                    {nextRun}
-                  </Moment>
-                </div>
+                {RUN.LAST}
+                <Moment className="ml-2" format="D MMM YYYY" withTitle>
+                  {lastRun}
+                </Moment>
+                {RUN.NEXT}
+                <Moment className="ml-2" format="D MMM YYYY" withTitle>
+                  {nextRun}
+                </Moment>
               </CardContent>
             </div>
           </Card>

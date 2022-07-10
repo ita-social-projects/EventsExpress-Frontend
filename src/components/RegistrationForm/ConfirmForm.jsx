@@ -37,96 +37,92 @@ const ConfirmForm = ({ formValues, categoryGroups, categories, ...props }) => {
   };
 
   return (
-    <>
-      <div style={{ width: "97%", padding: "10px" }}>
-        <form onSubmit={handleSubmit}>
-          <Grid container spacing={3}>
-            <Grid item sm={7}>
-              <h1 style={{ fontSize: 20 }}>{STEP_5_TITLE}</h1>
-            </Grid>
-            <Grid item sm={5} />
-            <Grid item xs={4}>
-              <List>
-                <ListItem>
-                  <ListItemText primary="Email" />
-                </ListItem>
-                <ListItem>
-                  <ListItemText
-                    primary="First Name"
-                    secondary={formValues.firstName}
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemText
-                    primary="Last Name"
-                    secondary={formValues.lastName}
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemText
-                    primary="Birth Date"
-                    secondary={
-                      formValues.birthDate
-                        ? moment(formValues.birthDate).format("DD-MM-YYYY")
-                        : "Not entered."
-                    }
-                  />
-                </ListItem>
-              </List>
-            </Grid>
-            <Grid item xs={3}>
-              <List>
-                <ListItem>
-                  <ListItemText
-                    primary="Gender"
-                    secondary={gendersArray[formValues.gender]}
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemText
-                    primary="Country"
-                    secondary={formValues.country}
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemText primary="City" secondary={formValues.city} />
-                </ListItem>
-              </List>
-            </Grid>
-            <Grid item xs={5}>
-              <h5>{SOME_STEP_DATA}</h5>
-            </Grid>
+    <form onSubmit={handleSubmit}>
+      <Grid container spacing={3}>
+        <Grid item sm={7}>
+          <h1 style={{ fontSize: 20 }}>{STEP_5_TITLE}</h1>
+        </Grid>
+        <Grid item sm={5} />
+        <Grid item xs={4}>
+          <List>
+            <ListItem>
+              <ListItemText primary="Email" />
+            </ListItem>
+            <ListItem>
+              <ListItemText
+                primary="First Name"
+                secondary={props.formValues.firstName}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText
+                primary="Last Name"
+                secondary={props.formValues.lastName}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText
+                primary="Birth Date"
+                secondary={
+                  props.formValues.birthDate
+                    ? moment(props.formValues.birthDate).format("DD-MM-YYYY")
+                    : "Not entered."
+                }
+              />
+            </ListItem>
+          </List>
+        </Grid>
+        <Grid item xs={3}>
+          <List>
+            <ListItem>
+              <ListItemText
+                primary="Gender"
+                secondary={gendersArray[props.formValues.gender]}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText
+                primary="Country"
+                secondary={props.formValues.country}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="City" secondary={props.formValues.city} />
+            </ListItem>
+          </List>
+        </Grid>
+        <Grid item xs={5}>
+          <h5>{SOME_STEP_DATA}</h5>
+        </Grid>
 
-            {areCategoriesSelected() && (
-              <SelectedActivitiesList data={getSelectedCategories()} />
-            )}
+        {areCategoriesSelected() && (
+          <SelectedActivitiesList data={getSelectedCategories()} />
+        )}
 
-            <Grid item sm={12} justify="center">
-              <Button
-                type="button"
-                className="previous"
-                onClick={previousPage}
-                color="primary"
-                variant="text"
-                size="large"
-              >
-                {BUTTON_NAMES.BACK}
-              </Button>
-              <Button
-                type="submit"
-                className="next"
-                disabled={pristine || submitting}
-                color="primary"
-                variant="contained"
-                size="large"
-              >
-                {BUTTON_NAMES.CONTINUE}
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-    </>
+        <Grid item sm={12} justify="center">
+          <Button
+            type="button"
+            className="previous"
+            onClick={previousPage}
+            color="primary"
+            variant="text"
+            size="large"
+          >
+            {BUTTON_NAMES.BACK}
+          </Button>
+          <Button
+            type="submit"
+            className="next"
+            disabled={pristine || submitting}
+            color="primary"
+            variant="contained"
+            size="large"
+          >
+            {BUTTON_NAMES.CONTINUE}
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
   );
 };
 

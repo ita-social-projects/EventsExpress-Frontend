@@ -119,14 +119,10 @@ const Chat = ({
                   </ButtonBase>
                 )}
                 <div className="user_info">
-                  <span>
-                    {"Chat with "}
-                    {sender != null && sender.username}
-                  </span>
-                  <p>
-                    {chat.data.messages.length}
-                    {" Messages"}
-                  </p>
+                  {"Chat with "}
+                  {sender != null && sender.username}
+                  {chat.data.messages.length}
+                  {" Messages"}
                 </div>
               </div>
             </div>

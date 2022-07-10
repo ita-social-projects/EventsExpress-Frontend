@@ -1,10 +1,6 @@
 ﻿import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import "moment-timezone";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
-import Zoom from "@material-ui/core/Zoom";
 import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../Rating/RatingAverage";
 import "./UserProfile.scss";
@@ -13,6 +9,7 @@ import UserProfileTabs from "./UserProfileTabs";
 import UserProfileRoutes from "./UserProfileRoutes";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import UserProfileInfo from "./UserProfileInfo";
+import UserInteraction from "./UserInteraction";
 
 const UserProfile = ({
   currentUserId,
@@ -76,44 +73,13 @@ const UserProfile = ({
                 <CustomAvatar size="big" name={name} userId={id} />
                 <RatingAverage value={rating} direction="row" />
               </div>
-
-              <div className="row justify-content-center">
-                <Tooltip
-                  title="Like this user"
-                  placement="bottom"
-                  TransitionComponent={Zoom}
-                >
-                  <IconButton
-                    className={!attitude ? "text-success" : ""}
-                    onClick={attitude ? onLike : onReset}
-                  >
-                    <i className="fas fa-thumbs-up" />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip
-                  title="Dislike this user"
-                  placement="bottom"
-                  TransitionComponent={Zoom}
-                >
-                  <IconButton
-                    className={attitude === 1 ? "text-danger" : ""}
-                    onClick={attitude !== 1 ? onDislike : onReset}
-                  >
-                    <i className="fas fa-thumbs-down" />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip
-                  title="Start chat!"
-                  placement="bottom"
-                  TransitionComponent={Zoom}
-                >
-                  <Link to={`/chat/${id}`}>
-                    <IconButton>
-                      <i className="far fa-comments" />
-                    </IconButton>
-                  </Link>
-                </Tooltip>
-              </div>
+              <UserInteraction
+                attitude={attitude}
+                id={id}
+                onDislike={onDislike}
+                onLike={onLike}
+                onReset={onReset}
+              />
             </div>
           </div>
         </AuthComponent>
