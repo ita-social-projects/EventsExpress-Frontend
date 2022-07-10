@@ -7,7 +7,6 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 export const GET_CHAT_DATA = "GET_CHAT_DATA";
 export const INITIAL_CONNECTION = "INITIAL_CONNECTION";
 export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
-export const RECEIVE_NOTIFICATION = "RECEIVE_NOTIFICATION";
 export const RESET_HUB = "RESET_HUB";
 export const RESET_CHAT = "RESET_CHAT";
 export const RECEIVE_SEEN_MESSAGE = "RECEIVE_SEEN_MESSAGE";
@@ -47,14 +46,14 @@ export function concatNewMsg(data) {
     });
 }
 
-export function ReceiveSeenMsg(data) {
+function ReceiveSeenMsg(data) {
   return {
     type: RECEIVE_SEEN_MESSAGE,
     payload: data,
   };
 }
 
-export function ReceiveMsg(data) {
+function ReceiveMsg(data) {
   return {
     type: RECEIVE_MESSAGE,
     payload: data,
@@ -68,7 +67,7 @@ export function reset() {
   };
 }
 
-export function getChatSuccess(data) {
+function getChatSuccess(data) {
   return {
     type: GET_CHAT_DATA,
     payload: data,

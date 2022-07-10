@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Moment from "react-moment";
 import moment from "moment";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import RatingContainer from "../../../containers/RatingContainer/RatingContainer";
 import Comment from "../../Comment/Comment";
 import "moment-timezone";
@@ -10,9 +9,10 @@ import "../../Layout/Colorlib.scss";
 import "./EventItemView.scss";
 import EventVisitors from "../EventVisitors/EventVisitors";
 import EventLeaveModal from "../EventLeaveModal/EventLeaveModal";
-import InventoryListContainer from "../../../containers/InventoryContainer/InvetoryListContainer";
 import DisplayLocation from "../Map/DisplayLocation";
-import { ADULT_AGE, USER_STATUS_ENUM } from "../../../constants/userConstants";
+import SpinnerContainer from "../../../containers/SpinnerContainer/SpinnerContainer";
+import InventoryListContainer from "../../../containers/InventoryContainer/InvetoryListContainer";
+import { ADULT_AGE } from "../../../constants/userConstants";
 import {
   EVENT_DEFAULT_IMAGE,
   EVENT_ITEM_VIEW_CONSTS,
@@ -21,77 +21,41 @@ import {
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
 import PhotoService from "../../../services/PhotoService";
 import { BUTTON_NAMES } from "../../../constants/buttonConsts";
+import {
+  canEdit,
+  canJoin,
+  canLeave,
+  canDeleted,
+  canUncancel,
+  isMyPrivateEvent,
+  canCancel,
+} from "../../../services/EventItemViewService";
+import {
+  maxParticipantsBlock,
+  isAppropriateAgeBlock,
+  dateBlock,
+} from "./EventItemsViewBlocks";
 
 const photoService = new PhotoService();
 
 const EventItemView = ({
-  event,
   currentUser,
-  onCancel,
-  onDelete,
-  onUnCancel,
-  onJoin,
-  onLeave,
+  event,
   match,
+  joinEvent,
+  leaveEvent,
+  unCancel,
+  deleteEvent,
+  getEventProp,
+  reset,
+  getUnitsOfMeasuringProp,
+  getInventoriesByEventIdProp,
+  getUsersInventoriesByEventIdProp,
 }) => {
   const [eventImage, setEventImage] = useState(EVENT_DEFAULT_IMAGE);
-
-  useEffect(() => {
-    photoService.getFullEventPhoto(event.data.id).then(eventPreviewImage => {
-      if (eventPreviewImage != null) {
-        setEventImage(URL.createObjectURL(eventPreviewImage));
-      }
-    });
-    return () => {
-      URL.revokeObjectURL(eventImage);
-    };
-  }, []);
-
-  const renderCategories = arr => {
-    return arr.map(x => (
-      <span key={x.id}>
-        {"#"}
-        {x.name}
-      </span>
-    ));
-  };
-
-  const getUserEventStatus = visitor => {
-    if (visitor !== undefined) {
-      switch (visitor.userStatusEvent) {
-        case USER_STATUS_ENUM.APPROVED:
-          return (
-            <span className="alert alert-success shadow" role="alert">
-              {EVENT_ITEM_VIEW_CONSTS.YOU_GONNA_VISIT}
-            </span>
-          );
-        case USER_STATUS_ENUM.DENIED:
-          return (
-            <span className="alert alert-danger shadow" role="alert">
-              {EVENT_ITEM_VIEW_CONSTS.DENIED_PARTICIPATION}
-            </span>
-          );
-        case USER_STATUS_ENUM.PENDING:
-          return (
-            <span className="alert alert-warning shadow" role="alert">
-              {EVENT_ITEM_VIEW_CONSTS.WAIT_ADMIN_APROVE}
-            </span>
-          );
-        default:
-          return null;
-      }
-    }
-    return (
-      <span className="alert alert-secondary shadow" role="alert">
-        {EVENT_ITEM_VIEW_CONSTS.YOU_NOT_IN_EVENT}
-      </span>
-    );
-  };
-
   const {
     id,
     categories,
-    title,
     dateFrom,
     dateTo,
     description,
@@ -104,12 +68,8 @@ const EventItemView = ({
   } = event.data;
 
   const today = moment().startOf("day");
-  const INT32_MAX_VALUE = 2147483647;
   const visitorsEnum = {
     approvedUsers: visitors.filter(x => x.userStatusEvent === 0),
-    deniedUsers: visitors.filter(x => x.userStatusEvent === 1),
-    // eslint-disable-next-line no-magic-numbers
-    pendingUsers: visitors.filter(x => x.userStatusEvent === 2),
   };
 
   const iWillVisitIt = visitors.find(x => x.id === currentUser.id);
@@ -120,81 +80,70 @@ const EventItemView = ({
     moment.duration(today.diff(moment(currentUser.birthday))).asYears() >=
     ADULT_AGE;
 
-  const canEdit = isFutureEvent && isMyEvent;
-  const isAppropriateAge = !isOnlyForAdults || isAdult;
-  const canJoin =
-    isFutureEvent &&
-    isFreePlace &&
-    !iWillVisitIt &&
-    !isMyEvent &&
-    eventStatus === EVENT_STATUS_ENUM.ACTIVE &&
-    isAppropriateAge;
-  const canLeave =
-    isFutureEvent &&
-    !isMyEvent &&
-    iWillVisitIt &&
-    visitorsEnum.deniedUsers.find(x => x.id === currentUser.id) == null &&
-    eventStatus === EVENT_STATUS_ENUM.ACTIVE;
-  const canCancel =
-    isFutureEvent &&
-    currentUser.id != null &&
-    isMyEvent &&
-    eventStatus !== EVENT_STATUS_ENUM.CANCELED;
-  const canUncancel =
-    isFutureEvent && isMyEvent && eventStatus === EVENT_STATUS_ENUM.CANCELED;
-  const isMyPrivateEvent = isMyEvent && !isPublic;
-  const canDeleted = isMyEvent && eventStatus === EVENT_STATUS_ENUM.CANCELED;
+  const onJoin = () => {
+    joinEvent(currentUser.id, event.data.id);
+  };
+
+  const onLeave = () => {
+    leaveEvent(currentUser.id, event.data.id);
+  };
+
+  const onCancel = (reason, status) => {
+    unCancel(event.data.id, reason, status);
+  };
+
+  const onUnCancel = (reason, status) => {
+    unCancel(event.data.id, reason, status);
+  };
+
+  const onDelete = (reason, status) => {
+    deleteEvent(event.data.id, reason, status);
+  };
+
+  useEffect(() => {
+    photoService.getPreviewEventPhoto(id).then(eventPreviewImage => {
+      if (eventPreviewImage !== null) {
+        setEventImage(URL.createObjectURL(eventPreviewImage));
+      }
+    });
+    return () => {
+      URL.revokeObjectURL(eventImage);
+    };
+  }, []);
+
+  useEffect(() => {
+    const { id: matchId } = match.params;
+    getEventProp(matchId);
+    getUnitsOfMeasuringProp();
+    getInventoriesByEventIdProp(matchId);
+    getUsersInventoriesByEventIdProp(matchId);
+    reset();
+  }, []);
+
+  const renderCategories = arr => {
+    return arr.map(x => (
+      <span key={x.id}>
+        {"#"}
+        {x.name}
+      </span>
+    ));
+  };
 
   return (
-    <div className="container-fluid mt-1">
-      <div className="row">
-        <div className="col-9">
-          <div className="col-12">
-            <img
-              src={eventImage}
-              id={`eventFullPhotoImg${id}`}
-              alt="Event"
-              className="w-100"
-            />
-            <div className="text-block">
-              <span className="title">{title}</span>
+    <SpinnerContainer showContent={event.data !== undefined}>
+      <div className="container-fluid mt-1">
+        <div className="row">
+          <div className="col-9">
+            <div className="col-12">
+              <img
+                src={eventImage}
+                id={`eventFullPhotoImg${id}`}
+                alt="Event"
+                className="w-100r"
+              />
+              {maxParticipantsBlock(maxParticipants, visitors)}
               <br />
-              {isPublic ? (
-                <span>{EVENT_ITEM_VIEW_CONSTS.PUBLIC_EVENT}</span>
-              ) : (
-                <span>{EVENT_ITEM_VIEW_CONSTS.PRIVATE_EVENT}</span>
-              )}
-              <br />
-              {maxParticipants < INT32_MAX_VALUE ? (
-                <span className="maxParticipants">
-                  {visitorsEnum.approvedUsers.length}
-                  {"/"}
-                  {maxParticipants}
-                  <span className="pl-2">
-                    {EVENT_ITEM_VIEW_CONSTS.PARTICIPANTS}
-                  </span>
-                </span>
-              ) : (
-                <span className="maxParticipants">
-                  {visitorsEnum.approvedUsers.length}
-                  <span className="pl-2">
-                    {EVENT_ITEM_VIEW_CONSTS.PARTICIPANTS}
-                  </span>
-                </span>
-              )}
-              <br />
-              <span>
-                <Moment format="D MMM YYYY" withTitle>
-                  {dateFrom}
-                </Moment>
-                {dateTo !== dateFrom && (
-                  <>
-                    <Moment format="D MMM YYYY" withTitle>
-                      {dateTo}
-                    </Moment>
-                  </>
-                )}
-              </span>
+              {dateBlock(dateTo, dateFrom)}
               <br />
               {event.data.location && (
                 <DisplayLocation location={event.data.location} />
@@ -212,14 +161,19 @@ const EventItemView = ({
                 {BUTTON_NAMES.CHANGE_EVENT_STATUS}
               </button>
               <div className="dropdown-menu">
-                {canEdit && (
+                {canEdit(isFutureEvent, isMyEvent) && (
                   <Link to={`/editEvent/${id}`}>
                     <button type="button" className="btn btn-danger mb-1">
                       {BUTTON_NAMES.EDIT}
                     </button>
                   </Link>
                 )}
-                {canCancel && (
+                {canCancel(
+                  isFutureEvent,
+                  currentUser,
+                  isMyEvent,
+                  eventStatus,
+                ) && (
                   <SimpleModalWithDetails
                     button={
                       <button type="button" className="btn btn-danger ">
@@ -230,7 +184,7 @@ const EventItemView = ({
                     data="Are you sure?"
                   />
                 )}
-                {canDeleted && (
+                {canDeleted(isMyEvent, eventStatus) && (
                   <SimpleModalWithDetails
                     button={
                       <button type="button" className="btn btn-danger ">
@@ -241,7 +195,7 @@ const EventItemView = ({
                     data="Are you sure?"
                   />
                 )}
-                {canUncancel && (
+                {canUncancel(isFutureEvent) && (
                   <SimpleModalWithDetails
                     button={
                       <button type="button" className="btn btn-danger ">
@@ -297,18 +251,21 @@ const EventItemView = ({
         <div className="col-3 overflow-auto shadow p-3 mb-5 bg-white rounded">
           {!isMyEvent && (
             <div className="text-box overflow-auto shadow p-3 mb-5 mt-2 bg-white rounded">
-              <div className="d-flex justify-content-center">
-                {isAppropriateAge ? (
-                  getUserEventStatus(
-                    visitors.find(x => x.id === currentUser.id),
-                  )
-                ) : (
-                  <span className="alert alert-warning shadow" role="alert">
-                    {EVENT_ITEM_VIEW_CONSTS.AGE_REQUIREMENTS}
-                  </span>
-                )}
-              </div>
-              {canJoin && (
+              {isAppropriateAgeBlock(
+                isOnlyForAdults,
+                isAdult,
+                visitors,
+                currentUser,
+              )}
+              {canJoin(
+                isFutureEvent,
+                isFreePlace,
+                iWillVisitIt,
+                isMyEvent,
+                eventStatus,
+                isOnlyForAdults,
+                isAdult,
+              ) && (
                 <div>
                   <br />
                   <button
@@ -321,7 +278,14 @@ const EventItemView = ({
                   </button>
                 </div>
               )}
-              {canLeave && (
+              {canLeave(
+                isFutureEvent,
+                isMyEvent,
+                iWillVisitIt,
+                currentUser,
+                visitors,
+                eventStatus,
+              ) && (
                 <EventLeaveModal
                   data={{}}
                   submitLeave={onLeave}
@@ -334,37 +298,44 @@ const EventItemView = ({
             data={{}}
             admins={organizers}
             visitors={visitorsEnum}
-            isMyPrivateEvent={isMyPrivateEvent}
+            isMyPrivateEvent={isMyPrivateEvent(isMyEvent, isPublic)}
             isMyEvent={isMyEvent}
             current_user_id={currentUser.id}
           />
         </div>
       </div>
-    </div>
+    </SpinnerContainer>
   );
 };
 
-// TODO: Check prop match
 EventItemView.propTypes = {
-  event: propTypes.object,
-  currentUser: propTypes.object,
-  onCancel: propTypes.func,
-  onDelete: propTypes.func,
-  onUnCancel: propTypes.func,
-  onJoin: propTypes.func,
-  onLeave: propTypes.func,
-  match: propTypes.object,
+  currentUser: PropTypes.object,
+  event: PropTypes.object,
+  match: PropTypes.object,
+  joinEvent: PropTypes.func,
+  leaveEvent: PropTypes.func,
+  unCancel: PropTypes.func,
+  deleteEvent: PropTypes.func,
+  reset: PropTypes.func,
+  getEventProp: PropTypes.func,
+  getUnitsOfMeasuringProp: PropTypes.func,
+  getInventoriesByEventIdProp: PropTypes.func,
+  getUsersInventoriesByEventIdProp: PropTypes.func,
 };
 
 EventItemView.defaultProps = {
-  event: {},
   currentUser: {},
-  onCancel: () => {},
-  onDelete: () => {},
-  onUnCancel: () => {},
-  onJoin: () => {},
-  onLeave: () => {},
+  event: {},
   match: {},
+  joinEvent: () => {},
+  leaveEvent: () => {},
+  unCancel: () => {},
+  deleteEvent: () => {},
+  reset: () => {},
+  getEventProp: () => {},
+  getUnitsOfMeasuringProp: () => {},
+  getInventoriesByEventIdProp: () => {},
+  getUsersInventoriesByEventIdProp: () => {},
 };
 
 export default EventItemView;

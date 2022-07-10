@@ -60,7 +60,7 @@ const EventCard = ({ event, additionalButtons, additionalModal }) => {
             <span className="card-info-header">{titleText}</span>
             <div className="card-buttons">
               {additionalButtons}
-              <NavLink to={`/home/events/${id}`} className="more bttn">
+              <NavLink to={`/event/${id}/1`} className="more bttn">
                 <BiRightArrowAlt size={30} />
               </NavLink>
             </div>

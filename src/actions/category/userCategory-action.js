@@ -5,13 +5,12 @@ import { getRequestInc, getRequestDec } from "../request-count-action";
 export const GET_USER_CATEGORIES_DATA = "GET_USER_CATEGORIES_DATA";
 
 const apiService = new CategoryService();
-
-export function getUserCategoriesData(data) {
+const getUserCategoriesData = data => {
   return {
     type: GET_USER_CATEGORIES_DATA,
     payload: data,
   };
-}
+};
 
 const getUserCategories = () => {
   return async dispatch => {

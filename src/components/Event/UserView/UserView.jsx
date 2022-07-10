@@ -57,13 +57,13 @@ const UsersView = ({ user, children }) => {
 };
 
 UsersView.propTypes = {
-  user: PropTypes.arrayOf({}),
-  children: PropTypes.array,
+  user: PropTypes.object,
+  children: PropTypes.object,
 };
 
 UsersView.defaultProps = {
-  user: [],
-  children: [],
+  user: {},
+  children: {},
 };
 
 export default UsersView;

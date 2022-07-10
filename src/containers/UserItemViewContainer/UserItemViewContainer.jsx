@@ -6,8 +6,6 @@ import getUser, {
 import { getEventsByType } from "../../actions/events/events-for-profile-action";
 import UserProfile from "../../components/Profile/UserProfile";
 
-// USER_ID always " "
-
 const mapStateToProps = state => ({
   currentUserId: state.user.id,
   events: state.eventsForProfile,

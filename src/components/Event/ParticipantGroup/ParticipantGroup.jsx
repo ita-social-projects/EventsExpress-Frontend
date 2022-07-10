@@ -18,13 +18,13 @@ const ParticipantGroup = ({ label, disabled, users, renderUserActions }) => {
         <Typography>{label}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography className="w-100">
+        <div className="w-100">
           {users.map(user => (
             <UserView key={user.id} user={user}>
               {renderUserActions(user)}
             </UserView>
           ))}
-        </Typography>
+        </div>
       </AccordionDetails>
     </Accordion>
   );
@@ -33,7 +33,7 @@ const ParticipantGroup = ({ label, disabled, users, renderUserActions }) => {
 ParticipantGroup.propTypes = {
   label: PropTypes.string,
   disabled: PropTypes.bool,
-  users: PropTypes.object,
+  users: PropTypes.array,
   renderUserActions: PropTypes.func,
   map: PropTypes.func,
 };
@@ -41,7 +41,7 @@ ParticipantGroup.propTypes = {
 ParticipantGroup.defaultProps = {
   label: "",
   disabled: false,
-  users: {},
+  users: [],
   renderUserActions: () => {},
   map: () => {},
 };

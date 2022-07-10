@@ -24,17 +24,10 @@
         "ignoreImports": false
       }
     ],
-    // "complexity": ["error", 12],
-    "eol-last": [
-      "error",
-      "always"
-    ],
-    "import/no-unresolved": [
-      2,
-      {
-        "caseSensitive": true
-      }
-    ],
+    "complexity": ["error", 12],
+    
+    "eol-last": ["error", "always"],
+    "import/no-unresolved": [2, { "caseSensitive": true }],
     "no-magic-numbers": [
       "error",
       {
@@ -53,17 +46,10 @@
         "maxDepth": 2
       }
     ], // forbidden cycle dependency  --------> ~ 15 errors
-    "import/extensions": [
-      "error",
-      "never"
-    ],
-    "import/no-named-as-default": [
-      "error"
-    ],
-    // "import/no-unused-modules": [
-    //   "error",
-    //   { "missingExports": true, "unusedExports": true }
-    // ],
+
+    "import/extensions": ["error", "never"], 
+    "import/no-named-as-default": ["error"],
+
     // "react/destructuring-assignment": 2, // require props destructuring inside component ~ 600 // need to refactor all CC
     "react/destructuring-assignment": "off",
     "react/forbid-prop-types": "off", // forbid propTypes.object

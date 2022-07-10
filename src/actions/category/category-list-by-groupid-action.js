@@ -6,13 +6,6 @@ export const GET_CATEGORIES_BY_GROUP_ID = "GET_CATEGORIES_BY_GROUP_ID";
 
 const apiService = new CategoryService();
 
-export function getCategoriesByGroupIdData(data) {
-  return {
-    type: GET_CATEGORIES_BY_GROUP_ID,
-    payload: data,
-  };
-}
-
 const getCategoriesByGroupId = id => {
   return async dispatch => {
     dispatch(getRequestInc());

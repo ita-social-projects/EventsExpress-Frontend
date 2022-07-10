@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { Field, reduxForm } from "redux-form";
-import { FILTER_OPTIONS_MAPPER } from "../../constants/changesTypeEnumConstants";
+import FILTER_OPTIONS_MAPPER from "../../constants/changesTypeEnumConstants";
 import MultiCheckbox from "../helpers/form-helpers/MultiCheckbox";
 import RenderDatePicker from "../helpers/form-helpers/render-date-pickerV2";
 import RenderMultiselectField from "../helpers/form-helpers/render-multiselect-field";

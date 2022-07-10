@@ -37,16 +37,16 @@ function OwnersActions({
 OwnersActions.propTypes = {
   user: PropTypes.object,
   isMyEvent: PropTypes.bool,
-  currentUserId: PropTypes.number,
-  eventId: PropTypes.number,
+  currentUserId: PropTypes.string,
+  eventId: PropTypes.string,
   deleteFromOwners: PropTypes.func,
 };
 
 OwnersActions.defaultProps = {
   user: {},
   isMyEvent: false,
-  currentUserId: null,
-  eventId: null,
+  currentUserId: "",
+  eventId: "",
   deleteFromOwners: () => {},
 };
 

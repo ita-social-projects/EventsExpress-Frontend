@@ -95,14 +95,14 @@ const InventoryList = ({ inventories, event, user, usersInventories }) => {
 };
 
 InventoryList.defaultProps = {
-  inventories: [],
+  inventories: {},
   event: {},
   user: {},
   usersInventories: [],
 };
 
 InventoryList.propTypes = {
-  inventories: PropTypes.array,
+  inventories: PropTypes.object,
   event: PropTypes.object,
   user: PropTypes.object,
   usersInventories: PropTypes.array,
