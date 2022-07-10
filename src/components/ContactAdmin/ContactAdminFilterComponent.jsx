@@ -9,7 +9,11 @@ import { ISSUE_STATUS_ENUM } from "../../constants/issueConstants";
 import { compareObjects } from "../helpers/filterHelper/filterHelper";
 import "./ContactAdminFilter.scss";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
-import { ADMIN_MIN_DATE_FILTER_YEAR } from "../../constants/adminConstants";
+import {
+  ADMIN_MIN_DATE_FILTER_YEAR,
+  FIRST_DAY,
+  FIRST_MONTH,
+} from "../../constants/adminConstants";
 
 const ContactAdminFilter = ({
   handleSubmit,
@@ -52,7 +56,9 @@ const ContactAdminFilter = ({
               <Field
                 name="dateFrom"
                 label="From"
-                minValue={new Date(ADMIN_MIN_DATE_FILTER_YEAR, 1, 1)}
+                minValue={
+                  new Date(ADMIN_MIN_DATE_FILTER_YEAR, FIRST_MONTH, FIRST_DAY)
+                }
                 component={RenderDatePicker}
                 parse={parseEuDate}
               />

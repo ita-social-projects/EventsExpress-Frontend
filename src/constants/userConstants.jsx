@@ -22,6 +22,8 @@ export const USER_VIEW_LABELS = {
   DISLIKE: "dislike",
 };
 
+export const NEXT_GENDER_STEP = 1;
+
 export const LIKE = {
   LIKEDISLIKE: USER_VIEW_LABELS.LIKE,
   UPDOWN: "up",

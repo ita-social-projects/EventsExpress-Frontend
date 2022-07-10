@@ -5,7 +5,12 @@ import ApprovedUsersActionsContainer from "../../../containers/UsersActionsConta
 import PendingUsersActions from "../PendingUsersAction/PendingUsersAction";
 import DeniedUsersActions from "../DeniedUsersAction/DeniedUsersAction";
 import ParticipantGroup from "../ParticipantGroup/ParticipantGroup";
-import { EVENT_VISITORS } from "../../../constants/eventConstants";
+import {
+  ANY_APPROVED_USERS,
+  ANY_DENIED_USERS,
+  ANY_PENDING_USERS,
+  EVENT_VISITORS,
+} from "../../../constants/eventConstants";
 
 const { ADMIN, VISITORS, PENDING_USERS, DENIED_USERS } = EVENT_VISITORS;
 
@@ -22,7 +27,7 @@ const EventVisitors = ({ isMyPrivateEvent, visitors, admins, isMyEvent }) => {
       ),
     },
     {
-      disabled: approvedUsers.length === 0,
+      disabled: approvedUsers.length === ANY_APPROVED_USERS,
       users: visitors.approvedUsers,
       label: VISITORS,
       renderComponent: user => (
@@ -36,7 +41,7 @@ const EventVisitors = ({ isMyPrivateEvent, visitors, admins, isMyEvent }) => {
     ...(isMyPrivateEvent
       ? [
           {
-            disabled: pendingUsers.length === 0,
+            disabled: pendingUsers.length === ANY_PENDING_USERS,
             users: visitors.pendingUsers,
             label: PENDING_USERS,
             renderComponent: user => (
@@ -44,7 +49,7 @@ const EventVisitors = ({ isMyPrivateEvent, visitors, admins, isMyEvent }) => {
             ),
           },
           {
-            disabled: deniedUsers.length === 0,
+            disabled: deniedUsers.length === ANY_DENIED_USERS,
             users: visitors.deniedUsers,
             label: DENIED_USERS,
             renderComponent: user => (

@@ -1,3 +1,7 @@
+import {
+  EMPTY_INVENTORIES_ARRAY,
+  NO_TAKEN_ITEMS,
+} from "../../constants/inventoryConstatns";
 import { DEFAULT_ZERO_VALUE } from "../../constants/numberConstants";
 
 export const isUserEvent = (organizers, user) =>
@@ -11,7 +15,7 @@ export const getUpdatedInventories = (inventories, usersInventories, user) =>
           usersInventories.data.filter(
             dataItem =>
               user.id === dataItem.userId && item.id === dataItem.inventoryId,
-          ).length > 0,
+          ).length > EMPTY_INVENTORIES_ARRAY,
       }))
     : [];
 
@@ -26,5 +30,5 @@ export const calculateMyItemAmout = (usersInventories, user, item) => {
       inventory.userId === user.id && inventory.inventoryId === item.id,
   );
 
-  return myInventoryTaken ? myInventoryTaken.quantity : 0;
+  return myInventoryTaken ? myInventoryTaken.quantity : NO_TAKEN_ITEMS;
 };

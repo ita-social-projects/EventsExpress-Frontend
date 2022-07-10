@@ -1,12 +1,16 @@
 import React from "react";
 import Moment from "react-moment";
-import { EVENT_ITEM_VIEW_CONSTS } from "../../../constants/eventConstants";
+import {
+  EVENT_ITEM_VIEW_CONSTS,
+  VISITORS_STATUS,
+} from "../../../constants/eventConstants";
 import { USER_STATUS_ENUM } from "../../../constants/userConstants";
 import { isAppropriateAge } from "../../../services/EventItemViewService";
 
 const INT32_MAX_VALUE = 2147483647;
 
-const approvedUsers = visitors => visitors.filter(x => x.userStatusEvent === 0);
+const approvedUsers = visitors =>
+  visitors.filter(x => x.userStatusEvent === VISITORS_STATUS.APPROVED);
 
 export const eventStatusBlock = isPublic => {
   return (

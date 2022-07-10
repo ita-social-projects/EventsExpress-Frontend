@@ -7,7 +7,7 @@ import EditBirthdayContainer from "../../containers/EditProfileContainers/EditBi
 import SelectCategoriesWrapper from "../../containers/CategoryContainers/SelectCategoriesContainer";
 import SelectNotificationTypesWrapper from "../../containers/NotificationTypesContainer/NotificationTypesContainer";
 import LinkedAuthsWrapper from "../../containers/LinkedAuthContainer/LinkedAuthsContainer";
-import PROFILE_CONSTANTS from "../../constants/profileConstants";
+import { PROFILE_CONSTANTS } from "../../constants/profileConstants";
 
 const useProfileData = (
   name,

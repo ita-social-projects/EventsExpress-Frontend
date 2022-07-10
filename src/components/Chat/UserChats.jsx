@@ -5,7 +5,10 @@ import propTypes from "prop-types";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import "./UserChats.scss";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
-import { U_HAVE_UNREAD_MSG } from "../../constants/chatConstants";
+import {
+  ONE_UNREAD_MSG,
+  U_HAVE_UNREAD_MSG,
+} from "../../constants/chatConstants";
 
 const UserChats = ({ chats, currentUser, notification, getChats }) => {
   useEffect(() => {
@@ -18,7 +21,7 @@ const UserChats = ({ chats, currentUser, notification, getChats }) => {
     return arr.map(x => {
       const user = x.users.find(y => y.id !== currentUser.id);
       const newMsg = notification.messages.filter(y => y.chatRoomId === x.id);
-      const chatBg = newMsg.length > 0 ? "new-msgs" : "";
+      const chatBg = newMsg.length ? "new-msgs" : "";
 
       return (
         <div key={x.id} className="w-100">
@@ -33,13 +36,13 @@ const UserChats = ({ chats, currentUser, notification, getChats }) => {
               </ButtonBase>
               <div className="my-auto ml-5 wrap-text">
                 <h5>{user.username}</h5>
-                {newMsg.length === 0 && (
+                {newMsg.length < ONE_UNREAD_MSG && (
                   <span className="text-info">{x.lastMessage}</span>
                 )}
-                {newMsg.length === 1 && (
+                {newMsg.length === ONE_UNREAD_MSG && (
                   <span className="text-info">{U_HAVE_UNREAD_MSG}</span>
                 )}
-                {newMsg.length > 1 && (
+                {newMsg.length > ONE_UNREAD_MSG && (
                   <span className="text-info">
                     {"You have "}
                     {newMsg.length} {"unread messages"}

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-
 import PropTypes from "prop-types";
 import TrackList from "./TrackList";
 import TracksFilter from "./TracksFilter";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
+import { HANDLE_TRACKS_OPTION } from "../../constants/tracksConstants";
 
 const Tracks = ({
   tracks,
@@ -37,7 +37,7 @@ const Tracks = ({
 
   const handleSubmit = async filters => {
     const currentFilters = filters || {};
-    await handleFunc(currentFilters, 1);
+    await handleFunc(currentFilters, HANDLE_TRACKS_OPTION);
   };
 
   const handlePageChange = async page => {
@@ -47,7 +47,7 @@ const Tracks = ({
 
   const onReset = async () => {
     resetFilters();
-    await handleFunc({}, 1);
+    await handleFunc({}, HANDLE_TRACKS_OPTION);
   };
   const { data, entityNames } = tracks;
   return (

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import InventoryButtons from "../InventoryButtons";
+import { NO_TAKEN_ITEMS } from "../../../../constants/inventoryConstatns";
 
 const InventoryView = ({
   isOrganizator,
@@ -35,7 +36,7 @@ const InventoryView = ({
       <div className="body-field">{item.unitOfMeasuring?.shortName}</div>
       <div className="body-field">
         <InventoryButtons
-          hasInventory={myItemAmout !== 0}
+          hasInventory={myItemAmout !== NO_TAKEN_ITEMS}
           isOrganizator={isOrganizator}
           toggleIsEdit={toggleIsEdit}
           handleOrganizatorInventoryDelete={handleOrganizatorInventoryDelete}

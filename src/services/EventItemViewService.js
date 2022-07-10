@@ -1,6 +1,10 @@
-import { EVENT_STATUS_ENUM } from "../constants/eventConstants";
+import {
+  EVENT_STATUS_ENUM,
+  VISITORS_STATUS,
+} from "../constants/eventConstants";
 
-const deniedUsers = visitors => visitors.filter(x => x.userStatusEvent === 1);
+const deniedUsers = visitors =>
+  visitors.filter(x => x.userStatusEvent === VISITORS_STATUS.DENIED);
 
 export const canEdit = (isFutureEvent, isMyEvent) => isFutureEvent && isMyEvent;
 

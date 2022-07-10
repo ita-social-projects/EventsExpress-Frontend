@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import PagePagination from "../shared/PagePagination/PagePagination";
 import TrackItem from "./TrackItem";
-import { TRACKS_TABLE_FIELDS } from "../../constants/tracksConstants";
+import {
+  EMPTY_TRACKS_ARRAY,
+  TRACKS_TABLE_FIELDS,
+} from "../../constants/tracksConstants";
 import { NO_RESULT } from "../../constants/labelConstants";
+import { PAGINATION_PAGES_TRIGGER } from "../../constants/paginationConstants";
 
 class TrackList extends Component {
   renderItems = arr => {
@@ -37,7 +41,7 @@ class TrackList extends Component {
                 </tr>
               </thead>
               <tbody>
-                {dataList?.items?.length > 0 ? (
+                {dataList?.items?.length > EMPTY_TRACKS_ARRAY ? (
                   this.renderItems(dataList.items)
                 ) : (
                   <div id="notfound" className="w-100">
@@ -50,7 +54,7 @@ class TrackList extends Component {
                 )}
               </tbody>
             </table>
-            {dataList?.pageViewModel?.totalPages > 1 && (
+            {dataList?.pageViewModel?.totalPages > PAGINATION_PAGES_TRIGGER && (
               <PagePagination
                 currentPage={dataList?.pageViewModel?.pageNumber}
                 totalPages={dataList?.pageViewModel?.totalPages}

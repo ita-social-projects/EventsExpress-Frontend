@@ -6,7 +6,7 @@ import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import RenderDatePicker from "../../helpers/form-helpers/render-date-pickerV2";
 import parseEuDate from "../../helpers/form-helpers/parseEuDate";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
-import PROFILE_CONSTANTS from "../../../constants/profileConstants";
+import { PROFILE_CONSTANTS } from "../../../constants/profileConstants";
 import setRangeForSelectBirthday from "../../helpers/validators/setRangeForSelectBirthday";
 
 export const validate = values => {

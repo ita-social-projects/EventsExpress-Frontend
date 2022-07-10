@@ -11,7 +11,12 @@ import SnackbarContent from "@material-ui/core/SnackbarContent";
 import WarningIcon from "@material-ui/icons/Warning";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import { ALERT_DELAY } from "../../constants/alertConstants";
+import {
+  ALERT_DELAY,
+  ALERT_THEME_SPACING,
+  COLOR_WEIGHT_600,
+  COLOR_WEIGHT_700,
+} from "../../constants/alertConstants";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -22,7 +27,7 @@ const variantIcon = {
 
 const useStyles1 = makeStyles(theme => ({
   success: {
-    backgroundColor: green[600],
+    backgroundColor: green[COLOR_WEIGHT_600],
     zIndex: 100000,
   },
   error: {
@@ -34,7 +39,7 @@ const useStyles1 = makeStyles(theme => ({
     zIndex: 100000,
   },
   warning: {
-    backgroundColor: amber[700],
+    backgroundColor: amber[COLOR_WEIGHT_700],
     zIndex: 100000,
   },
   icon: {
@@ -43,7 +48,7 @@ const useStyles1 = makeStyles(theme => ({
   },
   iconVariant: {
     opacity: 0.9,
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(ALERT_THEME_SPACING),
     zIndex: 100000,
   },
   message: {

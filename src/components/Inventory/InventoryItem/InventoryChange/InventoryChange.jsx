@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import OrganizatorForm from "./OrganizatorForm";
 import MemberForm from "./MemberForm";
+import { NO_TAKEN_ITEMS } from "../../../../constants/inventoryConstatns";
 
 const InventoryChange = ({
   eventId,
@@ -42,7 +43,7 @@ const InventoryChange = ({
       inventoryId: id,
       quantity: +willTake,
     };
-    if (myItemAmout === 0) {
+    if (myItemAmout === NO_TAKEN_ITEMS) {
       wantToTakeHandle(data);
     } else {
       editMemberInventory(data);

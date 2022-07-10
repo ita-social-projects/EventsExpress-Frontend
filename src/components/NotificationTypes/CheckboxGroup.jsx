@@ -1,5 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
+import { CHECKBOX_SLICE_OPTION } from "../../constants/inputsConstants";
 
 class CheckboxGroup extends React.Component {
   checkboxGroup() {
@@ -23,7 +24,7 @@ class CheckboxGroup extends React.Component {
                 } else {
                   newValue.splice(
                     newValue.findIndex(op => op.id === option.id),
-                    1,
+                    CHECKBOX_SLICE_OPTION,
                   );
                 }
                 return input.onChange(newValue);

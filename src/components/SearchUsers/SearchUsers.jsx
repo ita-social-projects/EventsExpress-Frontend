@@ -12,6 +12,10 @@ import { getSearchUsers, changeFilter } from "../../actions/users/users-action";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import UserItemList from "../Users/UserItemList";
 import "./SearchUsers.scss";
+import {
+  DEFAULT_PAGE,
+  PAGINATION_PAGES_TRIGGER,
+} from "../../constants/paginationConstants";
 
 const SearchUsers = ({
   users,
@@ -24,13 +28,11 @@ const SearchUsers = ({
   const [search, setSearch] = useState("");
   const { push } = useHistory();
   const { pathname } = useLocation();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(DEFAULT_PAGE);
 
   const { totalPages, pageNumber } = pageView;
 
   const getUsers = pageToGetUsers => getSearchUsersDispatch(pageToGetUsers);
-
-  console.log(pathname, typeof page);
 
   useEffect(() => {
     push(`${pathname}?keyWord=${search}`);
@@ -78,7 +80,7 @@ const SearchUsers = ({
         />
       </SpinnerContainer>
 
-      {totalPages > 1 && (
+      {totalPages > PAGINATION_PAGES_TRIGGER && (
         <div className="search_users_pagination">
           <Pagination
             count={totalPages}

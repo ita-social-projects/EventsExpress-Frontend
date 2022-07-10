@@ -3,13 +3,18 @@ import PropTypes from "prop-types";
 import CheckboxList from "./CheckboxList";
 import TileWrapper from "../TileContainer/TileContainer";
 import "./TileRow.scss";
+import {
+  DEFAULT_TILE,
+  TILE_CONDITION_VALUE,
+  TILE_STEP,
+} from "../../constants/tileConstants";
 
 // TODO: check this component for correctness or redesign;
 const TileRow = props => {
-  const [currTileIndex, setCurrTileIndex] = useState(-1);
+  const [currTileIndex, setCurrTileIndex] = useState(DEFAULT_TILE);
 
   const handleTileToggleAction = index => {
-    if (index === currTileIndex) setCurrTileIndex(-1);
+    if (index === currTileIndex) setCurrTileIndex(TILE_STEP);
     else setCurrTileIndex(index);
   };
 
@@ -25,7 +30,7 @@ const TileRow = props => {
           />
         ))}
       </div>
-      {currTileIndex >= 0 && (
+      {currTileIndex >= TILE_CONDITION_VALUE && (
         <CheckboxList
           index={currTileIndex}
           data={props.data[currTileIndex].categories}

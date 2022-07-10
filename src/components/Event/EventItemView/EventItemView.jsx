@@ -20,6 +20,8 @@ import {
   EVENT_DEFAULT_IMAGE,
   EVENT_ITEM_VIEW_CONSTS,
   EVENT_STATUS_ENUM,
+  VISITORS_STATUS,
+  ZERO_TIMING,
 } from "../../../constants/eventConstants";
 import SimpleModalWithDetails from "../../helpers/simple-modal-with-details";
 import PhotoService from "../../../services/PhotoService";
@@ -73,12 +75,14 @@ const EventItemView = ({
   const today = moment().startOf("day");
   const visitorsEnum = {
     approvedUsers: visitors
-      ? visitors.filter(x => x.userStatusEvent === 0)
+      ? visitors.filter(x => x.userStatusEvent === VISITORS_STATUS.APPROVED)
       : [],
   };
 
   const iWillVisitIt = visitors && visitors.find(x => x.id === currentUser.id);
-  const isFutureEvent = new Date(dateFrom) >= new Date().setHours(0, 0, 0, 0);
+  const isFutureEvent =
+    new Date(dateFrom) >=
+    new Date().setHours(ZERO_TIMING, ZERO_TIMING, ZERO_TIMING, ZERO_TIMING);
   const isMyEvent =
     organizers && organizers.find(x => x.id === currentUser.id) !== undefined;
   const isFreePlace = visitorsEnum.approvedUsers.length < maxParticipants;

@@ -37,3 +37,5 @@ export const SLIDES = [
   image7,
   image8,
 ];
+
+export const DEFAULT_HEAD_IMG = 0;

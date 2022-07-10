@@ -46,13 +46,13 @@ const Location = ({ input, meta }) => {
       <FormControl name="location.type">
         <RadioGroup onChange={onChangeLocationType}>
           <FormControlLabel
-            value={String(0)}
+            value="0"
             control={<Radio />}
             label="Map"
             checked={value !== "" && value.type === ENUM_LOCATION_TYPE.MAP}
           />
           <FormControlLabel
-            value={String(1)}
+            value="1"
             control={<Radio />}
             label="Online"
             checked={value !== "" && value.type === ENUM_LOCATION_TYPE.ONLINE}

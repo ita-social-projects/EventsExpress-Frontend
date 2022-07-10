@@ -5,7 +5,10 @@ import PropTypes from "prop-types";
 import ContactAdminItemContainer from "../../containers/ContactAdminContainers/ContactAdminItemContainer";
 import RenderIssuesList from "./RenderIssuesList";
 import { getQueryStringByFilter } from "../helpers/filterHelper/filterHelper";
-import { CONTACT_ADMIN_CONSTS } from "../../constants/adminConstants";
+import {
+  CONTACT_ADMIN_CONSTS,
+  EMPTY_ISSUES_ARRAY,
+} from "../../constants/adminConstants";
 
 const ContactAdminList = ({ dataList, filter, page, totalPages, ...props }) => {
   const pageChange = pageItem => {
@@ -27,7 +30,7 @@ const ContactAdminList = ({ dataList, filter, page, totalPages, ...props }) => {
 
   return (
     <>
-      {dataList > 0 && (
+      {dataList > EMPTY_ISSUES_ARRAY && (
         <tr className="bg-light text-dark font-weight-bold text-center">
           <td className="justify-content-center">
             {CONTACT_ADMIN_CONSTS.TITLE}
@@ -48,7 +51,7 @@ const ContactAdminList = ({ dataList, filter, page, totalPages, ...props }) => {
           />
         </tr>
       )}
-      {dataList < 1 && (
+      {dataList < EMPTY_ISSUES_ARRAY && (
         <RenderIssuesList
           {...changedProps}
           renderSingleIssue={renderSingleIssue}

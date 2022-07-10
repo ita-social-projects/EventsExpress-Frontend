@@ -2,6 +2,7 @@
 import propTypes from "prop-types";
 import DeleteCommentContainer from "../../containers/CommentContainer/DeleteCommentContainer";
 import PagePagination from "../shared/PagePagination/PagePagination";
+import { PAGINATION_PAGES_TRIGGER } from "../../constants/paginationConstants";
 
 const CommentList = ({ callback, evId, dataList, page, totalPages }) => {
   const handlePageChange = commeptsPage => {
@@ -13,7 +14,7 @@ const CommentList = ({ callback, evId, dataList, page, totalPages }) => {
       {dataList.map(comment => (
         <DeleteCommentContainer key={comment.id} item={comment} />
       ))}
-      {totalPages > 1 && (
+      {totalPages > PAGINATION_PAGES_TRIGGER && (
         <PagePagination
           currentPage={page}
           totalPages={totalPages}

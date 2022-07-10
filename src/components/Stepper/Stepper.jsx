@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "./Stepper.scss";
 import updateStep from "../helpers/stepperHelper";
+import { DEFAULT_STEP, STEPPER_STEP } from "../../constants/stepperConstatns";
 
 const Stepper = ({ currentStepNumber, steps, stepColor }) => {
   const [setedSteps, setSteps] = useState();
@@ -9,8 +10,8 @@ const Stepper = ({ currentStepNumber, steps, stepColor }) => {
   useEffect(() => {
     const stepsState = steps.map((step, index) => ({
       description: step,
-      highlighted: index === 0,
-      selected: index === 0,
+      highlighted: index === DEFAULT_STEP,
+      selected: index === DEFAULT_STEP,
       completed: false,
     }));
 
@@ -34,7 +35,7 @@ const Stepper = ({ currentStepNumber, steps, stepColor }) => {
             background: `${step.selected ? stepColor : "none"}`,
           }}
         >
-          {step.completed ? <span>&#10004;</span> : index + 1}
+          {step.completed ? <span>&#10004;</span> : index + STEPPER_STEP}
         </div>
 
         <div
@@ -44,7 +45,7 @@ const Stepper = ({ currentStepNumber, steps, stepColor }) => {
         >
           {step.description}
         </div>
-        {index !== steps.length - 1 && (
+        {index !== steps.length - STEPPER_STEP && (
           <div className={`divider-line divider-line-${steps.length}`} />
         )}
       </div>

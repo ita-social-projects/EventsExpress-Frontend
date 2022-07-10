@@ -10,10 +10,11 @@ import {
   BANNER_BUTTON_TEXT,
   SLIDES,
   SLIDES_INTERVAL,
+  DEFAULT_HEAD_IMG,
 } from "../../../constants/headersConstants";
 
 const HeadArticle = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(DEFAULT_HEAD_IMG);
 
   useEffect(() => {
     const imageChange = setInterval(() => {

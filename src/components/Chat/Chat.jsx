@@ -17,6 +17,7 @@ import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer
 import CustomAvatarContainer from "../CustomAvatar/CustomAvatar";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
 import MsgContainer from "../../containers/MsgContainer/MsgContainer";
+import { EMPTY_MSG } from "../../constants/chatConstants";
 
 const Chat = ({
   match,
@@ -37,7 +38,7 @@ const Chat = ({
         !chat.data.messages.map(y => y.id).includes(x.id),
     );
 
-    if (newMsg.length > 0) {
+    if (newMsg.length > EMPTY_MSG) {
       concatNewMsg(newMsg);
       deleteOldNotififcation(newMsg.map(x => x.id));
     }
@@ -46,7 +47,7 @@ const Chat = ({
       .filter(x => !x.seen && x.senderId !== currentUser.id)
       .map(x => x.id);
 
-    if (msgIds.length > 0) {
+    if (msgIds.length > EMPTY_MSG) {
       hubConnection.invoke("seen", msgIds).catch(err => {
         console.log("error");
         console.error(err);
@@ -59,7 +60,7 @@ const Chat = ({
         chat.data.messages.map(y => y.id).includes(x.id),
     );
 
-    if (deleteMsg.length > 0) {
+    if (deleteMsg.length > EMPTY_MSG) {
       deleteOldNotififcation(deleteMsg.map(x => x.id));
     }
   }, []);

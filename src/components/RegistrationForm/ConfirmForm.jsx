@@ -8,6 +8,7 @@ import {
   SOME_STEP_DATA,
   STEP_5_TITLE,
 } from "../../constants/registationConstants";
+import { EMPTY_CATEGORIES_ARRAY } from "../../constants/categoriesConstatns";
 
 const gendersArray = ["", "Male", "Female", "Other"];
 
@@ -33,7 +34,7 @@ const ConfirmForm = ({ formValues, categoryGroups, categories, ...props }) => {
           .filter(c => c.categoryGroup.id === g.id)
           .map(el => el.name),
       }))
-      .filter(el => el.categories.length > 0);
+      .filter(el => el.categories.length > EMPTY_CATEGORIES_ARRAY);
   };
 
   return (
