@@ -16,6 +16,15 @@ export const getUpdatedInventories = (inventories, usersInventories, user) =>
     : [];
 
 export const calcAlreadyGet = (usersInventories, item) =>
-  usersInventories.data.reduce((acc, cur) => {
-    return cur.inventoryId === item.id ? acc + cur.quantity : acc;
+  usersInventories.reduce((totalAmount, { inventoryId, quantity }) => {
+    return inventoryId === item.id ? totalAmount + quantity : totalAmount;
   }, DEFAULT_ZERO_VALUE);
+
+export const calculateMyItemAmout = (usersInventories, user, item) => {
+  const myInventoryTaken = usersInventories.find(
+    inventory =>
+      inventory.userId === user.id && inventory.inventoryId === item.id,
+  );
+
+  return myInventoryTaken ? myInventoryTaken.quantity : 0;
+};

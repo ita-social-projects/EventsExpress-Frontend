@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { LIST_OF_INVENTORIES } from "../../../constants/inventoryConstatns";
 import Button from "../../shared/Button/Button";
-import "./InventoryHeader.scss";
 
 const InventoryHeader = ({ isInventoryOpen, toggleInventoryOpen }) => (
   <div className="inventory-header">
