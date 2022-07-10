@@ -101,7 +101,12 @@ const DropZoneField = ({
                 touched={touched}
               />
             ) : (
-              <Placeholder {...props} error={error} touched={touched} />
+              <Placeholder
+                getInputProps={props.getInputProps}
+                getRootProps={props.getRootProps}
+                error={error}
+                touched={touched}
+              />
             )
           }
         </DropZone>
@@ -130,6 +135,8 @@ DropZoneField.propTypes = {
   meta: PropTypes.object,
   input: PropTypes.object,
   loadImage: PropTypes.func,
+  getInputProps: PropTypes.func,
+  getRootProps: PropTypes.func,
 };
 // TODO file props
 
@@ -142,6 +149,8 @@ DropZoneField.defaultProps = {
   meta: {},
   input: {},
   loadImage: () => {},
+  getInputProps: () => {},
+  getRootProps: () => {},
 };
 
 export default DropZoneField;

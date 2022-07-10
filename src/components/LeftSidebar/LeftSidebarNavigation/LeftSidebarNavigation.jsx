@@ -6,8 +6,11 @@ const LeftSidebarNavigation = ({ items, handleSidebarToggle }) =>
   items.map(item => (
     <LeftSidebarNavigationItem
       key={item.pageName}
+      link={item.link}
+      faviconIconClass={item.faviconIconClass}
+      pageName={item.pageName}
       handleSidebarToggle={handleSidebarToggle}
-      {...item}
+      badgeContent={item.badgeContent}
     />
   ));
 

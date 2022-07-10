@@ -16,7 +16,15 @@ const UserItemList = ({ page, totalPages, users, callback }) => {
     <>
       <div className="user_item_list">
         {users.map(user => (
-          <UserInfoCard key={user.id} {...user} />
+          <UserInfoCard
+            key={user.id}
+            id={user.id}
+            username={user.username}
+            gender={user.gender}
+            birthday={user.birthday}
+            rating={user.rating}
+            attitude={user.attitude}
+          />
         ))}
       </div>
 

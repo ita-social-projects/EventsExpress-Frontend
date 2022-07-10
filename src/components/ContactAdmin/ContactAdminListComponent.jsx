@@ -44,7 +44,9 @@ class ContactAdminList extends Component {
               {CONTACT_ADMIN_CONSTS.DETAILS}
             </td>
             <RenderIssuesList
-              {...changedProps}
+              page={changedProps.page}
+              totalPages={changedProps.totalPages}
+              dataList={changedProps.dataList}
               renderSingleIssue={this.renderSingleIssue}
               handlePageChange={this.pageChange}
             />
@@ -54,7 +56,9 @@ class ContactAdminList extends Component {
         )}
         {this.props.dataList < 1 ? (
           <RenderIssuesList
-            {...changedProps}
+            page={changedProps.page}
+            totalPages={changedProps.totalPages}
+            dataList={changedProps.dataList}
             renderSingleIssue={this.renderSingleIssue}
             handlePageChange={this.pageChange}
           />
