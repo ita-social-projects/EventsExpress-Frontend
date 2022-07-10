@@ -10,7 +10,7 @@ import Transition from "../../shared/Transition/Transition";
 import { LEAVE_MODAL } from "../../../constants/eventConstants";
 
 const { LEAVE, EXIT_EVENT, ALERT_LEAVE_EVENT, AGREE, DISAGREE } = LEAVE_MODAL;
-const EventLeaveModal = props => {
+const EventLeaveModal = ({ submitLeave }) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -50,7 +50,7 @@ const EventLeaveModal = props => {
           <Button onClick={handleClose} color="primary">
             {DISAGREE}
           </Button>
-          <Button onClick={props.submitLeave} color="secondary">
+          <Button onClick={submitLeave} color="secondary">
             {AGREE}
           </Button>
         </DialogActions>

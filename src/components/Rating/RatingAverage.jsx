@@ -12,14 +12,12 @@ const RatingAverage = ({ value, direction }) => {
   const displayStyle = direction === "row" ? "rating_average" : "rating_box";
 
   return (
-    value && (
-      <div className={displayStyle}>
-        <IconButton className={ratingEffect} size={SMALL_SIZE} disabled>
-          <i className="far fa-star" />
-        </IconButton>
-        <div className={ratingEffect}>{value.toFixed(1)}</div>
-      </div>
-    )
+    <div className={displayStyle}>
+      <IconButton className={ratingEffect} size={SMALL_SIZE} disabled>
+        <i className="far fa-star" />
+      </IconButton>
+      <div className={ratingEffect}>{value.toFixed(1)}</div>
+    </div>
   );
 };
 

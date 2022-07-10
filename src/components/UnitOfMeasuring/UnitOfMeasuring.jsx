@@ -1,4 +1,4 @@
-﻿import React, { Component } from "react";
+﻿import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import UnitOfMeasuringAddWrapper from "../../containers/UnitsOfMeasuringContainer/UnitOfMeasuringAddContainer";
@@ -6,32 +6,34 @@ import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer
 import UnitOfMeasuringListWrapper from "../../containers/UnitsOfMeasuringContainer/UnitOfMeasuringListContainer";
 import getUnitsOfMeasuring from "../../actions/unitOfMeasuring/unitsOfMeasuring-list-action";
 
-class UnitsOfMeasuring extends Component {
-  componentWillMount = () => this.props.getUnitsOfMeasuringDispatch();
+const UnitsOfMeasuring = ({
+  getUnitsOfMeasuringDispatch,
+  unitsOfMeasuring,
+}) => {
+  useEffect(() => {
+    getUnitsOfMeasuringDispatch();
+  }, []);
 
-  render() {
-    const { unitsOfMeasuring } = this.props;
-    return (
-      <div>
-        <table className="table w-100 m-auto">
-          <tbody>
-            <UnitOfMeasuringAddWrapper
-              item={{
-                id: "00000000-0000-0000-0000-000000000000",
-                unitName: "",
-                shortName: "",
-                category: "",
-              }}
-            />
-            <SpinnerContainer showContent={unitsOfMeasuring}>
-              <UnitOfMeasuringListWrapper data={unitsOfMeasuring} />
-            </SpinnerContainer>
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <table className="table w-100 m-auto">
+        <tbody>
+          <UnitOfMeasuringAddWrapper
+            item={{
+              id: "00000000-0000-0000-0000-000000000000",
+              unitName: "",
+              shortName: "",
+              category: "",
+            }}
+          />
+          <SpinnerContainer showContent={unitsOfMeasuring}>
+            <UnitOfMeasuringListWrapper data={unitsOfMeasuring} />
+          </SpinnerContainer>
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 UnitsOfMeasuring.defaultProps = {
   getUnitsOfMeasuringDispatch: () => {},

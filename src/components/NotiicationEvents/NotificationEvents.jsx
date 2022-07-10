@@ -1,36 +1,37 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import EventList from "../Event/EventsForProfile/EventsForProfile";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 
-// TODO :to functional component
-class NotificationEvents extends Component {
-  componentWillMount = () => {
-    this.props.getEvents(this.props.notification.events);
-  };
+const NotificationEvents = ({
+  getEvents,
+  notification,
+  events,
+  currentUser,
+}) => {
+  useEffect(() => {
+    getEvents(notification.events);
+  }, []);
 
-  render() {
-    const { currentUser } = this.props;
-    const { data } = this.props.events;
-    const { items } = this.props.events.data;
+  const { data } = events;
+  const { items } = events.data;
 
-    return (
-      <SpinnerContainer showContent={data !== undefined}>
-        {items.length === 0 && (
-          <p className="text-center h3">{"You don&#39;t have notifications"}</p>
-        )}
-        <EventList
-          current_user={currentUser}
-          notification_events={this.props.notification.events}
-          data_list={items}
-          page={data.pageViewModel.pageNumber}
-          totalPages={data.pageViewModel.totalPages}
-          callback={this.props.getEvents}
-        />
-      </SpinnerContainer>
-    );
-  }
-}
+  return (
+    <SpinnerContainer showContent={data !== undefined}>
+      {items.length === 0 && (
+        <p className="text-center h3">{"You don&#39;t have notifications"}</p>
+      )}
+      <EventList
+        current_user={currentUser}
+        notification_events={notification.events}
+        data_list={items}
+        page={data.pageViewModel.pageNumber}
+        totalPages={data.pageViewModel.totalPages}
+        callback={getEvents}
+      />
+    </SpinnerContainer>
+  );
+};
 
 NotificationEvents.defaultProps = {
   getEvents: () => {},
