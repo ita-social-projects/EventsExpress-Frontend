@@ -37,3 +37,5 @@ export const PROFILE_CONSTANTS = {
 };
 
 export const EMPTY_ACCORDION_CONTENT = 0;
+export const SUBMIT = "Submit";
+export const CLEAR = "Clear";
