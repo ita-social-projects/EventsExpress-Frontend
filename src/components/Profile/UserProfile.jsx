@@ -1,307 +1,151 @@
-﻿/* eslint-disable no-magic-numbers */
-import React, { Component } from "react";
+﻿import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
 import "moment-timezone";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
-import Zoom from "@material-ui/core/Zoom";
-import GENDERS from "../../constants/gendersVarietyConstants";
-import Event from "../Event/EventItem/EventItem";
 import CustomAvatar from "../CustomAvatar/CustomAvatar";
 import RatingAverage from "../Rating/RatingAverage";
 import "./UserProfile.scss";
-import Events from "./Events";
 import AuthComponent from "../../security/authComponent";
-import indexToTabName from "../../constants/indexToTabNameConstants";
-import getAge from "../helpers/userAgeHelper/getUserAge";
+import UserProfileTabs from "./UserProfileTabs";
+import UserProfileRoutes from "./UserProfileRoutes";
+import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
+import UserProfileInfo from "./UserProfileInfo";
+import UserInteraction from "./UserInteraction";
 
-class UserItemView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 0,
+const UserProfile = ({
+  currentUserId,
+  isDataReady,
+  getUser,
+  resetUser,
+  events,
+  name,
+  email,
+  birthday,
+  gender,
+  categories,
+  userId,
+  attitude,
+  rating,
+  setAttitude,
+  getEventsByType,
+  history,
+  ...props
+}) => {
+  const { id } = props.match.params;
+  useEffect(() => {
+    if (!isDataReady) {
+      getUser(id);
+    }
+    return () => {
+      resetUser();
     };
-    this.splitPath = this.splitPath.bind(this);
-  }
+  }, []);
 
-  componentDidMount = () => {
-    this.setState({
-      value:
-        indexToTabName[this.splitPath(this.props.history.location.pathname)],
+  const onLike = () => {
+    setAttitude({
+      userFromId: currentUserId,
+      userToId: id,
+      attitude: 0,
     });
   };
 
-  componentDidUpdate(_, prevState) {
-    const tabName =
-      indexToTabName[this.splitPath(this.props.history.location.pathname)];
-    if (prevState.value !== tabName) this.handleChange(_, tabName);
-  }
-
-  renderCategories = arr =>
-    arr.map(item => (
-      <div key={item.id}>
-        {"#"}
-        {item.name}
-      </div>
-    ));
-
-  renderEvents = arr =>
-    arr.map(item => (
-      <div className="col-4" key={item.id}>
-        <Event item={item} />
-      </div>
-    ));
-
-  handleChange = (event, value) => {
-    this.setState({ value });
-    switch (value) {
-      case 0:
-        this.props.onFuture();
-        break;
-      case 1:
-        this.props.onPast();
-        break;
-      case 2:
-        this.props.onVisited();
-        break;
-      case 3:
-        this.props.onToGo();
-        break;
-      default:
-        this.setState({ value });
-    }
+  const onDislike = () => {
+    setAttitude({
+      userFromId: currentUserId,
+      userToId: id,
+      attitude: 1,
+    });
   };
 
-  splitPath = path => {
-    const n = path.toLowerCase().split("/");
-    return n[n.length - 1];
+  const onReset = () => {
+    setAttitude({
+      userFromId: currentUserId,
+      userToId: id,
+      attitude: 2,
+    });
   };
-
-  render() {
-    const { name, email, birthday, gender, categories, id, attitude, rating } =
-      this.props.data;
-    const userId = this.props.data.id;
-    const categoriesList = this.renderCategories(categories);
-    const renderProp = (propName, value) => (
-      <div className="row mb-3 font-weight-bold">
-        <div className="col-4">{`${propName}:`}</div>
-        <div className="col-8">{value || ""}</div>
-      </div>
-    );
-    return (
-      <>
-        <div className="info">
-          <AuthComponent>
-            <div className="col-4 user">
-              <div className="d-flex flex-column justify-content-center align-items-center">
-                <div className="user-profile-avatar">
-                  <CustomAvatar size="big" name={name} userId={id} />
-                </div>
+  return (
+    <SpinnerContainer showContent={isDataReady}>
+      <div className="info">
+        <AuthComponent>
+          <div className="col-4 user">
+            <div className="d-flex flex-column justify-content-center align-items-center">
+              <div className="user-profile-avatar">
+                <CustomAvatar size="big" name={name} userId={id} />
                 <RatingAverage value={rating} direction="row" />
-
-                <div className="row justify-content-center">
-                  <Tooltip
-                    title="Like this user"
-                    placement="bottom"
-                    TransitionComponent={Zoom}
-                  >
-                    <IconButton
-                      className={!attitude ? "text-success" : ""}
-                      onClick={
-                        attitude ? this.props.onLike : this.props.onReset
-                      }
-                    >
-                      <i className="fas fa-thumbs-up" />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip
-                    title="Dislike this user"
-                    placement="bottom"
-                    TransitionComponent={Zoom}
-                  >
-                    <IconButton
-                      className={attitude === 1 ? "text-danger" : ""}
-                      onClick={
-                        attitude !== 1
-                          ? this.props.onDislike
-                          : this.props.onReset
-                      }
-                    >
-                      <i className="fas fa-thumbs-down" />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip
-                    title="Start chat!"
-                    placement="bottom"
-                    TransitionComponent={Zoom}
-                  >
-                    <Link to={`/chat/${id}`}>
-                      <IconButton>
-                        <i className="far fa-comments" />
-                      </IconButton>
-                    </Link>
-                  </Tooltip>
-                </div>
               </div>
+              <UserInteraction
+                attitude={attitude}
+                id={id}
+                onDislike={onDislike}
+                onLike={onLike}
+                onReset={onReset}
+              />
             </div>
-          </AuthComponent>
-          <div className="col-sm-12  col-md-6">
-            {renderProp("User Name", name)}
-            {renderProp("Age", getAge(birthday))}
-            {renderProp("Gender", GENDERS[gender])}
-            {renderProp("Email", email)}
-            {renderProp("Interests", categoriesList)}
           </div>
-        </div>
-        <div className="mt-2">
-          <AppBar position="static" color="inherit">
-            <Tabs
-              className="w-100"
-              value={this.state.value}
-              onChange={this.handleChange}
-              variant="fullWidth"
-              scrollButtons="on"
-              indicatorColor="primary"
-              textColor="primary"
-            >
-              <Tab
-                label="Future events"
-                icon={
-                  <IconButton
-                    color={this.state.value === 0 ? "default" : "primary"}
-                  >
-                    <i className="far fa-calendar-alt" />
-                  </IconButton>
-                }
-                component={Link}
-                to={`/user/${userId}/FutureEvents`}
-              />
-              <Tab
-                label="Archive events"
-                icon={
-                  <IconButton
-                    color={this.state.value === 1 ? "default" : "primary"}
-                  >
-                    <i className="fas fa-archive" />
-                  </IconButton>
-                }
-                component={Link}
-                to={`/user/${userId}/ArchiveEvents`}
-              />
-              <Tab
-                label="Visited events"
-                icon={
-                  <IconButton
-                    color={this.state.value === 2 ? "default" : "primary"}
-                  >
-                    <i className="fas fa-history" />
-                  </IconButton>
-                }
-                component={Link}
-                to={`/user/${userId}/VisitedEvents`}
-              />
-              <Tab
-                label="Events to go"
-                icon={
-                  <IconButton
-                    color={this.state.value === 3 ? "default" : "primary"}
-                  >
-                    <i className="fas fa-map-marker-alt" />
-                  </IconButton>
-                }
-                component={Link}
-                to={`/user/${userId}/EventsToGo`}
-              />
-            </Tabs>
-          </AppBar>
+        </AuthComponent>
+        <UserProfileInfo
+          name={name}
+          email={email}
+          birthday={birthday}
+          gender={gender}
+          categories={categories}
+        />
+      </div>
+      <div className="mt-2">
+        <UserProfileTabs
+          userId={id}
+          getEventsByType={getEventsByType}
+          history={history}
+        />
+        <UserProfileRoutes
+          events={events}
+          currentUser={currentUserId}
+          userId={id}
+          getEventsByType={getEventsByType}
+        />
+      </div>
+    </SpinnerContainer>
+  );
+};
 
-          <Switch>
-            <Route
-              exact
-              path="/user/:id"
-              render={() => <Redirect to={`/user/${userId}/FutureEvents`} />}
-            />
-
-            <Route
-              path="/user/:id/FutureEvents"
-              render={() => (
-                <Events
-                  events={this.props.events}
-                  currentUser={this.props.currentUser}
-                  typeOfEvents={this.props.onFuture}
-                />
-              )}
-            />
-
-            <Route
-              path="/user/:id/ArchiveEvents"
-              render={() => (
-                <Events
-                  events={this.props.events}
-                  currentUser={this.props.currentUser}
-                  typeOfEvents={this.props.onPast}
-                />
-              )}
-            />
-
-            <Route
-              path="/user/:id/VisitedEvents"
-              render={() => (
-                <Events
-                  events={this.props.events}
-                  currentUser={this.props.currentUser}
-                  typeOfEvents={this.props.onVisited}
-                />
-              )}
-            />
-
-            <Route
-              path="/user/:id/EventsToGo"
-              render={() => (
-                <Events
-                  events={this.props.events}
-                  currentUser={this.props.currentUser}
-                  typeOfEvents={this.props.onToGo}
-                />
-              )}
-            />
-          </Switch>
-        </div>
-      </>
-    );
-  }
-}
-
-UserItemView.propTypes = {
+UserProfile.propTypes = {
   history: PropTypes.object,
-  onFuture: PropTypes.func,
-  onPast: PropTypes.func,
-  onVisited: PropTypes.func,
-  onToGo: PropTypes.func,
-  data: PropTypes.object,
   events: PropTypes.object,
-  onReset: PropTypes.func,
-  onLike: PropTypes.func,
-  currentUser: PropTypes.string,
-  onDislike: PropTypes.func,
+  currentUserId: PropTypes.string,
+  name: PropTypes.string,
+  userId: PropTypes.string,
+  email: PropTypes.string,
+  setAttitude: PropTypes.func,
+  getEventsByType: PropTypes.func,
+  getUser: PropTypes.func,
+  resetUser: PropTypes.func,
+  isDataReady: PropTypes.bool,
+  birthday: PropTypes.string,
+  gender: PropTypes.number,
+  rating: PropTypes.number,
+  attitude: PropTypes.number,
+  categories: PropTypes.array,
+  match: PropTypes.object,
 };
 
-UserItemView.defaultProps = {
+UserProfile.defaultProps = {
   history: {},
-  onFuture: () => {},
-  onPast: () => {},
-  onVisited: () => {},
-  onToGo: () => {},
-  data: {},
   events: {},
-  onReset: () => {},
-  currentUser: "",
-  onLike: () => {},
-  onDislike: () => {},
+  currentUserId: "",
+  name: "",
+  userId: "",
+  email: "",
+  setAttitude: () => {},
+  getUser: () => {},
+  resetUser: () => {},
+  getEventsByType: () => {},
+  isDataReady: false,
+  birthday: "",
+  gender: 0,
+  rating: 0,
+  attitude: 0,
+  categories: [],
+  match: {},
 };
 
-export default withRouter(UserItemView);
+export default UserProfile;

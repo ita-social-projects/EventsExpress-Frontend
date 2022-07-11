@@ -1,4 +1,4 @@
-﻿import React, { Component } from "react";
+﻿import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import {
@@ -22,26 +22,24 @@ import {
   NOTIFICATION_TIMEOUT,
 } from "../../../constants/notificationConstants";
 
-// TODO remake to functional component
-class NotificationTemplateForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { copiedPropName: null };
-  }
+const NotificationTemplateForm = ({
+  handleSubmit,
+  submitting,
+  reset,
+  pristine,
+  availableProps,
+}) => {
+  const [copiedPropName, setСopiedPropName] = useState(null);
 
-  onCopied = propName => {
-    this.setState({
-      copiedPropName: propName,
-    });
+  const onCopied = propName => {
+    setСopiedPropName(propName);
 
     setTimeout(() => {
-      this.setState({
-        copiedPropName: null,
-      });
+      setСopiedPropName(null);
     }, NOTIFICATION_TIMEOUT);
   };
 
-  renderField = ({ input, meta: { error }, ...props }) => {
+  const renderField = ({ input, meta: { error }, ...props }) => {
     return (
       <div className="form-group">
         <TextField
@@ -54,7 +52,7 @@ class NotificationTemplateForm extends Component {
     );
   };
 
-  renderProperties = properties => (
+  const renderProperties = properties => (
     <>
       <Typography variant="h6" className="m-0 mb-1 text-nowrap center">
         {AVAILABLE_PROPS}
@@ -64,14 +62,14 @@ class NotificationTemplateForm extends Component {
           <CopyToClipboard
             key={property}
             text={property}
-            onCopy={() => this.onCopied(property)}
+            onCopy={() => onCopied(property)}
           >
             <ListItem
               key={property}
               className="d-flex btn btn-outline-secondary rounded m-0 mb-3"
             >
               <ListItemText primary={property} />
-              {this.state.copiedPropName === property ? (
+              {copiedPropName === property ? (
                 <MdCheck className="ml-4" />
               ) : (
                 <MdContentCopy className="ml-4" />
@@ -83,72 +81,66 @@ class NotificationTemplateForm extends Component {
     </>
   );
 
-  render() {
-    const { handleSubmit, submitting, reset, pristine, availableProps } =
-      this.props;
-    const { renderField, renderProperties } = this;
-
-    return (
-      <div className="d-flex">
-        <form
-          className="d-flex flex-grow-1 flex-column mt-3 ml-0 w-100 float-left"
-          onSubmit={handleSubmit}
-        >
-          <Field
-            name="title"
-            type="text"
-            component={renderField}
-            label="Title"
-            InputProps={{
-              readOnly: true,
-            }}
-          />
-          <Field
-            name="subject"
-            className="form-control"
-            type="text"
-            component={renderField}
-            label="Subject"
-            inputProps={{
-              required: true,
-            }}
-            validate={[minLength10]}
-          />
-          <Field
-            name="message"
-            className="form-control"
-            component={renderField}
-            type="text"
-            rows={15}
-            label="Message"
-            multiline
-            inputProps={{
-              required: true,
-            }}
-            variant="outlined"
-            validate={[minLength20]}
-          />
-          <div className="align-self-end">
-            <Button type="submit" disabled={submitting} color="primary">
-              {BUTTON_NAMES.SAVE}
-            </Button>
-            <Button
-              type="button"
-              color="secondary"
-              disabled={pristine || submitting}
-              onClick={reset}
-            >
-              {BUTTON_NAMES.RESET}
-            </Button>
-          </div>
-        </form>
-        <div className="ml-4 mt-6">
-          {availableProps && renderProperties(availableProps)}
+  return (
+    <div className="d-flex">
+      <form
+        className="d-flex flex-grow-1 flex-column mt-3 ml-0 w-100 float-left"
+        onSubmit={handleSubmit}
+      >
+        <Field
+          name="title"
+          type="text"
+          component={renderField}
+          label="Title"
+          InputProps={{
+            readOnly: true,
+          }}
+        />
+        <Field
+          name="subject"
+          className="form-control"
+          type="text"
+          component={renderField}
+          label="Subject"
+          inputProps={{
+            required: true,
+          }}
+          validate={[minLength10]}
+        />
+        <Field
+          name="message"
+          className="form-control"
+          component={renderField}
+          type="text"
+          rows={15}
+          label="Message"
+          multiline
+          inputProps={{
+            required: true,
+          }}
+          variant="outlined"
+          validate={[minLength20]}
+        />
+        <div className="align-self-end">
+          <Button type="submit" disabled={submitting} color="primary">
+            {BUTTON_NAMES.SAVE}
+          </Button>
+          <Button
+            type="button"
+            color="secondary"
+            disabled={pristine || submitting}
+            onClick={reset}
+          >
+            {BUTTON_NAMES.RESET}
+          </Button>
         </div>
+      </form>
+      <div className="ml-4 mt-6">
+        {availableProps && renderProperties(availableProps)}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 NotificationTemplateForm.defaultProps = {
   handleSubmit: () => {},

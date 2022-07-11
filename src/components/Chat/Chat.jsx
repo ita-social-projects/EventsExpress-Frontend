@@ -1,11 +1,11 @@
 /* eslint-disable no-console */ // TODO in lines 42,43,67 in the future need cnahge console.log
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { reduxForm, Field, reset as resetForm } from "redux-form";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import propTypes from "prop-types";
-import { renderTextArea } from "../helpers/form-helpers";
+import RenderTextArea from "../helpers/form-helpers/render-text-area";
 import getChat, {
   initialConnection,
   reset,
@@ -16,67 +16,81 @@ import Msg from "./Msg";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import CustomAvatarContainer from "../CustomAvatar/CustomAvatar";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
+import MsgContainer from "../../containers/MsgContainer/MsgContainer";
+import { EMPTY_MSG } from "../../constants/chatConstants";
 
-class Chat extends Component {
-  componentWillMount = () => {
-    this.props.getChat(this.props.match.params.chatId);
-  };
+const Chat = ({
+  match,
+  notification,
+  chat,
+  currentUser,
+  resetChat,
+  hubConnection,
+}) => {
+  useEffect(() => {
+    getChat(match.params.chatId);
+  }, []);
 
-  componentDidUpdate = () => {
-    const newMsg = this.props.notification.messages.filter(
+  useEffect(() => {
+    const newMsg = notification.messages.filter(
       x =>
-        x.chatRoomId === this.props.chat.data.id &&
-        !this.props.chat.data.messages.map(y => y.id).includes(x.id),
+        x.chatRoomId === chat.data.id &&
+        !chat.data.messages.map(y => y.id).includes(x.id),
     );
 
-    if (newMsg.length > 0) {
-      this.props.concatNewMsg(newMsg);
-      this.props.deleteOldNotififcation(newMsg.map(x => x.id));
+    if (newMsg.length > EMPTY_MSG) {
+      concatNewMsg(newMsg);
+      deleteOldNotififcation(newMsg.map(x => x.id));
     }
 
-    const msgIds = this.props.chat.data.messages
-      .filter(x => !x.seen && x.senderId !== this.props.currentUser.id)
+    const msgIds = chat.data.messages
+      .filter(x => !x.seen && x.senderId !== currentUser.id)
       .map(x => x.id);
 
-    if (msgIds.length > 0) {
-      this.props.hubConnection.invoke("seen", msgIds).catch(err => {
+    if (msgIds.length > EMPTY_MSG) {
+      hubConnection.invoke("seen", msgIds).catch(err => {
         console.log("error");
         console.error(err);
       });
     }
 
-    const deleteMsg = this.props.notification.messages.filter(
+    const deleteMsg = notification.messages.filter(
       x =>
-        x.chatRoomId === this.props.chat.data.id &&
-        this.props.chat.data.messages.map(y => y.id).includes(x.id),
+        x.chatRoomId === chat.data.id &&
+        chat.data.messages.map(y => y.id).includes(x.id),
     );
 
-    if (deleteMsg.length > 0) {
-      this.props.deleteOldNotififcation(deleteMsg.map(x => x.id));
+    if (deleteMsg.length > EMPTY_MSG) {
+      deleteOldNotififcation(deleteMsg.map(x => x.id));
     }
-  };
+  }, []);
 
-  componentWillUnmount = () => {
-    this.props.resetChat();
-  };
+  useEffect(() => {
+    resetChat();
+  }, []);
 
-  Send = e => {
+  const Send = e => {
     e.preventDefault();
     if (e.target.msg.value !== "") {
-      this.props.hubConnection
-        .invoke("send", this.props.chat.data.id, e.target.msg.value)
+      hubConnection
+        .invoke("send", chat.data.id, e.target.msg.value)
         .catch(err => console.error(err));
     }
-    this.props.resetForm();
+    resetForm();
   };
 
-  renderMessages = arr => {
-    if (this.props.chat.data) {
+  const renderMessages = arr => {
+    if (chat.data) {
       return arr.messages.map(x => {
         const sender = arr.users.find(y => y.id === x.senderId);
         if (arr.id === x.chatRoomId) {
           return (
-            <Msg key={x.id + x.seen} user={sender} seenItem={x.seen} item={x} />
+            <MsgContainer
+              key={x.id + x.seen}
+              user={sender}
+              seenMsg={x.seen}
+              msgItem={x}
+            />
           );
         }
 
@@ -87,99 +101,78 @@ class Chat extends Component {
     return null;
   };
 
-  render() {
-    const sender = this.props.chat.data.users.find(
-      y => y.id !== this.props.currentUser.id,
-    );
-    const { data } = this.props.chat;
-    return (
-      <SpinnerContainer showContent={data !== undefined}>
-        <div className="row justify-content-center h-100 mt-2">
-          <div className="col-md-8 col-xl-8 chat">
-            <div className="card">
-              <div className="card-header msg_head">
-                <div className="d-flex bd-highlight">
-                  {sender != null && (
-                    <ButtonBase>
-                      <CustomAvatarContainer
-                        size="Small"
-                        userId={sender.id}
-                        name={sender.name}
-                      />
-                    </ButtonBase>
-                  )}
-                  <div className="user_info">
-                    <span>
-                      {"Chat with "}
-                      {sender != null && sender.username}
-                    </span>
-                    <p>
-                      {this.props.chat.data.messages.length}
-                      {" Messages"}
-                    </p>
-                  </div>
+  const sender = chat.data.users.find(y => y.id !== currentUser.id);
+  const { data } = chat;
+  return (
+    <SpinnerContainer showContent={data !== undefined}>
+      <div className="row justify-content-center h-100 mt-2">
+        <div className="col-md-8 col-xl-8 chat">
+          <div className="card">
+            <div className="card-header msg_head">
+              <div className="d-flex bd-highlight">
+                {sender != null && (
+                  <ButtonBase>
+                    <CustomAvatarContainer
+                      size="Small"
+                      userId={sender.id}
+                      name={sender.name}
+                    />
+                  </ButtonBase>
+                )}
+                <div className="user_info">
+                  {"Chat with "}
+                  {sender != null && sender.username}
+                  {chat.data.messages.length}
+                  {" Messages"}
                 </div>
               </div>
+            </div>
 
-              <div className="card-body msg_card_body">
-                {this.renderMessages(this.props.chat.data)}
-              </div>
-              <div className="card-footer">
-                <form
-                  className="w-100 d-flex"
-                  autoComplete="off"
-                  onSubmit={this.Send}
+            <div className="card-body msg_card_body">
+              {renderMessages(chat.data)}
+            </div>
+            <div className="card-footer">
+              <form className="w-100 d-flex" autoComplete="off" onSubmit={Send}>
+                <Field
+                  name="msg"
+                  component={RenderTextArea}
+                  type="input"
+                  autocomplete="off"
+                  label="Type your message..."
+                />
+                <Button
+                  fullWidth
+                  type="submit"
+                  color="primary"
+                  className="w-25"
                 >
-                  <Field
-                    name="msg"
-                    component={renderTextArea}
-                    type="input"
-                    autocomplete="off"
-                    label="Type your message..."
-                  />
-                  <Button
-                    fullWidth
-                    type="submit"
-                    color="primary"
-                    className="w-25"
-                  >
-                    {BUTTON_NAMES.SEND}
-                  </Button>
-                </form>
-              </div>
+                  {BUTTON_NAMES.SEND}
+                </Button>
+              </form>
             </div>
           </div>
         </div>
-      </SpinnerContainer>
-    );
-  }
-}
+      </div>
+    </SpinnerContainer>
+  );
+};
 
 Chat.propTypes = {
-  getChat: propTypes.func,
   match: propTypes.object,
   notification: propTypes.object,
   chat: propTypes.object,
-  concatNewMsg: propTypes.func,
-  deleteOldNotififcation: propTypes.func,
   currentUser: propTypes.object,
   resetChat: propTypes.func,
-  // TODO: change hubConnection prop
   hubConnection: propTypes.any,
-  resetForm: propTypes.func,
 };
 
 Chat.defaultProps = {
-  getChat: () => {},
   match: {},
   notification: {},
   chat: {},
-  concatNewMsg: () => {},
-  deleteOldNotififcation: () => {},
   currentUser: {},
   resetChat: () => {},
   hubConnection: {},
-  resetForm: () => {},
 };
 
 const mapStateToProps = state => ({

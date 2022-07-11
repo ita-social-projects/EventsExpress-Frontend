@@ -6,7 +6,11 @@ import ImagePreview from "./ImagePreview";
 import Placeholder from "./Placeholder";
 import ImageResizer from "../Event/ImageResizer/ImageResizer";
 import renderFieldError from "./form-helpers/render-field-error";
-import profileConstants from "../../constants/profileConstants";
+import { PROFILE_CONSTANTS } from "../../constants/profileConstants";
+import {
+  FILE_LENGTH,
+  FIRST_FILE,
+} from "../../constants/dropZoneFiesldContants";
 
 const DropZoneField = ({
   loadImage,
@@ -17,7 +21,7 @@ const DropZoneField = ({
   meta: { touched, error },
   input: { onChange },
 }) => {
-  const { CLEAR } = profileConstants;
+  const { CLEAR } = PROFILE_CONSTANTS;
   const [imageFile, setImage] = useState(null);
   const [isCropped, setIsCropped] = useState(false);
 
@@ -37,11 +41,11 @@ const DropZoneField = ({
   };
 
   const handleOnDrop = file => {
-    if (file.length > 0) {
+    if (file.length > FILE_LENGTH) {
       setImage({
-        file: file[0],
-        name: file[0].name,
-        preview: URL.createObjectURL(file[0]),
+        file: file[FIRST_FILE],
+        name: file[FIRST_FILE].name,
+        preview: URL.createObjectURL(file[FIRST_FILE]),
       });
     }
   };
@@ -52,7 +56,7 @@ const DropZoneField = ({
     const image = {
       file,
       name: "image.jpg",
-      preview: croppedImage[0],
+      preview: croppedImage[FIRST_FILE],
     };
 
     setImage(image);
@@ -101,7 +105,12 @@ const DropZoneField = ({
                 touched={touched}
               />
             ) : (
-              <Placeholder {...props} error={error} touched={touched} />
+              <Placeholder
+                getInputProps={props.getInputProps}
+                getRootProps={props.getRootProps}
+                error={error}
+                touched={touched}
+              />
             )
           }
         </DropZone>
@@ -130,6 +139,8 @@ DropZoneField.propTypes = {
   meta: PropTypes.object,
   input: PropTypes.object,
   loadImage: PropTypes.func,
+  getInputProps: PropTypes.func,
+  getRootProps: PropTypes.func,
 };
 // TODO file props
 
@@ -142,6 +153,8 @@ DropZoneField.defaultProps = {
   meta: {},
   input: {},
   loadImage: () => {},
+  getInputProps: () => {},
+  getRootProps: () => {},
 };
 
 export default DropZoneField;

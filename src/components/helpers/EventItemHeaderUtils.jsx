@@ -4,7 +4,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Badge from "@material-ui/core/Badge";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
-import { ZERO_INDEX } from "../../constants/numberConstants";
+import { FIRST_OWNER } from "../../constants/eventConstants";
 
 export const handleSetAnchorEl = (e, setEvent) => {
   const event = e?.currentTarget || null;
@@ -44,15 +44,15 @@ export const renderMembers = (
 
 export const renderOwners = (owners, avatar, handleClickOnOwners) => (
   <Button
-    title={owners[ZERO_INDEX].username}
+    title={owners[FIRST_OWNER].username}
     className="btn-custom"
     onClick={handleClickOnOwners}
   >
     <Badge overlap="circle" badgeContent={owners.length} color="primary">
       <ContainerCustomAvatar
         className={avatar}
-        userId={owners[ZERO_INDEX].id}
-        name={owners[ZERO_INDEX].username}
+        userId={owners[FIRST_OWNER].id}
+        name={owners[FIRST_OWNER].username}
       />
     </Badge>
   </Button>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import UserInfoContainer from "../../containers/UserInfoContainer/UserInfoContainer";
 import PagePagination from "../shared/PagePagination/PagePagination";
 import "./Users.scss";
+import { PAGINATION_PAGES_TRIGGER } from "../../constants/paginationConstants";
 
 const Users = ({ page, totalPages, users, callback }) => {
   const handlePageChange = pageEl => {
@@ -22,7 +23,7 @@ const Users = ({ page, totalPages, users, callback }) => {
       <table className="table">
         <tbody>{renderUsers(users)}</tbody>
       </table>
-      {totalPages > 1 && (
+      {totalPages > PAGINATION_PAGES_TRIGGER && (
         <PagePagination
           currentPage={page}
           totalPages={totalPages}

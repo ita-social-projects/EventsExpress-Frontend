@@ -1,39 +1,33 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
 import propTypes from "prop-types";
 import DeleteCommentContainer from "../../containers/CommentContainer/DeleteCommentContainer";
 import PagePagination from "../shared/PagePagination/PagePagination";
+import { PAGINATION_PAGES_TRIGGER } from "../../constants/paginationConstants";
 
-export default class CommentList extends Component {
-  handlePageChange = page => {
-    this.props.callback(this.props.evId, page);
+const CommentList = ({ callback, evId, dataList, page, totalPages }) => {
+  const handlePageChange = commeptsPage => {
+    callback(evId, commeptsPage);
   };
 
-  renderItems = arr =>
-    arr.map(item => <DeleteCommentContainer key={item.id} item={item} />);
-
-  render() {
-    const { dataList } = this.props;
-    const items = this.renderItems(dataList);
-    const { page, totalPages } = this.props;
-
-    return (
-      <>
-        {items}
-        {totalPages > 1 && (
-          <PagePagination
-            currentPage={page}
-            totalPages={totalPages}
-            callback={this.handlePageChange}
-          />
-        )}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      {dataList.map(comment => (
+        <DeleteCommentContainer key={comment.id} item={comment} />
+      ))}
+      {totalPages > PAGINATION_PAGES_TRIGGER && (
+        <PagePagination
+          currentPage={page}
+          totalPages={totalPages}
+          callback={handlePageChange}
+        />
+      )}
+    </>
+  );
+};
 
 CommentList.propTypes = {
   callback: propTypes.func,
-  evId: propTypes.number,
+  evId: propTypes.string,
   dataList: propTypes.array,
   page: propTypes.number,
   totalPages: propTypes.number,
@@ -41,8 +35,10 @@ CommentList.propTypes = {
 
 CommentList.defaultProps = {
   callback: () => {},
-  evId: null,
+  evId: "",
   dataList: [],
   page: null,
   totalPages: null,
 };
+
+export default CommentList;

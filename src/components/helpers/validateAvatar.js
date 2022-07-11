@@ -1,7 +1,7 @@
-import profileConstants from "../../constants/profileConstants";
+import { PROFILE_CONSTANTS } from "../../constants/profileConstants";
 
 const validateAvatarForProfile = values => {
-  const { MIN_SIZE_OF_AVATAR, SMALL_IMAGE, REQUIRED_IMAGE } = profileConstants;
+  const { MIN_SIZE_OF_AVATAR, SMALL_IMAGE, REQUIRED_IMAGE } = PROFILE_CONSTANTS;
   const errors = {
     image: " ",
   };

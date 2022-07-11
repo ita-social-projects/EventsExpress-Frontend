@@ -58,3 +58,11 @@ export function setErrorAlert(msg) {
     dispatch(setAlert(alert));
   };
 }
+
+export const handleFormError = error => {
+  return dispatch => {
+    if (error) {
+      dispatch(setErrorAlert(error));
+    }
+  };
+};

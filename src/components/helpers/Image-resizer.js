@@ -1,4 +1,9 @@
-import { HALF_ZOOM, TWO } from "../../constants/imageResizerConstants";
+import {
+  HALF_ZOOM,
+  CROP_SIZE,
+  ORIGIN_X,
+  ORIGIN_Y,
+} from "../../constants/imageResizerConstants";
 
 export const onCropChange = (crop, setCrop) => setCrop(crop);
 
@@ -24,28 +29,32 @@ const getCroppedImg = async (imageSrc, pixelCrop) => {
   const ctx = canvas.getContext("2d");
 
   const maxSize = Math.max(image.width, image.height);
-  const safeArea = TWO * ((maxSize / TWO) * Math.sqrt(TWO));
+  const safeArea = CROP_SIZE * ((maxSize / CROP_SIZE) * Math.sqrt(CROP_SIZE));
 
   canvas.width = safeArea;
   canvas.height = safeArea;
 
-  ctx.translate(safeArea / TWO, safeArea / TWO);
-  ctx.translate(-safeArea / TWO, -safeArea / TWO);
+  ctx.translate(safeArea / CROP_SIZE, safeArea / CROP_SIZE);
+  ctx.translate(-safeArea / CROP_SIZE, -safeArea / CROP_SIZE);
 
   ctx.drawImage(
     image,
-    safeArea / TWO - image.width * HALF_ZOOM,
-    safeArea / TWO - image.height * HALF_ZOOM,
+    safeArea / CROP_SIZE - image.width * HALF_ZOOM,
+    safeArea / CROP_SIZE - image.height * HALF_ZOOM,
   );
-  const data = ctx.getImageData(0, 0, safeArea, safeArea);
+  const data = ctx.getImageData(ORIGIN_X, ORIGIN_Y, safeArea, safeArea);
 
   canvas.width = pixelCrop.width;
   canvas.height = pixelCrop.height;
 
   ctx.putImageData(
     data,
-    Math.round(0 - safeArea / TWO + image.width * HALF_ZOOM - pixelCrop.x),
-    Math.round(0 - safeArea / TWO + image.height * HALF_ZOOM - pixelCrop.y),
+    Math.round(
+      ORIGIN_X - safeArea / CROP_SIZE + image.width * HALF_ZOOM - pixelCrop.x,
+    ),
+    Math.round(
+      ORIGIN_Y - safeArea / CROP_SIZE + image.height * HALF_ZOOM - pixelCrop.y,
+    ),
   );
 
   return canvas.toDataURL("image/jpeg");

@@ -7,3 +7,4 @@ export const LENGTH_30 = 30;
 export const GENDEX_MAX_VALUE = 3;
 
 export const MIN_DETAILS_LENGTH = 6;
+export const NUMBER_FIELDS_VALIDATOR_OPTION = 1;

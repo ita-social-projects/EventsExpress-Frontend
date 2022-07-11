@@ -1,8 +1,9 @@
-﻿import React, { useEffect, useState } from "react";
+﻿import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import PagePagination from "../../shared/PagePagination/PagePagination";
 import LocalSpinnerContainer from "../../../containers/SpinnerContainer/LocalSpinnerContainer";
 import renderItems from "../../helpers/eventsForProfileUtils";
+import { PAGINATION_PAGES_TRIGGER } from "../../../constants/paginationConstants";
 
 const EventsForProfile = ({
   page,
@@ -12,21 +13,14 @@ const EventsForProfile = ({
   currentUser,
   dataList,
 }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-
   useEffect(() => {
-    if (notificationEvents === null) callback(currentPage);
+    if (notificationEvents === null) callback();
     // TODO: Check useEffect
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handlePageChange = pageEl => {
-    setCurrentPage(pageEl);
-    if (notificationEvents !== null) {
-      callback(notificationEvents, pageEl);
-    } else {
-      callback(pageEl);
-    }
+  const handlePageChange = (_, pageEl) => {
+    // setCurrentPage(pageEl);
+    callback(currentUser, pageEl);
   };
 
   return (
@@ -34,7 +28,7 @@ const EventsForProfile = ({
       <LocalSpinnerContainer showContent={dataList !== null}>
         <div className="row">{renderItems(dataList, currentUser)}</div>
         <br />
-        {totalPages > 1 && (
+        {totalPages > PAGINATION_PAGES_TRIGGER && (
           <PagePagination
             currentPage={page}
             totalPages={totalPages}

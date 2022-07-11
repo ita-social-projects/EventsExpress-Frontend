@@ -10,12 +10,10 @@ const mapStateToProps = state => ({
   formValues: getFormValues("tracks-filter-form")(state),
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getAllTracks: filter => dispatch(getAllTracks(filter)),
-    getEntityNames: () => dispatch(getEntityNames()),
-    resetFilters: () => dispatch(reset("tracks-filter-form")),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  getAllTracks: filter => dispatch(getAllTracks(filter)),
+  getEntityNames: () => dispatch(getEntityNames()),
+  resetFilters: () => dispatch(reset("tracks-filter-form")),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tracks);

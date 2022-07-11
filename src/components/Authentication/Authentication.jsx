@@ -1,42 +1,30 @@
-﻿import React, { Component } from "react";
-import { connect } from "react-redux";
+﻿import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { loginAfterEmailConfirmation } from "../../actions/login/login-action";
 import { CONGRATULATION_CAUSE_REGISTER } from "../../constants/authConstants";
 
-class Authentication extends Component {
-  componentWillMount = () => {
-    const { id, token } = this.props.match.params;
-    this.props.auth({ userId: id, token });
-  };
+const Authentication = ({ auth, user }) => {
+  const { id, token } = user;
+  useEffect(() => {
+    auth({ userId: id, token });
+  }, []);
 
-  render() {
-    return (
-      <div className="mt-5 b-inline-block">
-        <div className="h3 text-center alert alert-success">
-          {CONGRATULATION_CAUSE_REGISTER}
-        </div>
+  return (
+    <div className="mt-5 b-inline-block">
+      <div className="h3 text-center alert alert-success">
+        {CONGRATULATION_CAUSE_REGISTER}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 Authentication.defaultProps = {
-  match: {},
+  user: {},
   auth: () => {},
 };
 
 Authentication.propTypes = {
-  match: PropTypes.object,
+  user: PropTypes.object,
   auth: PropTypes.func,
 };
 
-const mapStateToProps = state => state.user;
-
-const mapDispatchToProps = dispatch => {
-  return {
-    auth: data => dispatch(loginAfterEmailConfirmation(data)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Authentication);
+export default Authentication;

@@ -1,5 +1,4 @@
 export const HOME_ICON = "fa fa-home";
-export const USER_ICON = "fa fa-user";
 export const USERS_ICON = "fa fa-users";
 export const COMMENTS_ICON = "fa fa-comments";
 export const EDIT_ICON = "fa fa-edit";

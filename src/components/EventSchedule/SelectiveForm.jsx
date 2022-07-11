@@ -1,4 +1,4 @@
-﻿import React, { Component } from "react";
+﻿import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "./EventSchedule.scss";
@@ -10,67 +10,61 @@ import EventSchedulePopover from "./EventSchedulePopover";
 import EventScheduleModal from "./EventScheduleModal";
 import { CREATE_WITH_EDITING } from "../../constants/eventConstants";
 
-export default class SelectiveForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      show: false,
-      submit: false,
-    };
-  }
+const SelectiveForm = () => {
+  const [options, setOptions] = useState({
+    show: false,
+    submit: false,
+  });
 
-  cancelHandler = () => {
-    this.setState({
+  const cancelHandler = () => {
+    setOptions({
       show: false,
       submit: false,
     });
   };
 
-  onEdit = () => {
-    this.setState({
+  const onEdit = () => {
+    setOptions({
       show: true,
     });
   };
 
-  submitHandler = () => {
-    this.setState({
+  const submitHandler = () => {
+    setOptions({
       show: false,
       submit: true,
     });
   };
-
-  render() {
-    return (
-      <>
-        <div className="shadow-lg p-3 mb-5 bg-white rounded">
-          <div className="row">
-            <div className="col-11">
-              <DropdownButton title="Select Option For Event">
-                <Dropdown.Item as={AddFromParentEventContainer}></Dropdown.Item>
-                <Dropdown.Item onClick={this.onEdit}>
-                  {CREATE_WITH_EDITING}
-                </Dropdown.Item>
-                <Dropdown.Item as={CancelNextEventContainer}></Dropdown.Item>
-                <Dropdown.Item as={CancelAllEventsContainer}></Dropdown.Item>
-              </DropdownButton>
-            </div>
-            <EventSchedulePopover />
+  return (
+    <>
+      <div className="shadow-lg p-3 mb-5 bg-white rounded">
+        <div className="row">
+          <div className="col-11">
+            <DropdownButton title="Select Option For Event">
+              <Dropdown.Item as={AddFromParentEventContainer}></Dropdown.Item>
+              <Dropdown.Item onClick={onEdit}>
+                {CREATE_WITH_EDITING}
+              </Dropdown.Item>
+              <Dropdown.Item as={CancelNextEventContainer}></Dropdown.Item>
+              <Dropdown.Item as={CancelAllEventsContainer}></Dropdown.Item>
+            </DropdownButton>
           </div>
-          <EventScheduleModal
-            cancelHandler={this.cancelHandler}
-            message="Are you sure you want to create the event with editing?"
-            show={this.state.show}
-            submitHandler={this.submitHandler}
-          />
-          {this.state.submit && (
-            <div className="mt-3">
-              <EditFromParentEventContainer
-                onCancelEditing={this.cancelHandler}
-              />
-            </div>
-          )}
+          <EventSchedulePopover />
         </div>
-      </>
-    );
-  }
-}
+        <EventScheduleModal
+          cancelHandler={cancelHandler}
+          message="Are you sure you want to create the event with editing?"
+          show={options.show}
+          submitHandler={submitHandler}
+        />
+        {options.submit && (
+          <div className="mt-3">
+            <EditFromParentEventContainer onCancelEditing={cancelHandler} />
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
+
+export default SelectiveForm;

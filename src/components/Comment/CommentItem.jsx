@@ -1,60 +1,58 @@
-﻿import React, { PureComponent } from "react";
+﻿import React from "react";
 import { Link } from "react-router-dom";
 import propTypes from "prop-types";
 import "./Comment.scss";
 import getTimeDifferenceFromNull from "../helpers/TimeHelper";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
 
-export default class commentItem extends PureComponent {
-  render() {
-    const { text, date, userName, userId } = this.props.item;
-    const { user } = this.props;
-    return (
+const CommentItem = ({ user, item }) => {
+  const { text, date, userName, userId } = item;
+
+  return (
+    <div>
       <div>
-        <div>
-          <div className="row">
-            {user !== userId && (
-              <div className="photo-container">
-                <ContainerCustomAvatar userId={userId} name={userName} />
-                <h1 className="text-secondary comment-text">
-                  {" "}
-                  {getTimeDifferenceFromNull(date)}
-                </h1>
-              </div>
-            )}
-            <div className="mybutton">
-              <p>
-                <Link to={`/user/${userId}`} className="btn-custom">
-                  <a className="float-left" href={`/user/${userId}`}>
-                    <strong className="text-primary">{userName}</strong>
-                  </a>
-                </Link>
-              </p>
-              <div className="clearfix"></div>
-              <p>{text}</p>
+        <div className="row">
+          {user !== userId && (
+            <div className="photo-container">
+              <ContainerCustomAvatar userId={userId} name={userName} />
+              <h1 className="text-secondary comment-text">
+                {" "}
+                {getTimeDifferenceFromNull(date)}
+              </h1>
             </div>
-            {user === userId && (
-              <div className="photo-container">
-                <ContainerCustomAvatar userId={userId} name={userName} />
-                <h1 className="text-secondary comment-text">
-                  {" "}
-                  {getTimeDifferenceFromNull(date)}
-                </h1>
-              </div>
-            )}
+          )}
+          <div className="mybutton">
+            <p>
+              <Link to={`/user/${userId}`} className="btn-custom">
+                <strong className="text-primary">{userName}</strong>
+              </Link>
+            </p>
+            <div className="clearfix"></div>
+            <p>{text}</p>
           </div>
+          {user === userId && (
+            <div className="photo-container">
+              <ContainerCustomAvatar userId={userId} name={userName} />
+              <h1 className="text-secondary comment-text">
+                {" "}
+                {getTimeDifferenceFromNull(date)}
+              </h1>
+            </div>
+          )}
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-commentItem.propTypes = {
+CommentItem.propTypes = {
   user: propTypes.number,
   item: propTypes.object,
 };
 
-commentItem.defaultProps = {
+CommentItem.defaultProps = {
   user: null,
   item: {},
 };
+
+export default CommentItem;

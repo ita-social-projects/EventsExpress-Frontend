@@ -1,78 +1,80 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
 import { parse as queryStringParse } from "query-string";
 import { withRouter } from "react-router-dom";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import ContactAdminItemContainer from "../../containers/ContactAdminContainers/ContactAdminItemContainer";
 import RenderIssuesList from "./RenderIssuesList";
 import { getQueryStringByFilter } from "../helpers/filterHelper/filterHelper";
-import { CONTACT_ADMIN_CONSTS } from "../../constants/adminConstants";
+import {
+  CONTACT_ADMIN_CONSTS,
+  EMPTY_ISSUES_ARRAY,
+} from "../../constants/adminConstants";
 
-class ContactAdminList extends Component {
-  pageChange = page => {
-    const { history } = this.props;
+const ContactAdminList = ({ dataList, filter, page, totalPages, ...props }) => {
+  const pageChange = pageItem => {
+    const { history } = props;
     if (history.location.search === "")
-      history.push(`${history.location.pathname}?page=${page}`);
+      history.push(`${history.location.pathname}?page=${pageItem}`);
     else {
       const queryStringInObject = queryStringParse(history.location.search);
-      queryStringInObject.page = page;
+      queryStringInObject.page = pageItem;
       history.location.search = getQueryStringByFilter(queryStringInObject);
       history.push(history.location.pathname + history.location.search);
     }
   };
 
-  renderSingleIssue = item => (
+  const renderSingleIssue = item => (
     <ContactAdminItemContainer key={item.messageId + item.status} item={item} />
   );
+  const changedProps = { props, dataList };
 
-  render() {
-    const changedProps = { ...this.props, dataList: this.props.dataList };
-
-    return (
-      <>
-        {this.props.dataList > 0 ? (
-          <tr className="bg-light text-dark font-weight-bold text-center">
-            <td className="justify-content-center">
-              {CONTACT_ADMIN_CONSTS.TITLE}
-            </td>
-            <td className="d-flex align-items-center justify-content-center">
-              {CONTACT_ADMIN_CONSTS.DATE_CREATED}
-            </td>
-            <td className="justify-content-center">
-              {CONTACT_ADMIN_CONSTS.STATUS}
-            </td>
-            <td className="justify-content-center">
-              {CONTACT_ADMIN_CONSTS.DETAILS}
-            </td>
-            <RenderIssuesList
-              {...changedProps}
-              renderSingleIssue={this.renderSingleIssue}
-              handlePageChange={this.pageChange}
-            />
-          </tr>
-        ) : (
-          ""
-        )}
-        {this.props.dataList < 1 ? (
+  return (
+    <>
+      {dataList > EMPTY_ISSUES_ARRAY && (
+        <tr className="bg-light text-dark font-weight-bold text-center">
+          <td className="justify-content-center">
+            {CONTACT_ADMIN_CONSTS.TITLE}
+          </td>
+          <td className="d-flex align-items-center justify-content-center">
+            {CONTACT_ADMIN_CONSTS.DATE_CREATED}
+          </td>
+          <td className="justify-content-center">
+            {CONTACT_ADMIN_CONSTS.STATUS}
+          </td>
+          <td className="justify-content-center">
+            {CONTACT_ADMIN_CONSTS.DETAILS}
+          </td>
           <RenderIssuesList
             {...changedProps}
-            renderSingleIssue={this.renderSingleIssue}
-            handlePageChange={this.pageChange}
+            renderSingleIssue={renderSingleIssue}
+            handlePageChange={pageChange}
           />
-        ) : (
-          ""
-        )}
-      </>
-    );
-  }
-}
+        </tr>
+      )}
+      {dataList < EMPTY_ISSUES_ARRAY && (
+        <RenderIssuesList
+          {...changedProps}
+          renderSingleIssue={renderSingleIssue}
+          handlePageChange={pageChange}
+        />
+      )}
+    </>
+  );
+};
 
 ContactAdminList.propTypes = {
-  history: propTypes.object,
-  dataList: propTypes.array,
+  history: PropTypes.object,
+  filter: PropTypes.object,
+  page: PropTypes.number,
+  totalPages: PropTypes.number,
+  dataList: PropTypes.array,
 };
 
 ContactAdminList.defaultProps = {
   history: {},
+  filter: {},
+  page: 0,
+  totalPages: 0,
   dataList: [],
 };
 

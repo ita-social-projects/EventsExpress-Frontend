@@ -5,14 +5,14 @@ import { ConnectedRouter } from "react-router-redux";
 import { createBrowserHistory } from "history";
 import "./styles/main.scss";
 import configureStore from "./store/configureStore";
-import App from "./components/app/app";
 import registerServiceWorker from "./registerServiceWorker";
-import { ZERO_INDEX } from "./constants/numberConstants";
+import AppContainer from "./containers/AppContainer/AppContainer";
+import { FIRST_TAG_BASE } from "./constants/constants";
 
 // Create browser history to use in the Redux store
 const baseUrl = document
   .getElementsByTagName("base")
-  [ZERO_INDEX].getAttribute("href");
+  [FIRST_TAG_BASE].getAttribute("href");
 const history = createBrowserHistory({ basename: baseUrl });
 
 // Get the application-wide store instance, prepopulating with state from the server where available.
@@ -25,7 +25,7 @@ ReactDOM.render(
   // eslint-disable-next-line react/jsx-filename-extension
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      <AppContainer />
     </ConnectedRouter>
   </Provider>,
   rootElement,

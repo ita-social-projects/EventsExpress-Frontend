@@ -13,7 +13,7 @@ export const getAverageRateStates = {
   SUCCESS: "GET_AVERAGE_RATE_SUCCESS",
 };
 
-export const setRateStates = {
+const setRateStates = {
   PENDING: "SET_RATE_PENDING",
   SUCCESS: "SET_RATE_SUCCESS",
 };

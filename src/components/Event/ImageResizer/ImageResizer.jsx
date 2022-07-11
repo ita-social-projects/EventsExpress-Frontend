@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import "./ImageResizer.scss";
 import Button from "@material-ui/core/Button";
 import {
+  DEFAULT_ASPECT,
+  DEFAULT_ZOOM,
   DISPLAY_RATIO_PARAMS,
   imageConstants,
 } from "../../../constants/imageResizerConstants";
@@ -25,7 +27,7 @@ const ImageResizer = ({
   submitting,
 }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(1);
+  const [zoom, setZoom] = useState(DEFAULT_ZOOM);
   const [aspect, setAspect] = useState(null);
   const [showGrid, setShowGrid] = useState(null);
   const [croppedArea, setCroppedArea] = useState(null);
@@ -33,7 +35,9 @@ const ImageResizer = ({
   useEffect(() => {
     const isRound = cropShape === ROUND;
     setAspect(
-      isRound ? 1 : DISPLAY_RATIO_PARAMS.WIDTH / DISPLAY_RATIO_PARAMS.HEIGHT,
+      isRound
+        ? DEFAULT_ASPECT
+        : DISPLAY_RATIO_PARAMS.WIDTH / DISPLAY_RATIO_PARAMS.HEIGHT,
     );
     setShowGrid(!isRound);
     // TODO

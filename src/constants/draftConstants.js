@@ -20,3 +20,7 @@ export const ICON_PROPERTIES = {
 };
 
 export const EDIT_DRAFT_TITLE = "Edit event draft";
+
+export const FIRST_ADDITIONAL_BTN = 0;
+export const SECOND_ADDITIONAL_BTN = 1;
+export const THIRD_ADDITIONAL_BTN = 2;

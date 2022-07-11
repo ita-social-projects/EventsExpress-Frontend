@@ -1,4 +1,4 @@
-const SPLIT_SCREENS = {
+export const SPLIT_SCREENS = {
   CREATE_PART: "Create event that ",
   RESHAPE: " reshape ",
   INDUSTRIES: " industries ",
@@ -10,4 +10,5 @@ const SPLIT_SCREENS = {
   DISCOVER_MORE: "Discover more",
 };
 
-export default SPLIT_SCREENS;
+export const COLLAPSED_INDEX_ON = 1;
+export const COLLAPSED_INDEX_OFF = 0;

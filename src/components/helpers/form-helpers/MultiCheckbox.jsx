@@ -1,5 +1,6 @@
 ﻿import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { CHECKBOX_SLICE_OPTION } from "../../../constants/inputsConstants";
 
 class MultiCheckbox extends Component {
   checkboxGroup() {
@@ -21,7 +22,10 @@ class MultiCheckbox extends Component {
                 if (event.target.checked) {
                   newValue.push(option.value);
                 } else {
-                  newValue.splice(newValue.indexOf(option.value), 1);
+                  newValue.splice(
+                    newValue.indexOf(option.value),
+                    CHECKBOX_SLICE_OPTION,
+                  );
                 }
                 return input.onChange(newValue);
               }}

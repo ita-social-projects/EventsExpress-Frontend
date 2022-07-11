@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import setUserNotificationTypes from "../../actions/redactProfile/userNotificationType-add-action";
 import getNotificationTypes from "../../actions/notificationType/notificationType-list-action";
-import SelectNotificationType from "../../components/NotificationTypes/NotificationTypes";
+import SelectNotificationType from "../../components/NotificationTypes/SelectNotificationTypes";
 import getUserNotificationTypes from "../../actions/notificationType/userNotificationType-action";
 
 // TODO Refactor class component

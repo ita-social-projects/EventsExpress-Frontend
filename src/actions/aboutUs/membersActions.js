@@ -5,21 +5,21 @@ import {
   GET_MEMBERS_SUCCESS,
 } from "./membersActionstypes";
 
-export const getMembersPending = () => ({
+const getMembersPending = () => ({
   type: GET_MEMBERS_PENDING,
 });
 
-export const getMembersSuccess = members => ({
+const getMembersSuccess = members => ({
   type: GET_MEMBERS_SUCCESS,
   members,
 });
 
-export const getMembersError = error => ({
+const getMembersError = error => ({
   type: GET_MEMBERS_ERROR,
   error,
 });
 
-export const getMembersAction = () => async dispatch => {
+const getMembersAction = () => async dispatch => {
   try {
     dispatch(getMembersPending());
     const members = await AboutUsService.getMembers();
@@ -28,3 +28,5 @@ export const getMembersAction = () => async dispatch => {
     dispatch(getMembersError(error.message));
   }
 };
+
+export default getMembersAction;

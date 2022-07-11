@@ -1,26 +1,27 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import propTypes from "prop-types";
-import getChatsAction from "../../actions/chat/chats-action";
 import SpinnerContainer from "../../containers/SpinnerContainer/SpinnerContainer";
 import "./UserChats.scss";
 import ContainerCustomAvatar from "../CustomAvatar/CustomAvatar";
-import { U_HAVE_UNREAD_MSG } from "../../constants/chatConstants";
+import {
+  ONE_UNREAD_MSG,
+  U_HAVE_UNREAD_MSG,
+} from "../../constants/chatConstants";
 
-class UserChats extends Component {
-  componentWillMount = () => {
-    this.props.getChats();
-  };
+const UserChats = ({ chats, currentUser, notification, getChats }) => {
+  useEffect(() => {
+    return () => {
+      getChats();
+    };
+  }, []);
 
-  renderChats = arr => {
+  const renderChats = arr => {
     return arr.map(x => {
-      const user = x.users.find(y => y.id !== this.props.currentUser.id);
-      const newMsg = this.props.notification.messages.filter(
-        y => y.chatRoomId === x.id,
-      );
-      const chatBg = newMsg.length > 0 ? "new-msgs" : "";
+      const user = x.users.find(y => y.id !== currentUser.id);
+      const newMsg = notification.messages.filter(y => y.chatRoomId === x.id);
+      const chatBg = newMsg.length ? "new-msgs" : "";
 
       return (
         <div key={x.id} className="w-100">
@@ -35,13 +36,13 @@ class UserChats extends Component {
               </ButtonBase>
               <div className="my-auto ml-5 wrap-text">
                 <h5>{user.username}</h5>
-                {newMsg.length === 0 && (
+                {newMsg.length < ONE_UNREAD_MSG && (
                   <span className="text-info">{x.lastMessage}</span>
                 )}
-                {newMsg.length === 1 && (
+                {newMsg.length === ONE_UNREAD_MSG && (
                   <span className="text-info">{U_HAVE_UNREAD_MSG}</span>
                 )}
-                {newMsg.length > 1 && (
+                {newMsg.length > ONE_UNREAD_MSG && (
                   <span className="text-info">
                     {"You have "}
                     {newMsg.length} {"unread messages"}
@@ -57,23 +58,21 @@ class UserChats extends Component {
     });
   };
 
-  render() {
-    const data = this.props.chats.data.sort((b, a) => {
-      return (
-        new Date(a.lastMessageTime).getTime() -
-        new Date(b.lastMessageTime).getTime()
-      );
-    });
-
+  const data = chats.data.sort((b, a) => {
     return (
-      <SpinnerContainer showContent={data !== undefined}>
-        <div className="row shadow mt-5 p-5 mb-5 bg-white rounded limit-width">
-          {this.renderChats(data)}
-        </div>
-      </SpinnerContainer>
+      new Date(a.lastMessageTime).getTime() -
+      new Date(b.lastMessageTime).getTime()
     );
-  }
-}
+  });
+
+  return (
+    <SpinnerContainer showContent={data !== undefined}>
+      <div className="row shadow mt-5 p-5 mb-5 bg-white rounded limit-width">
+        {renderChats(data)}
+      </div>
+    </SpinnerContainer>
+  );
+};
 
 UserChats.propTypes = {
   getChats: propTypes.func,
@@ -89,17 +88,4 @@ UserChats.defaultProps = {
   chats: {},
 };
 
-const mapStateToProps = state => ({
-  chats: state.chats,
-  chat: state.chat,
-  currentUser: state.user,
-  notification: state.notification,
-});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getChats: () => dispatch(getChatsAction()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserChats);
+export default UserChats;

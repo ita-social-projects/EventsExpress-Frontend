@@ -3,14 +3,13 @@ import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
-import { renderTextField } from "../../helpers/form-helpers";
-import PROFILE_CONSTANTS from "../../../constants/profileConstants";
+import RenderTextField from "../../helpers/form-helpers/render-text-field";
+import { SUBMIT, CLEAR } from "../../../constants/profileConstants";
 
 const EditUsername = ({ handleSubmit, pristine, reset, submitting, error }) => {
-  const { SUBMIT, CLEAR } = PROFILE_CONSTANTS;
   return (
     <form onSubmit={handleSubmit}>
-      <Field name="userName" component={renderTextField} label="UserName" />
+      <Field name="userName" component={RenderTextField} label="UserName" />
       {error && <ErrorMessages error={error} className="text-center" />}
 
       <div>

@@ -20,52 +20,50 @@ const UsersView = ({ user, children }) => {
   }, [attitude]);
 
   return (
-    <div>
-      <div className={`border-bottom ${attitudeArr}`}>
-        <div className="d-flex align-items-center w-100">
-          <div className="flex-grow-1">
-            <Link to={`/user/${user.id}`} className="btn-custom">
-              <div className="d-flex align-items-center">
-                <CustomAvatar
-                  size="little"
-                  userId={user.id}
-                  name={user.username}
-                />
-                <div>
-                  <h5>{user.username}</h5>
-                  {`${AGE}: ${getAge(user.birthday)}`}
-                </div>
-                {attitudeArr.likeDislike && (
-                  <Tooltip
-                    title={`${YOU} ${attitudeArr.likeDislike} ${THIS_USER}`}
-                    placement="bottom"
-                    TransitionComponent={Zoom}
-                  >
-                    <div className="retraet">
-                      <i
-                        className={`far fa-thumbs-${attitudeArr.upDown} cancel-text`}
-                      />
-                    </div>
-                  </Tooltip>
-                )}
+    <div className={`border-bottom ${attitudeArr}`}>
+      <div className="d-flex align-items-center w-100">
+        <div className="flex-grow-1">
+          <Link to={`/user/${user.id}`} className="btn-custom">
+            <div className="d-flex align-items-center">
+              <CustomAvatar
+                size="little"
+                userId={user.id}
+                name={user.username}
+              />
+              <div>
+                <h5>{user.username}</h5>
+                {`${AGE}: ${getAge(user.birthday)}`}
               </div>
-            </Link>
-          </div>
+              {attitudeArr.likeDislike && (
+                <Tooltip
+                  title={`${YOU} ${attitudeArr.likeDislike} ${THIS_USER}`}
+                  placement="bottom"
+                  TransitionComponent={Zoom}
+                >
+                  <div className="retraet">
+                    <i
+                      className={`far fa-thumbs-${attitudeArr.upDown} cancel-text`}
+                    />
+                  </div>
+                </Tooltip>
+              )}
+            </div>
+          </Link>
         </div>
-        <div className="d-flex justify-content-around">{children}</div>
       </div>
+      <div className="d-flex justify-content-around">{children}</div>
     </div>
   );
 };
 
 UsersView.propTypes = {
-  user: PropTypes.arrayOf({}),
-  children: PropTypes.array,
+  user: PropTypes.object,
+  children: PropTypes.object,
 };
 
 UsersView.defaultProps = {
-  user: [],
-  children: [],
+  user: {},
+  children: {},
 };
 
 export default UsersView;

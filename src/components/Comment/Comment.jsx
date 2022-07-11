@@ -4,11 +4,11 @@ import CommentContainer from "../../containers/CommentContainer/CommnetContainer
 import CommentListContainer from "../../containers/CommentContainer/CommentListContainer";
 import "./Comment.scss";
 
-const Comment = props => {
+const Comment = ({ match }) => {
   return (
     <div>
       <CommentContainer />
-      <CommentListContainer match={props.match} />
+      <CommentListContainer match={match} />
     </div>
   );
 };

@@ -6,13 +6,10 @@ import { getFormValues, SubmissionError } from "redux-form";
 import Button from "@material-ui/core/Button";
 import EventForm from "../../components/Event/EventForm/EventForm";
 import { editEvent } from "../../actions/event/event-add-action";
-import { setSuccessAllert } from "../../actions/alert-action";
+import { setSuccessAllert, handleFormError } from "../../actions/alert-action";
 import eventEditValidateForm from "../../components/helpers/eventEditValidateForm ";
 import validateEventForm from "../../components/helpers/eventValidateForm";
-import {
-  buildValidationState,
-  handleFormError,
-} from "../../components/helpers/action-helpers";
+import { buildValidationState } from "../../components/helpers/action-helpers";
 import { BUTTON_NAMES } from "../../constants/buttonConsts";
 
 const EditEventContainer = ({

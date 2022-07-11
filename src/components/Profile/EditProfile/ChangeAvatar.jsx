@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import DropZoneField from "../../helpers/DropZoneField";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
 import PhotoService from "../../../services/PhotoService";
-import PROFILE_CONSTANTS from "../../../constants/profileConstants";
+import { PROFILE_CONSTANTS } from "../../../constants/profileConstants";
 
 const ChangeAvatar = ({
   handleSubmit,

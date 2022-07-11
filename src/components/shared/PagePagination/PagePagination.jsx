@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Pagination from "react-paginating";
-import PAGINATION_LABELS from "../../../constants/paginationConstants";
+import {
+  DEFAULT_PAGE,
+  PAGINATION_LABELS,
+} from "../../../constants/paginationConstants";
 import { renderEdgePage, renderPages } from "../../helpers/paginationUtils";
-import { DEFAULT_ONE_VALUE } from "../../../constants/numberConstants";
 
 const { FIRST, LAST, NEXT, PREV } = PAGINATION_LABELS;
 
-const PagePagination = ({ callback }, props) => {
+const PagePagination = ({ callback, totalPages, currentPage }) => {
   const limit = 6;
   const pageCount = 4;
 
@@ -17,18 +19,20 @@ const PagePagination = ({ callback }, props) => {
   return (
     <ul className="pagination justify-content-center">
       <Pagination
-        total={props.totalPages * limit}
+        total={totalPages * limit}
         limit={limit}
         pageCount={pageCount}
-        currentPage={props.currentPage}
+        currentPage={currentPage}
       >
         {({
           pages,
+          // eslint-disable-next-line no-shadow
           currentPage,
           hasNextPage,
           hasPreviousPage,
           previousPage,
           nextPage,
+          // eslint-disable-next-line no-shadow
           totalPages,
           getPageItemProps,
         }) => (
@@ -36,7 +40,7 @@ const PagePagination = ({ callback }, props) => {
             {hasPreviousPage &&
               renderEdgePage(
                 handlePageChange,
-                DEFAULT_ONE_VALUE,
+                DEFAULT_PAGE,
                 FIRST,
                 previousPage,
                 PREV,

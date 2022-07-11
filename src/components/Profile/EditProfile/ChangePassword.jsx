@@ -9,9 +9,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Button from "@material-ui/core/Button";
 import ErrorMessages from "../../shared/ErrorMessage/ErrorMessage";
-import { renderTextField } from "../../helpers/form-helpers";
+import RenderTextField from "../../helpers/form-helpers/render-text-field";
 import fieldIsRequired from "../../helpers/validators/required-fields-validator";
-import PROFILE_CONSTANTS from "../../../constants/profileConstants";
+import { PROFILE_CONSTANTS } from "../../../constants/profileConstants";
 
 const { FIELDS, FIELDS_LABEL, PASSWORD_NOT_MATCH } = PROFILE_CONSTANTS;
 
@@ -59,7 +59,7 @@ const ChangePassword = ({
                     key={field}
                     name={field}
                     label={FIELDS_LABEL[index]}
-                    component={renderTextField}
+                    component={RenderTextField}
                     type="password"
                     className="mb-3"
                   />
